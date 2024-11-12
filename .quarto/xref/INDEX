@@ -1,0 +1,23 @@
+{
+  "about.qmd": {
+    "about.html": "2413b63b"
+  },
+  "index.qmd": {
+    "index.html": "683290db"
+  },
+  "blog/24/1112/index.qmd": {
+    "index.html": "993869e9"
+  },
+  "blog/index.qmd": {
+    "index.html": "ae772e0d"
+  },
+  "blog/24/1029/index.qmd": {
+    "index.html": "d5e5199e"
+  },
+  "blog/24/1015/index.qmd": {
+    "index.html": "838deefd"
+  },
+  "blog/how-to-create-economist-style-chart-with-plotly/index.qmd": {
+    "index.html": "d2602d29"
+  }
+}

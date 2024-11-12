@@ -1,0 +1,27 @@
+project:
+  type: website
+  render:
+    - "blog/**/*.qmd"
+    - "index.qmd"
+
+website:
+  favicon: images/favicon.png
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - href: blog/index.qmd
+        text: Blog
+  page-footer: 
+    background: light
+    center: © 2024 Conterval · [Contact](mailto:contact@conterval.com)
+
+format:
+  html:
+    theme: [cosmo, custom.scss]
+    css: styles.css
+    toc: true
+
+
+

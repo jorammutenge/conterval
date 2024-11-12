@@ -1,0 +1,200 @@
+/*-- scss:defaults --*/
+
+@font-face {
+    font-family: 'Harmonia-Sans-W01-Regular';
+    src: url('assets/fonts/Harmonia Sans W01 Regular.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+@font-face {
+  font-family: 'Harmonia-Sans-Bold';
+  src: url('assets/fonts/Harmonia Sans W01 Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Harmonia-Sans-Condensed';
+  src: url('assets/fonts/Harmonia Sans W06 Condensed.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'UniversLTStd-Bold';
+  src: url('assets/fonts/UniversLTStd-Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'UniversLTStd-Light';
+  src: url('assets/fonts/UniversLTStd-Light.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  src: url('assets/fonts/Iosevka.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Spectral';
+  src: url('assets/fonts/Spectral-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+// fonts
+$font-family-sans-serif: 'Harmonia-Sans-W01-Regular', sans-serif !default;
+$harmonia-bold: 'Harmonia-Sans-Bold', sans-serif !default;
+$harmonia-condensed: 'Harmonia-Sans-Condensed', Arial, sans-serif !default;
+$univers-bold: 'UniversLTStd-Bold', sans-serif !default;
+$univers-light: 'UniversLTStd-Light', sans-serif !default;
+$font-family-monospace: "Iosevka", monospace;
+$headings-font-family: "Inter", sans-serif;
+$italic-font-family: "Spectral";
+
+
+body {
+  font-family: $font-family-sans-serif;
+  font-weight: 800;
+  font-size: 1.15em !important;
+  background-color: #f6f2ec;
+}
+
+h1 {
+  font-family: $harmonia-bold !important;
+  font-weight: bold;
+}
+
+h2, h3, h4 {
+  font-family: $univers-bold !important;
+  // font-weight: bold;
+}
+
+/* gets rid of the border and reduces padding in tables */
+thead, tbody, tfoot, tr, td, th {
+  border-style: none;
+  padding-bottom: 2px !important;
+}
+
+.centered-content {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.centered-content img {
+  width: 30em; /* Adjust the size here */
+  height: auto;
+}
+
+/* Font size for footnotes */
+.footnote, footer {
+  font-size: 12pt;
+}
+
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideIn 1s ease-out forwards; // Adjust the duration and easing as needed
+}
+
+
+// Style dataframe
+.table.dataframe {
+  width: 100%;
+
+  th {
+    color: #000000 !important;
+    background-color: #FFE4B5;
+    font-family: Inter;
+  }
+
+  th, td {
+    width: 15%;
+    // color: #c0bfbc;
+  }
+}
+
+
+// links
+a {
+  color: #0000CD;
+  text-decoration-thickness: 1px;
+  //text-underline-offset: .1rem;
+  //text-underline-position: under;
+}
+
+// code
+pre.sourceCode {
+  border-radius: 0;
+  border-left-color: #4d857b;
+  background-color: #deddda;
+}
+
+// light vs dark modes
+.light-mode {
+  display: block; 
+}
+
+
+// gray text
+.gray-text {
+  color: #3d3846;
+  font-style: italic;
+  font-family: $italic-font-family;
+}
+
+// center text (horizontally)
+.center-text{
+  text-align: center;
+}
+
+$dark: #212129 !default;
+$bq-grey:  #deddda;
+
+em {
+  font-family: 'Spectral', serif;
+  color: $dark;
+  // font-weight: 600;
+}
+
+blockquote {
+  color: #4B0082 !important;
+  font-family: 'Spectral', serif;
+  padding: 10px;
+  border-left: 5px solid #77767b !important;
+  margin: 20px 0;
+  background: $bq-grey;
+}
