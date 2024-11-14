@@ -23,5 +23,11 @@ format:
     css: styles.css
     toc: true
 
+editor: visual
 
+extra-files:
+  - CNAME
+
+execute:
+  freeze: auto
 
