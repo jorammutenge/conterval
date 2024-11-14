@@ -9,6 +9,11 @@ project:
 website:
   # title: "Conterval"
   favicon: images/favicon.png
+  site-url: https://www.conterval.com
+  page-navigation: true
+  google-analytics: 
+    tracking-id: "G-5Y1ZXKXMBX"
+    anonymize-ip: true
   navbar:
     left:
       - href: blog/index.qmd
