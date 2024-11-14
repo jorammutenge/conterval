@@ -1,1 +1,11 @@
 author: Joram Mutenge
+
+# Courses
+polars_course: "[Polars course](https://www.udemy.com/course/analyzing-data-with-polars-in-python/)"
+ml_course: "[Machine Learning course](https://www.udemy.com/course/machine-learning-with-polars/)"
+
+# Books
+unlaid_1: "[Unlaid: Book 1](https://www.amazon.com/dp/B0B2WZJM1M/)"
+unlaid_2: "[Unlaid: Book 2](https://www.amazon.com/dp/B0C642592W/)"
+wong: "[The Almanack of Brian Wong](https://www.amazon.com/dp/B0B37Z79BM/)"
+belmar: "[Be A Glitch](https://www.amazon.com/dp/B0D5Y7X5SF/)"
