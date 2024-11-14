@@ -15,7 +15,7 @@ format:
 ---
 
 <div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 16pt; margin-bottom: 15px;">
-  <img src="images/logo.svg" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
+  <img src="images/logo.png" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
   <p>Consulting and training in data science, data engineering, visualization and analytical computing solutions</p>
 </div>
 
