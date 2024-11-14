@@ -11,7 +11,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
       - href: blog/index.qmd
         text: Blog
   page-footer: 
@@ -22,7 +21,11 @@ format:
   html:
     theme: [cosmo, custom.scss]
     css: styles.css
+    code-block-border-left: true
     toc: true
+    smooth-scroll: true
+    link-external-newwindow: true
+
 
 editor: visual
 
