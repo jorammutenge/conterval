@@ -1,17 +1,16 @@
 project:
   type: website
+  title: Conterval
   render:
     - "blog/**/*.qmd"
     - "index.qmd"
   output-dir: docs
 
 website:
-  title: "Conterval"
+  # title: "Conterval"
   favicon: images/favicon.png
   navbar:
     left:
-      - href: index.qmd
-        text: Home
       - href: blog/index.qmd
         text: Blog
   page-footer: 
