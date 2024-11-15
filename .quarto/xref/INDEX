@@ -19,5 +19,8 @@
   },
   "blog/how-to-create-economist-style-chart-with-plotly/index.qmd": {
     "index.html": "d2602d29"
+  },
+  "blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.qmd": {
+    "index.html": "a5c15e4f"
   }
 }

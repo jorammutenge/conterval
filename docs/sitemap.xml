@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.conterval.com/blog/how-to-create-economist-style-chart-with-plotly/index.html</loc>
-    <lastmod>2024-11-14T01:09:35.143Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/index.html</loc>
-    <lastmod>2024-11-13T01:39:50.537Z</lastmod>
+    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
+    <lastmod>2024-11-15T17:24:00.679Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/index.html</loc>
-    <lastmod>2024-11-14T01:58:50.503Z</lastmod>
+    <lastmod>2024-11-15T17:06:41.221Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/index.html</loc>
+    <lastmod>2024-11-15T17:06:41.141Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/how-to-create-economist-style-chart-with-plotly/index.html</loc>
+    <lastmod>2024-11-15T17:06:41.141Z</lastmod>
   </url>
 </urlset>

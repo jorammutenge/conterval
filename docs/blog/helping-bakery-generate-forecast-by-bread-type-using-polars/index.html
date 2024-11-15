@@ -1,0 +1,2119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joram Mutenge">
+<meta name="dcterms.date" content="2024-11-18">
+
+<title>How we helped a bakery generate forecast by bread type using polars – Conterval</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5Y1ZXKXMBX"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Conterval</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul class="collapse">
+  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#the-math" id="toc-the-math" class="nav-link" data-scroll-target="#the-math">The math</a></li>
+  <li><a href="#implementing-the-math" id="toc-implementing-the-math" class="nav-link" data-scroll-target="#implementing-the-math">Implementing the math</a></li>
+  <li><a href="#successful-implementation-of-solution" id="toc-successful-implementation-of-solution" class="nav-link" data-scroll-target="#successful-implementation-of-solution">Successful implementation of solution</a></li>
+  <li><a href="#calculating-percentages" id="toc-calculating-percentages" class="nav-link" data-scroll-target="#calculating-percentages">Calculating percentages</a></li>
+  <li><a href="#joining-forecast-data" id="toc-joining-forecast-data" class="nav-link" data-scroll-target="#joining-forecast-data">Joining forecast data</a></li>
+  <li><a href="#calculating-new-forecast" id="toc-calculating-new-forecast" class="nav-link" data-scroll-target="#calculating-new-forecast">Calculating new forecast</a></li>
+  <li><a href="#final-output" id="toc-final-output" class="nav-link" data-scroll-target="#final-output">Final output</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How we helped a bakery generate forecast by bread type using polars</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joram Mutenge </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2024-11-18</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A few weeks ago, Conterval did a consulting gig for a medium-sized bakery. This bakery makes white and brown bread, which it sells to a major retail store here in the USA. The bakery contacted our company to help clean up their forecast data and generate a forecast for each bread type.</p>
+<p>The gig turned out to be an interesting experience, so we asked the bakery if I could write about the experience on the company blog, and they said yes. In this post, I’ll share what the bakery’s problem was and the solution we devised to solve it.</p>
+<div class="gray-text center-text">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image.png" class="img-fluid figure-img"></p>
+<figcaption>final forecast output</figcaption>
+</figure>
+</div>
+</div>
+<section id="problem" class="level2">
+<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<p>The bakery receives an Excel file with forecast data from a major US retail store every week. This file contains 2 columns: Date (the 1st of every month from January to December) and Forecast (the number of loaves of bread they want in that month).</p>
+<p>The challenge was that the retail store did not provide a separate forecast value for white and brown bread. The retail store just provided a single forecast value. It was up to the bakery to divide that number into how many loaves of white or brown bread to make. It turns out this was a challenging task.</p>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>Create a systematic process that determines how many loaves of bread should be made for each bread type based on the provided forecast value for that month. This information should be presented in an easy to understand table.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The generated table should be easy to update based on the new forecast data provided by the retail store.</p>
+</div>
+</div>
+</section>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>We’ll not use the actual data from the bakery, rather we’ll use fictional data to demonstrate the solution. Here’s the baker’s sales data from last year.</p>
+<div id="e59a3c93" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 3)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+</tr>
+<tr class="even">
+<td>2023-01-01</td>
+<td>"White"</td>
+<td>203</td>
+</tr>
+<tr class="odd">
+<td>2023-02-01</td>
+<td>"Brown"</td>
+<td>329</td>
+</tr>
+<tr class="even">
+<td>2023-02-01</td>
+<td>"White"</td>
+<td>304</td>
+</tr>
+<tr class="odd">
+<td>2023-03-01</td>
+<td>"Brown"</td>
+<td>201</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2023-10-01</td>
+<td>"White"</td>
+<td>425</td>
+</tr>
+<tr class="even">
+<td>2023-11-01</td>
+<td>"Brown"</td>
+<td>383</td>
+</tr>
+<tr class="odd">
+<td>2023-11-01</td>
+<td>"White"</td>
+<td>297</td>
+</tr>
+<tr class="even">
+<td>2023-12-01</td>
+<td>"Brown"</td>
+<td>248</td>
+</tr>
+<tr class="odd">
+<td>2023-12-01</td>
+<td>"White"</td>
+<td>200</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Here’s the forecast data from the retail store.</p>
+<div id="7cf8983a" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (12, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Forecast</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-01-01</td>
+<td>897</td>
+</tr>
+<tr class="even">
+<td>2024-02-01</td>
+<td>945</td>
+</tr>
+<tr class="odd">
+<td>2024-03-01</td>
+<td>865</td>
+</tr>
+<tr class="even">
+<td>2024-04-01</td>
+<td>754</td>
+</tr>
+<tr class="odd">
+<td>2024-05-01</td>
+<td>1010</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2024-08-01</td>
+<td>777</td>
+</tr>
+<tr class="even">
+<td>2024-09-01</td>
+<td>922</td>
+</tr>
+<tr class="odd">
+<td>2024-10-01</td>
+<td>848</td>
+</tr>
+<tr class="even">
+<td>2024-11-01</td>
+<td>1002</td>
+</tr>
+<tr class="odd">
+<td>2024-12-01</td>
+<td>831</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="the-math" class="level2">
+<h2 class="anchored" data-anchor-id="the-math">The math</h2>
+<p>Determining how many brown or white loaves of bread to make was not as easy as dividing the forecast value by 2. Why? Because in some months, the retail store buys more white bread than brown bread. In other months, it’s the reverse.</p>
+<p>We decided to leverage some timeseries calculations by doing a rolling sum with a 3-months window of last year’s sales by bread type. The idea was to get the weight or percentage for each bread type and use that to determine the number of loaves to make from the forecast value.</p>
+<p>This math is quite involving, but it’s easy to follow along with the data.</p>
+</section>
+<section id="implementing-the-math" class="level2">
+<h2 class="anchored" data-anchor-id="implementing-the-math">Implementing the math</h2>
+<p>Here are the formulas for calculating the rolling sum for the rows of each bread type.</p>
+<p><span class="math display">\[\text{Row 1} = \text{Jan} + \text{Feb} + \text{Mar}\]</span></p>
+<p><span class="math display">\[\text{Row 2} = \text{Feb} + \text{Mar} + \text{Apr}\]</span></p>
+<p><span class="math display">\[\text{...}\]</span></p>
+<p><span class="math display">\[\text{Second Last Row} = \text{Nov} + \text{Dec}\]</span></p>
+<p><span class="math display">\[\text{Last Row} = \text{Dec}\]</span></p>
+<p>And here is a visualization showing the calculated rolling sum values for each row of brown bread.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    classDef sumStyle fill:#FFE4B5,stroke:#333,stroke-width:2px;
+
+    sum1["342 + 329 + 201 = 872"]:::sumStyle --&gt; sum2["329 + 201 + 203 = 733"]:::sumStyle
+    sum2 --&gt; sum3["201 + 203 + 300 = 704"]:::sumStyle
+    sum3 --&gt; sum4["203 + 300 + 473 = 976"]:::sumStyle
+    sum4 --&gt; sum5["300 + 473 + 287 = 1060"]:::sumStyle
+    sum5 --&gt; sum6["473 + 287 + 446 = 1206"]:::sumStyle
+    sum6 --&gt; sum7["287 + 446 + 305 = 1038"]:::sumStyle
+    sum7 --&gt; sum8["446 + 305 + 253 = 1004"]:::sumStyle
+    sum8 --&gt; sum9["305 + 253 + 383 = 941"]:::sumStyle
+    sum9 --&gt; sum10["253 + 383 + 248 = 884"]:::sumStyle
+    sum10 --&gt; sum11["383 + 248 = 631"]:::sumStyle
+    sum11 --&gt; sum12["248"]:::sumStyle
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Now that we know what values to expect, we can implement the math. Initially, we thought that doing a <code>rolling_sum</code> polars function would perform the calculation shown above but it didn’t, at least not entirely.</p>
+<p>Let’s demonstrate this calculation to see where it fell short.</p>
+<div id="5bb96a83" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).rolling_sum(window_size<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (12, 4)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>null</td>
+</tr>
+<tr class="even">
+<td>2023-02-01</td>
+<td>"Brown"</td>
+<td>329</td>
+<td>null</td>
+</tr>
+<tr class="odd">
+<td>2023-03-01</td>
+<td>"Brown"</td>
+<td>201</td>
+<td>872</td>
+</tr>
+<tr class="even">
+<td>2023-04-01</td>
+<td>"Brown"</td>
+<td>203</td>
+<td>733</td>
+</tr>
+<tr class="odd">
+<td>2023-05-01</td>
+<td>"Brown"</td>
+<td>300</td>
+<td>704</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2023-08-01</td>
+<td>"Brown"</td>
+<td>446</td>
+<td>1206</td>
+</tr>
+<tr class="even">
+<td>2023-09-01</td>
+<td>"Brown"</td>
+<td>305</td>
+<td>1038</td>
+</tr>
+<tr class="odd">
+<td>2023-10-01</td>
+<td>"Brown"</td>
+<td>253</td>
+<td>1004</td>
+</tr>
+<tr class="even">
+<td>2023-11-01</td>
+<td>"Brown"</td>
+<td>383</td>
+<td>941</td>
+</tr>
+<tr class="odd">
+<td>2023-12-01</td>
+<td>"Brown"</td>
+<td>248</td>
+<td>884</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br> This gives us some of the values we want, but it creates null values for the first 2 rows. To rectify the null value problem on the first two rows, we shifted the values in <code>Rol_3month</code> up by 2 rows.</p>
+<div id="49be5fcb" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).rolling_sum(window_size<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month_Shift<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).rolling_sum(window_size<span class="op">=</span><span class="dv">3</span>).shift(<span class="op">-</span><span class="dv">2</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (12, 5)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+<th data-quarto-table-cell-role="th">Rol_3month_Shift</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>null</td>
+<td>872</td>
+</tr>
+<tr class="even">
+<td>2023-02-01</td>
+<td>"Brown"</td>
+<td>329</td>
+<td>null</td>
+<td>733</td>
+</tr>
+<tr class="odd">
+<td>2023-03-01</td>
+<td>"Brown"</td>
+<td>201</td>
+<td>872</td>
+<td>704</td>
+</tr>
+<tr class="even">
+<td>2023-04-01</td>
+<td>"Brown"</td>
+<td>203</td>
+<td>733</td>
+<td>976</td>
+</tr>
+<tr class="odd">
+<td>2023-05-01</td>
+<td>"Brown"</td>
+<td>300</td>
+<td>704</td>
+<td>1060</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2023-08-01</td>
+<td>"Brown"</td>
+<td>446</td>
+<td>1206</td>
+<td>1004</td>
+</tr>
+<tr class="even">
+<td>2023-09-01</td>
+<td>"Brown"</td>
+<td>305</td>
+<td>1038</td>
+<td>941</td>
+</tr>
+<tr class="odd">
+<td>2023-10-01</td>
+<td>"Brown"</td>
+<td>253</td>
+<td>1004</td>
+<td>884</td>
+</tr>
+<tr class="even">
+<td>2023-11-01</td>
+<td>"Brown"</td>
+<td>383</td>
+<td>941</td>
+<td>null</td>
+</tr>
+<tr class="odd">
+<td>2023-12-01</td>
+<td>"Brown"</td>
+<td>248</td>
+<td>884</td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br> The problem of null values in the first 2 rows is solved, but another problem is created. The last 2 rows now have null values. At this point, we knew that <code>rolling_sum</code> wasn’t going to work.</p>
+<p>The reason why rolling sum didn’t work is that on the first row, we don’t yet have 3 values to add so the sum is null, the same applies to the second row. But on the second row, we have 3 values in the window to add that’s why the first value shows up on row 3.</p>
+<p>But since we wanted the value on row 3 to be on the first row, we shifted the values up by 2 rows, but that only created null values on the bottom two rows. Also, since the rolling sum shifts down one row to get the next 3 values, eventually there won’t be enough 3 values to add. That’s why we have null values.</p>
+<p>However, from the formulas above, we see that if there are no 3 values to add, the rolling sum calculation proceeds by calculating the available values. So for the second to last row, it’s only 2 values (Nov + Dec), and for the last row, it’s only 1 value (Dec).</p>
+</section>
+<section id="successful-implementation-of-solution" class="level2">
+<h2 class="anchored" data-anchor-id="successful-implementation-of-solution">Successful implementation of solution</h2>
+<p>The solution that worked involved the use of <code>implode</code>. Here’s how we implemented it. Let’s focus on brown bread only so we can see that the rolling sum values in the dataframe are the same as those in the visualization.</p>
+<p>We’ll begin by creating a list of all the dates in the sales data.</p>
+<div id="d84d03b5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>date_list <span class="op">=</span> sales_df[<span class="st">'Date'</span>].unique().to_list()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>date_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>[datetime.date(2023, 1, 1),
+ datetime.date(2023, 2, 1),
+ datetime.date(2023, 3, 1),
+ datetime.date(2023, 4, 1),
+ datetime.date(2023, 5, 1),
+ datetime.date(2023, 6, 1),
+ datetime.date(2023, 7, 1),
+ datetime.date(2023, 8, 1),
+ datetime.date(2023, 9, 1),
+ datetime.date(2023, 10, 1),
+ datetime.date(2023, 11, 1),
+ datetime.date(2023, 12, 1)]</code></pre>
+</div>
+</div>
+<p><br> Now, let’s write some code to calculate the <code>Rol_3month</code> value for the first date in date_list. This date value will be accessed with 0 index as in <code>date_list[0]</code>.</p>
+<div id="abea9e9d" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales_List'</span>).<span class="bu">list</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">3</span>).<span class="bu">list</span>.<span class="bu">sum</span>())</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).eq(date_list[<span class="dv">0</span>]))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (1, 5)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Sales_List</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+<th>list[i64]</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>[342, 329, … 248]</td>
+<td>872</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br> In the code above, we filtered the data to only show brown bread, then created a column <code>Sales_List</code> using <code>implode</code>. This stores all sales values from January to December into a single list. To calculate the <code>Rol_3month</code>, we slice the list of sales values to only select the first available 3 values and then add them up. Finally, we only get the row in the dataframe that corresponds to the chosen date, which is the first date in date_list.</p>
+<p>Let’s reuse this code to calculate the <code>Rol_3month</code> value for white bread. Because we want to have a single dataframe showing the results for brown and white bread, we’ll use <code>vstack</code> to vertically combine the dataframes.</p>
+<div id="08bf1d01" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales_List'</span>).<span class="bu">list</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">3</span>).<span class="bu">list</span>.<span class="bu">sum</span>())</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).eq(date_list[<span class="dv">0</span>]))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a> .vstack(sales_df</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'White'</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales_List'</span>).<span class="bu">list</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">3</span>).<span class="bu">list</span>.<span class="bu">sum</span>())</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).eq(date_list[<span class="dv">0</span>])))</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 5)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Sales_List</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+<th>list[i64]</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>[342, 329, … 248]</td>
+<td>872</td>
+</tr>
+<tr class="even">
+<td>2023-01-01</td>
+<td>"White"</td>
+<td>203</td>
+<td>[203, 304, … 200]</td>
+<td>880</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-percentages" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-percentages">Calculating percentages</h2>
+<p>Here’s the formula we used to calculate the percentage or weight for each bread type. Let’s focus on brown bread for the month of January.</p>
+<p><span class="math display">\[\% \text{ of Brown Bread} = \frac{\text{January Rol\_3month}}{\text{January Rol\_3month} + \text{White Bread January Rol\_3month}}\]</span></p>
+<p>We are dividing each Rol_3month value for every bread type by the sum of the Rol_3month values for both bread types. Let’s put this into code. Also, we don’t need <code>Sales_List</code>, so we’ll drop it.</p>
+<div id="44762e42" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales_List'</span>).<span class="bu">list</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">3</span>).<span class="bu">list</span>.<span class="bu">sum</span>())</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).eq(date_list[<span class="dv">0</span>]))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a> .drop(<span class="st">'Sales_List'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> .vstack(sales_df</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'White'</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales_List'</span>).<span class="bu">list</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">3</span>).<span class="bu">list</span>.<span class="bu">sum</span>())</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).eq(date_list[<span class="dv">0</span>]))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a> .drop(<span class="st">'Sales_List'</span>))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a> .with_columns(Percentage<span class="op">=</span>pl.col(<span class="st">'Rol_3month'</span>) <span class="op">/</span> pl.col(<span class="st">'Rol_3month'</span>).<span class="bu">sum</span>())</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 5)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+<th data-quarto-table-cell-role="th">Percentage</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="even">
+<td>2023-01-01</td>
+<td>"White"</td>
+<td>203</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>These are the values we want, but we’ve only calculated for the first date in date_list. We have to perform this calculation for every date in date_list. Rather than doing it manually 12 times, we’ll use a for loop to loop through the date_list.</p>
+<p>It turns out that looping doesn’t work on a list of dates, so we’ll create a list of 12 numbers from 0 to 11. These numbers will be used as indices to represent each date item in date_list. Thus, to use the first date in the list, we use <code>date_list[0]</code>.</p>
+<p>Let’s create a list of the numbers and store them in a variable called num_list.</p>
+<div id="d3d11b57" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>num_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(date_list)))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>num_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]</code></pre>
+</div>
+</div>
+<p>Now let’s implement the for loop to get the desired dataframe.</p>
+<div id="37f93115" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pct_dfs <span class="op">=</span> []</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> num_list:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    pct_df <span class="op">=</span> (sales_df</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>              .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>              .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales_List'</span>).<span class="bu">list</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">3</span>).<span class="bu">list</span>.<span class="bu">sum</span>())</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).eq(date_list[i]))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>              .drop(<span class="st">'Sales_List'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>              .vstack(sales_df</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'White'</span>))</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>              .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>              .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales_List'</span>).<span class="bu">list</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">3</span>).<span class="bu">list</span>.<span class="bu">sum</span>())</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>              .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).eq(date_list[i]))</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>              .drop(<span class="st">'Sales_List'</span>))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>              .with_columns(Percentage<span class="op">=</span>pl.col(<span class="st">'Rol_3month'</span>) <span class="op">/</span> pl.col(<span class="st">'Rol_3month'</span>).<span class="bu">sum</span>())</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>              )</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    pct_dfs.append(pct_df)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>df_with_pct <span class="op">=</span> pl.concat(pct_dfs)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>df_with_pct</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 5)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+<th data-quarto-table-cell-role="th">Percentage</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2023-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="even">
+<td>2023-01-01</td>
+<td>"White"</td>
+<td>203</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="odd">
+<td>2023-02-01</td>
+<td>"Brown"</td>
+<td>329</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="even">
+<td>2023-02-01</td>
+<td>"White"</td>
+<td>304</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="odd">
+<td>2023-03-01</td>
+<td>"Brown"</td>
+<td>201</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2023-10-01</td>
+<td>"White"</td>
+<td>425</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="even">
+<td>2023-11-01</td>
+<td>"Brown"</td>
+<td>383</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="odd">
+<td>2023-11-01</td>
+<td>"White"</td>
+<td>297</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="even">
+<td>2023-12-01</td>
+<td>"Brown"</td>
+<td>248</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="odd">
+<td>2023-12-01</td>
+<td>"White"</td>
+<td>200</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="joining-forecast-data" class="level2">
+<h2 class="anchored" data-anchor-id="joining-forecast-data">Joining forecast data</h2>
+<p>To get the forecast values for each bread type based on percentage values, we must join our dataframe with the forecast data provided by the retail store. We’ll join the dataframes on <code>Date</code> column.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Our sales data has the year 2023 while the forecast data has the year 2024. This means we won’t be able to join. We have to modify the dates so they match.</p>
+</div>
+</div>
+<p>To make the dates in both dataframes match, we’ll remove the year in the date value. Below is the code that removes the year in the date value for the sales data.</p>
+<div id="72896aff" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(df_with_pct</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 5)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+<th data-quarto-table-cell-role="th">Percentage</th>
+</tr>
+<tr class="odd">
+<th>str</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"01-01"</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="even">
+<td>"01-01"</td>
+<td>"White"</td>
+<td>203</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="odd">
+<td>"02-01"</td>
+<td>"Brown"</td>
+<td>329</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="even">
+<td>"02-01"</td>
+<td>"White"</td>
+<td>304</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="odd">
+<td>"03-01"</td>
+<td>"Brown"</td>
+<td>201</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"10-01"</td>
+<td>"White"</td>
+<td>425</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="even">
+<td>"11-01"</td>
+<td>"Brown"</td>
+<td>383</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="odd">
+<td>"11-01"</td>
+<td>"White"</td>
+<td>297</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+<tr class="even">
+<td>"12-01"</td>
+<td>"Brown"</td>
+<td>248</td>
+<td>872</td>
+<td>0.497717</td>
+</tr>
+<tr class="odd">
+<td>"12-01"</td>
+<td>"White"</td>
+<td>200</td>
+<td>880</td>
+<td>0.502283</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>In the code below, we remove the year in the forecast data and join the two dataframes in a single dataframe called combined_df.</p>
+<div id="7c2d8a57" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>combined_df <span class="op">=</span> (df_with_pct</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> .join(forecast_df.with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>)),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>       on<span class="op">=</span><span class="st">'Date'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>combined_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 6)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+<th data-quarto-table-cell-role="th">Percentage</th>
+<th data-quarto-table-cell-role="th">Forecast</th>
+</tr>
+<tr class="odd">
+<th>str</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+<th>f64</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"01-01"</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>872</td>
+<td>0.497717</td>
+<td>897</td>
+</tr>
+<tr class="even">
+<td>"01-01"</td>
+<td>"White"</td>
+<td>203</td>
+<td>880</td>
+<td>0.502283</td>
+<td>897</td>
+</tr>
+<tr class="odd">
+<td>"02-01"</td>
+<td>"Brown"</td>
+<td>329</td>
+<td>872</td>
+<td>0.497717</td>
+<td>945</td>
+</tr>
+<tr class="even">
+<td>"02-01"</td>
+<td>"White"</td>
+<td>304</td>
+<td>880</td>
+<td>0.502283</td>
+<td>945</td>
+</tr>
+<tr class="odd">
+<td>"03-01"</td>
+<td>"Brown"</td>
+<td>201</td>
+<td>872</td>
+<td>0.497717</td>
+<td>865</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"10-01"</td>
+<td>"White"</td>
+<td>425</td>
+<td>880</td>
+<td>0.502283</td>
+<td>848</td>
+</tr>
+<tr class="even">
+<td>"11-01"</td>
+<td>"Brown"</td>
+<td>383</td>
+<td>872</td>
+<td>0.497717</td>
+<td>1002</td>
+</tr>
+<tr class="odd">
+<td>"11-01"</td>
+<td>"White"</td>
+<td>297</td>
+<td>880</td>
+<td>0.502283</td>
+<td>1002</td>
+</tr>
+<tr class="even">
+<td>"12-01"</td>
+<td>"Brown"</td>
+<td>248</td>
+<td>872</td>
+<td>0.497717</td>
+<td>831</td>
+</tr>
+<tr class="odd">
+<td>"12-01"</td>
+<td>"White"</td>
+<td>200</td>
+<td>880</td>
+<td>0.502283</td>
+<td>831</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="calculating-new-forecast" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-new-forecast">Calculating new forecast</h2>
+<p>Now we have all the data needed to calculate the forecast for each bread type. All the forecast values are rounded to the nearest whole number. After all, you cannot make 1.67 loaves of bread!</p>
+<div id="1028655d" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>new_fcst_df <span class="op">=</span> (combined_df</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .with_columns(New_Forecast<span class="op">=</span>(pl.col(<span class="st">'Percentage'</span>) <span class="op">*</span> pl.col(<span class="st">'Forecast'</span>)).<span class="bu">round</span>().cast(pl.Int16))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).add(pl.lit(<span class="st">'-2024'</span>)).<span class="bu">str</span>.strptime(pl.Date, <span class="st">"%m-</span><span class="sc">%d</span><span class="st">-%Y"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>new_fcst_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 7)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Sales</th>
+<th data-quarto-table-cell-role="th">Rol_3month</th>
+<th data-quarto-table-cell-role="th">Percentage</th>
+<th data-quarto-table-cell-role="th">Forecast</th>
+<th data-quarto-table-cell-role="th">New_Forecast</th>
+</tr>
+<tr class="odd">
+<th>date</th>
+<th>str</th>
+<th>i64</th>
+<th>i64</th>
+<th>f64</th>
+<th>i64</th>
+<th>i16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-01-01</td>
+<td>"Brown"</td>
+<td>342</td>
+<td>872</td>
+<td>0.497717</td>
+<td>897</td>
+<td>446</td>
+</tr>
+<tr class="even">
+<td>2024-01-01</td>
+<td>"White"</td>
+<td>203</td>
+<td>880</td>
+<td>0.502283</td>
+<td>897</td>
+<td>451</td>
+</tr>
+<tr class="odd">
+<td>2024-02-01</td>
+<td>"Brown"</td>
+<td>329</td>
+<td>872</td>
+<td>0.497717</td>
+<td>945</td>
+<td>470</td>
+</tr>
+<tr class="even">
+<td>2024-02-01</td>
+<td>"White"</td>
+<td>304</td>
+<td>880</td>
+<td>0.502283</td>
+<td>945</td>
+<td>475</td>
+</tr>
+<tr class="odd">
+<td>2024-03-01</td>
+<td>"Brown"</td>
+<td>201</td>
+<td>872</td>
+<td>0.497717</td>
+<td>865</td>
+<td>431</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2024-10-01</td>
+<td>"White"</td>
+<td>425</td>
+<td>880</td>
+<td>0.502283</td>
+<td>848</td>
+<td>426</td>
+</tr>
+<tr class="even">
+<td>2024-11-01</td>
+<td>"Brown"</td>
+<td>383</td>
+<td>872</td>
+<td>0.497717</td>
+<td>1002</td>
+<td>499</td>
+</tr>
+<tr class="odd">
+<td>2024-11-01</td>
+<td>"White"</td>
+<td>297</td>
+<td>880</td>
+<td>0.502283</td>
+<td>1002</td>
+<td>503</td>
+</tr>
+<tr class="even">
+<td>2024-12-01</td>
+<td>"Brown"</td>
+<td>248</td>
+<td>872</td>
+<td>0.497717</td>
+<td>831</td>
+<td>414</td>
+</tr>
+<tr class="odd">
+<td>2024-12-01</td>
+<td>"White"</td>
+<td>200</td>
+<td>880</td>
+<td>0.502283</td>
+<td>831</td>
+<td>417</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="final-output" class="level2">
+<h2 class="anchored" data-anchor-id="final-output">Final output</h2>
+<p>We now have the forecast values for each bread type, but we must present the data in a format that is not only human-readable but also easy to understand. We’ll select the relevant columns and transform the data into the desired format.</p>
+<div id="a5615fac" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table_df <span class="op">=</span> (new_fcst_df</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Date'</span>,<span class="st">'Bread'</span>,<span class="st">'New_Forecast'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%b'</span>))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a> .pivot(on<span class="op">=</span><span class="st">'Date'</span>, index<span class="op">=</span><span class="st">'Bread'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>table_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 13)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Bread</th>
+<th data-quarto-table-cell-role="th">Jan</th>
+<th data-quarto-table-cell-role="th">Feb</th>
+<th data-quarto-table-cell-role="th">Mar</th>
+<th data-quarto-table-cell-role="th">Apr</th>
+<th data-quarto-table-cell-role="th">May</th>
+<th data-quarto-table-cell-role="th">Jun</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">Aug</th>
+<th data-quarto-table-cell-role="th">Sep</th>
+<th data-quarto-table-cell-role="th">Oct</th>
+<th data-quarto-table-cell-role="th">Nov</th>
+<th data-quarto-table-cell-role="th">Dec</th>
+</tr>
+<tr class="odd">
+<th>str</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Brown"</td>
+<td>446</td>
+<td>470</td>
+<td>431</td>
+<td>375</td>
+<td>503</td>
+<td>373</td>
+<td>478</td>
+<td>387</td>
+<td>459</td>
+<td>422</td>
+<td>499</td>
+<td>414</td>
+</tr>
+<tr class="even">
+<td>"White"</td>
+<td>451</td>
+<td>475</td>
+<td>434</td>
+<td>379</td>
+<td>507</td>
+<td>377</td>
+<td>482</td>
+<td>390</td>
+<td>463</td>
+<td>426</td>
+<td>503</td>
+<td>417</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>This format is better, but since at Conterval we’re sticklers for aesthetics, we decided to make the final forecast output look even better. To do this, we used a library called <code>great-tables</code>.</p>
+<div id="0915268f" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> GT, style, loc, google_font, html</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>month_list <span class="op">=</span> table_df.columns[<span class="dv">1</span>:]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>col_spacing <span class="op">=</span> {month: <span class="st">'60px'</span> <span class="cf">for</span> month <span class="kw">in</span> month_list}</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    GT(table_df, rowname_col<span class="op">=</span><span class="st">"Bread"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    .tab_stubhead(label<span class="op">=</span>html(<span class="st">'&lt;b&gt;Bread'</span>))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    .tab_header(title<span class="op">=</span>html(<span class="st">"&lt;h2&gt;Bread Types Forecast 2024&lt;/h2&gt;"</span>))</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    .tab_options(</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        table_background_color<span class="op">=</span><span class="st">'#ffbe6f'</span>,</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        row_group_font_weight<span class="op">=</span><span class="st">'bold'</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    .tab_style(</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span>style.text(weight<span class="op">=</span><span class="st">'bold'</span>, font<span class="op">=</span>google_font(name<span class="op">=</span><span class="st">"Fjalla One"</span>)),</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        locations<span class="op">=</span>loc.column_header()</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    .cols_width(cases<span class="op">=</span>col_spacing)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="itfsvvahrr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+#itfsvvahrr table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#itfsvvahrr thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#itfsvvahrr p { margin: 0; padding: 0; }
+ #itfsvvahrr .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #ffbe6f; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #itfsvvahrr .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #itfsvvahrr .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #ffbe6f; border-bottom-width: 0; }
+ #itfsvvahrr .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #ffbe6f; border-top-width: 0; }
+ #itfsvvahrr .gt_heading { background-color: #ffbe6f; text-align: center; border-bottom-color: #ffbe6f; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #itfsvvahrr .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #itfsvvahrr .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #itfsvvahrr .gt_col_heading { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #itfsvvahrr .gt_column_spanner_outer { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #itfsvvahrr .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #itfsvvahrr .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #itfsvvahrr .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #itfsvvahrr .gt_spanner_row { border-bottom-style: hidden; }
+ #itfsvvahrr .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: bold; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #itfsvvahrr .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: bold; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #itfsvvahrr .gt_from_md> :first-child { margin-top: 0; }
+ #itfsvvahrr .gt_from_md> :last-child { margin-bottom: 0; }
+ #itfsvvahrr .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #itfsvvahrr .gt_stub { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #itfsvvahrr .gt_stub_row_group { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #itfsvvahrr .gt_row_group_first td { border-top-width: 2px; }
+ #itfsvvahrr .gt_row_group_first th { border-top-width: 2px; }
+ #itfsvvahrr .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #itfsvvahrr .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #itfsvvahrr .gt_sourcenotes { color: #333333; background-color: #ffbe6f; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #itfsvvahrr .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #itfsvvahrr .gt_left { text-align: left; }
+ #itfsvvahrr .gt_center { text-align: center; }
+ #itfsvvahrr .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #itfsvvahrr .gt_font_normal { font-weight: normal; }
+ #itfsvvahrr .gt_font_bold { font-weight: bold; }
+ #itfsvvahrr .gt_font_italic { font-style: italic; }
+ #itfsvvahrr .gt_super { font-size: 65%; }
+ #itfsvvahrr .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #itfsvvahrr .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="header gt_heading">
+<th colspan="13" class="gt_heading gt_title gt_font_normal"><h2 id="bread-types-forecast-2024" class="anchored">Bread Types Forecast 2024</h2></th>
+</tr>
+<tr class="odd gt_col_headings">
+<th id="<b>Bread" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><b>
+Bread</b></th>
+<th id="Jan" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Jan</th>
+<th id="Feb" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Feb</th>
+<th id="Mar" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Mar</th>
+<th id="Apr" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Apr</th>
+<th id="May" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">May</th>
+<th id="Jun" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Jun</th>
+<th id="Jul" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Jul</th>
+<th id="Aug" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Aug</th>
+<th id="Sep" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Sep</th>
+<th id="Oct" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Oct</th>
+<th id="Nov" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Nov</th>
+<th id="Dec" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-family: Fjalla One; font-weight: bold" scope="col">Dec</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">Brown</td>
+<td class="gt_row gt_right">446</td>
+<td class="gt_row gt_right">470</td>
+<td class="gt_row gt_right">431</td>
+<td class="gt_row gt_right">375</td>
+<td class="gt_row gt_right">503</td>
+<td class="gt_row gt_right">373</td>
+<td class="gt_row gt_right">478</td>
+<td class="gt_row gt_right">387</td>
+<td class="gt_row gt_right">459</td>
+<td class="gt_row gt_right">422</td>
+<td class="gt_row gt_right">499</td>
+<td class="gt_row gt_right">414</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th">White</td>
+<td class="gt_row gt_right">451</td>
+<td class="gt_row gt_right">475</td>
+<td class="gt_row gt_right">434</td>
+<td class="gt_row gt_right">379</td>
+<td class="gt_row gt_right">507</td>
+<td class="gt_row gt_right">377</td>
+<td class="gt_row gt_right">482</td>
+<td class="gt_row gt_right">390</td>
+<td class="gt_row gt_right">463</td>
+<td class="gt_row gt_right">426</td>
+<td class="gt_row gt_right">503</td>
+<td class="gt_row gt_right">417</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+        
+</div>
+</div>
+<p><br></p>
+<p>Contact us for help with your data problems. Also check out our <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to level up your data analysis skills with this fast Python library.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.conterval\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2024 Conterval · <a href="mailto:contact@conterval.com">Contact</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
