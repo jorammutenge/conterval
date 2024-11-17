@@ -3,7 +3,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html",
-      "/blog/how-to-create-economist-style-chart-with-plotly/index.html"
+      "/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html"
     ]
   }
 ]

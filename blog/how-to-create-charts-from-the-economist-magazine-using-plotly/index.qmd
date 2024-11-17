@@ -1,14 +1,14 @@
 ---
 title: 'How to create charts from The Economist magazine using plotly'
 author: '{{< var author >}}'
-date: '2024-12-02'
+date: '2024-11-13'
 date-format: iso
 toc: true
 toc-title: 'Sections'
 toc-location: left
 toc-depth: 3
 categories: [visualization]
-image: 'image.png'
+image: image4.png
 ---
 
 ## Introduction
