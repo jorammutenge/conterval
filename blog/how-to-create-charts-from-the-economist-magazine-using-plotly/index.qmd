@@ -8,10 +8,11 @@ toc-title: 'Sections'
 toc-location: left
 toc-depth: 3
 categories: [visualization]
-image: image4.png
+image: image.png
 ---
 
 ## Introduction
+
 We at Conterval have always been fans of the charts from *The Economist* magazine. No publication does a better job of creating static visualizations you can use in print. We love their charts because they’re simple, yet they manage to convey the relevant message contained in the data. More importantly, they adhere to Ben Shneiderman’s point that:
 
 > The purpose of visualization is insight, not pictures.
@@ -23,6 +24,7 @@ Unfortunately, many people focus on the chart’s aesthetics—how it looks to t
 Although we may not know the specific software or graphing library used by *The Economist* for their charts, their simplicity makes them easy to recreate with any competent graphing tool. In this case, we'll recreate two of their charts using the Python graphing library Plotly.
 
 ## Dumbbell plot
+
 A dumbbell plot is a dot plot that uses straight lines to connect two points for each group. This type of chart is ideal for illustrating changes in a variable over two time points or highlighting the range of a variable across multiple groups. *The Economist* dumbbell chart below has two groups (1970 and 2020) joined by two dots. These years are points in time.
 
 ::: {.gray-text .center-text}
@@ -39,6 +41,7 @@ with open(f"{Path('../../')}/images/logo.png", "rb") as image_file:
 ```
 
 ### Suits dataset
+
 Since we didn’t have the data used to create the chart above, we put together some fake department data about a company from one of our favorite TV shows, *Suits*.
 
 Below is a dataframe showing customer satisfaction scores for each department of the fictional firm Pearson Specter Litt for the years 2023 and 2024.
@@ -57,6 +60,7 @@ data = {
 df = pl.DataFrame(data).sort('Department', descending=False)
 df
 ```
+
 <br>
 
 And now here’s a Plotly recreation of our dumbbell plot.
@@ -197,6 +201,7 @@ fig.show()
 Disregard the differences between the data in my chart and *The Economist*'s chart, and focus on the style. You'll see that the styles are identical. This highlights Plotly's versatility as a graphing library—allowing you to fully customize any chart to match your preferences.
 
 ## Stacked bar plot
+
 A stacked bar chart is a type of bar graph where each bar is divided into segments that represent different subcategories. It shows how each subcategory contributes to the total value of a larger category, making it easy to see the breakdown of the whole.
 
 ::: {.gray-text .center-text}
@@ -206,6 +211,7 @@ A stacked bar chart is a type of bar graph where each bar is divided into segmen
 What makes this chart unique is the placement of the major group names above each bar, rather than beside them. This design choice offers two key advantages: it makes it easier to associate each category with its corresponding bar and saves space, resulting in a more compact plot. Additionally, the data varies significantly—for example, from 11 to 998—which would distort the scale in a regular bar chart. By opting for a stacked bar chart, *The Economist* effectively addressed this issue, demonstrating thoughtful and intentional design.
 
 ### Military dataset
+
 Fortunately, all the data needed to recreate the The Economist stacked bar plot is visible in the plot. Here’s a dataframe of that data showing the category of military technology for the United States and China.
 
 ```{python}
@@ -217,6 +223,7 @@ data = pl.DataFrame({
 })
 data
 ```
+
 <br>
 
 And now here’s a Plotly recreation of our stacked bar plot.
@@ -383,6 +390,7 @@ fig.add_layout_image(
 
 fig.show()
 ```
+
 <br>
 
 And there you have it! We've successfully recreated charts inspired by *The Economist* magazine using Plotly for graphing and Polars for data manipulation.
