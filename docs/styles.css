@@ -1,0 +1,21 @@
+/* css styles */
+
+@keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .slide-in {
+    animation: slideIn 1s ease-out forwards;
+  }
+
+  
+  body {
+    background-color: #f6f2ec !important;
+  }
