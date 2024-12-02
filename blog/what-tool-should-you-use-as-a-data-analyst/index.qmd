@@ -1,0 +1,31 @@
+---
+title: 'What tool should you use as a data analyst?'
+author: '{{< var author >}}'
+date: '2024-12-01'
+categories: [data analysis]
+image: image.png
+---
+
+::: {.gray-text .center-text}
+![all the tools you'll want to use](image.png){fig-align="center"}
+:::
+
+Data analysis is a hot field nowadays. Companies are opening up new data analyst positions, and many people want to become data analysts.
+
+It's standard knowledge that data analysts work with data. What's not standard knowledge is the tools they use. There are just so many data analysis tools out there, and it's hard to know what to pick.
+
+So what tool should you use in your data analysis job? Tableau? PowerBI?, Jupyer Notebook? Marimo Notebook? And oh, what about git, should you worry about it? What dataframe library should you use, Polars, Pandas, or Ibis? Then there's the language wars; R vs Python vs Julia. It's just so damn confusing.
+
+The answer to what tool you should use may sound unsatisfying, but trust me it's the right answer. Are you ready for it?
+
+> The right tool to use for your data analysis work is the tool you know how to use. That's it.
+
+If you can automate tasks with R better than you can automate them with Python, then use R (or vice versa). If wrangling data with Pandas is easier for you than doing it with Polars, use Pandas. If it takes you less time to create visualizations with Tableau than it does PowerBI, use Tableau.
+
+The point is that work should not be too difficult to do. When you pull out of your toolbox, always start with the tools you know how to use since you'll start doing the work immediately rather than figuring out how to use the tool.
+
+However, I'd encourage you to experiment with new tools every once in a while. You might stumble on a new tool that does the work faster and easier than the old tool you're familiar with. It happened to me when I switched from Polars to Pandas.
+
+> I came to Polars for the speed and stayed for the syntax.
+
+It was the best choice, and I've never looked back. Had I stuck with Pandas (the dataframe library I knew how to use), I wouldn't have experienced how great Polars is.

@@ -3,6 +3,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html",
+      "/blog/what-tool-should-you-use-as-a-data-analyst/index.html",
       "/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html"
     ]
   }

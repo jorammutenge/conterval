@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
+<meta name="author" content="Joram Mutenge">
+<meta name="dcterms.date" content="2024-12-01">
 
-<title>index – Conterval</title>
+<title>What tool should you use as a data analyst? – Conterval</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../images/favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0d7fab1b923f0acf2eae80a93decbaa5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a5d860098b490252bdcf13cd1d4ec3bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0d7fab1b923f0acf2eae80a93decbaa5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-a5d860098b490252bdcf13cd1d4ec3bb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-author','listing-summary','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5Y1ZXKXMBX"></script>
 
 <script type="text/javascript">
@@ -110,48 +80,18 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="blog.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Conterval</span>
     </a>
   </div>
@@ -162,7 +102,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -173,113 +113,75 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block"></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">What tool should you use as a data analyst?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">data analysis</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joram Mutenge </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 1, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="gray-text center-text">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image.png" class="img-fluid figure-img"></p>
+<figcaption>all the tools you’ll want to use</figcaption>
+</figure>
+</div>
+</div>
+<p>Data analysis is a hot field nowadays. Companies are opening up new data analyst positions, and many people want to become data analysts.</p>
+<p>It’s standard knowledge that data analysts work with data. What’s not standard knowledge is the tools they use. There are just so many data analysis tools out there, and it’s hard to know what to pick.</p>
+<p>So what tool should you use in your data analysis job? Tableau? PowerBI?, Jupyer Notebook? Marimo Notebook? And oh, what about git, should you worry about it? What dataframe library should you use, Polars, Pandas, or Ibis? Then there’s the language wars; R vs Python vs Julia. It’s just so damn confusing.</p>
+<p>The answer to what tool you should use may sound unsatisfying, but trust me it’s the right answer. Are you ready for it?</p>
+<blockquote class="blockquote">
+<p>The right tool to use for your data analysis work is the tool you know how to use. That’s it.</p>
+</blockquote>
+<p>If you can automate tasks with R better than you can automate them with Python, then use R (or vice versa). If wrangling data with Pandas is easier for you than doing it with Polars, use Pandas. If it takes you less time to create visualizations with Tableau than it does PowerBI, use Tableau.</p>
+<p>The point is that work should not be too difficult to do. When you pull out of your toolbox, always start with the tools you know how to use since you’ll start doing the work immediately rather than figuring out how to use the tool.</p>
+<p>However, I’d encourage you to experiment with new tools every once in a while. You might stumble on a new tool that does the work faster and easier than the old tool you’re familiar with. It happened to me when I switched from Polars to Pandas.</p>
+<blockquote class="blockquote">
+<p>I came to Polars for the speed and stayed for the syntax.</p>
+</blockquote>
+<p>It was the best choice, and I’ve never looked back. Had I stuck with Pandas (the dataframe library I knew how to use), I wouldn’t have experienced how great Polars is.</p>
 
 
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1734242400000" data-listing-file-modified-sort="1731889340998" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3132">
-<div class="thumbnail">
-<p><a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external"></a></p><a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external">
-<p><img loading="lazy" src="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/image.png" class="thumbnail-image"></p>
-</a><p><a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external">How to create charts from The Economist magazine using plotly</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external">We at Conterval have always been fans of the charts from <em>The Economist</em> magazine. No publication does a better job of creating static visualizations you can use in print. We…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external">
-<div class="listing-date">
-2024-12-15
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1733032800000" data-listing-file-modified-sort="1733097763719" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="343">
-<div class="thumbnail">
-<p><a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external"></a></p><a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external">
-<p><img loading="lazy" src="../blog/what-tool-should-you-use-as-a-data-analyst/image.png" class="thumbnail-image"></p>
-</a><p><a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external">What tool should you use as a data analyst?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external">Data analysis is a hot field nowadays. Companies are opening up new data analyst positions, and many people want to become data analysts.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external">
-<div class="listing-date">
-2024-12-01
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1731909600000" data-listing-file-modified-sort="1731707172691" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2145">
-<div class="thumbnail">
-<p><a href="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html" class="no-external"></a></p><a href="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html" class="no-external">
-<p><img loading="lazy" src="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/image.png" class="thumbnail-image"></p>
-</a><p><a href="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html" class="no-external">How we helped a bakery generate forecast by bread type using polars</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html" class="no-external">A few weeks ago, Conterval did a consulting gig for a medium-sized bakery. This bakery makes white and brown bread, which it sells to a major retail store here in the USA.…</a>
-</div>
-</div>
-<div class="metadata">
-<a href="../blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html" class="no-external">
-<div class="listing-date">
-2024-11-18
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -720,5 +622,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
