@@ -1,0 +1,146 @@
+---
+title: "What I learned about group by dynamic in polars while working on a client's project"
+author: '{{< var author >}}'
+date: '2024-12-30'
+toc: true
+toc-title: 'Sections'
+toc-location: left
+toc-depth: 2
+---
+
+In the last client project I worked on, I learned something about the `group_by_dynamic` function in Polars. While what I learned was surprising, the fact that I learned it during the project was not. This aligns with the philosophy of "let the work be the practice" that Cal Newport advocates, and I’m proud to say I follow it. Most people spend time learning about a particular technology before they use it in a project. Cal Newport’s philosophy suggests combining learning with doing. By practicing through actual work, you gain mastery. By the end of this project, my proficiency in Polars increased dramatically.
+
+## A brief overview of the project
+
+The client had forecast data for 2025 for electronic gadgets in monthly buckets, but she wanted it converted into weekly buckets. The dates in the data she presented all started at the beginning of each month. For instance, the first row contained the date January 1, 2025. Below is the forecast data from the client.
+
+```{python}
+#| echo: false
+import polars as pl
+from pathlib import Path
+
+data = pl.read_parquet(f"{Path('../../')}/datasets/gadget_forecast.parquet")
+data
+```
+
+## How we solved the problem
+
+At first, I thought I could solve the problem by simply dividing each forecast value by 7, the number of days in a week. However, a colleague quickly reminded me that not all months are created equal—some have more days than others. So, I quickly abandoned that approach and searched for an alternative.
+
+The solution that worked involved creating, from scratch, a single-column dataframe containing all the days of the year 2025, from January to December. We joined this dataframe with the client’s forecast data and then applied `group_by_dynamic`. It worked like a charm, but it also exposed something I hadn’t been fully aware of regarding `group_by_dynamic`.
+
+## Creating the date dataframe.
+
+Using `datetime_range`, I created a dataframe containing timeseries values for the entire year of 2025. The interval was set to 1 day, ensuring that every single date in the year is included. Below is the resulting timeseries dataframe. Then I extracted the month values from the dates to create a new column *Month*.
+
+```{python}
+from datetime import datetime
+date_df = pl.DataFrame(
+    {
+        "Date": pl.datetime_range(
+            start=datetime(2025, 1, 1),
+            end=datetime(2025, 12, 31),
+            interval="1d",
+            eager=True,
+        )
+    }
+).with_columns(pl.col('Date').dt.date(),
+               Month=pl.col('Date').dt.month())
+date_df
+```
+
+## Joining the two dataframes
+
+Before joining the two DataFrames, I converted the date values in the forecast dataset to month-only values. This ensured a unique common value between both dataframes, enabling the join to proceed. The dataframe below illustrates the transformation from date values to month-only values.
+
+```{python}
+df = (data
+ .with_columns(pl.col('Date').dt.month())
+ )
+df
+```
+
+<br>
+
+The two dataframes were joined using a left join. Also, I decided to divide the forecast values by 4 since most months have at least 4 weeks Here's an example of the resulting dataframe for Headphones showing the monthly and weekly forecast.
+
+```{python}
+(date_df
+ .join(df, left_on='Month', right_on='Date', how='left')
+ .drop('Month')
+ .with_columns(Weekly_Forecast=pl.col('Forecast').truediv(4).round(0).cast(pl.Int16))
+ .sort('Date')
+ .filter(pl.col('Gadget') == "Headphones")
+ )
+```
+
+## Converting to weekly buckets
+
+The dates are still in days, but the client wants them in weeks so I used `groub_by_dynamic` with an interval of 7 days to convert them into weekly buckets. Below is the resulting dataframe.
+
+```{python}
+from great_tables import loc, style
+
+processed_df = (date_df
+ .join(df, left_on='Month', right_on='Date', how='left')
+ .drop('Month')
+ .with_columns(Weekly_Forecast=pl.col('Forecast').truediv(4).round(0).cast(pl.Int16))
+ .sort('Date')
+ .filter(pl.col('Gadget') == "Headphones")
+ .group_by_dynamic('Date', every='7d')
+ .agg(pl.first('Gadget', 'Forecast', 'Weekly_Forecast'))
+ )
+
+processed_df[0:10].style.tab_style(
+    style.fill("yellow"),
+    loc.body(
+        rows=pl.col("Date").dt.year() == 2024,
+    ),
+)
+```
+
+<br>
+
+Do you notice the peculiarity that `group_by_dynamic` introduces? None of our original DataFrames contained the year 2024, yet after using `group_by_dynamic`, we now see 2024. What’s going on here? I was initially unaware of this behavior. It turns out that `group_by_dynamic` shifts date values by the interval specified in the `every` parameter. Since we used a 7-day interval, the date values were moved 7 days back, causing the appearance of 2024.
+
+But wait—the client specifically needs forecast data for 2025. How can we address this? Thankfully, the developers of Polars anticipated this issue and provided a solution. As outlined in the documentation, adding the `start_by` parameter with the value `"datapoint"` to `group_by_dynamic` resolves the problem. With this adjustment, the year 2024 disappeared entirely.
+
+```{python}
+(date_df
+ .join(df, left_on='Month', right_on='Date', how='left')
+ .drop('Month')
+ .filter(pl.col('Gadget') == 'Monitor')
+ .with_columns(Weekly_Forecast=pl.col('Forecast').truediv(4).round(0).cast(pl.Int16))
+ .sort('Date')
+ .group_by_dynamic('Date', every='7d', start_by='datapoint')
+ .agg(pl.first('Gadget', 'Forecast', 'Weekly_Forecast'))
+ )
+```
+
+<br>
+
+With the date issue resolved, we can now proceed to develop the code needed to create the final dataset for presentation to the client.
+
+```{python}
+gadget_list = df['Gadget'].unique().to_list()
+
+bucket_dfs = []
+for gadget in gadget_list:
+    bucket_df = (date_df
+        .join(df, left_on='Month', right_on='Date', how='left')
+        .drop('Month')
+        .filter(pl.col('Gadget') == gadget)
+        .with_columns(Weekly_Forecast=pl.col('Forecast').truediv(4).round(0).cast(pl.Int16))
+        .sort('Date')
+        .group_by_dynamic('Date', every='7d', start_by='datapoint')
+        .agg(pl.first('Gadget', 'Forecast', 'Weekly_Forecast'))
+        )
+    bucket_dfs.append(bucket_df)
+
+all_bucket_df = pl.concat(bucket_dfs).drop('Forecast')
+all_bucket_df
+```
+
+<br>
+
+The lesson to remember is that `group_by_dynamic` will move the date values back by the specified interval you set in the `every` parameter. If you want to maintain the date values in your dataset, you must add ananother parameter `start_at` and set it to "datapoint".

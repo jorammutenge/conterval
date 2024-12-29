@@ -32,7 +32,7 @@ format:
     link-external-newwindow: true
 
 
-editor: visual
+editor: source
 
 extra-files:
   - CNAME

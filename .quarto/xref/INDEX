@@ -28,5 +28,8 @@
   },
   "blog/what-tool-should-you-use-as-a-data-analyst/index.qmd": {
     "index.html": "f9984a42"
+  },
+  "blog/what-I-learned-about-group-by-dynamic-in-polars/index.qmd": {
+    "index.html": "3b881aa5"
   }
 }
