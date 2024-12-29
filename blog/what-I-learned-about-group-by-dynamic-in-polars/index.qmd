@@ -2,6 +2,7 @@
 title: "What I learned about group by dynamic in polars while working on a client's project"
 author: '{{< var author >}}'
 date: '2024-12-30'
+date-format: iso
 toc: true
 toc-title: 'Sections'
 toc-location: left
@@ -144,3 +145,5 @@ all_bucket_df
 <br>
 
 The lesson to remember is that `group_by_dynamic` will move the date values back by the specified interval you set in the `every` parameter. If you want to maintain the date values in your dataset, you must add ananother parameter `start_at` and set it to "datapoint".
+
+Reach out if you need help with your data problems. Also, take a look at our {{< var polars_course >}} to improve your data analysis skills using this fast Python library.

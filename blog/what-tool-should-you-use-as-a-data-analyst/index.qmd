@@ -2,6 +2,7 @@
 title: 'What tool should you use as a data analyst?'
 author: '{{< var author >}}'
 date: '2024-12-01'
+date-format: iso
 categories: [data analysis]
 image: image.png
 ---

@@ -275,7 +275,7 @@ Note
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <p>We’ll not use the actual data from the bakery, rather we’ll use fictional data to demonstrate the solution. Here’s the baker’s sales data from last year.</p>
-<div id="fbfb95e1" class="cell" data-execution_count="1">
+<div id="48ebc7b7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -361,7 +361,7 @@ Note
 </div>
 <p><br></p>
 <p>Here’s the forecast data from the retail store.</p>
-<div id="35d4e8c7" class="cell" data-execution_count="2">
+<div id="be1018c0" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -476,7 +476,7 @@ Note
 </div>
 <p>Now that we know what values to expect, we can implement the math. Initially, we thought that doing a <code>rolling_sum</code> polars function would perform the calculation shown above but it didn’t, at least not entirely.</p>
 <p>Let’s demonstrate this calculation to see where it fell short.</p>
-<div id="b3c76942" class="cell" data-execution_count="3">
+<div id="c765a5ec" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).rolling_sum(window_size<span class="op">=</span><span class="dv">3</span>))</span>
@@ -578,7 +578,7 @@ Note
 </div>
 </div>
 <p><br> This gives us some of the values we want, but it creates null values for the first 2 rows. To rectify the null value problem on the first two rows, we shifted the values in <code>Rol_3month</code> up by 2 rows.</p>
-<div id="75c7c7f3" class="cell" data-execution_count="4">
+<div id="668e85d1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_3month<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).rolling_sum(window_size<span class="op">=</span><span class="dv">3</span>))</span>
@@ -702,7 +702,7 @@ Note
 <h2 class="anchored" data-anchor-id="successful-implementation-of-solution">Successful implementation of solution</h2>
 <p>The solution that worked involved the use of <code>implode</code>. Here’s how we implemented it. Let’s focus on brown bread only so we can see that the rolling sum values in the dataframe are the same as those in the visualization.</p>
 <p>We’ll begin by creating a list of all the dates in the sales data.</p>
-<div id="f8de8f1f" class="cell" data-execution_count="5">
+<div id="96733328" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>date_list <span class="op">=</span> sales_df[<span class="st">'Date'</span>].unique().to_list()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>date_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -721,7 +721,7 @@ Note
 </div>
 </div>
 <p><br> Now, let’s write some code to calculate the <code>Rol_3month</code> value for the first date in date_list. This date value will be accessed with 0 index as in <code>date_list[0]</code>.</p>
-<div id="395049f0" class="cell" data-execution_count="6">
+<div id="38fbc6bf" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
@@ -769,7 +769,7 @@ Note
 </div>
 <p><br> In the code above, we filtered the data to only show brown bread, then created a column <code>Sales_List</code> using <code>implode</code>. This stores all sales values from January to December into a single list. To calculate the <code>Rol_3month</code>, we slice the list of sales values to only select the first available 3 values and then add them up. Finally, we only get the row in the dataframe that corresponds to the chosen date, which is the first date in date_list.</p>
 <p>Let’s reuse this code to calculate the <code>Rol_3month</code> value for white bread. Because we want to have a single dataframe showing the results for brown and white bread, we’ll use <code>vstack</code> to vertically combine the dataframes.</p>
-<div id="1a8aa7c5" class="cell" data-execution_count="7">
+<div id="c4a80cd7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
@@ -833,7 +833,7 @@ Note
 <p>Here’s the formula we used to calculate the percentage or weight for each bread type. Let’s focus on brown bread for the month of January.</p>
 <p><span class="math display">\[\% \text{ of Brown Bread} = \frac{\text{January Rol\_3month}}{\text{January Rol\_3month} + \text{White Bread January Rol\_3month}}\]</span></p>
 <p>We are dividing each Rol_3month value for every bread type by the sum of the Rol_3month values for both bread types. Let’s put this into code. Also, we don’t need <code>Sales_List</code>, so we’ll drop it.</p>
-<div id="838ffa6a" class="cell" data-execution_count="8">
+<div id="fbd0bb1d" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(sales_df</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Bread'</span>).eq(<span class="st">'Brown'</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Sales_List<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).implode())</span>
@@ -898,7 +898,7 @@ Note
 <p>These are the values we want, but we’ve only calculated for the first date in date_list. We have to perform this calculation for every date in date_list. Rather than doing it manually 12 times, we’ll use a for loop to loop through the date_list.</p>
 <p>It turns out that looping doesn’t work on a list of dates, so we’ll create a list of 12 numbers from 0 to 11. These numbers will be used as indices to represent each date item in date_list. Thus, to use the first date in the list, we use <code>date_list[0]</code>.</p>
 <p>Let’s create a list of the numbers and store them in a variable called num_list.</p>
-<div id="1c13a783" class="cell" data-execution_count="9">
+<div id="69e5f7e6" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>num_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(date_list)))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>num_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -906,7 +906,7 @@ Note
 </div>
 </div>
 <p>Now let’s implement the for loop to get the desired dataframe.</p>
-<div id="dad20cd9" class="cell" data-execution_count="10">
+<div id="86c514c6" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pct_dfs <span class="op">=</span> []</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> num_list:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    pct_df <span class="op">=</span> (sales_df</span>
@@ -1053,7 +1053,7 @@ Note
 </div>
 </div>
 <p>To make the dates in both dataframes match, we’ll remove the year in the date value. Below is the code that removes the year in the date value for the sales data.</p>
-<div id="25350439" class="cell" data-execution_count="11">
+<div id="073fb546" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(df_with_pct</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1168,7 +1168,7 @@ Note
 </div>
 <p><br></p>
 <p>In the code below, we remove the year in the forecast data and join the two dataframes in a single dataframe called combined_df.</p>
-<div id="ea623494" class="cell" data-execution_count="12">
+<div id="424a2174" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>combined_df <span class="op">=</span> (df_with_pct</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> .join(forecast_df.with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%m-</span><span class="sc">%d</span><span class="st">'</span>)),</span>
@@ -1301,7 +1301,7 @@ Note
 <section id="calculating-new-forecast" class="level2">
 <h2 class="anchored" data-anchor-id="calculating-new-forecast">Calculating new forecast</h2>
 <p>Now we have all the data needed to calculate the forecast for each bread type. All the forecast values are rounded to the nearest whole number. After all, you cannot make 1.67 loaves of bread!</p>
-<div id="ad081dff" class="cell" data-execution_count="13">
+<div id="6dda9d06" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>new_fcst_df <span class="op">=</span> (combined_df</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .with_columns(New_Forecast<span class="op">=</span>(pl.col(<span class="st">'Percentage'</span>) <span class="op">*</span> pl.col(<span class="st">'Forecast'</span>)).<span class="bu">round</span>().cast(pl.Int16))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).add(pl.lit(<span class="st">'-2024'</span>)).<span class="bu">str</span>.strptime(pl.Date, <span class="st">"%m-</span><span class="sc">%d</span><span class="st">-%Y"</span>))</span>
@@ -1446,7 +1446,7 @@ Note
 <section id="final-output" class="level2">
 <h2 class="anchored" data-anchor-id="final-output">Final output</h2>
 <p>We now have the forecast values for each bread type, but we must present the data in a format that is not only human-readable but also easy to understand. We’ll select the relevant columns and transform the data into the desired format.</p>
-<div id="9fb64c47" class="cell" data-execution_count="14">
+<div id="803442ab" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table_df <span class="op">=</span> (new_fcst_df</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Date'</span>,<span class="st">'Bread'</span>,<span class="st">'New_Forecast'</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%b'</span>))</span>
@@ -1533,7 +1533,7 @@ Note
 </div>
 <p><br></p>
 <p>This format is better, but since at Conterval we’re sticklers for aesthetics, we decided to make the final forecast output look even better. To do this, we used a library called <code>great-tables</code>.</p>
-<div id="d09e9aaf" class="cell" data-execution_count="15">
+<div id="18492729" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> GT, style, loc, google_font, html</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>month_list <span class="op">=</span> table_df.columns[<span class="dv">1</span>:]</span>
@@ -1554,53 +1554,53 @@ Note
 <span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    .cols_width(cases<span class="op">=</span>col_spacing)</span>
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
-<div id="zaoursodgr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lggghpsjvj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
-#zaoursodgr table {
+#lggghpsjvj table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#zaoursodgr thead, tbody, tfoot, tr, td, th { border-style: none; }
+#lggghpsjvj thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#zaoursodgr p { margin: 0; padding: 0; }
- #zaoursodgr .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #ffbe6f; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #zaoursodgr .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #zaoursodgr .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #ffbe6f; border-bottom-width: 0; }
- #zaoursodgr .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #ffbe6f; border-top-width: 0; }
- #zaoursodgr .gt_heading { background-color: #ffbe6f; text-align: center; border-bottom-color: #ffbe6f; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #zaoursodgr .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #zaoursodgr .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #zaoursodgr .gt_col_heading { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #zaoursodgr .gt_column_spanner_outer { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #zaoursodgr .gt_column_spanner_outer:first-child { padding-left: 0; }
- #zaoursodgr .gt_column_spanner_outer:last-child { padding-right: 0; }
- #zaoursodgr .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
- #zaoursodgr .gt_spanner_row { border-bottom-style: hidden; }
- #zaoursodgr .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: bold; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
- #zaoursodgr .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: bold; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
- #zaoursodgr .gt_from_md> :first-child { margin-top: 0; }
- #zaoursodgr .gt_from_md> :last-child { margin-bottom: 0; }
- #zaoursodgr .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
- #zaoursodgr .gt_stub { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #zaoursodgr .gt_stub_row_group { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #zaoursodgr .gt_row_group_first td { border-top-width: 2px; }
- #zaoursodgr .gt_row_group_first th { border-top-width: 2px; }
- #zaoursodgr .gt_striped { background-color: rgba(128,128,128,0.05); }
- #zaoursodgr .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #zaoursodgr .gt_sourcenotes { color: #333333; background-color: #ffbe6f; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #zaoursodgr .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #zaoursodgr .gt_left { text-align: left; }
- #zaoursodgr .gt_center { text-align: center; }
- #zaoursodgr .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #zaoursodgr .gt_font_normal { font-weight: normal; }
- #zaoursodgr .gt_font_bold { font-weight: bold; }
- #zaoursodgr .gt_font_italic { font-style: italic; }
- #zaoursodgr .gt_super { font-size: 65%; }
- #zaoursodgr .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #zaoursodgr .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#lggghpsjvj p { margin: 0; padding: 0; }
+ #lggghpsjvj .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #ffbe6f; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #lggghpsjvj .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #lggghpsjvj .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #ffbe6f; border-bottom-width: 0; }
+ #lggghpsjvj .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #ffbe6f; border-top-width: 0; }
+ #lggghpsjvj .gt_heading { background-color: #ffbe6f; text-align: center; border-bottom-color: #ffbe6f; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #lggghpsjvj .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #lggghpsjvj .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #lggghpsjvj .gt_col_heading { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #lggghpsjvj .gt_column_spanner_outer { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #lggghpsjvj .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #lggghpsjvj .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #lggghpsjvj .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #lggghpsjvj .gt_spanner_row { border-bottom-style: hidden; }
+ #lggghpsjvj .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: bold; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #lggghpsjvj .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: bold; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #lggghpsjvj .gt_from_md> :first-child { margin-top: 0; }
+ #lggghpsjvj .gt_from_md> :last-child { margin-bottom: 0; }
+ #lggghpsjvj .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #lggghpsjvj .gt_stub { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #lggghpsjvj .gt_stub_row_group { color: #333333; background-color: #ffbe6f; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #lggghpsjvj .gt_row_group_first td { border-top-width: 2px; }
+ #lggghpsjvj .gt_row_group_first th { border-top-width: 2px; }
+ #lggghpsjvj .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #lggghpsjvj .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #lggghpsjvj .gt_sourcenotes { color: #333333; background-color: #ffbe6f; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #lggghpsjvj .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #lggghpsjvj .gt_left { text-align: left; }
+ #lggghpsjvj .gt_center { text-align: center; }
+ #lggghpsjvj .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #lggghpsjvj .gt_font_normal { font-weight: normal; }
+ #lggghpsjvj .gt_font_bold { font-weight: bold; }
+ #lggghpsjvj .gt_font_italic { font-style: italic; }
+ #lggghpsjvj .gt_super { font-size: 65%; }
+ #lggghpsjvj .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #lggghpsjvj .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
