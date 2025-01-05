@@ -57,8 +57,8 @@
 }
 
 @font-face {
-  font-family: 'Spectral';
-  src: url('assets/fonts/Spectral-Regular.woff2') format('woff2');
+  font-family: 'Legacy';
+  src: url('assets/fonts/itc-legacy-sans-std-book-italic.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -73,7 +73,7 @@ $univers-bold: 'UniversLTStd-Bold', sans-serif !default;
 $univers-light: 'UniversLTStd-Light', sans-serif !default;
 $font-family-monospace: "Iosevka", monospace;
 $headings-font-family: "Inter", sans-serif;
-$italic-font-family: "Spectral";
+$italic-font-family: "Legacy";
 
 
 body {
@@ -191,19 +191,28 @@ $dark: #212129 !default;
 $bq-grey:  #deddda;
 
 em {
-  font-family: 'Spectral', serif;
+  font-family: 'Legacy', serif;
   color: $dark;
   // font-weight: 600;
 }
 
 blockquote {
   color: #4B0082 !important;
-  font-family: 'Spectral', serif;
+  font-family: 'Legacy', serif;
   padding: 10px;
   border-left: 5px solid #77767b !important;
   margin: 20px 0;
   background: $bq-grey;
+  line-height: 1.18;
+  font-size: 1.25 !important
 }
+
+strong {
+  font-family: $harmonia-bold;
+  color: $dark;
+  font-weight: 700; // or any other desired bold weight
+}
+
 
 #quarto-sidebar {
   background-color: #f6f2ec;

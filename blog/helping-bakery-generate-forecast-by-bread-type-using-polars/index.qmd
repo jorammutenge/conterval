@@ -137,7 +137,7 @@ Let's demonstrate this calculation to see where it fell short.
  )
 ```
 <br>
-This gives us some of the values we want, but it creates null values for the first 2 rows. To rectify the null value problem on the first two rows, we shifted the values in `Rol_3month` up by 2 rows. 
+This gives us some of the values we want, but it creates null values for the first 2 rows. To rectify the null value problem on the first two rows, we shifted the values in _Rol_3month_ up by 2 rows. 
 
 ```{python}
 (sales_df
@@ -165,7 +165,7 @@ date_list = sales_df['Date'].unique().to_list()
 date_list
 ```
 <br>
-Now, let’s write some code to calculate the `Rol_3month` value for the first date in date_list. This date value will be accessed with 0 index as in `date_list[0]`.
+Now, let’s write some code to calculate the _Rol_3month_ value for the first date in date_list. This date value will be accessed with 0 index as in `date_list[0]`.
 
 ```{python}
 (sales_df
@@ -176,9 +176,9 @@ Now, let’s write some code to calculate the `Rol_3month` value for the first d
 )
 ```
 <br>
-In the code above, we filtered the data to only show brown bread, then created a column `Sales_List` using `implode`. This stores all sales values from January to December into a single list. To calculate the `Rol_3month`, we slice the list of sales values to only select the first available 3 values and then add them up. Finally, we only get the row in the dataframe that corresponds to the chosen date, which is the first date in date_list.
+In the code above, we filtered the data to only show brown bread, then created a column _Sales_List_ using `implode`. This stores all sales values from January to December into a single list. To calculate the `Rol_3month`, we slice the list of sales values to only select the first available 3 values and then add them up. Finally, we only get the row in the dataframe that corresponds to the chosen date, which is the first date in *date_list*.
 
-Let’s reuse this code to calculate the `Rol_3month` value for white bread. Because we want to have a single dataframe showing the results for brown and white bread, we’ll use `vstack` to vertically combine the dataframes.
+Let’s reuse this code to calculate the _Rol_3month_ value for white bread. Because we want to have a single dataframe showing the results for brown and white bread, we’ll use `vstack` to vertically combine the dataframes.
 
 ```{python}
 (sales_df
@@ -200,7 +200,7 @@ Here’s the formula we used to calculate the percentage or weight for each brea
 
 $$\% \text{ of Brown Bread} = \frac{\text{January Rol\_3month}}{\text{January Rol\_3month} + \text{White Bread January Rol\_3month}}$$
 
-We are dividing each Rol_3month value for every bread type by the sum of the Rol_3month values for both bread types. Let's put this into code. Also, we don't need `Sales_List`, so we'll drop it.
+We are dividing each Rol_3month value for every bread type by the sum of the Rol_3month values for both bread types. Let's put this into code. Also, we don't need *Sales_List*, so we'll drop it.
 
 ```{python}
 (sales_df
@@ -224,7 +224,7 @@ These are the values we want, but we’ve only calculated for the first date in 
 
 It turns out that looping doesn’t work on a list of dates, so we’ll create a list of 12 numbers from 0 to 11. These numbers will be used as indices to represent each date item in date_list. Thus, to use the first date in the list, we use `date_list[0]`.
 
-Let’s create a list of the numbers and store them in a variable called num_list.
+Let’s create a list of the numbers and store them in a variable called *num_list*.
 
 ```{python}
 num_list = list(range(len(date_list)))
@@ -256,7 +256,7 @@ df_with_pct
 ```
 
 ## Joining forecast data
-To get the forecast values for each bread type based on percentage values, we must join our dataframe with the forecast data provided by the retail store. We’ll join the dataframes on `Date` column.
+To get the forecast values for each bread type based on percentage values, we must join our dataframe with the forecast data provided by the retail store. We’ll join the dataframes on *Date* column.
 
 ::: {.callout-note}
 Our sales data has the year 2023 while the forecast data has the year 2024. This means we won’t be able to join. We have to modify the dates so they match.
@@ -271,7 +271,7 @@ To make the dates in both dataframes match, we’ll remove the year in the date 
 ```
 <br>
 
-In the code below, we remove the year in the forecast data and join the two dataframes in a single dataframe called combined_df.
+In the code below, we remove the year in the forecast data and join the two dataframes in a single dataframe called *combined_df*.
 
 ```{python}
 combined_df = (df_with_pct

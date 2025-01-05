@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/tranforming-timeseries-data-with-group-by-and-group-by-dynamic-in-polars/index.html",
       "/blog/what-I-learned-about-group-by-dynamic-in-polars/index.html",
       "/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html",
       "/blog/what-tool-should-you-use-as-a-data-analyst/index.html",

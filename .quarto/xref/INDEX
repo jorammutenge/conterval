@@ -31,5 +31,8 @@
   },
   "blog/what-I-learned-about-group-by-dynamic-in-polars/index.qmd": {
     "index.html": "3b881aa5"
+  },
+  "blog/tranforming-timeseries-data-with-group-by-and-group-by-dynamic-in-polars/index.qmd": {
+    "index.html": "b69fc22d"
   }
 }

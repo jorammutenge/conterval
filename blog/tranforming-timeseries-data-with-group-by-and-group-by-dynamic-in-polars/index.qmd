@@ -1,0 +1,201 @@
+---
+title: 'Tranforming timeseries data with group by and group by dynamic in polars'
+author: '{{< var author >}}'
+date: '2025-02-03'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: left
+toc-depth: 3
+image: image.jpg
+---
+
+::: {.gray-text .center-text}
+![a brand of yogurt](image.jpg){fig-align="center"}
+:::
+
+Polars has become my go-to library for data analysis. Each client project brings new insights into the powerful functionality Polars offers. Recently, I worked on a project for a supermarket that required processing data related to yogurt stock quantities.
+
+## The problem
+
+The supermarket's data included multiple quantity entries for the same yogurt brand within a single month. The goal was to aggregate these quantities into a single value per month and standardize the date to the first day of that month. 
+
+For example, the data for a yogurt brand like Chobani in February might look like this:
+
+- Feb-02-2025 = 30 units  
+- Feb-08-2025 = 20 units  
+- Feb-15-2025 = 50 units  
+
+The desired output for February would aggregate these values into:
+
+- Feb-01-2025 = 100 units  
+
+This aggregation needed to be repeated for every yogurt brand sold by the supermarket.
+
+## The dataset
+
+To demonstrate how I solved this problem, I’ll use a representative dataset (not the actual client data).
+
+```{python}
+#| echo: false
+import polars as pl
+from pathlib import Path
+
+data = pl.read_parquet(f"{Path('../../')}/datasets/yogurt.parquet")
+data
+```
+
+## The solution
+
+I’ll show two approaches to solving this problem. The first method uses `group_by`, while the second uses `group_by_dynamic`. Afterward, I’ll verify that both methods produce identical results. More importantly, I’ll compare their performance by using the `%%timeit` cell magic command to identify the faster solution.
+
+### Solution with group by dynamic
+
+When resampling time series data, `group_by_dynamic` simplifies selecting a specific time period (e.g., weekly, monthly, quarterly) and resampling the data to perform aggregations based on the chosen interval. However, `group_by_dynamic` does not support grouping by multiple columns. While this limitation may make it unsuitable for addressing the client's problem directly, a workaround is available.
+
+Let's process the data for a single yogurt brand, Yoplait to see if the solution is working the way we expect it. Then we'll repeat the process for all yogurt brands. Here's is the unprocessed data for Yoplait yogurt.
+
+```{python}
+data.filter(pl.col('Yogurt') == "Yoplait")
+```
+<br>
+
+Here is the processed data for Yoplait yogurt. The aggregations have been completed, resulting in a reduced number of rows in the dataframe.
+
+```{python}
+(data
+ .filter(pl.col('Yogurt') == "Yoplait")
+ .group_by_dynamic('Date', every='1mo')
+ .agg(pl.sum('Quantity'), pl.first('Yogurt'))
+)
+```
+
+<br>
+Notice that I have selected a 1-month time period for the `every` parameter. However, there is an unresolved issue in our solution: we have multiple dates instead of a single date representing the first day of each month. To address this, I will introduce another parameter, `start_by`, and set its value to `"window"`. This ensures that all dates are converted to the first day of their respective months.
+
+```{python}
+(data
+ .filter(pl.col('Yogurt') == "Yoplait")
+ .group_by_dynamic('Date', every='1mo', start_by='window')
+ .agg(pl.sum('Quantity'), pl.first('Yogurt'))
+)
+```
+
+<br>
+Having achieved the desired results for Yoplait yogurt, I can now process the data for the other brands. Instead of processing each brand individually, I will use a `for` loop to automate the task.
+
+First, I'll create a list of all the yogurt brands contained in the dataset.
+
+```{python}
+yogurt_list = data['Yogurt'].unique().to_list()
+yogurt_list
+```
+
+And now here's the code that implements the `for` loop.
+
+```{python}
+dfs = []
+for item in yogurt_list:
+    df = (data
+    .filter(pl.col('Yogurt') == item)
+    .group_by_dynamic('Date', every='1mo', start_by='window')
+    .agg(pl.sum('Quantity'), pl.first('Yogurt'))
+    )
+    dfs.append(df)
+df_1 = pl.concat(dfs)
+df_1
+```
+<br>
+
+To verify that the above code worked correctly, let display the results for Yoplait yogurt.
+
+```{python}
+df_1.filter(pl.col('Yogurt') == "Yoplait")
+```
+<br>
+
+Great! The results are what we expected.
+
+### Solution with group by
+
+Fortunately, with `group_by`, it is possible to aggregate data across multiple columns. This allows me to process the data for all yogurt brands without using a `for` loop. However, I first need to create a new column, _Month_, to use as one of the grouping columns in `group_by`. As before, I will start by processing the data for a single yogurt brand, Yoplait.
+
+```{python}
+(data
+ .filter(pl.col('Yogurt') == "Yoplait")
+ .with_columns(Month=pl.col('Date').dt.month())
+ .group_by('Yogurt','Month')
+ .agg(pl.sum('Quantity'),
+       pl.first('Date'))
+ .drop('Month')
+ .with_columns(pl.col("Date").dt.truncate("1mo"))
+ )
+```
+<br>
+
+Notice that I have used two columns, _Yogurt_ and _Month_, in `group_by` to aggregate quantities based on this two-column combination. Since _Month_ has served its purpose, I can drop it as it is no longer needed. However, the date values are not in the expected format. To resolve this issue, I will use `truncate` and set the value to `"1mo"` to adjust the values in the _Date_ column by one month.
+
+```{python}
+(data
+ .filter(pl.col('Yogurt') == "Yoplait")
+ .with_columns(Month=pl.col('Date').dt.month())
+ .group_by('Yogurt','Month')
+ .agg(pl.sum('Quantity'),
+       pl.first('Date'))
+ .drop('Month')
+ .with_columns(pl.col("Date").dt.truncate("1mo"))
+ )
+```
+
+Now that we have the expected results, all that’s left to process the data for all yogurt brands is to remove the line of code containing `filter`.
+
+```{python}
+df_2 = (data
+ .with_columns(Month=pl.col('Date').dt.month())
+ .group_by('Yogurt','Month')
+ .agg(pl.sum('Quantity'),
+       pl.first('Date'))
+ .drop('Month')
+ .with_columns(pl.col("Date").dt.truncate("1mo"))
+ )
+df_2
+```
+
+## Comparing the two methods
+
+Multiple factors can be used to determine which code is better, such as ease of writing. However, I will focus on determining which code processes the data faster. Let's test which approach performs better.
+
+**With group by dynamic**
+
+```{python}
+%%timeit
+
+dfs = []
+for item in yogurt_list:
+    df = (data
+    .filter(pl.col('Yogurt') == item)
+    .group_by_dynamic('Date', every='1mo', start_by='window')
+    .agg(pl.sum('Quantity'), pl.first('Yogurt'))
+    )
+    dfs.append(df)
+df_1 = pl.concat(dfs)
+```
+
+**With group by**
+
+```{python}
+%%timeit
+
+(data
+ .with_columns(Month=pl.col('Date').dt.month())
+ .group_by('Yogurt','Month')
+ .agg(pl.sum('Quantity'),
+       pl.first('Date'))
+ .drop('Month')
+ .with_columns(pl.col("Date").dt.truncate("1mo"))
+ )
+```
+
+You can see that `group_by` processes the data faster, making it the better method. This isn't surprising, actually, because it doesn't involve using a `for` loop. It's always better to avoid loops when working with dataframes, as this allows your code to be executed in Rust, the language in which Polars was written. When you use `for` loops, your code is executed in Python, which is slower than Rust.
+
+Check out the new {{< var finance_course >}} we published to learn how to process and analyze stock data.
