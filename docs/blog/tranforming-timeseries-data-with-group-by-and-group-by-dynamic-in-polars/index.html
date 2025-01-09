@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0d7fab1b923f0acf2eae80a93decbaa5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-870f18ac81666dee612468d5dd911ca1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a83b336ce263cfb7234a75c6b8aaa53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -235,7 +235,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="the-dataset">The dataset</h2>
 <p>To demonstrate how I solved this problem, I’ll use a representative dataset (not the actual client data).</p>
-<div id="612cbff5" class="cell" data-execution_count="1">
+<div id="3f771b76" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -327,7 +327,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="solution-with-group-by-dynamic">Solution with group by dynamic</h3>
 <p>When resampling time series data, <code>group_by_dynamic</code> simplifies selecting a specific time period (e.g., weekly, monthly, quarterly) and resampling the data to perform aggregations based on the chosen interval. However, <code>group_by_dynamic</code> does not support grouping by multiple columns. While this limitation may make it unsuitable for addressing the client’s problem directly, a workaround is available.</p>
 <p>Let’s process the data for a single yogurt brand, Yoplait to see if the solution is working the way we expect it. Then we’ll repeat the process for all yogurt brands. Here’s is the unprocessed data for Yoplait yogurt.</p>
-<div id="331c44d2" class="cell" data-execution_count="2">
+<div id="e7096525" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data.<span class="bu">filter</span>(pl.col(<span class="st">'Yogurt'</span>) <span class="op">==</span> <span class="st">"Yoplait"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
@@ -414,7 +414,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>Here is the processed data for Yoplait yogurt. The aggregations have been completed, resulting in a reduced number of rows in the dataframe.</p>
-<div id="b7ad105b" class="cell" data-execution_count="3">
+<div id="acdf5de3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(data</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Yogurt'</span>) <span class="op">==</span> <span class="st">"Yoplait"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .group_by_dynamic(<span class="st">'Date'</span>, every<span class="op">=</span><span class="st">'1mo'</span>)</span>
@@ -474,7 +474,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> Notice that I have selected a 1-month time period for the <code>every</code> parameter. However, there is an unresolved issue in our solution: we have multiple dates instead of a single date representing the first day of each month. To address this, I will introduce another parameter, <code>start_by</code>, and set its value to <code>"window"</code>. This ensures that all dates are converted to the first day of their respective months.</p>
-<div id="b9389114" class="cell" data-execution_count="4">
+<div id="6e8e421e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(data</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Yogurt'</span>) <span class="op">==</span> <span class="st">"Yoplait"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .group_by_dynamic(<span class="st">'Date'</span>, every<span class="op">=</span><span class="st">'1mo'</span>, start_by<span class="op">=</span><span class="st">'window'</span>)</span>
@@ -535,25 +535,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br> Having achieved the desired results for Yoplait yogurt, I can now process the data for the other brands. Instead of processing each brand individually, I will use a <code>for</code> loop to automate the task.</p>
 <p>First, I’ll create a list of all the yogurt brands contained in the dataset.</p>
-<div id="ba4ca73b" class="cell" data-execution_count="5">
+<div id="e653b7e5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>yogurt_list <span class="op">=</span> data[<span class="st">'Yogurt'</span>].unique().to_list()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>yogurt_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>["Siggi's",
+<pre><code>['Yoplait',
+ 'Chobani',
+ 'Noosa',
+ "Siggi's",
+ 'Brown Cow',
  'Wallaby Organic',
+ 'Fage',
  'Dannon',
  'Oikos',
- 'Brown Cow',
  'Stonyfield Organic',
- 'Chobani',
- 'Yoplait',
- 'Activia',
- 'Fage',
- 'Noosa']</code></pre>
+ 'Activia']</code></pre>
 </div>
 </div>
 <p>And now here’s the code that implements the <code>for</code> loop.</p>
-<div id="9cfc364f" class="cell" data-execution_count="6">
+<div id="05f49d4a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> []</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> yogurt_list:</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> (data</span>
@@ -588,24 +588,34 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>2025-04-01</td>
-<td>6</td>
-<td>"Siggi's"</td>
+<td>2025-02-01</td>
+<td>270</td>
+<td>"Yoplait"</td>
 </tr>
 <tr class="even">
-<td>2025-04-01</td>
-<td>96</td>
-<td>"Wallaby Organic"</td>
+<td>2025-03-01</td>
+<td>270</td>
+<td>"Yoplait"</td>
 </tr>
 <tr class="odd">
-<td>2025-05-01</td>
-<td>336</td>
-<td>"Wallaby Organic"</td>
+<td>2025-04-01</td>
+<td>216</td>
+<td>"Yoplait"</td>
 </tr>
 <tr class="even">
+<td>2025-05-01</td>
+<td>162</td>
+<td>"Yoplait"</td>
+</tr>
+<tr class="odd">
 <td>2025-06-01</td>
-<td>192</td>
-<td>"Wallaby Organic"</td>
+<td>54</td>
+<td>"Yoplait"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
 </tr>
 <tr class="odd">
 <td>2025-06-01</td>
@@ -613,34 +623,24 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <td>"Dannon"</td>
 </tr>
 <tr class="even">
-<td>…</td>
-<td>…</td>
-<td>…</td>
+<td>2025-04-01</td>
+<td>144</td>
+<td>"Oikos"</td>
+</tr>
+<tr class="odd">
+<td>2025-05-01</td>
+<td>144</td>
+<td>"Oikos"</td>
+</tr>
+<tr class="even">
+<td>2025-04-01</td>
+<td>60</td>
+<td>"Stonyfield Organic"</td>
 </tr>
 <tr class="odd">
 <td>2025-05-01</td>
 <td>504</td>
 <td>"Activia"</td>
-</tr>
-<tr class="even">
-<td>2025-05-01</td>
-<td>24</td>
-<td>"Fage"</td>
-</tr>
-<tr class="odd">
-<td>2025-03-01</td>
-<td>12</td>
-<td>"Noosa"</td>
-</tr>
-<tr class="even">
-<td>2025-04-01</td>
-<td>12</td>
-<td>"Noosa"</td>
-</tr>
-<tr class="odd">
-<td>2025-05-01</td>
-<td>12</td>
-<td>"Noosa"</td>
 </tr>
 </tbody>
 </table>
@@ -649,7 +649,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>To verify that the above code worked correctly, let display the results for Yoplait yogurt.</p>
-<div id="df444452" class="cell" data-execution_count="7">
+<div id="56f3353c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_1.<span class="bu">filter</span>(pl.col(<span class="st">'Yogurt'</span>) <span class="op">==</span> <span class="st">"Yoplait"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div><style>
@@ -710,7 +710,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="solution-with-group-by" class="level3">
 <h3 class="anchored" data-anchor-id="solution-with-group-by">Solution with group by</h3>
 <p>Fortunately, with <code>group_by</code>, it is possible to aggregate data across multiple columns. This allows me to process the data for all yogurt brands without using a <code>for</code> loop. However, I first need to create a new column, <em>Month</em>, to use as one of the grouping columns in <code>group_by</code>. As before, I will start by processing the data for a single yogurt brand, Yoplait.</p>
-<div id="fcb2f3d4" class="cell" data-execution_count="8">
+<div id="8d584225" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(data</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Yogurt'</span>) <span class="op">==</span> <span class="st">"Yoplait"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Month<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.month())</span>
@@ -760,13 +760,13 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </tr>
 <tr class="even">
 <td>"Yoplait"</td>
-<td>270</td>
-<td>2025-02-01</td>
+<td>54</td>
+<td>2025-06-01</td>
 </tr>
 <tr class="odd">
 <td>"Yoplait"</td>
-<td>54</td>
-<td>2025-06-01</td>
+<td>270</td>
+<td>2025-02-01</td>
 </tr>
 </tbody>
 </table>
@@ -775,7 +775,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>Notice that I have used two columns, <em>Yogurt</em> and <em>Month</em>, in <code>group_by</code> to aggregate quantities based on this two-column combination. Since <em>Month</em> has served its purpose, I can drop it as it is no longer needed. However, the date values are not in the expected format. To resolve this issue, I will use <code>truncate</code> and set the value to <code>"1mo"</code> to adjust the values in the <em>Date</em> column by one month.</p>
-<div id="354e38ce" class="cell" data-execution_count="9">
+<div id="01d689d4" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(data</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Yogurt'</span>) <span class="op">==</span> <span class="st">"Yoplait"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Month<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.month())</span>
@@ -810,23 +810,23 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <tbody>
 <tr class="odd">
 <td>"Yoplait"</td>
-<td>162</td>
-<td>2025-05-01</td>
-</tr>
-<tr class="even">
-<td>"Yoplait"</td>
 <td>270</td>
 <td>2025-02-01</td>
 </tr>
-<tr class="odd">
-<td>"Yoplait"</td>
-<td>270</td>
-<td>2025-03-01</td>
-</tr>
 <tr class="even">
+<td>"Yoplait"</td>
+<td>162</td>
+<td>2025-05-01</td>
+</tr>
+<tr class="odd">
 <td>"Yoplait"</td>
 <td>216</td>
 <td>2025-04-01</td>
+</tr>
+<tr class="even">
+<td>"Yoplait"</td>
+<td>270</td>
+<td>2025-03-01</td>
 </tr>
 <tr class="odd">
 <td>"Yoplait"</td>
@@ -839,7 +839,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Now that we have the expected results, all that’s left to process the data for all yogurt brands is to remove the line of code containing <code>filter</code>.</p>
-<div id="1d201567" class="cell" data-execution_count="10">
+<div id="97116b56" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_2 <span class="op">=</span> (data</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Month<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.month())</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Yogurt'</span>,<span class="st">'Month'</span>)</span>
@@ -873,14 +873,44 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Yoplait"</td>
-<td>270</td>
-<td>2025-02-01</td>
+<td>"Brown Cow"</td>
+<td>6</td>
+<td>2025-04-01</td>
 </tr>
 <tr class="even">
 <td>"Chobani"</td>
-<td>444</td>
+<td>240</td>
+<td>2025-04-01</td>
+</tr>
+<tr class="odd">
+<td>"Yoplait"</td>
+<td>162</td>
+<td>2025-05-01</td>
+</tr>
+<tr class="even">
+<td>"Noosa"</td>
+<td>12</td>
 <td>2025-03-01</td>
+</tr>
+<tr class="odd">
+<td>"Fage"</td>
+<td>24</td>
+<td>2025-05-01</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"Wallaby Organic"</td>
+<td>192</td>
+<td>2025-06-01</td>
+</tr>
+<tr class="even">
+<td>"Noosa"</td>
+<td>12</td>
+<td>2025-04-01</td>
 </tr>
 <tr class="odd">
 <td>"Stonyfield Organic"</td>
@@ -893,39 +923,9 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <td>2025-06-01</td>
 </tr>
 <tr class="odd">
-<td>"Chobani"</td>
-<td>408</td>
+<td>"Activia"</td>
+<td>504</td>
 <td>2025-05-01</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>"Fage"</td>
-<td>24</td>
-<td>2025-05-01</td>
-</tr>
-<tr class="even">
-<td>"Yoplait"</td>
-<td>54</td>
-<td>2025-06-01</td>
-</tr>
-<tr class="odd">
-<td>"Noosa"</td>
-<td>12</td>
-<td>2025-05-01</td>
-</tr>
-<tr class="even">
-<td>"Wallaby Organic"</td>
-<td>96</td>
-<td>2025-04-01</td>
-</tr>
-<tr class="odd">
-<td>"Oikos"</td>
-<td>144</td>
-<td>2025-04-01</td>
 </tr>
 </tbody>
 </table>
@@ -938,7 +938,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="comparing-the-two-methods">Comparing the two methods</h2>
 <p>Multiple factors can be used to determine which code is better, such as ease of writing. However, I will focus on determining which code processes the data faster. Let’s test which approach performs better.</p>
 <p><strong>With group by dynamic</strong></p>
-<div id="0df73e5f" class="cell" data-execution_count="11">
+<div id="608a2faa" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> []</span>
@@ -951,11 +951,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    dfs.append(df)</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>df_1 <span class="op">=</span> pl.concat(dfs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>935 μs ± 5.59 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre><code>931 μs ± 9.52 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
 <p><strong>With group by</strong></p>
-<div id="fc07fec1" class="cell" data-execution_count="12">
+<div id="83aac3c2" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>(data</span>
@@ -967,7 +967,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">"Date"</span>).dt.truncate(<span class="st">"1mo"</span>))</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>249 μs ± 2 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre><code>252 μs ± 1.94 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
 <p>You can see that <code>group_by</code> processes the data faster, making it the better method. This isn’t surprising, actually, because it doesn’t involve using a <code>for</code> loop. It’s always better to avoid loops when working with dataframes, as this allows your code to be executed in Rust, the language in which Polars was written. When you use <code>for</code> loops, your code is executed in Python, which is slower than Rust.</p>
@@ -1406,7 +1406,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2024 Conterval · <a href="mailto:contact@conterval.com">Contact</a></p>
+<p>© 2025 Conterval · <a href="mailto:contact@conterval.com">Contact</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

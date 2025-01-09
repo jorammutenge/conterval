@@ -10,23 +10,23 @@ format:
     page-layout: full
 ---
 
-<div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 16pt; margin-bottom: 15px;">
+<div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 40pt; margin-bottom: 15px;">
   <img src="images/logo.png" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
-  <p>Consulting and training in data science, data engineering, visualization and analytical computing solutions</p>
+  <p style="color: white;">a data consulting company</p>
 </div>
 
 
 <!-- Services card -->
-<div class="card2" style="text-align: left; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
+<div class="card2" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
   <h2 style="text-align: center;">Our Services</h2>
-  <ul>
-    <li>Data analysis with NumPy, Pandas, Polars, SQL</li>
-    <li>Extract Load Transform (ETL) with Apache Airflow, Talend, AWS Glue</li>
-    <li>Data visualization with Tableau, Power BI, Plotly, Matplotlib, Seaborn, D3, Excel</li>
-    <li>Data cleaning with OpenRefine, Tableau Prep, Pandas, Polars</li>
-    <li>Predictive modeling with Scikit-learn, Scipy, XGBoost, CatBoost, Excel</li>
-  </ul>
+  <p>Data Analysis</p>
+  <p>Data Cleaning</p>
+  <p>Data Engineering</p>
+  <p>Data Visualization</p>
+  <p>Analytics Engineering</p>
+  <p>Extract Transform Load (ETL)</p>
 </div>
+
 
 <!-- Contact card -->
 <div class="card3" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
