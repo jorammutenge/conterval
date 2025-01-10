@@ -95,15 +95,15 @@ color: #191971 !important;
 }
 
 .card p {
-color: white;
-font-size: 3rem;
-white-space: nowrap;
+  color: white;
+  font-size: 3rem;
+  white-space: nowrap;
 }
 
 @media (max-width: 600px) {
-.card p {
-  font-size: 4vw;
-}
+  .card p {
+    font-size: 4vw;
+  }
 }
 
 .card {

@@ -12,7 +12,7 @@ format:
 
 <div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 40pt; margin-bottom: 15px;">
   <img src="images/logo.png" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
-  <p style="color: white; font-size: calc(5vw + 1rem); white-space: nowrap;">a data consulting company</p>
+  <p style="color: white;">a data consulting company</p>
 </div>
 
 
