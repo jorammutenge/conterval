@@ -34,5 +34,8 @@
   },
   "blog/tranforming-timeseries-data-with-group-by-and-group-by-dynamic-in-polars/index.qmd": {
     "index.html": "b69fc22d"
+  },
+  "blog/polars-functions-pros-use/index.qmd": {
+    "index.html": "8b0f4cbb"
   }
 }

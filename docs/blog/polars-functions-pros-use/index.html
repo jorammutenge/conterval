@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joram Mutenge">
+<meta name="dcterms.date" content="2025-01-13">
+
+<title>Ten polars functions that pros use and amateurs don’t – Conterval</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0d7fab1b923f0acf2eae80a93decbaa5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-132e5628ad26be7c37372354dab464c5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5Y1ZXKXMBX"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Conterval</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul class="collapse">
+  <li><a href="#scan-csv" id="toc-scan-csv" class="nav-link active" data-scroll-target="#scan-csv">1. Scan CSV</a></li>
+  <li><a href="#sum-horizontal" id="toc-sum-horizontal" class="nav-link" data-scroll-target="#sum-horizontal">2. Sum horizontal</a></li>
+  <li><a href="#group-by-dynamic" id="toc-group-by-dynamic" class="nav-link" data-scroll-target="#group-by-dynamic">3. Group by dynamic</a></li>
+  <li><a href="#exclude" id="toc-exclude" class="nav-link" data-scroll-target="#exclude">4. Exclude</a></li>
+  <li><a href="#explode" id="toc-explode" class="nav-link" data-scroll-target="#explode">5. Explode</a></li>
+  <li><a href="#top-bottom-k" id="toc-top-bottom-k" class="nav-link" data-scroll-target="#top-bottom-k">6. Top / Bottom K</a></li>
+  <li><a href="#sample" id="toc-sample" class="nav-link" data-scroll-target="#sample">7. Sample</a></li>
+  <li><a href="#concat-str" id="toc-concat-str" class="nav-link" data-scroll-target="#concat-str">8. Concat str</a></li>
+  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">9. Format</a></li>
+  <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config">10. Config</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ten polars functions that pros use and amateurs don’t</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joram Mutenge </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2025-01-13</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Polars is increasingly becoming a popular data analysis library, and my prediction is that more new data scientists and analysts will be starting with Polars rather than Pandas as their tool of choice for manipulating data. After all, the syntax for Polars is easier to learn and harder to forget. That’s why this tweet couldn’t be more true.</p>
+<p>However, because Polars is new, most of the code out there looks amateurish. Here are 10 functions you should use that will instantly make you look like a pro at Polars.</p>
+<section id="scan-csv" class="level2">
+<h2 class="anchored" data-anchor-id="scan-csv">1. Scan CSV</h2>
+<p>When working with large datasets, loading them can take a long time. This is where <code>scan_csv</code> becomes useful. Instead of fully reading the dataset, <code>scan_csv</code> scans its contents, allowing you to quickly preview the file and select only the columns you need. By loading just a subset of the data, you can significantly reduce the loading time. For example, consider a dataset containing information about counties in the USA. import polars as pl</p>
+<div id="8803899e" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pl.read_csv(counties_in_the_usa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3_143, 7)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">region</th>
+<th data-quarto-table-cell-role="th">population</th>
+<th data-quarto-table-cell-role="th">county.fips.character</th>
+<th data-quarto-table-cell-role="th">county.name</th>
+<th data-quarto-table-cell-role="th">state.name</th>
+<th data-quarto-table-cell-role="th">state.fips.character</th>
+<th data-quarto-table-cell-role="th">state.abb</th>
+</tr>
+<tr class="even">
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+<th>str</th>
+<th>str</th>
+<th>i64</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1001</td>
+<td>54590</td>
+<td>1001</td>
+<td>"autauga"</td>
+<td>"alabama"</td>
+<td>1</td>
+<td>"AL"</td>
+</tr>
+<tr class="even">
+<td>1003</td>
+<td>183226</td>
+<td>1003</td>
+<td>"baldwin"</td>
+<td>"alabama"</td>
+<td>1</td>
+<td>"AL"</td>
+</tr>
+<tr class="odd">
+<td>1005</td>
+<td>27469</td>
+<td>1005</td>
+<td>"barbour"</td>
+<td>"alabama"</td>
+<td>1</td>
+<td>"AL"</td>
+</tr>
+<tr class="even">
+<td>1007</td>
+<td>22769</td>
+<td>1007</td>
+<td>"bibb"</td>
+<td>"alabama"</td>
+<td>1</td>
+<td>"AL"</td>
+</tr>
+<tr class="odd">
+<td>1009</td>
+<td>57466</td>
+<td>1009</td>
+<td>"blount"</td>
+<td>"alabama"</td>
+<td>1</td>
+<td>"AL"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>56037</td>
+<td>43890</td>
+<td>56037</td>
+<td>"sweetwater"</td>
+<td>"wyoming"</td>
+<td>56</td>
+<td>"WY"</td>
+</tr>
+<tr class="even">
+<td>56039</td>
+<td>21326</td>
+<td>56039</td>
+<td>"teton"</td>
+<td>"wyoming"</td>
+<td>56</td>
+<td>"WY"</td>
+</tr>
+<tr class="odd">
+<td>56041</td>
+<td>20942</td>
+<td>56041</td>
+<td>"uinta"</td>
+<td>"wyoming"</td>
+<td>56</td>
+<td>"WY"</td>
+</tr>
+<tr class="even">
+<td>56043</td>
+<td>8425</td>
+<td>56043</td>
+<td>"washakie"</td>
+<td>"wyoming"</td>
+<td>56</td>
+<td>"WY"</td>
+</tr>
+<tr class="odd">
+<td>56045</td>
+<td>7152</td>
+<td>56045</td>
+<td>"weston"</td>
+<td>"wyoming"</td>
+<td>56</td>
+<td>"WY"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Suppose you only want to display the county name and population. Here’s how you can use <code>scan_csv</code> to achieve that:</p>
+<div id="361116e4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(pl.scan_csv(counties_in_the_usa)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'state.name'</span>,<span class="st">'population'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .collect()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3_143, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">state.name</th>
+<th data-quarto-table-cell-role="th">population</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"alabama"</td>
+<td>54590</td>
+</tr>
+<tr class="even">
+<td>"alabama"</td>
+<td>183226</td>
+</tr>
+<tr class="odd">
+<td>"alabama"</td>
+<td>27469</td>
+</tr>
+<tr class="even">
+<td>"alabama"</td>
+<td>22769</td>
+</tr>
+<tr class="odd">
+<td>"alabama"</td>
+<td>57466</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"wyoming"</td>
+<td>43890</td>
+</tr>
+<tr class="even">
+<td>"wyoming"</td>
+<td>21326</td>
+</tr>
+<tr class="odd">
+<td>"wyoming"</td>
+<td>20942</td>
+</tr>
+<tr class="even">
+<td>"wyoming"</td>
+<td>8425</td>
+</tr>
+<tr class="odd">
+<td>"wyoming"</td>
+<td>7152</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Notice that I used <code>collect</code> because <code>scan_csv</code> produces a lazy frame. This means that whenever you use <code>scan_csv</code>, you need to include <code>collect</code> at the end to get your results.</p>
+<p>If you’re skeptical that <code>scan_csv</code> is a better approach, let’s compare the time it takes for <code>scan_csv</code> and <code>read_csv</code> to load the data.</p>
+<div id="37de0178" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pl.read_csv(counties_in_the_usa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>136 ms ± 72.9 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
+</div>
+</div>
+<div id="0bf00e80" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pl.scan_csv(counties_in_the_usa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>6.38 μs ± 31.6 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)</code></pre>
+</div>
+</div>
+<p>I’m sure you believe me now.</p>
+</section>
+<section id="sum-horizontal" class="level2">
+<h2 class="anchored" data-anchor-id="sum-horizontal">2. Sum horizontal</h2>
+<p>Adding values in a single column is easy. All you need is <code>sum</code>. This is called column-wise and dataframes shine at performing column-wise mathematical operations. However, there comes a time when you need to perform row-wise calculations. This is where <code>sum_horizontal</code> comes in. Unfortunately, most Polars users are not aware of this function. Let’s say you had this dataframe for Apple stock data.</p>
+<div id="8e57f6de" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6_953, 7)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Open</th>
+<th data-quarto-table-cell-role="th">High</th>
+<th data-quarto-table-cell-role="th">Low</th>
+<th data-quarto-table-cell-role="th">Close</th>
+<th data-quarto-table-cell-role="th">Volume</th>
+<th data-quarto-table-cell-role="th">Adj Close</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>i64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2012-03-30</td>
+<td>608.77</td>
+<td>610.56</td>
+<td>597.94</td>
+<td>599.55</td>
+<td>26050900</td>
+<td>599.55</td>
+</tr>
+<tr class="even">
+<td>2012-03-29</td>
+<td>612.78</td>
+<td>616.56</td>
+<td>607.23</td>
+<td>609.86</td>
+<td>21668300</td>
+<td>609.86</td>
+</tr>
+<tr class="odd">
+<td>2012-03-28</td>
+<td>618.38</td>
+<td>621.45</td>
+<td>610.31</td>
+<td>617.62</td>
+<td>23385200</td>
+<td>617.62</td>
+</tr>
+<tr class="even">
+<td>2012-03-27</td>
+<td>606.18</td>
+<td>616.28</td>
+<td>606.06</td>
+<td>614.48</td>
+<td>21628200</td>
+<td>614.48</td>
+</tr>
+<tr class="odd">
+<td>2012-03-26</td>
+<td>599.79</td>
+<td>607.15</td>
+<td>595.26</td>
+<td>606.98</td>
+<td>21259900</td>
+<td>606.98</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>1984-09-13</td>
+<td>27.5</td>
+<td>27.62</td>
+<td>27.5</td>
+<td>27.5</td>
+<td>7429600</td>
+<td>3.14</td>
+</tr>
+<tr class="even">
+<td>1984-09-12</td>
+<td>26.87</td>
+<td>27.0</td>
+<td>26.12</td>
+<td>26.12</td>
+<td>4773600</td>
+<td>2.98</td>
+</tr>
+<tr class="odd">
+<td>1984-09-11</td>
+<td>26.62</td>
+<td>27.37</td>
+<td>26.62</td>
+<td>26.87</td>
+<td>5444000</td>
+<td>3.07</td>
+</tr>
+<tr class="even">
+<td>1984-09-10</td>
+<td>26.5</td>
+<td>26.62</td>
+<td>25.87</td>
+<td>26.37</td>
+<td>2346400</td>
+<td>3.01</td>
+</tr>
+<tr class="odd">
+<td>1984-09-07</td>
+<td>26.5</td>
+<td>26.87</td>
+<td>26.25</td>
+<td>26.5</td>
+<td>2981600</td>
+<td>3.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Lets also say that you wanted to create a new column called <em>sum_OHLC</em> adds the values in every row for <em>Open</em>, <em>High</em>, <em>Low</em>, <em>Close</em> columns. Most amateur Polars users would write the following code:</p>
+<div id="7c418f66" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> .with_columns(sum_OHLC<span class="op">=</span>pl.col(<span class="st">'Open'</span>) <span class="op">+</span> pl.col(<span class="st">'High'</span>) <span class="op">+</span> pl.col(<span class="st">'Low'</span>) <span class="op">+</span> pl.col(<span class="st">'Close'</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The way to write the above code like a pro is using <code>sum_horizontal</code> like this:</p>
+<div id="8ed76032" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a> .with_columns(sum_OHLC<span class="op">=</span>pl.sum_horizontal(<span class="st">'Open'</span>, <span class="st">'High'</span>, <span class="st">'Low'</span>, <span class="st">'Close'</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6_953, 8)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Open</th>
+<th data-quarto-table-cell-role="th">High</th>
+<th data-quarto-table-cell-role="th">Low</th>
+<th data-quarto-table-cell-role="th">Close</th>
+<th data-quarto-table-cell-role="th">Volume</th>
+<th data-quarto-table-cell-role="th">Adj Close</th>
+<th data-quarto-table-cell-role="th">sum_OHLC</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>i64</th>
+<th>f64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2012-03-30</td>
+<td>608.77</td>
+<td>610.56</td>
+<td>597.94</td>
+<td>599.55</td>
+<td>26050900</td>
+<td>599.55</td>
+<td>2416.82</td>
+</tr>
+<tr class="even">
+<td>2012-03-29</td>
+<td>612.78</td>
+<td>616.56</td>
+<td>607.23</td>
+<td>609.86</td>
+<td>21668300</td>
+<td>609.86</td>
+<td>2446.43</td>
+</tr>
+<tr class="odd">
+<td>2012-03-28</td>
+<td>618.38</td>
+<td>621.45</td>
+<td>610.31</td>
+<td>617.62</td>
+<td>23385200</td>
+<td>617.62</td>
+<td>2467.76</td>
+</tr>
+<tr class="even">
+<td>2012-03-27</td>
+<td>606.18</td>
+<td>616.28</td>
+<td>606.06</td>
+<td>614.48</td>
+<td>21628200</td>
+<td>614.48</td>
+<td>2443.0</td>
+</tr>
+<tr class="odd">
+<td>2012-03-26</td>
+<td>599.79</td>
+<td>607.15</td>
+<td>595.26</td>
+<td>606.98</td>
+<td>21259900</td>
+<td>606.98</td>
+<td>2409.18</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>1984-09-13</td>
+<td>27.5</td>
+<td>27.62</td>
+<td>27.5</td>
+<td>27.5</td>
+<td>7429600</td>
+<td>3.14</td>
+<td>110.12</td>
+</tr>
+<tr class="even">
+<td>1984-09-12</td>
+<td>26.87</td>
+<td>27.0</td>
+<td>26.12</td>
+<td>26.12</td>
+<td>4773600</td>
+<td>2.98</td>
+<td>106.11</td>
+</tr>
+<tr class="odd">
+<td>1984-09-11</td>
+<td>26.62</td>
+<td>27.37</td>
+<td>26.62</td>
+<td>26.87</td>
+<td>5444000</td>
+<td>3.07</td>
+<td>107.48</td>
+</tr>
+<tr class="even">
+<td>1984-09-10</td>
+<td>26.5</td>
+<td>26.62</td>
+<td>25.87</td>
+<td>26.37</td>
+<td>2346400</td>
+<td>3.01</td>
+<td>105.36</td>
+</tr>
+<tr class="odd">
+<td>1984-09-07</td>
+<td>26.5</td>
+<td>26.87</td>
+<td>26.25</td>
+<td>26.5</td>
+<td>2981600</td>
+<td>3.02</td>
+<td>106.12</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>You not only write shorter code with <code>sum_horizontal</code> but you can also use other variations of it like <code>mean_horizontal</code> to get the average values of the four numbers and <code>min_horizontal</code> to get the smallest number.</p>
+</section>
+<section id="group-by-dynamic" class="level2">
+<h2 class="anchored" data-anchor-id="group-by-dynamic">3. Group by dynamic</h2>
+<p>When working with timeseries data, you may need to resample it based on specific time intervals and perform aggregations. Polars provides a convenient function, <code>group_by_dynamic</code>, to handle such tasks efficiently. For example, if you want to calculate the average <em>Close</em> values for Apple stock for each quarter, you can do it as follows:</p>
+<div id="043c0f39" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Date'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> .group_by_dynamic(<span class="st">'Date'</span>, every<span class="op">=</span><span class="st">'1q'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a> .agg(pl.mean(<span class="st">'Close'</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (111, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Close</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1984-07-01</td>
+<td>26.73875</td>
+</tr>
+<tr class="even">
+<td>1984-10-01</td>
+<td>25.288594</td>
+</tr>
+<tr class="odd">
+<td>1985-01-01</td>
+<td>26.690968</td>
+</tr>
+<tr class="even">
+<td>1985-04-01</td>
+<td>19.212063</td>
+</tr>
+<tr class="odd">
+<td>1985-07-01</td>
+<td>16.015937</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2011-01-01</td>
+<td>345.683226</td>
+</tr>
+<tr class="even">
+<td>2011-04-01</td>
+<td>337.612381</td>
+</tr>
+<tr class="odd">
+<td>2011-07-01</td>
+<td>380.510312</td>
+</tr>
+<tr class="even">
+<td>2011-10-01</td>
+<td>391.658571</td>
+</tr>
+<tr class="odd">
+<td>2012-01-01</td>
+<td>503.679839</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before using <code>group_by_dynamic</code> you must sort the the data on the <em>Date</em> column.<br>
+Even though my data was already sorted, I still used <code>sort</code> to make that explicit.</p>
+</div>
+</div>
+<p>The beauty of <code>group_by_dynamic</code> is that it can handle highly granular time intervals. Using the <code>every</code> parameter, you can specify intervals such as <code>"17d"</code> to resample every 17 days, <code>"2w"</code> for 2 weeks, or even <code>"3s"</code> for 3-second intervals if your date values include seconds.</p>
+</section>
+<section id="exclude" class="level2">
+<h2 class="anchored" data-anchor-id="exclude">4. Exclude</h2>
+<p>In most cases, you won’t want to display all the columns in your final dataframe—just the ones you’re interested in. To achieve this, you need to remove the unnecessary columns. Many beginners might choose to drop the columns they don’t need, but I strongly recommend using <code>exclude</code> instead.</p>
+<p>What’s the difference between excluding columns and dropping them? Dropping a column requires loading it into memory first, which can be time-consuming, especially with large datasets. On the other hand, excluding a column tells Polars’ query engine to skip loading it entirely. This approach is much faster, as Polars only loads the columns you actually need.</p>
+<p>Here’s how you can use <code>exclude</code>. Suppose you don’t want to load the <em>Volume</em> and <em>Adj Close</em> columns from the Apple stock dataset. One option is to explicitly select the columns you want to keep, but that would require typing out the names of all five desired columns. Instead, you can use <code>exclude</code> to specify just the two columns you don’t want displayed, saving both time and effort.</p>
+<div id="2151da3a" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6_953, 5)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Open</th>
+<th data-quarto-table-cell-role="th">High</th>
+<th data-quarto-table-cell-role="th">Low</th>
+<th data-quarto-table-cell-role="th">Close</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+<th>f64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"2012-03-30"</td>
+<td>608.77</td>
+<td>610.56</td>
+<td>597.94</td>
+<td>599.55</td>
+</tr>
+<tr class="even">
+<td>"2012-03-29"</td>
+<td>612.78</td>
+<td>616.56</td>
+<td>607.23</td>
+<td>609.86</td>
+</tr>
+<tr class="odd">
+<td>"2012-03-28"</td>
+<td>618.38</td>
+<td>621.45</td>
+<td>610.31</td>
+<td>617.62</td>
+</tr>
+<tr class="even">
+<td>"2012-03-27"</td>
+<td>606.18</td>
+<td>616.28</td>
+<td>606.06</td>
+<td>614.48</td>
+</tr>
+<tr class="odd">
+<td>"2012-03-26"</td>
+<td>599.79</td>
+<td>607.15</td>
+<td>595.26</td>
+<td>606.98</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"1984-09-13"</td>
+<td>27.5</td>
+<td>27.62</td>
+<td>27.5</td>
+<td>27.5</td>
+</tr>
+<tr class="even">
+<td>"1984-09-12"</td>
+<td>26.87</td>
+<td>27.0</td>
+<td>26.12</td>
+<td>26.12</td>
+</tr>
+<tr class="odd">
+<td>"1984-09-11"</td>
+<td>26.62</td>
+<td>27.37</td>
+<td>26.62</td>
+<td>26.87</td>
+</tr>
+<tr class="even">
+<td>"1984-09-10"</td>
+<td>26.5</td>
+<td>26.62</td>
+<td>25.87</td>
+<td>26.37</td>
+</tr>
+<tr class="odd">
+<td>"1984-09-07"</td>
+<td>26.5</td>
+<td>26.87</td>
+<td>26.25</td>
+<td>26.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Now I’ve loaded into memory only the columns I’m interested in.</p>
+</section>
+<section id="explode" class="level2">
+<h2 class="anchored" data-anchor-id="explode">5. Explode</h2>
+<p>Imagine you have a dataframe that tracks your weekly grocery purchases, with items listed as comma-separated strings in a single row. If you want to identify the items you buy most frequently, this format poses a challenge. Since Polars is a columnar-based framework, working with such data in its current form can make achieving this goal a bit tricky.</p>
+<div id="8eb03a5f" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groceries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Groceries</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-02</td>
+<td>"Milk, Eggs, Corn Flakes, Bacon…</td>
+</tr>
+<tr class="even">
+<td>2024-12-09</td>
+<td>"Bread, Butter, Apples, Oranges…</td>
+</tr>
+<tr class="odd">
+<td>2024-12-16</td>
+<td>"Rice, Beans, Chicken, Shampoo,…</td>
+</tr>
+<tr class="even">
+<td>2024-12-23</td>
+<td>"Milk, Eggs, Bananas, Yogurt, S…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>This is where <code>explode</code> comes in. We’ll create a new column <em>Item</em> that will contain a single item as a value for each row. Here’s how it works. First we split the data on <code>", "</code> (comma and space) to convert the string value in <em>Groceries</em> into a list.</p>
+<div id="97ec8891" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(groceries</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Groceries'</span>).<span class="bu">str</span>.split(<span class="st">', '</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Groceries</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>list[str]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-02</td>
+<td>["Milk", "Eggs", … "Bread"]</td>
+</tr>
+<tr class="even">
+<td>2024-12-09</td>
+<td>["Bread", "Butter", … "Bacon"]</td>
+</tr>
+<tr class="odd">
+<td>2024-12-16</td>
+<td>["Rice", "Beans", … "Bacon"]</td>
+</tr>
+<tr class="even">
+<td>2024-12-23</td>
+<td>["Milk", "Eggs", … "Bread"]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Then we’ll explode the items in each list into individual items by exploding the <em>Groceries</em> column.</p>
+<p>This new format makes it easier to determine the most bought items by counting how many times each item appears in <em>Groceries</em>.</p>
+<div id="9ffd0fdf" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(groceries</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Groceries'</span>).<span class="bu">str</span>.split(<span class="st">', '</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> .explode(<span class="st">'Groceries'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (27, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Groceries</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-02</td>
+<td>"Milk"</td>
+</tr>
+<tr class="even">
+<td>2024-12-02</td>
+<td>"Eggs"</td>
+</tr>
+<tr class="odd">
+<td>2024-12-02</td>
+<td>"Corn Flakes"</td>
+</tr>
+<tr class="even">
+<td>2024-12-02</td>
+<td>"Bacon"</td>
+</tr>
+<tr class="odd">
+<td>2024-12-02</td>
+<td>"Toothpaste"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2024-12-23</td>
+<td>"Yogurt"</td>
+</tr>
+<tr class="even">
+<td>2024-12-23</td>
+<td>"Soap"</td>
+</tr>
+<tr class="odd">
+<td>2024-12-23</td>
+<td>"Bacon"</td>
+</tr>
+<tr class="even">
+<td>2024-12-23</td>
+<td>"Apples"</td>
+</tr>
+<tr class="odd">
+<td>2024-12-23</td>
+<td>"Bread"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="top-bottom-k" class="level2">
+<h2 class="anchored" data-anchor-id="top-bottom-k">6. Top / Bottom K</h2>
+<p>Knowing the top 10 or 5 highest values or lowest values in your dataset is a very common operation. Polars has two handy functions that you can use to easily display that with <code>top_k</code> and <code>bottom_k</code>. If you wanted to see the top 5 counties in the USA with the highest population, you can use <code>top_k</code> see those counties.</p>
+<div id="ce6d41c0" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'county.name'</span>,<span class="st">'population'</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> .top_k(<span class="dv">5</span>, by<span class="op">=</span><span class="st">'population'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">county.name</th>
+<th data-quarto-table-cell-role="th">population</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"los angeles"</td>
+<td>9840024</td>
+</tr>
+<tr class="even">
+<td>"cook"</td>
+<td>5197677</td>
+</tr>
+<tr class="odd">
+<td>"harris"</td>
+<td>4101752</td>
+</tr>
+<tr class="even">
+<td>"maricopa"</td>
+<td>3841819</td>
+</tr>
+<tr class="odd">
+<td>"san diego"</td>
+<td>3100500</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>The <code>top_k</code> function accepts two parameters: a numerical value specifying the number of rows to display and the column to base the sorting on. For instance, in the example above, we used it to find the top 5 largest counties by population. To find the smallest counties by population, you can simply use the <code>bottom_k</code> function instead.</p>
+</section>
+<section id="sample" class="level2">
+<h2 class="anchored" data-anchor-id="sample">7. Sample</h2>
+<p>We live in a world of big data and analyzing large datasets can be time-consuming. A smarter approach is to work with a subset of the data, develop and refine your analysis code through experimentation, and then apply the finalized code to the full dataset. But how can you ensure that the subset you choose represents the entire dataset well? This is where the <code>sample</code> function comes in. It allows you to randomly select a specified number of rows. Additionally, these selected rows change with each execution, ensuring a different selection every time you run the code.</p>
+<p>The US counties dataset contains over three thousand rows, but we’re going to use <code>sample</code> to only select a thousand rows.</p>
+<div id="80a34126" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">1000</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (1_000, 7)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">region</th>
+<th data-quarto-table-cell-role="th">population</th>
+<th data-quarto-table-cell-role="th">county.fips.character</th>
+<th data-quarto-table-cell-role="th">county.name</th>
+<th data-quarto-table-cell-role="th">state.name</th>
+<th data-quarto-table-cell-role="th">state.fips.character</th>
+<th data-quarto-table-cell-role="th">state.abb</th>
+</tr>
+<tr class="even">
+<th>i64</th>
+<th>i64</th>
+<th>i64</th>
+<th>str</th>
+<th>str</th>
+<th>i64</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>13001</td>
+<td>18279</td>
+<td>13001</td>
+<td>"appling"</td>
+<td>"georgia"</td>
+<td>13</td>
+<td>"GA"</td>
+</tr>
+<tr class="even">
+<td>42091</td>
+<td>799886</td>
+<td>42091</td>
+<td>"montgomery"</td>
+<td>"pennsylvania"</td>
+<td>42</td>
+<td>"PA"</td>
+</tr>
+<tr class="odd">
+<td>27125</td>
+<td>4100</td>
+<td>27125</td>
+<td>"red lake"</td>
+<td>"minnesota"</td>
+<td>27</td>
+<td>"MN"</td>
+</tr>
+<tr class="even">
+<td>21237</td>
+<td>7298</td>
+<td>21237</td>
+<td>"wolfe"</td>
+<td>"kentucky"</td>
+<td>21</td>
+<td>"KY"</td>
+</tr>
+<tr class="odd">
+<td>29201</td>
+<td>39192</td>
+<td>29201</td>
+<td>"scott"</td>
+<td>"missouri"</td>
+<td>29</td>
+<td>"MO"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>21135</td>
+<td>13889</td>
+<td>21135</td>
+<td>"lewis"</td>
+<td>"kentucky"</td>
+<td>21</td>
+<td>"KY"</td>
+</tr>
+<tr class="even">
+<td>18023</td>
+<td>33179</td>
+<td>18023</td>
+<td>"clinton"</td>
+<td>"indiana"</td>
+<td>18</td>
+<td>"IN"</td>
+</tr>
+<tr class="odd">
+<td>51181</td>
+<td>6988</td>
+<td>51181</td>
+<td>"surry"</td>
+<td>"virginia"</td>
+<td>51</td>
+<td>"VA"</td>
+</tr>
+<tr class="even">
+<td>6039</td>
+<td>150615</td>
+<td>6039</td>
+<td>"madera"</td>
+<td>"california"</td>
+<td>6</td>
+<td>"CA"</td>
+</tr>
+<tr class="odd">
+<td>29186</td>
+<td>18066</td>
+<td>29186</td>
+<td>"ste. genevieve"</td>
+<td>"missouri"</td>
+<td>29</td>
+<td>"MO"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>The <code>sample</code> function lets you specify the number of rows you want to display as a numerical value. In our case, we are displaying 1000 rows.</p>
+</section>
+<section id="concat-str" class="level2">
+<h2 class="anchored" data-anchor-id="concat-str">8. Concat str</h2>
+<p>This is short for “concatenate string” and it allows you to create a single value which is a mixture of values from 2 or more columns that contain string values. Suppose we wanted to have a column <em>NameAbbr</em> that contains the state name and the abbreviation for that state, we can do it by using <code>concat_str</code>.</p>
+<div id="a8b2408a" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'state.name'</span>,<span class="st">'state.abb'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.concat_str([<span class="st">'state.name'</span>,<span class="st">'state.abb'</span>],</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                             separator<span class="op">=</span><span class="st">', '</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                             ).alias(<span class="st">'NameAbbr'</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3_143, 3)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">state.name</th>
+<th data-quarto-table-cell-role="th">state.abb</th>
+<th data-quarto-table-cell-role="th">NameAbbr</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>str</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"alabama"</td>
+<td>"AL"</td>
+<td>"alabama, AL"</td>
+</tr>
+<tr class="even">
+<td>"alabama"</td>
+<td>"AL"</td>
+<td>"alabama, AL"</td>
+</tr>
+<tr class="odd">
+<td>"alabama"</td>
+<td>"AL"</td>
+<td>"alabama, AL"</td>
+</tr>
+<tr class="even">
+<td>"alabama"</td>
+<td>"AL"</td>
+<td>"alabama, AL"</td>
+</tr>
+<tr class="odd">
+<td>"alabama"</td>
+<td>"AL"</td>
+<td>"alabama, AL"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"wyoming"</td>
+<td>"WY"</td>
+<td>"wyoming, WY"</td>
+</tr>
+<tr class="even">
+<td>"wyoming"</td>
+<td>"WY"</td>
+<td>"wyoming, WY"</td>
+</tr>
+<tr class="odd">
+<td>"wyoming"</td>
+<td>"WY"</td>
+<td>"wyoming, WY"</td>
+</tr>
+<tr class="even">
+<td>"wyoming"</td>
+<td>"WY"</td>
+<td>"wyoming, WY"</td>
+</tr>
+<tr class="odd">
+<td>"wyoming"</td>
+<td>"WY"</td>
+<td>"wyoming, WY"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>In the <code>concat_str</code> function above, we used two parameters. The first parameter is a list of the columns whose values we want to concatenate, and the second specifies the separator to use when joining those values. In this case, we used <code>", "</code> (a comma followed by a space) to produce values like “wyoming, WY”.</p>
+</section>
+<section id="format" class="level2">
+<h2 class="anchored" data-anchor-id="format">9. Format</h2>
+<p>When presenting data to someone, especially in printed form, you may want to add extra details to make the numbers more understandable. For instance, if you’re sending the quarterly average Close values you calculated earlier to your boss in the UK and want to add a currency symbol to avoid confusion, you could use <code>format</code> to include the dollar symbol. This way, your boss will always know that your analysis was done in dollars.</p>
+<div id="8a1093e1" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Date'</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> .group_by_dynamic(<span class="st">'Date'</span>, every<span class="op">=</span><span class="st">'1q'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a> .agg(pl.mean(<span class="st">'Close'</span>).<span class="bu">round</span>(<span class="dv">2</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.<span class="bu">format</span>(<span class="st">"$</span><span class="sc">{}</span><span class="st">"</span>, pl.col(<span class="st">'Close'</span>)).alias(<span class="st">'Close'</span>))</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (111, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Close</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1984-07-01</td>
+<td>"$26.74"</td>
+</tr>
+<tr class="even">
+<td>1984-10-01</td>
+<td>"$25.29"</td>
+</tr>
+<tr class="odd">
+<td>1985-01-01</td>
+<td>"$26.69"</td>
+</tr>
+<tr class="even">
+<td>1985-04-01</td>
+<td>"$19.21"</td>
+</tr>
+<tr class="odd">
+<td>1985-07-01</td>
+<td>"$16.02"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2011-01-01</td>
+<td>"$345.68"</td>
+</tr>
+<tr class="even">
+<td>2011-04-01</td>
+<td>"$337.61"</td>
+</tr>
+<tr class="odd">
+<td>2011-07-01</td>
+<td>"$380.51"</td>
+</tr>
+<tr class="even">
+<td>2011-10-01</td>
+<td>"$391.66"</td>
+</tr>
+<tr class="odd">
+<td>2012-01-01</td>
+<td>"$503.68"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I’ve used <code>round</code> before applying the currency formatting to ensure the figures are rounded to 2 decimal places.</p>
+</div>
+</div>
+</section>
+<section id="config" class="level2">
+<h2 class="anchored" data-anchor-id="config">10. Config</h2>
+<p>The default way of displaying polars dataframes is good, but sometimes you may want to change it up a bit like increase the number of rows displayed or increasing the size of a row to see all the values in that row. The function <code>Config</code> allows you to do just that. Below is the dataframe of groceries. Currently we cannot see all the values contained in each row as indicated by the ellipsis (…).</p>
+<div id="e60d58ba" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>groceries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Groceries</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-02</td>
+<td>"Milk, Eggs, Corn Flakes, Bacon…</td>
+</tr>
+<tr class="even">
+<td>2024-12-09</td>
+<td>"Bread, Butter, Apples, Oranges…</td>
+</tr>
+<tr class="odd">
+<td>2024-12-16</td>
+<td>"Rice, Beans, Chicken, Shampoo,…</td>
+</tr>
+<tr class="even">
+<td>2024-12-23</td>
+<td>"Milk, Eggs, Bananas, Yogurt, S…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Now Let’s use <code>Config</code> to increase the size of <em>Groceries</em>.</p>
+<div id="34bbd7fd" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pl.Config(set_fmt_str_lengths<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>groceries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Groceries</th>
+</tr>
+<tr class="even">
+<th>date</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2024-12-02</td>
+<td>"Milk, Eggs, Corn Flakes, Bacon, Toothpaste, Bread"</td>
+</tr>
+<tr class="even">
+<td>2024-12-09</td>
+<td>"Bread, Butter, Apples, Oranges, Cheese, Bacon"</td>
+</tr>
+<tr class="odd">
+<td>2024-12-16</td>
+<td>"Rice, Beans, Chicken, Shampoo, Coffee, Eggs, Bacon"</td>
+</tr>
+<tr class="even">
+<td>2024-12-23</td>
+<td>"Milk, Eggs, Bananas, Yogurt, Soap, Bacon, Apples, Bread"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>The example above demonstrates a global setting, meaning that the next time a dataframe is displayed, it will apply this size to any column whose values don’t fit within the default size. This can be frustrating, especially when working with multiple dataframes. To avoid this, you can apply the <code>Config</code> setting to display only one dataframe with the desired settings.</p>
+<p>Let’s display a dataframe showing the county name and population. I’ll remove the data types from the columns and add commas as thousand separators to make the population figures easier to read. Additionally, I’ll increase the number of rows displayed to 20. Here’s how the dataframe initially looks.</p>
+<div id="d020e866" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>usa_counties <span class="op">=</span> (pl.read_csv(counties_in_the_usa)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'county.name'</span>,<span class="st">'population'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>usa_counties</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3_143, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">county.name</th>
+<th data-quarto-table-cell-role="th">population</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>i64</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"autauga"</td>
+<td>54590</td>
+</tr>
+<tr class="even">
+<td>"baldwin"</td>
+<td>183226</td>
+</tr>
+<tr class="odd">
+<td>"barbour"</td>
+<td>27469</td>
+</tr>
+<tr class="even">
+<td>"bibb"</td>
+<td>22769</td>
+</tr>
+<tr class="odd">
+<td>"blount"</td>
+<td>57466</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"sweetwater"</td>
+<td>43890</td>
+</tr>
+<tr class="even">
+<td>"teton"</td>
+<td>21326</td>
+</tr>
+<tr class="odd">
+<td>"uinta"</td>
+<td>20942</td>
+</tr>
+<tr class="even">
+<td>"washakie"</td>
+<td>8425</td>
+</tr>
+<tr class="odd">
+<td>"weston"</td>
+<td>7152</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>And here’s the display with the formatting in place.</p>
+<div id="3882b51f" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pl.Config(set_tbl_rows<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>               set_tbl_hide_column_data_types<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>               set_thousands_separator<span class="op">=</span><span class="va">True</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>               ):</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    display(usa_counties)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3_143, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">county.name</th>
+<th data-quarto-table-cell-role="th">population</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"autauga"</td>
+<td>54,590</td>
+</tr>
+<tr class="even">
+<td>"baldwin"</td>
+<td>183,226</td>
+</tr>
+<tr class="odd">
+<td>"barbour"</td>
+<td>27,469</td>
+</tr>
+<tr class="even">
+<td>"bibb"</td>
+<td>22,769</td>
+</tr>
+<tr class="odd">
+<td>"blount"</td>
+<td>57,466</td>
+</tr>
+<tr class="even">
+<td>"bullock"</td>
+<td>10,779</td>
+</tr>
+<tr class="odd">
+<td>"butler"</td>
+<td>20,730</td>
+</tr>
+<tr class="even">
+<td>"calhoun"</td>
+<td>117,834</td>
+</tr>
+<tr class="odd">
+<td>"chambers"</td>
+<td>34,228</td>
+</tr>
+<tr class="even">
+<td>"cherokee"</td>
+<td>25,917</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td>"niobrara"</td>
+<td>2,478</td>
+</tr>
+<tr class="odd">
+<td>"park"</td>
+<td>28,203</td>
+</tr>
+<tr class="even">
+<td>"platte"</td>
+<td>8,677</td>
+</tr>
+<tr class="odd">
+<td>"sheridan"</td>
+<td>29,097</td>
+</tr>
+<tr class="even">
+<td>"sublette"</td>
+<td>10,065</td>
+</tr>
+<tr class="odd">
+<td>"sweetwater"</td>
+<td>43,890</td>
+</tr>
+<tr class="even">
+<td>"teton"</td>
+<td>21,326</td>
+</tr>
+<tr class="odd">
+<td>"uinta"</td>
+<td>20,942</td>
+</tr>
+<tr class="even">
+<td>"washakie"</td>
+<td>8,425</td>
+</tr>
+<tr class="odd">
+<td>"weston"</td>
+<td>7,152</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The settings applied by <code>Config</code> are only for display purposes. When you export the data to Excel or another format, these configurations, such as comma separators in numbers, will be lost.</p>
+</div>
+</div>
+<p>Check out this <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to learn this powerful Python library for data analysis.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.conterval\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2025 Conterval · <a href="mailto:contact@conterval.com">Contact</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

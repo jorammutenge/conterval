@@ -1,7 +1,7 @@
 ---
 title: 'Tranforming timeseries data with group by and group by dynamic in polars'
 author: '{{< var author >}}'
-date: '2025-02-03'
+date: '2025-01-06'
 date-format: iso
 toc: true
 toc-title: 'Sections'

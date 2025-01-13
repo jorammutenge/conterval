@@ -1,0 +1,275 @@
+---
+title: "Ten polars functions that pros use and amateurs don't"
+author: '{{< var author >}}'
+date: '2025-01-13'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: left
+toc-depth: 2
+---
+
+Polars is increasingly becoming a popular data analysis library, and my prediction is that more new data scientists and analysts will be starting with Polars rather than Pandas as their tool of choice for manipulating data. After all, the syntax for Polars is easier to learn and harder to forget. That's why this tweet couldn't be more true.
+
+However, because Polars is new, most of the code out there looks amateurish. Here are 10 functions you should use that will instantly make you look like a pro at Polars.
+
+## 1. Scan CSV
+
+When working with large datasets, loading them can take a long time. This is where `scan_csv` becomes useful. Instead of fully reading the dataset, `scan_csv` scans its contents, allowing you to quickly preview the file and select only the columns you need. By loading just a subset of the data, you can significantly reduce the loading time. For example, consider a dataset containing information about counties in the USA.
+import polars as pl
+
+```{python}
+#| echo: false
+import polars as pl
+
+counties_in_the_usa = 'https://raw.githubusercontent.com/arilamstein/polars-pandas/refs/heads/main/county_data.csv'
+```
+
+```{python}
+pl.read_csv(counties_in_the_usa)
+```
+<br>
+
+Suppose you only want to display the county name and population. Here's how you can use `scan_csv` to achieve that:
+
+```{python}
+(pl.scan_csv(counties_in_the_usa)
+ .select('state.name','population')
+ .collect()
+ )
+```
+<br>
+
+Notice that I used `collect` because `scan_csv` produces a lazy frame. This means that whenever you use `scan_csv`, you need to include `collect` at the end to get your results.
+
+If you're skeptical that `scan_csv` is a better approach, let's compare the time it takes for `scan_csv` and `read_csv` to load the data.
+
+```{python}
+%%timeit
+pl.read_csv(counties_in_the_usa)
+
+```
+
+```{python}
+%%timeit
+pl.scan_csv(counties_in_the_usa)
+```
+
+I'm sure you believe me now.
+
+## 2. Sum horizontal
+Adding values in a single column is easy. All you need is `sum`. This is called column-wise and dataframes shine at performing column-wise mathematical operations. However, there comes a time when you need to perform row-wise calculations. This is where `sum_horizontal` comes in. Unfortunately, most Polars users are not aware of this function. Let's say you had this dataframe for Apple stock data.
+
+```{python}
+#| echo: false
+apple_stock = pl.read_csv('https://raw.githubusercontent.com/kyleconroy/apple-stock/refs/heads/master/apple_stock_data.csv', try_parse_dates=True)
+apple_stock
+```
+<br>
+
+Lets also say that you wanted to create a new column called *sum_OHLC* adds the values in every row for _Open_, _High_, _Low_, _Close_ columns. Most amateur Polars users would write the following code:
+
+```{python}
+#| eval: false
+(apple_stock
+ .with_columns(sum_OHLC=pl.col('Open') + pl.col('High') + pl.col('Low') + pl.col('Close'))
+ )
+```
+
+The way to write the above code like a pro is using `sum_horizontal` like this:
+
+```{python}
+(apple_stock
+ .with_columns(sum_OHLC=pl.sum_horizontal('Open', 'High', 'Low', 'Close'))
+ )
+```
+<br>
+
+You not only write shorter code with `sum_horizontal` but you can also use other variations of it like `mean_horizontal` to get the average values of the four numbers and `min_horizontal` to get the smallest number.
+
+## 3. Group by dynamic
+
+When working with timeseries data, you may need to resample it based on specific time intervals and perform aggregations. Polars provides a convenient function, `group_by_dynamic`, to handle such tasks efficiently. For example, if you want to calculate the average _Close_ values for Apple stock for each quarter, you can do it as follows:
+
+```{python}
+(apple_stock
+ .sort('Date')
+ .group_by_dynamic('Date', every='1q')
+ .agg(pl.mean('Close'))
+ )
+```
+<br>
+
+::: {.callout-note}
+Before using `group_by_dynamic` you must sort the the data on the _Date_ column.  
+Even though my data was already sorted, I still used `sort` to make that explicit.
+:::
+
+The beauty of `group_by_dynamic` is that it can handle highly granular time intervals. Using the `every` parameter, you can specify intervals such as `"17d"` to resample every 17 days, `"2w"` for 2 weeks, or even `"3s"` for 3-second intervals if your date values include seconds.
+
+## 4. Exclude
+
+In most cases, you won’t want to display all the columns in your final dataframe—just the ones you’re interested in. To achieve this, you need to remove the unnecessary columns. Many beginners might choose to drop the columns they don’t need, but I strongly recommend using `exclude` instead. 
+
+What’s the difference between excluding columns and dropping them? Dropping a column requires loading it into memory first, which can be time-consuming, especially with large datasets. On the other hand, excluding a column tells Polars' query engine to skip loading it entirely. This approach is much faster, as Polars only loads the columns you actually need.
+
+Here’s how you can use `exclude`. Suppose you don’t want to load the *Volume* and *Adj Close* columns from the Apple stock dataset. One option is to explicitly select the columns you want to keep, but that would require typing out the names of all five desired columns. Instead, you can use `exclude` to specify just the two columns you don’t want displayed, saving both time and effort.
+
+```{python}
+#| echo: false
+apple_stock_dataset = 'https://raw.githubusercontent.com/kyleconroy/apple-stock/refs/heads/master/apple_stock_data.csv'
+(pl.scan_csv(apple_stock_dataset)
+ .select(pl.exclude('Volume','Adj Close'))
+ .collect()
+ )
+```
+<br>
+
+Now I've loaded into memory only the columns I'm interested in.
+
+## 5. Explode
+Imagine you have a dataframe that tracks your weekly grocery purchases, with items listed as comma-separated strings in a single row. If you want to identify the items you buy most frequently, this format poses a challenge. Since Polars is a columnar-based framework, working with such data in its current form can make achieving this goal a bit tricky.
+
+```{python}
+#| echo: false
+groceries = pl.DataFrame({
+    "Date": ["12/2/2024", "12/9/2024", "12/16/2024", "12/23/2024"],
+    "Groceries": [
+        "Milk, Eggs, Corn Flakes, Bacon, Toothpaste, Bread",
+        "Bread, Butter, Apples, Oranges, Cheese, Bacon",
+        "Rice, Beans, Chicken, Shampoo, Coffee, Eggs, Bacon",
+        "Milk, Eggs, Bananas, Yogurt, Soap, Bacon, Apples, Bread"
+    ]
+}).with_columns(pl.col('Date').str.strptime(pl.Date, "%m/%d/%Y"))
+```
+
+```{python}
+groceries
+```
+
+This is where `explode` comes in. We'll create a new column _Item_ that will contain a single item as a value for each row. Here's how it works. First we split the data on `", "` (comma and space) to convert the string value in _Groceries_ into a list.
+
+```{python}
+(groceries
+ .with_columns(pl.col('Groceries').str.split(', '))
+ )
+```
+<br>
+
+Then we'll explode the items in each list into individual items by exploding the _Groceries_ column.
+
+This new format makes it easier to determine the most bought items by counting how many times each item appears in _Groceries_.
+
+```{python}
+(groceries
+ .with_columns(pl.col('Groceries').str.split(', '))
+ .explode('Groceries')
+ )
+```
+
+## 6. Top / Bottom K
+
+Knowing the top 10 or 5 highest values or lowest values in your dataset is a very common operation. Polars has two handy functions that you can use to easily display that with `top_k` and `bottom_k`. If you wanted to see the top 5 counties in the USA with the highest population, you can use `top_k` see those counties.
+
+```{python}
+(pl.read_csv(counties_in_the_usa)
+ .select('county.name','population')
+ .top_k(5, by='population')
+ )
+```
+<br>
+
+The `top_k` function accepts two parameters: a numerical value specifying the number of rows to display and the column to base the sorting on. For instance, in the example above, we used it to find the top 5 largest counties by population. To find the smallest counties by population, you can simply use the `bottom_k` function instead.
+
+## 7. Sample
+
+We live in a world of big data and analyzing large datasets can be time-consuming. A smarter approach is to work with a subset of the data, develop and refine your analysis code through experimentation, and then apply the finalized code to the full dataset. But how can you ensure that the subset you choose represents the entire dataset well? This is where the `sample` function comes in. It allows you to randomly select a specified number of rows. Additionally, these selected rows change with each execution, ensuring a different selection every time you run the code.
+
+The US counties dataset contains over three thousand rows, but we're going to use `sample` to only select a thousand rows.
+
+```{python}
+(pl.read_csv(counties_in_the_usa)
+ .sample(1000)
+ )
+```
+<br>
+
+The `sample` function lets you specify the number of rows you want to display as a numerical value. In our case, we are displaying 1000 rows.
+
+## 8. Concat str
+This is short for "concatenate string" and it allows you to create a single value which is a mixture of values from 2 or more columns that contain string values. Suppose we wanted to have a column _NameAbbr_ that contains the state name and the abbreviation for that state, we can do it by using `concat_str`.
+
+```{python}
+(pl.read_csv(counties_in_the_usa)
+ .select('state.name','state.abb')
+ .with_columns(pl.concat_str(['state.name','state.abb'],
+                             separator=', '
+                             ).alias('NameAbbr'))
+ )
+```
+<br>
+
+In the `concat_str` function above, we used two parameters. The first parameter is a list of the columns whose values we want to concatenate, and the second specifies the separator to use when joining those values. In this case, we used `", "` (a comma followed by a space) to produce values like "wyoming, WY".
+
+## 9. Format
+When presenting data to someone, especially in printed form, you may want to add extra details to make the numbers more understandable. For instance, if you're sending the quarterly average Close values you calculated earlier to your boss in the UK and want to add a currency symbol to avoid confusion, you could use `format` to include the dollar symbol. This way, your boss will always know that your analysis was done in dollars.
+
+```{python}
+(apple_stock
+ .sort('Date')
+ .group_by_dynamic('Date', every='1q')
+ .agg(pl.mean('Close').round(2))
+ .with_columns(pl.format("${}", pl.col('Close')).alias('Close'))
+ )
+```
+<br>
+
+::: {.callout-note}
+I've used `round` before applying the currency formatting to ensure the figures are rounded to 2 decimal places.
+:::
+
+## 10. Config
+The default way of displaying polars dataframes is good, but sometimes you may want to change it up a bit like increase the number of rows displayed or increasing the size of a row to see all the values in that row. The function `Config` allows you to do just that. Below is the dataframe of groceries. Currently we cannot see all the values contained in each row as indicated by the ellipsis (...).
+
+```{python}
+groceries
+```
+<br>
+
+Now Let's use `Config` to increase the size of _Groceries_.
+
+```{python}
+pl.Config(set_fmt_str_lengths=100)
+
+groceries
+```
+<br>
+
+The example above demonstrates a global setting, meaning that the next time a dataframe is displayed, it will apply this size to any column whose values don't fit within the default size. This can be frustrating, especially when working with multiple dataframes. To avoid this, you can apply the `Config` setting to display only one dataframe with the desired settings.
+
+Let's display a dataframe showing the county name and population. I'll remove the data types from the columns and add commas as thousand separators to make the population figures easier to read. Additionally, I'll increase the number of rows displayed to 20. Here's how the dataframe initially looks.
+
+```{python}
+usa_counties = (pl.read_csv(counties_in_the_usa)
+ .select('county.name','population')
+ )
+usa_counties
+```
+<br>
+
+And here's the display with the formatting in place.
+
+```{python}
+with pl.Config(set_tbl_rows=20,
+               set_tbl_hide_column_data_types=True,
+               set_thousands_separator=True
+               ):
+    display(usa_counties)
+```
+<br>
+
+::: {.callout-note}
+The settings applied by `Config` are only for display purposes. When you export the data to Excel or another format, these configurations, such as comma separators in numbers, will be lost.
+:::
+
+Check out this {{< var polars_course >}} to learn this powerful Python library for data analysis.
