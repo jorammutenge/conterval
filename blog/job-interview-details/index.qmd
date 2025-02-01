@@ -1,0 +1,26 @@
+---
+title: "How overlooking a small detail on a job interview can disqualify you for a position"
+author: '{{< var author >}}'
+date: '2025-02-01'
+---
+
+A month ago, I interviewed a candidate for a junior data analyst position. Given how difficult it is to land an interview in the data field due to stiff competition, I expected the candidate to meet the basic qualifications, such as:
+
+- Showing up on time.  
+- Dressing appropriately.  
+
+I'm sure you can think of a few others. I call these the *low-hanging-fruit qualifications*. Of course, you won't find these qualifications listed in a job posting. In other words, your interviewers expect you to automatically meet these qualifications because they require minimal effort. You don't need to have a master's degree or be a "10x programmer" to meet them. That's why they're considered low-hanging fruit.  
+
+The candidate I interviewed showed up on time, but he was dressed in a flannel T-shirt, which put me off. If you can't meet the low-hanging-fruit qualifications, how can I trust that you'll handle the rigorous tasks the job demands? I carried on with the interview out of formality, but the truth is, I had already ruled out the candidate.  
+
+If you're lucky enough to land a job interview, please make sure you meet all the low-hanging-fruit qualifications. You may not enjoy dressing up, but for goodness' sake, force yourself to do it for the interview. It may seem trivial to you, but it speaks volumes in the interview room, and your interviewers will appreciate it. Don’t worry about being "too dressed up." I've learned that:  
+
+> Many managers would rather coach someone down than coach someone up.  
+
+Put another way, it's easier to ground someone who's overly ambitious than to instill ambition in a lazy person—it’s like fighting a losing battle.  
+
+Here’s my one piece of advice to anyone lucky enough to land a job interview:  
+
+> If actions speak louder than words, make sure your actions speak the words you want when you walk into a job interview. Never let anything within your control work against you in that room.  
+
+By the way, this candidate didn’t get the job—but I’m sure you already guessed that.
