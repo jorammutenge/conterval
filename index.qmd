@@ -22,6 +22,7 @@ format:
   <p>Data Analysis</p>
   <p>Data Cleaning</p>
   <p>Data Engineering</p>
+  <p>Technical Writing</p>
   <p>Data Visualization</p>
   <p>Analytics Engineering</p>
   <p>Extract Transform Load (ETL)</p>
