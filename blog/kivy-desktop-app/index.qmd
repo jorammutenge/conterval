@@ -1,7 +1,7 @@
 ---
 title: "Creating a desktop app using kivy in python"
 author: '{{< var author >}}'
-date: '2025-02-19'
+date: '2025-02-22'
 date-format: iso
 image: image.png
 toc: true
