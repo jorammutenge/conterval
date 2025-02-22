@@ -1,0 +1,38 @@
+---
+title: "Creating a desktop app using kivy in python"
+author: '{{< var author >}}'
+date: '2025-02-19'
+date-format: iso
+image: image.png
+toc: true
+toc-title: 'Sections'
+toc-location: left
+toc-depth: 2
+---
+
+I love watching movies and TV shows, but there are just too many out there that it's often difficult to pick what to watch. For years, I've been updating my database of actresses whose performance impressed me and the movies or TV shows they appear in. Using this database, I created a desktop app uisng a Python library called Kivy. My rationale is as follows:
+
+> If your acting impressed me in one movie or series, I'm likely to enjoy another you're in.
+
+This, therefore, serves as a filter to only focus on movies or TV shows that have these actresses, thereby narrowing my search for possible movies or shows to watch.
+
+## How the app works
+When launched, the app prompts you to enter an actress's name or select one from a dropdown list.
+- Selecting a name displays her image along with movies/series she has been in.
+- Typing a name requires pressing Enter to display the image.
+Here's the display for a successful search.
+
+::: {.gray-text .center-text}
+![output from the app](image.png){fig-align="center"}
+:::
+
+Or you can watch the video below where I show how the app works and explain parts of the code I wrote to create it.
+
+{{< video https://www.youtube.com/watch?v=bjUGBxBgWKY
+    title="Creating a Desktop App with Kivy in Python"
+    aspect-ratio="21x9" 
+>}}
+
+## Checkout the source code
+I've open sourced the code for this app. You can check it out on my [github repo](https://github.com/jorammutenge/desktop-app) and experiment with it. Let me know how you've improved it to make it your own.
+

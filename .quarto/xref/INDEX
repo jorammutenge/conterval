@@ -43,5 +43,8 @@
   },
   "blog/set-theory-for-data-analysis/index.qmd": {
     "index.html": "fd486e5a"
+  },
+  "blog/kivy-desktop-app/index.qmd": {
+    "index.html": "38f3d8e9"
   }
 }

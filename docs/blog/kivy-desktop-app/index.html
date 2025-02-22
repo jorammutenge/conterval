@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Joram Mutenge">
+<meta name="dcterms.date" content="2025-02-19">
 
-<title>Conterval</title>
+<title>Creating a desktop app using kivy in python – Conterval</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-172eacf5e436497f175bcd814c7c3742.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-af8145741a1af0275983410f2d9307a1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-172eacf5e436497f175bcd814c7c3742.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-af8145741a1af0275983410f2d9307a1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,17 +81,17 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Conterval</span>
     </a>
   </div>
@@ -99,7 +102,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog/index.html"> 
+    <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -110,60 +113,83 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Sections</h2>
+   
+  <ul class="collapse">
+  <li><a href="#how-the-app-works" id="toc-how-the-app-works" class="nav-link active" data-scroll-target="#how-the-app-works">How the app works</a></li>
+  <li><a href="#checkout-the-source-code" id="toc-checkout-the-source-code" class="nav-link" data-scroll-target="#checkout-the-source-code">Checkout the source code</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla column-page">
- <header id="title-block-header" class="quarto-title-block"></header><main class="content column-page" id="quarto-document-content">
-<div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 40pt; margin-bottom: 15px;">
-<img src="images/logo.png" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
-<p style="color: white;">
-a data consulting company
-</p>
-</div>
-<!-- Services card -->
-<div class="card2" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
-<h2 style="text-align: center;">
-Our Services
-</h2>
-<p>
-Data Analysis
-</p>
-<p>
-Data Cleaning
-</p>
-<p>
-Data Engineering
-</p>
-<p>
-Technical Writing
-</p>
-<p>
-Data Visualization
-</p>
-<p>
-Analytics Engineering
-</p>
-<p>
-Extract Transform Load (ETL)
-</p>
-</div>
-<!-- Contact card -->
-<div class="card3" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
-<h2 style="text-align: center;">
-Contact Us
-</h2>
-<p style="display: inline;">
-✉ <a href="mailto:contervalconsult@gmail.com" style="text-decoration: none; color: inherit;"><em>Send Email</em></a>
-</p>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Creating a desktop app using kivy in python</h1>
 </div>
 
 
-</main>  
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Joram Mutenge </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2025-02-19</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>I love watching movies and TV shows, but there are just too many out there that it’s often difficult to pick what to watch. For years, I’ve been updating my database of actresses whose performance impressed me and the movies or TV shows they appear in. Using this database, I created a desktop app uisng a Python library called Kivy. My rationale is as follows:</p>
+<blockquote class="blockquote">
+<p>If your acting impressed me in one movie or series, I’m likely to enjoy another you’re in.</p>
+</blockquote>
+<p>This, therefore, serves as a filter to only focus on movies or TV shows that have these actresses, thereby narrowing my search for possible movies or shows to watch.</p>
+<section id="how-the-app-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-the-app-works">How the app works</h2>
+<p>When launched, the app prompts you to enter an actress’s name or select one from a dropdown list. - Selecting a name displays her image along with movies/series she has been in. - Typing a name requires pressing Enter to display the image. Here’s the display for a successful search.</p>
+<div class="gray-text center-text">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image.png" class="img-fluid figure-img"></p>
+<figcaption>output from the app</figcaption>
+</figure>
 </div>
- <!-- /main -->
+</div>
+<p>Or you can watch the video below where I show how the app works and explain parts of the code I wrote to create it.</p>
+<div class="quarto-video ratio ratio-21x9"><iframe data-external="1" src="https://www.youtube.com/embed/bjUGBxBgWKY" title="Creating a Desktop App with Kivy in Python" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="checkout-the-source-code" class="level2">
+<h2 class="anchored" data-anchor-id="checkout-the-source-code">Checkout the source code</h2>
+<p>I’ve open sourced the code for this app. You can check it out on my <a href="https://github.com/jorammutenge/desktop-app">github repo</a> and experiment with it. Let me know how you’ve improved it to make it your own.</p>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -184,6 +210,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
@@ -597,5 +630,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
