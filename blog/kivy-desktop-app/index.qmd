@@ -18,8 +18,10 @@ This, therefore, serves as a filter to only focus on movies or TV shows that hav
 
 ## How the app works
 When launched, the app prompts you to enter an actress's name or select one from a dropdown list.
+
 - Selecting a name displays her image along with movies/series she has been in.
 - Typing a name requires pressing Enter to display the image.
+
 Here's the display for a successful search.
 
 ::: {.gray-text .center-text}

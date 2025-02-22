@@ -88,7 +88,7 @@
     "href": "blog/kivy-desktop-app/index.html#how-the-app-works",
     "title": "Creating a desktop app using kivy in python",
     "section": "How the app works",
-    "text": "How the app works\nWhen launched, the app prompts you to enter an actress’s name or select one from a dropdown list. - Selecting a name displays her image along with movies/series she has been in. - Typing a name requires pressing Enter to display the image. Here’s the display for a successful search.\n\n\n\n\noutput from the app\n\n\n\nOr you can watch the video below where I show how the app works and explain parts of the code I wrote to create it."
+    "text": "How the app works\nWhen launched, the app prompts you to enter an actress’s name or select one from a dropdown list.\n\nSelecting a name displays her image along with movies/series she has been in.\nTyping a name requires pressing Enter to display the image.\n\nHere’s the display for a successful search.\n\n\n\n\noutput from the app\n\n\n\nOr you can watch the video below where I show how the app works and explain parts of the code I wrote to create it."
   },
   {
     "objectID": "blog/kivy-desktop-app/index.html#checkout-the-source-code",
