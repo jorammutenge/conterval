@@ -193,7 +193,7 @@ fig.add_annotation(
     ),
 )
 
-fig.show(renderer="svg")
+fig.show(renderer="iframe")
 ```
 
 <br>
@@ -388,7 +388,7 @@ fig.add_layout_image(
     )
 )
 
-fig.show(renderer="svg")
+fig.show(renderer="png")
 ```
 
 <br>

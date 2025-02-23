@@ -235,7 +235,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="suits-dataset">Suits dataset</h3>
 <p>Since we didn’t have the data used to create the chart above, we put together some fake department data about a company from one of our favorite TV shows, <em>Suits</em>.</p>
 <p>Below is a dataframe showing customer satisfaction scores for each department of the fictional firm Pearson Specter Litt for the years 2023 and 2024.</p>
-<div id="6d5340b5" class="cell" data-execution_count="2">
+<div id="428c303b" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -306,7 +306,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>And now here’s a Plotly recreation of our dumbbell plot.</p>
-<div id="6c39f0c1" class="cell" data-execution_count="3">
+<div id="322db56d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>BG_COLOR <span class="op">=</span> <span class="st">'#E9EDF0'</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>RED <span class="op">=</span> <span class="st">'#E3120B'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>GREY <span class="op">=</span> <span class="st">'#5e5c64'</span></span>
@@ -434,13 +434,9 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"iframe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-4-output-1.svg" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<iframe scrolling="no" width="100%" height="620" src="iframe_figures/figure_3.html" frameborder="0" allowfullscreen=""></iframe>
 </div>
 </div>
 <p><br></p>
@@ -462,7 +458,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="military-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="military-dataset">Military dataset</h3>
 <p>Fortunately, all the data needed to recreate the The Economist stacked bar plot is visible in the plot. Here’s a dataframe of that data showing the category of military technology for the United States and China.</p>
-<div id="37c264f1" class="cell" data-execution_count="4">
+<div id="61ebbc83" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>
 .dataframe > thead > tr,
@@ -518,7 +514,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>And now here’s a Plotly recreation of our stacked bar plot.</p>
-<div id="a3026e81" class="cell" data-execution_count="5">
+<div id="a4bcb313" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (data</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(China_pct<span class="op">=</span>pl.col(<span class="st">'China'</span>) <span class="op">/</span> pl.sum_horizontal(<span class="st">'China'</span>,<span class="st">'United States'</span>),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               US_pct<span class="op">=</span>pl.col(<span class="st">'United States'</span>) <span class="op">/</span> pl.sum_horizontal(<span class="st">'China'</span>,<span class="st">'United States'</span>),</span>
@@ -678,11 +674,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"svg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>fig.show(renderer<span class="op">=</span><span class="st">"png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-6-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="index_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
