@@ -66,6 +66,7 @@ df
 And now here’s a Plotly recreation of our dumbbell plot.
 
 ```{python}
+INTER = f"{Path('../../')}/assets/fonts/Inter-SemiBold.woff2"
 BG_COLOR = '#E9EDF0'
 RED = '#E3120B'
 GREY = '#5e5c64'
@@ -107,10 +108,10 @@ fig.update_layout(
     margin=dict(t=180, b=80),
     xaxis=dict(
         side="top",  # Move x-axis to the top
-        tickfont=dict(size=18, family="Inter")  # Increase the font size of the x-axis ticks
+        tickfont=dict(size=18, family=INTER)  # Increase the font size of the x-axis ticks
     ),
     yaxis=dict(
-        tickfont=dict(size=16, family="Inter")
+        tickfont=dict(size=16, family=INTER)
     ),
     shapes=[
         dict(
@@ -124,7 +125,7 @@ fig.update_layout(
                 width=10  
             )
         )],
-    font=dict(family="Inter")  # Set the global font to "Inter"
+    font=dict(family=INTER)  # Set the global font to INTER
 )
 
 fig.add_annotation(
@@ -136,7 +137,7 @@ fig.add_annotation(
         yref="paper",
         showarrow=False,  # No arrow
         font=dict(
-            family="Inter",  # Font family
+            family=INTER,  # Font family
             size=22,  # Font size
             color=GREY  # Font color
         ),
@@ -153,7 +154,7 @@ fig.add_annotation(
         yref="paper",
         showarrow=False,  # No arrow
         font=dict(
-            family="Inter",  # Font family
+            family=INTER,  # Font family
             size=22,  # Font size
             color=RED  # Font color
         ),
@@ -185,7 +186,7 @@ fig.add_annotation(
         yref="paper",
         showarrow=False,  # No arrow
         font=dict(
-            family="Inter",  # Font family
+            family=INTER,  # Font family
             size=14,  # Font size
             color=GREY  # Font color
         ),
@@ -321,7 +322,7 @@ fig.update_layout(
 
     # Adjust legend positioning
     legend=dict(
-        x=.96,        # Horizontal position (1 is far right)
+        x=.93,        # Horizontal position (1 is far right)
         y=1.04,      # Vertical position (1 is top)
         xanchor='right',  # Anchors the legend box to the right side of the plot
         yanchor='top',    # Anchors the legend box to the top of the plot
@@ -331,9 +332,9 @@ fig.update_layout(
     plot_bgcolor='#E9EDF0',
     paper_bgcolor='#E9EDF0',
 
-    # Set the font to "Inter"
+    # Set the font to INTER
     font=dict(
-        family="Inter",
+        family=INTER,
         size=12,  # Adjust the size as needed
         color="Black"  # Adjust the color as needed
     ),
@@ -348,7 +349,7 @@ fig.add_annotation(
            yref="paper",
            showarrow=False,  # No arrow
            font=dict(
-               family="Inter",  # Font family
+               family=INTER,  # Font family
                # size=12,  # Font size
                color="#9a9996"  # Font color
            ),
@@ -365,7 +366,7 @@ fig.add_annotation(
            yref="paper",
            showarrow=False,  # No arrow
            font=dict(
-               family="Inter",  # Font family
+               family=INTER,  # Font family
                size=18,  # Font size
                color="#1a1a1a"  # Font color
            ),
@@ -388,7 +389,7 @@ fig.add_layout_image(
     )
 )
 
-fig.show(renderer="png")
+fig.show(renderer="iframe")
 ```
 
 <br>
