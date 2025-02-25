@@ -46,5 +46,8 @@
   },
   "blog/kivy-desktop-app/index.qmd": {
     "index.html": "38f3d8e9"
+  },
+  "blog/improve-chart/index.qmd": {
+    "index.html": "4345ce54"
   }
 }

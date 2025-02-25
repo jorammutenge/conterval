@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/improve-chart/index.html",
       "/blog/kivy-desktop-app/index.html",
       "/blog/set-theory-for-data-analysis/index.html",
       "/blog/job-interview-details/index.html",
