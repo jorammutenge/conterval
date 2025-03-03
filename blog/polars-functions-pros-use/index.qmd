@@ -11,6 +11,10 @@ toc-depth: 2
 
 Polars is increasingly becoming a popular data analysis library, and my prediction is that more new data scientists and analysts will be starting with Polars rather than Pandas as their tool of choice for manipulating data. After all, the syntax for Polars is easier to learn and harder to forget. That's why this tweet couldn't be more true.
 
+::: {.gray-text .center-text}
+![tweet by yours truly](image.png){fig-align="center"}
+:::
+
 However, because Polars is new, most of the code out there looks amateurish. Here are 10 functions you should use that will instantly make you look like a pro at Polars.
 
 ## 1. Scan CSV

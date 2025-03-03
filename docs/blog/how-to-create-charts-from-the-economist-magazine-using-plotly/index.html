@@ -235,7 +235,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="suits-dataset">Suits dataset</h3>
 <p>Since we didn’t have the data used to create the chart above, we put together some fake department data about a company from one of our favorite TV shows, <em>Suits</em>.</p>
 <p>Below is a dataframe showing customer satisfaction scores for each department of the fictional firm Pearson Specter Litt for the years 2023 and 2024.</p>
-<div id="a32ec931" class="cell" data-execution_count="2">
+<div id="f7b196a5" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -306,7 +306,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>And now here’s a Plotly recreation of our dumbbell plot.</p>
-<div id="bd3f1112" class="cell" data-execution_count="3">
+<div id="6459bade" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>BG_COLOR <span class="op">=</span> <span class="st">'#E9EDF0'</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>RED <span class="op">=</span> <span class="st">'#E3120B'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>GREY <span class="op">=</span> <span class="st">'#5e5c64'</span></span>
@@ -454,7 +454,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="military-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="military-dataset">Military dataset</h3>
 <p>Fortunately, all the data needed to recreate the The Economist stacked bar plot is visible in the plot. Here’s a dataframe of that data showing the category of military technology for the United States and China.</p>
-<div id="cd2c27c4" class="cell" data-execution_count="4">
+<div id="98abf285" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>
 .dataframe > thead > tr,
@@ -510,7 +510,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>And now here’s a Plotly recreation of our stacked bar plot.</p>
-<div id="a9961f27" class="cell" data-execution_count="5">
+<div id="77c351d4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (data</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(China_pct<span class="op">=</span>pl.col(<span class="st">'China'</span>) <span class="op">/</span> pl.sum_horizontal(<span class="st">'China'</span>,<span class="st">'United States'</span>),</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               US_pct<span class="op">=</span>pl.col(<span class="st">'United States'</span>) <span class="op">/</span> pl.sum_horizontal(<span class="st">'China'</span>,<span class="st">'United States'</span>),</span>
