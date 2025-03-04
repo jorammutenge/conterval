@@ -1,0 +1,35 @@
+---
+title: "I made my first pull request to the Marimo team"
+author: '{{< var author >}}'
+date: '2025-03-03'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: left
+toc-depth: 2
+---
+
+If you work extensively with data in Python, you'll agree that Jupyter notebooks provide an excellent environment for data analysis. I've used Jupyter notebooks for a long time and love their versatility, but they come with limitations. Since there was no better alternative, I had to put up these limitations, until Marimo came into the picture.
+
+## What is marimo?
+The Marimo team describes their product as "a next-generation Python notebook." While this may sound like typical marketing speak, the notebook is genuinely innovative, even in its early stages. Most importantly, the Marimo notebook is reactive and interactive.
+
+For me, the biggest advantage of Marimo notebooks is their dynamic nature. They address one of the most frustrating aspects of Jupyter notebooks: the need to run cells linearly. If you've ever downloaded a Jupyter notebook from a GitHub repo, you'll know that most of them fail to run successfully due to improperly ordered code cells. Fixing this is manageable if you created the notebook, but it's a headache if you didn't.
+
+Marimo notebooks, however, do not require cells to be run in a specific order. Instead, code cells are interconnected in a network of nodes and edges. When you update one cell, all dependent cells are automatically updated. This flexibility allows you to rearrange cells however you like—an essential feature because data analysis is rarely a linear process. It's an iterative, messy process that involves trial and error.
+
+## The pull requests I made
+I came across a post in the Polars Discord channel from the creator of Marimo:
+
+::: {.gray-text .center-text}
+![a call to contributors](image.png){fig-align="center"}
+:::
+
+As a Polars expert, I immediately jumped on the opportunity to contribute to the Marimo team because I enjoy using their product. I contributed two notebooks focused on basic operations and aggregations. You can access them here:
+
+- [Basic operations notebook](https://marimo.app/gh/marimo-team/learn/main?entrypoint=polars%2F04_basic_operations.py)
+- [Aggregations notebook](https://marimo.app/gh/marimo-team/learn/main?entrypoint=polars%2F12_aggregations.py)
+
+Submitting my first public pull request was a rewarding experience. I learned a lot from the feedback I received, and having a fresh pair of eyes review my code was truly enlightening.
+
+Check out my {{< var polars_course >}} on Udemy to improve your data analysis skills with this increasingly popular Python library.
