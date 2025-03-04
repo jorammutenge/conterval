@@ -49,5 +49,8 @@
   },
   "blog/improve-chart/index.qmd": {
     "index.html": "4345ce54"
+  },
+  "blog/my-marimo-pr/index.qmd": {
+    "index.html": "170f1ed2"
   }
 }
