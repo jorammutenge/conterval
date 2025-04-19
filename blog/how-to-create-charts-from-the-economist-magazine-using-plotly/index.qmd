@@ -5,7 +5,7 @@ date: '2024-12-15'
 date-format: iso
 toc: true
 toc-title: 'Sections'
-toc-location: left
+toc-location: right
 toc-depth: 3
 categories: [visualization]
 image: image.png

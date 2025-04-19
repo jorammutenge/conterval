@@ -6,7 +6,7 @@ date-format: iso
 image: image.png
 toc: true
 toc-title: 'Sections'
-toc-location: left
+toc-location: right
 toc-depth: 2
 ---
 

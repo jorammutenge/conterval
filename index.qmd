@@ -10,7 +10,7 @@ format:
     page-layout: full
 ---
 
-<div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 40pt; margin-bottom: 15px;">
+<div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 50pt; margin-bottom: 15px; margin-top: -10rem;">
   <img src="images/logo.png" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
   <p style="color: white;">a data consulting company</p>
 </div>
@@ -22,7 +22,6 @@ format:
   <p>Data Analysis</p>
   <p>Data Cleaning</p>
   <p>Data Engineering</p>
-  <p>Technical Writing</p>
   <p>Data Visualization</p>
   <p>Analytics Engineering</p>
   <p>Extract Transform Load (ETL)</p>
@@ -33,6 +32,6 @@ format:
 <div class="card3" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
   <h2 style="text-align: center;">Contact Us</h2>
   <p style="display: inline;">
-    ✉ <a href="mailto:contervalconsult@gmail.com" style="text-decoration: none; color: inherit;">*Send Email*</a>
+    📧 <a href="mailto:contact@conterval.com" style="text-decoration: none; color: inherit;">contact@conterval.com</a>
   </p>
 </div>

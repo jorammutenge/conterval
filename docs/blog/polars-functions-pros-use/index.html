@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-172eacf5e436497f175bcd814c7c3742.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-820bee6e104cf0d76aa99cc64470f0d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4495f8a8566c8735771c31597dfbab01.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -121,7 +121,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="floating nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -152,8 +152,9 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Sections</h2>
    
   <ul class="collapse">
@@ -169,10 +170,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config">10. Config</a></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -221,7 +218,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="scan-csv" class="level2">
 <h2 class="anchored" data-anchor-id="scan-csv">1. Scan CSV</h2>
 <p>When working with large datasets, loading them can take a long time. This is where <code>scan_csv</code> becomes useful. Instead of fully reading the dataset, <code>scan_csv</code> scans its contents, allowing you to quickly preview the file and select only the columns you need. By loading just a subset of the data, you can significantly reduce the loading time. For example, consider a dataset containing information about counties in the USA. import polars as pl</p>
-<div id="902d1c15" class="cell" data-execution_count="2">
+<div id="89cd7177" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pl.read_csv(counties_in_the_usa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
@@ -360,7 +357,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>Suppose you only want to display the county name and population. Here’s how you can use <code>scan_csv</code> to achieve that:</p>
-<div id="d3a7447f" class="cell" data-execution_count="3">
+<div id="577a12db" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(pl.scan_csv(counties_in_the_usa)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'state.name'</span>,<span class="st">'population'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .collect()</span>
@@ -438,18 +435,18 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p><br></p>
 <p>Notice that I used <code>collect</code> because <code>scan_csv</code> produces a lazy frame. This means that whenever you use <code>scan_csv</code>, you need to include <code>collect</code> at the end to get your results.</p>
 <p>If you’re skeptical that <code>scan_csv</code> is a better approach, let’s compare the time it takes for <code>scan_csv</code> and <code>read_csv</code> to load the data.</p>
-<div id="db998035" class="cell" data-execution_count="4">
+<div id="ad66e2b5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pl.read_csv(counties_in_the_usa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>76.1 ms ± 690 μs per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
+<pre><code>94.5 ms ± 35.3 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
 </div>
 </div>
-<div id="fe9612b9" class="cell" data-execution_count="5">
+<div id="c4d80d0a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>timeit</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pl.scan_csv(counties_in_the_usa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>6.35 μs ± 85 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)</code></pre>
+<pre><code>6.43 μs ± 172 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)</code></pre>
 </div>
 </div>
 <p>I’m sure you believe me now.</p>
@@ -457,7 +454,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="sum-horizontal" class="level2">
 <h2 class="anchored" data-anchor-id="sum-horizontal">2. Sum horizontal</h2>
 <p>Adding values in a single column is easy. All you need is <code>sum</code>. This is called column-wise and dataframes shine at performing column-wise mathematical operations. However, there comes a time when you need to perform row-wise calculations. This is where <code>sum_horizontal</code> comes in. Unfortunately, most Polars users are not aware of this function. Let’s say you had this dataframe for Apple stock data.</p>
-<div id="57b7ccec" class="cell" data-execution_count="6">
+<div id="e15042c2" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div><style>
 .dataframe > thead > tr,
@@ -595,13 +592,13 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>Lets also say that you wanted to create a new column called <em>sum_OHLC</em> adds the values in every row for <em>Open</em>, <em>High</em>, <em>Low</em>, <em>Close</em> columns. Most amateur Polars users would write the following code:</p>
-<div id="3a6e5a0f" class="cell" data-execution_count="7">
+<div id="f446e887" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a> .with_columns(sum_OHLC<span class="op">=</span>pl.col(<span class="st">'Open'</span>) <span class="op">+</span> pl.col(<span class="st">'High'</span>) <span class="op">+</span> pl.col(<span class="st">'Low'</span>) <span class="op">+</span> pl.col(<span class="st">'Close'</span>))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The way to write the above code like a pro is using <code>sum_horizontal</code> like this:</p>
-<div id="1271703d" class="cell" data-execution_count="8">
+<div id="0e8a4017" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a> .with_columns(sum_OHLC<span class="op">=</span>pl.sum_horizontal(<span class="st">'Open'</span>, <span class="st">'High'</span>, <span class="st">'Low'</span>, <span class="st">'Close'</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -759,7 +756,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="group-by-dynamic" class="level2">
 <h2 class="anchored" data-anchor-id="group-by-dynamic">3. Group by dynamic</h2>
 <p>When working with timeseries data, you may need to resample it based on specific time intervals and perform aggregations. Polars provides a convenient function, <code>group_by_dynamic</code>, to handle such tasks efficiently. For example, if you want to calculate the average <em>Close</em> values for Apple stock for each quarter, you can do it as follows:</p>
-<div id="a60f8e81" class="cell" data-execution_count="9">
+<div id="961df117" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Date'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> .group_by_dynamic(<span class="st">'Date'</span>, every<span class="op">=</span><span class="st">'1q'</span>)</span>
@@ -857,7 +854,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <p>In most cases, you won’t want to display all the columns in your final dataframe—just the ones you’re interested in. To achieve this, you need to remove the unnecessary columns. Many beginners might choose to drop the columns they don’t need, but I strongly recommend using <code>exclude</code> instead.</p>
 <p>What’s the difference between excluding columns and dropping them? Dropping a column requires loading it into memory first, which can be time-consuming, especially with large datasets. On the other hand, excluding a column tells Polars’ query engine to skip loading it entirely. This approach is much faster, as Polars only loads the columns you actually need.</p>
 <p>Here’s how you can use <code>exclude</code>. Suppose you don’t want to load the <em>Volume</em> and <em>Adj Close</em> columns from the Apple stock dataset. One option is to explicitly select the columns you want to keep, but that would require typing out the names of all five desired columns. Instead, you can use <code>exclude</code> to specify just the two columns you don’t want displayed, saving both time and effort.</p>
-<div id="c8bbdee6" class="cell" data-execution_count="10">
+<div id="bdd28a10" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div><style>
 .dataframe > thead > tr,
@@ -973,7 +970,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <section id="explode" class="level2">
 <h2 class="anchored" data-anchor-id="explode">5. Explode</h2>
 <p>Imagine you have a dataframe that tracks your weekly grocery purchases, with items listed as comma-separated strings in a single row. If you want to identify the items you buy most frequently, this format poses a challenge. Since Polars is a columnar-based framework, working with such data in its current form can make achieving this goal a bit tricky.</p>
-<div id="1b175310" class="cell" data-execution_count="12">
+<div id="ac32336d" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groceries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div><style>
@@ -1018,7 +1015,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 </div>
 </div>
 <p>This is where <code>explode</code> comes in. We’ll create a new column <em>Item</em> that will contain a single item as a value for each row. Here’s how it works. First we split the data on <code>", "</code> (comma and space) to convert the string value in <em>Groceries</em> into a list.</p>
-<div id="4dd8f6c1" class="cell" data-execution_count="13">
+<div id="4d0419c0" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(groceries</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Groceries'</span>).<span class="bu">str</span>.split(<span class="st">', '</span>))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1067,7 +1064,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <p><br></p>
 <p>Then we’ll explode the items in each list into individual items by exploding the <em>Groceries</em> column.</p>
 <p>This new format makes it easier to determine the most bought items by counting how many times each item appears in <em>Groceries</em>.</p>
-<div id="da7c4c1c" class="cell" data-execution_count="14">
+<div id="8c0ea1b4" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(groceries</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Groceries'</span>).<span class="bu">str</span>.split(<span class="st">', '</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> .explode(<span class="st">'Groceries'</span>)</span>
@@ -1146,7 +1143,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <section id="top-bottom-k" class="level2">
 <h2 class="anchored" data-anchor-id="top-bottom-k">6. Top / Bottom K</h2>
 <p>Knowing the top 10 or 5 highest values or lowest values in your dataset is a very common operation. Polars has two handy functions that you can use to easily display that with <code>top_k</code> and <code>bottom_k</code>. If you wanted to see the top 5 counties in the USA with the highest population, you can use <code>top_k</code> see those counties.</p>
-<div id="7723feeb" class="cell" data-execution_count="15">
+<div id="d3e6d843" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'county.name'</span>,<span class="st">'population'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> .top_k(<span class="dv">5</span>, by<span class="op">=</span><span class="st">'population'</span>)</span>
@@ -1204,7 +1201,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <h2 class="anchored" data-anchor-id="sample">7. Sample</h2>
 <p>We live in a world of big data and analyzing large datasets can be time-consuming. A smarter approach is to work with a subset of the data, develop and refine your analysis code through experimentation, and then apply the finalized code to the full dataset. But how can you ensure that the subset you choose represents the entire dataset well? This is where the <code>sample</code> function comes in. It allows you to randomly select a specified number of rows. Additionally, these selected rows change with each execution, ensuring a different selection every time you run the code.</p>
 <p>The US counties dataset contains over three thousand rows, but we’re going to use <code>sample</code> to only select a thousand rows.</p>
-<div id="9951c735" class="cell" data-execution_count="16">
+<div id="3b51cdf6" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">1000</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1240,103 +1237,103 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 </thead>
 <tbody>
 <tr class="odd">
-<td>8013</td>
-<td>297218</td>
-<td>8013</td>
-<td>"boulder"</td>
-<td>"colorado"</td>
-<td>8</td>
-<td>"CO"</td>
+<td>41027</td>
+<td>22207</td>
+<td>41027</td>
+<td>"hood river"</td>
+<td>"oregon"</td>
+<td>41</td>
+<td>"OR"</td>
 </tr>
 <tr class="even">
-<td>26141</td>
-<td>13368</td>
-<td>26141</td>
-<td>"presque isle"</td>
-<td>"michigan"</td>
-<td>26</td>
-<td>"MI"</td>
-</tr>
-<tr class="odd">
-<td>19077</td>
-<td>10915</td>
-<td>19077</td>
-<td>"guthrie"</td>
-<td>"iowa"</td>
-<td>19</td>
-<td>"IA"</td>
-</tr>
-<tr class="even">
-<td>39123</td>
-<td>41445</td>
-<td>39123</td>
-<td>"ottawa"</td>
-<td>"ohio"</td>
-<td>39</td>
-<td>"OH"</td>
-</tr>
-<tr class="odd">
-<td>40003</td>
-<td>5631</td>
-<td>40003</td>
-<td>"alfalfa"</td>
-<td>"oklahoma"</td>
-<td>40</td>
-<td>"OK"</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>30073</td>
-<td>6147</td>
-<td>30073</td>
-<td>"pondera"</td>
-<td>"montana"</td>
-<td>30</td>
-<td>"MT"</td>
-</tr>
-<tr class="even">
-<td>48379</td>
-<td>10976</td>
-<td>48379</td>
-<td>"rains"</td>
+<td>48029</td>
+<td>1719902</td>
+<td>48029</td>
+<td>"bexar"</td>
 <td>"texas"</td>
 <td>48</td>
 <td>"TX"</td>
 </tr>
 <tr class="odd">
-<td>51660</td>
-<td>49043</td>
-<td>51660</td>
-<td>"harrisonburg"</td>
-<td>"virginia"</td>
-<td>51</td>
-<td>"VA"</td>
+<td>21101</td>
+<td>46254</td>
+<td>21101</td>
+<td>"henderson"</td>
+<td>"kentucky"</td>
+<td>21</td>
+<td>"KY"</td>
 </tr>
 <tr class="even">
-<td>51047</td>
-<td>46894</td>
-<td>51047</td>
-<td>"culpeper"</td>
-<td>"virginia"</td>
-<td>51</td>
-<td>"VA"</td>
+<td>19137</td>
+<td>10710</td>
+<td>19137</td>
+<td>"montgomery"</td>
+<td>"iowa"</td>
+<td>19</td>
+<td>"IA"</td>
 </tr>
 <tr class="odd">
-<td>31089</td>
-<td>10418</td>
-<td>31089</td>
-<td>"holt"</td>
-<td>"nebraska"</td>
-<td>31</td>
-<td>"NE"</td>
+<td>29059</td>
+<td>16825</td>
+<td>29059</td>
+<td>"dallas"</td>
+<td>"missouri"</td>
+<td>29</td>
+<td>"MO"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>28107</td>
+<td>34675</td>
+<td>28107</td>
+<td>"panola"</td>
+<td>"mississippi"</td>
+<td>28</td>
+<td>"MS"</td>
+</tr>
+<tr class="even">
+<td>1053</td>
+<td>38122</td>
+<td>1053</td>
+<td>"escambia"</td>
+<td>"alabama"</td>
+<td>1</td>
+<td>"AL"</td>
+</tr>
+<tr class="odd">
+<td>34025</td>
+<td>629263</td>
+<td>34025</td>
+<td>"monmouth"</td>
+<td>"new jersey"</td>
+<td>34</td>
+<td>"NJ"</td>
+</tr>
+<tr class="even">
+<td>5023</td>
+<td>25849</td>
+<td>5023</td>
+<td>"cleburne"</td>
+<td>"arkansas"</td>
+<td>5</td>
+<td>"AR"</td>
+</tr>
+<tr class="odd">
+<td>5141</td>
+<td>17223</td>
+<td>5141</td>
+<td>"van buren"</td>
+<td>"arkansas"</td>
+<td>5</td>
+<td>"AR"</td>
 </tr>
 </tbody>
 </table>
@@ -1349,7 +1346,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <section id="concat-str" class="level2">
 <h2 class="anchored" data-anchor-id="concat-str">8. Concat str</h2>
 <p>This is short for “concatenate string” and it allows you to create a single value which is a mixture of values from 2 or more columns that contain string values. Suppose we wanted to have a column <em>NameAbbr</em> that contains the state name and the abbreviation for that state, we can do it by using <code>concat_str</code>.</p>
-<div id="9ca64039" class="cell" data-execution_count="17">
+<div id="048e5f0e" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'state.name'</span>,<span class="st">'state.abb'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.concat_str([<span class="st">'state.name'</span>,<span class="st">'state.abb'</span>],</span>
@@ -1445,7 +1442,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <section id="format" class="level2">
 <h2 class="anchored" data-anchor-id="format">9. Format</h2>
 <p>When presenting data to someone, especially in printed form, you may want to add extra details to make the numbers more understandable. For instance, if you’re sending the quarterly average Close values you calculated earlier to your boss in the UK and want to add a currency symbol to avoid confusion, you could use <code>format</code> to include the dollar symbol. This way, your boss will always know that your analysis was done in dollars.</p>
-<div id="6647515d" class="cell" data-execution_count="18">
+<div id="18c37466" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Date'</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> .group_by_dynamic(<span class="st">'Date'</span>, every<span class="op">=</span><span class="st">'1q'</span>)</span>
@@ -1540,7 +1537,7 @@ Note
 <section id="config" class="level2">
 <h2 class="anchored" data-anchor-id="config">10. Config</h2>
 <p>The default way of displaying polars dataframes is good, but sometimes you may want to change it up a bit like increase the number of rows displayed or increasing the size of a row to see all the values in that row. The function <code>Config</code> allows you to do just that. Below is the dataframe of groceries. Currently we cannot see all the values contained in each row as indicated by the ellipsis (…).</p>
-<div id="4ab4fbd5" class="cell" data-execution_count="19">
+<div id="032406b0" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>groceries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div><style>
@@ -1586,7 +1583,7 @@ Note
 </div>
 <p><br></p>
 <p>Now Let’s use <code>Config</code> to increase the size of <em>Groceries</em>.</p>
-<div id="28afc45e" class="cell" data-execution_count="20">
+<div id="276c62db" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pl.Config(set_fmt_str_lengths<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>groceries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1635,7 +1632,7 @@ Note
 <p><br></p>
 <p>The example above demonstrates a global setting, meaning that the next time a dataframe is displayed, it will apply this size to any column whose values don’t fit within the default size. This can be frustrating, especially when working with multiple dataframes. To avoid this, you can apply the <code>Config</code> setting to display only one dataframe with the desired settings.</p>
 <p>Let’s display a dataframe showing the county name and population. I’ll remove the data types from the columns and add commas as thousand separators to make the population figures easier to read. Additionally, I’ll increase the number of rows displayed to 20. Here’s how the dataframe initially looks.</p>
-<div id="0ff88423" class="cell" data-execution_count="21">
+<div id="2832b717" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>usa_counties <span class="op">=</span> (pl.read_csv(counties_in_the_usa)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'county.name'</span>,<span class="st">'population'</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a> )</span>
@@ -1712,7 +1709,7 @@ Note
 </div>
 <p><br></p>
 <p>And here’s the display with the formatting in place.</p>
-<div id="46d959da" class="cell" data-execution_count="22">
+<div id="21db5d2b" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pl.Config(set_tbl_rows<span class="op">=</span><span class="dv">20</span>,</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>               set_tbl_hide_column_data_types<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>               set_thousands_separator<span class="op">=</span><span class="va">True</span></span>

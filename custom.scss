@@ -1,67 +1,67 @@
 /*-- scss:defaults --*/
 
 @font-face {
-  font-family: 'Harmonia-Sans-W01-Regular';
-  src: url('assets/fonts/Harmonia Sans W01 Regular.woff2') format('woff2');
+    font-family: 'Harmonia-Sans-W01-Regular';
+    src: url('assets/fonts/Harmonia Sans W01 Regular.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+
+@font-face {
+  font-family: 'Harmonia-Sans-Bold';
+  src: url('assets/fonts/Harmonia Sans W01 Bold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-font-family: 'Harmonia-Sans-Bold';
-src: url('assets/fonts/Harmonia Sans W01 Bold.woff2') format('woff2');
-font-weight: 800;
-font-style: normal;
-font-display: swap;
+  font-family: 'Harmonia-Sans-Condensed';
+  src: url('assets/fonts/Harmonia Sans W06 Condensed.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-font-family: 'Harmonia-Sans-Condensed';
-src: url('assets/fonts/Harmonia Sans W06 Condensed.woff2') format('woff2');
-font-weight: 800;
-font-style: normal;
-font-display: swap;
+  font-family: 'UniversLTStd-Bold';
+  src: url('assets/fonts/UniversLTStd-Bold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-font-family: 'UniversLTStd-Bold';
-src: url('assets/fonts/UniversLTStd-Bold.woff2') format('woff2');
-font-weight: 800;
-font-style: normal;
-font-display: swap;
+  font-family: 'UniversLTStd-Light';
+  src: url('assets/fonts/UniversLTStd-Light.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-font-family: 'UniversLTStd-Light';
-src: url('assets/fonts/UniversLTStd-Light.woff2') format('woff2');
-font-weight: 800;
-font-style: normal;
-font-display: swap;
+  font-family: 'Iosevka';
+  src: url('assets/fonts/Iosevka.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-font-family: 'Iosevka';
-src: url('assets/fonts/Iosevka.woff2') format('woff2');
-font-weight: normal;
-font-style: normal;
-font-display: swap;
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-font-family: 'Inter';
-src: url('assets/fonts/Inter-SemiBold.woff2') format('woff2');
-font-weight: 600;
-font-style: normal;
-font-display: swap;
-}
-
-@font-face {
-font-family: 'Legacy';
-src: url('assets/fonts/itc-legacy-sans-std-book-italic.woff2') format('woff2');
-font-weight: normal;
-font-style: normal;
-font-display: swap;
+  font-family: 'Legacy';
+  src: url('assets/fonts/itc-legacy-sans-std-book-italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 
@@ -77,22 +77,22 @@ $italic-font-family: "Legacy";
 
 
 body {
-font-family: $font-family-sans-serif;
-font-weight: 800;
-font-size: 1.15em !important;
-background-color: #f6f2ec;
+  font-family: $font-family-sans-serif;
+  font-weight: 800;
+  font-size: 1.15em !important;
+  background-color: #f6f2ec;
 }
 
 h1 {
-font-family: $harmonia-bold !important;
-font-weight: bold;
-color: #191971 !important;
-font-size: 3.5rem !important;
+  font-family: $harmonia-bold !important;
+  font-weight: bold;
+  color: #191971 !important;
+  font-size: 3.5rem !important;
 }
 
 h2 {
-font-family: $univers-bold !important;
-color: #191971 !important;
+  font-family: $univers-bold !important;
+  color: #191971 !important;
 }
 
 h3 {
@@ -115,131 +115,131 @@ h3 {
 }
 
 .card {
-font-family: $harmonia-bold;
-color: #5151fb !important;
+  font-family: $harmonia-bold;
+  color: #5151fb !important;
 }
 
 .card2 p {
-margin: 2px 0;
+  margin: 2px 0;
 }
 
 /* gets rid of the border and reduces padding in tables */
 thead, tbody, tfoot, tr, td, th {
-border-style: none;
-padding-bottom: 2px !important;
+  border-style: none;
+  padding-bottom: 2px !important;
 }
 
 .centered-content {
-text-align: center;
-margin-top: 50px;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .centered-content img {
-width: 30em; /* Adjust the size here */
-height: auto;
+  width: 30em; /* Adjust the size here */
+  height: auto;
 }
 
 /* Font size for footnotes */
 .footnote, footer {
-font-size: 12pt;
+  font-size: 12pt;
 }
 
 
 @keyframes slideIn {
-from {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-to {
-  transform: translateX(0);
-  opacity: 1;
-}
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .slide-in {
-animation: slideIn 1s ease-out forwards; // Adjust the duration and easing as needed
+  animation: slideIn 1s ease-out forwards; // Adjust the duration and easing as needed
 }
 
 
 // Style dataframe
 .table.dataframe {
-width: 100%;
+  width: 100%;
 
-th {
-  color: #000000 !important;
-  background-color: #FFE4B5;
-  font-family: Inter;
-}
+  th {
+    color: #000000 !important;
+    background-color: #FFE4B5;
+    font-family: Inter;
+  }
 
-th, td {
-  width: 15%;
-  // color: #c0bfbc;
-}
+  th, td {
+    width: 15%;
+    // color: #c0bfbc;
+  }
 }
 
 
 // links
 a {
-color: #0000CD;
-text-decoration-thickness: 1px;
-//text-underline-offset: .1rem;
-//text-underline-position: under;
+  color: #0000CD;
+  text-decoration-thickness: 1px;
+  //text-underline-offset: .1rem;
+  //text-underline-position: under;
 }
 
 // code
 pre.sourceCode {
-border-radius: 0;
-border-left-color: #4d857b;
-background-color: #deddda;
+  border-radius: 0;
+  border-left-color: #4d857b;
+  background-color: #deddda;
 }
 
 // light vs dark modes
 .light-mode {
-display: block; 
+  display: block; 
 }
 
 
 // gray text
 .gray-text {
-color: #3d3846;
-font-style: italic;
-font-family: $italic-font-family;
+  color: #3d3846;
+  font-style: italic;
+  font-family: $italic-font-family;
 }
 
 // center text (horizontally)
 .center-text{
-text-align: center;
+  text-align: center;
 }
 
 $dark: #212129 !default;
 $bq-grey:  #deddda;
 
 em {
-font-family: 'Legacy', serif;
-color: $dark;
-// font-weight: 600;
+  font-family: 'Legacy', serif;
+  color: $dark;
+  // font-weight: 600;
 }
 
 blockquote {
-color: #4B0082 !important;
-font-family: 'Legacy', serif;
-padding: 10px;
-border-left: 5px solid #77767b !important;
-margin: 20px 0;
-background: $bq-grey;
-line-height: 1.18;
-font-size: 1.25 !important
+  color: #4B0082 !important;
+  font-family: 'Legacy', serif;
+  padding: 10px;
+  border-left: 5px solid #77767b !important;
+  margin: 20px 0;
+  background: $bq-grey;
+  line-height: 1.18;
+  font-size: 1.25 !important
 }
 
 strong {
-font-family: $harmonia-bold;
-color: $dark;
-font-weight: 700; // or any other desired bold weight
+  font-family: $harmonia-bold;
+  color: $dark;
+  font-weight: 700; // or any other desired bold weight
 }
 
 
 #quarto-sidebar {
-background-color: #f6f2ec;
+  background-color: #f6f2ec;
 }
 
 .kw, .cf {
@@ -248,4 +248,49 @@ background-color: #f6f2ec;
 
 .va {
   color: #6495ED !important;
+}
+
+
+// The left hand sidebar
+$grid-sidebar-width: 100px !default;
+
+// The main body
+$grid-body-width: 1200px !default;
+
+// The right hand margin bar
+$grid-margin-width: 300px !default;
+
+// The gutter that appears between the above columns
+$grid-column-gutter-width: 1.5rem !default;
+
+// Make the table responsive of text
+.dataframe.caption-top.table.table-sm.table-striped.small {
+  display: inline-block;
+  max-width: 100%;
+  width: fit-content;
+  margin-left: 0;
+  margin-right: auto;
+  border-collapse: collapse; // Prevent extra spacing from borders
+  table-layout: auto; // Allow columns to size naturally
+}
+
+.dataframe th,
+.dataframe td {
+  white-space: nowrap; // Prevent wrapping
+  padding: 0.25rem 0.5rem; // Control spacing
+  border: 1px solid #dee2e6; // Match Bootstrap-style borders
+}
+
+small {
+  display: block;
+  margin-bottom: 0.5rem; // Optional: add a little spacing
+}
+
+.no-anchor.listing-title {
+  font-family: $harmonia-condensed;
+  font-size: 2rem !important;
+}
+
+.callout-body-container.callout-body {
+  font-size: 1.125rem !important;
 }
