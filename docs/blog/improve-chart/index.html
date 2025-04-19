@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-172eacf5e436497f175bcd814c7c3742.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4495f8a8566c8735771c31597dfbab01.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4815607a1adb6388430892ccec84d423.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -205,10 +205,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>All data visualizations should, first and foremost, inform. Any visualization that falls short of this is simply data art. Data visualizations that are uninformative may be bad but misleading ones are the worst. Here’s an example of a bad visualization that Olga Berezovsky posted on LinkedIn. I thought I’d recreate it based on the suggestions she highlighted.</p>
-<div class="gray-text center-text">
-<div class="quarto-figure quarto-figure-center">
+<div class="gray-text">
+<div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><img src="bad_graph.jpg" class="img-fluid figure-img"></p>
+<p><img src="bad_graph.jpg" class="img-fluid figure-img" style="width:60.0%"></p>
 <figcaption>a bad graph</figcaption>
 </figure>
 </div>
@@ -216,7 +216,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="the-dataset">The dataset</h2>
 <p>Below is a polars dataframe showing the data I’ll use to recreate the bad graph. This is the original data as it’s shown on the bad graph.</p>
-<div id="2235a86d" class="cell" data-execution_count="1">
+<div id="4d15ccf5" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -285,7 +285,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>Since the GDP numbers will be presented in trillion and not billion, I’ll divide the values by 1,000 and round the values to 2 decimal places. Here’s the resulting dataframe.</p>
-<div id="03357c93" class="cell" data-execution_count="2">
+<div id="4e633a9b" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (data</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      .with_columns((pl.col(<span class="st">'GDP'</span>) <span class="op">/</span> <span class="dv">1000</span>).<span class="bu">round</span>(<span class="dv">2</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     )</span>
@@ -363,7 +363,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="out-of-the-box-plot" class="level3">
 <h3 class="anchored" data-anchor-id="out-of-the-box-plot">Out of the box plot</h3>
 <p>Here’s a regular plot without employing any tweaks to make it look better.</p>
-<div id="72e38a34" class="cell" data-execution_count="3">
+<div id="ba61c9e5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(go.Bar(</span>
@@ -381,7 +381,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="add-descriptive-title" class="level3">
 <h3 class="anchored" data-anchor-id="add-descriptive-title">Add descriptive title</h3>
 <p>The title is an important part of the graph because it tells us what ot focus on. But some titles can be too vague. You wouldn’t, for instance, use a title like <em>GDP of countries</em> for this graph. You want to use a descriptive title – one that tells the audience what to focus on.</p>
-<div id="0e2fa613" class="cell" data-execution_count="4">
+<div id="a4d2abf0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(go.Bar(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>df[<span class="st">"Country"</span>],</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>df[<span class="st">"GDP"</span>]</span>
@@ -401,7 +401,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="make-gdp-values-explicit" class="level3">
 <h3 class="anchored" data-anchor-id="make-gdp-values-explicit">Make GDP values explicit</h3>
 <p>It’s very difficult to know the exact GDP values of the countries by looking at the y-axis. To solve this problem, we’ll insert the GDP value for each country on top of their respective bar. Additionally, I’ll hide the values on the y-axis since they won’t be needed anymore.</p>
-<div id="96ed9e1a" class="cell" data-execution_count="5">
+<div id="e67ab5c2" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(go.Bar(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>df[<span class="st">"Country"</span>],</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>df[<span class="st">"GDP"</span>],</span>
@@ -424,7 +424,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="remove-grid-lines" class="level3">
 <h3 class="anchored" data-anchor-id="remove-grid-lines">Remove grid lines</h3>
 <p>Because we have removed the values on the y-axis, it’s pointless to have the horizontal grid lines. We’ll remove them and we’ll also change the background color of the graph.</p>
-<div id="249d4f24" class="cell" data-execution_count="6">
+<div id="0dba2b89" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(go.Bar(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>df[<span class="st">"Country"</span>],</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>df[<span class="st">"GDP"</span>],</span>
@@ -449,7 +449,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="include-source-and-add-padding" class="level3">
 <h3 class="anchored" data-anchor-id="include-source-and-add-padding">Include source and add padding</h3>
 <p>Finally, let’s include the source at the bottom of the graph. We’ll also add padding (spacing) at the top and bottom of the graph so that the title text and the source text are not too close to the edge of the graph.</p>
-<div id="72753f35" class="cell" data-execution_count="7">
+<div id="7bfb2a04" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(data<span class="op">=</span>[</span>

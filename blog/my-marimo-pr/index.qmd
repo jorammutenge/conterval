@@ -21,8 +21,8 @@ Marimo notebooks, however, do not require cells to be run in a specific order. I
 ## The pull requests I made
 I came across a post in the Polars Discord channel from the creator of Marimo:
 
-::: {.gray-text .center-text}
-![a call to contributors](image.png){fig-align="center"}
+::: {.gray-text}
+![a call to contributors](image.png){fig-align="left" width=60%}
 :::
 
 As a Polars expert, I immediately jumped on the opportunity to contribute to the Marimo team because I enjoy using their product. I contributed two notebooks focused on basic operations and aggregations. You can access them here:

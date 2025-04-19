@@ -14,8 +14,8 @@ A few weeks ago, Conterval did a consulting gig for a medium-sized bakery. This 
 
 The gig turned out to be an interesting experience, so we asked the bakery if I could write about the experience on the company blog, and they said yes. In this post, I'll share what the bakery's problem was and the solution we devised to solve it.
 
-::: {.gray-text .center-text}
-![final forecast output](image.png){fig-align="center"}
+::: {.gray-text}
+![final forecast output](image.png){fig-align="left" width=60%}
 :::
 
 ## Problem
@@ -320,7 +320,8 @@ col_spacing = {month: '60px' for month in month_list}
     .tab_header(title=html("<h2>Bread Types Forecast 2024</h2>"))
     .tab_options(
         table_background_color='#ffbe6f',
-        row_group_font_weight='bold'
+        row_group_font_weight='bold',
+        quarto_disable_processing=True
     )
     .tab_style(
         style=style.text(weight='bold', font=google_font(name="Fjalla One")),
