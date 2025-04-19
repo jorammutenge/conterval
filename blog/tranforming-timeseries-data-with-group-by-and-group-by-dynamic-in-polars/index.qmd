@@ -10,8 +10,8 @@ toc-depth: 3
 image: image.jpg
 ---
 
-::: {.gray-text}
-![a brand of yogurt](image.jpg){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![a brand of yogurt](image.jpg){fig-align="center" width=90%}
 :::
 
 Polars has become my go-to library for data analysis. Each client project brings new insights into the powerful functionality Polars offers. Recently, I worked on a project for a supermarket that required processing data related to yogurt stock quantities.

@@ -14,8 +14,8 @@ A few weeks ago, Conterval did a consulting gig for a medium-sized bakery. This 
 
 The gig turned out to be an interesting experience, so we asked the bakery if I could write about the experience on the company blog, and they said yes. In this post, I'll share what the bakery's problem was and the solution we devised to solve it.
 
-::: {.gray-text}
-![final forecast output](image.png){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![final forecast output](image.png){fig-align="center"}
 :::
 
 ## Problem

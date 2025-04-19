@@ -7,8 +7,8 @@ categories: [data analysis]
 image: image.png
 ---
 
-::: {.gray-text}
-![all the tools you'll want to use](image.png){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![all the tools you'll want to use](image.png){fig-align="center"}
 :::
 
 Data analysis is a hot field nowadays. Companies are opening up new data analyst positions, and many people want to become data analysts.

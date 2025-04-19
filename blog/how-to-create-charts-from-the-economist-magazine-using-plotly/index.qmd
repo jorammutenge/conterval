@@ -27,8 +27,8 @@ Although we may not know the specific software or graphing library used by *The 
 
 A dumbbell plot is a dot plot that uses straight lines to connect two points for each group. This type of chart is ideal for illustrating changes in a variable over two time points or highlighting the range of a variable across multiple groups. *The Economist* dumbbell chart below has two groups (1970 and 2020) joined by two dots. These years are points in time.
 
-::: {.gray-text}
-![The Economist dumbbell chart](image2.png){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![The Economist dumbbell chart](image2.png){fig-align="center" width=60%}
 :::
 
 ```{python}
@@ -200,8 +200,8 @@ Disregard the differences between the data in my chart and *The Economist*'s cha
 
 A stacked bar chart is a type of bar graph where each bar is divided into segments that represent different subcategories. It shows how each subcategory contributes to the total value of a larger category, making it easy to see the breakdown of the whole.
 
-::: {.gray-text}
-![The Economist stacked bar chart](image3.png){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![The Economist stacked bar chart](image3.png){fig-align="center" width=60%}
 :::
 
 What makes this chart unique is the placement of the major group names above each bar, rather than beside them. This design choice offers two key advantages: it makes it easier to associate each category with its corresponding bar and saves space, resulting in a more compact plot. Additionally, the data varies significantly—for example, from 11 to 998—which would distort the scale in a regular bar chart. By opting for a stacked bar chart, *The Economist* effectively addressed this issue, demonstrating thoughtful and intentional design.

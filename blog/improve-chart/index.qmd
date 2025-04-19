@@ -11,8 +11,8 @@ toc-depth: 3
 
 All data visualizations should, first and foremost, inform. Any visualization that falls short of this is simply data art. Data visualizations that are uninformative may be bad but misleading ones are the worst. Here's an example of a bad visualization that Olga Berezovsky posted on LinkedIn. I thought I'd recreate it based on the suggestions she highlighted.
 
-::: {.gray-text}
-![a bad graph](bad_graph.jpg){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![a bad graph](bad_graph.jpg){fig-align="center"}
 :::
 
 ## The dataset

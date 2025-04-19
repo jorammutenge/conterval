@@ -23,8 +23,8 @@ In case you’ve forgotten the fundamentals of set operations, allow me to bring
 **Intersection**  
 The intersection operation is one of the most commonly used in sets. It identifies and retrieves the elements that are shared across all the sets being compared. In Python, the symbol `&` is used for intersection. Suppose you had the following two sets.
 
-::: {.gray-text}
-![sets of data analysts and engineers](image_2.png){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![sets of data analysts and engineers](image_2.png){fig-align="center" width=70%}
 :::
 
 ```{python}
@@ -157,8 +157,8 @@ len(hats)
 
 You’re now confident that your code works, so it’s time to create the report. Below is a Venn diagram that highlights the key questions to address in the report.
 
-::: {.gray-text}
-![venn diagram of product category sales](image_1.png){fig-align="left" width=60%}
+::: {.gray-text .center-text}
+![venn diagram of product category sales](image_1.png){fig-align="center"}
 :::
 
 Here's the full Python code you can run to create the report for you boss. It includes the names of customers who bought all three products. These are the valued customers.
