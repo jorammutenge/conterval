@@ -25,7 +25,7 @@ When launched, the app prompts you to enter an actress's name or select one from
 Here's the display for a successful search.
 
 ::: {.gray-text .center-text}
-![output from the app](image.png){fig-align="center" width=50% height=60%}
+![output from the app](image.png){fig-align="center" width=80%}
 :::
 
 Or you can watch the video below where I show how the app works and explain parts of the code I wrote to create it.
