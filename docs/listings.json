@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/data-scientist-show/index.html",
       "/blog/my-marimo-pr/index.html",
       "/blog/improve-chart/index.html",
       "/blog/kivy-desktop-app/index.html",

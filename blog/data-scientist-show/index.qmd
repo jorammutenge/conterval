@@ -1,0 +1,31 @@
+---
+title: "Let me be the new host of The Data Scientist Show"
+author: '{{< var author >}}'
+date: '2025-04-26'
+date-format: iso
+---
+
+I messaged Daliana Liu, host of **The Data Scientist Show**, on LinkedIn asking to become the new host. If you know her, please share this post so she sees it.
+
+Here’s the message I sent:
+
+>Daliana,
+>
+>I just listened to the last two episodes of The Data Scientist Show and was sad to hear you’re planning to end it. You shouldn’t. Here’s why:
+>
+>1) This podcast has taught me, and many others, so much about the data field. It’s a valuable resource that deserves to continue, even if it means bringing in a new host.
+>
+>2) I respect your shift toward new interests and a new podcast, but I believe The Data Scientist Show should live on separately.
+>
+>I’d love to take over as host. Here's the link to a sample recording so you can hear how I’d carry it forward.
+>
+>Let me know you thoughts.
+>
+>Joram
+
+And here's the sample recording.
+
+<audio controls>
+  <source src="new_host_of_dss.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>

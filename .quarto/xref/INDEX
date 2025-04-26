@@ -52,5 +52,8 @@
   },
   "blog/my-marimo-pr/index.qmd": {
     "index.html": "170f1ed2"
+  },
+  "blog/data-scientist-show/index.qmd": {
+    "index.html": "942733eb"
   }
 }
