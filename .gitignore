@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 *.yml
+.DS_Store
 
 /.quarto/
 /_site/
