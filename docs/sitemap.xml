@@ -2,58 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.conterval.com/index.html</loc>
-    <lastmod>2025-04-19T01:14:21.089Z</lastmod>
+    <lastmod>2025-05-19T02:53:10.442Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/what-I-learned-about-group-by-dynamic-in-polars/index.html</loc>
-    <lastmod>2025-04-18T23:43:47.049Z</lastmod>
+    <lastmod>2025-05-19T02:53:10.439Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/set-theory-for-data-analysis/index.html</loc>
-    <lastmod>2025-04-19T03:30:05.970Z</lastmod>
+    <lastmod>2025-05-19T02:53:10.438Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/my-marimo-pr/index.html</loc>
-    <lastmod>2025-04-19T01:18:43.991Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/job-interview-details/index.html</loc>
-    <lastmod>2025-02-01T13:08:06.209Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/improve-chart/index.html</loc>
-    <lastmod>2025-04-19T01:18:43.991Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
-    <lastmod>2025-04-19T01:18:43.991Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html</loc>
-    <lastmod>2025-04-19T01:24:13.381Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/index.html</loc>
-    <lastmod>2024-11-13T01:39:50.537Z</lastmod>
+    <lastmod>2025-05-19T02:53:10.436Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/kivy-desktop-app/index.html</loc>
-    <lastmod>2025-04-19T03:32:11.931Z</lastmod>
+    <lastmod>2025-05-19T02:53:10.436Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/polars-functions-pros-use/index.html</loc>
-    <lastmod>2025-04-19T01:18:43.992Z</lastmod>
+    <loc>https://www.conterval.com/blog/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.434Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/tranforming-timeseries-data-with-group-by-and-group-by-dynamic-in-polars/index.html</loc>
-    <lastmod>2025-04-19T01:26:44.924Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/what-tool-should-you-use-as-a-data-analyst/index.html</loc>
-    <lastmod>2025-04-19T01:18:43.990Z</lastmod>
+    <loc>https://www.conterval.com/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.381Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/data-scientist-show/index.html</loc>
-    <lastmod>2025-04-26T22:15:49.295Z</lastmod>
+    <lastmod>2025-05-19T02:53:10.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.359Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/improve-chart/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/job-interview-details/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/lesson-from-retired-boss/index.html</loc>
+    <lastmod>2025-05-19T02:46:00.060Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/polars-functions-pros-use/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.437Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/tranforming-timeseries-data-with-group-by-and-group-by-dynamic-in-polars/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/what-tool-should-you-use-as-a-data-analyst/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.440Z</lastmod>
   </url>
 </urlset>

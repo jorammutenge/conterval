@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+*.yml
 
 /.quarto/
 /_site/
+/images/
