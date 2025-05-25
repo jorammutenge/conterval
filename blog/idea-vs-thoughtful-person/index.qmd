@@ -1,0 +1,48 @@
+---
+title: 'Idea person or Thoughtful person: Which one are you?'
+author: '{{< var author >}}'
+date: '2025-05-25'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 2
+---
+
+If you're working in an organization, you can't escape meetings. They are part and parcel of day-to-day life in any workplace. But sometimes, it can feel like all you ever do is attend meetings.
+
+A lot has been written about how bad meetings are, and you've likely heard countless complaints from colleagues and friends about how ineffective meetings can be. I want to propose a different perspective. I want you to start seeing meetings as a platform for visibility.
+
+If you're a low-ranking individual in an organization and want to improve your status, there is no better place to do that than in meetings. But before you can take advantage of this, you have to understand what type of person you are.
+
+## Types of people in meetings
+
+There are two types of people in a meeting: the idea person and the thoughtful person.
+
+1. **The idea person**
+   This is someone who throws out a lot of ideas in meetings without thinking deeply about how they will be implemented. This person isn't concerned with what needs to change to make these ideas a reality. Their main goal is to be perceived as someone who generates ideas.
+
+2. **The thoughtful person**
+   This is someone who thinks deeply about the ideas being proposed -- and even rejects some of them if they believe the implementation would be too difficult or require significant change.
+
+For example, the idea person might say, _“It would be nice to have some automated analytics on Project X sent out to every executive every morning to track its progress.”_
+
+The thoughtful person would consider that suggestion and realize that code would need to be written to analyze the work on Project X, and then an automated job would need to be set up to send those emails. Recognizing that it would be a lot of effort for minimal gain, they might say, _“Hmm, I don't think that idea would work.”_
+
+Unfortunately, most people in the meeting will view the idea person as a creative thinker and the thoughtful person as someone who shoots down others' ideas.
+
+If you've identified yourself as the idea person, then you likely hold higher status -- and probably receive higher pay. By contrast, if you've identified as the thoughtful person, you likely have lower status and lower compensation.
+
+## Why the idea person wins
+
+Organizations tend to value idea generators more than idea critics. Even if you have a valid reason for rejecting a colleague's idea, the reputation you may unintentionally build is that of someone who only criticizes and never contributes original ideas.
+
+So, the best way to build a reputation that grants you higher status is to become someone who contributes ideas. And a meeting -- where many people are present -- is the best place to do this, because others will hear your ideas directly from you.
+
+Don't hold back an idea just because you think it won't work. Your focus shouldn't be on whether it's perfect or practical. Your focus should be on voicing it so others can hear it.
+
+## My confession
+
+As a data guy, I used to be more of a thoughtful person -- analyzing ideas deeply and considering how they could be implemented. It's only recently when I've realized that this approach wasn't helping my career grow. So now, I'm slowly transforming into an idea generator.
+
+I'll update you on the outcomes in Part 2 of this article. But first, I have to gather some data. Stay tuned!
