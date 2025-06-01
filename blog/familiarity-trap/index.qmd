@@ -1,0 +1,52 @@
+---
+title: "Most data analysts are stuck using mediocre tools thanks to the familiarity trap"
+author: '{{< var author >}}'
+date: '2025-06-01'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 2
+---
+
+Data analysts aren't exactly known for their technical wizardry -- at least not if "technical" means writing actual code that doesn't make software engineers weep. In fact, engineers love to joke (and not-so-secretly cringe) about the kind of code data analysts manage to produce.
+
+So, naturally, many analysts stick to `Excel`. Why? Because it's familiar. And safe. And has shiny buttons you can click. Who needs reproducible workflows when you've got a spreadsheet that breaks if you look at it the wrong way?
+
+I used to be one of them. `Excel` was my weapon of choice -- my digital security blanket -- until I realized I could actually save time and frustration by, you know, learning to code.
+
+Of course, that magical efficiency didn't appear overnight. It took weeks (and okay, maybe a few mini existential crises). My productivity initially plummeted. Every time I hit a wall, `Excel` would whisper, "Come back... I have `VLOOKUP`." And I was *this* close to giving in.
+
+The urge to run back to what we know -- even after being handed something objectively better -- is a surprisingly powerful force. Like choosing dial-up internet in 2025 because you've memorized the sound it makes.
+
+## Why we fall back to the familiar
+
+Take my colleague, for example. He lives and breathes `Excel`. I introduced him to `Polars`, telling him it could cut his analysis time dramatically -- because, shockingly, computers are good at automating things.
+
+But every time he opened a notebook and typed a few lines of code, you could see the anxiety set in. Seconds later, he was back in `Excel`, dragging cells like it was 1999. Fascinating stuff, really.
+
+Despite knowing that code could do in seconds what takes minutes (or hours) in `Excel`, he still chose the long, clicky, manual route. It reminded me of old saying:
+
+> Old habits die hard.
+
+It turns out old habits don't just die hard -- they put up a fight with ninja reflexes.
+
+Truly groundbreaking insight, I know.
+
+The comfort zone is a lovely place. No growth, but hey, no surprises either. So we keep doing things the same way because it's easier than facing the brief discomfort of learning something new.
+
+I get it. Change is hard. Letting go of your trusty `Excel` sheets feels like abandoning a childhood friend. But here's a revolutionary idea:
+
+> When someone shows you a better way to do something, resist the urge to crawl back into your comfort zone and whisper, "But I've always done it this way."
+
+Sure, the new thing might slow you down at first. That's called learning. But give it time, and you'll be faster, smarter, and probably less inclined to scream at your computer. Win-win.
+
+Remember:
+
+> Change is the status quo disruptor, but we should embrace it when the change is good.
+
+The familiarity trap isn't just a habit -- it's a productivity black hole disguised as "the way we've always done things."
+
+If you want to grow your career and stop copy-pasting formulas like it's your full-time job, you'll need to start embracing tools that actually scale with your ambitions.
+
+Or, you know, just keep using `Excel`. Forever. I'm sure that'll work out fine.
