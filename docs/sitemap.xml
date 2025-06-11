@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.conterval.com/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.442Z</lastmod>
+    <lastmod>2025-06-11T23:44:50.493Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/what-I-learned-about-group-by-dynamic-in-polars/index.html</loc>
@@ -25,16 +25,24 @@
     <lastmod>2025-05-19T02:53:10.434Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.381Z</lastmod>
+    <loc>https://www.conterval.com/blog/idea-vs-thoughtful-person/index.html</loc>
+    <lastmod>2025-05-25T20:40:04.586Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.359Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/data-scientist-show/index.html</loc>
     <lastmod>2025-05-19T02:53:10.355Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.359Z</lastmod>
+    <loc>https://www.conterval.com/blog/familiarity-trap/index.html</loc>
+    <lastmod>2025-06-01T11:05:19.758Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.381Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/improve-chart/index.html</loc>
@@ -59,13 +67,5 @@
   <url>
     <loc>https://www.conterval.com/blog/what-tool-should-you-use-as-a-data-analyst/index.html</loc>
     <lastmod>2025-05-19T02:53:10.440Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/idea-vs-thoughtful-person/index.html</loc>
-    <lastmod>2025-05-25T20:40:04.586Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/familiarity-trap/index.html</loc>
-    <lastmod>2025-06-01T11:05:19.758Z</lastmod>
   </url>
 </urlset>

@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.7.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2025-02-09">
 
-<title>Using set theory to speed up your data analysis – Conterval</title>
+<title>Using set theory to speed up your data analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,10 +74,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9d8b84d7a8b558c7dae144f7c63ee7dc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa1a81e6dac41eab4c6e8d7d3861822c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-f36b19b3496c6f75f970487af93de44b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -129,17 +131,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Conterval</span>
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.conterval.com"> 
+<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
@@ -224,12 +229,12 @@ The intersection operation is one of the most commonly used in sets. It identifi
 </figure>
 </div>
 </div>
-<div id="e2479542" class="cell" data-execution_count="1">
+<div id="1bcafe37" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_engineers <span class="op">=</span> <span class="bu">set</span>([<span class="st">'Jeremie'</span>, <span class="st">'Joram'</span>, <span class="st">'Ollie'</span>, <span class="st">'Ashwin'</span>])</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data_analysts <span class="op">=</span> <span class="bu">set</span>([<span class="st">'Joram'</span>, <span class="st">'Ollie'</span>, <span class="st">'Pallavi'</span>, <span class="st">'Maura'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here’s how you would find out the people who are both data analysts and data engineers.</p>
-<div id="574a89e6" class="cell" data-execution_count="2">
+<div id="bb080f1a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_engineers <span class="op">&amp;</span> data_analysts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>{'Joram', 'Ollie'}</code></pre>
@@ -238,7 +243,7 @@ The intersection operation is one of the most commonly used in sets. It identifi
 <p>Now we see that Joram and Ollie are the superstars who can do both data analysis and data engineering.</p>
 <p><strong>Union</strong><br>
 The union operation gathers all the elements from both sets, ensuring that each element appears only once in the resulting set. The <code>|</code> symbol represents this operation. Using the union operator will give me all the names of data analysts and engineers.</p>
-<div id="8b324d14" class="cell" data-execution_count="3">
+<div id="742db422" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_engineers <span class="op">|</span> data_analysts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>{'Ashwin', 'Jeremie', 'Joram', 'Maura', 'Ollie', 'Pallavi'}</code></pre>
@@ -246,7 +251,7 @@ The union operation gathers all the elements from both sets, ensuring that each 
 </div>
 <p><strong>Difference</strong><br>
 The difference operation identifies elements that exist in one set but not in the other. It is similar to subtraction in numbers. The symbol <code>-</code> represents this operation. The code below will give me names of people who are only data engineers.</p>
-<div id="9f7232ca" class="cell" data-execution_count="4">
+<div id="8d885750" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_engineers <span class="op">-</span> data_analysts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>{'Ashwin', 'Jeremie'}</code></pre>
@@ -265,7 +270,7 @@ Note
 <p>Set difference produces different results when the order is reversed. So, <code>A - B</code> is not the same as <code>B - A</code>.</p>
 </div>
 </div>
-<div id="3846de77" class="cell" data-execution_count="5">
+<div id="0c74e885" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_analysts <span class="op">-</span> data_engineers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>{'Maura', 'Pallavi'}</code></pre>
@@ -274,7 +279,7 @@ Note
 <p><strong>Symmetric difference</strong><br>
 This operation retrieves every element in set A and every element in set B, but excludes elements that are present in both sets. In short, it’s the subtraction of the intersection from the union set. The symbol <code>^</code> is used for set difference.</p>
 <p>Here’s how I would get all the names of people who are only data analysts or data engineers. The superstars – those who can do both won’t be included.</p>
-<div id="cdaf3962" class="cell" data-execution_count="6">
+<div id="d97f9d2a" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_analysts <span class="op">^</span> data_engineers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>{'Ashwin', 'Jeremie', 'Maura', 'Pallavi'}</code></pre>
@@ -282,14 +287,14 @@ This operation retrieves every element in set A and every element in set B, but 
 </div>
 <p><strong>Addition</strong><br>
 This adds or inserts an element into the set. Let me display the set that contains data analysts.</p>
-<div id="45fc08ab" class="cell" data-execution_count="7">
+<div id="5b096397" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data_analysts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>{'Joram', 'Maura', 'Ollie', 'Pallavi'}</code></pre>
 </div>
 </div>
 <p>Now let me add the name “David” to that set.</p>
-<div id="bd6b5720" class="cell" data-execution_count="8">
+<div id="3c7c0a94" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_analysts.add(<span class="st">'David'</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data_analysts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -300,7 +305,7 @@ This adds or inserts an element into the set. Let me display the set that contai
 <section id="analyze-sales-data" class="level2">
 <h2 class="anchored" data-anchor-id="analyze-sales-data">Analyze sales data</h2>
 <p>Now that your memory is refreshed on sets, let’s apply this knowledge to analyze real sales data. The sales data is stored in a CSV file, so I’ll use Python’s <code>csv</code> library to read it. To start, here’s how the data would look in Excel.</p>
-<div id="e158b34a" class="cell" data-execution_count="9">
+<div id="53148b73" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div><style>
 .dataframe > thead > tr,
@@ -461,20 +466,20 @@ The table above contains 1,000 sales transactions. Your task is to generate a sa
 <p>Of course you can do this task in Excel by sorting and filtering your way to the report, but that’s time-consuming. I want to show you an efficient way to create the report that you can run month, weekly, even daily without having to redo the work.</p>
 <p><strong>Creating the report</strong><br>
 First let’s load the CSV file using the <code>csv</code> library.</p>
-<div id="75357c76" class="cell" data-execution_count="10">
+<div id="5a4cc848" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sales_file <span class="op">=</span> <span class="bu">open</span>(<span class="ss">f"</span><span class="sc">{</span>Path(<span class="st">'../../'</span>)<span class="sc">}</span><span class="ss">/datasets/sample_sales.csv"</span>, <span class="st">"rt"</span>)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> csv.reader(sales_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now let’s create the empty sets for the three product categories contained the CSV file.</p>
-<div id="fcb2a986" class="cell" data-execution_count="11">
+<div id="226f3b71" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>socks <span class="op">=</span> <span class="bu">set</span>()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>hats <span class="op">=</span> <span class="bu">set</span>()</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>sweaters <span class="op">=</span> <span class="bu">set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally, let’s creat the logic that will populate the sets we created with values.</p>
-<div id="015dddb6" class="cell" data-execution_count="12">
+<div id="1b0d9dca" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> reader:</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    customer <span class="op">=</span> (row[<span class="dv">0</span>],row[<span class="dv">1</span>])</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    category <span class="op">=</span> row[<span class="dv">3</span>]</span>
@@ -489,14 +494,14 @@ First let’s load the CSV file using the <code>csv</code> library.</p>
 </div>
 <p>You’ve loaded the data and applied the logic to populate the sets representing the product categories. You can now answer the questions that your boss wants answered in the report.</p>
 <p>Here’s how you would find the number of customes who bought socks.</p>
-<div id="01055214" class="cell" data-execution_count="13">
+<div id="eb870677" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(socks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>271</code></pre>
 </div>
 </div>
 <p>What about the number of customers who bough hats?</p>
-<div id="7e2cd629" class="cell" data-execution_count="14">
+<div id="54fae6c1" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(hats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>170</code></pre>
@@ -512,7 +517,7 @@ First let’s load the CSV file using the <code>csv</code> library.</p>
 </div>
 </div>
 <p>Here’s the full Python code you can run to create the report for you boss. It includes the names of customers who bought all three products. These are the valued customers.</p>
-<div id="a1f2bb09" class="cell" data-execution_count="15">
+<div id="ad1e1978" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using with open to automatically handle file closing</span></span>
@@ -556,15 +561,15 @@ First let’s load the CSV file using the <code>csv</code> library.</p>
 9 customers bought all three products.
 
 Our 9 valued customers are:
-  - Ledner-Kling
-  - Koepp-McLaughlin
-  - Kuvalis-Roberts
-  - Fritsch-Glover
+  - Bashirian, Beier and Watsica
   - Mills Inc
-  - Halvorson PLC
-  - Beier-Bosco
+  - Koepp-McLaughlin
   - Upton, Runolfsson and O'Reilly
-  - Bashirian, Beier and Watsica</code></pre>
+  - Kuvalis-Roberts
+  - Ledner-Kling
+  - Beier-Bosco
+  - Halvorson PLC
+  - Fritsch-Glover</code></pre>
 </div>
 </div>
 <p>Check out our <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to upskill your data analysis skills.</p>

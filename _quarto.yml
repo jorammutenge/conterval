@@ -1,6 +1,6 @@
 project:
   type: website
-  title: Conterval
+  # title: Conterval
   render:
     - "blog/**/*.qmd"
     - "index.qmd"
@@ -16,6 +16,11 @@ website:
     anonymize-ip: true
   navbar:
     left:
+      - text: '{{< fa home >}}'
+        href: https://www.conterval.com
+      - text: '{{< fa brands bluesky >}}'
+        href: https://bsky.app/profile/jorammutenge.com
+        target: _blank
       - href: blog/index.qmd
         text: Blog
   page-footer: 

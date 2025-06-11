@@ -32,6 +32,6 @@ format:
 <div class="card3" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
   <h2 style="text-align: center;">Contact Us</h2>
   <p style="display: inline;">
-    📧 <a href="mailto:contact@conterval.com" style="text-decoration: none; color: inherit;">contact@conterval.com</a>
+     <a href="mailto:contervalconsult@gmail.com" style="text-decoration: none; color: inherit;"><i class="fa-solid fa-envelope"></i></a>
   </p>
 </div>

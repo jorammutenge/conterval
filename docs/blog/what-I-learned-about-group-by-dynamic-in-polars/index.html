@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.7.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2024-12-30">
 
-<title>What I learned about group by dynamic in polars while working on a client’s project – Conterval</title>
+<title>What I learned about group by dynamic in polars while working on a client’s project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,10 +74,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9d8b84d7a8b558c7dae144f7c63ee7dc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa1a81e6dac41eab4c6e8d7d3861822c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-f36b19b3496c6f75f970487af93de44b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -129,17 +131,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Conterval</span>
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.conterval.com"> 
+<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
@@ -206,7 +211,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="a-brief-overview-of-the-project" class="level2">
 <h2 class="anchored" data-anchor-id="a-brief-overview-of-the-project">A brief overview of the project</h2>
 <p>The client had forecast data for 2025 for electronic gadgets in monthly buckets, but she wanted it converted into weekly buckets. The dates in the data she presented all started at the beginning of each month. For instance, the first row contained the date January 1, 2025. Below is the forecast data from the client.</p>
-<div id="4e716b6f" class="cell" data-execution_count="1">
+<div id="5314288d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -299,7 +304,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="creating-the-date-dataframe." class="level2">
 <h2 class="anchored" data-anchor-id="creating-the-date-dataframe.">Creating the date dataframe.</h2>
 <p>Using <code>datetime_range</code>, I created a dataframe containing timeseries values for the entire year of 2025. The interval was set to 1 day, ensuring that every single date in the year is included. Below is the resulting timeseries dataframe. Then I extracted the month values from the dates to create a new column <em>Month</em>.</p>
-<div id="5756b2a2" class="cell" data-execution_count="2">
+<div id="12930e44" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>date_df <span class="op">=</span> pl.DataFrame(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    {</span>
@@ -387,7 +392,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="joining-the-two-dataframes" class="level2">
 <h2 class="anchored" data-anchor-id="joining-the-two-dataframes">Joining the two dataframes</h2>
 <p>Before joining the two DataFrames, I converted the date values in the forecast dataset to month-only values. This ensured a unique common value between both dataframes, enabling the join to proceed. The dataframe below illustrates the transformation from date values to month-only values.</p>
-<div id="c4ca09ae" class="cell" data-execution_count="3">
+<div id="1e61e211" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (data</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).dt.month())</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span>
@@ -477,7 +482,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>The two dataframes were joined using a left join. Also, I decided to divide the forecast values by 4 since most months have at least 4 weeks Here’s an example of the resulting dataframe for Headphones showing the monthly and weekly forecast.</p>
-<div id="6219436d" class="cell" data-execution_count="4">
+<div id="c72b1531" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(date_df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .join(df, left_on<span class="op">=</span><span class="st">'Month'</span>, right_on<span class="op">=</span><span class="st">'Date'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .drop(<span class="st">'Month'</span>)</span>
@@ -585,7 +590,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="converting-to-weekly-buckets" class="level2">
 <h2 class="anchored" data-anchor-id="converting-to-weekly-buckets">Converting to weekly buckets</h2>
 <p>The dates are still in days, but the client wants them in weeks so I used <code>groub_by_dynamic</code> with an interval of 7 days to convert them into weekly buckets. Below is the resulting dataframe.</p>
-<div id="2dbea5c0" class="cell" data-execution_count="5">
+<div id="21d2d4e0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> loc, style</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>processed_df <span class="op">=</span> (date_df</span>
@@ -605,52 +610,52 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<div id="focxkuniog" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="bvvogfhlwl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#focxkuniog table {
+#bvvogfhlwl table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#focxkuniog thead, tbody, tfoot, tr, td, th { border-style: none; }
+#bvvogfhlwl thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#focxkuniog p { margin: 0; padding: 0; }
- #focxkuniog .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #focxkuniog .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #focxkuniog .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #focxkuniog .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #focxkuniog .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #focxkuniog .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #focxkuniog .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #focxkuniog .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #focxkuniog .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #focxkuniog .gt_column_spanner_outer:first-child { padding-left: 0; }
- #focxkuniog .gt_column_spanner_outer:last-child { padding-right: 0; }
- #focxkuniog .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
- #focxkuniog .gt_spanner_row { border-bottom-style: hidden; }
- #focxkuniog .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
- #focxkuniog .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
- #focxkuniog .gt_from_md> :first-child { margin-top: 0; }
- #focxkuniog .gt_from_md> :last-child { margin-bottom: 0; }
- #focxkuniog .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
- #focxkuniog .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #focxkuniog .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #focxkuniog .gt_row_group_first td { border-top-width: 2px; }
- #focxkuniog .gt_row_group_first th { border-top-width: 2px; }
- #focxkuniog .gt_striped { background-color: rgba(128,128,128,0.05); }
- #focxkuniog .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #focxkuniog .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #focxkuniog .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #focxkuniog .gt_left { text-align: left; }
- #focxkuniog .gt_center { text-align: center; }
- #focxkuniog .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #focxkuniog .gt_font_normal { font-weight: normal; }
- #focxkuniog .gt_font_bold { font-weight: bold; }
- #focxkuniog .gt_font_italic { font-style: italic; }
- #focxkuniog .gt_super { font-size: 65%; }
- #focxkuniog .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #focxkuniog .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#bvvogfhlwl p { margin: 0; padding: 0; }
+ #bvvogfhlwl .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #bvvogfhlwl .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #bvvogfhlwl .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #bvvogfhlwl .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #bvvogfhlwl .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #bvvogfhlwl .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #bvvogfhlwl .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #bvvogfhlwl .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #bvvogfhlwl .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #bvvogfhlwl .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #bvvogfhlwl .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #bvvogfhlwl .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #bvvogfhlwl .gt_spanner_row { border-bottom-style: hidden; }
+ #bvvogfhlwl .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #bvvogfhlwl .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #bvvogfhlwl .gt_from_md> :first-child { margin-top: 0; }
+ #bvvogfhlwl .gt_from_md> :last-child { margin-bottom: 0; }
+ #bvvogfhlwl .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #bvvogfhlwl .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #bvvogfhlwl .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #bvvogfhlwl .gt_row_group_first td { border-top-width: 2px; }
+ #bvvogfhlwl .gt_row_group_first th { border-top-width: 2px; }
+ #bvvogfhlwl .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #bvvogfhlwl .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #bvvogfhlwl .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #bvvogfhlwl .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #bvvogfhlwl .gt_left { text-align: left; }
+ #bvvogfhlwl .gt_center { text-align: center; }
+ #bvvogfhlwl .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #bvvogfhlwl .gt_font_normal { font-weight: normal; }
+ #bvvogfhlwl .gt_font_bold { font-weight: bold; }
+ #bvvogfhlwl .gt_font_italic { font-style: italic; }
+ #bvvogfhlwl .gt_super { font-size: 65%; }
+ #bvvogfhlwl .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #bvvogfhlwl .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -734,7 +739,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p><br></p>
 <p>Do you notice the peculiarity that <code>group_by_dynamic</code> introduces? None of our original DataFrames contained the year 2024, yet after using <code>group_by_dynamic</code>, we now see 2024. What’s going on here? I was initially unaware of this behavior. It turns out that <code>group_by_dynamic</code> shifts date values by the interval specified in the <code>every</code> parameter. Since we used a 7-day interval, the date values were moved 7 days back, causing the appearance of 2024.</p>
 <p>But wait—the client specifically needs forecast data for 2025. How can we address this? Thankfully, the developers of Polars anticipated this issue and provided a solution. As outlined in the documentation, adding the <code>start_by</code> parameter with the value <code>"datapoint"</code> to <code>group_by_dynamic</code> resolves the problem. With this adjustment, the year 2024 disappeared entirely.</p>
-<div id="94ca4247" class="cell" data-execution_count="6">
+<div id="359a8a47" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(date_df</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> .join(df, left_on<span class="op">=</span><span class="st">'Month'</span>, right_on<span class="op">=</span><span class="st">'Date'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> .drop(<span class="st">'Month'</span>)</span>
@@ -842,7 +847,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>With the date issue resolved, we can now proceed to develop the code needed to create the final dataset for presentation to the client.</p>
-<div id="a2ddeb79" class="cell" data-execution_count="7">
+<div id="a334e1d3" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gadget_list <span class="op">=</span> df[<span class="st">'Gadget'</span>].unique().to_list()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>bucket_dfs <span class="op">=</span> []</span>
@@ -885,28 +890,28 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <tbody>
 <tr class="odd">
 <td>2025-01-01</td>
-<td>"Keyboard"</td>
-<td>413</td>
+<td>"Smartwatch"</td>
+<td>218</td>
 </tr>
 <tr class="even">
 <td>2025-01-08</td>
-<td>"Keyboard"</td>
-<td>413</td>
+<td>"Smartwatch"</td>
+<td>218</td>
 </tr>
 <tr class="odd">
 <td>2025-01-15</td>
-<td>"Keyboard"</td>
-<td>413</td>
+<td>"Smartwatch"</td>
+<td>218</td>
 </tr>
 <tr class="even">
 <td>2025-01-22</td>
-<td>"Keyboard"</td>
-<td>413</td>
+<td>"Smartwatch"</td>
+<td>218</td>
 </tr>
 <tr class="odd">
 <td>2025-01-29</td>
-<td>"Keyboard"</td>
-<td>413</td>
+<td>"Smartwatch"</td>
+<td>218</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -915,28 +920,28 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </tr>
 <tr class="odd">
 <td>2025-12-03</td>
-<td>"Mouse"</td>
-<td>346</td>
+<td>"Tablet"</td>
+<td>124</td>
 </tr>
 <tr class="even">
 <td>2025-12-10</td>
-<td>"Mouse"</td>
-<td>346</td>
+<td>"Tablet"</td>
+<td>124</td>
 </tr>
 <tr class="odd">
 <td>2025-12-17</td>
-<td>"Mouse"</td>
-<td>346</td>
+<td>"Tablet"</td>
+<td>124</td>
 </tr>
 <tr class="even">
 <td>2025-12-24</td>
-<td>"Mouse"</td>
-<td>346</td>
+<td>"Tablet"</td>
+<td>124</td>
 </tr>
 <tr class="odd">
 <td>2025-12-31</td>
-<td>"Mouse"</td>
-<td>346</td>
+<td>"Tablet"</td>
+<td>124</td>
 </tr>
 </tbody>
 </table>
