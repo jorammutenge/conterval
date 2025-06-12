@@ -1,0 +1,34 @@
+---
+title: "Your beautiful code doesn't matter anymore (and that's fine)"
+author: '{{< var author >}}'
+date: '2025-06-12'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 2
+---
+
+Your code doesn’t run in a vacuum. Your tools, your projects, your career all depend on a fast-moving ecosystem of languages, libraries, platforms, datasets, and now, AI.
+
+I used to write code by hand from scratch. Scripts to clean data, parse logs, and create visualizations. Knowing how to read technical documentation and modify code copied from Stack Overflow to your needs was a mark of skill and survival.
+
+I remember maintaining macros and batch jobs for non-technical colleagues. I'd tune them carefully to handle routine tasks overnight. 
+
+None of that would’ve made sense in the 1960s, when punched cards ruled. And now, with the rise of AI coding assistants and auto-generated workflows, much of it is vanishing.
+
+## The new way to do data analysis
+
+There was a time when data analysis meant long hours in R or Python, cleaning messy CSV files and documenting every transform. That world may still exists, but increasingly, people are now asking an AI to “clean this dataset” or “build me a dashboard.” And in seconds, it delivers.
+
+The developer ecosystem was built on editors, version control, and shared knowledge. And the growth of Stack Overflow, GitHub, and open-source projects made it robust. Today, those building blocks are being replaced or reshaped by AI copilots and automated pipelines.
+
+Some data analysts I worked with used to see code as a work of art. "Oh, look how I've refactored these 10 lines of code to only 4 lines." Now we ask, “What’s the fastest path to insight?” with no regard to the code that generated that insight. Hello vibe coding.
+
+## Final thoughts
+
+We can lament the end of an ecosystem. After all, we built careers mastering the old tools. We took pride in the process and trusted it because it worked.
+
+Or, we can recognize that ecosystems change and shift our focus to how the new one gives us a chance to solve better problems. Why spend days building a dashboard when you can whip it out in minutes. And if we find out it doesn't answer our business question, we can discard it and create another one in no time, thanks to AI.
+
+Just a few years ago, this new way to do data analysis was unimaginable. Now, it's reality. Will you embrace it or will you stick to your old ways? That's for you, and you alone to answer.
