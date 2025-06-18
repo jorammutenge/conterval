@@ -67,5 +67,8 @@
   },
   "blog/your-beautiful-code/index.qmd": {
     "index.html": "d1b2c900"
+  },
+  "blog/removing-whitespace-in-values-polars/index.qmd": {
+    "index.html": "d5d8c268"
   }
 }

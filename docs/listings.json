@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/removing-whitespace-in-values-polars/index.html",
       "/blog/your-beautiful-code/index.html",
       "/blog/familiarity-trap/index.html",
       "/blog/idea-vs-thoughtful-person/index.html",

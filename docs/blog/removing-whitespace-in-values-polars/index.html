@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2025-06-12">
+<meta name="dcterms.date" content="2025-06-18">
 
-<title>Your beautiful code doesn’t matter anymore (and that’s fine)</title>
+<title>How to remove whitespace in column values using polars in python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,10 +22,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -82,6 +117,9 @@ gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -126,9 +164,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Sections</h2>
    
-  <ul class="collapse">
-  <li><a href="#the-new-way-to-do-data-analysis" id="toc-the-new-way-to-do-data-analysis" class="nav-link active" data-scroll-target="#the-new-way-to-do-data-analysis">The new way to do data analysis</a></li>
-  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final thoughts</a></li>
+  <ul>
+  <li><a href="#dataframe-with-whitespace-in-values" id="toc-dataframe-with-whitespace-in-values" class="nav-link active" data-scroll-target="#dataframe-with-whitespace-in-values">Dataframe with whitespace in values</a></li>
+  <li><a href="#show-unique-values" id="toc-show-unique-values" class="nav-link" data-scroll-target="#show-unique-values">Show unique values</a></li>
+  <li><a href="#true-unique-values" id="toc-true-unique-values" class="nav-link" data-scroll-target="#true-unique-values">True unique values</a></li>
   </ul>
 </nav>
     </div>
@@ -137,8 +176,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Your beautiful code doesn’t matter anymore (and that’s fine)</h1>
-</div>
+<h1 class="title">How to remove whitespace in column values using polars in python</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">100DaysOfPolars</div>
+  </div>
+  </div>
 
 
 
@@ -154,7 +196,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-06-12</p>
+      <p class="date">2025-06-18</p>
     </div>
   </div>
   
@@ -166,21 +208,183 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </header>
 
 
-<p>Your code doesn’t run in a vacuum. Your tools, your projects, your career all depend on a fast-moving ecosystem of languages, libraries, platforms, datasets, and now, AI.</p>
-<p>I used to write code by hand from scratch. Scripts to clean data, parse logs, and create visualizations. Knowing how to read technical documentation and modify code copied from Stack Overflow to your needs was a mark of skill and survival.</p>
-<p>I remember maintaining macros and batch jobs for non-technical colleagues. I’d tune them carefully to handle routine tasks overnight.</p>
-<p>None of that would’ve made sense in the 1960s, when punched cards ruled. And now, with the rise of AI coding assistants and auto-generated workflows, much of it is vanishing.</p>
-<section id="the-new-way-to-do-data-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="the-new-way-to-do-data-analysis">The new way to do data analysis</h2>
-<p>There was a time when data analysis meant long hours in R or Python, cleaning messy CSV files and documenting every transform. That world may still exists, but increasingly, people are now asking an AI to “clean this dataset” or “build me a dashboard.” And in seconds, it delivers.</p>
-<p>The developer ecosystem was built on editors, version control, and shared knowledge. And the growth of Stack Overflow, GitHub, and open-source projects made it robust. Today, those building blocks are being replaced or reshaped by AI copilots and automated pipelines.</p>
-<p>Some data analysts I worked with used to see code as a work of art. “Oh, look how I’ve refactored these 10 lines of code to only 4 lines.” Now we ask, “What’s the fastest path to insight?” with no regard to the code that generated that insight. Hello vibe coding.</p>
+<p>In data science or data analysis, counting unique values is very common. However, having whitespace (empty space at the beginning or at the end) in your values can lead to inaccurate counts.</p>
+<p>Whitespace can end up in your dataset, especially when the data is entered manually. A data entry person might press the spacebar before or after typing a value.</p>
+<section id="dataframe-with-whitespace-in-values" class="level2">
+<h2 class="anchored" data-anchor-id="dataframe-with-whitespace-in-values">Dataframe with whitespace in values</h2>
+<p>Let me show you an example of a dataframe containing values with whitespace. The first two values in <em>Items_Bought</em> contain whitespace.</p>
+<div id="a362be32" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (8, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Name</th>
+<th data-quarto-table-cell-role="th">Items_Bought</th>
+</tr>
+<tr class="even">
+<th>str</th>
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Jeremie"</td>
+<td>"Apples&nbsp;&nbsp;&nbsp;"</td>
+</tr>
+<tr class="even">
+<td>"Ashwine"</td>
+<td>"&nbsp;&nbsp;&nbsp;Milk"</td>
+</tr>
+<tr class="odd">
+<td>"Joram"</td>
+<td>"Bread"</td>
+</tr>
+<tr class="even">
+<td>"Ollie"</td>
+<td>"Eggs"</td>
+</tr>
+<tr class="odd">
+<td>"Jeremie"</td>
+<td>"Bananas"</td>
+</tr>
+<tr class="even">
+<td>"Ashwine"</td>
+<td>"Cheese"</td>
+</tr>
+<tr class="odd">
+<td>"Joram"</td>
+<td>"Milk"</td>
+</tr>
+<tr class="even">
+<td>"Ollie"</td>
+<td>"Apples"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 </section>
-<section id="final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="final-thoughts">Final thoughts</h2>
-<p>We can lament the end of an ecosystem. After all, we built careers mastering the old tools. We took pride in the process and trusted it because it worked.</p>
-<p>Or, we can recognize that ecosystems change and shift our focus to how the new one gives us a chance to solve better problems. Why spend days building a dashboard when you can whip it out in minutes. And if we find out it doesn’t answer our business question, we can discard it and create another one in no time, thanks to AI.</p>
-<p>Just a few years ago, this new way to do data analysis was unimaginable. Now, it’s reality. Will you embrace it or will you stick to your old ways? That’s for you, and you alone to answer.</p>
+<section id="show-unique-values" class="level2">
+<h2 class="anchored" data-anchor-id="show-unique-values">Show unique values</h2>
+<p>Now let’s show the unique items in the <em>Items_Bought</em> column.</p>
+<div id="d9fb25d0" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Items_Bought'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (8, 1)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Items_Bought</th>
+</tr>
+<tr class="even">
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Cheese"</td>
+</tr>
+<tr class="even">
+<td>"Bananas"</td>
+</tr>
+<tr class="odd">
+<td>"Apples"</td>
+</tr>
+<tr class="even">
+<td>"Apples&nbsp;&nbsp;&nbsp;"</td>
+</tr>
+<tr class="odd">
+<td>"Eggs"</td>
+</tr>
+<tr class="even">
+<td>"Bread"</td>
+</tr>
+<tr class="odd">
+<td>"&nbsp;&nbsp;&nbsp;Milk"</td>
+</tr>
+<tr class="even">
+<td>"Milk"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br> We know that ” Milk” and “Milk” are the same item, but the computer doesn’t realize this. The presence of whitespace makes the values different.</p>
+</section>
+<section id="true-unique-values" class="level2">
+<h2 class="anchored" data-anchor-id="true-unique-values">True unique values</h2>
+<p>To get the true unique values, we need to remove the whitespace from the values. Polars has a handy function that can help with this known as <code>strip_chars</code>.</p>
+<div id="19419026" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Items_Bought'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Items_Bought'</span>).<span class="bu">str</span>.strip_chars())</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a> .unique()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6, 1)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Items_Bought</th>
+</tr>
+<tr class="even">
+<th>str</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Bananas"</td>
+</tr>
+<tr class="even">
+<td>"Bread"</td>
+</tr>
+<tr class="odd">
+<td>"Milk"</td>
+</tr>
+<tr class="even">
+<td>"Eggs"</td>
+</tr>
+<tr class="odd">
+<td>"Apples"</td>
+</tr>
+<tr class="even">
+<td>"Cheese"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br> See how the number of values has decreased from 8 to 6? That’s because ” Milk” and “Milk” are now counted as the same item.</p>
+<p>Whenever you want to count the number of unique values in a column, it’s good practice to remove any whitespace. This ensures you get an accurate count of the unique values.</p>
+<p>Learn more in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>!</p>
 
 
 </section>
