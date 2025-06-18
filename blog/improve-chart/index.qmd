@@ -7,6 +7,7 @@ toc: true
 toc-title: 'Sections'
 toc-location: right
 toc-depth: 3
+categories: [visualization]
 ---
 
 All data visualizations should, first and foremost, inform. Any visualization that falls short of this is simply data art. Data visualizations that are uninformative may be bad but misleading ones are the worst. Here's an example of a bad visualization that Olga Berezovsky posted on LinkedIn. I thought I'd recreate it based on the suggestions she highlighted.
