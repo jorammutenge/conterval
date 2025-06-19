@@ -300,12 +300,12 @@ small {
   // Ensure each category appears on a new line
   .category {
     display: inline-block; // Keeps background only around the text
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     padding: 2px 6px;
     margin-bottom: 4px; // Adds space between categories
 
     .quarto-category-count {
-      font-size: 0.7rem;
+      font-size: 0.9rem;
     }
 
     &.active {
