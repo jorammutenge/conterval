@@ -70,5 +70,8 @@
   },
   "blog/removing-whitespace-in-values-polars/index.qmd": {
     "index.html": "d5d8c268"
+  },
+  "blog/polars-explode/index.qmd": {
+    "index.html": "d3529771"
   }
 }
