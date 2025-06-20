@@ -3,6 +3,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/polars-explode/index.html",
+      "/blog/arrange-columns-by-index/index.html",
       "/blog/removing-whitespace-in-values-polars/index.html",
       "/blog/your-beautiful-code/index.html",
       "/blog/familiarity-trap/index.html",

@@ -73,5 +73,8 @@
   },
   "blog/polars-explode/index.qmd": {
     "index.html": "d3529771"
+  },
+  "blog/arrange-columns-by-index/index.qmd": {
+    "index.html": "963637ee"
   }
 }

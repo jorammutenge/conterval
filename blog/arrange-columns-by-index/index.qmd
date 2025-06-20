@@ -1,0 +1,52 @@
+---
+title: "Arranging columns in a specific order using index in polars"
+author: '{{< var author >}}'
+date: '2025-06-19'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+
+Stacking dataframes vertically only works when the column names are the same and arranged in the same order. For example, if you have `df1` with columns *Name* and *Age*, and `df2` with columns *Age* and *Name*, these two dataframes cannot be stacked into a single dataframe. Although they contain the same column names, the order of the columns does not align.
+
+## Inefficient ordering of columns
+
+You can rearrange columns using `select` by typing out the column names one by one. The columns in the dataframe will appear in the order you specify. However, this method can be tedious, especially when working with many columns or columns with long names.
+
+## Efficient ordering of columns
+
+If you're too lazy to type out the columns names, you can reference them by index. Polars provides the `pl.nth` function that lets you to do this. Here's how you can rearrange the columns in the dataframe below.
+
+```{python}
+#|echo: false
+
+import polars as pl
+
+df = pl.DataFrame({
+    "Number_of_People": [17, 25, 15, 12, 20],
+    "Budget": [50000, 120000, 80000, 60000, 90000],
+    "Department_Name": ["Hospitality", "Legal", "Finance", "Advertising", "Sales"],
+    "Location": ["Thailand", "New York", "London", "New York", "Scranton"],
+    "Manager": ["Sritala", "Harvey Specter", "Ken Leung", "Don Draper", "Michael Scott"],
+})
+
+df
+```
+
+<br>
+Now let's arrange the columns by referencing their index (position) instead of manually typing the column names.
+
+```{python}
+(df
+ .select(pl.nth(2,4,3,0,1))
+ )
+```
+
+<br>
+See how much time this method can save you?
+
+Check out my {{< var polars_course>}}!
