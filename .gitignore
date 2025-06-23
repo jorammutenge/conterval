@@ -4,6 +4,7 @@
 .Ruserdata
 *.yml
 .DS_Store
+.env
 
 /.quarto/
 /_site/

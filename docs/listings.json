@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/add-currency-symbol-polars/index.html",
       "/blog/polars-explode/index.html",
       "/blog/arrange-columns-by-index/index.html",
       "/blog/removing-whitespace-in-values-polars/index.html",
