@@ -1,0 +1,62 @@
+---
+title: "Converting unix timestamp to polars datetime"
+author: '{{< var author >}}'
+date: '2025-06-24'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Computers are good at recording timestamps, but they do it in Unix time. Sadly, humans aren't great at interpreting Unix time.
+
+Below is a dataframe of YouTube comments where users posted what they considered to be the best opening line in literature.
+
+```{python}
+#| echo: false
+
+import polars as pl
+
+df = pl.DataFrame({
+    "Commment": [
+        "In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since.",
+        "Call me Ishmael.",
+        "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness...",
+        "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife."
+    ],
+    "User": [
+        "@fscott",
+        "@hmelville",
+        "@cdickens",
+        "@jausten"
+    ],
+    "Unix_Time": [
+        1698592675.131816,
+        1680453910.612181,
+        1701274456.134241,
+        1701274277.673785
+    ]
+})
+
+with pl.Config(set_fmt_float="full"):
+    display(df)
+```
+
+<br>
+
+## From Unix time to normal datetime
+
+Unless you're familiar with interpreting Unix timestamps, it's difficult to tell when each comment was posted. Fortunately, Polars makes it easy to convert these timestamps into a human-readable format. Here's how to do it.
+
+```{python}
+(df
+ .with_columns(Datetime=pl.from_epoch('Unix_Time'))
+ )
+```
+
+<br>
+Now you can see the exact date, hour, and even minute each comment was posted.
+
+Learn even more ways to analyze data in my {{< var polars_course >}}.

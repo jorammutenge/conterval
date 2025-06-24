@@ -79,5 +79,8 @@
   },
   "blog/add-currency-symbol-polars/index.qmd": {
     "index.html": "4aaaf708"
+  },
+  "blog/convert-unix-time-to-polars-datetime/index.qmd": {
+    "index.html": "d6e5d232"
   }
 }
