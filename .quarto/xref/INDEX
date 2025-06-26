@@ -82,5 +82,8 @@
   },
   "blog/convert-unix-time-to-polars-datetime/index.qmd": {
     "index.html": "d6e5d232"
+  },
+  "blog/ibis-for-data-analysis/index.qmd": {
+    "index.html": "577d661f"
   }
 }
