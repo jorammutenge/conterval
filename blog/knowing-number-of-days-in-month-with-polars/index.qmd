@@ -1,0 +1,55 @@
+---
+title: "How to know the number of days in each month with polars"
+author: '{{< var author >}}'
+date: '2025-06-20'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+If I asked you, "How many days are in each month of the calendar?" most people would be able to answer for a few months, but not all.
+
+I, on the other hand, never had this problem. At the age of 10, I memorized a line from a TV ad that went:
+
+> "Thirty days hath September, April, June, and November. All the rest have thirty-one, except for February, which has twenty-eight."
+
+I've never forgotten that line--partly because I loved the ad, and partly because it turned out to be surprisingly useful.
+
+## Using polars to know the number of days
+
+But let’s say you’re not as fortunate as I was, and you’re unsure whether April has 30 or 31 days. That’s where Polars can help.
+
+Suppose we have the following dataframe with *Month* and *Date* columns:
+
+```{python}
+#| echo: false
+import polars as pl
+from datetime import date
+
+# Generate date range
+data = pl.DataFrame({
+    "Date": pl.date_range(date(2024, 1, 13), date(2024, 6, 13), "1mo2d", eager=True)
+})
+
+df = (data
+ .with_columns(data["Date"].dt.strftime("%b").alias("Month"))
+ .select('Month','Date')
+ )
+
+df
+```
+
+We can use the `month_end` function to determine the last day of each month. This tells us exactly how many days that month has.
+
+```{python}
+(df
+ .with_columns(Month_End=pl.col('Date').dt.month_end())
+ )
+```
+
+Now you know that April has only 30 days, without needing to memorize a rhyme from a TV ad from my childhood. Incidentally, that line is actually from a nursery rhyme.
+
+Even more tricks from my {{< var polars_course >}}!

@@ -85,5 +85,8 @@
   },
   "blog/ibis-for-data-analysis/index.qmd": {
     "index.html": "577d661f"
+  },
+  "blog/knowing-number-of-days-in-month-with-polars/index.qmd": {
+    "index.html": "0c4c3804"
   }
 }
