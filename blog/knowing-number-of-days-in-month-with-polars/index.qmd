@@ -1,7 +1,7 @@
 ---
 title: "How to know the number of days in each month with polars"
 author: '{{< var author >}}'
-date: '2025-06-20'
+date: '2025-06-29'
 date-format: iso
 toc: true
 toc-title: 'Sections'

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2025-06-20">
+<meta name="dcterms.date" content="2025-06-29">
 
 <title>How to know the number of days in each month with polars</title>
 <style>
@@ -194,7 +194,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-06-20</p>
+      <p class="date">2025-06-29</p>
     </div>
   </div>
   
@@ -216,8 +216,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="using-polars-to-know-the-number-of-days">Using polars to know the number of days</h2>
 <p>But let’s say you’re not as fortunate as I was, and you’re unsure whether April has 30 or 31 days. That’s where Polars can help.</p>
 <p>Suppose we have the following dataframe with <em>Month</em> and <em>Date</em> columns:</p>
-<div id="b4afeb16" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div id="2c761bbe" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -264,11 +264,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>We can use the <code>month_end</code> function to determine the last day of each month. This tells us exactly how many days that month has.</p>
-<div id="8e52517d" class="cell" data-execution_count="2">
+<div id="f4eb02ff" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Month_End<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.month_end())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
