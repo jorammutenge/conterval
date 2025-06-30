@@ -1,0 +1,65 @@
+---
+title: "Getting every other row of the dataframe with polars"
+author: '{{< var author >}}'
+date: '2025-06-30'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+There comes a time when you want to extract every other row from your DataFrame. What I mean is: get the first row, skip the second, get the third, skip the fourth, and so on.
+
+Say you have the dataframe below:
+
+```{python}
+#| echo: false
+
+import polars as pl
+
+data = {
+    "Episode_Title": [
+        "Pilot", "Errors and Omissions", "Inside Track", "Dirty Little Secrets",
+        "Bail Out", "Tricks of the Trade", "Play the Man", "Identity Crisis",
+        "Undefeated", "Shelf Life"
+    ],
+    "Release_Date": [
+        "2011-06-23", "2011-06-30", "2011-07-07", "2011-07-14",
+        "2011-07-21", "2011-07-28", "2011-08-04", "2011-08-11",
+        "2011-08-18", "2011-08-25"
+    ],
+    "Director": [
+        "Kevin Bray", "John Scott", "Kevin Bray", "Dennie Gordon",
+        "Kate Woods", "Terry McDonough", "Tim Matheson", "Norberto Barba",
+        "Felix Alcala", "Jennifer Getzinger"
+    ]
+}
+
+df = (pl.DataFrame(data)
+      .with_columns(pl.col("Release_Date").str.to_date("%Y-%m-%d"))
+      )
+
+df
+```
+
+<br>
+And you want to select every odd-numbered row—like the first, third, fifth, etc.
+
+I remember writing overly complex code with lambda functions just to achieve this.
+
+## Getting every other row with polars
+
+With Polars, you don’t have to torture yourself writing convoluted Python code. The `gather_every` function does exactly that.
+
+```{python}
+(df
+ .gather_every(2)
+ )
+```
+
+<br>
+Isn’t that cool?
+
+Even cooler ways to use Polars in my {{< var polars_course >}}!

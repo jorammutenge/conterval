@@ -88,5 +88,8 @@
   },
   "blog/knowing-number-of-days-in-month-with-polars/index.qmd": {
     "index.html": "0c4c3804"
+  },
+  "blog/get-every-other-row-polars/index.qmd": {
+    "index.html": "840d0c6f"
   }
 }
