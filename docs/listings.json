@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/joining-text-with-polars/index.html",
       "/blog/get-every-other-row-polars/index.html",
       "/blog/knowing-number-of-days-in-month-with-polars/index.html",
       "/blog/ibis-for-data-analysis/index.html",

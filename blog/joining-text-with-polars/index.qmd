@@ -1,0 +1,55 @@
+---
+title: "Joining text data with polars"
+author: '{{< var author >}}'
+date: '2025-07-01'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Most people have a love-hate relationship with text data, but if you work in the data field, you're bound to encounter it.
+
+One of the most common operations when working with text data is joining two words. Below is a dataframe containing the first and last names of characters from one of my favorite TV shows, *Suits*.
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame({
+    "First_Name": ["Harvey", "Mike", "Jessica", "Louis"],
+    "Last_Name": ["Specter", "Ross", "Pearson", "Litt"]
+})
+
+df
+```
+
+<br>
+Let's say we want to create a new column called *Full_Name* that combines the first and last names into one. How would we do that?
+
+This is where the Polars expression `concat_str` comes in handy. Here's how to use it:
+
+```{python}
+(df
+ .with_columns(pl.concat_str([pl.col('First_Name'), pl.col('Last_Name')], separator=' ')
+               .alias('Full_Name'))
+ )
+```
+
+<br>
+The code above is considered the idiomatic Polars way of doing it.
+
+But if you want to impress your boss with your technical wizardry, you can also achieve the same result using a more "hacky" approach like this:
+
+```{python}
+(df
+ .with_columns(pl.col('First_Name').add(' ').add(pl.col('Last_Name'))
+               .alias('Full_Name')
+               )
+ )
+```
+
+<br>
+Become a master of Polars by enrolling in the {{< var polars_course >}}.
