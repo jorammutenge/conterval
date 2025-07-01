@@ -94,5 +94,8 @@
   },
   "blog/joining-text-with-polars/index.qmd": {
     "index.html": "b80c88e1"
+  },
+  "blog/maintaining-column-name-polars/index.qmd": {
+    "index.html": "184efd2a"
   }
 }
