@@ -97,5 +97,8 @@
   },
   "blog/maintaining-column-name-polars/index.qmd": {
     "index.html": "184efd2a"
+  },
+  "blog/convert-from-pandas-to-polars-dataframe/index.qmd": {
+    "index.html": "bce37377"
   }
 }

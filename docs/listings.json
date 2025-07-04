@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/convert-from-pandas-to-polars-dataframe/index.html",
       "/blog/maintaining-column-name-polars/index.html",
       "/blog/joining-text-with-polars/index.html",
       "/blog/get-every-other-row-polars/index.html",
