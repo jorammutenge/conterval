@@ -14,67 +14,91 @@
   </url>
   <url>
     <loc>https://www.conterval.com/blog/removing-whitespace-in-values-polars/index.html</loc>
-    <lastmod>2025-06-18T22:43:01.320Z</lastmod>
+    <lastmod>2025-07-05T20:26:04.523Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/polars-explode/index.html</loc>
-    <lastmod>2025-06-20T00:17:41.080Z</lastmod>
+    <lastmod>2025-07-05T20:24:14.972Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/lesson-from-retired-boss/index.html</loc>
-    <lastmod>2025-05-19T02:46:00.060Z</lastmod>
+    <loc>https://www.conterval.com/blog/maintaining-column-name-polars/index.html</loc>
+    <lastmod>2025-07-05T20:19:08.420Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/job-interview-details/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.435Z</lastmod>
+    <loc>https://www.conterval.com/blog/knowing-number-of-days-in-month-with-polars/index.html</loc>
+    <lastmod>2025-07-05T20:21:57.627Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/improve-chart/index.html</loc>
-    <lastmod>2025-06-18T23:39:51.616Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/ibis-for-data-analysis/index.html</loc>
-    <lastmod>2025-06-26T00:20:23.434Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.359Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/data-scientist-show/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.355Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/arrange-columns-by-index/index.html</loc>
-    <lastmod>2025-06-19T14:06:48.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/add-currency-symbol-polars/index.html</loc>
-    <lastmod>2025-06-23T23:08:57.920Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/convert-unix-time-to-polars-datetime/index.html</loc>
-    <lastmod>2025-06-24T22:24:03.805Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/familiarity-trap/index.html</loc>
-    <lastmod>2025-06-01T11:05:19.758Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.381Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/idea-vs-thoughtful-person/index.html</loc>
-    <lastmod>2025-05-25T20:40:04.586Z</lastmod>
+    <loc>https://www.conterval.com/blog/joining-text-with-polars/index.html</loc>
+    <lastmod>2025-07-05T20:19:55.586Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/index.html</loc>
     <lastmod>2025-06-18T23:21:04.329Z</lastmod>
   </url>
   <url>
+    <loc>https://www.conterval.com/blog/idea-vs-thoughtful-person/index.html</loc>
+    <lastmod>2025-05-25T20:40:04.586Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/how-to-learn-to-code/index.html</loc>
+    <lastmod>2025-07-05T01:36:59.719Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.359Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/familiarity-trap/index.html</loc>
+    <lastmod>2025-06-01T11:05:19.758Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/convert-unix-time-to-polars-datetime/index.html</loc>
+    <lastmod>2025-07-05T20:22:44.452Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/arrange-columns-by-index/index.html</loc>
+    <lastmod>2025-07-05T20:24:51.980Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/add-currency-symbol-polars/index.html</loc>
+    <lastmod>2025-07-05T20:23:39.590Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/convert-from-pandas-to-polars-dataframe/index.html</loc>
+    <lastmod>2025-07-05T20:18:12.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/data-scientist-show/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/get-every-other-row-polars/index.html</loc>
+    <lastmod>2025-07-05T20:20:28.161Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.381Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/ibis-for-data-analysis/index.html</loc>
+    <lastmod>2025-06-26T00:20:23.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/improve-chart/index.html</loc>
+    <lastmod>2025-06-18T23:39:51.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/job-interview-details/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.435Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/blog/kivy-desktop-app/index.html</loc>
     <lastmod>2025-05-19T02:53:10.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/lesson-from-retired-boss/index.html</loc>
+    <lastmod>2025-05-19T02:46:00.060Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/my-marimo-pr/index.html</loc>
@@ -95,29 +119,5 @@
   <url>
     <loc>https://www.conterval.com/blog/your-beautiful-code/index.html</loc>
     <lastmod>2025-06-12T22:11:33.545Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/knowing-number-of-days-in-month-with-polars/index.html</loc>
-    <lastmod>2025-06-29T23:58:29.050Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/get-every-other-row-polars/index.html</loc>
-    <lastmod>2025-06-30T00:31:57.515Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/joining-text-with-polars/index.html</loc>
-    <lastmod>2025-07-01T00:08:44.402Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/maintaining-column-name-polars/index.html</loc>
-    <lastmod>2025-07-01T23:16:22.535Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/convert-from-pandas-to-polars-dataframe/index.html</loc>
-    <lastmod>2025-07-04T03:08:01.673Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/how-to-learn-to-code/index.html</loc>
-    <lastmod>2025-07-05T01:36:59.719Z</lastmod>
   </url>
 </urlset>

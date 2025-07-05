@@ -1,5 +1,6 @@
 ---
 title: "How to remove whitespace in column values using polars in python"
+subtitle: "strip_chars"
 author: '{{< var author >}}'
 date: '2025-06-18'
 date-format: iso

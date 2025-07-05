@@ -1,5 +1,6 @@
 ---
 title: "Turning a polars dataframe to long format with explode"
+subtitle: "explode"
 author: '{{< var author >}}'
 date: '2025-06-20'
 date-format: iso

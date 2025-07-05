@@ -1,5 +1,6 @@
 ---
 title: "Converting unix timestamp to polars datetime"
+subtitle: "pl.from_epoch"
 author: '{{< var author >}}'
 date: '2025-06-24'
 date-format: iso

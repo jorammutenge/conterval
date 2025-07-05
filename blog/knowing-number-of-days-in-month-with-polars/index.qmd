@@ -1,5 +1,6 @@
 ---
 title: "How to know the number of days in each month with polars"
+subtitle: "dt.month_end"
 author: '{{< var author >}}'
 date: '2025-06-29'
 date-format: iso

@@ -1,5 +1,6 @@
 ---
 title: "How to convert from pandas to polars dataframe"
+subtitle: "pl.from_pandas"
 author: '{{< var author >}}'
 date: '2025-07-03'
 date-format: iso

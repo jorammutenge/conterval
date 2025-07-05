@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa1a81e6dac41eab4c6e8d7d3861822c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-353e6a18738107545ef67b9cbfe4d714.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7f48f6fc45e8e6324efe4ef505413309.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -176,6 +176,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Turning a polars dataframe to long format with explode</h1>
+<p class="subtitle lead">explode</p>
   <div class="quarto-categories">
     <div class="quarto-category">100DaysOfPolars</div>
   </div>
@@ -209,7 +210,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Tabular data is easier to process when columns contain singular values of the same data type for each row. However, sometimes data can be stored as a list in a single row.</p>
 <p>Here’s an example of a dataframe where the data in <em>Subject</em> is stored as a list.</p>
-<div id="e64d8c3f" class="cell" data-execution_count="1">
+<div id="b67b9a00" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -256,7 +257,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="turn-dataframe-to-long-format" class="level2">
 <h2 class="anchored" data-anchor-id="turn-dataframe-to-long-format">Turn dataframe to long format</h2>
 <p>The dataframe above is in what is known as wide format. We need to transform it to long format to answer the questions above more easily. Polars provides the <code>explode</code> function, which allows us to transform the dataframe to long format. Here’s how it’s done.</p>
-<div id="d230ff78" class="cell" data-execution_count="2">
+<div id="8a46bff1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Subjects'</span>).<span class="bu">str</span>.split(<span class="st">','</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -296,7 +297,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br> We had to convert the values in <em>Subject</em> into a list because <code>"Math,Physics,Economics"</code> is not a list data type–it’s a string. Splitting on the comma <code>,</code> ensures that each subject appears as an individual item in the list. Notice that the data type in the dataframe now shows as a list?</p>
 <p>Now let’s explode the list values in <em>Subject</em> to make the dataframe longer.</p>
-<div id="20a27c61" class="cell" data-execution_count="3">
+<div id="d2cd3109" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Subjects'</span>).<span class="bu">str</span>.split(<span class="st">','</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .explode(<span class="st">'Subjects'</span>)</span>

@@ -1,5 +1,6 @@
 ---
 title: "Getting every other row of the dataframe with polars"
+subtitle: "gather_every"
 author: '{{< var author >}}'
 date: '2025-06-30'
 date-format: iso

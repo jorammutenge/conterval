@@ -1,5 +1,6 @@
 ---
 title: "Adding a currency symbol to polars dataframe values"
+subtitle: "pl.format"
 author: '{{< var author >}}'
 date: '2025-06-23'
 date-format: iso

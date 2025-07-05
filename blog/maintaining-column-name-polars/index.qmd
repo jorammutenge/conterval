@@ -1,5 +1,6 @@
 ---
 title: "Maintaining a column name without retyping it in polars"
+subtitle: "name.keep"
 author: '{{< var author >}}'
 date: '2025-07-02'
 date-format: iso

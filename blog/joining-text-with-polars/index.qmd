@@ -1,5 +1,6 @@
 ---
 title: "Joining text data with polars"
+subtitle: "pl.concat_str"
 author: '{{< var author >}}'
 date: '2025-07-01'
 date-format: iso

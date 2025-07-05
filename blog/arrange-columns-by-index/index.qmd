@@ -1,5 +1,6 @@
 ---
 title: "Arranging columns in a specific order using index in polars"
+subtitle: "pl.nth"
 author: '{{< var author >}}'
 date: '2025-06-19'
 date-format: iso
