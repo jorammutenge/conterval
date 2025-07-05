@@ -1,0 +1,70 @@
+---
+title: "Keyboard time is the key to learning how to code"
+author: '{{< var author >}}'
+date: '2025-07-04'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+---
+
+Most people say they want to learn how to code, but if you take a look at how they spend their time acquiring that skill, it makes you question whether they will ever become programmers.
+
+Like most programmers out there, I'm a self-taught developer. That is to say, I did not study computer science in college. The first time I tried to learn coding, I quit after a few weeks because I didn't understand what it actually took to become a programmer.
+
+It turns out I'm not the only one who misunderstood that. Many people have tried to learn programming and have quit—not once or twice, but sometimes even three times. That’s a shame, but the good news is that once you understand what it actually takes to learn how to program, you can succeed on your first serious attempt.
+
+## How should you learn coding?
+
+The 80/20 rule is one of those things that pops up in life and business. If you were to categorize your time learning how to code from an 80/20 perspective, then you should spend 80% of your time writing code and 20% learning about how to code.
+
+The most effective way to learn how to code is by spending time on the keyboard. That means you should spend more time typing code than reading about the latest JavaScript framework or the popular Python library featured in every Medium article.
+
+Most people reverse this ratio. They spend too much time reading about how to analyze data using PySpark or Polars, or how to make their portfolio website look sleek using Tailwind. They enroll in countless tutorials on Udemy or LinkedIn Learning, thinking that finishing those courses will automatically make them programmers.
+
+If you're spending 80% of your time learning about how to program and only 20% of your time writing code, you're headed in the wrong direction.
+
+Naval Ravikant, perhaps the most insightful modern-day philosopher, said it best:
+
+> Doing is faster than watching. Most people think they can learn how to do something by watching another person do the thing. It doesn't work that way.
+
+If you really want to learn how to code, you have to spend 80% of your time writing code. It's OK to read blogs, enroll in courses, or watch YouTube tutorials. But if you truly want to learn, you must spend time on the keyboard, writing the code yourself.
+
+## The best hack I've found
+
+What has worked best for me is reading other people's code, retyping it line by line, and then executing it. It may seem like a waste of time, but if you think about it, you're killing two birds with one stone. First, you're learning how well-structured code looks. Second, you're putting in keyboard time.
+
+## Coding is not easy
+
+This may not be the news you want to hear, but the truth is that coding is not easy—especially when you're doing it for the first time. A lot of concepts like arrays, scope, and functions will seem foreign, and you’ll want to quit. That’s OK. We all went through the same thing. Remember:
+
+> Even the master was once a beginner.
+
+Keep putting in the time and doing it the right way, and before you know it, you'll become a real programmer.
+
+## Don't make this mistake
+
+The mistake most people make is spending too much time on things they already understand. I made this mistake as well.
+
+There’s something comforting about sticking with the familiar. Once you learn a concept like writing a `for loop`, you always want to write `for loops` because that’s the code you can write with ease. It makes you feel good because you're capable of doing it, so you're tempted to repeat it. But that's actually a waste of time because you already know how to do that. You need to move on to the things you don’t know how to do.
+
+Uncharted territories are always uncomfortable and difficult to navigate. That’s why diving into concepts you don’t fully understand can be daunting and frustrating. But if you want to be a master, you have to spend time on those concepts until you grasp them. You can't keep falling back on what you already understand—that does nothing for your learning progress. The only way to move the needle in your coding journey is to work on the things you *don’t* understand right now.
+
+Don’t be misled by the ego boost you get from revisiting familiar concepts. Make it a habit to dive into the unfamiliar, even if it makes you feel dumb at first.
+
+Coding is a “deep work” activity, to borrow the words of Cal Newport. That is to say, it is a cognitively demanding task. Don’t expect it to be easy. If it were, everyone would be doing it.
+
+Have the courage to go one layer deeper than what you already understand. That is how you become a skilled programmer.
+
+## Final thoughts
+
+You might be asking, **What programming language should I learn?** Pick any language and stick with it. It doesn’t really matter which one you choose. What matters is that you learn and fully understand the fundamentals of that language. These fundamentals are common across most languages and will help you learn others down the line.
+
+If you're learning how to code to get a job, I recommend learning a popular programming language like Python or JavaScript. The logic is simple: if the language is popular, there will be more job opportunities.
+
+Once you master one of these popular languages and land a job, you can explore more powerful—but less popular—languages like Rust, C++, or Go.
+
+Do not be promiscuous with languages in your early stages of learning to code. That’s a waste of time because it only gives you partial knowledge of many languages. And I’ve found that partial knowledge of any programming language is not enough to develop meaningful programs.
+
+Pick one language, stick with it, and spend more time on the keyboard typing code. Do that, and it will only be a matter of time before you call yourself a real programmer.

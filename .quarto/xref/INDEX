@@ -100,5 +100,8 @@
   },
   "blog/convert-from-pandas-to-polars-dataframe/index.qmd": {
     "index.html": "bce37377"
+  },
+  "blog/how-to-learn-to-code/index.qmd": {
+    "index.html": "2315f6c1"
   }
 }
