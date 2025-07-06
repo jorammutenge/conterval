@@ -103,5 +103,8 @@
   },
   "blog/how-to-learn-to-code/index.qmd": {
     "index.html": "2315f6c1"
+  },
+  "blog/create-date-column-in-polars/index.qmd": {
+    "index.html": "5bc39bf1"
   }
 }

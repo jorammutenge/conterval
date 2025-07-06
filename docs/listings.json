@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/create-date-column-in-polars/index.html",
       "/blog/how-to-learn-to-code/index.html",
       "/blog/convert-from-pandas-to-polars-dataframe/index.html",
       "/blog/maintaining-column-name-polars/index.html",

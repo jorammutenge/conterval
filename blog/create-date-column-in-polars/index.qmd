@@ -1,0 +1,47 @@
+---
+title: "Creating a datetime column from multiple columns in polars"
+subtitle: "pl.date"
+author: '{{< var author >}}'
+date: '2025-07-06'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+When you have a column with date values, having its data type as `datetime` is beneficial because it allows you to perform time series analysis on your data. You can slice the data into months, weeks, days, etc. This is not possible when your date values are stored as a string (text) data type.
+
+Below is a dataframe containing three columns: *Day*, *Month*, and *Year*.
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame({
+    "Day": [23, 14, 18, 15],
+    "Month": [12, 9, 7, 10],
+    "Year": [1997, 2001, 2003, 1999]
+})
+
+df
+```
+
+<br>
+You now want to create a new column, *Date*, that will contain all the values from each column as a full date. Normally, to create this new column, you would have to convert the values in each column to strings and then concatenate them into a single date. Then, you would need to change the data type of that full date from text to *datetime*. Fortunately, there's a better way.
+
+## The better way
+
+Polars has a handy expression, `pl.date`, that allows you to concatenate these values into a new column with a *datetime* data type. Here's how to do it:
+
+```{python}
+(df
+ .with_columns(pl.date(pl.col('Year'), pl.col('Month'), pl.col('Day')))
+ )
+```
+
+<br>
+Notice that the new column has `date` as its data type.
+
+Join 100+ students in my {{< var polars_course >}} sharpening their data analysis skills.
