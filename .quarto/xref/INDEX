@@ -106,5 +106,8 @@
   },
   "blog/create-date-column-in-polars/index.qmd": {
     "index.html": "5bc39bf1"
+  },
+  "blog/adding-conditional-formatting-to-excel-polars/index.qmd": {
+    "index.html": "4499bb7d"
   }
 }
