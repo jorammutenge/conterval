@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/sampling-data-with-polars/index.html",
       "/blog/stacking-dataframes-vertically-polars/index.html",
       "/blog/adding-conditional-formatting-to-excel-polars/index.html",
       "/blog/create-date-column-in-polars/index.html",
