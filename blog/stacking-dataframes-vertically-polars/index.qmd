@@ -1,0 +1,72 @@
+---
+title: "Stacking dataframes vertically in polars"
+subtitle: "vstack"
+author: '{{< var author >}}'
+date: '2025-07-09'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Combining two dataframes into a single dataframe is a common operation in data analysis. Dataframes can be combined vertically (one on top of the other) or horizontally (side by side). In this example, I’ll demonstrate how to combine them vertically.
+
+Below is a dataframe with 10 rows:
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame({'category': ['Hat','Sweater','Sweater','Sweater','Sweater','Sweater','Socks','Sweater','Hat','Sweater'],
+ 'quantity': [1, 9, 12, 5, 19, 4, 4, 14, 16, 8]})
+
+df
+```
+<br>
+
+## Combine first and last two rows
+
+Suppose we want to extract two dataframes from the original data:
+
+* The first dataframe, `df1`, containing the first two rows.
+* The second dataframe, `df2`, containing the last two rows.
+
+We’ll then combine these two extracted dataframes into a single dataframe with four rows.
+
+Let’s display the first dataframe:
+
+```{python}
+df1 = df.head(2)
+df1
+```
+
+<br>
+Now the second dataframe:
+
+```{python}
+df2 = df.tail(2)
+df2
+```
+
+<br>
+Finally, let’s combine the two dataframes:
+
+```{python}
+df1.vstack(df2)
+```
+
+## With method chaining
+
+We can also combine the two dataframes in a single step without creating intermediate variables—something I highly recommend. Here's how to do it:
+
+```{python}
+(df
+ .head(2)
+ .vstack(df.tail(2))
+ )
+```
+
+<br>
+Enroll in my {{< var polars_course >}} to level up your data analysis skills.

@@ -109,5 +109,8 @@
   },
   "blog/adding-conditional-formatting-to-excel-polars/index.qmd": {
     "index.html": "4499bb7d"
+  },
+  "blog/stacking-dataframes-vertically-polars/index.qmd": {
+    "index.html": "d18d39f3"
   }
 }
