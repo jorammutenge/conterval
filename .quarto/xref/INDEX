@@ -115,5 +115,8 @@
   },
   "blog/sampling-data-with-polars/index.qmd": {
     "index.html": "f351defd"
+  },
+  "blog/adding-across-columns-polars/index.qmd": {
+    "index.html": "c4d0fe39"
   }
 }

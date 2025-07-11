@@ -1,0 +1,66 @@
+---
+title: "Adding values across multiple columns in polars"
+subtitle: "sum_horizontal"
+author: '{{< var author >}}'
+date: '2025-07-11'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Most dataframe libraries are excellent at performing columnar operations, such as adding or multiplying values within a single column. However, there are times when you may want to perform such operations across multiple columns. Below is a dataframe of Apple stock values.
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame({'Date': ['2024-08-12', '2024-08-13', '2024-08-14', '2024-08-15'],
+ 'Open': [216.070007, 219.009995, 220.570007, 224.600006],
+ 'High': [219.509995, 221.889999, 223.029999, 225.350006],
+ 'Low': [215.600006, 219.009995, 219.699997, 222.759995],
+ 'Close': [217.529999, 221.270004, 221.720001, 224.720001]})
+
+df
+```
+
+<br>
+Say we want to create another column called *Sum_OHLC* that adds the values from the *Open* to *Close* columns.
+
+## The manual way
+
+Here's the manual approach to add the values across columns:
+
+```{python}
+(df
+ .with_columns((pl.col('Open') + pl.col('High') + pl.col('Low') + pl.col('Close'))
+               .alias('Sum_OHLC'))
+ )
+```
+
+## The efficient way
+
+And here's the idiomatic and more efficient way to do it:
+
+```{python}
+(df
+ .with_columns(pl.sum_horizontal('Open', 'High', 'Low', 'Close')
+               .alias('Sum_OHLC'))
+ )
+```
+
+## The showing off way
+
+Or if you want to impress the hiring manager in a coding interview, you can do it like this.
+
+```{python}
+(df
+ .with_columns(pl.sum_horizontal(pl.nth(list(range(1,5))))
+               .alias('Sum_OHLC'))
+ )
+```
+
+<br>
+Join 100 plus students in my {{< var polars_course >}} to learn more.
