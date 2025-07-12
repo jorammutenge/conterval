@@ -118,5 +118,8 @@
   },
   "blog/adding-across-columns-polars/index.qmd": {
     "index.html": "c4d0fe39"
+  },
+  "blog/aggregations-in-polars/index.qmd": {
+    "index.html": "894b0140"
   }
 }
