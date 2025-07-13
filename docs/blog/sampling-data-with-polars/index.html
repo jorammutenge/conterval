@@ -151,7 +151,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Books</span></a>
+<span class="menu-text">Book</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -213,7 +213,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Analyzing a very large dataset can be strenuous on your computer, especially if you don’t have a fast machine. Instead of overworking your computer and waiting a long time to see the results, you can perform your analysis on a smaller subset of the data. Below is a dataframe with 1000 rows.</p>
-<div id="f5b8b065" class="cell" data-execution_count="1">
+<div id="f05ad512" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -293,7 +293,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="sampling-is-the-best-method" class="level2">
 <h2 class="anchored" data-anchor-id="sampling-is-the-best-method">Sampling is the best method</h2>
 <p>To get a true representation of the data, you should use the <code>sample</code> function. This ensures that rows are randomly selected until you reach the desired number. Here’s how to use it:</p>
-<div id="810be7ea" class="cell" data-execution_count="2">
+<div id="6dd70b9e" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -319,12 +319,36 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Socks"</td>
-<td>14</td>
+<td>"Sweater"</td>
+<td>17</td>
 </tr>
 <tr class="even">
 <td>"Sweater"</td>
-<td>20</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td>"Sweater"</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>"Sweater"</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>"Hat"</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"Socks"</td>
+<td>13</td>
+</tr>
+<tr class="even">
+<td>"Socks"</td>
+<td>19</td>
 </tr>
 <tr class="odd">
 <td>"Hat"</td>
@@ -332,35 +356,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </tr>
 <tr class="even">
 <td>"Socks"</td>
-<td>6</td>
+<td>9</td>
 </tr>
 <tr class="odd">
-<td>"Socks"</td>
+<td>"Sweater"</td>
 <td>1</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>"Hat"</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>"Sweater"</td>
-<td>11</td>
-</tr>
-<tr class="odd">
-<td>"Sweater"</td>
-<td>8</td>
-</tr>
-<tr class="even">
-<td>"Sweater"</td>
-<td>6</td>
-</tr>
-<tr class="odd">
-<td>"Socks"</td>
-<td>19</td>
 </tr>
 </tbody>
 </table>
@@ -368,7 +368,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> If you want your results to be reproducible, you can use the <code>seed</code> parameter.</p>
-<div id="031e3efa" class="cell" data-execution_count="3">
+<div id="99826fab" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

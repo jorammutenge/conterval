@@ -151,7 +151,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Books</span></a>
+<span class="menu-text">Book</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -221,7 +221,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="using-polars-to-know-the-number-of-days">Using polars to know the number of days</h2>
 <p>But let’s say you’re not as fortunate as I was, and you’re unsure whether April has 30 or 31 days. That’s where Polars can help.</p>
 <p>Suppose we have the following dataframe with <em>Month</em> and <em>Date</em> columns:</p>
-<div id="53f4d4ab" class="cell" data-execution_count="1">
+<div id="20f96f9f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -269,7 +269,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>We can use the <code>month_end</code> function to determine the last day of each month. This tells us exactly how many days that month has.</p>
-<div id="80e69dc0" class="cell" data-execution_count="2">
+<div id="d5676712" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Month_End<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.month_end())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

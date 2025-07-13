@@ -151,7 +151,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Books</span></a>
+<span class="menu-text">Book</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -213,7 +213,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>When your dataframe contains monetary values such as budgets it’s helpful to include a currency symbol. This ensures your audience clearly understands whether the figures are in dollars, euros, pounds, or another currency.</p>
 <p>Below is an example of a dataframe that displays budget figures for each department at Duwata Company.</p>
-<div id="47d0d1d9" class="cell" data-execution_count="1">
+<div id="fbbb1b42" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -264,7 +264,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="add-currency-to-budget-figures">Add currency to budget figures</h2>
 <p>If you were presenting these values to the American division of Duwata, you might want to include the dollar symbol in the <em>Budget</em> column values.</p>
 <p>Here’s how you can do that using Polars.</p>
-<div id="b0ef662e" class="cell" data-execution_count="2">
+<div id="16eacb82" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Department'</span>,<span class="st">'Budget'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Budget<span class="op">=</span>pl.<span class="bu">format</span>(<span class="st">"$</span><span class="sc">{}</span><span class="st">"</span>, pl.col(<span class="st">"Budget"</span>)))</span>
@@ -316,7 +316,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> If you were presenting the data to Duwata’s European division and wanted to use the euro symbol instead, you would simply replace <code>$</code> with <code>€</code>.</p>
-<div id="a8c9ddf1" class="cell" data-execution_count="3">
+<div id="bcf2bd05" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Department'</span>,<span class="st">'Budget'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Budget<span class="op">=</span>pl.<span class="bu">format</span>(<span class="st">"€</span><span class="sc">{}</span><span class="st">"</span>, pl.col(<span class="st">"Budget"</span>)))</span>
