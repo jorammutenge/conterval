@@ -1,9 +1,10 @@
 project:
   type: website
   # title: Conterval
-  render:
-    - "blog/**/*.qmd"
-    - "index.qmd"
+  # render:
+  #   - "blog/**/*.qmd"
+  #   - "index.qmd"
+  #   - "books.qmd"
   output-dir: docs
 
 website:
@@ -23,6 +24,8 @@ website:
         target: _blank
       - href: blog/index.qmd
         text: Blog
+      - href: books.qmd
+        text: Book
   page-footer: 
     background: light
     center: © 2025 Conterval · [Contact](mailto:contervalconsult@gmail.com)

@@ -121,5 +121,11 @@
   },
   "blog/aggregations-in-polars/index.qmd": {
     "index.html": "894b0140"
+  },
+  "books.qmd": {
+    "books.html": "dd3e0247"
+  },
+  "blog/ibis-for-data-analysis/ibis_tutorial.ipynb": {
+    "ibis_tutorial.html": "567c7455"
   }
 }
