@@ -1,5 +1,5 @@
 ---
-title: "How to do grouping calculations in polars"
+title: "Group by calculations in polars"
 subtitle: "group_by"
 author: '{{< var author >}}'
 date: '2025-07-12'
