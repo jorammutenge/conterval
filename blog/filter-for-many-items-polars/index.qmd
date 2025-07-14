@@ -1,0 +1,39 @@
+---
+title: "Filtering for multiple items in polars"
+subtitle: "is_in"
+author: '{{< var author >}}'
+date: '2025-07-14'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Sometimes, you may want to filter data for more than one item. Polars makes this type of filtering straightforward. Below is a dataframe showing streaming services and their corresponding prices.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Subscription": ["Netflix", "Hulu", "HBO Max", "Showtime", "Paramount", "Disney+", "AMC"],
+    "Price": [15.49, 7.99, 15.99, 10.99, 11.99, 7.99, 8.99]
+})
+
+df
+```
+<br>
+
+## Multiple item filtering
+
+For example, if you want to view the prices of only a few specific streaming services like Netflix, Hulu, and AMC, you can use the `is_in` expression. This allows you to filter the data by specifying a list of the items you’re interested in. Here's how to do it.
+
+```{python}
+(df
+ .filter(pl.col('Subscription').is_in(['Netflix','Hulu','AMC']))
+ )
+```
+
+<br>
+I want to teach you. Please enroll in my {{< var polars_course >}}.

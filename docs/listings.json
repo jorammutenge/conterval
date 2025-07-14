@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/filter-for-many-items-polars/index.html",
       "/blog/aggregations-in-polars/index.html",
       "/blog/adding-across-columns-polars/index.html",
       "/blog/sampling-data-with-polars/index.html",

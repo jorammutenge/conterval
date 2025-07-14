@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.conterval.com/blog/filter-for-many-items-polars/index.html</loc>
+    <lastmod>2025-07-14T23:14:18.949Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/about.html</loc>
     <lastmod>2025-05-19T02:53:10.353Z</lastmod>
   </url>
@@ -81,10 +85,6 @@
     <lastmod>2025-07-13T18:04:54.425Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/index.html</loc>
-    <lastmod>2025-06-11T23:44:50.493Z</lastmod>
-  </url>
-  <url>
     <loc>https://www.conterval.com/blog/maintaining-column-name-polars/index.html</loc>
     <lastmod>2025-07-05T20:19:08.420Z</lastmod>
   </url>
@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://www.conterval.com/blog/aggregations-in-polars/index.html</loc>
-    <lastmod>2025-07-14T22:40:04.039Z</lastmod>
+    <lastmod>2025-07-14T22:43:35.082Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/ibis-for-data-analysis/ibis_tutorial.html</loc>

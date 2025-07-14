@@ -127,5 +127,8 @@
   },
   "blog/ibis-for-data-analysis/ibis_tutorial.ipynb": {
     "ibis_tutorial.html": "567c7455"
+  },
+  "blog/filter-for-many-items-polars/index.qmd": {
+    "index.html": "0fd7a303"
   }
 }
