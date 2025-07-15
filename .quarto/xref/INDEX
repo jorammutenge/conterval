@@ -130,5 +130,8 @@
   },
   "blog/filter-for-many-items-polars/index.qmd": {
     "index.html": "0fd7a303"
+  },
+  "blog/cumulative-sum-polars/index.qmd": {
+    "index.html": "0f31e7e2"
   }
 }

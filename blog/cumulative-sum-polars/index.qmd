@@ -1,0 +1,42 @@
+---
+title: "Calculating cumulative sum in polars"
+subtitle: "pl.cum_sum"
+author: '{{< var author >}}'
+date: '2025-07-15'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Say you have a target you want to hit for your weekly sales total, and you also want to know how close you are to hitting that target with each passing day. It turns out there's a way to perform that calculation in Polars. Below is a dataframe containing daily sales.
+
+```{python}
+#| echo: false
+import polars as pl
+
+# Create the DataFrame
+df = pl.DataFrame({
+    "Day": ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
+    "Sales": [182, 247, 547, 481, 319, 208, 67]
+})
+
+df
+```
+<br>
+
+## Calculate cumulative sum
+
+In Polars, you use the expression `pl.cum_sum` to add the next number to the sum of the previous numbers. Here's how to do it:
+
+```{python}
+(df
+ .with_columns(Cum_Sales=pl.col('Sales').cum_sum())
+ )
+```
+<br>
+So, if you had a target of $2,000 by the end of the week, you'd know by Friday that you're not too far from hitting that target.
+
+Hey, do me a solid, checkout my {{< var polars_course >}}.

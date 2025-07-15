@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/cumulative-sum-polars/index.html",
       "/blog/filter-for-many-items-polars/index.html",
       "/blog/aggregations-in-polars/index.html",
       "/blog/adding-across-columns-polars/index.html",
