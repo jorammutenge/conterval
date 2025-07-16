@@ -1,0 +1,16 @@
+{
+  "hash": "6c11eb9f86dd10dd9be5fb624bbba34e",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"How to copy paste a table to a dataframe in polars\"\nsubtitle: \"read_clipboard\"\nauthor: '{{< var author >}}'\ndate: '2025-07-16'\ndate-format: iso\ntoc: true\ntoc-title: 'Sections'\ntoc-location: right\ntoc-depth: 3\ncategories: [100DaysOfPolars]\n---\n\nAs a data professional, you'll work with many Excel files, and most of them will be poorly formatted. This makes it difficult to read the file into a dataframe. Fortunately, there's a way to copy only the rows and columns you want and turn them into a dataframe. You can run Polars code that instantly creates a dataframe from the contents of your clipboard. Below is a table copied from an Excel file.\n\n::: {.gray-text .center-text}\n![table copied from Excel (actually Numbers)](image.png){fig-align=\"center\"}\n:::\n\n## Paste to dataframe\n\nTo paste the table from your clipboard into a dataframe, use the expression `pl.read_clipboard`. It works like magic. Here's how to do it:\n\n```python\nimport polars as pl\n\ndf = pl.read_clipboard()\ndf\n```\n\n::: {#e4029d9d .cell execution_count=1}\n\n::: {.cell-output .cell-output-display execution_count=1}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (7, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Day</th><th>Sales</th></tr><tr><td>str</td><td>i64</td></tr></thead><tbody><tr><td>&quot;Mon&quot;</td><td>182</td></tr><tr><td>&quot;Tue&quot;</td><td>247</td></tr><tr><td>&quot;Wed&quot;</td><td>547</td></tr><tr><td>&quot;Thur&quot;</td><td>481</td></tr><tr><td>&quot;Fri&quot;</td><td>319</td></tr><tr><td>&quot;Sat&quot;</td><td>208</td></tr><tr><td>&quot;Sun&quot;</td><td>67</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n<br>\nAnd voilà! You have your dataframe.\n\nJoin 100+ students in the {{< var polars_course >}}!\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js\" integrity=\"sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js\" integrity=\"sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}

@@ -133,5 +133,8 @@
   },
   "blog/cumulative-sum-polars/index.qmd": {
     "index.html": "0f31e7e2"
+  },
+  "blog/copy-paste-dataframe-polars/index.qmd": {
+    "index.html": "6b24e469"
   }
 }
