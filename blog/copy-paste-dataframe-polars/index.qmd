@@ -31,10 +31,9 @@ df
 ```{python}
 #| echo: false
 import polars as pl
-
 df = pl.DataFrame({
-    "Day": ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
-    "Sales": [182, 247, 547, 481, 319, 208, 67]
+    "Decade": ["1900s", "1920s", "1940s", "1960s", "1980s"],
+    "Hottest Invention": ["Airplane", "Sliced bread", "Microwave", "Internet", "World Wide Web"]
 })
 
 df

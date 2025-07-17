@@ -928,6 +928,6 @@
     "href": "blog/copy-paste-dataframe-polars/index.html#paste-to-dataframe",
     "title": "How to copy paste a table to a dataframe in polars",
     "section": "Paste to dataframe",
-    "text": "Paste to dataframe\nTo paste the table from your clipboard into a dataframe, use the expression pl.read_clipboard. It works like magic. Here’s how to do it:\nimport polars as pl\n\ndf = pl.read_clipboard()\ndf\n\n\n\nshape: (7, 2)\n\n\n\nDay\nSales\n\n\nstr\ni64\n\n\n\n\n\"Mon\"\n182\n\n\n\"Tue\"\n247\n\n\n\"Wed\"\n547\n\n\n\"Thur\"\n481\n\n\n\"Fri\"\n319\n\n\n\"Sat\"\n208\n\n\n\"Sun\"\n67\n\n\n\n\n\n\n And voilà! You have your dataframe.\nJoin 100+ students in the Polars course!"
+    "text": "Paste to dataframe\nTo paste the table from your clipboard into a dataframe, use the expression pl.read_clipboard. It works like magic. Here’s how to do it:\nimport polars as pl\n\ndf = pl.read_clipboard()\ndf\n\n\n\nshape: (5, 2)\n\n\n\nDecade\nHottest Invention\n\n\nstr\nstr\n\n\n\n\n\"1900s\"\n\"Airplane\"\n\n\n\"1920s\"\n\"Sliced bread\"\n\n\n\"1940s\"\n\"Microwave\"\n\n\n\"1960s\"\n\"Internet\"\n\n\n\"1980s\"\n\"World Wide Web\"\n\n\n\n\n\n\n And voilà! You have your dataframe.\nJoin 100+ students in the Polars course!"
   }
 ]
