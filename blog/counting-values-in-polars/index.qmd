@@ -1,0 +1,49 @@
+---
+title: "Counting how many times a value appears in polars"
+subtitle: "value_counts"
+author: '{{< var author >}}'
+date: '2025-07-17'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+When dealing with categorical data, you may want to know how many times each category appears in a column. Below is a dataframe containing three different categories of clothing items.
+
+```{python}
+#| echo: false
+import polars as pl
+df = (pl.read_csv('https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv')
+      .select('category','quantity')
+      )
+df
+```
+<br>
+
+## Count appearance of values
+
+To count how many times each clothing category appears in the dataframe above, you can use `value_counts` in Polars. Here's how to do it:
+
+```{python}
+(df
+ ['category']
+ .value_counts(sort=True)
+ )
+```
+
+## Doing it the idiomatic way
+
+If you want to impress your colleagues with your Polars knowledge, you can do it the idiomatic way (which I highly encourage).
+
+```{python}
+(df
+ .select('category')
+ .to_series()
+ .value_counts(sort=True)
+ )
+```
+<br>
+For more idiomatic ways, enroll in my {{< var polars_course >}}

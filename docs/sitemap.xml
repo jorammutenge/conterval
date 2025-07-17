@@ -168,4 +168,12 @@
     <loc>https://www.conterval.com/blog/copy-paste-dataframe-polars/index.html</loc>
     <lastmod>2025-07-17T03:20:50.495Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/counting-values-in-polars/index.html</loc>
+    <lastmod>2025-07-17T19:05:40.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/retrieve-schema-in-polars/index.html</loc>
+    <lastmod>2025-07-17T19:29:36.000Z</lastmod>
+  </url>
 </urlset>

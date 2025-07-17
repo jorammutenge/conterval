@@ -136,5 +136,11 @@
   },
   "blog/copy-paste-dataframe-polars/index.qmd": {
     "index.html": "6b24e469"
+  },
+  "blog/counting-values-in-polars/index.qmd": {
+    "index.html": "bbee216c"
+  },
+  "blog/retrieve-schema-in-polars/index.qmd": {
+    "index.html": "36e15b0c"
   }
 }

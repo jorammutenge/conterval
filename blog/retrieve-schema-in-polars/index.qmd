@@ -1,0 +1,57 @@
+---
+title: "Retrieving a schema from a table in polars"
+subtitle: "collect_schema"
+author: '{{< var author >}}'
+date: '2025-07-18'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+In addition to showing column data types in the dataframe, Polars allows you to get a dictionary of data types where the key is the column name and the value is the data type. This is especially helpful when you're writing data to a database and want the schema to be maintained. Below is a dataframe with various data types.
+
+```{python}
+#| echo: false
+import polars as pl
+df = (pl.read_csv('https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv', try_parse_dates=True)
+      .select('date','sku','quantity','unit price')
+      .sample(5)
+      )
+df
+```
+<br>
+
+## Get data types as dictionary
+
+To get the data types as a dictionary, you can use the Polars method `collect_schema`. Here's how to do it:
+
+```{python}
+print(df
+ .collect_schema()
+)
+```
+
+## Get names, keys from schema
+
+The schema dictionary has properties that you can access. For instance, if you only want the table column names from the schema, you can get them like this:
+
+```{python}
+(df
+ .collect_schema()
+ .names()
+)
+```
+
+Or, if you want the data types, you can get them like this:
+
+```{python}
+(df
+ .collect_schema()
+ .keys()
+)
+```
+
+My {{< var polars_course >}} is accepting enrollments. I can't wait to teach you!
