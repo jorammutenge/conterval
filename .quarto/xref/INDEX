@@ -142,5 +142,8 @@
   },
   "blog/retrieve-schema-in-polars/index.qmd": {
     "index.html": "36e15b0c"
+  },
+  "blog/filter-between-values-polars/index.qmd": {
+    "index.html": "bb557453"
   }
 }

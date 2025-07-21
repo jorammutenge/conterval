@@ -1,0 +1,60 @@
+---
+title: "Filter between a range of values in polars"
+subtitle: "is_between"
+author: '{{< var author >}}'
+date: '2025-07-21'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+It's not always the case that you want to filter your data based on a single specific value. Sometimes, you may want to filter your data based on a range of values. Below is a dataframe showing the streaming services I subscribe to.
+
+```{python}
+#| echo: false
+import polars as pl
+
+# Create the DataFrame
+df = pl.DataFrame({
+    "Subscription": ["Netflix", "Hulu", "HBO Max", "Showtime", "Paramount", "Disney+", "AMC"],
+    "Price": [15.49, 7.99, 15.99, 10.99, 11.99, 7.99, 8.99]
+})
+
+df
+```
+<br>
+
+## Filter on range of values
+
+Suppose I want to cut down on spending and only keep streaming services with prices between $7 and $10. I can use the `is_between` expression in Polars to achieve this. Here's how to do it:
+
+```{python}
+(df
+ .filter(pl.col('Price').is_between(7.99,10.99))
+ )
+```
+
+## Exclude some or both bounds
+
+By default, `is_between` includes both the left and right bounds. You can choose to exclude either the left or right bound, or even both. Here's how to exclude the left bound:
+
+```{python}
+(df
+ .filter(pl.col('Price').is_between(7.99,10.99, closed='right'))
+ )
+```
+<br>
+
+To exclude the right bound instead, replace `'right'` with `'left'` in the `closed` parameter. Here's how you can exclude both the left and right bounds:
+
+```{python}
+(df
+ .filter(pl.col('Price').is_between(7.99,10.99, closed='none'))
+ )
+```
+<br>
+
+Join 100+ students in this {{< var polars_course >}}!
