@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/thinking-in-tables/index.html",
       "/blog/inner-join-in-polars/index.html",
       "/blog/filter-between-values-polars/index.html",
       "/blog/retrieve-schema-in-polars/index.html",

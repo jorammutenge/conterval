@@ -1,0 +1,151 @@
+---
+title: "Thinking in tables"
+subtitle: "The mark of a 10x data analyst"
+author: '{{< var author >}}'
+date: '2025-07-26'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+---
+
+In my last year of graduate school, I asked my professor what the most import skill a great data analyst should have. His response shocked me because I'd never thought about it.
+
+Let's face it, being a data analyst involves performing many tasks like cleaning data, changing the format of data, creating visualizations, etc., so natually, I thought his answer was going to involve any of those tasks. It didn't. Instead he said: 
+
+> If you want to distinguish yourself as a great data analyst, you need to master one skill. That skill is thinking in tables.
+
+He went on to say, think about what makes a good writer. Having a large vocabulary does not do you any good if you can't tell a good story. To be a Stephen King, you need to know how to create a narrative on the page that can move people. That's the skill that makes you a 10x writer. Therefore, to be the proverbial 10x data analyst, you must master the skill of thinking in tables.
+
+## Why think in tables?
+
+If you're a web developer, your bread and butter is text boxes over data. But if you're a data analyst, your bread and butter is tabular data. This is data stored in spreadsheets and databases. Matt Harrison said it best:
+
+> The world runs on spreadsheets and CSV files. These are where the crown jewels of companies are stored.
+
+Thus, if you want to be a 10x data analyst, you need to master tabular data. After all, if companies are keeping their secret sauce to money generation in tabular data, you might as well learn how to handle that data to stand out. Morevover, having a deeper understanding of tabular data will make you an attractive candidate to many employers. That's why your thinkig as a data analyst must be shaped by tables.
+
+## Know your joins
+
+Thinking in tables means understanding what you can and can't do with tables. As a data analyst you should know the major types of joins inside and out, just like you know the palm of your hand. Why? Because they're the building blocks of relational thinking. Joins are your foundational tools for combining and reshaping datasets.
+
+If you're rusty on joins, here's a refresher, but I wouldn't encourage you to memorize this. You must understand it so that you can explain each type of join in your own words. Remember:
+
+> Whenever you find yourself memorizing a concept, it's a reminder to you that you don't understand it.
+
+::: {.callout-tip title="**Refresher on types of joins**"}
+* `inner join`: Use this when you only want records that exist in both tables. E.g., customers who have placed orders.
+* `left join`: Use this when you want all records from the left table, even if there’s no match in the right. E.g., a list of all products, even those with no sales.
+* `right join`: You'll almost certainly never use this, but conceptually it's the mirror of a left join.
+* `full outer join`: Useful when comparing two systems or logs and you want to see *everything* from both.
+* `cross join`: Generates all combinations. Use this *only* if you understand what you're doing. It's powerful but dangerous if misused.
+* `self join`: When comparing rows within the same table. E.g., finding pairs of employees in the same department.
+:::
+
+If you can’t describe the shape of the resulting table after a join, you haven’t mastered the join yet.
+
+## Kinds of table presentation
+
+When sharing data with stakeholders after running your queries, you can present it in either long or wide format.
+
+::: {.callout-tip title="**When to use what format**"}
+* **Long format**: Better for plotting and modeling. Each row is a single observation.
+* **Wide format**: Better for presentation or when analyzing across multiple dimensions in one view.
+:::
+
+You may not be familiar with these two kinds of data formats but whenever you create a pivot table in Excel, you're transforming data from long format to wide format. In fact, pivoting data is one of the most powerful ways to think in tables.
+
+Therefore, you should be comfortable with:
+
+1. Pivoting tables from long to wide and back.
+1. Aggregating data during pivot (e.g., summing or averaging values across categories).
+1. Reshaping hierarchies with multi-level indexes (common in Excel or Pandas), though this is uncommon.
+
+A picture is worth a thousand words, so goes the saying. Below are two tables showing data in long and wide formats.
+
+```{python}
+#| echo: false
+import polars as pl
+print("Long format")
+df = pl.DataFrame({'Student': ['Spencer','Spencer','Spencer','Spencer','Emily','Emily','Emily','Emily','Aria',
+             'Aria','Aria','Aria','Mona','Mona','Mona','Mona','Hannah','Hannah','Hannah','Hannah'],
+ 'Assessment': ['Mid-term','Final','Quiz','Project','Mid-term','Final','Quiz','Project','Mid-term',
+                'Final','Quiz','Project','Mid-term','Final','Quiz','Project','Mid-term','Final','Quiz','Project'],
+ 'Grade': [93,88,97,96,67,88,73,82,79,81,75,88,96,99,93,89,66,69,55,91]})
+df
+```
+<br>
+
+```{python}
+#| echo: false
+print('Wide format')
+(df
+ .pivot(index='Assessment', on='Student', values='Grade')
+ )
+```
+<br>
+
+Notice that these formats live up to their names. Long format has more rows (20), hence the name. And wide format has more columns (6), making it wider than the long format which has only 3 columns.
+
+## Reshaping and sorting tables
+
+Thinking in tables means having an internal map of the transformations available to you. These transformations include:
+
+* Filtering data base on particular values (categorical or numerical)
+* Sorting data in ascending or descending order based on one or multiple columns.
+* Grouping data and performing aggregations.
+* Window functions (moving averages, ranks)
+* Mutating columns (creating new columns from existing ones)
+* Removing duplicates (rows that appear multiple times)
+* Renaming columns for clarity
+* Handling nulls (impute, drop, replace)
+
+To be a 10x data analyst, you must make it your goal to internalize these operations so well that when someone makes a request, you can immediately picture the table structure before and after.
+
+## Impossible table operations
+
+One underrated part of thinking in tables is understanding what *can’t* be done, or at least what *shouldn’t* be done, and being able to explain why.
+
+Not all data can be merged. Not every transformation is feasible without assumptions. Not every dashboard request makes sense without restructuring the data model.
+
+Knowing your data shapes and limitations helps you:
+
+* Push back with confidence when requirements are unrealistic.
+* Offer better alternatives that are actually supported by the data.
+* Avoid misleading results from inappropriate transformations.
+* Build credibility as someone who *thinks* with the data, not just *does* the data.
+
+Trust me, your colleagues will come to you with impossible data requests, not because they want to give you a tough time, but because they don't know better. You should be able to clearly communicate to them why their data request is not feasible, or even better offer an alternative request.
+
+## Tables tell stories
+
+The shape of a table tells a story. Rows are events or entities. Columns are attributes or measurements. When you scan a table, you should be asking:
+
+* What does each row represent?
+* Are the columns measurements, categories, or identifiers?
+* Is there one row per customer, or one row per order?
+* Are values being repeated unnecessarily (denormalized)?
+* Could this be decomposed into smaller, related tables?
+
+This mental model helps you design better queries, understand data pipelines, and debug problems when tables go wrong.
+
+## A confession and final thoughts
+
+Before my professor introduced me to the concept of thinking in tables, I was fixated on making beautiful data visualizations. I obsessed over fonts (I still love you Harmonia Sans) and perfect kerning. But while these visuals looked great, they didn’t deliver much value. Stakeholders don’t care how stylish your charts are or how perfectly spaced the letters in your viz titles look. They care whether your visualizations answer their business questions. If they don’t, no amount of aesthetic polish can save them.
+
+To paraphrase a famous quote by William Morris:
+
+> Have nothing in your visualizations that you do not know to be useful or believe to be beautiful.
+
+My mistake was prioritizing beauty over utility. I was making more data art, and less actionable insights. Don’t make the same mistake.
+
+I’d argue that even the most impressive-looking visualizations rarely match the value of a well-structured table in a business setting. Don’t spend too much time perfecting the look. Spend more time understanding tables because that’s where the company’s crown jewels live. The ability to unlock insights from tables will make you a highly valuable data analyst.
+
+Now that you understand the importance of thinking in tables, here’s the single most important question to ask when you encounter unfamiliar data:
+
+::: {style="text-align: center;"}
+**What does a row represent?**
+:::
+
+Answering this one question can cut your analysis time in half, if not more.
