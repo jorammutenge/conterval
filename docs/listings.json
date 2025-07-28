@@ -2,6 +2,8 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/dataset-memory-usage-polars/index.html",
+      "/blog/summary-statistics-in-polars/index.html",
       "/blog/thinking-in-tables/index.html",
       "/blog/inner-join-in-polars/index.html",
       "/blog/filter-between-values-polars/index.html",

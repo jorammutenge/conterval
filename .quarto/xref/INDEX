@@ -151,5 +151,11 @@
   },
   "blog/thinking-in-tables/index.qmd": {
     "index.html": "391234eb"
+  },
+  "blog/dataset-memory-usage-polars/index.qmd": {
+    "index.html": "b78958c7"
+  },
+  "blog/summary-statistics-in-polars/index.qmd": {
+    "index.html": "ba0f058e"
   }
 }

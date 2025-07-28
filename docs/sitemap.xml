@@ -188,4 +188,12 @@
     <loc>https://www.conterval.com/blog/thinking-in-tables/index.html</loc>
     <lastmod>2025-07-27T15:44:38.129Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/dataset-memory-usage-polars/index.html</loc>
+    <lastmod>2025-07-28T14:58:42.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/summary-statistics-in-polars/index.html</loc>
+    <lastmod>2025-07-28T13:13:28.000Z</lastmod>
+  </url>
 </urlset>

@@ -1,0 +1,41 @@
+---
+title: "Getting summary statistics in polars"
+subtitle: "describe"
+author: '{{< var author >}}'
+date: '2025-07-28'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Data exploration is the first step in any data analysis task. You can't start analyzing your data without understanding what it's about. If you have numerical columns, one of the first things to do is get summary statistics for those columns like the mean (average), median, and standard deviation. Below is a dataframe of a clothing store showing customer purchase details.
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = (pl.read_csv('https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv')
+      .rename({'Account Name':'company', 'unit price':'price'})
+      .select('company','category','quantity','price')
+      )
+df
+```
+<br>
+
+## Get summary stats
+
+To get summary statistics for all the columns in the above dataframe, you can use the Polars method `describe`. Summary statistics are most meaningful for numerical columns, but Polars provides them for categorical columns as well. For categorical columns, the most important statistic is `null_count`, which tells you the number of missing (empty) values in that column.
+
+```{python}
+(df
+ .describe()
+ )
+```
+<br>
+
+You can now quickly see that the highest quantity for a single purchase is 20, and the highest price is 100. More importantly, none of the columns have missing values, as indicated by a `null_count` value of 0 for all columns.
+
+Enroll in the {{< var polars_course >}} and join 100 plus students.

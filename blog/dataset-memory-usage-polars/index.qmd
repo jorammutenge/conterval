@@ -1,0 +1,122 @@
+---
+title: "Checking dataset memory usage in polars"
+subtitle: "estimated_size"
+author: '{{< var author >}}'
+date: '2025-07-29'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+It's important to know how much memory the dataset you're processing is consuming on your machine. Why? Because lower memory consumption leads to faster processing. Fortunately, there are ways to reduce that memory usage. In Polars, you can check memory usage using the `estimated_size` method. Below is a dataframe from a clothing store showing customer purchase details.
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = (pl.read_csv('https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv', try_parse_dates=True)
+      .rename({'Account Name':'company', 'unit price':'price'})
+      .drop('Account Number','date')
+      )
+df
+```
+<br>
+
+## Check memory usage
+
+Here's how to check how much memory, in kilobytes (KB), this dataset is using on your machine.
+
+```{python}
+initial_usage = df.estimated_size('kb')
+initial_usage
+```
+
+::: {.callout-tip}
+To check memory usage in megabytes, replace `kb` with `mb`.
+:::
+
+## Techniques to reduce memory usage
+
+You can reduce the memory usage of the dataframe by changing the data types of some columns. For instance, you can change numerical columns from `Int64` (which is unnecessarily large) to `Int32`, as long as the maximum value in that column does not exceed the maximum value that `Int32` can hold. But how do you determine the maximum or minimum values allowed for each data type? This is where NumPy comes into the picture.
+
+### Change data types of numerical columns
+
+First, check the summary statistics of the numerical columns to see their maximum and minimum values.
+
+```{python}
+import polars.selectors as cs
+
+(df
+ .select(cs.numeric())
+ .describe()
+ )
+```
+
+Now, let's see the minimum and maximum values accepted by `Int64` and `Int8` data types.
+
+```{python}
+import numpy as np
+
+print(f'{np.iinfo(np.int64)}\n\n{np.iinfo(np.int8)}')
+```
+
+Starting with the *quantity* column, you’ll see that the maximum value is within the bounds of the `Int8` data type. Therefore, we can convert the data type for *quantity* from `Int64` to `Int8`.
+
+Let’s apply the same technique to columns with floating-point data types. Again, we’ll use NumPy to determine the appropriate bounds for these data types.
+
+```{python}
+print(f'{np.finfo(np.float64)}\n\n{np.finfo(np.float32)}')
+```
+
+From the summary statistics table, you can see that the `Float64` data type for the *price* and *ext price* columns is overkill. So, we can safely convert their data type to `Float32`, which is the lowest float type in Polars.
+
+```{python}
+(df
+ .with_columns(pl.col('quantity').cast(pl.Int8),
+               pl.col(pl.Float64).cast(pl.Float32))
+ )
+```
+
+### Change data types of text columns
+
+For text columns, you can reduce memory usage by converting them to categorical data types. I recommend applying this conversion only to columns with low cardinality (a small number of unique values).
+
+Let’s check the number of unique values in each of the text columns.
+
+```{python}
+(df
+ .select(~cs.numeric())
+ .select(pl.all().n_unique())
+ )
+```
+
+We can convert the *sku* and *category* columns to categorical because they have low cardinality.
+
+```{python}
+(df
+ .with_columns(pl.col(pl.Float64).cast(pl.Float32),
+               pl.col('quantity').cast(pl.Int8),
+               pl.col('sku','category').cast(pl.Categorical))
+ )
+```
+
+## Memory usage after
+
+Let’s now check the memory usage of the dataset after making these data type changes.
+
+```{python}
+new_usage = (df
+ .with_columns(pl.col(pl.Float64).cast(pl.Float32),
+               pl.col('quantity').cast(pl.Int8),
+               pl.col('sku','category').cast(pl.Categorical))
+ .estimated_size('kb')
+ )
+new_usage
+```
+
+Now we have the same dataset using less memory. In fact, that's a `{python} round(((new_usage - initial_usage) / initial_usage) * -100, 2)` percent reduction.
+
+My {{< var polars_course >}} is now open for enrollment, if you want to learn more!
