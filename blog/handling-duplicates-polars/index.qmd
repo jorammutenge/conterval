@@ -1,0 +1,52 @@
+---
+title: "Identify and remove duplicate rows in polars"
+subtitle: "is_duplicated"
+author: '{{< var author >}}'
+date: '2025-07-30'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Duplicates are a common problem in most datasets. That’s why it’s important to check for duplicate rows before analyzing your data. Fortunately, Polars provides an easy way to identify duplicate rows. Below is a dataframe showing sales for each day of the week.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Day": ["Fri","Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
+    "Sales": [319,182, 247, 547, 481, 319, 208, 67]
+})
+
+df
+```
+<br>
+
+## Show duplicates
+
+To display duplicated rows in Polars, use the `is_duplicated` method. This method highlights rows that have identical values across all columns.
+
+```{python}
+(df
+ .filter(df.is_duplicated())
+ )
+```
+
+You can see that the sales record for Friday was entered twice, so it is duplicated.
+
+## Remove duplicates
+
+To remove duplicates in Polars, use the `unique` method. This ensures that only rows with distinct values across columns are retained. Here's how to do it:
+
+```{python}
+(df
+ .unique()
+ )
+```
+<br>
+Now you can see that Friday appears only once!
+
+Join the many students improving their Polars skills in my {{< var polars_course >}}.

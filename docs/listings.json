@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/handling-duplicates-polars/index.html",
       "/blog/dataset-memory-usage-polars/index.html",
       "/blog/summary-statistics-in-polars/index.html",
       "/blog/thinking-in-tables/index.html",
