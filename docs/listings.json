@@ -3,10 +3,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/check-number-of-columns-polars/index.html",
-      "/blog/get-every-other-row-polars/check-number-of-columns-polars/index.html",
-      "/blog/convert-unix-time-to-polars-datetime/filter-with-empty-polars/index.html",
       "/blog/filter-with-empty-polars/index.html",
-      "/blog/get-every-other-row-polars/filter-with-empty-polars/index.html",
       "/blog/handling-duplicates-polars/index.html",
       "/blog/dataset-memory-usage-polars/index.html",
       "/blog/summary-statistics-in-polars/index.html",

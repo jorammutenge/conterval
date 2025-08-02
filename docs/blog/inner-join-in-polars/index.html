@@ -212,7 +212,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Just like in SQL, it’s possible to join two dataframes in Polars. In this article, I’ll show you how to use the <code>inner</code> join in Polars to create a dataframe with more columns. Below is a dataframe, <strong>movies_df</strong>, showing finance movies.</p>
-<div id="12ef9dfc" class="cell" data-execution_count="1">
+<div id="6f19952b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -262,7 +262,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> And here’s another dataframe, <strong>minutes_df</strong>, showing the duration of the movies.</p>
-<div id="3702ee58" class="cell" data-execution_count="2">
+<div id="773e8239" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -309,7 +309,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="join-dataframes" class="level2">
 <h2 class="anchored" data-anchor-id="join-dataframes">Join dataframes</h2>
 <p>You can use the <code>inner</code> join to get all the rows that match in both dataframes based on a column you choose as the key. In this case, the key column is <em>movie</em>.</p>
-<div id="88657331" class="cell" data-execution_count="3">
+<div id="9401fd29" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(movies_df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .join(minutes_df, on<span class="op">=</span><span class="st">'movie'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
