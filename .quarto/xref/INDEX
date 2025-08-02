@@ -160,5 +160,11 @@
   },
   "blog/handling-duplicates-polars/index.qmd": {
     "index.html": "e79ab54c"
+  },
+  "blog/check-number-of-columns-polars/index.qmd": {
+    "index.html": "b8484a83"
+  },
+  "blog/filter-with-empty-polars/index.qmd": {
+    "index.html": "3b1837a9"
   }
 }

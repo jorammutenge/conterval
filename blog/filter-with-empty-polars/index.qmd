@@ -1,0 +1,39 @@
+---
+title: "How to filter with empty to get true or false values in polars"
+subtitle: "is_empty"
+author: '{{< var author >}}'
+date: '2025-08-01'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You're conscious about your calorie intake, and you want to know whether there are any cereals in your dataset with more than 200 calories. How would you go about answering this question? Below is a dataframe containing cereal brands and the number of calories they contain.
+
+```{python}
+#| echo: false
+import polars as pl
+df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/heads/master/data/cereal_data.csv')
+ .select(pl.nth(list(range(1,9))))
+ )
+df
+```
+<br>
+
+## Filter with empty
+
+Suppose you don't want to see the actual cereal brands with more than 200 calories, you just want to return "true" if there's any such brand, and "false" if there isn't. You can do this using the `is_empty` expression in Polars.
+
+```{python}
+(df
+ .filter(pl.col('calories') > 200).is_empty()
+ )
+```
+
+It turns out you don't need to worry. None of the cereals in your data have more than 200 calories. The code above might be a bit harder to understand, but here’s what’s happening: first, the data is filtered to return all rows where calories are greater than 200. If no rows are returned, the result is considered true because the filtered result is empty. Hence, the final answer is true.
+
+Check out my {{< var polars_course >}}.
+
