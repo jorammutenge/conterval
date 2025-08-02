@@ -166,5 +166,14 @@
   },
   "blog/filter-with-empty-polars/index.qmd": {
     "index.html": "3b1837a9"
+  },
+  "blog/convert-unix-time-to-polars-datetime/filter-with-empty-polars/index.qmd": {
+    "index.html": "d245b7d5"
+  },
+  "blog/get-every-other-row-polars/filter-with-empty-polars/index.qmd": {
+    "index.html": "9b56daa4"
+  },
+  "blog/get-every-other-row-polars/check-number-of-columns-polars/index.qmd": {
+    "index.html": "c52b0d0e"
   }
 }
