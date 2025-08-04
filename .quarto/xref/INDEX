@@ -175,5 +175,8 @@
   },
   "blog/get-every-other-row-polars/check-number-of-columns-polars/index.qmd": {
     "index.html": "c52b0d0e"
+  },
+  "blog/glipmse-into-your-data-polars/index.qmd": {
+    "index.html": "45a80ea6"
   }
 }

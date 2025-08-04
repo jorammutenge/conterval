@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/glipmse-into-your-data-polars/index.html",
       "/blog/check-number-of-columns-polars/index.html",
       "/blog/filter-with-empty-polars/index.html",
       "/blog/handling-duplicates-polars/index.html",
