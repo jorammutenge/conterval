@@ -1,0 +1,56 @@
+---
+title: "Display thousand values with a comma separator in polars"
+subtitle: "pl.Config.set_thousands_separator"
+author: '{{< var author >}}'
+date: '2025-08-04'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+It’s easier to read large numerical values when they’re separated by a comma every three digits. For instance, your brain can more easily comprehend **5,000,000** at a glance than **5000000**. Polars allows you to format numerical values with commas to improve readability. Below is a dataframe showing department budgets for a company:
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Department": ["Hospitality", "Legal", "Finance", "Advertising", "Sales"],
+    "Budget": [5700000, 1200000, 8300000, 6800000, 9200000],
+})
+
+df
+```
+<br> 
+
+## Insert commas in values
+
+We can make the budget values more human-readable by separating each group of three digits with a comma. Here’s how to do it:
+
+```{python}
+with pl.Config(thousands_separator=','):
+    display(df)
+
+```
+<br>
+
+If you live in Brazil (where the thousand separator is a full stop), you can replace `,` with `.`
+
+```{python}
+with pl.Config(thousands_separator='.'):
+    display(df)
+
+```
+
+::: {.callout-tip}
+You can configure this setting globally so that all your dataframes use the same configuration. All you need to do is have these two lines at the beginning of your Python script.
+
+```py
+import polars as pl
+pl.Config(thousands_separator=',')
+```
+:::
+
+I teach Polars. Join my {{< var polars_course >}}.

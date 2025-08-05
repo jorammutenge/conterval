@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/from-matrix-to-dataframe-polars/index.html",
+      "/blog/slice-dataframe-polars/index.html",
+      "/blog/configure-dataframe-polars/index.html",
       "/blog/glipmse-into-your-data-polars/index.html",
       "/blog/check-number-of-columns-polars/index.html",
       "/blog/filter-with-empty-polars/index.html",

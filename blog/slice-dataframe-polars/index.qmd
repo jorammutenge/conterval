@@ -1,0 +1,40 @@
+---
+title: "Get middle rows from a polars dataframe"
+subtitle: "slice"
+author: '{{< var author >}}'
+date: '2025-08-05'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+We all know how to get the first or last five rows of a dataset. But did you know you can also retrieve the middle rows? Below is a dataframe showing cereal brands:
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/heads/master/data/cereal_data.csv')
+ .select(pl.nth(list(range(1,5))))
+ )
+df
+```
+<br>
+
+## Get middle rows
+
+With the `slice` method, Polars allows you to retrieve middle rows from your dataframe. Let’s get 20 rows starting from the 10th row:
+
+```{python}
+(df
+ .slice(10,20)
+ )
+```
+<br>
+
+As you can see from the code above, `slice` takes two parameters. The first is the position (index) of the starting row, and the second is the number of rows to return. In this case, the resulting dataframe will have 20 rows.
+
+Become a student in my data analysis {{< var polars_course >}}.

@@ -212,4 +212,16 @@
     <loc>https://www.conterval.com/blog/glipmse-into-your-data-polars/index.html</loc>
     <lastmod>2025-08-03T14:47:28.000Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/configure-dataframe-polars/index.html</loc>
+    <lastmod>2025-08-05T18:42:15.683Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/from-matrix-to-dataframe-polars/index.html</loc>
+    <lastmod>2025-08-05T18:43:05.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/slice-dataframe-polars/index.html</loc>
+    <lastmod>2025-08-05T18:43:37.370Z</lastmod>
+  </url>
 </urlset>

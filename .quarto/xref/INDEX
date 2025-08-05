@@ -178,5 +178,14 @@
   },
   "blog/glipmse-into-your-data-polars/index.qmd": {
     "index.html": "45a80ea6"
+  },
+  "blog/configure-dataframe-polars/index.qmd": {
+    "index.html": "abb4511f"
+  },
+  "blog/from-matrix-to-dataframe-polars/index.qmd": {
+    "index.html": "7f3e3c03"
+  },
+  "blog/slice-dataframe-polars/index.qmd": {
+    "index.html": "2ffa7505"
   }
 }
