@@ -224,4 +224,16 @@
     <loc>https://www.conterval.com/blog/slice-dataframe-polars/index.html</loc>
     <lastmod>2025-08-05T18:43:37.370Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-without-null-polars/index.html</loc>
+    <lastmod>2025-08-08T01:05:14.476Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/filter-with-selection-polars/index.html</loc>
+    <lastmod>2025-08-08T01:05:47.351Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/series-to-dataframe-polars/index.html</loc>
+    <lastmod>2025-08-08T01:06:23.658Z</lastmod>
+  </url>
 </urlset>

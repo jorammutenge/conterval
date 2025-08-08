@@ -1,0 +1,40 @@
+---
+title: "Turn a polars series to a dataframe"
+subtitle: "to_frame"
+author: '{{< var author >}}'
+date: '2025-08-09'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+In Polars, a series is a one-column table, while a dataframe is a multi-column table. However, it's possible to convert a series into a dataframe. Below is a series of cities.
+
+```{python}
+#| echo: false
+import polars as pl
+ser = pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/heads/master/data/hospital_account_info.csv')['City']
+ser
+```
+<br>
+
+## Convert series to dataframe
+
+Notice that the series above has a shape of (`{python} ser.len()`,). This indicates that it contains `{python} ser.len()` values. Polars doesn't need to display the number of columns in the shape because a series always has one column, which is already named *City*.
+
+To convert the series to a dataframe, use the `to_frame` method like this:
+
+```{python}
+(ser
+ .to_frame()
+ )
+```
+
+## Why convert to dataframe
+
+You may want to save your series data to a CSV file, but calling `ser.write_csv()` will result in an attribute error because `write_csv` is not a method of a series; it belongs to dataframes. So, to save your series data, you must first convert it to a dataframe and then save it.
+
+Start learning Polars with my {{< var polars_course >}}.

@@ -1,0 +1,42 @@
+---
+title: "Using polars selectors to filter dataframes"
+subtitle: "polars.selectors"
+author: '{{< var author >}}'
+date: '2025-08-07'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Selecting specific columns to filter out unnecessary columns is common in data analysis. Polars makes this type of filtering straightforward through the use of selectors. Below is a dataframe showing cereal brands.
+
+```{python}
+#| echo: false
+import polars as pl
+df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/heads/master/data/cereal_data.csv')
+ .select('name','mfr','type','weight','cups')
+ .sample(4)
+ )
+df
+```
+<br>
+
+## Get numerical columns
+
+You can use Polars selectors to filter for numerical columns only. In this case, the dataframe will show the columns *weight* and *cups*. Here's how to do it:
+
+```{python}
+import polars.selectors as cs
+
+(df
+ .select(cs.by_dtype(pl.Float64))
+)
+```
+<br>
+
+You can also filter for columns with the string data type by replacing `pl.Float64` with `pl.String`. This method of filtering is especially useful when your dataframe has many columns and you don’t want to spend time listing each column you want to include manually.
+
+I'm accepting students in my {{< var polars_course >}}.

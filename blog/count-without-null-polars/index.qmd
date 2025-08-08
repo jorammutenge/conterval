@@ -1,0 +1,41 @@
+---
+title: "When you want to count values without null in polars"
+subtitle: "pl.count"
+author: '{{< var author >}}'
+date: '2025-08-08'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Most of the time, when you're counting the number of values in a column, you're not interested in including empty (null) values. Therefore, simply counting the number of rows in the dataframe isn't enough. Luckily, Polars makes this kind of count easy to perform. Below is a dataframe showing department managers.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Manager": ['Mae C', 'Lauren K', 'Sahill H', None, 'Titus P'],
+    "Department": ["Hospitality", "Legal", "Finance", "Advertising", "Sales"]
+})
+
+df
+```
+<br>
+
+## Count values in each column
+
+To get the number of non-null values in each column, you can use the Polars expression `pl.count` like this:
+
+```{python}
+(df
+ .select(pl.count('Manager','Department'))
+ )
+```
+<br>
+
+As you can see, the number of values in the two columns is not the same. *Manager* has only 4 values because it contains a null value.
+
+Take your data skills to another level with my {{< var polars_course >}}.

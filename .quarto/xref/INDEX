@@ -187,5 +187,14 @@
   },
   "blog/slice-dataframe-polars/index.qmd": {
     "index.html": "2ffa7505"
+  },
+  "blog/count-without-null-polars/index.qmd": {
+    "index.html": "078e4fdf"
+  },
+  "blog/filter-with-selection-polars/index.qmd": {
+    "index.html": "174945b1"
+  },
+  "blog/series-to-dataframe-polars/index.qmd": {
+    "index.html": "60d4676e"
   }
 }

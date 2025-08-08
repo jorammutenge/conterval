@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/series-to-dataframe-polars/index.html",
+      "/blog/count-without-null-polars/index.html",
+      "/blog/filter-with-selection-polars/index.html",
       "/blog/from-matrix-to-dataframe-polars/index.html",
       "/blog/slice-dataframe-polars/index.html",
       "/blog/configure-dataframe-polars/index.html",
