@@ -196,5 +196,14 @@
   },
   "blog/series-to-dataframe-polars/index.qmd": {
     "index.html": "60d4676e"
+  },
+  "blog/use-percentile-to-filter-polars/index.qmd": {
+    "index.html": "7980694a"
+  },
+  "blog/get-unique-values-polars/index.qmd": {
+    "index.html": "6d75b889"
+  },
+  "blog/contain-as-filter-polars/index.qmd": {
+    "index.html": "7277524b"
   }
 }

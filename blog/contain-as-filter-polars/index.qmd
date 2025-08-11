@@ -1,0 +1,50 @@
+---
+title: "Using contains to filter data in polars"
+subtitle: "contains"
+author: '{{< var author >}}'
+date: '2025-08-11'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+The dirty secret is that data work is mainly about working with text data rather than numerical data. That's why knowing how to filter text data is a valuable skill to have. Below is a dataframe showing cereal brands.
+
+```{python}
+#| echo: false
+import polars as pl
+df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/heads/master/data/cereal_data.csv')
+ .select('mfr','type')
+ .rename(dict(mfr='manufacturer'))
+ )
+df
+```
+<br>
+
+## Filter with contain
+
+Sometimes you may want to filter rows without knowing the exact value of a column. In such cases, you can select a word that's common in the values you want to retrieve. Let's filter for manufacturers that contain the word "Mills."
+
+```{python}
+(df
+ .filter(pl.col('manufacturer').str.contains('Mills'))
+ )
+```
+<br>
+
+## Use multiple words
+
+You can use the pipe operator `|` to filter with multiple words, like this:
+
+```{python}
+(df
+ .filter(pl.col('manufacturer').str.contains('Mills|Purina'))
+ )
+```
+<br>
+
+Enroll in my {{< var polars_course >}}.
+

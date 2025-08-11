@@ -1,0 +1,16 @@
+{
+  "hash": "dce4448529399220a8a69ce63c12b2a2",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Using percentiles to filter data in polars\"\nsubtitle: \"percentile\"\nauthor: '{{< var author >}}'\ndate: '2025-08-13'\ndate-format: iso\ntoc: true\ntoc-title: 'Sections'\ntoc-location: right\ntoc-depth: 3\ncategories: [100DaysOfPolars]\n---\n\nIf you've ever taken the SAT, ACT, or GMAT, you might have wondered what percentile you scored in. A percentile is a way of describing a score's position in a dataset relative to the other scores. Below is a dataset showing the scores of students on a test.\n\n::: {#e3d1aab0 .cell execution_count=1}\n\n::: {.cell-output .cell-output-display execution_count=1}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (5, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Student</th><th>Score</th></tr><tr><td>str</td><td>i64</td></tr></thead><tbody><tr><td>&quot;Harvey&quot;</td><td>88</td></tr><tr><td>&quot;Donna&quot;</td><td>76</td></tr><tr><td>&quot;Mike&quot;</td><td>93</td></tr><tr><td>&quot;Jessica&quot;</td><td>85</td></tr><tr><td>&quot;Louis&quot;</td><td>91</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n<br>\n\n## Filter with percentile\n\nYou can get the students who scored in the 50th percentile by using the Polars expression `percentile`. These are the students who performed better than half of the students in the dataset.\n\n::: {#7e1e00cf .cell execution_count=2}\n``` {.python .cell-code}\n(df\n .filter(pl.col('Score').gt(pl.col('Score').quantile(.50)))\n )\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (2, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Student</th><th>Score</th></tr><tr><td>str</td><td>i64</td></tr></thead><tbody><tr><td>&quot;Mike&quot;</td><td>93</td></tr><tr><td>&quot;Louis&quot;</td><td>91</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n<br>\n\nJoin 100+ students improving their polars skills in my {{< var polars_course >}}.\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js\" integrity=\"sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js\" integrity=\"sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}

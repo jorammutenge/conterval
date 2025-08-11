@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/use-percentile-to-filter-polars/index.html",
+      "/blog/get-unique-values-polars/index.html",
+      "/blog/contain-as-filter-polars/index.html",
       "/blog/series-to-dataframe-polars/index.html",
       "/blog/count-without-null-polars/index.html",
       "/blog/filter-with-selection-polars/index.html",

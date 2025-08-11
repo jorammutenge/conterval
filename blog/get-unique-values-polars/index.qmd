@@ -1,0 +1,42 @@
+---
+title: "Get unique values in a column in polars"
+subtitle: "unique"
+author: '{{< var author >}}'
+date: '2025-08-12'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+If one value in a column is overrepresented, you might think it's the only value present since Polars displays only the first five and last five rows of the dataframe. To see the different kinds of values in a column, you need to ensure that each value is shown only once. Below is a dataframe showing cereal brands.
+
+```{python}
+#| echo: false
+import polars as pl
+df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/heads/master/data/cereal_data.csv')
+ .select('mfr','type')
+ .rename(dict(mfr='manufacturer'))
+ )
+df
+```
+<br>
+
+## Show each value once
+
+Say you want to see all the different types of cereal, you can select the *type* column and use the `unique` method to display each value only once like this:
+
+```{python}
+(df
+ .select('type')
+ .unique()
+ )
+```
+<br>
+
+Now you can see that there are two types of cereal in this dataset: cold and hot.
+
+I want you to be my student in my {{< var polars_course >}}
+
