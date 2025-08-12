@@ -205,5 +205,14 @@
   },
   "blog/contain-as-filter-polars/index.qmd": {
     "index.html": "7277524b"
+  },
+  "blog/from-row-to-list-polars/index.qmd": {
+    "index.html": "48c877ef"
+  },
+  "blog/get-top-values-polars/index.qmd": {
+    "index.html": "a9dddad5"
+  },
+  "blog/using-implode-in-polars/index.qmd": {
+    "index.html": "d4e37643"
   }
 }

@@ -1,0 +1,41 @@
+---
+title: "Get top values without sorting in polars"
+subtitle: "top_k"
+author: '{{< var author >}}'
+date: '2025-08-15'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Sorting values is an expensive operation, especially when you have a large dataset. However, sometimes you have no choice but to sort the data, particularly when you need to pick the top 5 or 10 values. Below is a dataframe showing student scores on a test.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Harvey", "Donna", "Mike", "Jessica", "Louis"],
+    "Score": [88, 76, 93, 85, 91]
+})
+df
+```
+<br>
+
+## Get top 3 scores
+
+Suppose you want to get the three students with the highest scores without sorting the data first. How can you do it? Polars has the method `top_k`, which you can use to accomplish exactly that.
+
+```{python}
+(df
+ .top_k(3, by='Score')
+ )
+```
+
+::: {.callout-tip}
+If you want to get the bottom 3 students, use `bottom_k`.
+:::
+
+Sign up for my {{< var polars_course >}} to improve your data analysis skills.
