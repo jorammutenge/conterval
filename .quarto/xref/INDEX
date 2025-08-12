@@ -214,5 +214,8 @@
   },
   "blog/using-implode-in-polars/index.qmd": {
     "index.html": "d4e37643"
+  },
+  "blog/use-quantile-to-filter-polars/index.qmd": {
+    "index.html": "584b4269"
   }
 }

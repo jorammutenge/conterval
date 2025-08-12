@@ -1,6 +1,6 @@
 ---
-title: "Using percentiles to filter data in polars"
-subtitle: "percentile"
+title: "Using quantile to filter data in polars"
+subtitle: "quantile"
 author: '{{< var author >}}'
 date: '2025-08-13'
 date-format: iso
@@ -24,9 +24,9 @@ df
 ```
 <br>
 
-## Filter with percentile
+## Filter with quantile
 
-You can get the students who scored in the 50th percentile by using the Polars expression `percentile`. These are the students who performed better than half of the students in the dataset.
+You can get the students who scored in the 50th percentile by using the Polars expression `quantile`. These are the students who performed better than half of the students in the dataset.
 
 ```{python}
 (df

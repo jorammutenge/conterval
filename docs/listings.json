@@ -5,7 +5,7 @@
       "/blog/from-row-to-list-polars/index.html",
       "/blog/get-top-values-polars/index.html",
       "/blog/using-implode-in-polars/index.html",
-      "/blog/use-percentile-to-filter-polars/index.html",
+      "/blog/use-quantile-to-filter-polars/index.html",
       "/blog/get-unique-values-polars/index.html",
       "/blog/contain-as-filter-polars/index.html",
       "/blog/series-to-dataframe-polars/index.html",
