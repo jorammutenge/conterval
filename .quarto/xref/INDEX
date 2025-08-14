@@ -217,5 +217,8 @@
   },
   "blog/use-quantile-to-filter-polars/index.qmd": {
     "index.html": "584b4269"
+  },
+  "blog/fizzbuzz-in-three-ways/index.qmd": {
+    "index.html": "c701fbba"
   }
 }

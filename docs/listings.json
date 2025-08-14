@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/fizzbuzz-in-three-ways/index.html",
       "/blog/from-row-to-list-polars/index.html",
       "/blog/get-top-values-polars/index.html",
       "/blog/using-implode-in-polars/index.html",

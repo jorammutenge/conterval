@@ -1,0 +1,115 @@
+---
+title: "FizzBuzz in 3 ways with python"
+subtitle: "And my favorite way"
+author: '{{< var author >}}'
+date: '2025-08-17'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+---
+
+Most tech jobs require a technical interview. For a long time, the FizzBuzz question was used to weed out candidates who didn’t have the technical chops.
+
+## What is FizzBuzz
+
+FizzBuzz is a coding challenge that requires you to write code that outputs (prints) "Fizz" if the number is divisible by 3, "Buzz" if the number is divisible by 5, "FizzBuzz" if the number is divisible by both 3 and 5, and the number itself if it’s not divisible by either 3 or 5. So you can expect the output below for the first 15 numbers.
+
+```py
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+```
+
+The challenge is simple enough to be completed by anyone with some programming knowledge. Hence, if you can’t do FizzBuzz, it signals to the hiring manager that your programming skills are terrible.
+
+In Python, you can do FizzBuzz in many ways. I’ll show you three ways, plus my favorite.
+
+## For loop
+
+The most popular way to do FizzBuzz in Python is with a `for` loop. It’s not my favorite, but I understand why most people do it this way. To begin with, it’s intuitive. You can follow along with the specifics of the coding problem when you write your code with a `for` loop. Here’s how to do it:
+
+```py
+for num in range(1, 101):
+    if num % 3 == 0 and num % 5 == 0:
+        print('FizzBuzz')
+    elif num % 3 == 0:
+        print('Fizz')
+    elif num % 5 == 0:
+        print('Buzz')
+    else:
+        print(num) 
+```
+
+However, this way of solving the problem has a gotcha: you must make sure that the condition to print "FizzBuzz" is the first condition you introduce in your code. Having it second or last means your code will never output "FizzBuzz." That’s why I don’t like this method.
+
+## While loop
+
+Another way to solve the FizzBuzz problem is by using a `while` loop. This method is similar to the one above in the way the conditions are set up, but the looping is done differently. Below is the code that solves the problem:
+
+```py
+num = 1
+while num <= 100:
+    if num % 3 == 0 and num % 5 == 0:
+        print('FizzBuzz')
+    elif num % 3 == 0:
+        print('Fizz')
+    elif num % 5 == 0:
+        print('Buzz')
+    else:
+        print(num)
+    num += 1
+```
+
+Unfortunately, this method also has a gotcha: the condition that prints "FizzBuzz" must be introduced first. For that reason, I’m not a fan of this method either.
+
+## Match case
+
+This is my favorite way to solve the FizzBuzz problem. Most people don’t know about it because `match case` was added in version 3.10 of Python in October 2021. Below is the code that solves the problem:
+
+```py
+for num in range(1, 101):
+    match (num % 3 == 0, num % 5 == 0):
+        case (True, False):
+            print('Fizz')
+        case (False, True):
+            print('Buzz')
+        case (True, True):
+            print('FizzBuzz')
+        case _:
+            print(num)
+```
+
+You can probably guess the reason why I like this method; it’s because it doesn’t matter when the condition that prints "FizzBuzz" is introduced. You can put it in the middle or at the end, and the code will still work. Now that’s what I call beautiful code.
+
+## Showing off!
+
+If you want to impress the hiring manager, you can rewrite the **match case** method in a rather cryptic way like this:
+
+```py
+for num in range(1, 101):
+    match (num % 3, num % 5):
+        case (0, 0):
+            print('FizzBuzz')
+        case (0, _):
+            print('Fizz')
+        case (_, 0):
+            print('Buzz')
+        case _:
+            print(num)
+```
+
+At this point, they would be begging you to accept the job offer.
