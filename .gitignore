@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 *.yml
-.DS_Store
+*.DS_Store
 .env
 
 /.quarto/

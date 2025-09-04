@@ -1,0 +1,34 @@
+---
+title: "Add dynamic title to power BI chart"
+author: '{{< var author >}}'
+date: '2025-09-02'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [visualization]
+---
+
+When you apply filters to your chart, such as filtering by month, having a static title like "January Sales" can be misleading if you later select February in your filter. What you really need is a title that changes dynamically based on your filter selection.
+
+Here’s how to do it:
+
+* On the **Home** tab in the ribbon, click **New measure**. A formula cell will appear starting with `Measure = `. Replace *Measure* with something descriptive, such as *Dynamic_Title*.
+
+* Write the formula that defines how you want the title to change. For example:
+
+  ```DAX
+  Dynamic_Title = "Sales for " & SELECTEDVALUE(Sales[Month], "All Months")
+  ```
+
+  * `SELECTEDVALUE(Sales[Month])` returns the currently selected month from your filter.
+  * If no month is selected, it defaults to *“All Months”*.
+
+* Click the check mark on the left side of the formula cell to confirm.
+
+* In the **Visualizations** panel, click **Card** (the icon shows the number *123*). A rectangular text box will appear on your report.
+
+* From the **Data** panel, drag the *Dynamic_Title* measure into the card. The dynamic title text will now appear inside the card.
+
+Your chart now has a dynamic title that updates automatically according to the filter selections.

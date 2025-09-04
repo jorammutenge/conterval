@@ -220,5 +220,14 @@
   },
   "blog/fizzbuzz-in-three-ways/index.qmd": {
     "index.html": "c701fbba"
+  },
+  "blog/udemy-course-updated/index.qmd": {
+    "index.html": "f9aff3ad"
+  },
+  "blog/add-dynamic-title-powerbi/index.qmd": {
+    "index.html": "fa33c35d"
+  },
+  "blog/sort-bars-powerbi/index.qmd": {
+    "index.html": "a0d72d03"
   }
 }

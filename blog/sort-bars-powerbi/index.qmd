@@ -1,0 +1,28 @@
+---
+title: "Power BI calendar order sorting on bars with month names"
+author: '{{< var author >}}'
+date: '2025-09-03'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [visualization]
+---
+
+When you create a bar chart in Power BI with each bar representing a month name (for example, January for the first bar, February for the second, and so on), the bars are rarely sorted in calendar order. Instead, you might see March appear first on the chart. Even when you apply sorting, Power BI uses alphabetical order, which places April before January. This isn’t the natural calendar order.
+
+## Applying calendar order sorting
+
+To sort your bar chart in calendar order, follow these steps:
+
+* Click **Table view** on the left (the icon looks like a grid).
+* On the ribbon, click **New column**. A new column will be added to your table. Name it *month_number*.
+* Enter numbers 1 to 12 in *month_number*, ensuring that January corresponds to 1, February to 2, and so on.
+* Select the column with month names (for example, *month_name*) by clicking on it in the table. The **Column tools** tab will appear in the ribbon.
+* Click **Sort by column**, and choose *month_number* as the sorting column.
+* Switch back to **Report view** (the icon looks like a bar chart).
+* Select the bar chart, then click the **More options** (ellipsis `...`) icon on the chart. Choose **Sort axis**, and select *month_name*.
+
+Now your bar chart will display the months in the correct calendar order.
+

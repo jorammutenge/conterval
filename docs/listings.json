@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/udemy-course-updated/index.html",
+      "/blog/sort-bars-powerbi/index.html",
+      "/blog/add-dynamic-title-powerbi/index.html",
       "/blog/fizzbuzz-in-three-ways/index.html",
       "/blog/from-row-to-list-polars/index.html",
       "/blog/get-top-values-polars/index.html",
