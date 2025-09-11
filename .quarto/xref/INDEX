@@ -229,5 +229,20 @@
   },
   "blog/sort-bars-powerbi/index.qmd": {
     "index.html": "a0d72d03"
+  },
+  "blog/add-index-to-polars-dataframe/index.qmd": {
+    "index.html": "ac0d65e0"
+  },
+  "blog/create-dummy-variable-in-polars/index.qmd": {
+    "index.html": "80795888"
+  },
+  "blog/delete-record-in-polars/index.qmd": {
+    "index.html": "716c2942"
+  },
+  "blog/shift-rows-in-polars/index.qmd": {
+    "index.html": "e8ed0f03"
+  },
+  "blog/use-custom-functions-in-polars/index.qmd": {
+    "index.html": "d504df37"
   }
 }

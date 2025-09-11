@@ -1,0 +1,66 @@
+---
+title: "Moving rows up or down in polars"
+subtitle: "shift"
+author: '{{< var author >}}'
+date: '2025-09-10'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+When working with timeseries data, you may want to move values in a column a few rows up or down. This is particularly important when calculating moving averages, where the first rows have null values depending on the window used in your moving average calculation. The dataframe below shows a snapshot of Apple stock data in 2024.
+
+```{python}
+#| echo: false
+import polars as pl
+from datetime import date
+
+df = pl.DataFrame({'Date': [date(2024, 1, 2),date(2024, 1, 3),date(2024, 1, 4),date(2024, 1, 5),
+          date(2024, 1, 8),date(2024, 1, 9),date(2024, 1, 10),date(2024, 1, 11),
+          date(2024, 1, 12),date(2024, 1, 16)],
+ 'Open': [187.149994,184.220001,182.149994,181.990005,182.089996,183.919998,184.350006,186.539993,186.059998,182.160004],
+ 'High': [188.440002,185.880005,183.089996,182.759995,185.600006,185.149994,186.399994,187.050003,186.740005,184.259995]})
+df
+```
+<br>
+
+## Shifting rows down
+
+Polars makes it easy to shift rows in a column up or down. Let's create two columns based on *High*: one with 2 rows shifted up and another with 2 rows shifted down.
+
+```{python}
+(df
+ .with_columns(High_2rows_Up=pl.col('High').shift(-2),
+               High_2rows_Down=pl.col('High').shift(2))
+ )
+```
+
+## Practical application of shifting rows
+
+You may be wondering, "What's the use of shifting rows in a column?" Here's a practical example. Let's create a 3-day moving average based on *Open*.
+
+```{python}
+(df
+ .with_columns(MA_3days_Open=pl.col('Open').rolling_mean(window_size=3))
+ .with_columns(MA_3days_Open_Shifted_Up=pl.col('MA_3days_Open').shift(-2))
+ )
+```
+<br>
+Notice that the first 2 rows in *MA_3days_Open* are null. Suppose you want to remove those null values because you plan to subtract the first 3-day moving average from the first value in *High*. This is where shifting values becomes useful. By shifting values in *MA_3days_Open* 2 rows up, the first non-null value aligns with the first value in *High*.
+
+Now you can perform the subtraction.
+
+## Shifting rows in all columns
+
+It's also possible to shift rows for all columns in the dataframe at once. Let's shift each column 2 rows down.
+
+```{python}
+df.shift(2)
+```
+<br>
+The first 2 rows in our original dataframe are now gone. They've been replaced by null.
+
+Checkout my newly updated {{< var polars_course >}}. I included a section on **data visualization** because Polars now supports native plotting!

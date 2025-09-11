@@ -1,0 +1,37 @@
+---
+title: "Deleting a record in a polars dataframe"
+subtitle: "remove"
+author: '{{< var author >}}'
+date: '2025-09-13'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Deleting records from a table is a common operation when analyzing data. Suppose you have a dataframe of lawyers and the scores they received on their bar exam.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Harvey", "Donna", "Mike", "Jessica", "Louis"],
+    "Score": [88, 76, 93, 85, 91]
+})
+df
+```
+<br>
+
+## Delete record
+
+If you’re a fan of the TV show *Suits*, you’ll know that Donna is not a lawyer. Let’s remove her from the table.
+
+```{python}
+df.remove(pl.col('Student') == 'Donna')
+```
+<br>
+If you’re a diehard fan of *Suits*, you’ll also point out that Mike is not a real lawyer. That’s true, but let’s keep that just between us, the diehard fans.
+
+Enroll in my {{< var polars_course >}} to learn more ways to analyze data with Polars.

@@ -1,0 +1,48 @@
+---
+title: "Adding an index to a polars dataframe"
+subtitle: "with_row_index"
+author: '{{< var author >}}'
+date: '2025-09-11'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Ritchie Vink, the creator of Polars, once wrote something like this in a post (probably on Reddit):
+
+> You don't need an index. Come at me bro.
+
+At least, that’s what I heard on *The Real Python* podcast. Whether it’s true or not, I share Ritchie’s sentiment. The index is one of the things I find most annoying about Pandas. Each time I want to save data to Excel or CSV, I have to remember to include `index=False`, and almost always forget to do it on the first attempt.
+
+Not having an index is one of the ways Polars sets itself apart from other dataframe libraries. In most cases, you don’t need an index. But there are times when you do. Below is a dataframe with no index.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Spencer", "Spencer", "Emily", "Emily", "Hannah", "Hannah", "Aria", "Aria"],
+    "Subject": ["Chemistry", "Physics", "Physics", "Biology", "History", "Art", "English", "Biology"]
+})
+df
+```
+<br>
+
+## Add index to dataframe
+
+To add an index to a Polars dataframe, use the `with_row_index` method like this:
+
+```{python}
+df.with_row_index()
+```
+<br>
+Notice that the index starts at zero. If you want it to start at a different number, such as 1, you can add the `offset` parameter like this:
+
+```{python}
+df.with_row_index(offset=1)
+```
+<br>
+
+I updated my {{< var polars_course >}} on Udemy. Join 150+ students and level up your data analysis skills with this fast dataframe library.

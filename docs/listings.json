@@ -2,6 +2,11 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/delete-record-in-polars/index.html",
+      "/blog/create-dummy-variable-in-polars/index.html",
+      "/blog/add-index-to-polars-dataframe/index.html",
+      "/blog/shift-rows-in-polars/index.html",
+      "/blog/use-custom-functions-in-polars/index.html",
       "/blog/udemy-course-updated/index.html",
       "/blog/sort-bars-powerbi/index.html",
       "/blog/add-dynamic-title-powerbi/index.html",

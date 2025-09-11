@@ -280,4 +280,24 @@
     <loc>https://www.conterval.com/blog/sort-bars-powerbi/index.html</loc>
     <lastmod>2025-09-04T16:02:38.000Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/add-index-to-polars-dataframe/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/create-dummy-variable-in-polars/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/use-custom-functions-in-polars/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/delete-record-in-polars/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/shift-rows-in-polars/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+  </url>
 </urlset>
