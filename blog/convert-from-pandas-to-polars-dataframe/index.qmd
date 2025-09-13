@@ -20,12 +20,9 @@ Yes, it’s possible to read HTML tables using Pandas, just as you would read da
 ```{python}
 import pandas as pd
 
-url = 'https://en.wikipedia.org/wiki/List_of_Suits_episodes'
+url = 'https://rstudio-pubs-static.s3.amazonaws.com/383830_4aef25cdc42f4fd88d09cc8217b8924c.html'
 
-df = (pd.read_html(url)[1]
- [['Title', 'Directed by']]
- .head(4)
- )
+df = pd.read_html(url)[0]
 df
 ```
 

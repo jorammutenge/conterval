@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d2aa81fd446349e864e3840226529ee6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a5bf6f8161e26be20850e25a3102e1bc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-7f48f6fc45e8e6324efe4ef505413309.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -142,16 +142,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book</span></a>
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -213,7 +217,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Python is big on lists because they are one of the fundamental data structures of the language. It’s no surprise that data analysis tasks in Python almost always involve using lists. Luckily, Polars allows you to collapse a series of rows into a list. Below is a dataframe showing sales from a clothing store.</p>
-<div id="251bbfbb" class="cell" data-execution_count="1">
+<div id="42224394" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -288,21 +292,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-list-of-clothing-categories" class="level2">
 <h2 class="anchored" data-anchor-id="get-list-of-clothing-categories">Get list of clothing categories</h2>
 <p>Suppose you want to know the unique categories of clothing available at this store and store those categories in a list. How would you do it in Polars? You simply use the method <code>to_list</code>, but it’s a series method, not a dataframe method. Therefore, you’ll need to convert the dataframe into a series.</p>
-<div id="e41291eb" class="cell" data-execution_count="2">
+<div id="089ff411" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> [<span class="st">'category'</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> .to_list()</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>['Socks', 'Sweater', 'Hat']</code></pre>
+<pre><code>['Sweater', 'Hat', 'Socks']</code></pre>
 </div>
 </div>
 </section>
 <section id="the-idiomatic-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-idiomatic-way">The idiomatic way</h2>
 <p>Subscribers to the idiomatic way of writing Polars code, like myself, would frown upon the use of square brackets in the code above. Let me show you how to rewrite the code above (without embarrassment) if you, too, want to be a Polars connoisseur.</p>
-<div id="2eddd669" class="cell" data-execution_count="3">
+<div id="7c348b51" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'category'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
@@ -310,7 +314,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a> .to_list()</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>['Socks', 'Sweater', 'Hat']</code></pre>
+<pre><code>['Hat', 'Sweater', 'Socks']</code></pre>
 </div>
 </div>
 <p>Become a master of Polars my enrolling in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>

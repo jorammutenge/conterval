@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa1a81e6dac41eab4c6e8d7d3861822c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a5bf6f8161e26be20850e25a3102e1bc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-7f48f6fc45e8e6324efe4ef505413309.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -142,16 +142,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book</span></a>
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -213,7 +217,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Analyzing a very large dataset can be strenuous on your computer, especially if you don’t have a fast machine. Instead of overworking your computer and waiting a long time to see the results, you can perform your analysis on a smaller subset of the data. Below is a dataframe with 1000 rows.</p>
-<div id="e5a434ce" class="cell" data-execution_count="1">
+<div id="11a1e08c" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -293,7 +297,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="sampling-is-the-best-method" class="level2">
 <h2 class="anchored" data-anchor-id="sampling-is-the-best-method">Sampling is the best method</h2>
 <p>To get a true representation of the data, you should use the <code>sample</code> function. This ensures that rows are randomly selected until you reach the desired number. Here’s how to use it:</p>
-<div id="db63f632" class="cell" data-execution_count="2">
+<div id="d297b6fb" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -319,23 +323,23 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Hat"</td>
-<td>10</td>
+<td>"Socks"</td>
+<td>19</td>
 </tr>
 <tr class="even">
-<td>"Hat"</td>
-<td>17</td>
-</tr>
-<tr class="odd">
-<td>"Sweater"</td>
-<td>13</td>
-</tr>
-<tr class="even">
-<td>"Sweater"</td>
-<td>5</td>
+<td>"Socks"</td>
+<td>3</td>
 </tr>
 <tr class="odd">
 <td>"Socks"</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>"Sweater"</td>
+<td>19</td>
+</tr>
+<tr class="odd">
+<td>"Sweater"</td>
 <td>8</td>
 </tr>
 <tr class="even">
@@ -343,24 +347,24 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"Sweater"</td>
-<td>18</td>
+<td>"Socks"</td>
+<td>20</td>
 </tr>
 <tr class="even">
 <td>"Sweater"</td>
-<td>16</td>
+<td>11</td>
 </tr>
 <tr class="odd">
-<td>"Sweater"</td>
-<td>10</td>
+<td>"Hat"</td>
+<td>15</td>
 </tr>
 <tr class="even">
 <td>"Sweater"</td>
-<td>13</td>
+<td>6</td>
 </tr>
 <tr class="odd">
-<td>"Sweater"</td>
-<td>17</td>
+<td>"Hat"</td>
+<td>14</td>
 </tr>
 </tbody>
 </table>
@@ -368,7 +372,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> If you want your results to be reproducible, you can use the <code>seed</code> parameter.</p>
-<div id="676cc898" class="cell" data-execution_count="3">
+<div id="4b1fc96b" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

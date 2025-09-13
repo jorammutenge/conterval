@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa1a81e6dac41eab4c6e8d7d3861822c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a5bf6f8161e26be20850e25a3102e1bc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-7f48f6fc45e8e6324efe4ef505413309.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -142,16 +142,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book</span></a>
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -216,16 +220,13 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="reading-html-data-with-pandas" class="level2">
 <h2 class="anchored" data-anchor-id="reading-html-data-with-pandas">Reading HTML data with pandas</h2>
 <p>Yes, it’s possible to read HTML tables using Pandas, just as you would read data from a CSV file.</p>
-<div id="a4e5b42f" class="cell" data-execution_count="1">
+<div id="a84850a6" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_Suits_episodes'</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://rstudio-pubs-static.s3.amazonaws.com/383830_4aef25cdc42f4fd88d09cc8217b8924c.html'</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> (pd.read_html(url)[<span class="dv">1</span>]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> [[<span class="st">'Title'</span>, <span class="st">'Directed by'</span>]]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a> .head(<span class="dv">4</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a> )</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_html(url)[<span class="dv">0</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -234,30 +235,54 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Directed by</th>
+<th data-quarto-table-cell-role="th">observation</th>
+<th data-quarto-table-cell-role="th">beantype</th>
+<th data-quarto-table-cell-role="th">cocoapercent</th>
+<th data-quarto-table-cell-role="th">rating</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>"Pilot"</td>
-<td>Kevin Bray</td>
+<td>1</td>
+<td>Forastero (Arriba)</td>
+<td>0.55</td>
+<td>2.75</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>"Errors and Omissions"</td>
-<td>John Scott</td>
+<td>2</td>
+<td>Forastero (Arriba)</td>
+<td>0.70</td>
+<td>3.00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>"Inside Track"</td>
-<td>Kevin Bray</td>
+<td>3</td>
+<td>Forastero</td>
+<td>0.75</td>
+<td>2.75</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>"Dirty Little Secrets"</td>
-<td>Dennie Gordon</td>
+<td>4</td>
+<td>Forastero (Nacional)</td>
+<td>0.70</td>
+<td>3.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>Criollo, Trinitario</td>
+<td>0.70</td>
+<td>3.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>6</td>
+<td>Forastero</td>
+<td>0.70</td>
+<td>3.50</td>
 </tr>
 </tbody>
 </table>
@@ -269,7 +294,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="change-from-pandas-to-polars-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="change-from-pandas-to-polars-dataframe">Change from pandas to polars dataframe</h2>
 <p>The <code>pl.from_pandas</code> expression allows us to turn a Pandas dataframe to a polars dataframe. Here’s how to use it.</p>
-<div id="f1b745f2" class="cell" data-execution_count="2">
+<div id="d9a3526f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pl.from_pandas(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -281,34 +306,58 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (4, 2)</small>
+<small>shape: (6, 4)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Title</th>
-<th data-quarto-table-cell-role="th">Directed by</th>
+<th data-quarto-table-cell-role="th">observation</th>
+<th data-quarto-table-cell-role="th">beantype</th>
+<th data-quarto-table-cell-role="th">cocoapercent</th>
+<th data-quarto-table-cell-role="th">rating</th>
 </tr>
 <tr class="even">
+<th>i64</th>
 <th>str</th>
-<th>str</th>
+<th>f64</th>
+<th>f64</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>""Pilot""</td>
-<td>"Kevin Bray"</td>
+<td>1</td>
+<td>"Forastero (Arriba)"</td>
+<td>0.55</td>
+<td>2.75</td>
 </tr>
 <tr class="even">
-<td>""Errors and Omissions""</td>
-<td>"John Scott"</td>
+<td>2</td>
+<td>"Forastero (Arriba)"</td>
+<td>0.7</td>
+<td>3.0</td>
 </tr>
 <tr class="odd">
-<td>""Inside Track""</td>
-<td>"Kevin Bray"</td>
+<td>3</td>
+<td>"Forastero"</td>
+<td>0.75</td>
+<td>2.75</td>
 </tr>
 <tr class="even">
-<td>""Dirty Little Secrets""</td>
-<td>"Dennie Gordon"</td>
+<td>4</td>
+<td>"Forastero (Nacional)"</td>
+<td>0.7</td>
+<td>3.5</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>"Criollo, Trinitario"</td>
+<td>0.7</td>
+<td>3.5</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>"Forastero"</td>
+<td>0.7</td>
+<td>3.5</td>
 </tr>
 </tbody>
 </table>

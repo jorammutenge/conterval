@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.34">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-aa1a81e6dac41eab4c6e8d7d3861822c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-a5bf6f8161e26be20850e25a3102e1bc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-7f48f6fc45e8e6324efe4ef505413309.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -142,16 +142,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book</span></a>
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -213,7 +217,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Duplicates are a common problem in most datasets. That’s why it’s important to check for duplicate rows before analyzing your data. Fortunately, Polars provides an easy way to identify duplicate rows. Below is a dataframe showing sales for each day of the week.</p>
-<div id="1fe47552" class="cell" data-execution_count="1">
+<div id="608ef6f1" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -276,7 +280,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="show-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="show-duplicates">Show duplicates</h2>
 <p>To display duplicated rows in Polars, use the <code>is_duplicated</code> method. This method highlights rows that have identical values across all columns.</p>
-<div id="7fa39e10" class="cell" data-execution_count="2">
+<div id="3d2d4797" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(df.is_duplicated())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -319,7 +323,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="remove-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="remove-duplicates">Remove duplicates</h2>
 <p>To remove duplicates in Polars, use the <code>unique</code> method. This ensures that only rows with distinct values across columns are retained. Here’s how to do it:</p>
-<div id="19f79097" class="cell" data-execution_count="3">
+<div id="2e4be074" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .unique()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -345,32 +349,32 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Sun"</td>
-<td>67</td>
+<td>"Tue"</td>
+<td>247</td>
 </tr>
 <tr class="even">
-<td>"Thur"</td>
-<td>481</td>
+<td>"Fri"</td>
+<td>319</td>
 </tr>
 <tr class="odd">
+<td>"Sat"</td>
+<td>208</td>
+</tr>
+<tr class="even">
 <td>"Mon"</td>
 <td>182</td>
+</tr>
+<tr class="odd">
+<td>"Thur"</td>
+<td>481</td>
 </tr>
 <tr class="even">
 <td>"Wed"</td>
 <td>547</td>
 </tr>
 <tr class="odd">
-<td>"Tue"</td>
-<td>247</td>
-</tr>
-<tr class="even">
-<td>"Sat"</td>
-<td>208</td>
-</tr>
-<tr class="odd">
-<td>"Fri"</td>
-<td>319</td>
+<td>"Sun"</td>
+<td>67</td>
 </tr>
 </tbody>
 </table>

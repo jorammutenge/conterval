@@ -142,16 +142,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Book</span></a>
+<span class="menu-text">Books</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
+<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -217,7 +221,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </blockquote>
 <p>At least, that’s what I heard on <em>The Real Python</em> podcast. Whether it’s true or not, I share Ritchie’s sentiment. The index is one of the things I find most annoying about Pandas. Each time I want to save data to Excel or CSV, I have to remember to include <code>index=False</code>, and almost always forget to do it on the first attempt.</p>
 <p>Not having an index is one of the ways Polars sets itself apart from other dataframe libraries. In most cases, you don’t need an index. But there are times when you do. Below is a dataframe with no index.</p>
-<div id="04718e08" class="cell" data-execution_count="1">
+<div id="b6d27709" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -280,7 +284,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="add-index-to-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="add-index-to-dataframe">Add index to dataframe</h2>
 <p>To add an index to a Polars dataframe, use the <code>with_row_index</code> method like this:</p>
-<div id="5fb49f61" class="cell" data-execution_count="2">
+<div id="645a2af1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df.with_row_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
@@ -351,7 +355,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> Notice that the index starts at zero. If you want it to start at a different number, such as 1, you can add the <code>offset</code> parameter like this:</p>
-<div id="4aaf8ecd" class="cell" data-execution_count="3">
+<div id="759f0aa6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.with_row_index(offset<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>

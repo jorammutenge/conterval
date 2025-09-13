@@ -19,13 +19,16 @@ website:
     left:
       - text: '{{< fa home >}}'
         href: https://www.conterval.com
-      - text: '{{< fa brands bluesky >}}'
-        href: https://bsky.app/profile/jorammutenge.com
-        target: _blank
       - href: blog/index.qmd
         text: Blog
       - href: books.qmd
-        text: Book
+        text: Books
+      - text: '{{< fa brands linkedin >}}'
+        href: https://www.linkedin.com/in/jorammutenge/
+        target: _blank
+      - text: '{{< fa brands bluesky >}}'
+        href: https://bsky.app/profile/jorammutenge.com
+        target: _blank
   page-footer: 
     background: light
     center: © 2025 Conterval · [Contact](mailto:contervalconsult@gmail.com)
