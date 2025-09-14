@@ -244,5 +244,8 @@
   },
   "blog/use-custom-functions-in-polars/index.qmd": {
     "index.html": "d504df37"
+  },
+  "blog/python-documentary/index.qmd": {
+    "index.html": "520476bb"
   }
 }

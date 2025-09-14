@@ -1,0 +1,81 @@
+---
+title: "The python documentary was worth watching"
+subtitle: "My reflections after watching"
+author: '{{< var author >}}'
+date: '2025-09-14'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+---
+
+I'm not one of those people who started programming when they were nine. At that age, I had much more fun things to do, like playing in the dirt and catching grasshoppers in the bush. I've been told that CSS and HTML don't count as programming languages. If that’s the case, then my first real programming language was Python.
+
+However, I didn’t learn Python in the typical way. I learned it through the lens of data. Pandas was my entry point, and everything I did with Python was data-centric. Python may have challenges when it comes to tooling, but what won me over was its simplicity. For someone who hadn’t been programming since childhood, Python wasn’t intimidating.
+
+## Hearing about the documentary
+
+When I heard on the *Talk Python to Me* podcast that there was going to be a documentary about Python, I immediately knew who was behind it, and I was excited. I had already watched several documentaries by CultRepo (formerly Honeypot) on Node.js, React.js, and TypeScript, and I loved them because they told a compelling story and were highly informative. That’s how I knew I would enjoy the one on Python too.
+
+## Python was born from a failed project
+
+When failure happens, it’s hard to see the silver lining in the moment. Only in retrospect do we realize how crucial that failure was to the success that followed. In his 20s, Guido van Rossum worked as a researcher at Centrum Wiskunde & Informatica (CWI) in the Netherlands. There, he joined a team developing a new programming language called ABC. The goal was to create a language that was easier for non-computer scientists to use.
+
+Guido worked on ABC for three years, but the language was never widely adopted, so the project was discontinued. Still, Guido believed there was a need for a simplified programming language. In his spare time, he began working on what would eventually become Python.
+
+The failure of ABC gave us Python. In retrospect, maybe we should be grateful that the ABC project lost its funding.
+
+## Python's community cares a lot about the language
+
+I may have suspected this before, but the documentary made it clear to me: the Python community deeply cares about the language. People from diverse countries and backgrounds contributed (and still contribute) to its growth.
+
+Some early adopters were upset about the move from Python 2 to Python 3 because of the many breaking changes. I had heard about this controversy, but I hadn’t realized how big a deal it was. Some people even left the language because of it. Still, there’s no denying that Python 3 is the better version.
+
+You could argue that the secret to a widely adopted programming language is putting it in the hands of the community. Python followed that playbook, and it worked brilliantly.
+
+## Guido was the first BDFL
+
+Most open-source software creators eventually get called a BDFL (Benevolent Dictator for Life). Guido was the first. The Python community wanted a title for its creator, so they came up with that phrase.
+
+Honestly, I thought BDFL predated Python since open-source software has been around for so long.
+
+## The big data revolution made python popular
+
+In the documentary, Travis Oliphant, co-founder of Anaconda, said that their company made Python popular. I couldn’t agree more.
+
+Without the explosion of data science and analytics, Python wouldn’t be as popular as it is today. As I mentioned earlier, data was what drew me to Python, and I know many others with a similar story.
+
+Today, if you’re doing data processing or machine learning, you can’t avoid Python because it has a rich ecosystem of scientific computing libraries.
+
+You could say another key to adoption is having a growing industry depend on your language. The rise of the data field directly correlates with Python’s rise in popularity.
+
+Believe it or not, there was a time when Python and R were battling for dominance in data science. Now, everyone knows Python won that battle.
+
+Julia tried to enter the fight, but its fame lasted only a second -- a far cry from Andy Warhol’s “15 minutes of fame.”
+
+## Python's future is bright
+
+Most languages are experiencing silent deaths. Python isn’t one of them. In fact, in 2024, it became the most popular language on GitHub, surpassing JavaScript, which had held the top spot for years.
+
+Even better, the ubiquity of data makes the data field ever-expanding, and Python will remain a central player.
+
+Large language models also rely heavily on Python for numerical computation. So whenever you interact with one, you’re indirectly running Python under the hood.
+
+## Things I found interesting in the documentary
+
+* Guido could have worked at Apple, but Steve Jobs turned him down because he didn’t want to hire someone who already had a large following outside the company.
+* Guido doesn’t like taking selfies with fans at public events. If you really want to take a selfie with him, it has to be in a dark alley.
+* Many companies were instrumental in ensuring Python’s survival, even the ones most of us have never heard of.
+* Python has grown far beyond being “just a scripting language.” Serious enterprise software has been written -- and continues to be written -- in Python.
+
+## I highly recommend watching the documentary
+
+If you haven’t seen the documentary yet, you should. It was professionally produced, immaculately edited, and thoroughly enjoyable. Here’s the link to the video:
+
+{{< video https://www.youtube.com/watch?v=GfH4QL4VqJ0
+    title="Python: The Documentary | An origin story"
+    aspect-ratio="21x9" 
+>}}
+
+If you’ve already seen it, what are your thoughts? Let me know via email or LinkedIn.
