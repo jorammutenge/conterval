@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/rust-analyzer-failure/index.html",
       "/blog/python-documentary/index.html",
       "/blog/delete-record-in-polars/index.html",
       "/blog/create-dummy-variable-in-polars/index.html",

@@ -247,5 +247,8 @@
   },
   "blog/python-documentary/index.qmd": {
     "index.html": "520476bb"
+  },
+  "blog/rust-analyzer-failure/index.qmd": {
+    "index.html": "c7bd2e93"
   }
 }
