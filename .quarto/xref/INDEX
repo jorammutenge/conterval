@@ -250,5 +250,8 @@
   },
   "blog/rust-analyzer-failure/index.qmd": {
     "index.html": "c7bd2e93"
+  },
+  "blog/fizzbuzz-in-rust/index.qmd": {
+    "index.html": "f7ec761e"
   }
 }
