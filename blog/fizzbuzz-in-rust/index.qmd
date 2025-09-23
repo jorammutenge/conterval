@@ -47,15 +47,15 @@ This is the most common method people use to answer the question. It's straightf
 
 ```Rust
 fn main() {
-    for i in 1..=100 {
-        if i % 3 == 0 && i % 5 == 0 {
+    for num in 1..=100 {
+        if num % 3 == 0 && num % 5 == 0 {
             println!("FizzBuzz");
-        } else if i % 3 == 0 {
+        } else if num % 3 == 0 {
             println!("Fizz");
-        } else if i % 5 == 0 {
+        } else if num % 5 == 0 {
             println!("Buzz");
         } else {
-            println!("{i}");
+            println!("{num}");
         }
     }
 }
@@ -98,8 +98,8 @@ This is my favorite method for answering the question. It's a bit more advanced,
 
 ```Rust
 fn main() {
-    for i in 1..=100 {
-        match (i % 3 == 0, i % 5 == 0) {
+    for num in 1..=100 {
+        match (num % 3 == 0, num % 5 == 0) {
             (true, false) => println!("Fizz"),
             (false, true) => println!("Buzz"),
             (true, true) => println!("FizzBuzz"),
