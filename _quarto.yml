@@ -23,6 +23,8 @@ website:
         text: Blog
       - href: books.qmd
         text: Books
+      - href: https://www.udemy.com/user/joram-mutenge/
+        text: Courses
       - text: '{{< fa brands linkedin >}}'
         href: https://www.linkedin.com/in/jorammutenge/
         target: _blank
