@@ -155,7 +155,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/"> 
+    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Long format data (data with many rows) is good for performing analyses but bad for presentation. If you want people to easily understand your data, you should strive to reduce the length of the dataframe. Below is a dataframe showing students and the subjects they take.</p>
-<div id="20532d24" class="cell" data-execution_count="1">
+<div id="b60304d7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -300,7 +300,7 @@ Note
 <section id="show-subjects-in-list" class="level2">
 <h2 class="anchored" data-anchor-id="show-subjects-in-list">Show subjects in list</h2>
 <p>Instead of repeating the name of every student for each subject they take, let’s show the student’s name only once and collect the subjects she takes in a list. We can achieve this using the Polars expression <code>implode</code>, but first, we must group the data by <em>Student</em> to ensure each student appears only once.</p>
-<div id="dedb931a" class="cell" data-execution_count="2">
+<div id="29183037" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Student'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .agg(pl.col(<span class="st">'Subject'</span>).implode())</span>
@@ -335,12 +335,12 @@ Note
 <td>["History", "Art"]</td>
 </tr>
 <tr class="odd">
-<td>"Spencer"</td>
-<td>["Chemistry", "Physics"]</td>
-</tr>
-<tr class="even">
 <td>"Emily"</td>
 <td>["Physics", "Biology"]</td>
+</tr>
+<tr class="even">
+<td>"Spencer"</td>
+<td>["Chemistry", "Physics"]</td>
 </tr>
 </tbody>
 </table>

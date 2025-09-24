@@ -155,7 +155,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/"> 
+    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>It’s easier to read large numerical values when they’re separated by a comma every three digits. For instance, your brain can more easily comprehend <strong>5,000,000</strong> at a glance than <strong>5000000</strong>. Polars allows you to format numerical values with commas to improve readability. Below is a dataframe showing department budgets for a company:</p>
-<div id="840f5a9b" class="cell" data-execution_count="1">
+<div id="f4e2d519" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -276,7 +276,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="insert-commas-in-values" class="level2">
 <h2 class="anchored" data-anchor-id="insert-commas-in-values">Insert commas in values</h2>
 <p>We can make the budget values more human-readable by separating each group of three digits with a comma. Here’s how to do it:</p>
-<div id="f7689227" class="cell" data-execution_count="2">
+<div id="17c6eb8b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pl.Config(thousands_separator<span class="op">=</span><span class="st">','</span>):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -327,7 +327,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>If you live in Brazil (where the thousand separator is a full stop), you can replace <code>,</code> with <code>.</code></p>
-<div id="e97031bf" class="cell" data-execution_count="3">
+<div id="fd404abd" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> pl.Config(thousands_separator<span class="op">=</span><span class="st">'.'</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    display(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">

@@ -25,6 +25,7 @@ website:
         text: Books
       - href: https://www.udemy.com/user/joram-mutenge/
         text: Courses
+        target: _blank
       - text: '{{< fa brands linkedin >}}'
         href: https://www.linkedin.com/in/jorammutenge/
         target: _blank

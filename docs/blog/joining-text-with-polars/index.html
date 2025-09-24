@@ -155,7 +155,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/"> 
+    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
@@ -220,7 +220,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Most people have a love-hate relationship with text data, but if you work in the data field, you’re bound to encounter it.</p>
 <p>One of the most common operations when working with text data is joining two words. Below is a dataframe containing the first and last names of characters from one of my favorite TV shows, <em>Suits</em>.</p>
-<div id="fad21961" class="cell" data-execution_count="1">
+<div id="c86aa8d0" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -265,7 +265,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br> Let’s say we want to create a new column called <em>Full_Name</em> that combines the first and last names into one. How would we do that?</p>
 <p>This is where the Polars expression <code>concat_str</code> comes in handy. Here’s how to use it:</p>
-<div id="87b5ad6f" class="cell" data-execution_count="2">
+<div id="ffc9b1e9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.concat_str([pl.col(<span class="st">'First_Name'</span>), pl.col(<span class="st">'Last_Name'</span>)], separator<span class="op">=</span><span class="st">' '</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Full_Name'</span>))</span>
@@ -320,7 +320,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br> The code above is considered the idiomatic Polars way of doing it.</p>
 <p>But if you want to impress your boss with your technical wizardry, you can also achieve the same result using a more “hacky” approach like this:</p>
-<div id="f5ca4edd" class="cell" data-execution_count="3">
+<div id="ab8f1896" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'First_Name'</span>).add(<span class="st">' '</span>).add(pl.col(<span class="st">'Last_Name'</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Full_Name'</span>)</span>

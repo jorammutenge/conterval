@@ -155,7 +155,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/"> 
+    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>It’s not always the case that you want to filter your data based on a single specific value. Sometimes, you may want to filter your data based on a range of values. Below is a dataframe showing the streaming services I subscribe to.</p>
-<div id="948acd21" class="cell" data-execution_count="1">
+<div id="41bc3d04" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -285,7 +285,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="filter-on-range-of-values" class="level2">
 <h2 class="anchored" data-anchor-id="filter-on-range-of-values">Filter on range of values</h2>
 <p>Suppose I want to cut down on spending and only keep streaming services with prices between $7 and $10. I can use the <code>is_between</code> expression in Polars to achieve this. Here’s how to do it:</p>
-<div id="d4f9d0ab" class="cell" data-execution_count="2">
+<div id="69858bcb" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Price'</span>).is_between(<span class="fl">7.99</span>,<span class="fl">10.99</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -335,7 +335,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="exclude-some-or-both-bounds" class="level2">
 <h2 class="anchored" data-anchor-id="exclude-some-or-both-bounds">Exclude some or both bounds</h2>
 <p>By default, <code>is_between</code> includes both the left and right bounds. You can choose to exclude either the left or right bound, or even both. Here’s how to exclude the left bound:</p>
-<div id="104cd078" class="cell" data-execution_count="3">
+<div id="496b47e4" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Price'</span>).is_between(<span class="fl">7.99</span>,<span class="fl">10.99</span>, closed<span class="op">=</span><span class="st">'right'</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -375,7 +375,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br></p>
 <p>To exclude the right bound instead, replace <code>'right'</code> with <code>'left'</code> in the <code>closed</code> parameter. Here’s how you can exclude both the left and right bounds:</p>
-<div id="124ae6dd" class="cell" data-execution_count="4">
+<div id="9dd8adca" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Price'</span>).is_between(<span class="fl">7.99</span>,<span class="fl">10.99</span>, closed<span class="op">=</span><span class="st">'none'</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

@@ -155,7 +155,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/"> 
+    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>DataFrames make it easy to create new columns and rename existing ones. That’s why I prefer doing data analysis with DataFrames rather than SQL tables. Say we have a dataframe shown below and we wanted to categorize the budget values into two groups: “Too high” and “Just right”</p>
-<div id="b2a38b02" class="cell" data-execution_count="1">
+<div id="4cd69d24" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -277,7 +277,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="amateur-way-to-maintain-column-name" class="level2">
 <h2 class="anchored" data-anchor-id="amateur-way-to-maintain-column-name">Amateur way to maintain column name</h2>
 <p>In Polars, when you use the conditional expression <code>pl.when</code>, it creates a new column named literal by default. You can override this by assigning a new name to the column using <code>alias</code>. Here’s how it’s done:</p>
-<div id="dfc32951" class="cell" data-execution_count="2">
+<div id="a0fbf71a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'Budget'</span>) <span class="op">&gt;</span> <span class="dv">80_000</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               .then(pl.lit(<span class="st">'Too high'</span>))</span>
@@ -335,7 +335,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="pro-way-to-maintain-column-name">Pro way to maintain column name</h2>
 <p>What if you want to keep the name of the existing column after modifying its values, without having to retype it to override the default literal column? The approach shown above, which involves manually retyping the column name, can be frustrating–especially if you’re working with an Excel file from a colleague who uses long column names like <em>External Customer Part Number</em>.</p>
 <p>Here’s how you can do it like a pro.</p>
-<div id="1da552e1" class="cell" data-execution_count="3">
+<div id="7c8e7f8b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'Budget'</span>) <span class="op">&gt;</span> <span class="dv">80_000</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               .then(pl.lit(<span class="st">'Too high'</span>))</span>
