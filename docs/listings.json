@@ -2,6 +2,10 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/remove-suffix-in-column-names/index.html",
+      "/blog/replace-text-in-polars/index.html",
+      "/blog/pivot-tables-in-polars/index.html",
+      "/blog/chain-functions-in-polars/index.html",
       "/blog/fizzbuzz-in-rust/index.html",
       "/blog/rust-analyzer-failure/index.html",
       "/blog/python-documentary/index.html",

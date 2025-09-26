@@ -1,0 +1,65 @@
+---
+title: "Use custom functions as dataframe methods in polars"
+subtitle: "pipe"
+author: '{{< var author >}}'
+date: '2025-09-24'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Chaining operations in polars is encouraged to take advantage of the query engine in the backend. However, you may want to apply a function that is too specific to your needs and not provided by the built-in functions. Fortunately, there is a way to chain operations using custom-made functions in polars. Below is a dataframe showing Apple stock.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Date': ['2019-08-16',
+  '2019-08-19',
+  '2019-08-20',
+  '2019-08-21',
+  '2019-08-22',
+  '2019-08-23',
+  '2019-08-26',
+  '2019-08-27',
+  '2019-08-28',
+  '2019-08-29'],
+ 'Adj Close': [49.954624,
+  50.885971,
+  50.88839,
+  51.43996,
+  51.39642,
+  49.020844,
+  49.952202,
+  49.388546,
+  49.719963,
+  50.561813]}).with_columns(pl.col('Date').str.to_date())
+df
+```
+<br>
+
+## Create custom function
+
+Suppose you want to calculate the delta change based on the *Adj Close* price. You can create a custom function as follows:
+
+```{python}
+def delta_change(df, column):
+    return df.with_columns(
+        (pl.col(column) - pl.col(column).shift(-1)).alias('Delta Change')
+    )
+```
+
+## Apply custom function
+
+To apply the custom function as a chained operation, use the `pipe` method in polars. This method accepts the custom function and its parameters. The custom function created above has parameters `df` and `column`. Let's apply the function.
+
+```{python}
+(df
+ .pipe(delta_change, column='Adj Close')
+ )
+```
+<br>
+
+I updated my {{< var polars_course >}}. Be sure to enroll.

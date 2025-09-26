@@ -1,0 +1,43 @@
+---
+title: "Create pivot tables in polars"
+subtitle: "pivot"
+author: '{{< var author >}}'
+date: '2025-09-25'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Excel is known for pivot tables, but did you know that you can create pivot tables in polars too? That’s how versatile polars is. Below is a dataframe of students and their scores on different exams.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Spencer", "Spencer", "Emily", "Emily", "Hannah", "Hannah", "Aria", "Aria"] * 2,
+    "Exam": ["Mid-term", "Final"] * 8,
+    "Grade": [93, 88, 73, 69, 55, 89, 92, 81] * 2
+})
+df
+```
+<br>
+
+## Pivot the dataframe
+
+Right now, the dataframe is in long format, and you can see student names repeating. You can pivot the dataframe so that each student’s name appears only once, with the exam types as column names. Here’s how to do it:
+
+```{python}
+(df
+ .pivot(index='Student',
+        on='Exam',
+        values='Grade',
+        aggregate_function='mean')
+ )
+```
+<br>
+I used average (mean) in the code above, but you can also use other statistical measures like max, min, std, etc.
+
+Enroll in my newly updated {{< var polars_course >}}.

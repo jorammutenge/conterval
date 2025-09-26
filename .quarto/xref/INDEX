@@ -253,5 +253,17 @@
   },
   "blog/fizzbuzz-in-rust/index.qmd": {
     "index.html": "f7ec761e"
+  },
+  "blog/chain-functions-in-polars/index.qmd": {
+    "index.html": "31530d0f"
+  },
+  "blog/pivot-tables-in-polars/index.qmd": {
+    "index.html": "770f4f26"
+  },
+  "blog/remove-suffix-in-column-names/index.qmd": {
+    "index.html": "a1ab518e"
+  },
+  "blog/replace-text-in-polars/index.qmd": {
+    "index.html": "7c5bd5a7"
   }
 }

@@ -1,0 +1,44 @@
+---
+title: "Remove suffix in column names in polars"
+subtitle: "name.map"
+author: '{{< var author >}}'
+date: '2025-09-27'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You may have a table with long column names that contain suffixes like "Undergraduate_Student", where the suffix is "_Student". These long column names can be difficult to work with because typing them is time-consuming. Fortunately, there’s a way to fix this. Below is a dataframe showing graduate and undergraduate students.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Undergraduate_Student": ["Lauren", "Larry", "Chanda", "Katis"],
+    "Graduate_Student": ["Gabrielle", "Penny", "Chisenga", "Titus"]
+})
+df
+```
+<br>
+
+## Remove suffix in column names
+
+You can remove the suffix "_Student" from the column names by using the expression `name.map`. This allows you to change column names without manually typing both the original names and their replacements, such as:
+
+```py
+{'Graduate_Student': 'Graduate'}
+```
+
+Here’s how to do it:
+
+```{python}
+(df
+ .with_columns(pl.all().name.map(lambda c: c.removesuffix('_Student')))
+ )
+```
+<br>
+
+Advance your polars skills by enrolling in my {{< var polars_course >}}.
