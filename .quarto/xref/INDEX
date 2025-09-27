@@ -265,5 +265,8 @@
   },
   "blog/replace-text-in-polars/index.qmd": {
     "index.html": "7c5bd5a7"
+  },
+  "blog/three-languages-for-data/index.qmd": {
+    "index.html": "e89e140f"
   }
 }
