@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/count-unique-values-polars/index.html",
+      "/blog/rolling-mean-in-polars/index.html",
+      "/blog/filter-with-any-polars/index.html",
       "/blog/three-languages-for-data/index.html",
       "/blog/remove-suffix-in-column-names/index.html",
       "/blog/replace-text-in-polars/index.html",

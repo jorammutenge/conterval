@@ -1,0 +1,45 @@
+---
+title: "Calculate moving average in polars"
+subtitle: "rolling_mean"
+author: '{{< var author >}}'
+date: '2025-09-30'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You're running a store and want to know the average of your sales every 3 days to track whether your sales are dipping. Below is a dataframe showing sales on specific weekdays.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Day": ['Mon','Tue','Wed','Thur','Fri','Sat','Sun','Mon'],
+    "Sales": [93, 88, 73, 69, 55, 89, 92, 81]
+})
+```
+
+## 3-day moving average
+
+You can calculate the 3-day moving average in Polars using the expression `rolling_mean` like this:
+
+```{python}
+(df
+ .with_columns(Rol_Mean=pl.col('Sales').rolling_mean(window_size=3))
+ )
+```
+<br>
+
+Notice that the first 2 rows in *Rol_Mean* are null. That’s because the window size of 3 is not met on the first and second roll. If you don’t want null values, you can use the parameter `min_samples`, which determines the number of values that should be **non-null** before calculating the average. Let’s set it to 1.
+
+```{python}
+(df
+ .with_columns(Rol_Mean=pl.col('Sales').rolling_mean(window_size=3, min_samples=1))
+ )
+```
+<br>
+
+Enroll in my {{< var polars_course >}} to advance your data analysis skills.

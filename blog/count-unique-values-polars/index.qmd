@@ -1,0 +1,39 @@
+---
+title: "Count unique values in a column in polars?"
+subtitle: "n_unique"
+author: '{{< var author >}}'
+date: '2025-10-01'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Knowing the cardinality of columns in your table is important. What’s cardinality? It’s the number of unique values contained in a column. If a column has many unique values, like *Customer_ID*, then it has high cardinality. Fewer unique values mean low cardinality. Below is a dataframe showing student grades.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Spencer", "Spencer", "Emily", "Emily", "Hannah", "Hannah", "Aria", "Aria", "Mona","Paige"] * 2,
+    "Grade": [93, 88, 73, 69, 55, 89, 92, 81, 97, 71] * 2
+})
+df
+```
+<br>
+
+## Get unique values
+
+To get the number of unique values in a column, you use the Polars method `n_unique` like this:
+
+```{python}
+(df
+ .n_unique('Student')
+ )
+```
+
+The *Student* column has `{python} df.n_unique('Student')` unique values, which means it has low cardinality.
+
+Join 150+ students improving their skills in my {{< var polars_course >}}.

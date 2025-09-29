@@ -268,5 +268,14 @@
   },
   "blog/three-languages-for-data/index.qmd": {
     "index.html": "e89e140f"
+  },
+  "blog/rolling-mean-in-polars/index.qmd": {
+    "index.html": "78f7645c"
+  },
+  "blog/filter-with-any-polars/index.qmd": {
+    "index.html": "ff002f9e"
+  },
+  "blog/count-unique-values-polars/index.qmd": {
+    "index.html": "29a738cc"
   }
 }

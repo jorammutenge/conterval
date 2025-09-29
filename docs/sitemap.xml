@@ -328,4 +328,16 @@
     <loc>https://www.conterval.com/blog/three-languages-for-data/index.html</loc>
     <lastmod>2025-09-27T21:33:17.417Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/rolling-mean-in-polars/index.html</loc>
+    <lastmod>2025-09-29T20:55:32.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/filter-with-any-polars/index.html</loc>
+    <lastmod>2025-09-29T20:55:20.313Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-unique-values-polars/index.html</loc>
+    <lastmod>2025-09-29T20:55:06.611Z</lastmod>
+  </url>
 </urlset>
