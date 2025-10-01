@@ -1,0 +1,48 @@
+---
+title: "Convert your data from wide to long format in polars"
+subtitle: "unpivot"
+author: '{{< var author >}}'
+date: '2025-09-19'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Wide-format data (data with many columns) is good for presentation, but for computation, long format is best. That’s what computers love! Below is a dataframe showing software sold on different days of the week.
+
+```{python}
+#| echo: false
+import polars as pl
+data = {
+    "Item": ["Photoshop", "CorelDRAW", "Netscape", "Encarta"],
+    "Mon": [25, 18, 22, 15],
+    "Tue": [30, 20, 24, 17],
+    "Wed": [28, 22, 19, 20],
+    "Thu": [26, 21, 23, 18],
+    "Fri": [27, 19, 25, 16],
+}
+
+df = pl.DataFrame(data)
+df
+```
+<br>
+
+## Convert to long format
+
+To convert the data to long format, you can use the Polars method `unpivot`, which is the opposite of `pivot`, like this:
+
+```{python}
+(df
+ .unpivot(index='Item',
+          variable_name='Day',
+          value_name='Units')
+ )
+```
+<br>
+
+Now the dataframe has fewer columns but many more rows, making it long format.
+
+Join other students learning in my {{< var polars_course >}}.

@@ -340,4 +340,24 @@
     <loc>https://www.conterval.com/blog/count-unique-values-polars/index.html</loc>
     <lastmod>2025-09-29T20:55:06.611Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/remove-leading-whitespace-polars/index.html</loc>
+    <lastmod>2025-10-01T00:26:05.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/scan-data-in-polars/index.html</loc>
+    <lastmod>2025-10-01T00:26:53.847Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/padding-with-zero-polars/index.html</loc>
+    <lastmod>2025-10-01T00:25:57.324Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/text-to-date-in-polars/index.html</loc>
+    <lastmod>2025-10-01T00:27:00.893Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/unpivot-data-in-polars/index.html</loc>
+    <lastmod>2025-10-01T00:27:07.724Z</lastmod>
+  </url>
 </urlset>

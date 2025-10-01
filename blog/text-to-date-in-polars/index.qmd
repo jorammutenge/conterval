@@ -1,0 +1,42 @@
+---
+title: "Easily convert text to date values in polars"
+subtitle: "to_date"
+author: '{{< var author >}}'
+date: '2025-09-18'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Usually, when you want to convert string (text) data to a date type, you have to introduce some esoteric formatting like "%m%d%Y". Unfortunately, this looks like gibberish to most people. The good news is that in Polars, you don’t always need to know that strange formatting, especially when your data starts with the year.
+
+Below is a dataframe showing date values stored as text.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Itinerary": ["Los Angeles", "Syndney", "Wellington", "Tokio"],
+    "Date": ["2025-05-01", "2025-05-15", "2025-06-02", "2025-06-17",]
+})
+df
+```
+<br>
+
+## Convert text to date
+
+Since the values in *Date* start with the year, then month, and day, you can use the Polars expression `to_date` to convert the data type from text to date, like this:
+
+```{python}
+(df
+ .with_columns(pl.col('Date').str.to_date())
+ )
+```
+<br>
+
+Now the data type in *Date* has been successfully changed from text to date.
+
+I have a {{< var polars_course >}} you can sign up for to learn more.

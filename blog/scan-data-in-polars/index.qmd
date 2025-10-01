@@ -1,0 +1,43 @@
+---
+title: "Speed up analysis with lazyframes in polars"
+subtitle: "scan_csv"
+author: '{{< var author >}}'
+date: '2025-09-22'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Datasets are getting bigger, which means loading the entire dataset into memory can put a strain on your computer. Fortunately, Polars allows you to scan data and store it in a lazyframe before loading it into memory as a dataframe.
+
+Say we have this CSV file:
+
+```{python}
+csv_file = 'https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv'
+```
+<br>
+
+## Create a lazyframe by scanning a CSV file
+
+To read a CSV file as a lazyframe, you use the Polars expression `scan_csv`, like this:
+
+```{python}
+import polars as pl
+
+(pl.scan_csv(csv_file)
+ .select('Account Name','ext price')
+ .group_by('Account Name')
+ .agg(pl.mean('ext price'))
+ .collect()
+ )
+```
+<br>
+
+In the lazyframe, I selected the two columns I wanted and computed the average price for each customer. The resulting lazyframe was then loaded into memory as a dataframe.
+
+Doing computations on a lazyframe is faster because nothing is stored in memory until you `collect` the results.
+
+Click to join 150+ students learning {{< var polars_course >}}.

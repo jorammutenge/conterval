@@ -277,5 +277,20 @@
   },
   "blog/count-unique-values-polars/index.qmd": {
     "index.html": "29a738cc"
+  },
+  "blog/remove-leading-whitespace-polars/index.qmd": {
+    "index.html": "19726051"
+  },
+  "blog/scan-data-in-polars/index.qmd": {
+    "index.html": "e1b419b8"
+  },
+  "blog/padding-with-zero-polars/index.qmd": {
+    "index.html": "35c58797"
+  },
+  "blog/text-to-date-in-polars/index.qmd": {
+    "index.html": "9c8f1a93"
+  },
+  "blog/unpivot-data-in-polars/index.qmd": {
+    "index.html": "aa0a7ee3"
   }
 }

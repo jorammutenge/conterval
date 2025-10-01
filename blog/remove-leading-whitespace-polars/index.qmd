@@ -1,0 +1,50 @@
+---
+title: "Remove leading whitespace from text values in polars"
+subtitle: "strip_chars_start"
+author: '{{< var author >}}'
+date: '2025-09-20'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Your data may contain leading characters like spaces or tabs due to bad user input. Below is a dataframe showing values with leading whitespace.
+
+```{python}
+#| echo: false
+import polars as pl
+data = {
+    "Actress": [
+        " Kate Winslet",
+        "  Lupita Nyong'o",
+        "   Emma Stone",
+        " Gabrielle Union"
+    ],
+    "DOB": [
+        "1975-10-05",
+        "1983-03-01",
+        "1988-11-06",
+        "1972-10-29"
+    ]
+}
+
+df = pl.DataFrame(data)
+df
+```
+<br>
+
+## Remove whitespace
+
+To remove the unnecessary spaces and tabs at the beginning of values in *Actress*, you can use the Polars expression `strip_chars_start`, like this:
+
+```{python}
+(df
+ .with_columns(pl.col('Actress').str.strip_chars_start())
+ )
+```
+<br>
+
+I want you to start learning in my {{< var polars_course >}}.
