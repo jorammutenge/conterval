@@ -12,6 +12,8 @@ body {
 }
 </style>
 
+# Interviews {.interview-page-title}
+
 ::: {.interviews-container}
 
 ::: {.interview-card}
@@ -20,7 +22,7 @@ body {
 :::
 
 ::: {.podcast-name}
-{{< fa podcast >}} [WIP] Podcast
+{{< fa podcast >}} [[WIP] Podcast](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"}
 :::
 
 ::: {.interview-content}
@@ -41,5 +43,4 @@ To become as valuable as possible, Joram has spent time learning SQL, Python, an
 :::
 
 :::
-
 

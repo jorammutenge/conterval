@@ -366,12 +366,19 @@ small {
   box-shadow: 0 6px 16px rgba(0,0,0,0.2);
 }
 
+/* Page title */
+.interview-page-title {
+  color: #FFFFFF !important;
+  text-align: center;
+  font-size: 4rem !important;
+  margin-top: -6rem;
+  margin-bottom: 2rem;
+  // font-family: $harmonia-bold !important;
+}
+
 /* Title */
 .interview-title {
-  // font-weight: 700;
-  // font-size: 1.2rem;
-  margin-bottom: -1.25rem;
-  // color: #222;
+  margin-bottom: -1.15rem;
   text-align: left;
   font-family: $harmonia-bold !important;
   font-weight: bold;
@@ -390,12 +397,24 @@ small {
 
 /* Podcast name */
 .podcast-name {
-  margin-bottom: -2rem;
+  margin-bottom: -1rem;
   text-align: left;
   font-weight: 500;
   font-family: $harmonia-bold;
   font-size: 1.5rem;
   color: #9141ac;
+  position: relative;
+  z-index: 1;
+}
+
+.podcast-name a {
+  text-decoration: none;
+  color: #9141ac;
+}
+
+.podcast-name a:hover {
+  color: #0066cc;
+  text-decoration: none;
 }
 
 /* Content wrapper for image and description */
@@ -414,20 +433,23 @@ small {
 .interview-content a {
   float: left;
   margin-right: 1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0;  /* Remove negative margin */
+  padding-top: 0.5rem;  /* Add padding to align with text */
   line-height: 0;
 }
 
 /* Image */
 .interview-image {
-  width: 500px;
-  height: 350px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
   object-fit: contain;
   border-radius: 0px;
   display: block;
-  margin-top: -0.25rem;
+  margin-top: 0.95rem;
   padding: 0;
-  margin-bottom: -2.5rem;
+  margin-bottom: -1rem;
 }
 
 .interview-image:hover {
@@ -458,7 +480,22 @@ small {
   border-top: 1px solid #9141ac;
   padding-top: 0.5rem;
   margin-top: auto;
+  margin-bottom: -1rem;
   clear: both;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .interview-content a {
+    float: none;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .interview-image {
+    margin-bottom: 1rem;
+  }
 }
 
 
