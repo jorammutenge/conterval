@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-32c95d7149ea6e5879be0d5a9ee7c553.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-eaad8053b5a4851482e74c6bfb90d765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -230,7 +230,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>When your dataframe contains monetary values such as budgets it’s helpful to include a currency symbol. This ensures your audience clearly understands whether the figures are in dollars, euros, pounds, or another currency.</p>
 <p>Below is an example of a dataframe that displays budget figures for each department at Duwata Company.</p>
-<div id="bb800277" class="cell" data-execution_count="1">
+<div id="3c556c23" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -281,7 +281,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="add-currency-to-budget-figures">Add currency to budget figures</h2>
 <p>If you were presenting these values to the American division of Duwata, you might want to include the dollar symbol in the <em>Budget</em> column values.</p>
 <p>Here’s how you can do that using Polars.</p>
-<div id="3e7074c9" class="cell" data-execution_count="2">
+<div id="372221c1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Department'</span>,<span class="st">'Budget'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Budget<span class="op">=</span>pl.<span class="bu">format</span>(<span class="st">"$</span><span class="sc">{}</span><span class="st">"</span>, pl.col(<span class="st">"Budget"</span>)))</span>
@@ -333,7 +333,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> If you were presenting the data to Duwata’s European division and wanted to use the euro symbol instead, you would simply replace <code>$</code> with <code>€</code>.</p>
-<div id="bfb58e07" class="cell" data-execution_count="3">
+<div id="0f8dc857" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Department'</span>,<span class="st">'Budget'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Budget<span class="op">=</span>pl.<span class="bu">format</span>(<span class="st">"€</span><span class="sc">{}</span><span class="st">"</span>, pl.col(<span class="st">"Budget"</span>)))</span>

@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-32c95d7149ea6e5879be0d5a9ee7c553.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-eaad8053b5a4851482e74c6bfb90d765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -230,7 +230,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Duplicates are a common problem in most datasets. That’s why it’s important to check for duplicate rows before analyzing your data. Fortunately, Polars provides an easy way to identify duplicate rows. Below is a dataframe showing sales for each day of the week.</p>
-<div id="37e139a3" class="cell" data-execution_count="1">
+<div id="d2fef93f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -293,7 +293,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="show-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="show-duplicates">Show duplicates</h2>
 <p>To display duplicated rows in Polars, use the <code>is_duplicated</code> method. This method highlights rows that have identical values across all columns.</p>
-<div id="d1efd4b3" class="cell" data-execution_count="2">
+<div id="f3d0de30" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(df.is_duplicated())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -336,7 +336,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="remove-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="remove-duplicates">Remove duplicates</h2>
 <p>To remove duplicates in Polars, use the <code>unique</code> method. This ensures that only rows with distinct values across columns are retained. Here’s how to do it:</p>
-<div id="a0d35598" class="cell" data-execution_count="3">
+<div id="1d5c5ff5" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .unique()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -362,32 +362,32 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Mon"</td>
-<td>182</td>
-</tr>
-<tr class="even">
-<td>"Thur"</td>
-<td>481</td>
-</tr>
-<tr class="odd">
-<td>"Wed"</td>
-<td>547</td>
+<td>"Fri"</td>
+<td>319</td>
 </tr>
 <tr class="even">
 <td>"Tue"</td>
 <td>247</td>
 </tr>
 <tr class="odd">
-<td>"Sun"</td>
-<td>67</td>
+<td>"Thur"</td>
+<td>481</td>
 </tr>
 <tr class="even">
 <td>"Sat"</td>
 <td>208</td>
 </tr>
 <tr class="odd">
-<td>"Fri"</td>
-<td>319</td>
+<td>"Mon"</td>
+<td>182</td>
+</tr>
+<tr class="even">
+<td>"Wed"</td>
+<td>547</td>
+</tr>
+<tr class="odd">
+<td>"Sun"</td>
+<td>67</td>
 </tr>
 </tbody>
 </table>
