@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-861845a615a273aa07b36a3ea0c3074b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-32c95d7149ea6e5879be0d5a9ee7c553.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -155,6 +155,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../interviews.html"> 
+<span class="menu-text">Interviews</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
@@ -225,7 +229,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Selecting specific columns to filter out unnecessary columns is common in data analysis. Polars makes this type of filtering straightforward through the use of selectors. Below is a dataframe showing cereal brands.</p>
-<div id="55ba43f7" class="cell" data-execution_count="1">
+<div id="054d88eb" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -254,32 +258,32 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Rice Chex"</td>
-<td>"Ralston Purina"</td>
+<td>"Great Grains Pecan"</td>
+<td>"Post"</td>
 <td>"Cold"</td>
 <td>1.0</td>
-<td>1.13</td>
+<td>0.33</td>
 </tr>
 <tr class="even">
-<td>"Corn Chex"</td>
-<td>"Ralston Purina"</td>
+<td>"Raisin Squares"</td>
+<td>"Kellogs"</td>
 <td>"Cold"</td>
 <td>1.0</td>
-<td>1.0</td>
+<td>0.5</td>
 </tr>
 <tr class="odd">
-<td>"Just Right Crunchy&nbsp;&nbsp;Nuggets"</td>
+<td>"Nutri-grain Wheat"</td>
 <td>"Kellogs"</td>
 <td>"Cold"</td>
 <td>1.0</td>
 <td>1.0</td>
 </tr>
 <tr class="even">
-<td>"Wheaties"</td>
-<td>"General Mills"</td>
+<td>"Frosted Flakes"</td>
+<td>"Kellogs"</td>
 <td>"Cold"</td>
 <td>1.0</td>
-<td>1.0</td>
+<td>0.75</td>
 </tr>
 </tbody>
 </table>
@@ -290,7 +294,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-numerical-columns" class="level2">
 <h2 class="anchored" data-anchor-id="get-numerical-columns">Get numerical columns</h2>
 <p>You can use Polars selectors to filter for numerical columns only. In this case, the dataframe will show the columns <em>weight</em> and <em>cups</em>. Here’s how to do it:</p>
-<div id="99224354" class="cell" data-execution_count="2">
+<div id="a66b8a2f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(df</span>
@@ -319,11 +323,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <tbody>
 <tr class="odd">
 <td>1.0</td>
-<td>1.13</td>
+<td>0.33</td>
 </tr>
 <tr class="even">
 <td>1.0</td>
-<td>1.0</td>
+<td>0.5</td>
 </tr>
 <tr class="odd">
 <td>1.0</td>
@@ -331,7 +335,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </tr>
 <tr class="even">
 <td>1.0</td>
-<td>1.0</td>
+<td>0.75</td>
 </tr>
 </tbody>
 </table>

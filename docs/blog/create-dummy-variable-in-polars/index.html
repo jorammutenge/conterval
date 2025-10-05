@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-861845a615a273aa07b36a3ea0c3074b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-32c95d7149ea6e5879be0d5a9ee7c553.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -155,6 +155,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../interviews.html"> 
+<span class="menu-text">Interviews</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
@@ -226,7 +230,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Computers process numerical data faster than text data. That’s why it’s a good idea to convert text data into numerical data when training machine learning models. You want to squeeze out as much performance as possible from your machine. For instance, if you have a column <em>Is_Present</em>, instead of values like “Yes” and “No,” you should use 1 and 0 respectively.</p>
 <p>Below is a dataframe showing the computer brands and the chip used in their computer models.</p>
-<div id="2238a27f" class="cell" data-execution_count="1">
+<div id="30a471f6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -301,7 +305,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="create-dummy-variable-from-chip-types" class="level2">
 <h2 class="anchored" data-anchor-id="create-dummy-variable-from-chip-types">Create dummy variable from chip types</h2>
 <p>To make data processing faster, we need to convert chip values into numerical data. One approach is to create a separate column for each chip type, with a value of 1 if a computer brand uses that chip and 0 if it does not. Fortunately, this is very easy to do in Polars with the <code>to_dummies</code> method.</p>
-<div id="708db3f7" class="cell" data-execution_count="2">
+<div id="93ac41c6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df.to_dummies(columns<span class="op">=</span><span class="st">'chip'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>

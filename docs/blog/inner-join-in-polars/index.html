@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-861845a615a273aa07b36a3ea0c3074b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-32c95d7149ea6e5879be0d5a9ee7c553.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -155,6 +155,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../../interviews.html"> 
+<span class="menu-text">Interviews</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
@@ -225,7 +229,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Just like in SQL, it’s possible to join two dataframes in Polars. In this article, I’ll show you how to use the <code>inner</code> join in Polars to create a dataframe with more columns. Below is a dataframe, <strong>movies_df</strong>, showing finance movies.</p>
-<div id="74636795" class="cell" data-execution_count="1">
+<div id="6ce5ffd8" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -250,14 +254,14 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"The Big Short"</td>
-<td>2015</td>
-<td>7.8</td>
+<td>"Margin Call"</td>
+<td>2011</td>
+<td>7.1</td>
 </tr>
 <tr class="even">
-<td>"Wall Street"</td>
-<td>1987</td>
-<td>7.3</td>
+<td>"Rogue Trader"</td>
+<td>1999</td>
+<td>6.4</td>
 </tr>
 <tr class="odd">
 <td>"Boiler Room"</td>
@@ -265,9 +269,9 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <td>7.0</td>
 </tr>
 <tr class="even">
-<td>"Arbitrage"</td>
-<td>2012</td>
-<td>6.6</td>
+<td>"The Wizard of Lies"</td>
+<td>2017</td>
+<td>6.8</td>
 </tr>
 </tbody>
 </table>
@@ -275,7 +279,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> And here’s another dataframe, <strong>minutes_df</strong>, showing the duration of the movies.</p>
-<div id="e722f035" class="cell" data-execution_count="2">
+<div id="ac3f72aa" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -298,20 +302,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"The Big Short"</td>
-<td>130</td>
+<td>"Margin Call"</td>
+<td>107</td>
 </tr>
 <tr class="even">
-<td>"Wall Street"</td>
-<td>126</td>
+<td>"Rogue Trader"</td>
+<td>101</td>
 </tr>
 <tr class="odd">
 <td>"Boiler Room"</td>
 <td>120</td>
 </tr>
 <tr class="even">
-<td>"Arbitrage"</td>
-<td>107</td>
+<td>"The Wizard of Lies"</td>
+<td>133</td>
 </tr>
 </tbody>
 </table>
@@ -322,7 +326,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="join-dataframes" class="level2">
 <h2 class="anchored" data-anchor-id="join-dataframes">Join dataframes</h2>
 <p>You can use the <code>inner</code> join to get all the rows that match in both dataframes based on a column you choose as the key. In this case, the key column is <em>movie</em>.</p>
-<div id="8faba35e" class="cell" data-execution_count="3">
+<div id="869b3ba8" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(movies_df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .join(minutes_df, on<span class="op">=</span><span class="st">'movie'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -352,16 +356,16 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"The Big Short"</td>
-<td>2015</td>
-<td>7.8</td>
-<td>130</td>
+<td>"Margin Call"</td>
+<td>2011</td>
+<td>7.1</td>
+<td>107</td>
 </tr>
 <tr class="even">
-<td>"Wall Street"</td>
-<td>1987</td>
-<td>7.3</td>
-<td>126</td>
+<td>"Rogue Trader"</td>
+<td>1999</td>
+<td>6.4</td>
+<td>101</td>
 </tr>
 <tr class="odd">
 <td>"Boiler Room"</td>
@@ -370,10 +374,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <td>120</td>
 </tr>
 <tr class="even">
-<td>"Arbitrage"</td>
-<td>2012</td>
-<td>6.6</td>
-<td>107</td>
+<td>"The Wizard of Lies"</td>
+<td>2017</td>
+<td>6.8</td>
+<td>133</td>
 </tr>
 </tbody>
 </table>

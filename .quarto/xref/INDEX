@@ -292,5 +292,8 @@
   },
   "blog/unpivot-data-in-polars/index.qmd": {
     "index.html": "aa0a7ee3"
+  },
+  "interviews.qmd": {
+    "interviews.html": "1a9819b0"
   }
 }

@@ -1,0 +1,45 @@
+---
+about:
+  template: jolla
+format:
+  html:
+    toc: false
+---
+
+<style>
+body {
+  background-color: #FFE4B5 !important;
+}
+</style>
+
+::: {.interviews-container}
+
+::: {.interview-card}
+::: {.interview-title}
+[v0.0.10 - Joram Mutenge](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"}
+:::
+
+::: {.podcast-name}
+{{< fa podcast >}} [WIP] Podcast
+:::
+
+::: {.interview-content}
+<a href="https://www.youtube.com/watch?v=hGBZSAHoAxE" target="_blank">
+<img src="images/interviews/wip.png" class="interview-image" alt="Podcast Episode">
+</a>
+
+I dubbed Joram Mutenge as a "trifecta" when it comes to the data profession. He is a data engineer, data analyst, and data scientist! As with many people, the route wasn't a straight one, but suits him well once he learned to love the parts few enjoy and how to be safely creative within data.
+
+To become as valuable as possible, Joram has spent time learning SQL, Python, and JavaScript. We discussed multiple tools and libraries along with how to approach a web-based visualization as opposed to a print visualization. He's now also learning Rust!
+:::
+
+::: {.interview-footer}
+{{< fa calendar >}} Oct 2, 2025
+
+{{< fa clock >}} 34 min
+:::
+:::
+
+:::
+
+

@@ -336,3 +336,157 @@ small {
   font-size: 2rem;
   color: #9141ac;
 }
+
+
+// INTERVIEW PAGE
+
+/* Container for all cards */
+.interviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Individual card styling */
+.interview-card {
+  background-color: #fff8ec;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+  height: 100%;
+}
+
+.interview-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* Title */
+.interview-title {
+  // font-weight: 700;
+  // font-size: 1.2rem;
+  margin-bottom: -1.25rem;
+  // color: #222;
+  text-align: left;
+  font-family: $harmonia-bold !important;
+  font-weight: bold;
+  color: #191971 !important;
+  font-size: 2rem !important;
+}
+
+.interview-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.interview-title a:hover {
+  color: #0066cc;
+}
+
+/* Podcast name */
+.podcast-name {
+  margin-bottom: -2rem;
+  text-align: left;
+  font-weight: 500;
+  font-family: $harmonia-bold;
+  font-size: 1.5rem;
+  color: #9141ac;
+}
+
+/* Content wrapper for image and description */
+.interview-content {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.interview-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Image link wrapper */
+.interview-content a {
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 0;
+}
+
+/* Image */
+.interview-image {
+  width: 500px;
+  height: 350px;
+  object-fit: contain;
+  border-radius: 0px;
+  display: block;
+  margin-top: -0.25rem;
+  padding: 0;
+  margin-bottom: -2.5rem;
+}
+
+.interview-image:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+/* Text content */
+.interview-content p {
+  font-size: 1.25rem;
+  color: #444;
+  line-height: 1.5;
+  text-align: left;
+  margin: 0 0 1rem 0;
+}
+
+.interview-content p:first-of-type {
+  margin-top: 0;
+}
+
+/* Footer (date + duration) */
+.interview-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  color: #000;
+  border-top: 1px solid #9141ac;
+  padding-top: 0.5rem;
+  margin-top: auto;
+  clear: both;
+}
+
+
+// .\{plain\} {
+//   background-color: white;
+//   border-left: 3px solid #dee2e6 !important;
+//   border: none;
+//   outline: none;
+//   padding: 12px 16px;
+//   font-size: 17px;
+//   line-height: 1.4;
+//   color: #333;
+//   display: block;
+//   width: 100%;
+//   box-sizing: border-box;
+//   // border-radius: 4px;
+//   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+//   // Remove any default styling that might interfere
+//   margin: 0;
+//   resize: none;
+  
+//   // Ensure text wrapping behaves like a textbox
+//   white-space: pre-wrap;
+//   word-wrap: break-word;
+  
+//   // Optional: Add subtle focus state (even though no outline)
+//   &:focus {
+//     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+//   }
+// }
