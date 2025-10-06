@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-eaad8053b5a4851482e74c6bfb90d765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d92bd7468c9209b7480b2d438fd0efbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -229,7 +229,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Selecting specific columns to filter out unnecessary columns is common in data analysis. Polars makes this type of filtering straightforward through the use of selectors. Below is a dataframe showing cereal brands.</p>
-<div id="2ae55aae" class="cell" data-execution_count="1">
+<div id="80b95c23" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -258,32 +258,32 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Honey Graham Ohs"</td>
-<td>"Quaker Oats"</td>
+<td>"Just Right Crunchy&nbsp;&nbsp;Nuggets"</td>
+<td>"Kellogs"</td>
 <td>"Cold"</td>
 <td>1.0</td>
 <td>1.0</td>
 </tr>
 <tr class="even">
-<td>"Corn Pops"</td>
+<td>"Froot Loops"</td>
 <td>"Kellogs"</td>
 <td>"Cold"</td>
 <td>1.0</td>
 <td>1.0</td>
 </tr>
 <tr class="odd">
-<td>"Double Chex"</td>
-<td>"Ralston Purina"</td>
-<td>"Cold"</td>
-<td>1.0</td>
-<td>0.75</td>
-</tr>
-<tr class="even">
-<td>"Cinnamon Toast Crunch"</td>
+<td>"Oatmeal Raisin Crisp"</td>
 <td>"General Mills"</td>
 <td>"Cold"</td>
+<td>1.25</td>
+<td>0.5</td>
+</tr>
+<tr class="even">
+<td>"Special K"</td>
+<td>"Kellogs"</td>
+<td>"Cold"</td>
 <td>1.0</td>
-<td>0.75</td>
+<td>1.0</td>
 </tr>
 </tbody>
 </table>
@@ -294,7 +294,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-numerical-columns" class="level2">
 <h2 class="anchored" data-anchor-id="get-numerical-columns">Get numerical columns</h2>
 <p>You can use Polars selectors to filter for numerical columns only. In this case, the dataframe will show the columns <em>weight</em> and <em>cups</em>. Here’s how to do it:</p>
-<div id="bddb21c3" class="cell" data-execution_count="2">
+<div id="108d760b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(df</span>
@@ -330,12 +330,12 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <td>1.0</td>
 </tr>
 <tr class="odd">
-<td>1.0</td>
-<td>0.75</td>
+<td>1.25</td>
+<td>0.5</td>
 </tr>
 <tr class="even">
 <td>1.0</td>
-<td>0.75</td>
+<td>1.0</td>
 </tr>
 </tbody>
 </table>

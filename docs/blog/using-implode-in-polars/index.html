@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-eaad8053b5a4851482e74c6bfb90d765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d92bd7468c9209b7480b2d438fd0efbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -229,7 +229,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Long format data (data with many rows) is good for performing analyses but bad for presentation. If you want people to easily understand your data, you should strive to reduce the length of the dataframe. Below is a dataframe showing students and the subjects they take.</p>
-<div id="765c5e61" class="cell" data-execution_count="1">
+<div id="0e11cef7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -304,7 +304,7 @@ Note
 <section id="show-subjects-in-list" class="level2">
 <h2 class="anchored" data-anchor-id="show-subjects-in-list">Show subjects in list</h2>
 <p>Instead of repeating the name of every student for each subject they take, let’s show the student’s name only once and collect the subjects she takes in a list. We can achieve this using the Polars expression <code>implode</code>, but first, we must group the data by <em>Student</em> to ensure each student appears only once.</p>
-<div id="3fb7e665" class="cell" data-execution_count="2">
+<div id="b736219e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Student'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .agg(pl.col(<span class="st">'Subject'</span>).implode())</span>
@@ -331,20 +331,20 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
+<td>"Spencer"</td>
+<td>["Chemistry", "Physics"]</td>
+</tr>
+<tr class="even">
+<td>"Emily"</td>
+<td>["Physics", "Biology"]</td>
+</tr>
+<tr class="odd">
 <td>"Hannah"</td>
 <td>["History", "Art"]</td>
 </tr>
 <tr class="even">
 <td>"Aria"</td>
 <td>["English", "Biology"]</td>
-</tr>
-<tr class="odd">
-<td>"Emily"</td>
-<td>["Physics", "Biology"]</td>
-</tr>
-<tr class="even">
-<td>"Spencer"</td>
-<td>["Chemistry", "Physics"]</td>
 </tr>
 </tbody>
 </table>

@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-eaad8053b5a4851482e74c6bfb90d765.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d92bd7468c9209b7480b2d438fd0efbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -231,7 +231,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Most dataframe libraries are excellent at performing columnar operations, such as adding or multiplying values within a single column. However, there are times when you may want to perform such operations across multiple columns. Below is a dataframe of Apple stock values.</p>
-<div id="b3b79ab3" class="cell" data-execution_count="1">
+<div id="fcbea756" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -296,7 +296,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-manual-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-manual-way">The manual way</h2>
 <p>Here’s the manual approach to add the values across columns:</p>
-<div id="c9d0006d" class="cell" data-execution_count="2">
+<div id="aa07c63c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns((pl.col(<span class="st">'Open'</span>) <span class="op">+</span> pl.col(<span class="st">'High'</span>) <span class="op">+</span> pl.col(<span class="st">'Low'</span>) <span class="op">+</span> pl.col(<span class="st">'Close'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Sum_OHLC'</span>))</span>
@@ -371,7 +371,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-efficient-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-efficient-way">The efficient way</h2>
 <p>And here’s the idiomatic and more efficient way to do it:</p>
-<div id="dccf2a44" class="cell" data-execution_count="3">
+<div id="fcafc862" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.sum_horizontal(<span class="st">'Open'</span>, <span class="st">'High'</span>, <span class="st">'Low'</span>, <span class="st">'Close'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Sum_OHLC'</span>))</span>
@@ -446,7 +446,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-showing-off-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-showing-off-way">The showing off way</h2>
 <p>Or if you want to impress the hiring manager in a coding interview, you can do it like this.</p>
-<div id="895e5aca" class="cell" data-execution_count="4">
+<div id="49a9b22b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.sum_horizontal(pl.nth(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">5</span>))))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Sum_OHLC'</span>))</span>
