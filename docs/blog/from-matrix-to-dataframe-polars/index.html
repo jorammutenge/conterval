@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d92bd7468c9209b7480b2d438fd0efbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a3a71b1cc6ae4cc2402cc37bac13141b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -229,7 +229,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>In data science and analysis, storing data in an array or nested arrays (a matrix) is a common practice. Unfortunately, performing operations directly on arrays can be challenging. Fortunately, Polars allows you to convert a matrix into a dataframe. Below is a matrix of people and their professions.</p>
-<div id="56ed546f" class="cell" data-execution_count="1">
+<div id="11807d22" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_matrix <span class="op">=</span> [[<span class="st">'Joram'</span>,<span class="st">'Ashwin'</span>,<span class="st">'Ollie'</span>,<span class="st">'Jeremie'</span>], [<span class="st">'Data Consultant'</span>,<span class="st">'Product Manager'</span>,<span class="st">'Lawyer'</span>,<span class="st">'Doctor'</span>]]</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -240,7 +240,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="turn-matrix-to-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="turn-matrix-to-dataframe">Turn matrix to dataframe</h2>
 <p>Polars provides the <code>from_records</code> expression, which creates a dataframe from matrix records. You can also add a schema to specify column names for the dataframe. Here’s how to use it:</p>
-<div id="8593c088" class="cell" data-execution_count="2">
+<div id="905eb38e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.from_records(data_matrix, schema<span class="op">=</span>[<span class="st">'Name'</span>, <span class="st">'Profession'</span>])</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

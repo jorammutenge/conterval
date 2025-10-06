@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d92bd7468c9209b7480b2d438fd0efbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a3a71b1cc6ae4cc2402cc37bac13141b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -230,7 +230,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Some functions you write in your code may be too specific to exist as built-in Polars methods or expressions. Fortunately, Polars provides a way to apply your custom function to a dataframe within a chained operation. Below is a dataframe of Apple stock data.</p>
-<div id="c9f104d8" class="cell" data-execution_count="1">
+<div id="7aae6b47" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -301,7 +301,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="create-custom-function" class="level2">
 <h2 class="anchored" data-anchor-id="create-custom-function">Create custom function</h2>
 <p>Suppose you have the following custom function to calculate the change in value between the previous day’s <em>Open</em> and the current day’s <em>Open</em>.</p>
-<div id="abcd1b0d" class="cell" data-execution_count="2">
+<div id="31071b54" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delta_change(df, column):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.with_columns(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        (pl.col(column) <span class="op">-</span> pl.col(column).shift(<span class="op">-</span><span class="dv">1</span>)).alias(<span class="st">'Delta Change'</span>)</span>
@@ -312,7 +312,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="use-custom-function" class="level2">
 <h2 class="anchored" data-anchor-id="use-custom-function">Use custom function</h2>
 <p>To use a custom function in a chained operation in Polars, you can use the <code>pipe</code> method like this:</p>
-<div id="c08d04de" class="cell" data-execution_count="3">
+<div id="cf46bbec" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.pipe(delta_change, column<span class="op">=</span><span class="st">'Open'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>

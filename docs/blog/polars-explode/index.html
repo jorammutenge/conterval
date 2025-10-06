@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d92bd7468c9209b7480b2d438fd0efbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a3a71b1cc6ae4cc2402cc37bac13141b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -231,7 +231,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Tabular data is easier to process when columns contain singular values of the same data type for each row. However, sometimes data can be stored as a list in a single row.</p>
 <p>Here’s an example of a dataframe where the data in <em>Subject</em> is stored as a list.</p>
-<div id="d95b4aab" class="cell" data-execution_count="1">
+<div id="1696ce95" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -278,7 +278,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="turn-dataframe-to-long-format" class="level2">
 <h2 class="anchored" data-anchor-id="turn-dataframe-to-long-format">Turn dataframe to long format</h2>
 <p>The dataframe above is in what is known as wide format. We need to transform it to long format to answer the questions above more easily. Polars provides the <code>explode</code> function, which allows us to transform the dataframe to long format. Here’s how it’s done.</p>
-<div id="6ad8ee41" class="cell" data-execution_count="2">
+<div id="f3615cfc" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Subjects'</span>).<span class="bu">str</span>.split(<span class="st">','</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -318,7 +318,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p><br> We had to convert the values in <em>Subject</em> into a list because <code>"Math,Physics,Economics"</code> is not a list data type–it’s a string. Splitting on the comma <code>,</code> ensures that each subject appears as an individual item in the list. Notice that the data type in the dataframe now shows as a list?</p>
 <p>Now let’s explode the list values in <em>Subject</em> to make the dataframe longer.</p>
-<div id="a8455d6b" class="cell" data-execution_count="3">
+<div id="12f9b199" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Subjects'</span>).<span class="bu">str</span>.split(<span class="st">','</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .explode(<span class="st">'Subjects'</span>)</span>

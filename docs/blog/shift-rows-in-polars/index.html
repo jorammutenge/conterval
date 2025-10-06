@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d92bd7468c9209b7480b2d438fd0efbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a3a71b1cc6ae4cc2402cc37bac13141b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -231,7 +231,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>When working with timeseries data, you may want to move values in a column a few rows up or down. This is particularly important when calculating moving averages, where the first rows have null values depending on the window used in your moving average calculation. The dataframe below shows a snapshot of Apple stock data in 2024.</p>
-<div id="91beedf0" class="cell" data-execution_count="1">
+<div id="cf6f95fc" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -314,7 +314,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="shifting-rows-down" class="level2">
 <h2 class="anchored" data-anchor-id="shifting-rows-down">Shifting rows down</h2>
 <p>Polars makes it easy to shift rows in a column up or down. Let’s create two columns based on <em>High</em>: one with 2 rows shifted up and another with 2 rows shifted down.</p>
-<div id="49c47686" class="cell" data-execution_count="2">
+<div id="8f64893e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(High_2rows_Up<span class="op">=</span>pl.col(<span class="st">'High'</span>).shift(<span class="op">-</span><span class="dv">2</span>),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               High_2rows_Down<span class="op">=</span>pl.col(<span class="st">'High'</span>).shift(<span class="dv">2</span>))</span>
@@ -425,7 +425,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="practical-application-of-shifting-rows" class="level2">
 <h2 class="anchored" data-anchor-id="practical-application-of-shifting-rows">Practical application of shifting rows</h2>
 <p>You may be wondering, “What’s the use of shifting rows in a column?” Here’s a practical example. Let’s create a 3-day moving average based on <em>Open</em>.</p>
-<div id="928457bf" class="cell" data-execution_count="3">
+<div id="035c12cf" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(MA_3days_Open<span class="op">=</span>pl.col(<span class="st">'Open'</span>).rolling_mean(window_size<span class="op">=</span><span class="dv">3</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(MA_3days_Open_Shifted_Up<span class="op">=</span>pl.col(<span class="st">'MA_3days_Open'</span>).shift(<span class="op">-</span><span class="dv">2</span>))</span>
@@ -538,7 +538,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="shifting-rows-in-all-columns" class="level2">
 <h2 class="anchored" data-anchor-id="shifting-rows-in-all-columns">Shifting rows in all columns</h2>
 <p>It’s also possible to shift rows for all columns in the dataframe at once. Let’s shift each column 2 rows down.</p>
-<div id="e24e6289" class="cell" data-execution_count="4">
+<div id="e4b6cff3" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.shift(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>
