@@ -371,7 +371,7 @@ small {
   color: #FFFFFF !important;
   text-align: center;
   font-size: 4rem !important;
-  margin-top: -3rem;
+  margin-top: -6rem;
   margin-bottom: 2rem;
   // font-family: $harmonia-bold !important;
 }
@@ -495,6 +495,121 @@ small {
   
   .interview-image {
     margin-bottom: 1rem;
+  }
+}
+
+
+/* ====== BOOKS PAGE ====== */
+/* Container for all books */
+.books-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem; /* Add this line */
+}
+
+/* Individual book card */
+.book-card {
+  background: #FFE4B5;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  text-align: left;
+  transform: scaleY(0.95);
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Book image — full width, no margin */
+.book-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Info section — no padding, flush text */
+.book-info {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Price */
+.book-price {
+  font-size: 1rem;
+  color: #555;
+  font-family: $univers-bold;
+  margin: -0.5rem 0.8rem -0.5rem 0rem;
+}
+
+/* Title */
+.book-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: -0.5rem 0.8rem -0.75rem 0rem;
+  color: #191971;
+  font-family: $harmonia-bold;
+}
+
+/* Description */
+.book-description {
+  font-size: 1rem;
+  color: #000;
+  line-height: 1.5;
+  margin: 0 0.8rem -3.5rem 0rem;
+}
+
+/* Remove margin from paragraph wrapping the button */
+.book-info > p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Button */
+.book-button {
+  display: inline-block;
+  background-color: #9141ac;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.32rem 0.64rem;
+  border-radius: 3px;
+  text-decoration: none;
+  margin: 0.15rem 0.8rem 0.8rem 0rem;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+  font-family: $harmonia-bold;
+}
+
+.book-button:hover {
+  background-color: #2a1153;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .books-container {
+    padding: 1rem;
+  }
+
+  .book-card {
+    max-width: 90%;
+  }
+
+  .book-title {
+    font-size: 0.92rem;
+  }
+
+  .book-description {
+    font-size: 0.72rem;
   }
 }
 

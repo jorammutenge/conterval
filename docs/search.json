@@ -1860,5 +1860,12 @@
     "title": "Use custom functions as dataframe methods in polars",
     "section": "Apply custom function",
     "text": "Apply custom function\nTo apply the custom function as a chained operation, use the pipe method in polars. This method accepts the custom function and its parameters. The custom function created above has parameters df and column. Let’s apply the function.\n\n(df\n .pipe(delta_change, column='Adj Close')\n )\n\n\nshape: (10, 3)\n\n\n\nDate\nAdj Close\nDelta Change\n\n\ndate\nf64\nf64\n\n\n\n\n2019-08-16\n49.954624\n-0.931347\n\n\n2019-08-19\n50.885971\n-0.002419\n\n\n2019-08-20\n50.88839\n-0.55157\n\n\n2019-08-21\n51.43996\n0.04354\n\n\n2019-08-22\n51.39642\n2.375576\n\n\n2019-08-23\n49.020844\n-0.931358\n\n\n2019-08-26\n49.952202\n0.563656\n\n\n2019-08-27\n49.388546\n-0.331417\n\n\n2019-08-28\n49.719963\n-0.84185\n\n\n2019-08-29\n50.561813\nnull\n\n\n\n\n\n\n\nI updated my Polars course. Be sure to enroll."
+  },
+  {
+    "objectID": "books.html",
+    "href": "books.html",
+    "title": "Books",
+    "section": "",
+    "text": "Books\n\n\n  \n\n\n$22\n\n\nEmails from a Big Data Entrepreneur to His Son\n\n\nThis book is a modern-day reimagining of the timeless classic Letters from a Self-Made Merchant to His Son by George Horace Lorimer. With the same sharp wit, humor, and fatherly wisdom, this updated version brings the conversation into the digital age where data is the new oil and algorithms shape the future.\n\nBUY"
   }
 ]

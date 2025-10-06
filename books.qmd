@@ -1,22 +1,63 @@
 ---
 about:
   template: jolla
+format:
+  html:
+    toc: false
 ---
 
 <style>
 body {
   background-color: #FFE4B5 !important;
 }
-
-.zoom {
-  transition: transform 0.3s ease-in-out;
-}
-
-.zoom:hover {
-  transform: scale(1.5);
-}
 </style>
 
-::: {layout-ncol="1"}
-[![](images/big_data.png){class="zoom" width="200" height="260"}](https://www.amazon.com/dp/B0FHFWZFT9/){target="_blank"}
+# Books {.interview-page-title}
+
+::: {.books-container}
+
+::: {.book-card}
+<a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank">
+<img src="images/books/big_data.png" class="book-image" alt="Effective Pandas 2 Book Cover">
+</a>
+
+::: {.book-info}
+::: {.book-price}
+$22
+:::
+
+::: {.book-title}
+Emails from a Big Data Entrepreneur to His Son
+:::
+
+::: {.book-description}
+This book is a modern-day reimagining of the timeless classic *Letters from a Self-Made Merchant to His Son* by George Horace Lorimer. With the same sharp wit, humor, and fatherly wisdom, this updated version brings the conversation into the digital age where data is the new oil and algorithms shape the future.
+:::
+
+[BUY](https://www.amazon.com/dp/B0FHFWZFT9/){target="_blank" .book-button}
+:::
+:::
+
+<!-- ::: {.book-card}
+<a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank">
+<img src="images/books/big_data.png" class="book-image" alt="Effective Pandas 2 Book Cover">
+</a>
+
+::: {.book-info}
+::: {.book-price}
+$22
+:::
+
+::: {.book-title}
+Emails from a Big Data Entrepreneur to His Son
+:::
+
+::: {.book-description}
+This book is a modern-day reimagining of the timeless classic *Letters from a Self-Made Merchant to His Son* by George Horace Lorimer. With the same sharp wit, humor, and fatherly wisdom, this updated version brings the conversation into the digital age where data is the new oil and algorithms shape the future.
+:::
+
+[BUY](https://www.amazon.com/dp/B0FHFWZFT9/){target="_blank" .book-button}
+:::
+::: -->
+
 :::
