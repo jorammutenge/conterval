@@ -1,0 +1,44 @@
+---
+title: "Title"
+subtitle: "Subtitle"
+author: '{{< var author >}}'
+date: '2025-10-02'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+# Convert a polars dataframe to a Python dictionary
+
+Dictionaries are an important data structure in Python. They're used everywhere from storing data retrieved from web requests to keeping values in a lookup table by key. It’s no wonder Polars makes it easy to convert your dataframe to a Python dictionary.
+
+Below is a dataframe of students and their characteristics:
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Spencer", "Emily", "Hannah", "Aria", "Mona"],
+    "Character": ["Bossy","Sporty","Artistic","Word smith",'Manipulative']
+})
+df
+```
+<br>
+
+## Convert to dictionary
+
+To convert a Polars dataframe to a dictionary, use the `to_dict` method like this:
+
+```{python}
+(df
+ .to_dict(as_series=False)
+ )
+```
+<br>
+
+When working with APIs, the data is usually in JSON format, which is the same structure as a Python dictionary. You can read your data with Polars, convert it to a dictionary, and then send it via the API. This way, you take advantage of Polars’ faster processing.
+
+I'd be grateful if you became a student in my {{< var polars_course >}}.

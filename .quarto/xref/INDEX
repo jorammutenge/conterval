@@ -295,5 +295,8 @@
   },
   "interviews.qmd": {
     "interviews.html": "1a9819b0"
+  },
+  "blog/convert-dataframe-to-dictionary-polars/index.qmd": {
+    "index.html": "7d7fa871"
   }
 }
