@@ -234,7 +234,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </blockquote>
 <p>At least, that’s what I heard on <em>The Real Python</em> podcast. Whether it’s true or not, I share Ritchie’s sentiment. The index is one of the things I find most annoying about Pandas. Each time I want to save data to Excel or CSV, I have to remember to include <code>index=False</code>, and almost always forget to do it on the first attempt.</p>
 <p>Not having an index is one of the ways Polars sets itself apart from other dataframe libraries. In most cases, you don’t need an index. But there are times when you do. Below is a dataframe with no index.</p>
-<div id="c5b0c182" class="cell" data-execution_count="1">
+<div id="65082473" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -297,7 +297,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="add-index-to-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="add-index-to-dataframe">Add index to dataframe</h2>
 <p>To add an index to a Polars dataframe, use the <code>with_row_index</code> method like this:</p>
-<div id="439c5ee2" class="cell" data-execution_count="2">
+<div id="0d26a7d1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df.with_row_index()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
@@ -368,7 +368,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> Notice that the index starts at zero. If you want it to start at a different number, such as 1, you can add the <code>offset</code> parameter like this:</p>
-<div id="d4071e6d" class="cell" data-execution_count="3">
+<div id="9b0a406a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.with_row_index(offset<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>

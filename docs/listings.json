@@ -2,7 +2,6 @@
   {
     "listing": "/blog/index.html",
     "items": [
-      "/blog/convert-dataframe-to-dictionary-polars/convert-dataframe-to-dictionary-polars/index.html",
       "/blog/convert-dataframe-to-dictionary-polars/index.html",
       "/blog/count-unique-values-polars/index.html",
       "/blog/rolling-mean-in-polars/index.html",

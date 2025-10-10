@@ -229,7 +229,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Selecting specific columns to filter out unnecessary columns is common in data analysis. Polars makes this type of filtering straightforward through the use of selectors. Below is a dataframe showing cereal brands.</p>
-<div id="cdd27e01" class="cell" data-execution_count="1">
+<div id="adc059a2" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -258,32 +258,32 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Cheerios"</td>
-<td>"General Mills"</td>
-<td>"Cold"</td>
-<td>1.0</td>
-<td>1.25</td>
-</tr>
-<tr class="even">
-<td>"Grape-Nuts"</td>
-<td>"Post"</td>
-<td>"Cold"</td>
-<td>1.0</td>
-<td>0.25</td>
-</tr>
-<tr class="odd">
-<td>"Puffed Rice"</td>
-<td>"Quaker Oats"</td>
-<td>"Cold"</td>
-<td>0.5</td>
-<td>1.0</td>
-</tr>
-<tr class="even">
-<td>"Basic 4"</td>
-<td>"General Mills"</td>
+<td>"Raisin Bran"</td>
+<td>"Kellogs"</td>
 <td>"Cold"</td>
 <td>1.33</td>
 <td>0.75</td>
+</tr>
+<tr class="even">
+<td>"Great Grains Pecan"</td>
+<td>"Post"</td>
+<td>"Cold"</td>
+<td>1.0</td>
+<td>0.33</td>
+</tr>
+<tr class="odd">
+<td>"Smacks"</td>
+<td>"Kellogs"</td>
+<td>"Cold"</td>
+<td>1.0</td>
+<td>0.75</td>
+</tr>
+<tr class="even">
+<td>"Golden Crisp"</td>
+<td>"Post"</td>
+<td>"Cold"</td>
+<td>1.0</td>
+<td>0.88</td>
 </tr>
 </tbody>
 </table>
@@ -294,7 +294,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-numerical-columns" class="level2">
 <h2 class="anchored" data-anchor-id="get-numerical-columns">Get numerical columns</h2>
 <p>You can use Polars selectors to filter for numerical columns only. In this case, the dataframe will show the columns <em>weight</em> and <em>cups</em>. Here’s how to do it:</p>
-<div id="3cb95356" class="cell" data-execution_count="2">
+<div id="1c3d32a1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(df</span>
@@ -322,20 +322,20 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>1.0</td>
-<td>1.25</td>
-</tr>
-<tr class="even">
-<td>1.0</td>
-<td>0.25</td>
-</tr>
-<tr class="odd">
-<td>0.5</td>
-<td>1.0</td>
-</tr>
-<tr class="even">
 <td>1.33</td>
 <td>0.75</td>
+</tr>
+<tr class="even">
+<td>1.0</td>
+<td>0.33</td>
+</tr>
+<tr class="odd">
+<td>1.0</td>
+<td>0.75</td>
+</tr>
+<tr class="even">
+<td>1.0</td>
+<td>0.88</td>
 </tr>
 </tbody>
 </table>
