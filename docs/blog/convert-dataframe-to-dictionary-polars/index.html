@@ -9,7 +9,7 @@
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2025-10-02">
 
-<title>Title</title>
+<title>Convert a polars dataframe to a Python dictionary</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -186,10 +186,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#convert-a-polars-dataframe-to-a-python-dictionary" id="toc-convert-a-polars-dataframe-to-a-python-dictionary" class="nav-link active" data-scroll-target="#convert-a-polars-dataframe-to-a-python-dictionary">Convert a polars dataframe to a Python dictionary</a>
-  <ul class="collapse">
-  <li><a href="#convert-to-dictionary" id="toc-convert-to-dictionary" class="nav-link" data-scroll-target="#convert-to-dictionary">Convert to dictionary</a></li>
-  </ul></li>
+  <li><a href="#convert-to-dictionary" id="toc-convert-to-dictionary" class="nav-link active" data-scroll-target="#convert-to-dictionary">Convert to dictionary</a></li>
   </ul>
 </nav>
     </div>
@@ -198,8 +195,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Title</h1>
-<p class="subtitle lead">Subtitle</p>
+<h1 class="title">Convert a polars dataframe to a Python dictionary</h1>
+<p class="subtitle lead">to_dict</p>
   <div class="quarto-categories">
     <div class="quarto-category">100DaysOfPolars</div>
   </div>
@@ -231,11 +228,9 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </header>
 
 
-<section id="convert-a-polars-dataframe-to-a-python-dictionary" class="level1">
-<h1>Convert a polars dataframe to a Python dictionary</h1>
 <p>Dictionaries are an important data structure in Python. They’re used everywhere from storing data retrieved from web requests to keeping values in a lookup table by key. It’s no wonder Polars makes it easy to convert your dataframe to a Python dictionary.</p>
 <p>Below is a dataframe of students and their characteristics:</p>
-<div id="b0542ad6" class="cell" data-execution_count="1">
+<div id="745aae66" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -286,7 +281,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="convert-to-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="convert-to-dictionary">Convert to dictionary</h2>
 <p>To convert a Polars dataframe to a dictionary, use the <code>to_dict</code> method like this:</p>
-<div id="a5b0c210" class="cell" data-execution_count="2">
+<div id="909604f0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .to_dict(as_series<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -295,12 +290,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
  'Character': ['Bossy', 'Sporty', 'Artistic', 'Word smith', 'Manipulative']}</code></pre>
 </div>
 </div>
-<p><br></p>
 <p>When working with APIs, the data is usually in JSON format, which is the same structure as a Python dictionary. You can read your data with Polars, convert it to a dictionary, and then send it via the API. This way, you take advantage of Polars’ faster processing.</p>
 <p>I’d be grateful if you became a student in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a3a71b1cc6ae4cc2402cc37bac13141b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cdd16f8f8dc029c38a69f61610f010f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -230,7 +230,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>When you have a column with date values, having its data type as <code>datetime</code> is beneficial because it allows you to perform time series analysis on your data. You can slice the data into months, weeks, days, etc. This is not possible when your date values are stored as a string (text) data type.</p>
 <p>Below is a dataframe containing three columns: <em>Day</em>, <em>Month</em>, and <em>Year</em>.</p>
-<div id="01d5dd6d" class="cell" data-execution_count="1">
+<div id="94b0ffd0" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -283,7 +283,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-better-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-better-way">The better way</h2>
 <p>Polars has a handy expression, <code>pl.date</code>, that allows you to concatenate these values into a new column with a <em>datetime</em> data type. Here’s how to do it:</p>
-<div id="2036fc02" class="cell" data-execution_count="2">
+<div id="5c94b0c0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.date(pl.col(<span class="st">'Year'</span>), pl.col(<span class="st">'Month'</span>), pl.col(<span class="st">'Day'</span>)))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

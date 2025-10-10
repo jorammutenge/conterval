@@ -298,5 +298,8 @@
   },
   "blog/convert-dataframe-to-dictionary-polars/index.qmd": {
     "index.html": "7d7fa871"
+  },
+  "blog/convert-dataframe-to-dictionary-polars/convert-dataframe-to-dictionary-polars/index.qmd": {
+    "index.html": "95a26d01"
   }
 }
