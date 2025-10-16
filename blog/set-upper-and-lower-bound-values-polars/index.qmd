@@ -1,0 +1,42 @@
+---
+title: "Use clip to set upper and lower bound values in polars"
+subtitle: "clip"
+author: '{{< var author >}}'
+date: '2025-10-06'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Imagine you’re a teacher who isn’t satisfied with the range of grades your students received on what you thought was a fairly easy math test. You want to set the lowest possible grade to 60 and the highest to 90. How can you do that?
+
+Below is a dataframe showing the students and their grades on the math test.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Spencer", "Emily", "Hannah", "Aria", "Mona","Paige"],
+    "Grade": [93, 88, 73, 69, 55, 89]
+})
+df
+```
+<br>
+
+## Set boundaries where grades should be
+
+To ensure that all grades fall within the 60 to 90 range, use the Polars expression `clip` as shown below:
+
+```{python}
+(df
+ .with_columns(pl.col('Grade').clip(60,90))
+ )
+```
+<br>
+
+Now none of the values in *Grade* are above 90 or below 60. You've successfully clipped the values!
+
+Hey, do me a solid. Sign up for my {{< var polars_course >}}

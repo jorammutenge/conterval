@@ -1,0 +1,41 @@
+---
+title: "Converting from polars to pandas dataframe is as easy as 1, 2, 3"
+subtitle: "to_pandas"
+author: '{{< var author >}}'
+date: '2025-10-05'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Almost anything you can do in Pandas can also be done in Polars. However, there are certain outputs that are unique to Pandas, such as creating a hierarchical column table. Fortunately, converting a Polars dataframe to a Pandas dataframe is very easy. Below is a Polars dataframe showing some popular clothing brands.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Brand": ["Gucci", "Versace", "Forever21", "Gap"],
+    "Category": ["Premium", "Premium", "Basic", "Basic"],
+    "Price": [1000, 5000, 39, 56]
+})
+df
+```
+<br>
+
+## Change to pandas dataframe
+
+Suppose you want to pivot your data to create a hierarchical column table where *Category* is at the top, followed by *Brand*. Currently, this cannot be done in Polars. However, you can use the `to_pandas` method to convert your Polars dataframe into a Pandas dataframe. From there, you can pivot the data to achieve the desired output as shown below:
+
+```{python}
+(df
+ .to_pandas()
+ .pivot(columns=['Category', 'Brand'], values='Price')
+ )
+```
+<br>
+
+Sign up for my {{< var polars_course >}} to learn more.
+

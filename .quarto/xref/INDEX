@@ -301,5 +301,23 @@
   },
   "blog/convert-dataframe-to-dictionary-polars/convert-dataframe-to-dictionary-polars/index.qmd": {
     "index.html": "95a26d01"
+  },
+  "blog/divide-with-no-remainder-polars/index.qmd": {
+    "index.html": "58099f8c"
+  },
+  "blog/list-of-dataframe-polars/index.qmd": {
+    "index.html": "27d6d539"
+  },
+  "blog/from-polars-dataframe-to-pandas/index.qmd": {
+    "index.html": "aa905957"
+  },
+  "blog/swap-signs-on-numbers-polars/index.qmd": {
+    "index.html": "acedff35"
+  },
+  "blog/set-upper-and-lower-bound-values-polars/index.qmd": {
+    "index.html": "283d0531"
+  },
+  "blog/fill-with-next-value-polars/index.qmd": {
+    "index.html": "5cb0c473"
   }
 }

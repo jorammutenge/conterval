@@ -1,0 +1,40 @@
+---
+title: "Divide with no remainder in polars"
+subtitle: "floordiv"
+author: '{{< var author >}}'
+date: '2025-10-07'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+In programming, division comes in two forms: with a remainder and without a remainder. In most programming languages, the symbol `/` represents division with a remainder, while `//` represents division without a remainder. Polars provides equivalent expressions for these operations, called `truediv` and `floordiv`, respectively.
+
+Below is a dataframe showing the years of some of the greatest inventions of the last century.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Invention": ["Airplane", "Sliced bread", "Microwave", "World Wide Web"],
+    "Year": [1903, 1928, 1945, 1989]
+})
+df
+```
+<br>
+
+## Get decade from year
+
+You can create a new column to show the decade in which each invention occurred by using the `floordiv` expression and multiplying the non-decimal value by 10, as shown below:
+
+```{python}
+(df
+ .with_columns(Decade=pl.col('Year').floordiv(10)*10)
+ )
+```
+<br>
+
+Check out my {{< var polars_course >}} to learn more cool Polars tricks.

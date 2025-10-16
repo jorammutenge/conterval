@@ -1,0 +1,40 @@
+---
+title: " Replace null with next value in polars"
+subtitle: "backward_fill"
+author: '{{< var author >}}'
+date: '2025-10-04'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Anyone working with data knows that encountering null values in a dataset is inevitable. There are several ways to fill null values in Polars. One approach is to replace each null value with the next non-null value that appears after it. Below is a dataframe showing companies and their corresponding company numbers.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Company": ["Meta", "Facebook", "Google", "OpenAI", "Oracle"],
+    "Number": [None, 1001, 1020, 2304, 1022]
+})
+df
+```
+<br>
+
+## Fill null with value
+
+To replace null values with the next value that follows them, use the Polars expression `backward_fill` as shown below:
+
+```{python}
+(df
+ .with_columns(pl.col('Number').backward_fill())
+ )
+```
+<br>
+
+Now the values in *Number* are filled. The opposite of this method is `forward_fill`.
+
+I encourage you to enroll in my {{< var polars_course >}}.

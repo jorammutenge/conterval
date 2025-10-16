@@ -2,6 +2,12 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/swap-signs-on-numbers-polars/index.html",
+      "/blog/divide-with-no-remainder-polars/index.html",
+      "/blog/set-upper-and-lower-bound-values-polars/index.html",
+      "/blog/from-polars-dataframe-to-pandas/index.html",
+      "/blog/fill-with-next-value-polars/index.html",
+      "/blog/list-of-dataframe-polars/index.html",
       "/blog/convert-dataframe-to-dictionary-polars/index.html",
       "/blog/count-unique-values-polars/index.html",
       "/blog/rolling-mean-in-polars/index.html",

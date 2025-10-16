@@ -1,0 +1,42 @@
+---
+title: "Change numbers from positive to negative and vice versa in polars"
+subtitle: "neg"
+author: '{{< var author >}}'
+date: '2025-10-08'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You want to understand what makes your life better, so you start assigning a Collins score to each day to gain insights from your high-scoring days. However, after five entries, you realize that your numbers are reversed. The positive values should be negative, and the negative ones should be positive.
+
+::: {.callout-warning}
+If you've never heard of the **Collins score**, stop reading this right now and google it. More importantly, google the man behind it **Jim Collins**.
+:::
+
+Below is a dataframe showing your entries.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Day': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+ 'Collins Score': [1, 2, -1, 0, -2]})
+df
+```
+<br>
+
+## Swap signs on values
+
+To swap the signs of the values in the dataframe above, use the Polars expression `neg` as shown below:
+
+```{python}
+(df
+ .with_columns(pl.col('Collins Score').neg())
+ )
+```
+<br>
+
+Enroll in my {{< var polars_course >}} to learn more!

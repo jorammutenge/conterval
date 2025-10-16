@@ -1,0 +1,73 @@
+---
+title: "Store dataframes in a list by alignment in polars"
+subtitle: "pl.align_frames"
+author: '{{< var author >}}'
+date: '2025-10-03'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You have two dataframes and want to store them in a list based on shared values in one column. Below are two dataframes; one with movie ratings and the other with duration.
+
+**Movie rating dataframe**
+
+```{python}
+#| echo: false
+import polars as pl
+rating_df = pl.DataFrame({
+    "Movie": [
+        "Inception",
+        "The Revenant",
+        "The Wolf of Wall Street",
+        "Revolutionary Road"
+    ],
+    "Rating": [8.8, 8.0, 8.2, 7.3]
+})
+rating_df
+```
+<br>
+
+**Movie duration dataframe**
+
+```{python}
+#| echo: false
+duration_df = pl.DataFrame({
+    "Movie": [
+        "The Fall Guy",
+        "The Revenant",
+        "La La Land",
+        "Revolutionary Road"
+    ],
+    "Duration": [126,156,128,119]
+})
+duration_df
+```
+<br>
+
+## Align dataframes and store in list
+
+To create a list of dataframes that contain movies featuring Leonardo DiCaprio, you can use the Polars expression `pl.align_frames` like this:
+
+```{python}
+aligned_dfs = (pl.align_frames(rating_df,
+                 duration_df,
+                 on='Movie',
+                 how='inner')
+ )
+aligned_dfs
+```
+
+Now that you have a list of dataframes, you can access any one of them by index. For example, to get the first dataframe, do this:
+
+```{python}
+aligned_dfs[0]
+```
+<br>
+
+Notice that this movie rating dataframe is not the same as the original. This one only contains movies in which Leonardo DiCaprio appeared.
+
+Enroll in my {{< var polars_course >}} and have the time of your life learning!
