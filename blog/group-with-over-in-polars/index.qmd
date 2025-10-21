@@ -1,0 +1,45 @@
+---
+title: "Grouping with over in polars"
+subtitle: "over"
+author: '{{< var author >}}'
+date: '2025-10-19'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Group by operations usually reduce the size of a dataframe, both in the number of columns and rows returned. However, sometimes you may want to maintain the original dataframe size.
+
+Below is a dataframe showing different types of groceries bought on each day of the week.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Day': ['Mon', 'Tue', 'Wed', 'Mon', 'Tue', 'Wed', 'Mon', 'Tue', 'Wed'],
+ 'Product': ['Bread','Milk','Tea','Cheese','Oats','Yogurt','Apple','Juice','Lettuce'],
+ 'Price': [3.89, 4.0, 3.89, 7.99, 8.0, 4.67, 4.0, 7.89, 5.99]})
+df
+```
+<br>
+
+## Group with over
+
+To perform a group by operation while keeping the same dataframe length in Polars, you use the `over` expression like this:
+
+```{python}
+(df
+ .with_columns(Avg_Spend=pl.col('Price').mean().over('Day'))
+ )
+```
+<br>
+
+Here, we've calculated the average spend for each day.
+
+::: {.callout-note}
+The size of the dataframe remains the same in both dataframes, with `{python} df.height` rows.
+:::
+
+Enroll in {{< var polars_course >}} to learn more.

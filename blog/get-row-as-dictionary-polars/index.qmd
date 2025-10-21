@@ -1,0 +1,40 @@
+---
+title: "Get row as dicitonary from polars dataframe"
+subtitle: "row"
+author: '{{< var author >}}'
+date: '2025-10-21'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+The Polars dataframe is highly accessible. In fact, you can get a row as a dictionary and use it directly in your Python code. Below is a dataframe showing clothing brands.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Brand": ["Gucci", "Versace", "Forever21", "Gap"],
+    "Category": ["Premium", "Premium", "Basic", "Basic"],
+    "Price": [1000, 5000, 39, 56]
+})
+df
+```
+<br>
+
+## Get row as dictionary
+
+To get the second row as a dictionary from a Polars dataframe, you use the `row` method as like this:
+
+```{python}
+(df
+ .row(2, named=True)
+ )
+```
+
+You now have a dictionary where the keys are column names and the values are the corresponding row values.
+
+Join over 150 students in my {{< var polars_course >}} to sharpen your Polars skills.

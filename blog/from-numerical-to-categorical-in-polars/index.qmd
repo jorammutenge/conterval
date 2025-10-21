@@ -1,0 +1,43 @@
+---
+title: "Group numerical data into categorical buckets in polars"
+subtitle: "qcut"
+author: '{{< var author >}}'
+date: '2025-10-20'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+If you're a movie buff like me, you probably subscribe to multiple streaming services. Suppose you wanted to categorize the cost of your subscription fees for these services into three categories: cheap, okay, and expensive. How could you do it?
+
+Below is a dataframe showing various streaming services.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Subscription": ["Netflix", "Hulu", "HBO Max", "Showtime", "Paramount", "Disney+", "AMC"],
+    "Price": [15.49, 7.99, 15.99, 10.99, 11.99, 7.99, 8.99]
+})
+df
+```
+<br>
+
+It's difficult to look at a table full of numbers and decide which category each streaming service belongs to based on price. To make this process easier, you can use the Polars expression `qcut` as shown below:
+
+```{python}
+(df
+ .with_columns(pl.col('Price').qcut([0.25, 0.75],
+               labels=['Cheap','Okay','Expensive'])
+               .alias('Category')
+               )
+ )
+```
+<br>
+
+The code above divides the range of values in *Price* based on quantile probabilities. Now you can simply look at the streaming service and the *Category* column to see whether it's within your budget.
+
+Learn more in my {{< var polars_course >}}!

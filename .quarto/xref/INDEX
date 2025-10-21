@@ -319,5 +319,14 @@
   },
   "blog/fill-with-next-value-polars/index.qmd": {
     "index.html": "5cb0c473"
+  },
+  "blog/group-with-over-in-polars/index.qmd": {
+    "index.html": "7f48de91"
+  },
+  "blog/get-row-as-dictionary-polars/index.qmd": {
+    "index.html": "d76d49a4"
+  },
+  "blog/from-numerical-to-categorical-in-polars/index.qmd": {
+    "index.html": "a9b241cd"
   }
 }

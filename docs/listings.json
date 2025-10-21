@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/get-row-as-dictionary-polars/index.html",
+      "/blog/from-numerical-to-categorical-in-polars/index.html",
+      "/blog/group-with-over-in-polars/index.html",
       "/blog/swap-signs-on-numbers-polars/index.html",
       "/blog/divide-with-no-remainder-polars/index.html",
       "/blog/set-upper-and-lower-bound-values-polars/index.html",
