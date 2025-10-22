@@ -1,0 +1,40 @@
+---
+title: "Pivot data without any aggregation in polars"
+subtitle: "unstack"
+author: '{{< var author >}}'
+date: '2025-10-10'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You have a table with four rows and want to turn it into a table with two rows. In other words, you want to transform a long-format table into a wide-format table, which means you'll have more columns. Below is a dataframe showing company departments and their budgets.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Department": ["Hospitality", "Legal", "Finance", "Advertising"],
+    "Budget": [100, 80, 200, 120],
+})
+df
+```
+<br>
+
+## Convert to wide format
+
+To convert the dataframe above to a wide-format table without performing any aggregation, use the `unstack` method like this:
+
+```{python}
+(df
+ .unstack(step=2, how='horizontal')
+ )
+```
+<br>
+
+The `step` parameter determines the number of rows you want to have in the final dataframe. You could also use `pivot` and leave the `aggregate_function` parameter blank to achieve the same result. However, `unstack` is often faster because it skips the grouping phase.
+
+Learn more in my {{< var polars_course >}}.

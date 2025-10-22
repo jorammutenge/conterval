@@ -328,5 +328,20 @@
   },
   "blog/from-numerical-to-categorical-in-polars/index.qmd": {
     "index.html": "a9b241cd"
+  },
+  "blog/transpose-dataframe-in-polars/index.qmd": {
+    "index.html": "0233e95b"
+  },
+  "blog/insert-column-in-polars-dataframe/index.qmd": {
+    "index.html": "32446557"
+  },
+  "blog/pivot-without-aggregation-in-polars/index.qmd": {
+    "index.html": "9f31824f"
+  },
+  "blog/stack-dataframes-side-by-side-polars/index.qmd": {
+    "index.html": "f017c89d"
+  },
+  "blog/get-column-index-position-polars/index.qmd": {
+    "index.html": "79a8721c"
   }
 }

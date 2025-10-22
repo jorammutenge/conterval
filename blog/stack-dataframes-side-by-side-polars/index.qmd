@@ -1,0 +1,51 @@
+---
+title: "Stack polars dataframes side by side"
+subtitle: "hstack"
+author: '{{< var author >}}'
+date: '2025-10-11'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+If you have two tables with the same number of rows, you can combine them side by side to create a single table. Below are two dataframes to be combined.
+
+**name_df**
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Name': ['Joram', 'Eleonora', 'Lauren', 'Enrico'],
+ 'Profession': ['Data Consultant','Software Engineer','Nurse','Film Producer']})
+
+name_df = df.select('Name')
+name_df
+```
+<br>
+
+**profession_df**
+
+```{python}
+#| echo: false
+profession_df = df.select('Profession')
+profession_df
+```
+<br>
+
+## Combine dataframes
+
+To combine the two dataframes into a single one, use the `hstack` method like this:
+
+```{python}
+(name_df
+ .hstack(profession_df)
+ )
+```
+<br>
+
+Learn more in my {{< var polars_course >}}.
+
+

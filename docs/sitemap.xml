@@ -404,4 +404,24 @@
     <loc>https://www.conterval.com/blog/from-numerical-to-categorical-in-polars/index.html</loc>
     <lastmod>2025-10-21T00:05:57.969Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/transpose-dataframe-in-polars/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.145Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/insert-column-in-polars-dataframe/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.122Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/pivot-without-aggregation-in-polars/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.130Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/get-column-index-position-polars/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/stack-dataframes-side-by-side-polars/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.138Z</lastmod>
+  </url>
 </urlset>

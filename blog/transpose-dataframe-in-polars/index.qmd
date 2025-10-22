@@ -1,0 +1,44 @@
+---
+title: "Store values from a row into a single column"
+subtitle: "transpose"
+author: '{{< var author >}}'
+date: '2025-10-09'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+For presentation purposes, you may want to have the values from a row stored in a single column. Below is a dataframe showing electronic gadgets.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Brand": ["Sharp", "Panasonic", "Aiwa", "Sony"],
+    "Product": ["TV", "Speaker", "Stereo", "Headphones"],
+    "Price": [400, 300, 700, 150]
+})
+df
+```
+<br>
+
+## Get row values in one column
+
+To get the values of a single row into its own column in Polars, use the `transpose` method like this:
+
+```{python}
+(df
+ .transpose(include_header=False,
+            header_name=' ',
+            column_names=['']*4,
+            )
+ )
+```
+<br>
+
+Now each gadget, along with its brand and price, is stored in one column.
+
+Check out my {{< var polars_course >}} to learn even more ways to analyze data with Polars.

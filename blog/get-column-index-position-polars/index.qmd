@@ -1,0 +1,55 @@
+---
+title: "Get a column's index position in polars dataframe"
+subtitle: "get_column_index"
+author: '{{< var author >}}'
+date: '2025-10-12'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Your table has many columns, and you want to know the position of a specific column in the table. How can you do that? Below is a dataframe showing cereal brands.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'name': ['Total Corn Flakes',
+  'Fruity Pebbles',
+  'Smacks',
+  'Triples',
+  'Post Nat. Raisin Bran'],
+ 'mfr': ['General Mills', 'Post', 'Kellogs', 'General Mills', 'Post'],
+ 'type': ['Cold', 'Cold', 'Cold', 'Cold', 'Cold'],
+ 'calories': [110, 110, 110, 110, 120],
+ 'protein': [2, 1, 2, 2, 3],
+ 'fat': [1, 1, 1, 1, 1],
+ 'sodium': [200, 135, 70, 250, 200],
+ 'fiber': [0.0, 0.0, 1.0, 0.0, 6.0],
+ 'carbo': [21.0, 13.0, 9.0, 21.0, 11.0],
+ 'sugars': [3, 12, 15, 3, 14],
+ 'potass': [35, 25, 40, 60, 260],
+ 'vitamins': [100, 25, 25, 25, 25],
+ 'shelf': ['Top', 'Middle', 'Middle', 'Top', 'Top'],
+ 'weight': [1.0, 1.0, 1.0, 1.0, 1.33],
+ 'cups': [1.0, 0.75, 0.75, 0.75, 0.67],
+ 'rating': [38.84, 28.03, 31.23, 39.11, 37.84],
+ 'cereal': [1, 1, 1, 1, 1]})
+df
+```
+<br>
+
+## Get index position of column
+
+To get the index position of the *cereal* column, use the Polars method `get_column_index` like this:
+
+```{python}
+(df
+ .get_column_index('cereal')
+ )
+```
+
+Join almost 160 students advancing their skills in my {{< var polars_course >}}.
+

@@ -1,0 +1,50 @@
+---
+title: "Insert a column into a polars dataframe"
+subtitle: "insert_column"
+author: '{{< var author >}}'
+date: '2025-10-13'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Polars allows you to insert a column into a dataframe at any position you want. Below is a dataframe showing the ratings of some unknown movies.
+
+**ratings_df**
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'movie': ['Margin Call', 'Rogue Trader', 'Boiler Room', 'The Wizard of Lies'],
+ 'year': [2011, 1999, 2000, 2017],
+ 'rating': [7.1, 6.4, 7.0, 6.8],
+ 'minutes': [107, 101, 120, 133]})
+ratings_df = df.drop(pl.nth(0))
+ratings_df
+```
+<br>
+
+**movie_title_column**
+
+```{python}
+#| echo: false
+movie_title_column = df.select('movie').to_series()
+movie_title_column
+```
+<br>
+
+## Insert column into dataframe
+
+To insert another column into the dataframe above, make sure the column type is `series`, not `dataframe`. Here’s how you can insert a new column as the first column in the dataframe:
+
+```{python}
+(ratings_df
+ .insert_column(0, movie_title_column)
+ )
+```
+<br>
+
+Check out my {{< var polars_course >}} to learn more.
