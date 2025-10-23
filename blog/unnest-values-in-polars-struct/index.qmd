@@ -1,0 +1,40 @@
+---
+title: "Unnesting values in a polars struct"
+subtitle: "unnest"
+author: '{{< var author >}}'
+date: '2025-10-24'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Polars has a special data type called **struct**, which is useful for storing data efficiently without using too much memory. However, performing tabular operations on structs can be challenging. Fortunately, it’s easy to extract data from a struct into separate columns. Below is a dataframe showing movies and their attributes.
+
+```{python}
+#| echo: false
+import polars as pl
+movies = pl.DataFrame({'movie': ['Margin Call', 'The Big Short', 'Arbitrage', 'American Psycho'],
+ 'year': [2011, 2015, 2012, 2000],
+ 'rating': [7.1, 7.8, 6.6, 7.6],
+ 'minutes': [107, 130, 107, 104]})
+df = movies.select(pl.struct(pl.all()).alias('Movie_Struct'))
+df
+```
+<br>
+
+## Unnest struct
+
+To place each value in the struct into its own column, use the `unnest` method like this:
+
+```{python}
+(df
+ .unnest('Movie_Struct')
+ )
+```
+<br>
+
+Enroll in my {{< var polars_course >}} to learn more ways to analyze data.
+

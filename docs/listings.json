@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/unnest-values-in-polars-struct/index.html",
+      "/blog/reverse-valiues-in-polars-dataframe/index.html",
+      "/blog/get-value-in-specific-cell/index.html",
       "/blog/get-row-as-dictionary-polars/index.html",
       "/blog/from-numerical-to-categorical-in-polars/index.html",
       "/blog/group-with-over-in-polars/index.html",

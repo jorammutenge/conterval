@@ -1,0 +1,41 @@
+---
+title: "Reverse values in a polars dataframe"
+subtitle: "reverse"
+author: '{{< var author >}}'
+date: '2025-10-23'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Polars allows you to reverse the values in your dataframe so that the last row becomes the first. Below is a dataframe showing the itinerary of a businessperson like yourself.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Itinerary": ["Los Angeles", "Syndney", "Wellington", "Tokio"],
+    "Date": ["2025-05-01", "2025-05-15", "2025-06-02", "2025-06-17",]
+})
+df
+```
+<br>
+
+## Reverse values
+
+Suppose you realize that your final destination is Los Angeles, not Tokyo. How can you reverse the values in the dataframe? You can use the `reverse` method like this:
+
+```{python}
+(df
+ .reverse()
+ )
+```
+
+::: {.callout-caution}
+I know that reversing in this context doesn’t make much sense because the dates won’t be chronological. I’m merely demonstrating how to reverse values in a dataframe.
+:::
+
+Learn even more Polars tricks from my {{< var polars_course >}}.

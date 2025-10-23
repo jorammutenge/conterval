@@ -1,0 +1,16 @@
+{
+  "hash": "5c1a437e6f66378ea0183bcab084424a",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Get a value in a specific cell of a polars dataframe\"\nsubtitle: \"item\"\nauthor: '{{< var author >}}'\ndate: '2025-10-22'\ndate-format: iso\ntoc: true\ntoc-title: 'Sections'\ntoc-location: right\ntoc-depth: 3\ncategories: [100DaysOfPolars]\n---\n\nPolars allows you to target a dataframe down to a specific value, such as selecting a value from a particular cell in the table. Below is a dataframe showing streaming services.\n\n::: {#a8c4401b .cell execution_count=1}\n\n::: {.cell-output .cell-output-display execution_count=1}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (7, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Subscription</th><th>Price</th></tr><tr><td>str</td><td>f64</td></tr></thead><tbody><tr><td>&quot;Netflix&quot;</td><td>15.49</td></tr><tr><td>&quot;Hulu&quot;</td><td>7.99</td></tr><tr><td>&quot;HBO Max&quot;</td><td>15.99</td></tr><tr><td>&quot;Showtime&quot;</td><td>10.99</td></tr><tr><td>&quot;Paramount&quot;</td><td>11.99</td></tr><tr><td>&quot;Disney+&quot;</td><td>7.99</td></tr><tr><td>&quot;AMC&quot;</td><td>8.99</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n<br>\n\n## Get specific value\n\nTo get a specific value from the dataframe, such as \"Disney+\", use the `item` method like this:\n\n::: {#78553270 .cell execution_count=2}\n``` {.python .cell-code}\n(df\n .item(5,0)\n )\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```\n'Disney+'\n```\n:::\n:::\n\n\n::: {.callout-note}\nThe output value \"Disney+\" is a string that can be used in other Python code unrelated to Polars. This is not the same as running this code:\n\n```python\n(df\n .filter(pl.col('Subscription') == 'Disney+')\n .select('Subscription')\n )\n```\n:::\n\nLearn more in my {{< var polars_course >}}!\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js\" integrity=\"sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js\" integrity=\"sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}

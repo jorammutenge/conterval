@@ -1,0 +1,49 @@
+---
+title: "Get a value in a specific cell of a polars dataframe"
+subtitle: "item"
+author: '{{< var author >}}'
+date: '2025-10-22'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Polars allows you to target a dataframe down to a specific value, such as selecting a value from a particular cell in the table. Below is a dataframe showing streaming services.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Subscription": ["Netflix", "Hulu", "HBO Max", "Showtime", "Paramount", "Disney+", "AMC"],
+    "Price": [15.49, 7.99, 15.99, 10.99, 11.99, 7.99, 8.99]
+})
+df
+```
+<br>
+
+## Get specific value
+
+To get a specific value from the dataframe, such as "Disney+", use the `item` method like this:
+
+```{python}
+(df
+ .item(5,0)
+ )
+```
+
+::: {.callout-note}
+The output value "Disney+" is a string that can be used in other Python code unrelated to Polars. This is not the same as running this code:
+
+```python
+(df
+ .filter(pl.col('Subscription') == 'Disney+')
+ .select('Subscription')
+ )
+```
+:::
+
+Learn more in my {{< var polars_course >}}!
+

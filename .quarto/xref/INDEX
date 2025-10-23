@@ -343,5 +343,14 @@
   },
   "blog/get-column-index-position-polars/index.qmd": {
     "index.html": "79a8721c"
+  },
+  "blog/get-value-in-specific-cell/index.qmd": {
+    "index.html": "0cb958b9"
+  },
+  "blog/unnest-values-in-polars-struct/index.qmd": {
+    "index.html": "388142af"
+  },
+  "blog/reverse-valiues-in-polars-dataframe/index.qmd": {
+    "index.html": "f257dcd0"
   }
 }
