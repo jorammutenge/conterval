@@ -1,0 +1,38 @@
+---
+title: "Get indices for a specific value in a polars dataframe"
+subtitle: "arg_true"
+author: '{{< var author >}}'
+date: '2025-10-26'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Sometimes you may want to get the index positions of a repeating value in a Polars dataframe. Below is a dataframe showing students and their grades.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Spencer", "Spencer", "Emily", "Emily", "Hannah", "Hannah", "Aria", "Aria", "Mona","Paige"] * 2,
+    "Grade": [93, 88, 73, 69, 55, 89, 92, 81, 97, 71] * 2
+})
+df
+```
+<br>
+
+## Get index of rows
+
+To get the index positions of rows where the name "Aria" appears, use the Polars expression `arg_true` like this:
+
+```{python}
+(df
+ .select((pl.col('Student') == 'Aria').arg_true())
+ )
+```
+<br>
+
+Check out my {{< var polars_course >}} to advance your data analysis skills.

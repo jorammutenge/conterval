@@ -1,0 +1,42 @@
+---
+title: "Get the chance of all events happening at once in polars"
+subtitle: "cum_prod"
+author: '{{< var author >}}'
+date: '2025-10-27'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Probabilities are all around us, and if you work in the data field, you’re bound to encounter them. For example, what are the chances that you’ll get into Harvard, become a billionaire, or even better, get into Harvard *and* become a billionaire? Below is a dataframe showing the chances (probabilities) of each event happening to you.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Event': ['Get into Harvard','Become billionaire','Be happily married','Die a hero'],
+ 'Chance': [0.04, 0.5, 0.12, 0.02]})
+df
+```
+<br>
+
+## Get chance of all events happening
+
+To determine the chance of all four events happening to you, use the Polars expression `cum_prod` like this:
+
+```{python}
+(df
+ .with_columns(All_Happening=pl.col('Chance').cum_prod())
+ )
+```
+<br>
+
+The last value in *All_Happening* represents the chance of all events happening. It turns out that your chance of getting into Harvard, becoming a billionaire, being happily married, and dying a hero is 1 in 21 thousand!
+
+::: {.callout-important}
+The 1 in 21 thousand chance is not indicative of real-life odds. It’s based on fictitious values in the dataframe.
+:::
+
+Sign up for my {{< var polars_course >}} to learn more!

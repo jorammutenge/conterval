@@ -352,5 +352,14 @@
   },
   "blog/reverse-valiues-in-polars-dataframe/index.qmd": {
     "index.html": "f257dcd0"
+  },
+  "blog/count-null-in-polars/index.qmd": {
+    "index.html": "052d7038"
+  },
+  "blog/use-cumulative-product-in-polars/index.qmd": {
+    "index.html": "e683447a"
+  },
+  "blog/get-indices-of-value-polars/index.qmd": {
+    "index.html": "75d8f6a1"
   }
 }

@@ -1,0 +1,39 @@
+---
+title: "Count null values in every column in polars"
+subtitle: "null_count"
+author: '{{< var author >}}'
+date: '2025-10-25'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Everyone working in the data field knows that data is never perfectly clean, and missing values are almost inevitable. That’s why it’s important to check whether your dataset contains any null values before you start analyzing it. Below is a dataframe showing visits to fast food stores.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Store': ['Burger King', "McDonald's", 'Shake Shack', 'Pizza Hut'],
+ 'Visits': [4, 7, 10, None],
+ 'Opinion': ["It's good", None, 'Loved it', None]})
+df
+```
+<br>
+
+## Check number of nulls
+
+To check how many null values are in each column, use the Polars method `null_count` like this:
+
+```{python}
+(df
+ .null_count()
+ )
+```
+<br>
+
+You can now see the number of null values in each column. For instance, *Opinion* has 2 null values.
+
+Enroll in my {{< var polars_course >}} to learn more ways to analyze your data.

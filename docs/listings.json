@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/use-cumulative-product-in-polars/index.html",
+      "/blog/get-indices-of-value-polars/index.html",
+      "/blog/count-null-in-polars/index.html",
       "/blog/unnest-values-in-polars-struct/index.html",
       "/blog/reverse-valiues-in-polars-dataframe/index.html",
       "/blog/get-value-in-specific-cell/index.html",

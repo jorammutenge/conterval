@@ -436,4 +436,16 @@
     <loc>https://www.conterval.com/blog/reverse-valiues-in-polars-dataframe/index.html</loc>
     <lastmod>2025-10-23T22:44:33.701Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-null-in-polars/index.html</loc>
+    <lastmod>2025-10-28T22:32:57.752Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/use-cumulative-product-in-polars/index.html</loc>
+    <lastmod>2025-10-28T22:32:57.769Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/get-indices-of-value-polars/index.html</loc>
+    <lastmod>2025-10-28T22:32:57.763Z</lastmod>
+  </url>
 </urlset>
