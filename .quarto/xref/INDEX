@@ -361,5 +361,11 @@
   },
   "blog/get-indices-of-value-polars/index.qmd": {
     "index.html": "75d8f6a1"
+  },
+  "blog/move-dates-back-and-forward-polars/index.qmd": {
+    "index.html": "d40c8007"
+  },
+  "blog/create-hierarchy-for-text-data-polars/index.qmd": {
+    "index.html": "bd615756"
   }
 }

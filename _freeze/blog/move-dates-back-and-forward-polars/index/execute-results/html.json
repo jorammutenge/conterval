@@ -1,0 +1,16 @@
+{
+  "hash": "f71545546c186cea2b84d8f515d675c7",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Move dates back and forward in polars\"\nsubtitle: \"offset_by\"\nauthor: '{{< var author >}}'\ndate: '2025-10-28'\ndate-format: iso\ntoc: true\ntoc-title: 'Sections'\ntoc-location: right\ntoc-depth: 3\ncategories: [100DaysOfPolars]\n---\n\nSometimes, you may want to change the dates of your appointments, either moving them forward or backward. Below is a dataframe showing your appointments.\n\n::: {#d267c803 .cell execution_count=1}\n\n::: {.cell-output .cell-output-display execution_count=1}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (3, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Appointment</th><th>Date</th></tr><tr><td>str</td><td>date</td></tr></thead><tbody><tr><td>&quot;Dentist&quot;</td><td>2026-06-02</td></tr><tr><td>&quot;Doctor&quot;</td><td>2026-07-15</td></tr><tr><td>&quot;Therapist&quot;</td><td>2026-09-05</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n<br>\n\n## Move dates back or forward\n\n::: {#ce4686f6 .cell execution_count=2}\n``` {.python .cell-code}\n(df\n .with_columns(One_Month_Past=pl.col('Date').dt.offset_by('-1mo'))\n .with_columns(Five_Days_Future=pl.col('Date').dt.offset_by('5d'))\n )\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (3, 4)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Appointment</th><th>Date</th><th>One_Month_Past</th><th>Five_Days_Future</th></tr><tr><td>str</td><td>date</td><td>date</td><td>date</td></tr></thead><tbody><tr><td>&quot;Dentist&quot;</td><td>2026-06-02</td><td>2026-05-02</td><td>2026-06-07</td></tr><tr><td>&quot;Doctor&quot;</td><td>2026-07-15</td><td>2026-06-15</td><td>2026-07-20</td></tr><tr><td>&quot;Therapist&quot;</td><td>2026-09-05</td><td>2026-08-05</td><td>2026-09-10</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n::: {.callout-note}\n* To move dates closer to the present, use a negative value such as `-1mo`.\n* To move dates farther into the future, use a positive value such as `5d`.\n:::\n\nEnroll in my {{< var polars_course >}} to learn more about this powerful data analysis library.\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js\" integrity=\"sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js\" integrity=\"sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}

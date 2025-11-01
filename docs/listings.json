@@ -2,6 +2,8 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/create-hierarchy-for-text-data-polars/index.html",
+      "/blog/move-dates-back-and-forward-polars/index.html",
       "/blog/use-cumulative-product-in-polars/index.html",
       "/blog/get-indices-of-value-polars/index.html",
       "/blog/count-null-in-polars/index.html",
