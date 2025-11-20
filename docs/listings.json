@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/set-difference-in-polars/index.html",
       "/blog/get-index-of-unique-values/index.html",
       "/blog/assign-column-names-on-read/index.html",
       "/blog/date-to-timestamp/index.html",

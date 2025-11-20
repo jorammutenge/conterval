@@ -376,5 +376,8 @@
   },
   "blog/date-to-timestamp/index.qmd": {
     "index.html": "1e052c4f"
+  },
+  "blog/set-difference-in-polars/index.qmd": {
+    "index.html": "67bcc211"
   }
 }
