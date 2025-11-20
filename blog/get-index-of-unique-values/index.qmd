@@ -1,0 +1,38 @@
+---
+title: "Get the index of unique values in a polars dataframe"
+subtitle: "arg_unique"
+author: '{{< var author >}}'
+date: '2025-11-19'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You have a table with repeating names, and you want to get the index where each unique name appears. Below is a dataframe showing students and their grades on various tests.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Student": ["Spencer", "Spencer", "Emily", "Emily", "Hannah", "Hannah", "Aria", "Aria", "Mona","Paige"] * 2,
+    "Grade": [93, 88, 73, 69, 55, 89, 92, 81, 97, 71] * 2
+})
+df
+```
+<br>
+
+## Index where each unique value first appears
+
+To get the index location where each unique name in the dataframe first appears, use the Polars expression `arg_unique` like this:
+
+```{python}
+(df
+ .select(pl.col('Student').arg_unique())
+ )
+```
+<br>
+
+I want you to enroll in my {{< var polars_course >}} so you can learn more.

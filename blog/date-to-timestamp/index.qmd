@@ -1,0 +1,37 @@
+---
+title: "From date to timestamp in milliseconds"
+subtitle: "dt.timestamp"
+author: '{{< var author >}}'
+date: '2025-11-17'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Sometimes you may want the date value in your dataframe to display as a timestamp. This is useful when you need to hide the date of birth (DOB) of people in your dataset while presenting the data. Below is a dataframe showing the DOB of yours truly.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame(
+    {'Name': ['Joram Mutenge'], 'DOB': ['7/13/2020']}
+).with_columns(pl.col('DOB').str.strptime(pl.Date, '%m/%d/%Y'))
+df
+```
+<br>
+
+## Convert date to timestamp
+
+To convert a date to a timestamp, use the date component `timestamp` as shown below:
+
+```{python}
+(df
+ .with_columns(DOB_ms=pl.col('DOB').dt.timestamp('ms'))
+ )
+```
+<br>
+
+Check out my {{< var polars_course >}} for more insights.

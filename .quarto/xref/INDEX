@@ -367,5 +367,14 @@
   },
   "blog/create-hierarchy-for-text-data-polars/index.qmd": {
     "index.html": "bd615756"
+  },
+  "blog/assign-column-names-on-read/index.qmd": {
+    "index.html": "4253b9a5"
+  },
+  "blog/get-index-of-unique-values/index.qmd": {
+    "index.html": "71b8fb70"
+  },
+  "blog/date-to-timestamp/index.qmd": {
+    "index.html": "1e052c4f"
   }
 }

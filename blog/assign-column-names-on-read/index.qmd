@@ -1,0 +1,48 @@
+---
+title: "Assign column names while reading the file"
+subtitle: "new_columns"
+author: '{{< var author >}}'
+date: '2025-11-18'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Most people read a CSV file with poorly named columns and then rename them afterward. If you're one of those people, stop doing that. Below is a dataframe showing a CSV file read with original column names.
+
+```py
+df1 = pl.read_csv('data.csv')
+df1
+```
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({
+    "Col1": ["Spencer", "Emily", "Hannah", "Aria", "Mona"],
+    "Col2": ["Bossy","Sporty","Artistic","Word smith",'Manipulative']
+})
+df
+```
+<br>
+
+## Assign column names on read
+
+To assign column names as you read the CSV file, use the parameter `new_columns` and list the new columns names.
+
+```py
+df2 = pl.read_csv('data.csv', new_columns=['Name','Character'])
+df2
+```
+
+```{python}
+#| echo: false
+df2 = df.rename(dict(Col1='Name', Col2='Character'))
+df2
+```
+<br>
+
+Enroll in my {{< var polars_course >}} to learn more!
