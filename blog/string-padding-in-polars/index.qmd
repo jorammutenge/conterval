@@ -1,0 +1,37 @@
+---
+title: "Padding at the end of a string in polars"
+subtitle: "pad_end"
+author: '{{< var author >}}'
+date: '2025-11-10'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You have part numbers for your products, and you want to ensure they all have the same length, meaning they contain the same number of characters. Below is a dataframe that shows part numbers of varying lengths.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Part_Num': ['JV24', 'SA1978', 'VX4', 'Z5']})
+df
+```
+<br>
+
+## Make values same length
+
+To add zeros at the end of each value in *Part_Num* that has fewer than six characters, use the Polars expression `pad_end` as follows:
+
+```{python}
+(df
+ .with_columns(pl.col('Part_Num').str.pad_end(6, '0'))
+ )
+```
+<br>
+
+Now the values all have the same length with six characters.
+
+Check out my {{< var polars_course >}} and advance your analysis skills.

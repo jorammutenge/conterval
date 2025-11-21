@@ -6,6 +6,7 @@
       "/blog/get-index-of-unique-values/index.html",
       "/blog/assign-column-names-on-read/index.html",
       "/blog/date-to-timestamp/index.html",
+      "/blog/string-padding-in-polars/index.html",
       "/blog/create-hierarchy-for-text-data-polars/index.html",
       "/blog/move-dates-back-and-forward-polars/index.html",
       "/blog/use-cumulative-product-in-polars/index.html",
