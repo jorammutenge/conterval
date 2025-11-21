@@ -1,0 +1,39 @@
+---
+title: "Counting bytes in text in polars"
+subtitle: "len_bytes"
+author: '{{< var author >}}'
+date: '2025-11-11'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+The number of characters in text is not always the same as the number of bytes, especially when the text contains emojis. Below is a dataframe showing YouTube comments.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'YouTube_Comment': ["🤔 I don't think this works IRL.", '💛💛', '🔥', 'Wow!']})
+df
+```
+<br>
+
+## Count characters and bytes
+
+To count the number of characters and bytes in each comment, use `len_chars` and `len_bytes` respectively. The code below shows how:
+
+```{python}
+(df
+ .with_columns(Chars=pl.col('YouTube_Comment').str.len_chars(),
+               Bytes=pl.col('YouTube_Comment').str.len_bytes())
+ )
+```
+
+::: {.callout-note}
+An emoji with one character can have many bytes.
+:::
+
+Check out my {{< var polars_course >}} to learn more.

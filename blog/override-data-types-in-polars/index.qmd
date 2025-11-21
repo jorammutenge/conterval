@@ -1,0 +1,43 @@
+---
+title: "Changing data types while reading the file in polars"
+subtitle: "schema_overrides"
+author: '{{< var author >}}'
+date: '2025-11-13'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Most people read CSV files and then change the data type of columns. That is an amateur way of doing it. The professional approach is to do it all at once. Below is a dataframe showing a Polars function I covered each day in my [100DaysOfPolars](https://www.conterval.com/blog/#category=100DaysOfPolars).
+
+```py
+import polars as pl
+pl.read_csv('days_data')
+```
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Function': ['strip_chars', 'pl.nth', 'explode'], 'Day_Count': [1, 2, 3]})
+df
+```
+<br>
+
+## Assign data type on read
+
+To assign a different data type to a column while reading a CSV file, use the option `schema_overrides` like this:
+
+```py
+pl.read_csv('days_data.csv', schema_overrides={'Day_Count': pl.String})
+```
+
+```{python}
+#| echo: false
+df.with_columns(pl.col('Day_Count').cast(pl.String))
+```
+<br>
+
+There's more you can learn in my {{< var polars_course >}}.

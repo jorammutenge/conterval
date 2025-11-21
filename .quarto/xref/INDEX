@@ -382,5 +382,14 @@
   },
   "blog/string-padding-in-polars/index.qmd": {
     "index.html": "18ce2aab"
+  },
+  "blog/bytes-in-text-polars/index.qmd": {
+    "index.html": "f0387882"
+  },
+  "blog/override-data-types-in-polars/index.qmd": {
+    "index.html": "098d778c"
+  },
+  "blog/count-number-of-days-polars/index.qmd": {
+    "index.html": "e3a65c92"
   }
 }
