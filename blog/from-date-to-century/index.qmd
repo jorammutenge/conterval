@@ -1,0 +1,36 @@
+---
+title: "From date to century in polars"
+subtitle: "dt.century"
+author: '{{< var author >}}'
+date: '2025-11-23'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You are querying a historical database that contains dates, and you want to create another column that indicates the century for each date. The dataframe below shows a set of example dates.
+
+```{python}
+#| echo: false
+import polars as pl
+from datetime import date
+df = pl.DataFrame({"Date": [date(999, 12, 31),date(1897, 5, 7),date(1945, 1, 1),date(2025, 1, 1)]})
+df
+```
+<br>
+
+## Extract century from date
+
+To extract the century from a date value, use the Polars expression `dt.century` like this:
+
+```{python}
+(df
+ .with_columns(Century=pl.col('Date').dt.century())
+ )
+```
+<br>
+
+Check out my {{< var polars_course >}} to learn more.

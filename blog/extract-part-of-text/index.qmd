@@ -1,0 +1,41 @@
+---
+title: "Extract the first few characters of text in polars"
+subtitle: "str.head"
+author: '{{< var author >}}'
+date: '2025-11-24'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Sometimes you may need to extract the first five or seven characters from a text value. This is useful when working with long strings. The following example uses a dataframe of Canadian provinces.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame(
+    {"Provinces": ['Newfoundland','Saskatchewan','Manitoba']
+    }
+)
+df
+```
+<br>
+
+## Get first 5 letters
+
+To get the first five letters of each province name, use the Polars expression `str.head` like this:
+
+```{python}
+(df
+ .with_columns(First_5_Chars=pl.col('Provinces').str.head(5))
+ )
+```
+
+::: {.callout-tip}
+To get the last five letters, use the Polars expression `str.tail`.
+:::
+
+Enroll in my {{< var polars_course >}} to learn more.

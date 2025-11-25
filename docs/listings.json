@@ -2,6 +2,9 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/extract-part-of-text/index.html",
+      "/blog/from-date-to-century/index.html",
+      "/blog/schema-on-read/index.html",
       "/blog/set-difference-in-polars/index.html",
       "/blog/get-index-of-unique-values/index.html",
       "/blog/assign-column-names-on-read/index.html",

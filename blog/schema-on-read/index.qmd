@@ -1,0 +1,39 @@
+---
+title: "Get schema of parquet file without reading data in polars"
+subtitle: "read_parquet_schema"
+author: '{{< var author >}}'
+date: '2025-11-22'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You have a large Parquet dataset and want to determine its columns and their data types. However, you do not want to read the entire dataset just to retrieve this information. The path to the Parquet file is shown below.
+
+```py
+data = 'file_data.parquet'
+```
+
+## Get schema on read
+
+To get the schema of the file without reading the dataset contents, use the Polars function `read_parquet_schema` as like this:
+
+```py
+pl.read_parquet_schema(data)
+```
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'name': ['100% Bran', '100% Natural Bran'],
+ 'manufacturer': ['Nabisco', 'Quaker Oats'],
+ 'calories': [70, 120],
+ 'rating': [68.4, 33.98]})
+
+df.schema
+```
+
+Check out my {{< var polars_course >}} to learn more!

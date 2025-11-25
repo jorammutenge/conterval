@@ -391,5 +391,14 @@
   },
   "blog/count-number-of-days-polars/index.qmd": {
     "index.html": "e3a65c92"
+  },
+  "blog/extract-part-of-text/index.qmd": {
+    "index.html": "b4b6a70c"
+  },
+  "blog/from-date-to-century/index.qmd": {
+    "index.html": "4998414c"
+  },
+  "blog/schema-on-read/index.qmd": {
+    "index.html": "39197a65"
   }
 }
