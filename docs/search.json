@@ -2468,6 +2468,6 @@
     "href": "blog/json-to-tabular-data/index.html#read-data-at-level-one",
     "title": "From JSON to tabular data with polars",
     "section": "Read data at level one",
-    "text": "Read data at level one\nSome nested data remains in the fitness column. We can unnest it by increasing the level by 1:\n\npl.json_normalize(data, max_level=1)\n\n\nshape: (2, 4)\n\n\n\nid\nname\nfitness.height\nfitness.weight\n\n\ni64\nstr\ni64\ni64\n\n\n\n\n1\n\"Dan Humphrey\"\n180\n85\n\n\n2\n\"Blair Waldolf\"\n155\n58\n\n\n\n\n\n\n\nDiscover even more ways to use Polars in Polars course."
+    "text": "Read data at level one\nSome nested data remains in the fitness column. We can unnest it by increasing the level by 1:\n\npl.json_normalize(data, max_level=1)\n\n\nshape: (2, 4)\n\n\n\nid\nname\nfitness.height\nfitness.weight\n\n\ni64\nstr\ni64\ni64\n\n\n\n\n1\n\"Dan Humphrey\"\n180\n85\n\n\n2\n\"Blair Waldolf\"\n155\n58\n\n\n\n\n\n\n\nDiscover even more ways to use Polars in my Polars course."
   }
 ]

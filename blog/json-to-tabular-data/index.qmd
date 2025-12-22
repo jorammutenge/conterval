@@ -49,4 +49,4 @@ pl.json_normalize(data, max_level=1)
 ```
 <br>
 
-Discover even more ways to use Polars in {{< var polars_course >}}.
+Discover even more ways to use Polars in my {{< var polars_course >}}.
