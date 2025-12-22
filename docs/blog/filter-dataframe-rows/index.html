@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2025-09-26">
+<meta name="dcterms.date" content="2025-12-15">
 
-<title>Replace all occurrence of specific text in polars</title>
+<title>Filter rows in polars dataframe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -182,7 +182,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#replace-space-with-dash" id="toc-replace-space-with-dash" class="nav-link active" data-scroll-target="#replace-space-with-dash">Replace space with dash</a></li>
+  <li><a href="#filter-for-some-row" id="toc-filter-for-some-row" class="nav-link active" data-scroll-target="#filter-for-some-row">Filter for some row</a></li>
   </ul>
 </nav>
     </div>
@@ -191,8 +191,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Replace all occurrence of specific text in polars</h1>
-<p class="subtitle lead">replace_all</p>
+<h1 class="title">Filter rows in polars dataframe</h1>
+<p class="subtitle lead">filter</p>
   <div class="quarto-categories">
     <div class="quarto-category">100DaysOfPolars</div>
   </div>
@@ -212,7 +212,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-09-26</p>
+      <p class="date">2025-12-15</p>
     </div>
   </div>
   
@@ -224,9 +224,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </header>
 
 
-<p>When working with text data, replacing characters with other characters is common. However, most replacements are applied only once. For example, if you have “barb” and replace “b” with “z”, you’ll get “zarb” instead of “zarz”. How can you ensure that you end up with “zarz” in polars?</p>
-<p>Below is a dataframe showing phone numbers.</p>
-<div id="0f3235d0" class="cell" data-execution_count="1">
+<p>If you are analyzing data with Polars, it is almost impossible to complete an analysis without filtering. Data analysis usually involves selecting some rows from a dataframe while excluding others. Below is a dataframe of students and their grades.</p>
+<div id="131031bb" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -235,30 +234,42 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (6, 2)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Student</th>
+<th data-quarto-table-cell-role="th">Grade</th>
 </tr>
 <tr class="even">
 <td>str</td>
-<td>str</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222 333 4444"</td>
+<td>"Spencer"</td>
+<td>93</td>
 </tr>
 <tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333 444 5555"</td>
+<td>"Emily"</td>
+<td>88</td>
 </tr>
 <tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666 777 8888"</td>
+<td>"Hannah"</td>
+<td>73</td>
+</tr>
+<tr class="even">
+<td>"Aria"</td>
+<td>69</td>
+</tr>
+<tr class="odd">
+<td>"Mona"</td>
+<td>55</td>
+</tr>
+<tr class="even">
+<td>"Paige"</td>
+<td>89</td>
 </tr>
 </tbody>
 </table>
@@ -266,12 +277,12 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br></p>
-<section id="replace-space-with-dash" class="level2">
-<h2 class="anchored" data-anchor-id="replace-space-with-dash">Replace space with dash</h2>
-<p>To replace all spaces in each phone number with dashes, use the polars expression <code>replace_all</code> as follows:</p>
-<div id="6807bf9a" class="cell" data-execution_count="2">
+<section id="filter-for-some-row" class="level2">
+<h2 class="anchored" data-anchor-id="filter-for-some-row">Filter for some row</h2>
+<p>To get the row showing the student with the highest grade, you can use the <code>filter</code> method together with the <code>max</code> function, as shown below:</p>
+<div id="bd21dddb" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Phone No'</span>).<span class="bu">str</span>.replace_all(<span class="st">' '</span>,<span class="st">'-'</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Grade'</span>) <span class="op">==</span> pl.<span class="bu">max</span>(<span class="st">'Grade'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
@@ -281,38 +292,134 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (1, 2)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Student</th>
+<th data-quarto-table-cell-role="th">Grade</th>
 </tr>
 <tr class="even">
 <td>str</td>
-<td>str</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222-333-4444"</td>
-</tr>
-<tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333-444-5555"</td>
-</tr>
-<tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666-777-8888"</td>
+<td>"Spencer"</td>
+<td>93</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><br> Now you have dashes in the phone numbers instead of spaces!</p>
-<p>Join 150+ people advancing their skills in the <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
+<p><br></p>
+<p>You can also use <code>filter</code> to get the opposite of a specified value by using the “not equal to” operator (<code>!=</code>):</p>
+<div id="519a5cf3" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Grade'</span>) <span class="op">!=</span> pl.<span class="bu">max</span>(<span class="st">'Grade'</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Student</th>
+<th data-quarto-table-cell-role="th">Grade</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>i64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Emily"</td>
+<td>88</td>
+</tr>
+<tr class="even">
+<td>"Hannah"</td>
+<td>73</td>
+</tr>
+<tr class="odd">
+<td>"Aria"</td>
+<td>69</td>
+</tr>
+<tr class="even">
+<td>"Mona"</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td>"Paige"</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>You can achieve the same result as in the previous example by using the negation symbol <code>~</code>:</p>
+<div id="0a5ffcbe" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(<span class="op">~</span>(pl.col(<span class="st">'Grade'</span>) <span class="op">==</span> pl.<span class="bu">max</span>(<span class="st">'Grade'</span>)))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Student</th>
+<th data-quarto-table-cell-role="th">Grade</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>i64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Emily"</td>
+<td>88</td>
+</tr>
+<tr class="even">
+<td>"Hannah"</td>
+<td>73</td>
+</tr>
+<tr class="odd">
+<td>"Aria"</td>
+<td>69</td>
+</tr>
+<tr class="even">
+<td>"Mona"</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<td>"Paige"</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Check out my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to learn more clever ways to analyze your data.</p>
 
 
 </section>

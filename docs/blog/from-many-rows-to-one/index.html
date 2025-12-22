@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2025-09-26">
+<meta name="dcterms.date" content="2025-12-20">
 
-<title>Replace all occurrence of specific text in polars</title>
+<title>Collapse rows into a single row in polars</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -182,7 +182,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#replace-space-with-dash" id="toc-replace-space-with-dash" class="nav-link active" data-scroll-target="#replace-space-with-dash">Replace space with dash</a></li>
+  <li><a href="#collapse-rows-into-one" id="toc-collapse-rows-into-one" class="nav-link active" data-scroll-target="#collapse-rows-into-one">Collapse rows into one</a></li>
   </ul>
 </nav>
     </div>
@@ -191,8 +191,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Replace all occurrence of specific text in polars</h1>
-<p class="subtitle lead">replace_all</p>
+<h1 class="title">Collapse rows into a single row in polars</h1>
+<p class="subtitle lead">str.join</p>
   <div class="quarto-categories">
     <div class="quarto-category">100DaysOfPolars</div>
   </div>
@@ -212,7 +212,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-09-26</p>
+      <p class="date">2025-12-20</p>
     </div>
   </div>
   
@@ -224,9 +224,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </header>
 
 
-<p>When working with text data, replacing characters with other characters is common. However, most replacements are applied only once. For example, if you have “barb” and replace “b” with “z”, you’ll get “zarb” instead of “zarz”. How can you ensure that you end up with “zarz” in polars?</p>
-<p>Below is a dataframe showing phone numbers.</p>
-<div id="0f3235d0" class="cell" data-execution_count="1">
+<p>Polars allows you to collapse multiple rows into a single row, combining the values from all the rows into one. Below is a dataframe showing parts of a phone number.</p>
+<div id="f323d9f4" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -239,26 +238,26 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Represent</th>
+<th data-quarto-table-cell-role="th">Value</th>
 </tr>
 <tr class="even">
 <td>str</td>
-<td>str</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222 333 4444"</td>
+<td>"Area code"</td>
+<td>563</td>
 </tr>
 <tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333 444 5555"</td>
+<td>"Exchange code"</td>
+<td>384</td>
 </tr>
 <tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666 777 8888"</td>
+<td>"Line number"</td>
+<td>9905</td>
 </tr>
 </tbody>
 </table>
@@ -266,12 +265,12 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br></p>
-<section id="replace-space-with-dash" class="level2">
-<h2 class="anchored" data-anchor-id="replace-space-with-dash">Replace space with dash</h2>
-<p>To replace all spaces in each phone number with dashes, use the polars expression <code>replace_all</code> as follows:</p>
-<div id="6807bf9a" class="cell" data-execution_count="2">
+<section id="collapse-rows-into-one" class="level2">
+<h2 class="anchored" data-anchor-id="collapse-rows-into-one">Collapse rows into one</h2>
+<p>We can construct the full phone number from the three rows using the Polars expression <code>str.join</code> like this:</p>
+<div id="179ee37e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Phone No'</span>).<span class="bu">str</span>.replace_all(<span class="st">' '</span>,<span class="st">'-'</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select((pl.col(<span class="st">'Value'</span>).<span class="bu">str</span>.join(<span class="st">'-'</span>)).alias(<span class="st">'Phone_No'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
@@ -281,38 +280,71 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (1, 1)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Phone_No</th>
 </tr>
 <tr class="even">
-<td>str</td>
 <td>str</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222-333-4444"</td>
-</tr>
-<tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333-444-5555"</td>
-</tr>
-<tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666-777-8888"</td>
+<td>"563-384-9905"</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><br> Now you have dashes in the phone numbers instead of spaces!</p>
-<p>Join 150+ people advancing their skills in the <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is different from the <code>implode</code> function, which returns a list of values instead of a string.</p>
+</div>
+</div>
+<div id="a4a2c8df" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(pl.col(<span class="st">'Value'</span>).implode().alias(<span class="st">'Phone_No'</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (1, 1)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Phone_No</th>
+</tr>
+<tr class="even">
+<td>list[i64]</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>[563, 384, 9905]</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Check out my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to learn more.</p>
 
 
 </section>

@@ -1,0 +1,16 @@
+{
+  "hash": "e61965abb80aed521fc8865e6ce057ac",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Use title case on text in polars\"\nsubtitle: \"to_titlecase\"\nauthor: '{{< var author >}}'\ndate: '2025-12-18'\ndate-format: iso\ntoc: true\ntoc-title: 'Sections'\ntoc-location: right\ntoc-depth: 3\ncategories: [100DaysOfPolars]\n---\n\nYou have a table with authors in one column and the books they wrote in another. However, the book titles are all in lowercase, which is not the standard formatting for book titles.\n\n::: {#59140f47 .cell execution_count=1}\n\n::: {.cell-output .cell-output-display execution_count=1}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (4, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Author</th><th>Book</th></tr><tr><td>str</td><td>str</td></tr></thead><tbody><tr><td>&quot;Harper Lee&quot;</td><td>&quot;to kill a mocking bird&quot;</td></tr><tr><td>&quot;F. Scott Fitzgerald&quot;</td><td>&quot;this side of paradise&quot;</td></tr><tr><td>&quot;Haruki Murakami&quot;</td><td>&quot;men without women&quot;</td></tr><tr><td>&quot;Binwell Sinyangwe&quot;</td><td>&quot;quills of desire&quot;</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n<br>\n\n## Use title case\n\nYou can format the book titles properly in the dataframe using the Polars expression `to_titlecase` like this:\n\n::: {#ab321182 .cell execution_count=2}\n``` {.python .cell-code}\n(df\n .with_columns(pl.col('Book').str.to_titlecase())\n )\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (4, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Author</th><th>Book</th></tr><tr><td>str</td><td>str</td></tr></thead><tbody><tr><td>&quot;Harper Lee&quot;</td><td>&quot;To Kill A Mocking Bird&quot;</td></tr><tr><td>&quot;F. Scott Fitzgerald&quot;</td><td>&quot;This Side Of Paradise&quot;</td></tr><tr><td>&quot;Haruki Murakami&quot;</td><td>&quot;Men Without Women&quot;</td></tr><tr><td>&quot;Binwell Sinyangwe&quot;</td><td>&quot;Quills Of Desire&quot;</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\n<br>\n\nLearn more ways to use Polars in my {{< var polars_course >}}.\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js\" integrity=\"sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js\" integrity=\"sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}

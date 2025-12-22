@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2025-09-26">
+<meta name="dcterms.date" content="2025-12-16">
 
-<title>Replace all occurrence of specific text in polars</title>
+<title>Replace time zone in polars dataframe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -182,7 +182,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#replace-space-with-dash" id="toc-replace-space-with-dash" class="nav-link active" data-scroll-target="#replace-space-with-dash">Replace space with dash</a></li>
+  <li><a href="#replace-the-time-zone" id="toc-replace-the-time-zone" class="nav-link active" data-scroll-target="#replace-the-time-zone">Replace the time zone</a></li>
   </ul>
 </nav>
     </div>
@@ -191,8 +191,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Replace all occurrence of specific text in polars</h1>
-<p class="subtitle lead">replace_all</p>
+<h1 class="title">Replace time zone in polars dataframe</h1>
+<p class="subtitle lead">dt.replace_time_zone</p>
   <div class="quarto-categories">
     <div class="quarto-category">100DaysOfPolars</div>
   </div>
@@ -212,7 +212,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-09-26</p>
+      <p class="date">2025-12-16</p>
     </div>
   </div>
   
@@ -224,9 +224,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </header>
 
 
-<p>When working with text data, replacing characters with other characters is common. However, most replacements are applied only once. For example, if you have “barb” and replace “b” with “z”, you’ll get “zarb” instead of “zarz”. How can you ensure that you end up with “zarz” in polars?</p>
-<p>Below is a dataframe showing phone numbers.</p>
-<div id="0f3235d0" class="cell" data-execution_count="1">
+<p>If you are working remotely and your team spans multiple time zones, it is important to ensure that the data you are analyzing matches the time zone in which it originated. For example, if you are in Chicago and a client in New York sends you a dataset to analyze, loading the dataset may display timestamps in your local time zone.</p>
+<div id="06439dfe" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -235,30 +234,28 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (4, 1)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Chicago_Time</th>
 </tr>
 <tr class="even">
-<td>str</td>
-<td>str</td>
+<td>datetime[ms, America/Chicago]</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222 333 4444"</td>
+<td>2023-12-31 18:00:00 CST</td>
 </tr>
 <tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333 444 5555"</td>
+<td>2024-01-01 19:00:00 CST</td>
 </tr>
 <tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666 777 8888"</td>
+<td>2024-01-02 20:00:00 CST</td>
+</tr>
+<tr class="even">
+<td>2024-01-03 21:00:00 CST</td>
 </tr>
 </tbody>
 </table>
@@ -266,13 +263,14 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br></p>
-<section id="replace-space-with-dash" class="level2">
-<h2 class="anchored" data-anchor-id="replace-space-with-dash">Replace space with dash</h2>
-<p>To replace all spaces in each phone number with dashes, use the polars expression <code>replace_all</code> as follows:</p>
-<div id="6807bf9a" class="cell" data-execution_count="2">
+<section id="replace-the-time-zone" class="level2">
+<h2 class="anchored" data-anchor-id="replace-the-time-zone">Replace the time zone</h2>
+<p>To replace your local time zone with the time zone of the location where the data originated, you can use the date component <code>replace_time_zone</code>, as shown below:</p>
+<div id="ceda24c9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Phone No'</span>).<span class="bu">str</span>.replace_all(<span class="st">' '</span>,<span class="st">'-'</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Chicago_Time'</span>).dt.replace_time_zone(<span class="st">'America/New_York'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'New_York_Time'</span>))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -281,38 +279,43 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (4, 2)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Chicago_Time</th>
+<th data-quarto-table-cell-role="th">New_York_Time</th>
 </tr>
 <tr class="even">
-<td>str</td>
-<td>str</td>
+<td>datetime[ms, America/Chicago]</td>
+<td>datetime[ms, America/New_York]</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222-333-4444"</td>
+<td>2023-12-31 18:00:00 CST</td>
+<td>2023-12-31 18:00:00 EST</td>
 </tr>
 <tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333-444-5555"</td>
+<td>2024-01-01 19:00:00 CST</td>
+<td>2024-01-01 19:00:00 EST</td>
 </tr>
 <tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666-777-8888"</td>
+<td>2024-01-02 20:00:00 CST</td>
+<td>2024-01-02 20:00:00 EST</td>
+</tr>
+<tr class="even">
+<td>2024-01-03 21:00:00 CST</td>
+<td>2024-01-03 21:00:00 EST</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><br> Now you have dashes in the phone numbers instead of spaces!</p>
-<p>Join 150+ people advancing their skills in the <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
+<p><br></p>
+<p>The time zone is now changed from Chicago time to New York time.</p>
+<p>Learn more ways to analyze data in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
 
 
 </section>

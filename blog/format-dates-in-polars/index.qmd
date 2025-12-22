@@ -1,0 +1,38 @@
+---
+title: "Formatting dates in polars"
+subtitle: "dt.strftime"
+author: '{{< var author >}}'
+date: '2025-12-23'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+The representation of dates in data varies from region to region. In the USA, for instance, dates begin with the month rather than the day. Polars allows you to change how your dates are displayed depending on your audience. Below is a dataframe showing date values.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Num_Date': ['9/17/2025', '12/23/2025']}).with_columns(pl.col('Num_Date').str.strptime(pl.Date, '%m/%d/%Y'))
+df
+```
+<br>
+
+## Format the date
+
+You can format dates in either short or long form using the datetime component `dt.strftime` like this:
+
+```{python}
+(df
+ .with_columns(Short_Text_Date=pl.col('Num_Date').dt.strftime('%d %b, %Y'),
+               Long_Text_Date=pl.col('Num_Date').dt.strftime('%d %B, %Y'),)
+ )
+```
+<br>
+
+All good things must come to an end. This marks the end of [100DaysOfPolars](https://www.conterval.com/blog/#category=100DaysOfPolars).
+
+I have a {{< var polars_course >}} you can take to learn more about this powerful data analysis library.

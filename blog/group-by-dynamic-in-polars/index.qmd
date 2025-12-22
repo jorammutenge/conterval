@@ -1,0 +1,54 @@
+---
+title: "Group by on time series in polars"
+subtitle: "group_by_dynamic"
+author: '{{< var author >}}'
+date: '2025-12-17'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Group by operations are powerful in Polars, but when working with time series data, you can make them even more effective by using `group_by_dynamic` instead of the standard `group_by`. Below is a dataframe showing power usage recorded every half hour over five days.
+
+```{python}
+#| echo: false
+import polars as pl
+from datetime import date, timedelta
+import random
+
+random.seed(42)
+
+data = pl.datetime_range(
+    date(2025, 2, 1),
+    date(2025, 2, 5),
+    timedelta(days=0, hours=.5),
+    time_unit="ms",
+    eager=True,
+).alias("Time").to_frame()
+
+df = data.with_columns(pl.Series('Power_Usage', [random.randint(1, 10) for _ in range(data.height)]))
+df
+```
+<br>
+
+## Aggregate on time series
+
+Unlike the standard `group_by`, which limits you to predefined datetime components such as month or year, `group_by_dynamic` allows you to aggregate data over custom durations. In this example, the data is aggregated every five and a half hours.
+
+```{python}
+(df
+ .sort('Time') # <1>
+ .group_by_dynamic('Time', every='5h30m')
+ .agg(pl.sum('Power_Usage'))
+ )
+```
+
+1. The data must be sorted before using `group_by_dynamic`, otherwise the code throws an error.
+
+<br>
+
+Enroll to learn more in my {{< var polars_course >}}.
+

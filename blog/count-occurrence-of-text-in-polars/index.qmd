@@ -1,0 +1,36 @@
+---
+title: "Count the occurrence of some text in a string in polars"
+subtitle: "count_matches"
+author: '{{< var author >}}'
+date: '2025-12-21'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You have a table of passwords and, for some reason, you want to count the number of digits in each password. This is possible using Polars. Below is a dataframe of passwords.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Password': ['marm1te', 'jam543', 'p3anutButt3r']})
+df
+```
+<br>
+
+## Count number of digits in each password
+
+You can count the number of digits in each password using the function `count_matches` like this:
+
+```{python}
+(df
+ .with_columns(pl.col('Password').str.count_matches(r'\d')
+               .alias('Num_of_Digits'))
+ )
+```
+<br>
+
+Discover even more ways to use Polars in my {{< var polars_course >}}.

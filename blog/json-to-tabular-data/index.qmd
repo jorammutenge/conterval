@@ -1,0 +1,52 @@
+---
+title: "From JSON to tabular data with polars"
+subtitle: "pl.json_normalize"
+author: '{{< var author >}}'
+date: '2025-12-22'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+JSON data obtained through an API call can be nested at multiple levels, making it difficult to analyze. Fortunately, Polars can read JSON data at multiple levels, ensuring that the data is fully un-nested. Below is some JSON data to load into a dataframe.
+
+```{python}
+data = [
+    {
+        "id": 1,
+        "name": "Dan Humphrey",
+        "fitness": {"height": 180, "weight": 85},
+    },
+    {
+        "id": 2,
+        "name": "Blair Waldolf",
+        "fitness": {"height": 155, "weight": 58},
+    }
+]
+```
+
+## Read data at level zero
+
+We can start by unnesting the first level. This will return a three-column dataframe:
+
+```{python}
+import polars as pl
+
+pl.json_normalize(data, max_level=0)
+
+```
+<br>
+
+## Read data at level one
+
+Some nested data remains in the *fitness* column. We can unnest it by increasing the level by 1:
+
+```{python}
+pl.json_normalize(data, max_level=1)
+```
+<br>
+
+Discover even more ways to use Polars in {{< var polars_course >}}.

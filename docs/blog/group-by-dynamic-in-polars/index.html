@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2025-09-26">
+<meta name="dcterms.date" content="2025-12-17">
 
-<title>Replace all occurrence of specific text in polars</title>
+<title>Group by on time series in polars</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -182,7 +182,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#replace-space-with-dash" id="toc-replace-space-with-dash" class="nav-link active" data-scroll-target="#replace-space-with-dash">Replace space with dash</a></li>
+  <li><a href="#aggregate-on-time-series" id="toc-aggregate-on-time-series" class="nav-link active" data-scroll-target="#aggregate-on-time-series">Aggregate on time series</a></li>
   </ul>
 </nav>
     </div>
@@ -191,8 +191,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Replace all occurrence of specific text in polars</h1>
-<p class="subtitle lead">replace_all</p>
+<h1 class="title">Group by on time series in polars</h1>
+<p class="subtitle lead">group_by_dynamic</p>
   <div class="quarto-categories">
     <div class="quarto-category">100DaysOfPolars</div>
   </div>
@@ -212,7 +212,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-09-26</p>
+      <p class="date">2025-12-17</p>
     </div>
   </div>
   
@@ -224,9 +224,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </header>
 
 
-<p>When working with text data, replacing characters with other characters is common. However, most replacements are applied only once. For example, if you have “barb” and replace “b” with “z”, you’ll get “zarb” instead of “zarz”. How can you ensure that you end up with “zarz” in polars?</p>
-<p>Below is a dataframe showing phone numbers.</p>
-<div id="0f3235d0" class="cell" data-execution_count="1">
+<p>Group by operations are powerful in Polars, but when working with time series data, you can make them even more effective by using <code>group_by_dynamic</code> instead of the standard <code>group_by</code>. Below is a dataframe showing power usage recorded every half hour over five days.</p>
+<div id="442130a3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -235,30 +234,62 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (193, 2)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Time</th>
+<th data-quarto-table-cell-role="th">Power_Usage</th>
 </tr>
 <tr class="even">
-<td>str</td>
-<td>str</td>
+<td>datetime[ms]</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222 333 4444"</td>
+<td>2025-02-01 00:00:00</td>
+<td>2</td>
 </tr>
 <tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333 444 5555"</td>
+<td>2025-02-01 00:30:00</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666 777 8888"</td>
+<td>2025-02-01 01:00:00</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td>2025-02-01 01:30:00</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>2025-02-01 02:00:00</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2025-02-04 22:00:00</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>2025-02-04 22:30:00</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>2025-02-04 23:00:00</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>2025-02-04 23:30:00</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>2025-02-05 00:00:00</td>
+<td>6</td>
 </tr>
 </tbody>
 </table>
@@ -266,13 +297,23 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br></p>
-<section id="replace-space-with-dash" class="level2">
-<h2 class="anchored" data-anchor-id="replace-space-with-dash">Replace space with dash</h2>
-<p>To replace all spaces in each phone number with dashes, use the polars expression <code>replace_all</code> as follows:</p>
-<div id="6807bf9a" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Phone No'</span>).<span class="bu">str</span>.replace_all(<span class="st">' '</span>,<span class="st">'-'</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="aggregate-on-time-series" class="level2">
+<h2 class="anchored" data-anchor-id="aggregate-on-time-series">Aggregate on time series</h2>
+<p>Unlike the standard <code>group_by</code>, which limits you to predefined datetime components such as month or year, <code>group_by_dynamic</code> allows you to aggregate data over custom durations. In this example, the data is aggregated every five and a half hours.</p>
+<div id="a282322d" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Time'</span>)</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a> .group_by_dynamic(<span class="st">'Time'</span>, every<span class="op">=</span><span class="st">'5h30m'</span>)</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a> .agg(pl.<span class="bu">sum</span>(<span class="st">'Power_Usage'</span>))</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a> )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="1">The data must be sorted before using <code>group_by_dynamic</code>, otherwise the code throws an error.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -281,38 +322,70 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (18, 2)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">Time</th>
+<th data-quarto-table-cell-role="th">Power_Usage</th>
 </tr>
 <tr class="even">
-<td>str</td>
-<td>str</td>
+<td>datetime[ms]</td>
+<td>i64</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222-333-4444"</td>
+<td>2025-01-31 22:00:00</td>
+<td>21</td>
 </tr>
 <tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333-444-5555"</td>
+<td>2025-02-01 03:30:00</td>
+<td>59</td>
 </tr>
 <tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666-777-8888"</td>
+<td>2025-02-01 09:00:00</td>
+<td>61</td>
+</tr>
+<tr class="even">
+<td>2025-02-01 14:30:00</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>2025-02-01 20:00:00</td>
+<td>64</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>2025-02-03 21:30:00</td>
+<td>65</td>
+</tr>
+<tr class="even">
+<td>2025-02-04 03:00:00</td>
+<td>60</td>
+</tr>
+<tr class="odd">
+<td>2025-02-04 08:30:00</td>
+<td>48</td>
+</tr>
+<tr class="even">
+<td>2025-02-04 14:00:00</td>
+<td>73</td>
+</tr>
+<tr class="odd">
+<td>2025-02-04 19:30:00</td>
+<td>56</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><br> Now you have dashes in the phone numbers instead of spaces!</p>
-<p>Join 150+ people advancing their skills in the <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
+<p><br></p>
+<p>Enroll to learn more in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
 
 
 </section>

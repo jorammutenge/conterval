@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2025-09-26">
+<meta name="dcterms.date" content="2025-12-22">
 
-<title>Replace all occurrence of specific text in polars</title>
+<title>From JSON to tabular data with polars</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -182,7 +182,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <h2 id="toc-title">Sections</h2>
    
   <ul>
-  <li><a href="#replace-space-with-dash" id="toc-replace-space-with-dash" class="nav-link active" data-scroll-target="#replace-space-with-dash">Replace space with dash</a></li>
+  <li><a href="#read-data-at-level-zero" id="toc-read-data-at-level-zero" class="nav-link active" data-scroll-target="#read-data-at-level-zero">Read data at level zero</a></li>
+  <li><a href="#read-data-at-level-one" id="toc-read-data-at-level-one" class="nav-link" data-scroll-target="#read-data-at-level-one">Read data at level one</a></li>
   </ul>
 </nav>
     </div>
@@ -191,8 +192,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Replace all occurrence of specific text in polars</h1>
-<p class="subtitle lead">replace_all</p>
+<h1 class="title">From JSON to tabular data with polars</h1>
+<p class="subtitle lead">pl.json_normalize</p>
   <div class="quarto-categories">
     <div class="quarto-category">100DaysOfPolars</div>
   </div>
@@ -212,7 +213,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-09-26</p>
+      <p class="date">2025-12-22</p>
     </div>
   </div>
   
@@ -224,55 +225,28 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </header>
 
 
-<p>When working with text data, replacing characters with other characters is common. However, most replacements are applied only once. For example, if you have “barb” and replace “b” with “z”, you’ll get “zarb” instead of “zarz”. How can you ensure that you end up with “zarz” in polars?</p>
-<p>Below is a dataframe showing phone numbers.</p>
-<div id="0f3235d0" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div><style>
-.dataframe > thead > tr,
-.dataframe > tbody > tr {
-  text-align: right;
-  white-space: pre-wrap;
-}
-</style>
-<small>shape: (3, 2)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
-</tr>
-<tr class="even">
-<td>str</td>
-<td>str</td>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222 333 4444"</td>
-</tr>
-<tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333 444 5555"</td>
-</tr>
-<tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666 777 8888"</td>
-</tr>
-</tbody>
-</table>
+<p>JSON data obtained through an API call can be nested at multiple levels, making it difficult to analyze. Fortunately, Polars can read JSON data at multiple levels, ensuring that the data is fully un-nested. Below is some JSON data to load into a dataframe.</p>
+<div id="fd9f67fd" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"id"</span>: <span class="dv">1</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span>: <span class="st">"Dan Humphrey"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"fitness"</span>: {<span class="st">"height"</span>: <span class="dv">180</span>, <span class="st">"weight"</span>: <span class="dv">85</span>},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"id"</span>: <span class="dv">2</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span>: <span class="st">"Blair Waldolf"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"fitness"</span>: {<span class="st">"height"</span>: <span class="dv">155</span>, <span class="st">"weight"</span>: <span class="dv">58</span>},</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-</div>
-<p><br></p>
-<section id="replace-space-with-dash" class="level2">
-<h2 class="anchored" data-anchor-id="replace-space-with-dash">Replace space with dash</h2>
-<p>To replace all spaces in each phone number with dashes, use the polars expression <code>replace_all</code> as follows:</p>
-<div id="6807bf9a" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Phone No'</span>).<span class="bu">str</span>.replace_all(<span class="st">' '</span>,<span class="st">'-'</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="read-data-at-level-zero" class="level2">
+<h2 class="anchored" data-anchor-id="read-data-at-level-zero">Read data at level zero</h2>
+<p>We can start by unnesting the first level. This will return a three-column dataframe:</p>
+<div id="48f9490c" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pl.json_normalize(data, max_level<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -281,38 +255,87 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (3, 2)</small>
+<small>shape: (2, 3)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Phone No</th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">fitness</th>
 </tr>
 <tr class="even">
+<td>i64</td>
 <td>str</td>
 <td>str</td>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Serena van der Wooodsen"</td>
-<td>"222-333-4444"</td>
+<td>1</td>
+<td>"Dan Humphrey"</td>
+<td>"{"height": 180, "weight": 85}"</td>
 </tr>
 <tr class="even">
-<td>"Blair Waldorf"</td>
-<td>"333-444-5555"</td>
-</tr>
-<tr class="odd">
-<td>"Dan Humphrey"</td>
-<td>"666-777-8888"</td>
+<td>2</td>
+<td>"Blair Waldolf"</td>
+<td>"{"height": 155, "weight": 58}"</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><br> Now you have dashes in the phone numbers instead of spaces!</p>
-<p>Join 150+ people advancing their skills in the <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
+<p><br></p>
+</section>
+<section id="read-data-at-level-one" class="level2">
+<h2 class="anchored" data-anchor-id="read-data-at-level-one">Read data at level one</h2>
+<p>Some nested data remains in the <em>fitness</em> column. We can unnest it by increasing the level by 1:</p>
+<div id="93371bc5" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pl.json_normalize(data, max_level<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 4)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">name</th>
+<th data-quarto-table-cell-role="th">fitness.height</th>
+<th data-quarto-table-cell-role="th">fitness.weight</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+<td>str</td>
+<td>i64</td>
+<td>i64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>"Dan Humphrey"</td>
+<td>180</td>
+<td>85</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>"Blair Waldolf"</td>
+<td>155</td>
+<td>58</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Discover even more ways to use Polars in <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
 
 
 </section>

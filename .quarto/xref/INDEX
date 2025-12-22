@@ -400,5 +400,32 @@
   },
   "blog/schema-on-read/index.qmd": {
     "index.html": "39197a65"
+  },
+  "blog/format-dates-in-polars/index.qmd": {
+    "index.html": "1823396a"
+  },
+  "blog/filter-dataframe-rows/index.qmd": {
+    "index.html": "b7993af4"
+  },
+  "blog/from-many-rows-to-one/index.qmd": {
+    "index.html": "3a3eaac1"
+  },
+  "blog/group-by-dynamic-in-polars/index.qmd": {
+    "index.html": "c1893716"
+  },
+  "blog/replace-time-zone-polars/index.qmd": {
+    "index.html": "55691b3e"
+  },
+  "blog/rounding-down-time-values-polars/index.qmd": {
+    "index.html": "6366c51c"
+  },
+  "blog/use-title-case-on-text-polars/index.qmd": {
+    "index.html": "a626269e"
+  },
+  "blog/count-occurrence-of-text-in-polars/index.qmd": {
+    "index.html": "67883c93"
+  },
+  "blog/json-to-tabular-data/index.qmd": {
+    "index.html": "c8ab869d"
   }
 }

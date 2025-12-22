@@ -2,6 +2,15 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/format-dates-in-polars/index.html",
+      "/blog/json-to-tabular-data/index.html",
+      "/blog/count-occurrence-of-text-in-polars/index.html",
+      "/blog/from-many-rows-to-one/index.html",
+      "/blog/rounding-down-time-values-polars/index.html",
+      "/blog/use-title-case-on-text-polars/index.html",
+      "/blog/group-by-dynamic-in-polars/index.html",
+      "/blog/replace-time-zone-polars/index.html",
+      "/blog/filter-dataframe-rows/index.html",
       "/blog/extract-part-of-text/index.html",
       "/blog/from-date-to-century/index.html",
       "/blog/schema-on-read/index.html",

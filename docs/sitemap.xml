@@ -500,4 +500,40 @@
     <loc>https://www.conterval.com/blog/schema-on-read/index.html</loc>
     <lastmod>2025-11-25T00:11:58.978Z</lastmod>
   </url>
+  <url>
+    <loc>https://www.conterval.com/blog/format-dates-in-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.086Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/filter-dataframe-rows/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.076Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/from-many-rows-to-one/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.091Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/group-by-dynamic-in-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.096Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/replace-time-zone-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.116Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/rounding-down-time-values-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.126Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/use-title-case-on-text-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.134Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-occurrence-of-text-in-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.143Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/json-to-tabular-data/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.105Z</lastmod>
+  </url>
 </urlset>

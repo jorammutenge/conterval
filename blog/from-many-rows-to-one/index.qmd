@@ -1,0 +1,46 @@
+---
+title: "Collapse rows into a single row in polars"
+subtitle: "str.join"
+author: '{{< var author >}}'
+date: '2025-12-20'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Polars allows you to collapse multiple rows into a single row, combining the values from all the rows into one. Below is a dataframe showing parts of a phone number.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Represent': ['Area code', 'Exchange code', 'Line number'],
+ 'Value': [563, 384, 9905]})
+df
+```
+<br>
+
+## Collapse rows into one
+
+We can construct the full phone number from the three rows using the Polars expression `str.join` like this:
+
+```{python}
+(df
+ .select((pl.col('Value').str.join('-')).alias('Phone_No'))
+ )
+```
+
+::: {.callout-note}
+This is different from the `implode` function, which returns a list of values instead of a string.
+:::
+
+```{python}
+(df
+ .select(pl.col('Value').implode().alias('Phone_No'))
+ )
+```
+<br>
+
+Check out my {{< var polars_course >}} to learn more.

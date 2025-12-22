@@ -1,0 +1,46 @@
+---
+title: "Replace time zone in polars dataframe"
+subtitle: "dt.replace_time_zone"
+author: '{{< var author >}}'
+date: '2025-12-16'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+If you are working remotely and your team spans multiple time zones, it is important to ensure that the data you are analyzing matches the time zone in which it originated. For example, if you are in Chicago and a client in New York sends you a dataset to analyze, loading the dataset may display timestamps in your local time zone.
+
+```{python}
+#| echo: false
+from datetime import date, timedelta
+import polars as pl
+
+df = pl.datetime_range(
+    date(2024, 1, 1),
+    date(2024, 1, 5),
+    timedelta(days=1, hours=1),
+    time_unit="ms",
+    eager=True,
+).alias("Chicago_Time").dt.convert_time_zone(time_zone="America/Chicago").to_frame()
+df
+```
+<br>
+
+## Replace the time zone
+
+To replace your local time zone with the time zone of the location where the data originated, you can use the date component `replace_time_zone`, as shown below:
+
+```{python}
+(df
+ .with_columns(pl.col('Chicago_Time').dt.replace_time_zone('America/New_York')
+               .alias('New_York_Time'))
+ )
+```
+<br>
+
+The time zone is now changed from Chicago time to New York time.
+
+Learn more ways to analyze data in my {{< var polars_course >}}.

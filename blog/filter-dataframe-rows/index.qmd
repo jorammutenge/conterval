@@ -1,0 +1,57 @@
+---
+title: "Filter rows in polars dataframe"
+subtitle: "filter"
+author: '{{< var author >}}'
+date: '2025-12-15'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+If you are analyzing data with Polars, it is almost impossible to complete an analysis without filtering. Data analysis usually involves selecting some rows from a dataframe while excluding others. Below is a dataframe of students and their grades.
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame({
+    "Student": ["Spencer", "Emily", "Hannah", "Aria", "Mona", "Paige"],
+    "Grade": [93, 88, 73, 69, 55, 89]
+})
+df
+```
+<br>
+
+## Filter for some row
+
+To get the row showing the student with the highest grade, you can use the `filter` method together with the `max` function, as shown below:
+
+```{python}
+(df
+ .filter(pl.col('Grade') == pl.max('Grade'))
+ )
+```
+<br>
+
+You can also use `filter` to get the opposite of a specified value by using the “not equal to” operator (`!=`):
+
+```{python}
+(df
+ .filter(pl.col('Grade') != pl.max('Grade'))
+ )
+```
+<br>
+
+You can achieve the same result as in the previous example by using the negation symbol `~`:
+
+```{python}
+(df
+ .filter(~(pl.col('Grade') == pl.max('Grade')))
+ )
+```
+<br>
+
+Check out my {{< var polars_course >}} to learn more clever ways to analyze your data.

@@ -1,0 +1,37 @@
+---
+title: "Use title case on text in polars"
+subtitle: "to_titlecase"
+author: '{{< var author >}}'
+date: '2025-12-18'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+You have a table with authors in one column and the books they wrote in another. However, the book titles are all in lowercase, which is not the standard formatting for book titles.
+
+```{python}
+#| echo: false
+import polars as pl
+df = pl.DataFrame({'Author': ['Harper Lee','F. Scott Fitzgerald','Haruki Murakami','Binwell Sinyangwe'],
+ 'Book': ['to kill a mocking bird','this side of paradise','men without women','quills of desire']})
+df
+```
+<br>
+
+## Use title case
+
+You can format the book titles properly in the dataframe using the Polars expression `to_titlecase` like this:
+
+```{python}
+(df
+ .with_columns(pl.col('Book').str.to_titlecase())
+ )
+```
+<br>
+
+Learn more ways to use Polars in my {{< var polars_course >}}.
+

@@ -1,0 +1,46 @@
+---
+title: "Rounding down time in polars"
+subtitle: "dt.truncate"
+author: '{{< var author >}}'
+date: '2025-12-19'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [100DaysOfPolars]
+---
+
+Polars allows you to round down datetime values, similar to how you would round decimal values--well, almost. Below is a dataframe showing time series data.
+
+```{python}
+#| echo: false
+import polars as pl
+from datetime import timedelta, datetime
+df = (
+    pl.datetime_range(
+        datetime(2023, 1, 1),
+        datetime(2023, 1, 2),
+        timedelta(minutes=125),
+        eager=True,
+    )
+    .alias('Timestamp')
+    .to_frame().head()
+)
+df
+```
+<br>
+
+## Round down time values
+
+Here, we use Polars to scan a 10-minute interval of the time series and set each value to the lower bound of its interval. For example, minutes between 0 and 10 become 0, minutes between 10 and 20 become 10, and so on. Essentially, we are rounding down the values to the specified interval of 10 minutes.
+
+```{python}
+(df
+ .with_columns(pl.col('Timestamp').dt.truncate('10m')
+               .alias('Truncated_by_10min'))
+ )
+```
+<br>
+
+Learn more in my {{< var polars_course >}}.
