@@ -12,7 +12,7 @@ body {
 }
 </style>
 
-# Interviews {.interview-page-title}
+# Media {.interview-page-title}
 
 ::: {.interviews-container}
 
