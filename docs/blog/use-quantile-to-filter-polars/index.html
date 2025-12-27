@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>If you’ve ever taken the SAT, ACT, or GMAT, you might have wondered what percentile you scored in. A percentile is a way of describing a score’s position in a dataset relative to the other scores. Below is a dataset showing the scores of students on a test.</p>
-<div id="f12321e5" class="cell" data-execution_count="1">
+<div id="300c4353" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -276,7 +276,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="filter-with-quantile" class="level2">
 <h2 class="anchored" data-anchor-id="filter-with-quantile">Filter with quantile</h2>
 <p>You can get the students who scored in the 50th percentile by using the Polars expression <code>quantile</code>. These are the students who performed better than half of the students in the dataset.</p>
-<div id="d58b7fb0" class="cell" data-execution_count="2">
+<div id="53877771" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Score'</span>).gt(pl.col(<span class="st">'Score'</span>).quantile(<span class="fl">.50</span>)))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -733,7 +733,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2025 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

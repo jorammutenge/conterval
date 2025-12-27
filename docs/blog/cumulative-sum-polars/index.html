@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Say you have a target you want to hit for your weekly sales total, and you also want to know how close you are to hitting that target with each passing day. It turns out there’s a way to perform that calculation in Polars. Below is a dataframe containing daily sales.</p>
-<div id="ee510d93" class="cell" data-execution_count="1">
+<div id="d6f9ca28" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -284,7 +284,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="calculate-cumulative-sum" class="level2">
 <h2 class="anchored" data-anchor-id="calculate-cumulative-sum">Calculate cumulative sum</h2>
 <p>In Polars, you use the expression <code>pl.cum_sum</code> to add the next number to the sum of the previous numbers. Here’s how to do it:</p>
-<div id="441a6c6c" class="cell" data-execution_count="2">
+<div id="e07d0bf6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Cum_Sales<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).cum_sum())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -770,7 +770,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2025 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

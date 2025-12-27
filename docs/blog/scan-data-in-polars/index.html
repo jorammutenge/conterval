@@ -226,14 +226,14 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Datasets are getting bigger, which means loading the entire dataset into memory can put a strain on your computer. Fortunately, Polars allows you to scan data and store it in a lazyframe before loading it into memory as a dataframe.</p>
 <p>Say we have this CSV file:</p>
-<div id="95223595" class="cell" data-execution_count="1">
+<div id="a352752e" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>csv_file <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <section id="create-a-lazyframe-by-scanning-a-csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-lazyframe-by-scanning-a-csv-file">Create a lazyframe by scanning a CSV file</h2>
 <p>To read a CSV file as a lazyframe, you use the Polars expression <code>scan_csv</code>, like this:</p>
-<div id="b29bb63c" class="cell" data-execution_count="2">
+<div id="ac485e56" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(pl.scan_csv(csv_file)</span>
@@ -264,48 +264,48 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Morissette-Heathcote"</td>
-<td>599.07</td>
+<td>"Stroman-Adams"</td>
+<td>779.04</td>
 </tr>
 <tr class="even">
-<td>"Armstrong, Champlin and Ratke"</td>
-<td>458.01</td>
+<td>"Stamm, Oberbrunner and Hills"</td>
+<td>588.635</td>
 </tr>
 <tr class="odd">
-<td>"Goyette, Kessler and Goodwin"</td>
-<td>109.3</td>
+<td>"Purdy, Fay and Bechtelar"</td>
+<td>250.18</td>
 </tr>
 <tr class="even">
-<td>"Reilly-Leannon"</td>
-<td>574.135</td>
+<td>"Terry PLC"</td>
+<td>453.0</td>
 </tr>
 <tr class="odd">
-<td>"Streich, Hermiston and Walsh"</td>
-<td>470.55</td>
+<td>"Dickinson-Larson"</td>
+<td>401.025</td>
 </tr>
 <tr class="even">
 <td>…</td>
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"Bosco, Wuckert and O'Reilly"</td>
-<td>836.2</td>
+<td>"Ruecker Ltd"</td>
+<td>630.08</td>
 </tr>
 <tr class="even">
-<td>"O'Kon, Braun and Corkery"</td>
-<td>290.2</td>
+<td>"Heidenreich-Nader"</td>
+<td>1264.62</td>
 </tr>
 <tr class="odd">
-<td>"McDermott, Hagenes and Hudson"</td>
-<td>390.45</td>
+<td>"Wiegand, Kemmer and Kling"</td>
+<td>1478.2</td>
 </tr>
 <tr class="even">
-<td>"Bartell-Boehm"</td>
-<td>466.34</td>
+<td>"Lubowitz-Ziemann"</td>
+<td>457.49</td>
 </tr>
 <tr class="odd">
-<td>"Beatty-Dickinson"</td>
-<td>36.55</td>
+<td>"Kuvalis-Harvey"</td>
+<td>208.74</td>
 </tr>
 </tbody>
 </table>
@@ -733,7 +733,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2025 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Polars allows you to collapse multiple rows into a single row, combining the values from all the rows into one. Below is a dataframe showing parts of a phone number.</p>
-<div id="b455a705" class="cell" data-execution_count="1">
+<div id="8b92f0f0" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -268,7 +268,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="collapse-rows-into-one" class="level2">
 <h2 class="anchored" data-anchor-id="collapse-rows-into-one">Collapse rows into one</h2>
 <p>We can construct the full phone number from the three rows using the Polars expression <code>str.join</code> like this:</p>
-<div id="561a1553" class="cell" data-execution_count="2">
+<div id="61a8f2e6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select((pl.col(<span class="st">'Value'</span>).<span class="bu">str</span>.join(<span class="st">'-'</span>)).alias(<span class="st">'Phone_No'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -312,7 +312,7 @@ Note
 <p>This is different from the <code>implode</code> function, which returns a list of values instead of a string.</p>
 </div>
 </div>
-<div id="93684b81" class="cell" data-execution_count="3">
+<div id="703f7d0f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(pl.col(<span class="st">'Value'</span>).implode().alias(<span class="st">'Phone_No'</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -762,7 +762,7 @@ Note
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2025 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
