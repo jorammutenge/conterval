@@ -23,8 +23,8 @@ website:
         text: Blog
       - href: books.qmd
         text: Books
-      - href: interviews.qmd
-        text: Interviews
+      - href: media.qmd
+        text: Media
       - href: https://www.udemy.com/user/joram-mutenge/
         text: Courses
         target: _blank

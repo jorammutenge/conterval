@@ -427,5 +427,8 @@
   },
   "blog/json-to-tabular-data/index.qmd": {
     "index.html": "c8ab869d"
+  },
+  "media.qmd": {
+    "media.html": "a34992a1"
   }
 }

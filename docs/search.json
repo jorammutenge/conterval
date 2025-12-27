@@ -2469,5 +2469,12 @@
     "title": "From JSON to tabular data with polars",
     "section": "Read data at level one",
     "text": "Read data at level one\nSome nested data remains in the fitness column. We can unnest it by increasing the level by 1:\n\npl.json_normalize(data, max_level=1)\n\n\nshape: (2, 4)\n\n\n\nid\nname\nfitness.height\nfitness.weight\n\n\ni64\nstr\ni64\ni64\n\n\n\n\n1\n\"Dan Humphrey\"\n180\n85\n\n\n2\n\"Blair Waldolf\"\n155\n58\n\n\n\n\n\n\n\nDiscover even more ways to use Polars in my Polars course."
+  },
+  {
+    "objectID": "media.html",
+    "href": "media.html",
+    "title": "Interviews",
+    "section": "",
+    "text": "Interviews\n\n\n\nv0.0.10 - Joram Mutenge\n\n\n [WIP] Podcast\n\n\n  \nI dubbed Joram Mutenge as a “trifecta” when it comes to the data profession. He is a data engineer, data analyst, and data scientist! As with many people, the route wasn’t a straight one, but suits him well once he learned to love the parts few enjoy and how to be safely creative within data.\nTo become as valuable as possible, Joram has spent time learning SQL, Python, and JavaScript. We discussed multiple tools and libraries along with how to approach a web-based visualization as opposed to a print visualization. He’s now also learning Rust!\n\n\n Oct 2, 2025\n 34 min"
   }
 ]
