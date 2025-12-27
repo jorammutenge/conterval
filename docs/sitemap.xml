@@ -5,8 +5,12 @@
     <lastmod>2025-05-19T02:53:10.353Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/check-number-of-columns-polars/index.html</loc>
-    <lastmod>2025-08-01T19:18:18.000Z</lastmod>
+    <loc>https://www.conterval.com/blog/chain-functions-in-polars/index.html</loc>
+    <lastmod>2025-09-26T14:23:06.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/get-value-in-specific-cell/index.html</loc>
+    <lastmod>2025-10-23T22:44:33.687Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/arrange-columns-by-index/index.html</loc>
@@ -21,6 +25,10 @@
     <lastmod>2025-07-17T03:20:50.495Z</lastmod>
   </url>
   <url>
+    <loc>https://www.conterval.com/blog/polars-functions-pros-use/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.437Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/blog/set-theory-for-data-analysis/index.html</loc>
     <lastmod>2025-05-19T02:53:10.438Z</lastmod>
   </url>
@@ -29,20 +37,48 @@
     <lastmod>2025-09-26T15:06:40.000Z</lastmod>
   </url>
   <url>
+    <loc>https://www.conterval.com/blog/configure-dataframe-polars/index.html</loc>
+    <lastmod>2025-08-05T18:42:15.683Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/blog/remove-leading-whitespace-polars/index.html</loc>
     <lastmod>2025-10-01T00:26:05.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-null-in-polars/index.html</loc>
+    <lastmod>2025-10-28T22:32:57.752Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/group-with-over-in-polars/index.html</loc>
+    <lastmod>2025-10-21T00:05:57.955Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-number-of-days-polars/index.html</loc>
+    <lastmod>2025-11-21T22:35:45.937Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/glipmse-into-your-data-polars/index.html</loc>
     <lastmod>2025-08-03T14:47:28.000Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/cumulative-sum-polars/index.html</loc>
-    <lastmod>2025-07-15T23:21:32.044Z</lastmod>
+    <loc>https://www.conterval.com/blog/get-row-as-dictionary-polars/index.html</loc>
+    <lastmod>2025-10-21T00:05:57.981Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/adding-conditional-formatting-to-excel-polars/index.html</loc>
-    <lastmod>2025-07-07T12:43:02.000Z</lastmod>
+    <loc>https://www.conterval.com/blog/rounding-down-time-values-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.126Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/create-dummy-variable-in-polars/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-occurrence-of-text-in-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.143Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/from-polars-dataframe-to-pandas/index.html</loc>
+    <lastmod>2025-10-15T18:26:02.000Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/get-unique-values-polars/index.html</loc>
@@ -65,20 +101,28 @@
     <lastmod>2025-10-01T00:25:57.324Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/fizzbuzz-in-rust/index.html</loc>
-    <lastmod>2025-09-23T21:15:50.262Z</lastmod>
+    <loc>https://www.conterval.com/blog/format-dates-in-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.086Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/add-index-to-polars-dataframe/index.html</loc>
-    <lastmod>2025-09-11T21:02:05.644Z</lastmod>
+    <loc>https://www.conterval.com/blog/aggregations-in-polars/index.html</loc>
+    <lastmod>2025-07-14T22:43:35.082Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/inner-join-in-polars/index.html</loc>
-    <lastmod>2025-07-22T13:54:56.000Z</lastmod>
+    <loc>https://www.conterval.com/blog/thinking-in-tables/index.html</loc>
+    <lastmod>2025-07-27T15:44:38.129Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/filter-with-empty-polars/index.html</loc>
-    <lastmod>2025-08-01T17:08:42.000Z</lastmod>
+    <loc>https://www.conterval.com/blog/summary-statistics-in-polars/index.html</loc>
+    <lastmod>2025-07-28T13:13:28.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/my-marimo-pr/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.436Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/use-title-case-on-text-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.134Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/delete-record-in-polars/index.html</loc>
@@ -93,6 +137,10 @@
     <lastmod>2025-07-05T20:19:55.586Z</lastmod>
   </url>
   <url>
+    <loc>https://www.conterval.com/blog/filter-with-selection-polars/index.html</loc>
+    <lastmod>2025-08-08T01:05:47.351Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/blog/idea-vs-thoughtful-person/index.html</loc>
     <lastmod>2025-05-25T20:40:04.586Z</lastmod>
   </url>
@@ -101,12 +149,24 @@
     <lastmod>2025-07-05T01:36:59.719Z</lastmod>
   </url>
   <url>
+    <loc>https://www.conterval.com/blog/pivot-tables-in-polars/index.html</loc>
+    <lastmod>2025-09-26T14:41:04.000Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/blog/get-every-other-row-polars/index.html</loc>
     <lastmod>2025-07-05T20:20:28.161Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/convert-dataframe-to-dictionary-polars/index.html</loc>
-    <lastmod>2025-10-10T00:07:00.235Z</lastmod>
+    <loc>https://www.conterval.com/blog/swap-signs-on-numbers-polars/index.html</loc>
+    <lastmod>2025-10-15T20:19:32.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/shift-rows-in-polars/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/stack-dataframes-side-by-side-polars/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.138Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/unpivot-data-in-polars/index.html</loc>
@@ -117,168 +177,232 @@
     <lastmod>2025-05-19T02:53:10.436Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/fizzbuzz-in-three-ways/index.html</loc>
-    <lastmod>2025-08-24T04:19:07.618Z</lastmod>
+    <loc>https://www.conterval.com/blog/schema-on-read/index.html</loc>
+    <lastmod>2025-11-25T00:11:58.978Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/count-without-null-polars/index.html</loc>
-    <lastmod>2025-08-08T01:05:14.476Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/removing-whitespace-in-values-polars/index.html</loc>
-    <lastmod>2025-07-05T20:26:04.523Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/tranforming-timeseries-data-with-group-by-and-group-by-dynamic-in-polars/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.439Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/sampling-data-with-polars/index.html</loc>
-    <lastmod>2025-07-10T14:05:28.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/convert-unix-time-to-polars-datetime/index.html</loc>
-    <lastmod>2025-07-05T20:22:44.452Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/filter-between-values-polars/index.html</loc>
-    <lastmod>2025-07-21T20:40:12.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/knowing-number-of-days-in-month-with-polars/index.html</loc>
-    <lastmod>2025-07-05T20:21:57.627Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/udemy-course-updated/index.html</loc>
-    <lastmod>2025-09-04T12:28:12.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/use-quantile-to-filter-polars/index.html</loc>
-    <lastmod>2025-08-12T22:06:24.312Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/add-currency-symbol-polars/index.html</loc>
-    <lastmod>2025-07-05T20:23:39.590Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/from-matrix-to-dataframe-polars/index.html</loc>
-    <lastmod>2025-08-05T18:43:05.093Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/slice-dataframe-polars/index.html</loc>
-    <lastmod>2025-08-05T18:43:37.370Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/sort-bars-powerbi/index.html</loc>
-    <lastmod>2025-09-04T16:02:38.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/what-I-learned-about-group-by-dynamic-in-polars/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.439Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/what-tool-should-you-use-as-a-data-analyst/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.440Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/interviews.html</loc>
-    <lastmod>2025-10-05T13:45:54.345Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/books.html</loc>
-    <lastmod>2025-10-06T04:32:56.518Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/index.html</loc>
-    <lastmod>2025-06-11T23:44:50.493Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/maintaining-column-name-polars/index.html</loc>
-    <lastmod>2025-07-05T20:19:08.420Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/from-row-to-list-polars/index.html</loc>
-    <lastmod>2025-08-12T21:46:14.438Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/python-documentary/index.html</loc>
-    <lastmod>2025-09-14T20:13:49.269Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.359Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/three-languages-for-data/index.html</loc>
-    <lastmod>2025-09-27T21:33:17.417Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/scan-data-in-polars/index.html</loc>
-    <lastmod>2025-10-01T00:26:53.847Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/create-date-column-in-polars/index.html</loc>
-    <lastmod>2025-07-06T19:35:55.709Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/get-top-values-polars/index.html</loc>
-    <lastmod>2025-08-12T21:53:36.553Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/count-unique-values-polars/index.html</loc>
-    <lastmod>2025-09-29T20:55:06.611Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/using-implode-in-polars/index.html</loc>
-    <lastmod>2025-08-12T21:55:09.227Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/job-interview-details/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.435Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/data-scientist-show/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.355Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/improve-chart/index.html</loc>
-    <lastmod>2025-06-18T23:39:51.616Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/counting-values-in-polars/index.html</loc>
-    <lastmod>2025-07-17T19:05:40.000Z</lastmod>
+    <loc>https://www.conterval.com/blog/get-index-of-unique-values/index.html</loc>
+    <lastmod>2025-11-20T03:57:02.726Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/retrieve-schema-in-polars/index.html</loc>
     <lastmod>2025-07-17T19:29:36.000Z</lastmod>
   </url>
   <url>
+    <loc>https://www.conterval.com/blog/counting-values-in-polars/index.html</loc>
+    <lastmod>2025-07-17T19:05:40.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/improve-chart/index.html</loc>
+    <lastmod>2025-06-18T23:39:51.616Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/data-scientist-show/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.355Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/job-interview-details/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.435Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/using-implode-in-polars/index.html</loc>
+    <lastmod>2025-08-12T21:55:09.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-unique-values-polars/index.html</loc>
+    <lastmod>2025-09-29T20:55:06.611Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/knowing-number-of-days-in-month-with-polars/index.html</loc>
+    <lastmod>2025-07-05T20:21:57.627Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/insert-column-in-polars-dataframe/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.122Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/assign-column-names-on-read/index.html</loc>
+    <lastmod>2025-11-20T03:46:56.767Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/use-quantile-to-filter-polars/index.html</loc>
+    <lastmod>2025-08-12T22:06:24.312Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/scan-data-in-polars/index.html</loc>
+    <lastmod>2025-10-01T00:26:53.847Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/pivot-without-aggregation-in-polars/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.130Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/from-matrix-to-dataframe-polars/index.html</loc>
+    <lastmod>2025-08-05T18:43:05.093Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/helping-bakery-generate-forecast-by-bread-type-using-polars/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.359Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/filter-dataframe-rows/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.076Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/python-documentary/index.html</loc>
+    <lastmod>2025-09-14T20:13:49.269Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/from-row-to-list-polars/index.html</loc>
+    <lastmod>2025-08-12T21:46:14.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/what-I-learned-about-group-by-dynamic-in-polars/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/maintaining-column-name-polars/index.html</loc>
+    <lastmod>2025-07-05T20:19:08.420Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/index.html</loc>
+    <lastmod>2025-06-11T23:44:50.493Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/books.html</loc>
+    <lastmod>2025-10-06T04:32:56.518Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/what-tool-should-you-use-as-a-data-analyst/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.440Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/json-to-tabular-data/index.html</loc>
+    <lastmod>2025-12-22T23:10:37.484Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/override-data-types-in-polars/index.html</loc>
+    <lastmod>2025-11-21T22:35:45.952Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/sort-bars-powerbi/index.html</loc>
+    <lastmod>2025-09-04T16:02:38.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/slice-dataframe-polars/index.html</loc>
+    <lastmod>2025-08-05T18:43:37.370Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/extract-part-of-text/index.html</loc>
+    <lastmod>2025-11-25T00:11:58.954Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/reverse-valiues-in-polars-dataframe/index.html</loc>
+    <lastmod>2025-10-23T22:44:33.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/three-languages-for-data/index.html</loc>
+    <lastmod>2025-09-27T21:33:17.417Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/add-currency-symbol-polars/index.html</loc>
+    <lastmod>2025-07-05T20:23:39.590Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/get-indices-of-value-polars/index.html</loc>
+    <lastmod>2025-10-28T22:32:57.763Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/create-date-column-in-polars/index.html</loc>
+    <lastmod>2025-07-06T19:35:55.709Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/udemy-course-updated/index.html</loc>
+    <lastmod>2025-09-04T12:28:12.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/get-top-values-polars/index.html</loc>
+    <lastmod>2025-08-12T21:53:36.553Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/from-date-to-century/index.html</loc>
+    <lastmod>2025-11-25T00:11:58.968Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/filter-between-values-polars/index.html</loc>
+    <lastmod>2025-07-21T20:40:12.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/convert-unix-time-to-polars-datetime/index.html</loc>
+    <lastmod>2025-07-05T20:22:44.452Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/sampling-data-with-polars/index.html</loc>
+    <lastmod>2025-07-10T14:05:28.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/tranforming-timeseries-data-with-group-by-and-group-by-dynamic-in-polars/index.html</loc>
+    <lastmod>2025-05-19T02:53:10.439Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/removing-whitespace-in-values-polars/index.html</loc>
+    <lastmod>2025-07-05T20:26:04.523Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/count-without-null-polars/index.html</loc>
+    <lastmod>2025-08-08T01:05:14.476Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/fizzbuzz-in-three-ways/index.html</loc>
+    <lastmod>2025-08-24T04:19:07.618Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/blog/filter-for-many-items-polars/index.html</loc>
     <lastmod>2025-07-14T23:17:13.579Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/use-cumulative-product-in-polars/index.html</loc>
+    <lastmod>2025-10-28T22:32:57.769Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/series-to-dataframe-polars/index.html</loc>
     <lastmod>2025-08-08T01:06:23.658Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/shift-rows-in-polars/index.html</loc>
-    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+    <loc>https://www.conterval.com/blog/set-upper-and-lower-bound-values-polars/index.html</loc>
+    <lastmod>2025-10-15T19:10:18.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/divide-with-no-remainder-polars/index.html</loc>
+    <lastmod>2025-10-15T20:00:18.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/convert-dataframe-to-dictionary-polars/index.html</loc>
+    <lastmod>2025-10-10T02:02:37.460Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/rolling-mean-in-polars/index.html</loc>
     <lastmod>2025-09-29T20:55:32.781Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/pivot-tables-in-polars/index.html</loc>
-    <lastmod>2025-09-26T14:41:04.000Z</lastmod>
+    <loc>https://www.conterval.com/blog/from-numerical-to-categorical-in-polars/index.html</loc>
+    <lastmod>2025-10-21T00:05:57.969Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/replace-time-zone-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.116Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/index.html</loc>
     <lastmod>2025-06-18T23:21:04.329Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/filter-with-selection-polars/index.html</loc>
-    <lastmod>2025-08-08T01:05:47.351Z</lastmod>
+    <loc>https://www.conterval.com/blog/bytes-in-text-polars/index.html</loc>
+    <lastmod>2025-11-21T22:35:45.929Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/move-dates-back-and-forward-polars/index.html</loc>
+    <lastmod>2025-11-01T02:13:09.146Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/lesson-from-retired-boss/index.html</loc>
@@ -289,20 +413,28 @@
     <lastmod>2025-07-05T20:24:14.972Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/my-marimo-pr/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.436Z</lastmod>
+    <loc>https://www.conterval.com/blog/transpose-dataframe-in-polars/index.html</loc>
+    <lastmod>2025-12-27T21:15:08.691Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/summary-statistics-in-polars/index.html</loc>
-    <lastmod>2025-07-28T13:13:28.000Z</lastmod>
+    <loc>https://www.conterval.com/blog/fill-with-next-value-polars/index.html</loc>
+    <lastmod>2025-10-15T18:01:44.000Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/thinking-in-tables/index.html</loc>
-    <lastmod>2025-07-27T15:44:38.129Z</lastmod>
+    <loc>https://www.conterval.com/blog/filter-with-empty-polars/index.html</loc>
+    <lastmod>2025-08-01T17:08:42.000Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/aggregations-in-polars/index.html</loc>
-    <lastmod>2025-07-14T22:43:35.082Z</lastmod>
+    <loc>https://www.conterval.com/blog/inner-join-in-polars/index.html</loc>
+    <lastmod>2025-07-22T13:54:56.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/add-index-to-polars-dataframe/index.html</loc>
+    <lastmod>2025-09-11T21:02:05.644Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/fizzbuzz-in-rust/index.html</loc>
+    <lastmod>2025-09-23T21:15:50.262Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/your-beautiful-code/index.html</loc>
@@ -329,28 +461,60 @@
     <lastmod>2025-07-28T14:58:42.000Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/create-dummy-variable-in-polars/index.html</loc>
-    <lastmod>2025-09-11T21:02:05.645Z</lastmod>
+    <loc>https://www.conterval.com/blog/adding-conditional-formatting-to-excel-polars/index.html</loc>
+    <lastmod>2025-07-07T12:43:02.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/date-to-timestamp/index.html</loc>
+    <lastmod>2025-11-20T03:30:46.064Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/cumulative-sum-polars/index.html</loc>
+    <lastmod>2025-07-15T23:21:32.044Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/from-many-rows-to-one/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.091Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/stacking-dataframes-vertically-polars/index.html</loc>
     <lastmod>2025-07-10T00:27:18.553Z</lastmod>
   </url>
   <url>
+    <loc>https://www.conterval.com/blog/get-column-index-position-polars/index.html</loc>
+    <lastmod>2025-10-21T23:58:50.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/set-difference-in-polars/index.html</loc>
+    <lastmod>2025-11-20T12:04:57.986Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/group-by-dynamic-in-polars/index.html</loc>
+    <lastmod>2025-12-22T23:00:44.096Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.conterval.com/blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html</loc>
     <lastmod>2025-05-19T02:53:10.381Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/configure-dataframe-polars/index.html</loc>
-    <lastmod>2025-08-05T18:42:15.683Z</lastmod>
+    <loc>https://www.conterval.com/blog/unnest-values-in-polars-struct/index.html</loc>
+    <lastmod>2025-10-23T22:44:33.708Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/list-of-dataframe-polars/index.html</loc>
+    <lastmod>2025-10-15T14:26:00.000Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/text-to-date-in-polars/index.html</loc>
     <lastmod>2025-10-01T00:27:00.893Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/polars-functions-pros-use/index.html</loc>
-    <lastmod>2025-05-19T02:53:10.437Z</lastmod>
+    <loc>https://www.conterval.com/blog/string-padding-in-polars/index.html</loc>
+    <lastmod>2025-11-21T00:57:29.740Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/blog/create-hierarchy-for-text-data-polars/index.html</loc>
+    <lastmod>2025-11-01T02:13:09.161Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/handling-duplicates-polars/index.html</loc>
@@ -365,176 +529,8 @@
     <lastmod>2025-09-18T02:30:31.336Z</lastmod>
   </url>
   <url>
-    <loc>https://www.conterval.com/blog/chain-functions-in-polars/index.html</loc>
-    <lastmod>2025-09-26T14:23:06.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/divide-with-no-remainder-polars/index.html</loc>
-    <lastmod>2025-10-15T20:00:18.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/list-of-dataframe-polars/index.html</loc>
-    <lastmod>2025-10-15T14:26:00.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/from-polars-dataframe-to-pandas/index.html</loc>
-    <lastmod>2025-10-15T18:26:02.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/swap-signs-on-numbers-polars/index.html</loc>
-    <lastmod>2025-10-15T20:19:32.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/set-upper-and-lower-bound-values-polars/index.html</loc>
-    <lastmod>2025-10-15T19:10:18.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/fill-with-next-value-polars/index.html</loc>
-    <lastmod>2025-10-15T18:01:44.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/group-with-over-in-polars/index.html</loc>
-    <lastmod>2025-10-21T00:05:57.955Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/get-row-as-dictionary-polars/index.html</loc>
-    <lastmod>2025-10-21T00:05:57.981Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/from-numerical-to-categorical-in-polars/index.html</loc>
-    <lastmod>2025-10-21T00:05:57.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/transpose-dataframe-in-polars/index.html</loc>
-    <lastmod>2025-10-21T23:58:50.145Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/insert-column-in-polars-dataframe/index.html</loc>
-    <lastmod>2025-10-21T23:58:50.122Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/pivot-without-aggregation-in-polars/index.html</loc>
-    <lastmod>2025-10-21T23:58:50.130Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/get-column-index-position-polars/index.html</loc>
-    <lastmod>2025-10-21T23:58:50.113Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/stack-dataframes-side-by-side-polars/index.html</loc>
-    <lastmod>2025-10-21T23:58:50.138Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/get-value-in-specific-cell/index.html</loc>
-    <lastmod>2025-10-23T22:44:33.687Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/unnest-values-in-polars-struct/index.html</loc>
-    <lastmod>2025-10-23T22:44:33.708Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/reverse-valiues-in-polars-dataframe/index.html</loc>
-    <lastmod>2025-10-23T22:44:33.701Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/count-null-in-polars/index.html</loc>
-    <lastmod>2025-10-28T22:32:57.752Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/use-cumulative-product-in-polars/index.html</loc>
-    <lastmod>2025-10-28T22:32:57.769Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/get-indices-of-value-polars/index.html</loc>
-    <lastmod>2025-10-28T22:32:57.763Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/move-dates-back-and-forward-polars/index.html</loc>
-    <lastmod>2025-11-01T02:13:09.146Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/create-hierarchy-for-text-data-polars/index.html</loc>
-    <lastmod>2025-11-01T02:13:09.161Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/assign-column-names-on-read/index.html</loc>
-    <lastmod>2025-11-20T03:46:56.767Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/get-index-of-unique-values/index.html</loc>
-    <lastmod>2025-11-20T03:57:02.726Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/date-to-timestamp/index.html</loc>
-    <lastmod>2025-11-20T03:30:46.064Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/set-difference-in-polars/index.html</loc>
-    <lastmod>2025-11-20T12:04:57.986Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/string-padding-in-polars/index.html</loc>
-    <lastmod>2025-11-21T00:57:29.740Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/bytes-in-text-polars/index.html</loc>
-    <lastmod>2025-11-21T22:35:45.929Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/override-data-types-in-polars/index.html</loc>
-    <lastmod>2025-11-21T22:35:45.952Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/count-number-of-days-polars/index.html</loc>
-    <lastmod>2025-11-21T22:35:45.937Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/extract-part-of-text/index.html</loc>
-    <lastmod>2025-11-25T00:11:58.954Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/from-date-to-century/index.html</loc>
-    <lastmod>2025-11-25T00:11:58.968Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/schema-on-read/index.html</loc>
-    <lastmod>2025-11-25T00:11:58.978Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/format-dates-in-polars/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.086Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/filter-dataframe-rows/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.076Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/from-many-rows-to-one/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.091Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/group-by-dynamic-in-polars/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.096Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/replace-time-zone-polars/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.116Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/rounding-down-time-values-polars/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.126Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/use-title-case-on-text-polars/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.134Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/count-occurrence-of-text-in-polars/index.html</loc>
-    <lastmod>2025-12-22T23:00:44.143Z</lastmod>
-  </url>
-  <url>
-    <loc>https://www.conterval.com/blog/json-to-tabular-data/index.html</loc>
-    <lastmod>2025-12-22T23:10:37.484Z</lastmod>
+    <loc>https://www.conterval.com/blog/check-number-of-columns-polars/index.html</loc>
+    <lastmod>2025-08-01T19:18:18.000Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/media.html</loc>

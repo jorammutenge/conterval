@@ -32,8 +32,8 @@ To get the values of a single row into its own column in Polars, use the `transp
 ```{python}
 (df
  .transpose(include_header=False,
-            header_name=' ',
-            column_names=['']*4,
+            header_name='',
+            column_names=[' ' * i for i in range(4)],
             )
  )
 ```

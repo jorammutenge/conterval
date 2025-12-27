@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cdd16f8f8dc029c38a69f61610f010f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -132,10 +132,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -155,8 +151,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../interviews.html"> 
-<span class="menu-text">Interviews</span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
@@ -230,14 +226,14 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Datasets are getting bigger, which means loading the entire dataset into memory can put a strain on your computer. Fortunately, Polars allows you to scan data and store it in a lazyframe before loading it into memory as a dataframe.</p>
 <p>Say we have this CSV file:</p>
-<div id="392f87dd" class="cell" data-execution_count="1">
+<div id="95223595" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>csv_file <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <section id="create-a-lazyframe-by-scanning-a-csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-lazyframe-by-scanning-a-csv-file">Create a lazyframe by scanning a CSV file</h2>
 <p>To read a CSV file as a lazyframe, you use the Polars expression <code>scan_csv</code>, like this:</p>
-<div id="c39e0563" class="cell" data-execution_count="2">
+<div id="b29bb63c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(pl.scan_csv(csv_file)</span>
@@ -268,48 +264,48 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Kuphal, Flatley and Casper"</td>
-<td>929.46</td>
+<td>"Morissette-Heathcote"</td>
+<td>599.07</td>
 </tr>
 <tr class="even">
-<td>"Feil LLC"</td>
-<td>1383.9</td>
+<td>"Armstrong, Champlin and Ratke"</td>
+<td>458.01</td>
 </tr>
 <tr class="odd">
-<td>"Thiel-Volkman"</td>
-<td>279.52</td>
+<td>"Goyette, Kessler and Goodwin"</td>
+<td>109.3</td>
 </tr>
 <tr class="even">
-<td>"McDermott, Gerlach and Bechtel…</td>
-<td>187.68</td>
+<td>"Reilly-Leannon"</td>
+<td>574.135</td>
 </tr>
 <tr class="odd">
-<td>"VonRueden, Wiza and Balistreri"</td>
-<td>338.52</td>
+<td>"Streich, Hermiston and Walsh"</td>
+<td>470.55</td>
 </tr>
 <tr class="even">
 <td>…</td>
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"O'Conner Inc"</td>
-<td>313.2</td>
-</tr>
-<tr class="even">
-<td>"Herzog-Homenick"</td>
-<td>1051.2</td>
-</tr>
-<tr class="odd">
-<td>"Wilderman Group"</td>
-<td>1155.64</td>
+<td>"Bosco, Wuckert and O'Reilly"</td>
+<td>836.2</td>
 </tr>
 <tr class="even">
 <td>"O'Kon, Braun and Corkery"</td>
 <td>290.2</td>
 </tr>
 <tr class="odd">
-<td>"Corwin, Nienow and Reichert"</td>
-<td>393.24</td>
+<td>"McDermott, Hagenes and Hudson"</td>
+<td>390.45</td>
+</tr>
+<tr class="even">
+<td>"Bartell-Boehm"</td>
+<td>466.34</td>
+</tr>
+<tr class="odd">
+<td>"Beatty-Dickinson"</td>
+<td>36.55</td>
 </tr>
 </tbody>
 </table>

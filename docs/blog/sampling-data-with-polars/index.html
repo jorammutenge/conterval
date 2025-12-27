@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cdd16f8f8dc029c38a69f61610f010f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -132,10 +132,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -155,8 +151,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../interviews.html"> 
-<span class="menu-text">Interviews</span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
@@ -230,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Analyzing a very large dataset can be strenuous on your computer, especially if you don’t have a fast machine. Instead of overworking your computer and waiting a long time to see the results, you can perform your analysis on a smaller subset of the data. Below is a dataframe with 1000 rows.</p>
-<div id="68cbeb5d" class="cell" data-execution_count="1">
+<div id="6749e462" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -310,7 +306,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="sampling-is-the-best-method" class="level2">
 <h2 class="anchored" data-anchor-id="sampling-is-the-best-method">Sampling is the best method</h2>
 <p>To get a true representation of the data, you should use the <code>sample</code> function. This ensures that rows are randomly selected until you reach the desired number. Here’s how to use it:</p>
-<div id="7d36b5f5" class="cell" data-execution_count="2">
+<div id="d2f67aaa" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -337,11 +333,35 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <tbody>
 <tr class="odd">
 <td>"Sweater"</td>
-<td>5</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td>"Sweater"</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>"Sweater"</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>"Hat"</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>"Hat"</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"Socks"</td>
+<td>4</td>
 </tr>
 <tr class="even">
 <td>"Socks"</td>
-<td>14</td>
+<td>11</td>
 </tr>
 <tr class="odd">
 <td>"Socks"</td>
@@ -349,35 +369,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </tr>
 <tr class="even">
 <td>"Sweater"</td>
-<td>19</td>
+<td>11</td>
 </tr>
 <tr class="odd">
 <td>"Sweater"</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>"Sweater"</td>
-<td>3</td>
-</tr>
-<tr class="even">
-<td>"Hat"</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>"Socks"</td>
-<td>5</td>
-</tr>
-<tr class="even">
-<td>"Hat"</td>
-<td>16</td>
-</tr>
-<tr class="odd">
-<td>"Sweater"</td>
-<td>16</td>
+<td>17</td>
 </tr>
 </tbody>
 </table>
@@ -385,7 +381,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> If you want your results to be reproducible, you can use the <code>seed</code> parameter.</p>
-<div id="cfc1660e" class="cell" data-execution_count="3">
+<div id="c3c1df9f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

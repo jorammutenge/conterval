@@ -151,8 +151,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../interviews.html"> 
-<span class="menu-text">Interviews</span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>You have part numbers for your products, and you want to ensure they all have the same length, meaning they contain the same number of characters. Below is a dataframe that shows part numbers of varying lengths.</p>
-<div id="595be164" class="cell" data-execution_count="1">
+<div id="9af339d6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -266,7 +266,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="make-values-same-length" class="level2">
 <h2 class="anchored" data-anchor-id="make-values-same-length">Make values same length</h2>
 <p>To add zeros at the end of each value in <em>Part_Num</em> that has fewer than six characters, use the Polars expression <code>pad_end</code> as follows:</p>
-<div id="e0158569" class="cell" data-execution_count="2">
+<div id="88c0d7a5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Part_Num'</span>).<span class="bu">str</span>.pad_end(<span class="dv">6</span>, <span class="st">'0'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

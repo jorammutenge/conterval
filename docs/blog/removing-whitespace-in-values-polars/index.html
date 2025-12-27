@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cdd16f8f8dc029c38a69f61610f010f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -132,10 +132,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -155,8 +151,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../interviews.html"> 
-<span class="menu-text">Interviews</span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
@@ -235,7 +231,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="dataframe-with-whitespace-in-values" class="level2">
 <h2 class="anchored" data-anchor-id="dataframe-with-whitespace-in-values">Dataframe with whitespace in values</h2>
 <p>Let me show you an example of a dataframe containing values with whitespace. The first two values in <em>Items_Bought</em> contain whitespace.</p>
-<div id="7034ab9b" class="cell" data-execution_count="1">
+<div id="d1e25475" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -298,7 +294,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="show-unique-values" class="level2">
 <h2 class="anchored" data-anchor-id="show-unique-values">Show unique values</h2>
 <p>Now let’s show the unique items in the <em>Items_Bought</em> column.</p>
-<div id="1fcf16c7" class="cell" data-execution_count="2">
+<div id="871aaccb" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Items_Bought'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
@@ -323,19 +319,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Apples"</td>
-</tr>
-<tr class="even">
-<td>"&nbsp;&nbsp;&nbsp;Milk"</td>
-</tr>
-<tr class="odd">
-<td>"Milk"</td>
-</tr>
-<tr class="even">
 <td>"Bananas"</td>
-</tr>
-<tr class="odd">
-<td>"Bread"</td>
 </tr>
 <tr class="even">
 <td>"Cheese"</td>
@@ -345,6 +329,18 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </tr>
 <tr class="even">
 <td>"Apples&nbsp;&nbsp;&nbsp;"</td>
+</tr>
+<tr class="odd">
+<td>"Milk"</td>
+</tr>
+<tr class="even">
+<td>"Bread"</td>
+</tr>
+<tr class="odd">
+<td>"Apples"</td>
+</tr>
+<tr class="even">
+<td>"&nbsp;&nbsp;&nbsp;Milk"</td>
 </tr>
 </tbody>
 </table>
@@ -356,7 +352,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="true-unique-values" class="level2">
 <h2 class="anchored" data-anchor-id="true-unique-values">True unique values</h2>
 <p>To get the true unique values, we need to remove the whitespace from the values. Polars has a handy function that can help with this known as <code>strip_chars</code>.</p>
-<div id="631dfc6a" class="cell" data-execution_count="3">
+<div id="cb0c6eee" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Items_Bought'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Items_Bought'</span>).<span class="bu">str</span>.strip_chars())</span>
@@ -382,22 +378,22 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Bread"</td>
-</tr>
-<tr class="even">
-<td>"Cheese"</td>
-</tr>
-<tr class="odd">
 <td>"Bananas"</td>
 </tr>
 <tr class="even">
-<td>"Eggs"</td>
+<td>"Bread"</td>
 </tr>
 <tr class="odd">
 <td>"Milk"</td>
 </tr>
 <tr class="even">
 <td>"Apples"</td>
+</tr>
+<tr class="odd">
+<td>"Cheese"</td>
+</tr>
+<tr class="even">
+<td>"Eggs"</td>
 </tr>
 </tbody>
 </table>

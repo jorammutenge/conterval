@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-82b3bfe9bff6a94f464b6c2901bd2c9a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cdd16f8f8dc029c38a69f61610f010f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -132,10 +132,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -155,8 +151,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../interviews.html"> 
-<span class="menu-text">Interviews</span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
@@ -230,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>In addition to showing column data types in the dataframe, Polars allows you to get a dictionary of data types where the key is the column name and the value is the data type. This is especially helpful when you’re writing data to a database and want the schema to be maintained. Below is a dataframe with various data types.</p>
-<div id="dc87e79d" class="cell" data-execution_count="1">
+<div id="19475f89" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -257,34 +253,34 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>2014-02-26 02:25:36</td>
-<td>"GS-95639"</td>
-<td>6</td>
-<td>86.92</td>
-</tr>
-<tr class="even">
-<td>2013-11-09 06:11:36</td>
-<td>"LK-02338"</td>
-<td>5</td>
-<td>73.15</td>
-</tr>
-<tr class="odd">
-<td>2014-09-24 14:38:01</td>
-<td>"GS-95639"</td>
-<td>16</td>
-<td>66.55</td>
-</tr>
-<tr class="even">
-<td>2014-02-21 08:57:47</td>
+<td>2013-11-03 12:23:33</td>
 <td>"QS-76400"</td>
-<td>15</td>
-<td>11.15</td>
+<td>4</td>
+<td>15.71</td>
+</tr>
+<tr class="even">
+<td>2013-10-27 09:48:10</td>
+<td>"GS-95639"</td>
+<td>2</td>
+<td>45.17</td>
 </tr>
 <tr class="odd">
-<td>2014-05-04 16:34:45</td>
-<td>"HX-24728"</td>
-<td>11</td>
-<td>46.97</td>
+<td>2013-12-15 18:39:17</td>
+<td>"IC-59308"</td>
+<td>19</td>
+<td>58.73</td>
+</tr>
+<tr class="even">
+<td>2013-11-19 11:21:19</td>
+<td>"FT-50146"</td>
+<td>14</td>
+<td>96.1</td>
+</tr>
+<tr class="odd">
+<td>2013-11-20 13:59:21</td>
+<td>"QS-76400"</td>
+<td>3</td>
+<td>86.71</td>
 </tr>
 </tbody>
 </table>
@@ -295,7 +291,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-data-types-as-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="get-data-types-as-dictionary">Get data types as dictionary</h2>
 <p>To get the data types as a dictionary, you can use the Polars method <code>collect_schema</code>. Here’s how to do it:</p>
-<div id="eeb2e454" class="cell" data-execution_count="2">
+<div id="af370e09" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .collect_schema()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -307,7 +303,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-names-keys-from-schema" class="level2">
 <h2 class="anchored" data-anchor-id="get-names-keys-from-schema">Get names, keys from schema</h2>
 <p>The schema dictionary has properties that you can access. For instance, if you only want the table column names from the schema, you can get them like this:</p>
-<div id="168f3a72" class="cell" data-execution_count="3">
+<div id="7d2ee04a" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .collect_schema()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .names()</span>
@@ -317,7 +313,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Or, if you want the data types, you can get them like this:</p>
-<div id="7464f343" class="cell" data-execution_count="4">
+<div id="09117387" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> .collect_schema()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> .keys()</span>
