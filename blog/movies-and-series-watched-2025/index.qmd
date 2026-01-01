@@ -24,8 +24,9 @@ Below is a snapshot of my movies and series dataset. I've filtered for the year 
 ```{python}
 #| echo: false
 import polars as pl
+from pathlib import Path
 
-df = (pl.read_csv('/Users/mute/Desktop/ne/conterval/datasets/television.csv', ignore_errors=True)
+df = (pl.read_csv(f"{Path('../../')}/datasets/television.csv", ignore_errors=True)
  .with_columns(pl.col('Watch_Year').str.split(' | '))
  .explode('Watch_Year')
  .with_columns(pl.col('Watch_Year').cast(pl.Int16))
@@ -71,7 +72,7 @@ Let us get more granular and see how many of these 32 titles were movies and how
  )
 ```
 
-## The mutenge score
+## The Mutenge score
 
 You may be wondering why I go through the trouble of building this dataset. The IMDB ratings assigned to movies and series do not mean much to me. They do not truly capture my taste. To capture my true taste in movies and series, I created a metric known as the ***Mutenge score*** (yes, it is named after yours truly) to quantify how much I like a movie or series. At first glance, the formula may seem complicated, but after explaining it, I promise it will make a lot of sense.
 
