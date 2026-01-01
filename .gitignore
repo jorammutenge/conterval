@@ -9,4 +9,5 @@
 /.quarto/
 /_site/
 /images/
+/datasets/
 **/*.quarto_ipynb
