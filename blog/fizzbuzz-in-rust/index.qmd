@@ -103,7 +103,7 @@ fn main() {
             (true, false) => println!("Fizz"),
             (false, true) => println!("Buzz"),
             (true, true) => println!("FizzBuzz"),
-            _ => println!("{i}"),
+            _ => println!("{num}"),
         };
     }
 }
