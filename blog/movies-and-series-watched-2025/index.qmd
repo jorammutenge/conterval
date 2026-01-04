@@ -8,7 +8,7 @@ toc: true
 toc-title: 'Sections'
 toc-location: right
 toc-depth: 3
-categories: [100DaysOfPolars]
+categories: [data analysis]
 ---
 
 ::: {.gray-text .center-text}

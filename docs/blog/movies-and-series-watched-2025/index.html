@@ -235,7 +235,7 @@ window.Quarto = {
 <h1 class="title">All the movies and series I watched in 2025</h1>
 <p class="subtitle lead">And how to calculate the Mutenge score</p>
   <div class="quarto-categories">
-    <div class="quarto-category">100DaysOfPolars</div>
+    <div class="quarto-category">data analysis</div>
   </div>
   </div>
 
@@ -277,8 +277,8 @@ window.Quarto = {
 <section id="about-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-dataset">About the dataset</h2>
 <p>Below is a snapshot of my movies and series dataset. I’ve filtered for the year 2025 to only show the movies I watched this year.</p>
-<div id="07ac97af" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="e9e83288" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -354,11 +354,11 @@ window.Quarto = {
 <section id="how-much-tv-did-i-watch-in-2025" class="level3">
 <h3 class="anchored" data-anchor-id="how-much-tv-did-i-watch-in-2025">How much TV did I watch in 2025?</h3>
 <p>Let me answer the question you are dying to have answered. As I said earlier, I watch a lot of TV. It is my hobby. Let us find out how much with the help of some Polars code:</p>
-<div id="185a8d91" class="cell" data-execution_count="2">
+<div id="5db878f6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(Titles<span class="op">=</span>pl.col(<span class="st">'Title'</span>).count())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -404,11 +404,11 @@ Note
 <section id="whats-the-breakdown-between-movies-and-series" class="level3">
 <h3 class="anchored" data-anchor-id="whats-the-breakdown-between-movies-and-series">What’s the breakdown between movies and series</h3>
 <p>Let us get more granular and see how many of these 32 titles were movies and how many were series:</p>
-<div id="1c007361" class="cell" data-execution_count="3">
+<div id="a8d54cbf" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Type'</span>).<span class="bu">len</span>()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -624,7 +624,7 @@ Table&nbsp;1: Parameters for Mutenge score formula.
 <section id="apply-the-mutenge-score" class="level2">
 <h2 class="anchored" data-anchor-id="apply-the-mutenge-score">Apply the Mutenge score</h2>
 <p>Now that I’ve explained how to calculate the <strong><em>Mutenge score</em></strong>, let’s use Polars to assign a score to each movie/series.</p>
-<div id="b7d528bd" class="cell" data-execution_count="4">
+<div id="5858b78c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Season'</span>).fill_null(<span class="dv">0</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Person'</span>, <span class="st">'Quote'</span>).<span class="bu">str</span>.split(<span class="st">' | '</span>).<span class="bu">list</span>.n_unique())</span>
@@ -661,7 +661,7 @@ Table&nbsp;1: Parameters for Mutenge score formula.
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a> .select(pl.exclude(<span class="st">"^_.*$"</span>)) <span class="co"># remove cols that start with underscore.</span></span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">5</span>, seed<span class="op">=</span><span class="dv">31</span>)</span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
