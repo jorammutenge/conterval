@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d5ce28550a6a4c23b6accb36ab36bd85.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-51c01a540e48fbabd4f8dc4bd6156899.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-251af34507bcaa4a622253ff303fdb97.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -407,7 +407,7 @@ Note
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the table</span></span>
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="3a5db33c" class="cell" data-execution_count="1">
+<div id="f12198a3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┓
 ┃<span style="font-weight: bold"> account_num </span>┃<span style="font-weight: bold"> account_name                      </span>┃<span style="font-weight: bold"> sku      </span>┃<span style="font-weight: bold"> category </span>┃<span style="font-weight: bold"> quantity </span>┃<span style="font-weight: bold"> unit_price </span>┃<span style="font-weight: bold"> ext_price </span>┃<span style="font-weight: bold"> date                </span>┃
@@ -431,10 +431,10 @@ Note
 </div>
 <p>Great! Now we can view the <em>sales_table</em> outside <code>pgAdmin</code>. This means the setup is complete.</p>
 <p>While we’re at it, let’s verify the backend that our queries will be using.</p>
-<div id="e0dc0d13" class="cell" data-execution_count="2">
+<div id="0b97a877" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t.get_backend()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>&lt;ibis.backends.postgres.Backend at 0x1151c02d0&gt;</code></pre>
+<pre><code>&lt;ibis.backends.postgres.Backend at 0x1192b82d0&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -445,7 +445,7 @@ Note
 <section id="table-transformation" class="level3">
 <h3 class="anchored" data-anchor-id="table-transformation">Table transformation</h3>
 <p>The table displayed above shows the <em>date</em> as the last column. I prefer to have the date as the first column in my datasets. Let’s make that change.</p>
-<div id="99cacccb" class="cell" data-execution_count="3">
+<div id="fc3bc5d9" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> t.relocate(<span class="st">'date'</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -473,7 +473,7 @@ Note
 <section id="aggregations-and-sorting" class="level3">
 <h3 class="anchored" data-anchor-id="aggregations-and-sorting">Aggregations and sorting</h3>
 <p>Let’s determine which clothing category generates the most revenue, and then rank all the clothing categories in descending order based on their total revenue.</p>
-<div id="00742ddb" class="cell" data-execution_count="4">
+<div id="45cb60ab" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> .aggregate(by<span class="op">=</span><span class="st">'category'</span>, ext_price<span class="op">=</span>_.ext_price.<span class="bu">sum</span>())</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> .order_by(ibis.desc(<span class="st">'ext_price'</span>))</span>
@@ -492,7 +492,7 @@ Note
 </div>
 </div>
 <p>The query above works, but I don’t like the style of the code. We can rewrite it in more idiomatic way (ibisic) as follows.</p>
-<div id="72c4e448" class="cell" data-execution_count="5">
+<div id="39e04692" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'category'</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> .agg(ext_price<span class="op">=</span>_.ext_price.<span class="bu">sum</span>())</span>
@@ -512,7 +512,7 @@ Note
 </div>
 </div>
 <p>What if we wanted to know what the top-selling SKUs are by quantity and revenue and then sort the values by quantity in ascending order.</p>
-<div id="1f98e89f" class="cell" data-execution_count="6">
+<div id="cd21c6ea" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'sku'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> .agg(quantity<span class="op">=</span>_.quantity.<span class="bu">sum</span>(),</span>
@@ -541,7 +541,7 @@ Note
 </div>
 <p>Just for fun, let’s perform multiple aggregates in a single query. We’ll calculate the total, average, and median sales value for each day of the week, then sort the results by average sales.</p>
 <p>This query includes creating a new column called <em>day</em> based on the <em>date</em> column.</p>
-<div id="5117f220" class="cell" data-execution_count="7">
+<div id="753ff68a" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .mutate(day<span class="op">=</span>_.date.day_of_week.full_name())</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'day'</span>)</span>
@@ -571,7 +571,7 @@ Note
 <section id="filtering-and-creating-columns" class="level3">
 <h3 class="anchored" data-anchor-id="filtering-and-creating-columns">Filtering and creating columns</h3>
 <p>We want to know which year had the highest revenue and what was the dollar value of that revenue. Here’s the query to do just that.</p>
-<div id="88209a03" class="cell" data-execution_count="8">
+<div id="67e5acbb" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> .mutate(year<span class="op">=</span>_.date.year())</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'year'</span>)</span>
@@ -590,7 +590,7 @@ Note
 </div>
 </div>
 <p>Suppose we want to identify the hours of the day with the least store traffic so we can reduce the number of employees during those times. After all, we don’t want them standing around with nothing to do! To achieve this, we’ll select the top three hours of the day with the lowest sales.</p>
-<div id="3e3484fe" class="cell" data-execution_count="9">
+<div id="4f93ffea" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> .mutate(hour<span class="op">=</span>_.date.hour())</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'hour'</span>)</span>
@@ -612,7 +612,7 @@ Note
 </div>
 </div>
 <p>It’s winter, and we’d like to identify all customers who purchased either socks or a sweater. We plan to send them an email about our new holiday-themed socks and sweaters now in stock.</p>
-<div id="72796d06" class="cell" data-execution_count="10">
+<div id="edcb8e91" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'account_name'</span>, <span class="st">'category'</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(_.category.isin([<span class="st">'Sweater'</span>, <span class="st">'Socks'</span>]))</span>
@@ -641,7 +641,7 @@ Note
 </div>
 </div>
 <p>Next, let’s find customers who bought <strong>both</strong> socks and sweaters. These loyal shoppers will receive a special 5% discount as a thank-you for their continued support.</p>
-<div id="7a3a43d9" class="cell" data-execution_count="11">
+<div id="9615dd0d" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(_.category.isin([<span class="st">'Sweater'</span>, <span class="st">'Socks'</span>]))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'account_name'</span>)</span>
@@ -675,7 +675,7 @@ Note
 <p>Yes, Ibis supports native plotting using the Altair visualization library. You can install it by running <code>pip install altair</code> in your command line or terminal.</p>
 <p>Other popular visualization libraries like Plotly, Matplotlib, or Seaborn can also be used. However, you’ll need to convert your Ibis tables to Pandas using the <code>.to_pandas()</code> function before using them with these libraries.</p>
 <p>Let’s create a bar chart that displays the total quantity sold for each product SKU to identify which SKU has the highest sales by quantity. More importantly, we’ll arrange the bars from tallest to shortest. We’ll use Altair to build the chart.</p>
-<div id="c014e259" class="cell" data-execution_count="12">
+<div id="84821462" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>bar_chart <span class="op">=</span> (alt</span>
@@ -695,23 +695,23 @@ Note
 <div class="cell-output cell-output-display">
 
 <style>
-  #altair-viz-0a8ee31921e74d13893f9a58d0d28dea.vega-embed {
+  #altair-viz-641a7eadbaa54069ac0b8907abd74477.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-0a8ee31921e74d13893f9a58d0d28dea.vega-embed details,
-  #altair-viz-0a8ee31921e74d13893f9a58d0d28dea.vega-embed details summary {
+  #altair-viz-641a7eadbaa54069ac0b8907abd74477.vega-embed details,
+  #altair-viz-641a7eadbaa54069ac0b8907abd74477.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-0a8ee31921e74d13893f9a58d0d28dea"></div>
+<div id="altair-viz-641a7eadbaa54069ac0b8907abd74477"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-0a8ee31921e74d13893f9a58d0d28dea") {
-      outputDiv = document.getElementById("altair-viz-0a8ee31921e74d13893f9a58d0d28dea");
+    if (outputDiv.id !== "altair-viz-641a7eadbaa54069ac0b8907abd74477") {
+      outputDiv = document.getElementById("altair-viz-641a7eadbaa54069ac0b8907abd74477");
     }
 
     const paths = {
@@ -768,7 +768,7 @@ Note
 <h3 class="anchored" data-anchor-id="pivot-tables">Pivot tables</h3>
 <p>If you typically do your data analysis in Excel, then pivot tables are likely your go-to tool. Fortunately, Ibis also supports pivot table transformations, so you won’t need to switch back to Excel.</p>
 <p>Let’s create a pivot table that shows the total quantity for each month in 2014. The months will be the columns, with the total quantity values displayed in the corresponding column for each month.</p>
-<div id="78ca7144" class="cell" data-execution_count="13">
+<div id="56a939d6" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(t.date.year() <span class="op">==</span> <span class="dv">2014</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a> .mutate(month<span class="op">=</span>t.date.strftime(<span class="st">'%b-%Y'</span>))</span>
@@ -797,7 +797,7 @@ Note
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a> .pivot_wider(names_from<span class="op">=</span><span class="st">'month'</span>, values_from<span class="op">=</span><span class="st">'quantity'</span>, names_sort<span class="op">=</span><span class="va">True</span>, values_agg<span class="op">=</span><span class="st">'sum'</span>)</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here’s the solution that actually works. First, we need to create a sorted Python list of months. To do that, we’ll convert our Ibis table to a Polars dataframe and extract the list from there.</p>
-<div id="9508c706" class="cell" data-execution_count="14">
+<div id="fc95127f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>month_list <span class="op">=</span> (t</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(t.date.year() <span class="op">==</span> <span class="dv">2014</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a> .mutate(month_num<span class="op">=</span>_.date.month(),</span>
@@ -822,7 +822,7 @@ Note
 </div>
 </div>
 <p>Now we can use <code>month_list</code> in the Ibis code to generate a pivot table with the correct month ordering, starting with Jan-2014.</p>
-<div id="eb8e4cef" class="cell" data-execution_count="15">
+<div id="a79a46bd" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(t.date.year() <span class="op">==</span> <span class="dv">2014</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> .mutate(month<span class="op">=</span>t.date.strftime(<span class="st">'%b-%Y'</span>))</span>
@@ -846,7 +846,7 @@ Note
 <h3 class="anchored" data-anchor-id="customer-segmentation">Customer segmentation</h3>
 <p>We want to offer a discount to our loyal customers, which we define as any customer who has purchased clothing from every product category available in our store.</p>
 <p>First, let’s take a look at all the product categories we have in stock.</p>
-<div id="571a6b64" class="cell" data-execution_count="16">
+<div id="cab9c659" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'category'</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> .distinct()</span>
@@ -865,7 +865,7 @@ Note
 </div>
 </div>
 <p>Since we know there are three product categories in stock, we can easily write a query to retrieve the list of loyal customers as follows:</p>
-<div id="5b3fd5f5" class="cell" data-execution_count="17">
+<div id="5c0b7661" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'account_name'</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a> .aggregate(category_num<span class="op">=</span>t.category.nunique())</span>
@@ -894,7 +894,7 @@ Note
 </div>
 <p>In most cases, we won’t know in advance how many product categories are available. That means the previous query wouldn’t be suitable. Here’s the revised version of the query for situations where the number of product categories is unknown.</p>
 <p>And since we’re only interested in the customers, we’ll remove <em>category_num</em> from the table.</p>
-<div id="87954963" class="cell" data-execution_count="18">
+<div id="0f7522e6" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'account_name'</span>)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a> .aggregate(category_num<span class="op">=</span>t.category.nunique())</span>
@@ -923,7 +923,7 @@ Note
 </div>
 </div>
 <p>To get the total number of loyal customers, we just need to add one line to the query.</p>
-<div id="f39afa79" class="cell" data-execution_count="19">
+<div id="f541f07f" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'account_name'</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a> .aggregate(category_num<span class="op">=</span>t.category.nunique())</span>
@@ -943,7 +943,7 @@ Note
 </div>
 <p>Now we’ve identified the 11 individual loyal customers eligible for the 10% discount. They’ll be thrilled to receive this discount–and maybe even encouraged to make more purchases from our store.</p>
 <p>Next, let’s identify the top five customers who contribute the highest percentage of revenue to our business.</p>
-<div id="4cc1ca2e" class="cell" data-execution_count="20">
+<div id="243c0adf" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'account_name'</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a> .agg(ext_price<span class="op">=</span>_.ext_price.<span class="bu">sum</span>())</span>

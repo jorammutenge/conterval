@@ -42,7 +42,7 @@
 
 @font-face {
   font-family: 'Iosevka';
-  src: url('assets/fonts/Iosevka.woff2') format('woff2');
+  src: url('assets/fonts/IosevkaNew-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -64,6 +64,9 @@
   font-display: swap;
 }
 
+code, pre, tt, kbd, samp, .monospace {
+  font-variant-ligatures: none;
+}
 
 // fonts
 $font-family-sans-serif: 'Harmonia-Sans-W01-Regular', sans-serif !default;

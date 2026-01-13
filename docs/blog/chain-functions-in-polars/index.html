@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-cdd16f8f8dc029c38a69f61610f010f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c22bbaac437dbdeca9b93c730ccbcc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Chaining operations in polars is encouraged to take advantage of the query engine in the backend. However, you may want to apply a function that is too specific to your needs and not provided by the built-in functions. Fortunately, there is a way to chain operations using custom-made functions in polars. Below is a dataframe showing Apple stock.</p>
-<div id="b595eb9b" class="cell" data-execution_count="1">
+<div id="429f1680" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -297,7 +297,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="create-custom-function" class="level2">
 <h2 class="anchored" data-anchor-id="create-custom-function">Create custom function</h2>
 <p>Suppose you want to calculate the delta change based on the <em>Adj Close</em> price. You can create a custom function as follows:</p>
-<div id="2d5af936" class="cell" data-execution_count="2">
+<div id="18b377f9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delta_change(df, column):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.with_columns(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        (pl.col(column) <span class="op">-</span> pl.col(column).shift(<span class="op">-</span><span class="dv">1</span>)).alias(<span class="st">'Delta Change'</span>)</span>
@@ -307,7 +307,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="apply-custom-function" class="level2">
 <h2 class="anchored" data-anchor-id="apply-custom-function">Apply custom function</h2>
 <p>To apply the custom function as a chained operation, use the <code>pipe</code> method in polars. This method accepts the custom function and its parameters. The custom function created above has parameters <code>df</code> and <code>column</code>. Let’s apply the function.</p>
-<div id="1709a2e0" class="cell" data-execution_count="3">
+<div id="59e9f11e" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .pipe(delta_change, column<span class="op">=</span><span class="st">'Adj Close'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
