@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Convert to wide format
 
@@ -33,7 +32,6 @@ To convert the dataframe above to a wide-format table without performing any agg
  .unstack(step=2, how='horizontal')
  )
 ```
-<br>
 
 The `step` parameter determines the number of rows you want to have in the final dataframe. You could also use `pivot` and leave the `aggregate_function` parameter blank to achieve the same result. However, `unstack` is often faster because it skips the grouping phase.
 

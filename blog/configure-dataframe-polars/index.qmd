@@ -22,8 +22,7 @@ df = pl.DataFrame({
 })
 
 df
-```
-<br> 
+``` 
 
 ## Insert commas in values
 
@@ -34,7 +33,6 @@ with pl.Config(thousands_separator=','):
     display(df)
 
 ```
-<br>
 
 If you live in Brazil (where the thousand separator is a full stop), you can replace `,` with `.`
 

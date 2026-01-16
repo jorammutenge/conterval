@@ -27,7 +27,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Assign column names on read
 
@@ -43,6 +42,5 @@ df2
 df2 = df.rename(dict(Col1='Name', Col2='Character'))
 df2
 ```
-<br>
 
 Enroll in my {{< var polars_course >}} to learn more!

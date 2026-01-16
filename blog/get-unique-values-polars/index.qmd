@@ -22,7 +22,6 @@ df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/hea
  )
 df
 ```
-<br>
 
 ## Show each value once
 
@@ -34,7 +33,6 @@ Say you want to see all the different types of cereal, you can select the *type*
  .unique()
  )
 ```
-<br>
 
 Now you can see that there are two types of cereal in this dataset: cold and hot.
 

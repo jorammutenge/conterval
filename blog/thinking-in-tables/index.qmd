@@ -75,7 +75,6 @@ df = pl.DataFrame({'Student': ['Spencer','Spencer','Spencer','Spencer','Emily','
  'Grade': [93,88,97,96,67,88,73,82,79,81,75,88,96,99,93,89,66,69,55,91]})
 df
 ```
-<br>
 
 ```{python}
 #| echo: false
@@ -84,7 +83,6 @@ print('Wide format')
  .pivot(index='Assessment', on='Student', values='Grade')
  )
 ```
-<br>
 
 Notice that these formats live up to their names. Long format has more rows (20), hence the name. And wide format has more columns (6), making it wider than the long format which has only 3 columns.
 

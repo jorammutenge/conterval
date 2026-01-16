@@ -28,7 +28,6 @@ data = {
 df = pl.DataFrame(data)
 df
 ```
-<br>
 
 ## Convert to long format
 
@@ -41,7 +40,6 @@ To convert the data to long format, you can use the Polars method `unpivot`, whi
           value_name='Units')
  )
 ```
-<br>
 
 Now the dataframe has fewer columns but many more rows, making it long format.
 

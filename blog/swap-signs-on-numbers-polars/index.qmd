@@ -26,7 +26,6 @@ df = pl.DataFrame({'Day': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
  'Collins Score': [1, 2, -1, 0, -2]})
 df
 ```
-<br>
 
 ## Swap signs on values
 
@@ -37,6 +36,5 @@ To swap the signs of the values in the dataframe above, use the Polars expressio
  .with_columns(pl.col('Collins Score').neg())
  )
 ```
-<br>
 
 Enroll in my {{< var polars_course >}} to learn more!

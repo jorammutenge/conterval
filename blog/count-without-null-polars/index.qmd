@@ -23,7 +23,6 @@ df = pl.DataFrame({
 
 df
 ```
-<br>
 
 ## Count values in each column
 
@@ -34,7 +33,6 @@ To get the number of non-null values in each column, you can use the Polars expr
  .select(pl.count('Manager','Department'))
  )
 ```
-<br>
 
 As you can see, the number of values in the two columns is not the same. *Manager* has only 4 values because it contains a null value.
 

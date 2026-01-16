@@ -20,7 +20,6 @@ df = pl.DataFrame({'Author': ['Harper Lee','F. Scott Fitzgerald','Haruki Murakam
  'Book': ['to kill a mocking bird','this side of paradise','men without women','quills of desire']})
 df
 ```
-<br>
 
 ## Use title case
 
@@ -31,7 +30,6 @@ You can format the book titles properly in the dataframe using the Polars expres
  .with_columns(pl.col('Book').str.to_titlecase())
  )
 ```
-<br>
 
 Learn more ways to use Polars in my {{< var polars_course >}}.
 

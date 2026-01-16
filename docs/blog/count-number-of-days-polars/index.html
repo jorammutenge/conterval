@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c22bbaac437dbdeca9b93c730ccbcc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Counting the number of days between dates is a common calculation in data analysis. Below is a dataframe showing start and end dates.</p>
-<div id="94604b92" class="cell" data-execution_count="1">
+<div id="549c64ec" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -264,11 +264,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br></p>
 <section id="get-total-days-between-dates" class="level2">
 <h2 class="anchored" data-anchor-id="get-total-days-between-dates">Get total days between dates</h2>
 <p>To get the total number of days between dates in polars, use the date component <code>total_days</code> like this:</p>
-<div id="6468dbe8" class="cell" data-execution_count="2">
+<div id="ac569557" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Total_Days<span class="op">=</span>(pl.col(<span class="st">'End_Date'</span>) <span class="op">-</span> pl.col(<span class="st">'Start_Date'</span>)).dt.total_days())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -315,7 +314,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br></p>
 <p>Enroll in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to learn more.</p>
 
 

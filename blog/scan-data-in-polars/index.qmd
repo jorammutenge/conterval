@@ -18,7 +18,6 @@ Say we have this CSV file:
 ```{python}
 csv_file = 'https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv'
 ```
-<br>
 
 ## Create a lazyframe by scanning a CSV file
 
@@ -34,7 +33,6 @@ import polars as pl
  .collect()
  )
 ```
-<br>
 
 In the lazyframe, I selected the two columns I wanted and computed the average price for each customer. The resulting lazyframe was then loaded into memory as a dataframe.
 

@@ -20,7 +20,6 @@ from datetime import date
 df = pl.DataFrame({"Date": [date(999, 12, 31),date(1897, 5, 7),date(1945, 1, 1),date(2025, 1, 1)]})
 df
 ```
-<br>
 
 ## Extract century from date
 
@@ -31,6 +30,5 @@ To extract the century from a date value, use the Polars expression `dt.century`
  .with_columns(Century=pl.col('Date').dt.century())
  )
 ```
-<br>
 
 Check out my {{< var polars_course >}} to learn more.

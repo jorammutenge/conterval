@@ -38,7 +38,6 @@ df = pl.DataFrame({'Date': ['2019-08-16',
   50.561813]}).with_columns(pl.col('Date').str.to_date())
 df
 ```
-<br>
 
 ## Create custom function
 
@@ -60,6 +59,5 @@ To apply the custom function as a chained operation, use the `pipe` method in po
  .pipe(delta_change, column='Adj Close')
  )
 ```
-<br>
 
 I updated my {{< var polars_course >}}. Be sure to enroll.

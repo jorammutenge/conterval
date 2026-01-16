@@ -24,7 +24,6 @@ df = pl.DataFrame({'Date': [date(2024, 1, 2),date(2024, 1, 3),date(2024, 1, 4),d
  'Open': [187.149994,184.220001,182.149994,181.990005,182.089996,183.919998,184.350006,186.539993,186.059998,182.160004]})
 df
 ```
-<br>
 
 ## Create custom function
 
@@ -47,6 +46,5 @@ To use a custom function in a chained operation in Polars, you can use the `pipe
 ```{python}
 df.pipe(delta_change, column='Open')
 ```
-<br>
 
 My {{< var polars_course >}} has over 150 students. Enroll to be part of the happy learners.

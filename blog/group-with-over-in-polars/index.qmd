@@ -23,7 +23,6 @@ df = pl.DataFrame({'Day': ['Mon', 'Tue', 'Wed', 'Mon', 'Tue', 'Wed', 'Mon', 'Tue
  'Price': [3.89, 4.0, 3.89, 7.99, 8.0, 4.67, 4.0, 7.89, 5.99]})
 df
 ```
-<br>
 
 ## Group with over
 
@@ -34,7 +33,6 @@ To perform a group by operation while keeping the same dataframe length in Polar
  .with_columns(Avg_Spend=pl.col('Price').mean().over('Day'))
  )
 ```
-<br>
 
 Here, we've calculated the average spend for each day.
 

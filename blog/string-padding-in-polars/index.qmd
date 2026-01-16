@@ -19,7 +19,6 @@ import polars as pl
 df = pl.DataFrame({'Part_Num': ['JV24', 'SA1978', 'VX4', 'Z5']})
 df
 ```
-<br>
 
 ## Make values same length
 
@@ -30,7 +29,6 @@ To add zeros at the end of each value in *Part_Num* that has fewer than six char
  .with_columns(pl.col('Part_Num').str.pad_end(6, '0'))
  )
 ```
-<br>
 
 Now the values all have the same length with six characters.
 

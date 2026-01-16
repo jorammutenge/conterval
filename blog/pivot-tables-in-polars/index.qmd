@@ -23,7 +23,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Pivot the dataframe
 
@@ -37,7 +36,6 @@ Right now, the dataframe is in long format, and you can see student names repeat
         aggregate_function='mean')
  )
 ```
-<br>
 I used average (mean) in the code above, but you can also use other statistical measures like max, min, std, etc.
 
 Enroll in my newly updated {{< var polars_course >}}.

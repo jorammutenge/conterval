@@ -23,7 +23,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Change to pandas dataframe
 
@@ -35,7 +34,6 @@ Suppose you want to pivot your data to create a hierarchical column table where 
  .pivot(columns=['Category', 'Brand'], values='Price')
  )
 ```
-<br>
 
 Sign up for my {{< var polars_course >}} to learn more.
 

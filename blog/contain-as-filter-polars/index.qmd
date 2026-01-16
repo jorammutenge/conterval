@@ -22,7 +22,6 @@ df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/hea
  )
 df
 ```
-<br>
 
 ## Filter with contain
 
@@ -33,7 +32,6 @@ Sometimes you may want to filter rows without knowing the exact value of a colum
  .filter(pl.col('manufacturer').str.contains('Mills'))
  )
 ```
-<br>
 
 ## Use multiple words
 
@@ -44,7 +42,6 @@ You can use the pipe operator `|` to filter with multiple words, like this:
  .filter(pl.col('manufacturer').str.contains('Mills|Purina'))
  )
 ```
-<br>
 
 Enroll in my {{< var polars_course >}}.
 

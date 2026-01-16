@@ -38,7 +38,6 @@ import polars as pl
 pl.json_normalize(data, max_level=0)
 
 ```
-<br>
 
 ## Read data at level one
 
@@ -47,6 +46,5 @@ Some nested data remains in the *fitness* column. We can unnest it by increasing
 ```{python}
 pl.json_normalize(data, max_level=1)
 ```
-<br>
 
 Discover even more ways to use Polars in my {{< var polars_course >}}.

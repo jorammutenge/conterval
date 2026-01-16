@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Filter data
 
@@ -33,7 +32,6 @@ To display the students who either got a C or a D, you use the Polars expression
  .filter(pl.col('Grade').str.contains_any(['C','D']))
  )
 ```
-<br>
 
 Only one student matched the filter condition.
 

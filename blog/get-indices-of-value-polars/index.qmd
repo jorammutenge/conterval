@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Get index of rows
 
@@ -33,6 +32,5 @@ To get the index positions of rows where the name "Aria" appears, use the Polars
  .select((pl.col('Student') == 'Aria').arg_true())
  )
 ```
-<br>
 
 Check out my {{< var polars_course >}} to advance your data analysis skills.

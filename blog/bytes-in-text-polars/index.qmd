@@ -19,7 +19,6 @@ import polars as pl
 df = pl.DataFrame({'YouTube_Comment': ["🤔 I don't think this works IRL.", '💛💛', '🔥', 'Wow!']})
 df
 ```
-<br>
 
 ## Count characters and bytes
 

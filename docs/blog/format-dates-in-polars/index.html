@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c22bbaac437dbdeca9b93c730ccbcc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>The representation of dates in data varies from region to region. In the USA, for instance, dates begin with the month rather than the day. Polars allows you to change how your dates are displayed depending on your audience. Below is a dataframe showing date values.</p>
-<div id="e009c19b" class="cell" data-execution_count="1">
+<div id="ba80c1fa" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -256,11 +256,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br></p>
 <section id="format-the-date" class="level2">
 <h2 class="anchored" data-anchor-id="format-the-date">Format the date</h2>
 <p>You can format dates in either short or long form using the datetime component <code>dt.strftime</code> like this:</p>
-<div id="4343c83d" class="cell" data-execution_count="2">
+<div id="93d4c54c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Short_Text_Date<span class="op">=</span>pl.col(<span class="st">'Num_Date'</span>).dt.strftime(<span class="st">'</span><span class="sc">%d</span><span class="st"> %b, %Y'</span>),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               Long_Text_Date<span class="op">=</span>pl.col(<span class="st">'Num_Date'</span>).dt.strftime(<span class="st">'</span><span class="sc">%d</span><span class="st"> %B, %Y'</span>),)</span>
@@ -303,7 +302,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br></p>
 <p>All good things must come to an end. This marks the end of <a href="https://www.conterval.com/blog/#category=100DaysOfPolars">100DaysOfPolars</a>.</p>
 <p>I have a <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> you can take to learn more about this powerful data analysis library.</p>
 

@@ -23,7 +23,6 @@ movies = pl.DataFrame({'movie': ['Margin Call', 'The Big Short', 'Arbitrage', 'A
 df = movies.select(pl.struct(pl.all()).alias('Movie_Struct'))
 df
 ```
-<br>
 
 ## Unnest struct
 
@@ -34,7 +33,6 @@ To place each value in the struct into its own column, use the `unnest` method l
  .unnest('Movie_Struct')
  )
 ```
-<br>
 
 Enroll in my {{< var polars_course >}} to learn more ways to analyze data.
 

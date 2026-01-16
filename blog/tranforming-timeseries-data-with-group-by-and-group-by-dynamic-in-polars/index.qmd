@@ -58,7 +58,6 @@ Let's process the data for a single yogurt brand, Yoplait to see if the solution
 ```{python}
 data.filter(pl.col('Yogurt') == "Yoplait")
 ```
-<br>
 
 Here is the processed data for Yoplait yogurt. The aggregations have been completed, resulting in a reduced number of rows in the dataframe.
 
@@ -105,14 +104,12 @@ for item in yogurt_list:
 df_1 = pl.concat(dfs)
 df_1
 ```
-<br>
 
 To verify that the above code worked correctly, let display the results for Yoplait yogurt.
 
 ```{python}
 df_1.filter(pl.col('Yogurt') == "Yoplait")
 ```
-<br>
 
 Great! The results are what we expected.
 
@@ -131,7 +128,6 @@ Fortunately, with `group_by`, it is possible to aggregate data across multiple c
  .with_columns(pl.col("Date").dt.truncate("1mo"))
  )
 ```
-<br>
 
 Notice that I have used two columns, _Yogurt_ and _Month_, in `group_by` to aggregate quantities based on this two-column combination. Since _Month_ has served its purpose, I can drop it as it is no longer needed. However, the date values are not in the expected format. To resolve this issue, I will use `truncate` and set the value to `"1mo"` to adjust the values in the _Date_ column by one month.
 

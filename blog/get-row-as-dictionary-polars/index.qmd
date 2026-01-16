@@ -23,7 +23,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Get row as dictionary
 

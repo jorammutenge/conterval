@@ -433,5 +433,8 @@
   },
   "blog/movies-and-series-watched-2025/index.qmd": {
     "index.html": "4624db7e"
+  },
+  "blog/fizzbuzz-in-polars/index.qmd": {
+    "index.html": "d3269cd9"
   }
 }

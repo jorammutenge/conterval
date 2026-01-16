@@ -32,7 +32,6 @@ data = pl.datetime_range(
 df = data.with_columns(pl.Series('Power_Usage', [random.randint(1, 10) for _ in range(data.height)]))
 df
 ```
-<br>
 
 ## Aggregate on time series
 

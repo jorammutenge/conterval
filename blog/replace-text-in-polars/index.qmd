@@ -24,7 +24,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Replace space with dash
 
@@ -35,7 +34,6 @@ To replace all spaces in each phone number with dashes, use the polars expressio
  .with_columns(pl.col('Phone No').str.replace_all(' ','-'))
  )
 ```
-<br>
 Now you have dashes in the phone numbers instead of spaces!
 
 Join 150+ people advancing their skills in the {{< var polars_course >}}.

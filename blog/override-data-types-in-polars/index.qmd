@@ -24,7 +24,6 @@ import polars as pl
 df = pl.DataFrame({'Function': ['strip_chars', 'pl.nth', 'explode'], 'Day_Count': [1, 2, 3]})
 df
 ```
-<br>
 
 ## Assign data type on read
 
@@ -38,6 +37,5 @@ pl.read_csv('days_data.csv', schema_overrides={'Day_Count': pl.String})
 #| echo: false
 df.with_columns(pl.col('Day_Count').cast(pl.String))
 ```
-<br>
 
 There's more you can learn in my {{< var polars_course >}}.

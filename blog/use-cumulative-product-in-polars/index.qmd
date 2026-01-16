@@ -20,7 +20,6 @@ df = pl.DataFrame({'Event': ['Get into Harvard','Become billionaire','Be happily
  'Chance': [0.04, 0.5, 0.12, 0.02]})
 df
 ```
-<br>
 
 ## Get chance of all events happening
 
@@ -31,7 +30,6 @@ To determine the chance of all four events happening to you, use the Polars expr
  .with_columns(All_Happening=pl.col('Chance').cum_prod())
  )
 ```
-<br>
 
 The last value in *All_Happening* represents the chance of all events happening. It turns out that your chance of getting into Harvard, becoming a billionaire, being happily married, and dying a hero is 1 in 21 thousand!
 

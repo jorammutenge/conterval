@@ -22,7 +22,6 @@ df = (pl.read_csv('https://raw.githubusercontent.com/jorammutenge/learn-rust/ref
       )
 df
 ```
-<br>
 
 ## Aggregating numerical values
 

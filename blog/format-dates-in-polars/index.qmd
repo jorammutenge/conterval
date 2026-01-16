@@ -19,7 +19,6 @@ import polars as pl
 df = pl.DataFrame({'Num_Date': ['9/17/2025', '12/23/2025']}).with_columns(pl.col('Num_Date').str.strptime(pl.Date, '%m/%d/%Y'))
 df
 ```
-<br>
 
 ## Format the date
 
@@ -31,7 +30,6 @@ You can format dates in either short or long form using the datetime component `
                Long_Text_Date=pl.col('Num_Date').dt.strftime('%d %B, %Y'),)
  )
 ```
-<br>
 
 All good things must come to an end. This marks the end of [100DaysOfPolars](https://www.conterval.com/blog/#category=100DaysOfPolars).
 

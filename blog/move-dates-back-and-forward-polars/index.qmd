@@ -22,7 +22,6 @@ df = pl.DataFrame({
 }).with_columns(pl.col('Date').str.strptime(pl.Date, '%m/%d/%Y'))
 df
 ```
-<br>
 
 ## Move dates back or forward
 

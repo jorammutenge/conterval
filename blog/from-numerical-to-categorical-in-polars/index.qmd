@@ -24,7 +24,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 It's difficult to look at a table full of numbers and decide which category each streaming service belongs to based on price. To make this process easier, you can use the Polars expression `qcut` as shown below:
 
@@ -36,7 +35,6 @@ It's difficult to look at a table full of numbers and decide which category each
                )
  )
 ```
-<br>
 
 The code above divides the range of values in *Price* based on quantile probabilities. Now you can simply look at the streaming service and the *Category* column to see whether it's within your budget.
 

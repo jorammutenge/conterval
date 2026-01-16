@@ -37,6 +37,5 @@ Instead of repeating the name of every student for each subject they take, letâ€
  .agg(pl.col('Subject').implode())
  )
 ```
-<br>
 
 I'd appreciate it if you checked out my {{< var polars_course >}}.

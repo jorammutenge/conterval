@@ -58,7 +58,6 @@ Now let's explode the list values in *Subject* to make the dataframe longer.
  .explode('Subjects')
  )
 ```
-<br>
 Each subject now appears in its own row. This transformation makes it much easier to answer the two questions we posed earlier.
 
 You're invited to enroll in my popular {{< var polars_course >}}.

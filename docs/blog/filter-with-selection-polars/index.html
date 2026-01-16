@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c22bbaac437dbdeca9b93c730ccbcc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Selecting specific columns to filter out unnecessary columns is common in data analysis. Polars makes this type of filtering straightforward through the use of selectors. Below is a dataframe showing cereal brands.</p>
-<div id="415c883a" class="cell" data-execution_count="1">
+<div id="4ec26cec" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -254,43 +254,42 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Trix"</td>
-<td>"General Mills"</td>
-<td>"Cold"</td>
-<td>1.0</td>
-<td>1.0</td>
-</tr>
-<tr class="even">
-<td>"Shredded Wheat"</td>
-<td>"Nabisco"</td>
-<td>"Cold"</td>
-<td>0.83</td>
-<td>1.0</td>
-</tr>
-<tr class="odd">
-<td>"Muesli Raisins, Dates, &amp; Almon…</td>
+<td>"Almond Delight"</td>
 <td>"Ralston Purina"</td>
 <td>"Cold"</td>
 <td>1.0</td>
-<td>1.0</td>
+<td>0.75</td>
 </tr>
 <tr class="even">
-<td>"Just Right Crunchy&nbsp;&nbsp;Nuggets"</td>
+<td>"Nutri-Grain Almond-Raisin"</td>
 <td>"Kellogs"</td>
 <td>"Cold"</td>
+<td>1.33</td>
+<td>0.67</td>
+</tr>
+<tr class="odd">
+<td>"Just Right Fruit &amp; Nut"</td>
+<td>"Kellogs"</td>
+<td>"Cold"</td>
+<td>1.3</td>
+<td>0.75</td>
+</tr>
+<tr class="even">
+<td>"Wheat Chex"</td>
+<td>"Ralston Purina"</td>
+<td>"Cold"</td>
 <td>1.0</td>
-<td>1.0</td>
+<td>0.67</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><br></p>
 <section id="get-numerical-columns" class="level2">
 <h2 class="anchored" data-anchor-id="get-numerical-columns">Get numerical columns</h2>
 <p>You can use Polars selectors to filter for numerical columns only. In this case, the dataframe will show the columns <em>weight</em> and <em>cups</em>. Here’s how to do it:</p>
-<div id="d79c9ede" class="cell" data-execution_count="2">
+<div id="c1a831cd" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(df</span>
@@ -319,26 +318,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <tbody>
 <tr class="odd">
 <td>1.0</td>
-<td>1.0</td>
+<td>0.75</td>
 </tr>
 <tr class="even">
-<td>0.83</td>
-<td>1.0</td>
+<td>1.33</td>
+<td>0.67</td>
 </tr>
 <tr class="odd">
-<td>1.0</td>
-<td>1.0</td>
+<td>1.3</td>
+<td>0.75</td>
 </tr>
 <tr class="even">
 <td>1.0</td>
-<td>1.0</td>
+<td>0.67</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><br></p>
 <p>You can also filter for columns with the string data type by replacing <code>pl.Float64</code> with <code>pl.String</code>. This method of filtering is especially useful when your dataframe has many columns and you don’t want to spend time listing each column you want to include manually.</p>
 <p>I’m accepting students in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>
 

@@ -21,7 +21,6 @@ df = pl.DataFrame(
 ).with_columns(pl.col('DOB').str.strptime(pl.Date, '%m/%d/%Y'))
 df
 ```
-<br>
 
 ## Convert date to timestamp
 
@@ -32,6 +31,5 @@ To convert a date to a timestamp, use the date component `timestamp` as shown be
  .with_columns(DOB_ms=pl.col('DOB').dt.timestamp('ms'))
  )
 ```
-<br>
 
 Check out my {{< var polars_course >}} for more insights.

@@ -38,7 +38,6 @@ df = pl.DataFrame({
 
 df
 ```
-<br>
 And voilà! You have your dataframe.
 
 Join 100+ students in the {{< var polars_course >}}!

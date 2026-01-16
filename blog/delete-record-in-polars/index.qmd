@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Delete record
 
@@ -31,7 +30,6 @@ If you’re a fan of the TV show *Suits*, you’ll know that Donna is not a lawy
 ```{python}
 df.remove(pl.col('Student') == 'Donna')
 ```
-<br>
 If you’re a diehard fan of *Suits*, you’ll also point out that Mike is not a real lawyer. That’s true, but let’s keep that just between us, the diehard fans.
 
 Enroll in my {{< var polars_course >}} to learn more ways to analyze data with Polars.

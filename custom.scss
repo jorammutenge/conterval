@@ -274,8 +274,9 @@ $grid-column-gutter-width: 1.5rem !default;
   width: fit-content;
   margin-left: 0;
   margin-right: auto;
-  border-collapse: collapse; // Prevent extra spacing from borders
-  table-layout: auto; // Allow columns to size naturally
+  margin-bottom: 1.5rem; // Add this line
+  border-collapse: collapse;
+  table-layout: auto;
 }
 
 .dataframe th,

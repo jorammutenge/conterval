@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c22bbaac437dbdeca9b93c730ccbcc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -259,7 +259,7 @@ window.Quarto = {
 \]</span></p>
 <p>Below are two dataframes to be joined.</p>
 <p><strong>df1</strong></p>
-<div id="28ba953d" class="cell" data-execution_count="1">
+<div id="b7526169" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -305,9 +305,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><br></p>
 <p><strong>df2</strong></p>
-<div id="b14478cd" class="cell" data-execution_count="2">
+<div id="ecad5519" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -344,11 +343,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><br></p>
 <section id="get-students-who-failed-the-exam" class="level2">
 <h2 class="anchored" data-anchor-id="get-students-who-failed-the-exam">Get students who failed the exam</h2>
 <p>To retrieve the names of students who failed the exam from the complete list of students, use the Polars <code>join</code> method as follows.</p>
-<div id="1f312d6e" class="cell" data-execution_count="3">
+<div id="2a65dd33" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df1</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .join(df2, left_on<span class="op">=</span><span class="st">'All_Students'</span>, right_on<span class="op">=</span><span class="st">'Passed_Exam'</span>, how<span class="op">=</span><span class="st">'anti'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -385,7 +383,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><br></p>
 <p>Enroll in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to learn advanced topics.</p>
 
 

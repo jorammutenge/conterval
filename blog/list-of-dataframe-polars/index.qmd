@@ -29,7 +29,6 @@ rating_df = pl.DataFrame({
 })
 rating_df
 ```
-<br>
 
 **Movie duration dataframe**
 
@@ -46,7 +45,6 @@ duration_df = pl.DataFrame({
 })
 duration_df
 ```
-<br>
 
 ## Align dataframes and store in list
 
@@ -66,7 +64,6 @@ Now that you have a list of dataframes, you can access any one of them by index.
 ```{python}
 aligned_dfs[0]
 ```
-<br>
 
 Notice that this movie rating dataframe is not the same as the original. This one only contains movies in which Leonardo DiCaprio appeared.
 

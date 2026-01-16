@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Filter with quantile
 
@@ -33,7 +32,6 @@ You can get the students who scored in the 50th percentile by using the Polars e
  .filter(pl.col('Score').gt(pl.col('Score').quantile(.50)))
  )
 ```
-<br>
 
 Join 100+ students improving their polars skills in my {{< var polars_course >}}.
 

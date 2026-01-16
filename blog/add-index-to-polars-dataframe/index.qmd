@@ -28,7 +28,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Add index to dataframe
 
@@ -37,12 +36,10 @@ To add an index to a Polars dataframe, use the `with_row_index` method like this
 ```{python}
 df.with_row_index()
 ```
-<br>
 Notice that the index starts at zero. If you want it to start at a different number, such as 1, you can add the `offset` parameter like this:
 
 ```{python}
 df.with_row_index(offset=1)
 ```
-<br>
 
 I updated my {{< var polars_course >}} on Udemy. Join 150+ students and level up your data analysis skills with this fast dataframe library.

@@ -34,7 +34,6 @@ data = {
 df = pl.DataFrame(data)
 df
 ```
-<br>
 
 ## Remove whitespace
 
@@ -45,6 +44,5 @@ To remove the unnecessary spaces and tabs at the beginning of values in *Actress
  .with_columns(pl.col('Actress').str.strip_chars_start())
  )
 ```
-<br>
 
 I want you to start learning in my {{< var polars_course >}}.

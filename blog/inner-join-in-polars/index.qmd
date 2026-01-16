@@ -28,7 +28,6 @@ movies_df = (movies
  )
 movies_df
 ```
-<br>
 And here's another dataframe, **minutes_df**, showing the duration of the movies.
 
 ```{python}
@@ -38,7 +37,6 @@ minutes_df = (movies
  )
 minutes_df
 ```
-<br>
 
 ## Join dataframes
 
@@ -49,7 +47,6 @@ You can use the `inner` join to get all the rows that match in both dataframes b
  .join(minutes_df, on='movie', how='inner')
  )
 ```
-<br>
 Now we have a single dataframe that contains all four columns.
 
 ::: {.callout-tip title="**Other joins you'll use**"}

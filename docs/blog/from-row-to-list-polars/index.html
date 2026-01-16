@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c22bbaac437dbdeca9b93c730ccbcc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Python is big on lists because they are one of the fundamental data structures of the language. It’s no surprise that data analysis tasks in Python almost always involve using lists. Luckily, Polars allows you to collapse a series of rows into a list. Below is a dataframe showing sales from a clothing store.</p>
-<div id="b629b60d" class="cell" data-execution_count="1">
+<div id="3e51e211" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -297,11 +297,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br></p>
 <section id="get-list-of-clothing-categories" class="level2">
 <h2 class="anchored" data-anchor-id="get-list-of-clothing-categories">Get list of clothing categories</h2>
 <p>Suppose you want to know the unique categories of clothing available at this store and store those categories in a list. How would you do it in Polars? You simply use the method <code>to_list</code>, but it’s a series method, not a dataframe method. Therefore, you’ll need to convert the dataframe into a series.</p>
-<div id="50140065" class="cell" data-execution_count="2">
+<div id="aec85382" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> [<span class="st">'category'</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
@@ -315,7 +314,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-idiomatic-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-idiomatic-way">The idiomatic way</h2>
 <p>Subscribers to the idiomatic way of writing Polars code, like myself, would frown upon the use of square brackets in the code above. Let me show you how to rewrite the code above (without embarrassment) if you, too, want to be a Polars connoisseur.</p>
-<div id="7b2f8cee" class="cell" data-execution_count="3">
+<div id="0be44be7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'category'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
@@ -323,7 +322,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a> .to_list()</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>['Hat', 'Socks', 'Sweater']</code></pre>
+<pre><code>['Hat', 'Sweater', 'Socks']</code></pre>
 </div>
 </div>
 <p>Become a master of Polars my enrolling in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>.</p>

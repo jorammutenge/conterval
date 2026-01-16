@@ -25,7 +25,6 @@ df = pl.DataFrame({
 
 df
 ```
-<br>
 
 ## Calculate cumulative sum
 
@@ -36,7 +35,6 @@ In Polars, you use the expression `pl.cum_sum` to add the next number to the sum
  .with_columns(Cum_Sales=pl.col('Sales').cum_sum())
  )
 ```
-<br>
 So, if you had a target of $2,000 by the end of the week, you'd know by Friday that you're not too far from hitting that target.
 
 Hey, do me a solid, checkout my {{< var polars_course >}}.

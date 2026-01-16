@@ -20,7 +20,6 @@ df = pl.DataFrame({'Represent': ['Area code', 'Exchange code', 'Line number'],
  'Value': [563, 384, 9905]})
 df
 ```
-<br>
 
 ## Collapse rows into one
 
@@ -41,6 +40,5 @@ This is different from the `implode` function, which returns a list of values in
  .select(pl.col('Value').implode().alias('Phone_No'))
  )
 ```
-<br>
 
 Check out my {{< var polars_course >}} to learn more.

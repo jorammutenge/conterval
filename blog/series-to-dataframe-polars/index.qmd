@@ -19,7 +19,6 @@ import polars as pl
 ser = pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/heads/master/data/hospital_account_info.csv')['City']
 ser
 ```
-<br>
 
 ## Convert series to dataframe
 

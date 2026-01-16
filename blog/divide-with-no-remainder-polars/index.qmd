@@ -24,7 +24,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Get decade from year
 
@@ -35,6 +34,5 @@ You can create a new column to show the decade in which each invention occurred 
  .with_columns(Decade=pl.col('Year').floordiv(10)*10)
  )
 ```
-<br>
 
 Check out my {{< var polars_course >}} to learn more cool Polars tricks.

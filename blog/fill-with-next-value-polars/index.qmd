@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Fill null with value
 
@@ -33,7 +32,6 @@ To replace null values with the next value that follows them, use the Polars exp
  .with_columns(pl.col('Number').backward_fill())
  )
 ```
-<br>
 
 Now the values in *Number* are filled. The opposite of this method is `forward_fill`.
 

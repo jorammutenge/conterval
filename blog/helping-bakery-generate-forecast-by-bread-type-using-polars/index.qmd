@@ -61,7 +61,6 @@ sales_df = (pl.DataFrame(data)
       )
 sales_df
 ```
-<br>
 
 Here's the forecast data from the retail store.
 
@@ -84,7 +83,6 @@ forecast_df = (pl.DataFrame(data)
                )
 forecast_df
 ```
-<br>
 
 ## The math
 
@@ -136,7 +134,6 @@ Let's demonstrate this calculation to see where it fell short.
  .with_columns(Rol_3month=pl.col('Sales').rolling_sum(window_size=3))
  )
 ```
-<br>
 This gives us some of the values we want, but it creates null values for the first 2 rows. To rectify the null value problem on the first two rows, we shifted the values in _Rol_3month_ up by 2 rows. 
 
 ```{python}
@@ -146,7 +143,6 @@ This gives us some of the values we want, but it creates null values for the fir
  .with_columns(Rol_3month_Shift=pl.col('Sales').rolling_sum(window_size=3).shift(-2))
  )
 ```
-<br>
 The problem of null values in the first 2 rows is solved, but another problem is created. The last 2 rows now have null values. At this point, we knew that `rolling_sum` wasn't going to work.
 
 The reason why rolling sum didn't work is that on the first row, we don't yet have 3 values to add so the sum is null, the same applies to the second row. But on the second row, we have 3 values in the window to add that’s why the first value shows up on row 3.
@@ -164,7 +160,6 @@ We’ll begin by creating a list of all the dates in the sales data.
 date_list = sales_df['Date'].unique().to_list()
 date_list
 ```
-<br>
 Now, let’s write some code to calculate the _Rol_3month_ value for the first date in date_list. This date value will be accessed with 0 index as in `date_list[0]`.
 
 ```{python}
@@ -175,7 +170,6 @@ Now, let’s write some code to calculate the _Rol_3month_ value for the first d
  .filter(pl.col('Date').eq(date_list[0]))
 )
 ```
-<br>
 In the code above, we filtered the data to only show brown bread, then created a column _Sales_List_ using `implode`. This stores all sales values from January to December into a single list. To calculate the `Rol_3month`, we slice the list of sales values to only select the first available 3 values and then add them up. Finally, we only get the row in the dataframe that corresponds to the chosen date, which is the first date in *date_list*.
 
 Let’s reuse this code to calculate the _Rol_3month_ value for white bread. Because we want to have a single dataframe showing the results for brown and white bread, we’ll use `vstack` to vertically combine the dataframes.
@@ -218,7 +212,6 @@ We are dividing each Rol_3month value for every bread type by the sum of the Rol
  .with_columns(Percentage=pl.col('Rol_3month') / pl.col('Rol_3month').sum())
  )
 ```
-<br>
 
 These are the values we want, but we’ve only calculated for the first date in date_list. We have to perform this calculation for every date in date_list. Rather than doing it manually 12 times, we’ll use a for loop to loop through the date_list.
 
@@ -269,7 +262,6 @@ To make the dates in both dataframes match, we’ll remove the year in the date 
  .with_columns(pl.col('Date').dt.strftime('%m-%d'))
 )
 ```
-<br>
 
 In the code below, we remove the year in the forecast data and join the two dataframes in a single dataframe called *combined_df*.
 
@@ -304,7 +296,6 @@ table_df = (new_fcst_df
  )
 table_df
 ```
-<br>
 
 This format is better, but since at Conterval we’re sticklers for aesthetics, we decided to make the final forecast output look even better. To do this, we used a library called `great-tables`.
 
@@ -330,7 +321,6 @@ col_spacing = {month: '60px' for month in month_list}
     .cols_width(cases=col_spacing)
 )
 ```
-<br>
 
 Contact us for help with your data problems. Also check out our {{< var polars_course >}} to level up your data analysis skills with this fast Python library.
 

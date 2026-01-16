@@ -27,7 +27,6 @@ import polars as pl
 df1 = pl.DataFrame({'All_Students': ['Serena', 'Dan', 'Blair', 'Chuck', 'Nate', 'Jenny', 'Raina']})
 df1
 ```
-<br>
 
 **df2**
 
@@ -36,7 +35,6 @@ df1
 df2 = pl.DataFrame({'Passed_Exam': ['Dan', 'Raina', 'Blair', 'Jenny']})
 df2
 ```
-<br>
 
 ## Get students who failed the exam
 
@@ -47,6 +45,5 @@ To retrieve the names of students who failed the exam from the complete list of 
  .join(df2, left_on='All_Students', right_on='Passed_Exam', how='anti')
 )
 ```
-<br>
 
 Enroll in my {{< var polars_course >}} to learn advanced topics.

@@ -22,7 +22,6 @@ df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/hea
  )
 df
 ```
-<br>
 
 ## Get numerical columns
 
@@ -35,7 +34,6 @@ import polars.selectors as cs
  .select(cs.by_dtype(pl.Float64))
 )
 ```
-<br>
 
 You can also filter for columns with the string data type by replacing `pl.Float64` with `pl.String`. This method of filtering is especially useful when your dataframe has many columns and you don’t want to spend time listing each column you want to include manually.
 

@@ -19,7 +19,6 @@ import polars as pl
 df = pl.DataFrame({'Password': ['marm1te', 'jam543', 'p3anutButt3r']})
 df
 ```
-<br>
 
 ## Count number of digits in each password
 
@@ -31,6 +30,5 @@ You can count the number of digits in each password using the function `count_ma
                .alias('Num_of_Digits'))
  )
 ```
-<br>
 
 Discover even more ways to use Polars in my {{< var polars_course >}}.

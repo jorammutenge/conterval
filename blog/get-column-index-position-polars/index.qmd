@@ -39,7 +39,6 @@ df = pl.DataFrame({'name': ['Total Corn Flakes',
  'cereal': [1, 1, 1, 1, 1]})
 df
 ```
-<br>
 
 ## Get index position of column
 

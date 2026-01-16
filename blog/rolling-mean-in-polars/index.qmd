@@ -31,7 +31,6 @@ You can calculate the 3-day moving average in Polars using the expression `rolli
  .with_columns(Rol_Mean=pl.col('Sales').rolling_mean(window_size=3))
  )
 ```
-<br>
 
 Notice that the first 2 rows in *Rol_Mean* are null. That’s because the window size of 3 is not met on the first and second roll. If you don’t want null values, you can use the parameter `min_samples`, which determines the number of values that should be **non-null** before calculating the average. Let’s set it to 1.
 
@@ -40,6 +39,5 @@ Notice that the first 2 rows in *Rol_Mean* are null. That’s because the window
  .with_columns(Rol_Mean=pl.col('Sales').rolling_mean(window_size=3, min_samples=1))
  )
 ```
-<br>
 
 Enroll in my {{< var polars_course >}} to advance your data analysis skills.

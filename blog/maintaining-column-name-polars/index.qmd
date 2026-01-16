@@ -28,7 +28,6 @@ df = pl.DataFrame({
 # Display the DataFrame
 df
 ```
-<br>
 
 ## Amateur way to maintain column name
 

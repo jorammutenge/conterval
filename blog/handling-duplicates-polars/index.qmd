@@ -23,7 +23,6 @@ df = pl.DataFrame({
 
 df
 ```
-<br>
 
 ## Show duplicates
 
@@ -46,7 +45,6 @@ To remove duplicates in Polars, use the `unique` method. This ensures that only 
  .unique()
  )
 ```
-<br>
 Now you can see that Friday appears only once!
 
 Join the many students improving their Polars skills in my {{< var polars_course >}}.

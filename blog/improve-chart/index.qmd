@@ -43,7 +43,6 @@ Korea,1800"""
 data = pl.read_csv(data.encode("utf-8"))
 data
 ```
-<br>
 
 Since the GDP numbers will be presented in trillion and not billion, I'll divide the values by 1,000 and round the values to 2 decimal places. Here's the resulting dataframe.
 

@@ -29,7 +29,6 @@ df = (
 )
 df
 ```
-<br>
 
 ## Round down time values
 
@@ -41,6 +40,5 @@ Here, we use Polars to scan a 10-minute interval of the time series and set each
                .alias('Truncated_by_10min'))
  )
 ```
-<br>
 
 Learn more in my {{< var polars_course >}}.

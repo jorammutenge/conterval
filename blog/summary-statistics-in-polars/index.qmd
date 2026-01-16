@@ -23,7 +23,6 @@ df = (pl.read_csv('https://raw.githubusercontent.com/jorammutenge/learn-rust/ref
       )
 df
 ```
-<br>
 
 ## Get summary stats
 
@@ -34,7 +33,6 @@ To get summary statistics for all the columns in the above dataframe, you can us
  .describe()
  )
 ```
-<br>
 
 You can now quickly see that the highest quantity for a single purchase is 20, and the highest price is 100. More importantly, none of the columns have missing values, as indicated by a `null_count` value of 0 for all columns.
 

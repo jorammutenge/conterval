@@ -21,7 +21,6 @@ df = pl.DataFrame({'Store': ['Burger King', "McDonald's", 'Shake Shack', 'Pizza 
  'Opinion': ["It's good", None, 'Loved it', None]})
 df
 ```
-<br>
 
 ## Check number of nulls
 
@@ -32,7 +31,6 @@ To check how many null values are in each column, use the Polars method `null_co
  .null_count()
  )
 ```
-<br>
 
 You can now see the number of null values in each column. For instance, *Opinion* has 2 null values.
 

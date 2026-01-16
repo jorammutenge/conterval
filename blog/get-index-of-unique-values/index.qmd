@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Index where each unique value first appears
 
@@ -33,6 +32,5 @@ To get the index location where each unique name in the dataframe first appears,
  .select(pl.col('Student').arg_unique())
  )
 ```
-<br>
 
 I want you to enroll in my {{< var polars_course >}} so you can learn more.

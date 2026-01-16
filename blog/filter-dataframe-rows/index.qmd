@@ -23,7 +23,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Filter for some row
 
@@ -34,7 +33,6 @@ To get the row showing the student with the highest grade, you can use the `filt
  .filter(pl.col('Grade') == pl.max('Grade'))
  )
 ```
-<br>
 
 You can also use `filter` to get the opposite of a specified value by using the “not equal to” operator (`!=`):
 
@@ -43,7 +41,6 @@ You can also use `filter` to get the opposite of a specified value by using the 
  .filter(pl.col('Grade') != pl.max('Grade'))
  )
 ```
-<br>
 
 You can achieve the same result as in the previous example by using the negation symbol `~`:
 
@@ -52,6 +49,5 @@ You can achieve the same result as in the previous example by using the negation
  .filter(~(pl.col('Grade') == pl.max('Grade')))
  )
 ```
-<br>
 
 Check out my {{< var polars_course >}} to learn more clever ways to analyze your data.

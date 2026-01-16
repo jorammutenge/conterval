@@ -27,6 +27,5 @@ import polars as pl
 df = pl.from_records(data_matrix, schema=['Name', 'Profession'])
 df
 ```
-<br>
 
 Join my {{< var polars_course >}} to improve your data analysis skills.

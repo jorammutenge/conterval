@@ -24,7 +24,6 @@ df = pl.DataFrame({'Name': ['Joram', 'Eleonora', 'Lauren', 'Enrico'],
 name_df = df.select('Name')
 name_df
 ```
-<br>
 
 **profession_df**
 
@@ -33,7 +32,6 @@ name_df
 profession_df = df.select('Profession')
 profession_df
 ```
-<br>
 
 ## Combine dataframes
 
@@ -44,7 +42,6 @@ To combine the two dataframes into a single one, use the `hstack` method like th
  .hstack(profession_df)
  )
 ```
-<br>
 
 Learn more in my {{< var polars_course >}}.
 

@@ -32,7 +32,6 @@ counties_in_the_usa = 'https://raw.githubusercontent.com/arilamstein/polars-pand
 ```{python}
 pl.read_csv(counties_in_the_usa)
 ```
-<br>
 
 Suppose you only want to display the county name and population. Here's how you can use `scan_csv` to achieve that:
 
@@ -42,7 +41,6 @@ Suppose you only want to display the county name and population. Here's how you 
  .collect()
  )
 ```
-<br>
 
 Notice that I used `collect` because `scan_csv` produces a lazy frame. This means that whenever you use `scan_csv`, you need to include `collect` at the end to get your results.
 
@@ -69,7 +67,6 @@ Adding values in a single column is easy. All you need is `sum`. This is called 
 apple_stock = pl.read_csv('https://raw.githubusercontent.com/kyleconroy/apple-stock/refs/heads/master/apple_stock_data.csv', try_parse_dates=True)
 apple_stock
 ```
-<br>
 
 Lets also say that you wanted to create a new column called *sum_OHLC* adds the values in every row for _Open_, _High_, _Low_, _Close_ columns. Most amateur Polars users would write the following code:
 
@@ -87,7 +84,6 @@ The way to write the above code like a pro is using `sum_horizontal` like this:
  .with_columns(sum_OHLC=pl.sum_horizontal('Open', 'High', 'Low', 'Close'))
  )
 ```
-<br>
 
 You not only write shorter code with `sum_horizontal` but you can also use other variations of it like `mean_horizontal` to get the average values of the four numbers and `min_horizontal` to get the smallest number.
 
@@ -102,7 +98,6 @@ When working with timeseries data, you may need to resample it based on specific
  .agg(pl.mean('Close'))
  )
 ```
-<br>
 
 ::: {.callout-note}
 Before using `group_by_dynamic` you must sort the the data on the _Date_ column.  
@@ -127,7 +122,6 @@ apple_stock_dataset = 'https://raw.githubusercontent.com/kyleconroy/apple-stock/
  .collect()
  )
 ```
-<br>
 
 Now I've loaded into memory only the columns I'm interested in.
 
@@ -158,7 +152,6 @@ This is where `explode` comes in. We'll create a new column _Item_ that will con
  .with_columns(pl.col('Groceries').str.split(', '))
  )
 ```
-<br>
 
 Then we'll explode the items in each list into individual items by exploding the _Groceries_ column.
 
@@ -181,7 +174,6 @@ Knowing the top 10 or 5 highest values or lowest values in your dataset is a ver
  .top_k(5, by='population')
  )
 ```
-<br>
 
 The `top_k` function accepts two parameters: a numerical value specifying the number of rows to display and the column to base the sorting on. For instance, in the example above, we used it to find the top 5 largest counties by population. To find the smallest counties by population, you can simply use the `bottom_k` function instead.
 
@@ -196,7 +188,6 @@ The US counties dataset contains over three thousand rows, but we're going to us
  .sample(1000)
  )
 ```
-<br>
 
 The `sample` function lets you specify the number of rows you want to display as a numerical value. In our case, we are displaying 1000 rows.
 
@@ -211,7 +202,6 @@ This is short for "concatenate string" and it allows you to create a single valu
                              ).alias('NameAbbr'))
  )
 ```
-<br>
 
 In the `concat_str` function above, we used two parameters. The first parameter is a list of the columns whose values we want to concatenate, and the second specifies the separator to use when joining those values. In this case, we used `", "` (a comma followed by a space) to produce values like "wyoming, WY".
 
@@ -226,7 +216,6 @@ When presenting data to someone, especially in printed form, you may want to add
  .with_columns(pl.format("${}", pl.col('Close')).alias('Close'))
  )
 ```
-<br>
 
 ::: {.callout-note}
 I've used `round` before applying the currency formatting to ensure the figures are rounded to 2 decimal places.
@@ -238,7 +227,6 @@ The default way of displaying polars dataframes is good, but sometimes you may w
 ```{python}
 groceries
 ```
-<br>
 
 Now Let's use `Config` to increase the size of _Groceries_.
 
@@ -247,7 +235,6 @@ pl.Config(set_fmt_str_lengths=100)
 
 groceries
 ```
-<br>
 
 The example above demonstrates a global setting, meaning that the next time a dataframe is displayed, it will apply this size to any column whose values don't fit within the default size. This can be frustrating, especially when working with multiple dataframes. To avoid this, you can apply the `Config` setting to display only one dataframe with the desired settings.
 
@@ -259,7 +246,6 @@ usa_counties = (pl.read_csv(counties_in_the_usa)
  )
 usa_counties
 ```
-<br>
 
 And here's the display with the formatting in place.
 
@@ -270,7 +256,6 @@ with pl.Config(set_tbl_rows=20,
                ):
     display(usa_counties)
 ```
-<br>
 
 ::: {.callout-note}
 The settings applied by `Config` are only for display purposes. When you export the data to Excel or another format, these configurations, such as comma separators in numbers, will be lost.

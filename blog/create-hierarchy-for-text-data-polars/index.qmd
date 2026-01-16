@@ -25,7 +25,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Filter with inequality
 
@@ -36,6 +35,5 @@ Because the *Degree* column is of type `Enum`, you can use inequality symbols to
  .filter(pl.col("Degree") >= "MSc")
  )
 ```
-<br>
 
 Check out my {{< var polars_course >}} to learn more!

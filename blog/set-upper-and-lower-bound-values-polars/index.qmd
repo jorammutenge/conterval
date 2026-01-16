@@ -24,7 +24,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Set boundaries where grades should be
 
@@ -35,7 +34,6 @@ To ensure that all grades fall within the 60 to 90 range, use the Polars express
  .with_columns(pl.col('Grade').clip(60,90))
  )
 ```
-<br>
 
 Now none of the values in *Grade* are above 90 or below 60. You've successfully clipped the values!
 

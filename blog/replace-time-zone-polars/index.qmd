@@ -27,7 +27,6 @@ df = pl.datetime_range(
 ).alias("Chicago_Time").dt.convert_time_zone(time_zone="America/Chicago").to_frame()
 df
 ```
-<br>
 
 ## Replace the time zone
 
@@ -39,7 +38,6 @@ To replace your local time zone with the time zone of the location where the dat
                .alias('New_York_Time'))
  )
 ```
-<br>
 
 The time zone is now changed from Chicago time to New York time.
 

@@ -22,7 +22,6 @@ df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/hea
  )
 df
 ```
-<br>
 
 ## Get middle rows
 
@@ -33,7 +32,6 @@ With the `slice` method, Polars allows you to retrieve middle rows from your dat
  .slice(10,20)
  )
 ```
-<br>
 
 As you can see from the code above, `slice` takes two parameters. The first is the position (index) of the starting row, and the second is the number of rows to return. In this case, the resulting dataframe will have 20 rows.
 

@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c22bbaac437dbdeca9b93c730ccbcc91.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -220,7 +220,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>If you’re a movie buff like me, you probably subscribe to multiple streaming services. Suppose you wanted to categorize the cost of your subscription fees for these services into three categories: cheap, okay, and expensive. How could you do it?</p>
 <p>Below is a dataframe showing various streaming services.</p>
-<div id="6aa23cce" class="cell" data-execution_count="1">
+<div id="12b168d3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -275,9 +275,8 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br></p>
 <p>It’s difficult to look at a table full of numbers and decide which category each streaming service belongs to based on price. To make this process easier, you can use the Polars expression <code>qcut</code> as shown below:</p>
-<div id="4e1f4dfe" class="cell" data-execution_count="2">
+<div id="dec5b66f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Price'</span>).qcut([<span class="fl">0.25</span>, <span class="fl">0.75</span>],</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               labels<span class="op">=</span>[<span class="st">'Cheap'</span>,<span class="st">'Okay'</span>,<span class="st">'Expensive'</span>])</span>
@@ -347,7 +346,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p><br></p>
 <p>The code above divides the range of values in <em>Price</em> based on quantile probabilities. Now you can simply look at the streaming service and the <em>Category</em> column to see whether it’s within your budget.</p>
 <p>Learn more in my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>!</p>
 

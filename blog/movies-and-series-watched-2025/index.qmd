@@ -34,7 +34,6 @@ df = (pl.read_csv(f"{Path('../../')}/datasets/television.csv", ignore_errors=Tru
  )
 df.sample(3, seed=22)
 ```
-<br>
 
 Most of the columns are self-explanatory, but two require some explaing:
 
@@ -54,7 +53,6 @@ Let me answer the question you are dying to have answered. As I said earlier, I 
  .select(Titles=pl.col('Title').count())
  )
 ```
-<br>
 
 Watching 32 titles in a year may not seem like a lot, but remember that some of these titles are series with 40 episodes spread across multiple seasons. That's a lot of watch time!
 
@@ -252,7 +250,6 @@ Now that I've explained how to calculate the **_Mutenge score_**, let's use Pola
  .sample(5, seed=31)
 )
 ```
-<br>
 
 If you have any questions about the ***Mutenge score***, email me and I will be happy to offer a more detailed explanation.
 

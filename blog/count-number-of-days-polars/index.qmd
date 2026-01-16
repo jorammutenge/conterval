@@ -20,7 +20,6 @@ df = pl.DataFrame({'Start_Date': ['6/5/2022', '3/18/2019', '12/12/1999'],
  'End_Date': ['4/4/2025', '11/11/2023', '8/14/2009']}).with_columns(pl.col('Start_Date','End_Date').str.strptime(pl.Date, '%m/%d/%Y'))
 df
 ```
-<br>
 
 ## Get total days between dates
 
@@ -31,7 +30,6 @@ To get the total number of days between dates in polars, use the date component 
  .with_columns(Total_Days=(pl.col('End_Date') - pl.col('Start_Date')).dt.total_days())
  )
 ```
-<br>
 
 Enroll in my {{< var polars_course >}} to learn more.
 

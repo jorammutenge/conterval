@@ -22,7 +22,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Remove suffix in column names
 
@@ -39,6 +38,5 @@ Here’s how to do it:
  .with_columns(pl.all().name.map(lambda c: c.removesuffix('_Student')))
  )
 ```
-<br>
 
 Advance your polars skills by enrolling in my {{< var polars_course >}}.

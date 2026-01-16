@@ -22,7 +22,6 @@ df = (pl.read_csv('https://raw.githubusercontent.com/chris1610/pbpython/refs/hea
  )
 df
 ```
-<br>
 
 ## Check column count
 

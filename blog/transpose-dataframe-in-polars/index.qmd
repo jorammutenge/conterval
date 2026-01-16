@@ -23,7 +23,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Get row values in one column
 
@@ -37,7 +36,6 @@ To get the values of a single row into its own column in Polars, use the `transp
             )
  )
 ```
-<br>
 
 Now each gadget, along with its brand and price, is stored in one column.
 

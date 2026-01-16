@@ -95,7 +95,6 @@ from pathlib import Path
 
 pl.read_csv(f"{Path('../../')}/datasets/sample_sales.csv", try_parse_dates=True)
 ```
-<br>
 
 **The task**  
 The table above contains 1,000 sales transactions. Your task is to generate a sales report for your boss that answers the following questions:

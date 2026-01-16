@@ -25,7 +25,6 @@ df = pl.DataFrame({
 
 df
 ```
-<br>
 
 ## Filter on range of values
 
@@ -46,7 +45,6 @@ By default, `is_between` includes both the left and right bounds. You can choose
  .filter(pl.col('Price').is_between(7.99,10.99, closed='right'))
  )
 ```
-<br>
 
 To exclude the right bound instead, replace `'right'` with `'left'` in the `closed` parameter. Here's how you can exclude both the left and right bounds:
 
@@ -55,6 +53,5 @@ To exclude the right bound instead, replace `'right'` with `'left'` in the `clos
  .filter(pl.col('Price').is_between(7.99,10.99, closed='none'))
  )
 ```
-<br>
 
 Join 100+ students in this {{< var polars_course >}}!

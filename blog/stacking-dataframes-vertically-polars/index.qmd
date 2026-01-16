@@ -24,7 +24,6 @@ df = pl.DataFrame({'category': ['Hat','Sweater','Sweater','Sweater','Sweater','S
 
 df
 ```
-<br>
 
 ## Combine first and last two rows
 

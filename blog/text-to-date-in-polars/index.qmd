@@ -24,7 +24,6 @@ df = pl.DataFrame({
 })
 df
 ```
-<br>
 
 ## Convert text to date
 
@@ -35,7 +34,6 @@ Since the values in *Date* start with the year, then month, and day, you can use
  .with_columns(pl.col('Date').str.to_date())
  )
 ```
-<br>
 
 Now the data type in *Date* has been successfully changed from text to date.
 
