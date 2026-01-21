@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>You have a shop and want your receipt numbers to have four digits instead of just one. So rather than receipt “No.&nbsp;1”, you want receipt “No.&nbsp;0001”. Below is a dataframe showing customers and their receipt numbers.</p>
-<div id="4806a72e" class="cell" data-execution_count="1">
+<div id="537b17bd" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -271,7 +271,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="pad-with-zeros" class="level2">
 <h2 class="anchored" data-anchor-id="pad-with-zeros">Pad with zeros</h2>
 <p>To add zeros at the start of values in <em>Receipt No</em>, you first need to convert the column’s data type to string (text) and then use the Polars expression <code>zfill</code>, like this:</p>
-<div id="ab4fe4dc" class="cell" data-execution_count="2">
+<div id="4745a875" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Receipt No'</span>).cast(pl.String).<span class="bu">str</span>.zfill(length<span class="op">=</span><span class="dv">4</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

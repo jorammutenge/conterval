@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Almost anything you can do in Pandas can also be done in Polars. However, there are certain outputs that are unique to Pandas, such as creating a hierarchical column table. Fortunately, converting a Polars dataframe to a Pandas dataframe is very easy. Below is a Polars dataframe showing some popular clothing brands.</p>
-<div id="04f25d2c" class="cell" data-execution_count="1">
+<div id="9bd7dbab" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -277,7 +277,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="change-to-pandas-dataframe" class="level2">
 <h2 class="anchored" data-anchor-id="change-to-pandas-dataframe">Change to pandas dataframe</h2>
 <p>Suppose you want to pivot your data to create a hierarchical column table where <em>Category</em> is at the top, followed by <em>Brand</em>. Currently, this cannot be done in Polars. However, you can use the <code>to_pandas</code> method to convert your Polars dataframe into a Pandas dataframe. From there, you can pivot the data to achieve the desired output as shown below:</p>
-<div id="ac11b0cf" class="cell" data-execution_count="2">
+<div id="ffbb59c9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .to_pandas()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .pivot(columns<span class="op">=</span>[<span class="st">'Category'</span>, <span class="st">'Brand'</span>], values<span class="op">=</span><span class="st">'Price'</span>)</span>

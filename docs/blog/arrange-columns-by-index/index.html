@@ -233,7 +233,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="efficient-ordering-of-columns" class="level2">
 <h2 class="anchored" data-anchor-id="efficient-ordering-of-columns">Efficient ordering of columns</h2>
 <p>If you’re too lazy to type out the columns names, you can reference them by index. Polars provides the <code>pl.nth</code> function that lets you to do this. Here’s how you can rearrange the columns in the dataframe below.</p>
-<div id="59a25a06" class="cell" data-execution_count="1">
+<div id="44b2409d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -302,7 +302,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> Now let’s arrange the columns by referencing their index (position) instead of manually typing the column names.</p>
-<div id="0503acc5" class="cell" data-execution_count="2">
+<div id="69fea53a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(pl.nth(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

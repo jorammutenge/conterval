@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>You have a table of passwords and, for some reason, you want to count the number of digits in each password. This is possible using Polars. Below is a dataframe of passwords.</p>
-<div id="b191ac82" class="cell" data-execution_count="1">
+<div id="4cddd260" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -262,7 +262,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="count-number-of-digits-in-each-password" class="level2">
 <h2 class="anchored" data-anchor-id="count-number-of-digits-in-each-password">Count number of digits in each password</h2>
 <p>You can count the number of digits in each password using the function <code>count_matches</code> like this:</p>
-<div id="626600a8" class="cell" data-execution_count="2">
+<div id="5eee6fda" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Password'</span>).<span class="bu">str</span>.count_matches(<span class="vs">r'</span><span class="dv">\d</span><span class="vs">'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Num_of_Digits'</span>))</span>

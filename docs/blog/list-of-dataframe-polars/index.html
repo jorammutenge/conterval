@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>You have two dataframes and want to store them in a list based on shared values in one column. Below are two dataframes; one with movie ratings and the other with duration.</p>
 <p><strong>Movie rating dataframe</strong></p>
-<div id="6d22749e" class="cell" data-execution_count="1">
+<div id="79e3b96d" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -270,7 +270,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><strong>Movie duration dataframe</strong></p>
-<div id="9ce9f65e" class="cell" data-execution_count="2">
+<div id="dbdf6adf" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -316,7 +316,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="align-dataframes-and-store-in-list" class="level2">
 <h2 class="anchored" data-anchor-id="align-dataframes-and-store-in-list">Align dataframes and store in list</h2>
 <p>To create a list of dataframes that contain movies featuring Leonardo DiCaprio, you can use the Polars expression <code>pl.align_frames</code> like this:</p>
-<div id="ec2652bd" class="cell" data-execution_count="3">
+<div id="b4a207b5" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>aligned_dfs <span class="op">=</span> (pl.align_frames(rating_df,</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                 duration_df,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                 on<span class="op">=</span><span class="st">'Movie'</span>,</span>
@@ -345,7 +345,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Now that you have a list of dataframes, you can access any one of them by index. For example, to get the first dataframe, do this:</p>
-<div id="e457f666" class="cell" data-execution_count="4">
+<div id="536a9e0e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>aligned_dfs[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>

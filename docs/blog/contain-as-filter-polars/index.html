@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>The dirty secret is that data work is mainly about working with text data rather than numerical data. That’s why knowing how to filter text data is a valuable skill to have. Below is a dataframe showing cereal brands.</p>
-<div id="21e9f5c2" class="cell" data-execution_count="1">
+<div id="f78867f2" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -300,7 +300,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="filter-with-contain" class="level2">
 <h2 class="anchored" data-anchor-id="filter-with-contain">Filter with contain</h2>
 <p>Sometimes you may want to filter rows without knowing the exact value of a column. In such cases, you can select a word that’s common in the values you want to retrieve. Let’s filter for manufacturers that contain the word “Mills.”</p>
-<div id="f5a26d7b" class="cell" data-execution_count="2">
+<div id="3220bf35" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'manufacturer'</span>).<span class="bu">str</span>.contains(<span class="st">'Mills'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -378,7 +378,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="use-multiple-words" class="level2">
 <h2 class="anchored" data-anchor-id="use-multiple-words">Use multiple words</h2>
 <p>You can use the pipe operator <code>|</code> to filter with multiple words, like this:</p>
-<div id="b866d812" class="cell" data-execution_count="3">
+<div id="1304436f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'manufacturer'</span>).<span class="bu">str</span>.contains(<span class="st">'Mills|Purina'</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

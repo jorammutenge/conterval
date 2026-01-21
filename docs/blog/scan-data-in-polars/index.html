@@ -226,13 +226,13 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Datasets are getting bigger, which means loading the entire dataset into memory can put a strain on your computer. Fortunately, Polars allows you to scan data and store it in a lazyframe before loading it into memory as a dataframe.</p>
 <p>Say we have this CSV file:</p>
-<div id="44d5d548" class="cell" data-execution_count="1">
+<div id="ad24a914" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>csv_file <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="create-a-lazyframe-by-scanning-a-csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-lazyframe-by-scanning-a-csv-file">Create a lazyframe by scanning a CSV file</h2>
 <p>To read a CSV file as a lazyframe, you use the Polars expression <code>scan_csv</code>, like this:</p>
-<div id="56e60e43" class="cell" data-execution_count="2">
+<div id="2fc29c18" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(pl.scan_csv(csv_file)</span>
@@ -263,48 +263,48 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Wilderman, Herman and Breitenb…</td>
-<td>954.8</td>
+<td>"O'Conner Inc"</td>
+<td>313.2</td>
 </tr>
 <tr class="even">
-<td>"Runolfsdottir-VonRueden"</td>
-<td>293.945</td>
+<td>"Armstrong, Champlin and Ratke"</td>
+<td>458.01</td>
 </tr>
 <tr class="odd">
-<td>"Purdy, Fay and Bechtelar"</td>
-<td>250.18</td>
+<td>"Schimmel, Schaefer and Treutel"</td>
+<td>656.596667</td>
 </tr>
 <tr class="even">
-<td>"Kris and Sons"</td>
-<td>206.37</td>
+<td>"Jast, Abshire and Jast"</td>
+<td>1585.12</td>
 </tr>
 <tr class="odd">
-<td>"Bartell, Cronin and Abbott"</td>
-<td>292.41</td>
+<td>"Dickinson-McGlynn"</td>
+<td>380.82</td>
 </tr>
 <tr class="even">
 <td>…</td>
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"Kerluke, Barton and Koch"</td>
-<td>381.48</td>
+<td>"Purdy Ltd"</td>
+<td>161.92</td>
 </tr>
 <tr class="even">
-<td>"Nicolas, Buckridge and Rowe"</td>
-<td>98.42</td>
+<td>"Simonis, Johnston and Jewess"</td>
+<td>490.68</td>
 </tr>
 <tr class="odd">
-<td>"Armstrong-Williamson"</td>
-<td>1495.87</td>
+<td>"Harris Group"</td>
+<td>565.25</td>
 </tr>
 <tr class="even">
-<td>"Kulas-Olson"</td>
-<td>202.5</td>
+<td>"Eichmann, Lindgren and Quigley"</td>
+<td>1410.0</td>
 </tr>
 <tr class="odd">
-<td>"Borer-Bernier"</td>
-<td>888.2</td>
+<td>"Prosacco, Bashirian and Hintz"</td>
+<td>185.6</td>
 </tr>
 </tbody>
 </table>

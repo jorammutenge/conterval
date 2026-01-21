@@ -227,7 +227,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>When working with timeseries data, you may want to move values in a column a few rows up or down. This is particularly important when calculating moving averages, where the first rows have null values depending on the window used in your moving average calculation. The dataframe below shows a snapshot of Apple stock data in 2024.</p>
-<div id="c1be183a" class="cell" data-execution_count="1">
+<div id="b66c54b7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -309,7 +309,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="shifting-rows-down" class="level2">
 <h2 class="anchored" data-anchor-id="shifting-rows-down">Shifting rows down</h2>
 <p>Polars makes it easy to shift rows in a column up or down. Let’s create two columns based on <em>High</em>: one with 2 rows shifted up and another with 2 rows shifted down.</p>
-<div id="058ae654" class="cell" data-execution_count="2">
+<div id="424cb402" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(High_2rows_Up<span class="op">=</span>pl.col(<span class="st">'High'</span>).shift(<span class="op">-</span><span class="dv">2</span>),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               High_2rows_Down<span class="op">=</span>pl.col(<span class="st">'High'</span>).shift(<span class="dv">2</span>))</span>
@@ -420,7 +420,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="practical-application-of-shifting-rows" class="level2">
 <h2 class="anchored" data-anchor-id="practical-application-of-shifting-rows">Practical application of shifting rows</h2>
 <p>You may be wondering, “What’s the use of shifting rows in a column?” Here’s a practical example. Let’s create a 3-day moving average based on <em>Open</em>.</p>
-<div id="665ac8ae" class="cell" data-execution_count="3">
+<div id="8818510d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(MA_3days_Open<span class="op">=</span>pl.col(<span class="st">'Open'</span>).rolling_mean(window_size<span class="op">=</span><span class="dv">3</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(MA_3days_Open_Shifted_Up<span class="op">=</span>pl.col(<span class="st">'MA_3days_Open'</span>).shift(<span class="op">-</span><span class="dv">2</span>))</span>
@@ -533,7 +533,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="shifting-rows-in-all-columns" class="level2">
 <h2 class="anchored" data-anchor-id="shifting-rows-in-all-columns">Shifting rows in all columns</h2>
 <p>It’s also possible to shift rows for all columns in the dataframe at once. Let’s shift each column 2 rows down.</p>
-<div id="fd0d5e30" class="cell" data-execution_count="4">
+<div id="ac591f60" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.shift(<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>

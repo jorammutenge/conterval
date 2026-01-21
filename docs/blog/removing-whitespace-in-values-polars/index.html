@@ -231,7 +231,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="dataframe-with-whitespace-in-values" class="level2">
 <h2 class="anchored" data-anchor-id="dataframe-with-whitespace-in-values">Dataframe with whitespace in values</h2>
 <p>Let me show you an example of a dataframe containing values with whitespace. The first two values in <em>Items_Bought</em> contain whitespace.</p>
-<div id="e030c15d" class="cell" data-execution_count="1">
+<div id="3cdfa013" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -294,7 +294,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="show-unique-values" class="level2">
 <h2 class="anchored" data-anchor-id="show-unique-values">Show unique values</h2>
 <p>Now let’s show the unique items in the <em>Items_Bought</em> column.</p>
-<div id="b808be0d" class="cell" data-execution_count="2">
+<div id="a90b5ac6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Items_Bought'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
@@ -319,28 +319,28 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
+<td>"&nbsp;&nbsp;&nbsp;Milk"</td>
+</tr>
+<tr class="even">
+<td>"Bananas"</td>
+</tr>
+<tr class="odd">
+<td>"Cheese"</td>
+</tr>
+<tr class="even">
+<td>"Apples"</td>
+</tr>
+<tr class="odd">
 <td>"Apples&nbsp;&nbsp;&nbsp;"</td>
 </tr>
 <tr class="even">
-<td>"Eggs"</td>
-</tr>
-<tr class="odd">
 <td>"Milk"</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>"Bread"</td>
 </tr>
-<tr class="odd">
-<td>"Apples"</td>
-</tr>
 <tr class="even">
-<td>"&nbsp;&nbsp;&nbsp;Milk"</td>
-</tr>
-<tr class="odd">
-<td>"Bananas"</td>
-</tr>
-<tr class="even">
-<td>"Cheese"</td>
+<td>"Eggs"</td>
 </tr>
 </tbody>
 </table>
@@ -352,7 +352,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="true-unique-values" class="level2">
 <h2 class="anchored" data-anchor-id="true-unique-values">True unique values</h2>
 <p>To get the true unique values, we need to remove the whitespace from the values. Polars has a handy function that can help with this known as <code>strip_chars</code>.</p>
-<div id="5125cb91" class="cell" data-execution_count="3">
+<div id="4f1f743d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Items_Bought'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Items_Bought'</span>).<span class="bu">str</span>.strip_chars())</span>
@@ -381,19 +381,19 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <td>"Bread"</td>
 </tr>
 <tr class="even">
-<td>"Cheese"</td>
+<td>"Milk"</td>
+</tr>
+<tr class="odd">
+<td>"Bananas"</td>
+</tr>
+<tr class="even">
+<td>"Apples"</td>
 </tr>
 <tr class="odd">
 <td>"Eggs"</td>
 </tr>
 <tr class="even">
-<td>"Milk"</td>
-</tr>
-<tr class="odd">
-<td>"Apples"</td>
-</tr>
-<tr class="even">
-<td>"Bananas"</td>
+<td>"Cheese"</td>
 </tr>
 </tbody>
 </table>

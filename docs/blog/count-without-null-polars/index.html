@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Most of the time, when you’re counting the number of values in a column, you’re not interested in including empty (null) values. Therefore, simply counting the number of rows in the dataframe isn’t enough. Luckily, Polars makes this kind of count easy to perform. Below is a dataframe showing department managers.</p>
-<div id="194fdff7" class="cell" data-execution_count="1">
+<div id="57bf478e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -275,7 +275,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="count-values-in-each-column" class="level2">
 <h2 class="anchored" data-anchor-id="count-values-in-each-column">Count values in each column</h2>
 <p>To get the number of non-null values in each column, you can use the Polars expression <code>pl.count</code> like this:</p>
-<div id="498ebf7f" class="cell" data-execution_count="2">
+<div id="263005a1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(pl.count(<span class="st">'Manager'</span>,<span class="st">'Department'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

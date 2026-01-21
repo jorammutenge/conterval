@@ -229,7 +229,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="data-to-save" class="level2">
 <h2 class="anchored" data-anchor-id="data-to-save">Data to save</h2>
 <p>Below is a DataFrame containing the data we want to save as an Excel file.</p>
-<div id="7c11663c" class="cell" data-execution_count="1">
+<div id="de4513b1" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -302,7 +302,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="adding-special-formatting">Adding special formatting</h2>
 <p>Let’s write code to save the data as an Excel file. We’ll set the background color of the headers to blue and apply conditional formatting to the <em>Qty</em> column so that cells with a value less or equal to 15 have background color red; otherwise, they have green.</p>
 <p>Additionally, we’ve frozen the headers so they remain visible when you scroll down. We’ve also created a new column, <em>Ext_Price</em>, containing the formula <code>Qty × Price</code>. This formula appears in the output file just as if it had been typed directly into the Excel sheet.</p>
-<div id="8c9ee3eb" class="cell" data-execution_count="2">
+<div id="726605d6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .write_excel(<span class="st">'sales.xlsx'</span>,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              formulas<span class="op">=</span>{<span class="st">'Ext_Price'</span>: <span class="st">'=[@Qty]*[@[Price]]'</span>},</span>
