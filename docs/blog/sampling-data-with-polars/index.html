@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-1721cc41f7861135d016642a1eaf0d8c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Analyzing a very large dataset can be strenuous on your computer, especially if you don’t have a fast machine. Instead of overworking your computer and waiting a long time to see the results, you can perform your analysis on a smaller subset of the data. Below is a dataframe with 1000 rows.</p>
-<div id="69976382" class="cell" data-execution_count="1">
+<div id="715f8ec6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -305,7 +305,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="sampling-is-the-best-method" class="level2">
 <h2 class="anchored" data-anchor-id="sampling-is-the-best-method">Sampling is the best method</h2>
 <p>To get a true representation of the data, you should use the <code>sample</code> function. This ensures that rows are randomly selected until you reach the desired number. Here’s how to use it:</p>
-<div id="16033bb7" class="cell" data-execution_count="2">
+<div id="4678cc78" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -331,48 +331,48 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Hat"</td>
-<td>18</td>
-</tr>
-<tr class="even">
-<td>"Hat"</td>
-<td>9</td>
-</tr>
-<tr class="odd">
 <td>"Sweater"</td>
-<td>5</td>
+<td>16</td>
 </tr>
 <tr class="even">
 <td>"Sweater"</td>
-<td>19</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td>"Socks"</td>
-<td>10</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>"Sweater"</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>"Hat"</td>
+<td>20</td>
 </tr>
 <tr class="even">
 <td>…</td>
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"Hat"</td>
+<td>"Sweater"</td>
 <td>12</td>
 </tr>
 <tr class="even">
-<td>"Sweater"</td>
-<td>11</td>
+<td>"Socks"</td>
+<td>18</td>
 </tr>
 <tr class="odd">
 <td>"Sweater"</td>
-<td>5</td>
+<td>20</td>
 </tr>
 <tr class="even">
-<td>"Hat"</td>
-<td>17</td>
+<td>"Sweater"</td>
+<td>7</td>
 </tr>
 <tr class="odd">
-<td>"Socks"</td>
-<td>16</td>
+<td>"Sweater"</td>
+<td>15</td>
 </tr>
 </tbody>
 </table>
@@ -380,7 +380,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p><br> If you want your results to be reproducible, you can use the <code>seed</code> parameter.</p>
-<div id="2c82cd17" class="cell" data-execution_count="3">
+<div id="098e1e6d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">100</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

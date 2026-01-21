@@ -10,4 +10,5 @@
 /_site/
 /images/
 /datasets/
+/polars-book/
 **/*.quarto_ipynb

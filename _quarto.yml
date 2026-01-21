@@ -1,14 +1,14 @@
 project:
   type: website
-  # title: Conterval
-  # render:
-  #   - "blog/**/*.qmd"
-  #   - "index.qmd"
-  #   - "books.qmd"
+  render:
+    - "*.qmd"
+    - "blog/**/*.qmd"
+    - "!polars-book/**"  # Exclude the book source files
+  pre-render:
+    - ./render-book.sh
   output-dir: docs
 
 website:
-  # title: "Conterval"
   favicon: images/favicon.png
   site-url: https://www.conterval.com
   page-navigation: true
@@ -47,7 +47,6 @@ format:
     smooth-scroll: true
     link-external-newwindow: true
 
-
 editor: source
 
 extra-files:
@@ -55,4 +54,3 @@ extra-files:
 
 execute:
   freeze: auto
-

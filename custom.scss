@@ -172,7 +172,7 @@ thead, tbody, tfoot, tr, td, th {
   th {
     color: #000000 !important;
     background-color: #FFE4B5;
-    font-family: Inter;
+    font-family: "Inter";
   }
 
   th, td {
@@ -232,7 +232,7 @@ blockquote {
   margin: 20px 0;
   background: $bq-grey;
   line-height: 1.18;
-  font-size: 1.25 !important
+  font-size: 1.25rem !important
 }
 
 strong {

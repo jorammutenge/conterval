@@ -10,11 +10,43 @@ format:
 body {
   background-color: #FFE4B5 !important;
 }
+
+.book-image {
+  width: 300px !important;  /* Adjust to match your second book's width */
+  height: 450px !important; /* Adjust to match your second book's height */
+  object-fit: cover;        /* Ensures images fill the space without distortion */
+  display: block;
+}
 </style>
 
 # Books {.interview-page-title}
 
 ::: {.books-container}
+
+::: {.book-card}
+<a href="/polars-book/" target="_self">
+<img src="polars-book/images/cover_landing.png"
+     class="book-image"
+     alt="Polars for Data Analysis Book Cover">
+</a>
+
+::: {.book-info}
+::: {.book-price}
+Free (Draft)
+:::
+
+::: {.book-title}
+Deep Analysis with Polars
+:::
+
+::: {.book-description}
+This book is **not** an introduction to Polars. It is intended to demonstrate to readers who are already familiar with Polars that the library is mature enough to support **deep analysis**, including the kind typically handled with complex SQL queries. By exploring practical analytical questions, the book emphasizes Polars core features such as expressions, lazy execution, efficient transformations, and its opinionated approach to writing code through method chaining. This book is an active draft, and feedback is encouraged.
+:::
+
+[READ ONLINE](/polars-book/){.book-button}
+:::
+:::
+
 
 ::: {.book-card}
 <a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank">

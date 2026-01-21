@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b8ed77a3c5f7db5341ad9b6c048645d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-1721cc41f7861135d016642a1eaf0d8c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -226,13 +226,13 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Datasets are getting bigger, which means loading the entire dataset into memory can put a strain on your computer. Fortunately, Polars allows you to scan data and store it in a lazyframe before loading it into memory as a dataframe.</p>
 <p>Say we have this CSV file:</p>
-<div id="c8d14c51" class="cell" data-execution_count="1">
+<div id="bc8e872a" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>csv_file <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/jorammutenge/learn-rust/refs/heads/main/sample_sales.csv'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="create-a-lazyframe-by-scanning-a-csv-file" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-lazyframe-by-scanning-a-csv-file">Create a lazyframe by scanning a CSV file</h2>
 <p>To read a CSV file as a lazyframe, you use the Polars expression <code>scan_csv</code>, like this:</p>
-<div id="a276d680" class="cell" data-execution_count="2">
+<div id="4eddb2ce" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>(pl.scan_csv(csv_file)</span>
@@ -263,48 +263,48 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
+<td>"Schinner, Cruickshank and Ziem…</td>
+<td>37.21</td>
+</tr>
+<tr class="even">
+<td>"Grimes-Schmidt"</td>
+<td>339.62</td>
+</tr>
+<tr class="odd">
+<td>"Nicolas-Emard"</td>
+<td>68.39</td>
+</tr>
+<tr class="even">
+<td>"Gleason, Bogisich and Franecki"</td>
+<td>76.25</td>
+</tr>
+<tr class="odd">
 <td>"Brown Inc"</td>
 <td>723.92</td>
 </tr>
 <tr class="even">
-<td>"Marvin, Johnson and McDermott"</td>
-<td>1315.9</td>
-</tr>
-<tr class="odd">
-<td>"Conn, Kub and Collier"</td>
-<td>1149.24</td>
-</tr>
-<tr class="even">
-<td>"Zieme-Romaguera"</td>
-<td>260.13</td>
-</tr>
-<tr class="odd">
-<td>"Lockman, Fisher and Considine"</td>
-<td>25.18</td>
-</tr>
-<tr class="even">
 <td>…</td>
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"Grimes-Welch"</td>
-<td>1007.085</td>
+<td>"Krajcik PLC"</td>
+<td>964.32</td>
 </tr>
 <tr class="even">
-<td>"Wilkinson Ltd"</td>
-<td>1256.85</td>
+<td>"Wiegand and Sons"</td>
+<td>562.77</td>
 </tr>
 <tr class="odd">
-<td>"Nicolas, Buckridge and Rowe"</td>
-<td>98.42</td>
+<td>"Bernier-Oberbrunner"</td>
+<td>1813.0</td>
 </tr>
 <tr class="even">
-<td>"Langworth-Skiles"</td>
-<td>403.06</td>
+<td>"Strosin, Nader and Zulauf"</td>
+<td>624.72</td>
 </tr>
 <tr class="odd">
-<td>"Bechtelar-Johnston"</td>
-<td>578.88</td>
+<td>"Ondricka-Blanda"</td>
+<td>1235.22</td>
 </tr>
 </tbody>
 </table>
