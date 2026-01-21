@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Sometimes, you may want to filter data for more than one item. Polars makes this type of filtering straightforward. Below is a dataframe showing streaming services and their corresponding prices.</p>
-<div id="bcf3f379" class="cell" data-execution_count="1">
+<div id="95b41ad9" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -283,7 +283,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="multiple-item-filtering" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-item-filtering">Multiple item filtering</h2>
 <p>For example, if you want to view the prices of only a few specific streaming services like Netflix, Hulu, and AMC, you can use the <code>is_in</code> expression. This allows you to filter the data by specifying a list of the items you’re interested in. Here’s how to do it.</p>
-<div id="d12a9f4d" class="cell" data-execution_count="2">
+<div id="750f6856" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Subscription'</span>).is_in([<span class="st">'Netflix'</span>,<span class="st">'Hulu'</span>,<span class="st">'AMC'</span>]))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

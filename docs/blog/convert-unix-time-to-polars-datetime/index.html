@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Computers are good at recording timestamps, but they do it in Unix time. Sadly, humans aren’t great at interpreting Unix time.</p>
 <p>Below is a dataframe of YouTube comments where users posted what they considered to be the best opening line in literature.</p>
-<div id="0de7116f" class="cell" data-execution_count="1">
+<div id="a864a0ae" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div><style>
 .dataframe > thead > tr,
@@ -279,7 +279,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="from-unix-time-to-normal-datetime" class="level2">
 <h2 class="anchored" data-anchor-id="from-unix-time-to-normal-datetime">From Unix time to normal datetime</h2>
 <p>Unless you’re familiar with interpreting Unix timestamps, it’s difficult to tell when each comment was posted. Fortunately, Polars makes it easy to convert these timestamps into a human-readable format. Here’s how to do it.</p>
-<div id="070f9300" class="cell" data-execution_count="2">
+<div id="699471b9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Datetime<span class="op">=</span>pl.from_epoch(<span class="st">'Unix_Time'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

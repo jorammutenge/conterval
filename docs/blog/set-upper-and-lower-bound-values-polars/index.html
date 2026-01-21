@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Imagine you’re a teacher who isn’t satisfied with the range of grades your students received on what you thought was a fairly easy math test. You want to set the lowest possible grade to 60 and the highest to 90. How can you do that?</p>
 <p>Below is a dataframe showing the students and their grades on the math test.</p>
-<div id="658d6406" class="cell" data-execution_count="1">
+<div id="897c619f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -280,7 +280,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="set-boundaries-where-grades-should-be" class="level2">
 <h2 class="anchored" data-anchor-id="set-boundaries-where-grades-should-be">Set boundaries where grades should be</h2>
 <p>To ensure that all grades fall within the 60 to 90 range, use the Polars expression <code>clip</code> as shown below:</p>
-<div id="661feacb" class="cell" data-execution_count="2">
+<div id="290f7784" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Grade'</span>).clip(<span class="dv">60</span>,<span class="dv">90</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

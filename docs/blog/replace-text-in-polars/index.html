@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>When working with text data, replacing characters with other characters is common. However, most replacements are applied only once. For example, if you have “barb” and replace “b” with “z”, you’ll get “zarb” instead of “zarz”. How can you ensure that you end up with “zarz” in polars?</p>
 <p>Below is a dataframe showing phone numbers.</p>
-<div id="48d96bc0" class="cell" data-execution_count="1">
+<div id="5d9f399e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -268,7 +268,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="replace-space-with-dash" class="level2">
 <h2 class="anchored" data-anchor-id="replace-space-with-dash">Replace space with dash</h2>
 <p>To replace all spaces in each phone number with dashes, use the polars expression <code>replace_all</code> as follows:</p>
-<div id="f4d58fbf" class="cell" data-execution_count="2">
+<div id="5175367e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Phone No'</span>).<span class="bu">str</span>.replace_all(<span class="st">' '</span>,<span class="st">'-'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

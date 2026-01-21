@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Python is big on lists because they are one of the fundamental data structures of the language. It’s no surprise that data analysis tasks in Python almost always involve using lists. Luckily, Polars allows you to collapse a series of rows into a list. Below is a dataframe showing sales from a clothing store.</p>
-<div id="fb43f049" class="cell" data-execution_count="1">
+<div id="3a7e22d8" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -300,21 +300,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-list-of-clothing-categories" class="level2">
 <h2 class="anchored" data-anchor-id="get-list-of-clothing-categories">Get list of clothing categories</h2>
 <p>Suppose you want to know the unique categories of clothing available at this store and store those categories in a list. How would you do it in Polars? You simply use the method <code>to_list</code>, but it’s a series method, not a dataframe method. Therefore, you’ll need to convert the dataframe into a series.</p>
-<div id="9f26e563" class="cell" data-execution_count="2">
+<div id="7b54afa5" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> [<span class="st">'category'</span>]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a> .to_list()</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>['Hat', 'Sweater', 'Socks']</code></pre>
+<pre><code>['Sweater', 'Hat', 'Socks']</code></pre>
 </div>
 </div>
 </section>
 <section id="the-idiomatic-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-idiomatic-way">The idiomatic way</h2>
 <p>Subscribers to the idiomatic way of writing Polars code, like myself, would frown upon the use of square brackets in the code above. Let me show you how to rewrite the code above (without embarrassment) if you, too, want to be a Polars connoisseur.</p>
-<div id="a691fdb8" class="cell" data-execution_count="3">
+<div id="e2fdfb24" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'category'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .unique()</span>

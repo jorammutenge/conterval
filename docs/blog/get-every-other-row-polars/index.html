@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>There comes a time when you want to extract every other row from your DataFrame. What I mean is: get the first row, skip the second, get the third, skip the fourth, and so on.</p>
 <p>Say you have the dataframe below:</p>
-<div id="b5851267" class="cell" data-execution_count="1">
+<div id="59871e11" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -310,7 +310,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="getting-every-other-row-with-polars" class="level2">
 <h2 class="anchored" data-anchor-id="getting-every-other-row-with-polars">Getting every other row with polars</h2>
 <p>With Polars, you don’t have to torture yourself writing convoluted Python code. The <code>gather_every</code> function does exactly that.</p>
-<div id="11096d4e" class="cell" data-execution_count="2">
+<div id="2d5b91ca" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .gather_every(<span class="dv">2</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

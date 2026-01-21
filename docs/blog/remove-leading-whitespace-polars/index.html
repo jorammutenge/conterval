@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Your data may contain leading characters like spaces or tabs due to bad user input. Below is a dataframe showing values with leading whitespace.</p>
-<div id="5ec37cc0" class="cell" data-execution_count="1">
+<div id="5129ecfb" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -271,7 +271,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="remove-whitespace" class="level2">
 <h2 class="anchored" data-anchor-id="remove-whitespace">Remove whitespace</h2>
 <p>To remove the unnecessary spaces and tabs at the beginning of values in <em>Actress</em>, you can use the Polars expression <code>strip_chars_start</code>, like this:</p>
-<div id="8b948603" class="cell" data-execution_count="2">
+<div id="e5b25a27" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Actress'</span>).<span class="bu">str</span>.strip_chars_start())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

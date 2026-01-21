@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>You are querying a historical database that contains dates, and you want to create another column that indicates the century for each date. The dataframe below shows a set of example dates.</p>
-<div id="729e234b" class="cell" data-execution_count="1">
+<div id="1fe97cfe" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -265,7 +265,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="extract-century-from-date" class="level2">
 <h2 class="anchored" data-anchor-id="extract-century-from-date">Extract century from date</h2>
 <p>To extract the century from a date value, use the Polars expression <code>dt.century</code> like this:</p>
-<div id="2add9077" class="cell" data-execution_count="2">
+<div id="e4ddaba7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Century<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.century())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
