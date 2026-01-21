@@ -1,0 +1,6 @@
+Range pattern,Purpose
+`[0-9]`,Match any number.
+`[a-z]`,Match any lowercase letter.
+`[A-Z]`,Match any uppercase letter.
+`[A-Za-z0-9]`,"Match any lowercase or uppercase letter, or any number."
+`[A-z]`,"Match any ASCII character; generally not used because it matches everything, including symbols"

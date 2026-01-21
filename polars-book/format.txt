@@ -1,0 +1,5 @@
+This book is a first draft, and I am actively collecting feedback to shape the final version. If you spot typos, unclear explanations, or errors in the code, your input would be greatly appreciated. Your suggestions will help make this book more accurate, readable, and useful for others.
+You can reach me at:
+**Email:** email
+**LinkedIn:** linkedin
+

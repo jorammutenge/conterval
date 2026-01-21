@@ -1,0 +1,9 @@
+Syntax,What it does
+`.`,Matches any character.
+`\d`,Matches any single digit.
+`\w`,Matches any part of word character (equivalent to `[A-Za-z0-9]`).
+`\s`,"Matches any space, tab, or newline."
+`\`,Used to escape the following character when that character is a special character.
+`^`,Is an “anchor” which asserts the position at the start of the line.
+`$`,Is an “anchor” which asserts the position at the end of the line.
+`\b`,Asserts that the pattern must match at a word boundary. Putting this either side of a word stops the regular expression matching longer variants of words.

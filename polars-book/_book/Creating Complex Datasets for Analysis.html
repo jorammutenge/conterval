@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="">
+
+<title>7&nbsp; Creating Complex Datasets for Analysis – Deep Analysis with Polars</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Bringing It All Together.html" rel="next">
+<link href="./Experiment Analysis.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ca8ae8b56efe94859b05e43d31184f34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Creating Complex Datasets for Analysis.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Creating Complex Datasets for Analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Deep Analysis with Polars</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Analysis with Polars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Analysis with Polars</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Preparing Data for Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preparing Data for Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Time Series Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Text Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Text Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Anomaly Detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Anomaly Detection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Experiment Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiment Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Creating Complex Datasets for Analysis.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Creating Complex Datasets for Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Bringing It All Together.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bringing It All Together</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#when-to-use-polars-for-complex-datasets" id="toc-when-to-use-polars-for-complex-datasets" class="nav-link active" data-scroll-target="#when-to-use-polars-for-complex-datasets"><span class="header-section-number">7.1</span> When to Use Polars for Complex Datasets</a>
+  <ul class="collapse">
+  <li><a href="#advantages-of-using-polars" id="toc-advantages-of-using-polars" class="nav-link" data-scroll-target="#advantages-of-using-polars"><span class="header-section-number">7.1.1</span> Advantages of Using Polars</a></li>
+  <li><a href="#when-to-build-into-etl-instead" id="toc-when-to-build-into-etl-instead" class="nav-link" data-scroll-target="#when-to-build-into-etl-instead"><span class="header-section-number">7.1.2</span> When to Build into ETL Instead</a></li>
+  <li><a href="#when-to-put-logic-in-other-tools" id="toc-when-to-put-logic-in-other-tools" class="nav-link" data-scroll-target="#when-to-put-logic-in-other-tools"><span class="header-section-number">7.1.3</span> When to Put Logic in Other Tools</a></li>
+  </ul></li>
+  <li><a href="#code-organization" id="toc-code-organization" class="nav-link" data-scroll-target="#code-organization"><span class="header-section-number">7.2</span> Code Organization</a>
+  <ul class="collapse">
+  <li><a href="#commenting" id="toc-commenting" class="nav-link" data-scroll-target="#commenting"><span class="header-section-number">7.2.1</span> Commenting</a></li>
+  <li><a href="#storing-code" id="toc-storing-code" class="nav-link" data-scroll-target="#storing-code"><span class="header-section-number">7.2.2</span> Storing Code</a></li>
+  </ul></li>
+  <li><a href="#organizing-computations" id="toc-organizing-computations" class="nav-link" data-scroll-target="#organizing-computations"><span class="header-section-number">7.3</span> Organizing Computations</a>
+  <ul class="collapse">
+  <li><a href="#using-intermediate-variables" id="toc-using-intermediate-variables" class="nav-link" data-scroll-target="#using-intermediate-variables"><span class="header-section-number">7.3.1</span> Using Intermediate Variables</a></li>
+  </ul></li>
+  <li><a href="#managing-dataset-size-and-privacy-concerns" id="toc-managing-dataset-size-and-privacy-concerns" class="nav-link" data-scroll-target="#managing-dataset-size-and-privacy-concerns"><span class="header-section-number">7.4</span> Managing Dataset Size and Privacy Concerns</a>
+  <ul class="collapse">
+  <li><a href="#sampling-with-sample" id="toc-sampling-with-sample" class="nav-link" data-scroll-target="#sampling-with-sample"><span class="header-section-number">7.4.1</span> Sampling with Sample</a></li>
+  <li><a href="#reducing-dimensionality" id="toc-reducing-dimensionality" class="nav-link" data-scroll-target="#reducing-dimensionality"><span class="header-section-number">7.4.2</span> Reducing Dimensionality</a></li>
+  <li><a href="#pii-and-data-privacy" id="toc-pii-and-data-privacy" class="nav-link" data-scroll-target="#pii-and-data-privacy"><span class="header-section-number">7.4.3</span> PII and Data Privacy</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7.5</span> Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Creating Complex Datasets for Analysis</span></h1></header>
+
+<header id="title-block-header">
+
+<p class="author"></p>
+
+</header>
+
+
+<style>
+#TOC {
+  background: url("images/cover.png");
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-top: calc(100% * 0.5 * 3) !important; /* Adjust multiplier based on your cover's aspect ratio */
+}
+</style>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This book is a first draft, and I am actively collecting feedback to shape the final version. Let me know if you spot typos, errors in the code, or unclear explanations, your input would be greatly appreciated. And your suggestions will help make this book more accurate, readable, and useful for others. You can reach me at:<br>
+<strong>Email:</strong> <a href="mailto:contervalconsult@gmail.com" class="email">contervalconsult@gmail.com</a><br>
+<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jorammutenge/">www.linkedin.com/in/jorammutenge</a><br>
+<strong>Datasets:</strong> <a href="https://drive.google.com/file/d/1pYoiqAd-Rr3mBJ8MUADyMoRxKneA1J-h/view?usp=sharing">Download all datasets</a></p>
+</div>
+</div>
+<div class="epigraph">
+<blockquote class="blockquote">
+<p>Generally, aggregations are what your boss wants you to report on. Say you work in a candy store and your boss asks you, “How are we doing today?” Don’t tell him that Sally came in and bought a tootsie roll and a lollipop, and Billy bought two candy bars… Your boss doesn’t care about the details.</p>
+</blockquote>
+<div style="text-align: right">
+<p>— <em>Matt Harrison</em></p>
+</div>
+</div>
+<hr>
+<p>In Chapters <a href="./Time Series Analysis.html" target="_blank">3</a> through <a href="./Experiment Analysis.html" target="_blank">7</a>, we explored a variety of techniques for using Polars to analyze different kinds of datasets. Beyond these targeted examples, there are situations where the primary goal is to construct a dataset that is tailored to a specific purpose while remaining flexible enough to support multiple downstream analyses. The final output might be another CSV file, a text-based export, or a dataset consumed by a business intelligence platform. In some cases, the Polars code required for this work is straightforward, perhaps involving only a small number of filters or summary operations. More often, however, the transformations needed to shape the data become complex. As stakeholders request new fields, metrics, or business logic, the code naturally evolves. For these reasons, the structure, performance, and long-term maintainability of your Polars workflows matter far more here than they do for one-off analytical tasks.</p>
+<p>In this chapter, I outline strategies for organizing your code so that it can be shared, modified, and extended more easily. I also examine how to decide whether complex logic should remain in Polars or be migrated into upstream ETL (extract, transform, load) processes. Next, I cover different ways to store intermediate results during computation. Finally, I discuss methods for reducing dataset size and approaches for protecting sensitive information, including the removal of personally identifiable information (PII).</p>
+<section id="when-to-use-polars-for-complex-datasets" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="when-to-use-polars-for-complex-datasets"><span class="header-section-number">7.1</span> When to Use Polars for Complex Datasets</h2>
+<p>Nearly every dataset prepared for deeper analysis incorporates some form of logic. This logic may be as simple as determining how datasets should be <code>join</code>ed or which <code>filter</code>s to apply, or as involved as performing multi-step calculations that aggregate, classify, parse, or apply window functions across groups of data. When assembling datasets intended for further use, deciding whether to keep this logic in Polars, shift it to an ETL pipeline, or delegate it to another system is rarely straightforward. Practical considerations, such as ease of development, performance requirements, and access to engineering support, play a major role. There is seldom a single correct choice, but your judgment will improve as you gain more experience with Polars.</p>
+<section id="advantages-of-using-polars" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="advantages-of-using-polars"><span class="header-section-number">7.1.1</span> Advantages of Using Polars</h3>
+<p>Polars offers a high degree of flexibility. If the earlier chapters were effective, you have already seen how many different data preparation and analytical tasks it can support. This adaptability is one of the strongest reasons to rely on Polars when constructing complex datasets.</p>
+<p>When you first begin working with a dataset, experimentation is common. The process usually starts with profiling the data to understand its structure and irregularities. From there, you incrementally build a transformation pipeline, validating each step to ensure the results are sensible. Additional profiling is often required when the data behaves differently than expected. Complex datasets frequently emerge from chaining together many expressions, using <code>join</code>s, <code>union</code>s, or <code>concat</code>s to answer specific analytical questions. The ability to run parts of the pipeline quickly and inspect intermediate outputs makes this iterative development process efficient.</p>
+<p>Polars also minimizes external dependencies. Transformations run only when needed and do not require coordination with data engineering teams or waiting for scheduled releases. Because Polars expressions integrate cleanly into Python or Rust codebases, analysts and data scientists can modify logic independently. When stakeholders request new metrics, filters, or derived fields, the code can be updated quickly, and Polars’ lazy execution engine recomputes only what is necessary.</p>
+<p>For new analyses or those that change frequently, keeping the logic directly in Polars is often the most practical approach. When execution times remain reasonable and stakeholders receive results promptly, there is often little incentive to move that logic elsewhere.</p>
+</section>
+<section id="when-to-build-into-etl-instead" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="when-to-build-into-etl-instead"><span class="header-section-number">7.1.2</span> When to Build into ETL Instead</h3>
+<p>There are situations where shifting logic into an ETL pipeline is more effective than keeping everything inside Polars, especially in environments built around a data warehouse or data lake. The two primary motivations for choosing ETL are improved performance and increased transparency.</p>
+<p>The speed of Polars code depends heavily on both data volume and transformation complexity. More advanced analytical workflows often require intricate expressions, large <code>join</code>s, or even Cartesian <code>join</code>s. These operations can push execution times into minutes or longer. While analysts and data scientists may tolerate slower runtimes during development, most data consumers expect near-instant responses similar to those provided by modern web applications. Waiting more than a few seconds is often perceived as unacceptably slow.</p>
+<p>ETL processes, by contrast, run in the background on a fixed schedule and write their results into tables. Because these jobs execute out of sight, they can take 30 seconds, several minutes, or even an hour without disrupting users. Although daily schedules are common, many organizations run ETL jobs more frequently. Once the job completes, users can query the prepared table directly, with no <code>join</code>s or heavy logic required, which leads to much faster response times.</p>
+<p>A common scenario where ETL is preferable is the creation of daily snapshot tables. Many organizations benefit from storing a daily record of customers, orders, or other key entities to support historical analysis. For example, customer-level metrics such as lifetime order counts, visit totals, or current sales pipeline stage may change over time or accumulate gradually. As discussed in <a href="./Time Series Analysis.html" target="_blank">Chapter 3</a>, generating daily sequences, including days when an entity does not appear, is straightforward. However, repeatedly running these queries over long time spans can become slow. In addition, some attributes, such as a customer’s current status, may be overwritten in the source system, making daily snapshots the only reliable way to preserve historical truth. In these cases, building an ETL job and storing the results in a table is often the most sustainable solution.</p>
+<p>Visibility is another strong reason to migrate logic into ETL. Polars scripts often live on an individual’s laptop, which makes it difficult for colleagues to find the code, review it, or validate its correctness. Moving the logic into an ETL pipeline and storing it in a shared repository, such as GitHub, allows others to inspect, collaborate on, and improve the transformations. Version control also provides a clear record of changes, making it easy to see when and why specific lines were added or modified.</p>
+<p>Despite these advantages, ETL comes with trade-offs. One limitation is that updated results are only available after the scheduled ETL run completes, even if new data has already arrived. A common workaround is to apply Polars transformations directly to the most recent raw data, limiting the analysis to a small time window to keep execution fast. This approach can be combined with a lookup against the ETL-generated table, merging the two result sets when needed. Another drawback is that ETL logic is more difficult to change. Fixes or enhancements typically require involvement from a data engineer, followed by testing, code review, and deployment to production. For this reason, I usually wait until my Polars logic has stabilized, after rapid iteration has slowed and stakeholders have validated the outputs, before migrating it into ETL. Even so, the added rigor of code reviews and controlled releases often results in more reliable and consistent data.</p>
+</section>
+<section id="when-to-put-logic-in-other-tools" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="when-to-put-logic-in-other-tools"><span class="header-section-number">7.1.3</span> When to Put Logic in Other Tools</h3>
+<p>Polars transformations and the results they produce in your development environment are often only one part of a broader analysis. Those results may be embedded in reports, visualized in tables and charts, or further manipulated in tools ranging from spreadsheets and BI platforms to environments that support statistical or machine-learning workflows. In addition to deciding when to move logic upstream into ETL, you also need to decide when it makes sense to move logic downstream into other tools. Performance requirements and specific use cases typically drive these choices.</p>
+<p>Each tool comes with its own strengths and limitations. Spreadsheets are flexible and familiar, but they struggle with large datasets or complex operations across many rows. For this reason, it is often best to use ETL or Polars to perform heavier transformations, then pass a smaller and cleaner dataset into a spreadsheet.</p>
+<p>BI tools vary widely in how they process data. Some cache data locally in optimized formats, which makes certain calculations fast. Others recompute results whenever a column is added to or removed from a report. Some calculations, such as unique counts or medians, require detailed row-level data. If you cannot anticipate all the ways users might explore the data, you may need to provide a more detailed dataset than would otherwise be ideal. Additionally, if the goal is broad exploration and slicing across many dimensions, more detail is usually preferable. Finding the right balance between ETL logic, Polars transformations, and BI-tool computation often requires iteration.</p>
+<p>When the goal is statistical or machine-learning work with libraries such as <strong>SciPy</strong> and <strong>scikit-learn</strong>, detailed data is usually the better choice. These libraries can handle a wide range of transformations, modeling steps, and text manipulation tasks. It is often useful to push only stable, well-defined transformations into ETL or Polars, while keeping more experimental or iterative work in the analysis environment. Ultimately, the decision about where to perform a given transformation depends on workflow preferences, iteration speed, and the stability of the logic involved.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Although there are very few hard-and-fast rules about where logic should live, there is one guideline I strongly recommend: eliminate manual steps. Opening a dataset in a spreadsheet or text editor, tweaking a value, saving the file, and moving on may feel harmless. However, as soon as you need to repeat the process, or when new data arrives, it becomes easy to overlook that manual change or apply it inconsistently. In practice, so-called one-off tasks rarely remain one-off. Whenever possible, capture the logic in code instead of relying on ad hoc edits.</p>
+</div>
+</div>
+<p>Polars is a powerful and flexible tool that operates within a broader analysis workflow, alongside ETL processes and a range of downstream tools. Deciding where each calculation should live often requires experimentation as you iterate on what is practical in Polars, what belongs in ETL, and what is better handled in reporting, BI, or modeling environments. As you become more familiar with the full set of options, it becomes easier to evaluate the trade-offs and steadily improve both the performance and adaptability of your work.</p>
+</section>
+</section>
+<section id="code-organization" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="code-organization"><span class="header-section-number">7.2</span> Code Organization</h2>
+<p>You may have noticed that this book follows a consistent style when presenting Polars code. Whenever a snippet spans more than a single line, the operations are enclosed in parentheses and written as a chain. This pattern, often called method chaining, helps the code read as a recipe–a clear, ordered set of instructions. Just as importantly, structuring Polars logic this way allows the query engine to optimize the entire chain, which often results in noticeably faster execution.</p>
+<section id="commenting" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="commenting"><span class="header-section-number">7.2.1</span> Commenting</h3>
+<p>Nearly every programming language provides a way to mark text as a comment so that it is ignored when the code runs. Because this book uses Python, we rely on the two commenting approaches that Python supports. The first uses the hash symbol (<code>#</code>), which turns the remainder of the line into a comment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The second approach uses triple quotes to create a multi-line comment block, which is closed by another set of triple quotes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">This is a comment block</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">with multiple lines</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">'''</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can also use triple double quotes (<code>""" """</code>) for comment blocks. I tend to prefer single quotes, but the choice is entirely stylistic.</p>
+</div>
+</div>
+<p>Most editors visually distinguish comments, often by dimming or recoloring them, so they stand out from executable code.</p>
+<p>Although commenting is a valuable habit, many people find it difficult to do consistently. Polars code is often written quickly, especially during early exploration or profiling, and we do not always expect those snippets to persist. Too many comments can clutter the code, while too few can make it difficult to understand later. We may also assume we will remember the reasoning behind our own code, but anyone who has returned to a long transformation pipeline after several months, or inherited one from a teammate, knows how challenging it can be to reconstruct the original intent.</p>
+<p>To strike a balance between clarity and overhead, I follow a few simple guidelines. First, add a comment whenever a value’s meaning is not immediately obvious. Many systems store coded values as integers, and it is easy to forget what each number represents. A short note can prevent confusion later:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.<span class="bu">filter</span>(pl.col(<span class="st">'Status'</span>).is_in([<span class="dv">1</span>,<span class="dv">2</span>])) <span class="co"># 1 = Active, 2 = Pending</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Second, document any transformations or calculations that are not self-explanatory, especially those that rely on quirks in the data, such as inconsistent entry patterns or known outliers:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'Status'</span>) <span class="op">==</span> <span class="st">'Live'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>               .then(pl.lit(<span class="st">'Active'</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>               .otherwise(pl.col(<span class="st">'Status'</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Status'</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">'''Customers were labeled "Live" until 2024,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">when the terminology switched to "Active".'''</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Finally, when a method chain spans several lines, it is helpful to leave brief notes describing what each major step accomplishes. This makes it easier to revisit the code later and quickly locate the section that needs review or adjustment:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(df</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># count distinct grocery items in list</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Groceries'</span>).<span class="bu">str</span>.split(<span class="st">','</span>).<span class="bu">list</span>.n_unique())</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># add fixed fare amounts</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> .with_columns(Uber_Fare<span class="op">=</span>pl.lit(<span class="dv">25</span>),</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>               Bus_Fare<span class="op">=</span>pl.lit(<span class="dv">3</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a> <span class="co"># sample five reproducible rows</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">5</span>, seed<span class="op">=</span><span class="dv">31</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Writing good comments takes practice and a bit of discipline, but it pays off for any code that extends beyond a few lines. Comments can also provide useful context, such as the purpose of the pipeline, who wrote it, or when it was created. Thoughtful comments are an act of kindness to your teammates and to your future self.</p>
+</section>
+<section id="storing-code" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="storing-code"><span class="header-section-number">7.2.2</span> Storing Code</h3>
+<p>Once you have invested time in documenting and formatting your code, it makes sense to store it somewhere you can easily locate and reuse it later.</p>
+<p>Many data scientists and analysts rely on Jupyter notebooks, either in a browser or within editors such as JupyterLab or VS Code. Notebooks are popular because they support rapid experimentation and provide immediate feedback during data exploration. They are saved with the <em>.ipynb</em> extension, and any editor that supports notebooks can open and modify them. VS Code does not handle notebooks natively, so the Jupyter extension is required. Notebook files can be stored locally or synchronized to cloud services such as GitHub or Google Drive.</p>
+<p>Despite their convenience, notebooks are not well suited to traditional version control tools like Git. Because they are stored as JSON and combine code, outputs, and metadata, they often generate noisy diffs and frequent merge conflicts. For this reason, I typically use notebooks for exploratory work and then move stable code into a Python script once it is ready. A Python script is a plain text file with a <em>.py</em> extension.</p>
+<p>Python scripts are easy to manage in repositories such as GitHub. A repository also provides a reliable backup and simplifies collaboration. Version control systems maintain a complete history of changes, which is useful when tracing modifications or meeting audit requirements. Their main limitation is that they are not automatically integrated into the analysis workflow. You must remember to commit updates, and it is easy to miss these manual steps.</p>
+</section>
+</section>
+<section id="organizing-computations" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="organizing-computations"><span class="header-section-number">7.3</span> Organizing Computations</h2>
+<p>When building complex datasets, two common challenges emerge: ensuring the logic is correct and achieving acceptable performance. If the logic is flawed, the resulting data is unusable. Performance, by contrast, often has a wide tolerance in analytical work. Code that does not run at all is a serious issue, but the difference between a 30-second runtime and a 60-second runtime is usually insignificant. Polars often provides multiple valid ways to express a query, which gives you flexibility to confirm correctness and improve performance for longer-running operations.</p>
+<p>One practical way to structure intermediate steps in Polars is to assign partial results, whether values or dataframes, to variables. You are free to choose any variable names, but descriptive names generally make the workflow easier to read and reason about.</p>
+<section id="using-intermediate-variables" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="using-intermediate-variables"><span class="header-section-number">7.3.1</span> Using Intermediate Variables</h3>
+<p>Intermediate variables allow you to capture the output of any Polars expression, whether that output is a dataframe, a list, a tuple, or even a dictionary. Once stored, the value can be passed into another Polars expression to produce a final result. For more involved transformations, you may rely on several such variables along the way. When a computation becomes too complex to express as a single chained expression, intermediate variables provide a practical alternative. They can also make long transformation sequences easier to read and reason about.</p>
+<p>Although I generally prefer to avoid intermediate variables, they do serve an important role, and in some cases they are unavoidable. One way to think about them is through a simple analogy. Imagine you are sitting in the living room and ask your teenage daughter to bring you a spoon and a fork from the kitchen. If you ask for the spoon first and then send her back for the fork, that mirrors the use of intermediate variables, with each trip representing a separate step. Ideally, you would ask her to bring both items at once. However, when the number of things you need exceeds what she can carry, multiple trips become necessary. In the same way, intermediate variables become necessary when a transformation cannot reasonably be expressed as a single operation.</p>
+<p>Below is an example where intermediate variables help us reach the desired output. Using the <em>liquor_sales</em> dataset introduced in <a href="./Anomaly Detection.html" target="_blank">Chapter 5</a>, suppose we want to compute aggregated liquor sales by store, by category, and by vendor as independent aggregations, rather than only the combinations that appear in the raw data:</p>
+<div id="64432f1e" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>store_df <span class="op">=</span> (liquor_sales</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Store'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> .agg(pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> .with_columns(Category<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>               Vendor<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>, <span class="st">'Dollars'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>category_df <span class="op">=</span> (liquor_sales</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Category'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a> .agg(Dollars<span class="op">=</span>pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> .with_columns(Store<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>               Vendor<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String))</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>, <span class="st">'Dollars'</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>vendor_df <span class="op">=</span> (liquor_sales</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Vendor'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a> .agg(Dollars<span class="op">=</span>pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a> .with_columns(Category<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String),</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>               Store<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String))</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a> .select(<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>, <span class="st">'Dollars'</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>pl.concat([store_df, category_df, vendor_df])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4_111, 4)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Store</th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Vendor</th>
+<th data-quarto-table-cell-role="th">Dollars</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>f16</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"HY-VEE / WAVERLY"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>"CASEY'S GENERAL STORE #2306 / …</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>"QUIK TRIP #501 / E EUCLID DM"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>"LIBERTY VIEW WINE AND SPIRITS"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>"LALO'S LIQUOR / AMES"</td>
+<td>null</td>
+<td>null</td>
+<td>794.0</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"LEVECKE CORPORATION"</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"CHARLES JACQUIN ET. CIE., INC."</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"VBJ BEVERAGES LLC"</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"TIERRA MADRE LLC / ADOLFO MURI…</td>
+<td>2308.0</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"ANCHOR DISTILLING (PREISS IMPO…</td>
+<td>inf</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Here, each <code>group_by</code> result is stored in its own variable and then combined using <code>concat</code>. You could avoid naming these intermediate results by embedding each chain directly inside the <code>concat</code> operation, but doing so makes the code harder to follow:</p>
+<div id="3466653d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(pl.concat([</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (liquor_sales</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     .group_by(<span class="st">'Store'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     .agg(pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     .with_columns(Category<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                   Vendor<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>     .select(<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>, <span class="st">'Dollars'</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    (liquor_sales</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>     .group_by(<span class="st">'Category'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>     .agg(Dollars<span class="op">=</span>pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>     .with_columns(Store<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                   Vendor<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>     .select(<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>, <span class="st">'Dollars'</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    (liquor_sales</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>     .group_by(<span class="st">'Vendor'</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>     .agg(Dollars<span class="op">=</span>pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>     .with_columns(Category<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>                   Store<span class="op">=</span>pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>     .select(<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>, <span class="st">'Dollars'</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    )])</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4_111, 4)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Store</th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Vendor</th>
+<th data-quarto-table-cell-role="th">Dollars</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>f16</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"LALO'S LIQUOR STORE / AMES"</td>
+<td>null</td>
+<td>null</td>
+<td>12480.0</td>
+</tr>
+<tr class="even">
+<td>"HY-VEE FAST AND FRESH #2 (7591…</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>"WEST MAIN LIQUOR"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>"MALCOM GAS &amp; FOOD / MALCOM"</td>
+<td>null</td>
+<td>null</td>
+<td>46496.0</td>
+</tr>
+<tr class="odd">
+<td>"PETROMART STANWOOD"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"DRIFTLESS GLEN DISTILLERY"</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"WILSON DANIELS LTD."</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"BGPL-USA INC/ SURVILLE ENTERPR…</td>
+<td>144.125</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"OLD ELK DISTILLERIES LLC"</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"CUTWATER SPIRITS LLC"</td>
+<td>198.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Notice that this version is not truly a single chained expression. Instead, it consists of three separate chains placed inside a <code>concat</code>. Functionally, it behaves the same as the version that uses intermediate variables, and Polars cannot execute the three chains in parallel because they are independent operations.</p>
+<p>You could also express this pattern more compactly using a Python dictionary comprehension. However, that approach is still not idiomatic Polars, since the comprehension forces execution to occur in Python rather than in Rust, which is where Polars achieves most of its performance benefits. As a result, it may look cleaner, but it is not fundamentally different from using intermediate variables.</p>
+<div id="d16bca8a" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(pl.concat([</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    liquor_sales</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .group_by(col)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    .agg(Dollars<span class="op">=</span>pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    .with_columns(<span class="op">**</span>{c: pl.lit(<span class="va">None</span>, dtype<span class="op">=</span>pl.String) </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                     <span class="cf">for</span> c <span class="kw">in</span> [<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>] <span class="cf">if</span> c <span class="op">!=</span> col})</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    .select(<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>, <span class="st">'Dollars'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">'Store'</span>, <span class="st">'Category'</span>, <span class="st">'Vendor'</span>]</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (4_111, 4)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Store</th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Vendor</th>
+<th data-quarto-table-cell-role="th">Dollars</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>str</td>
+<td>str</td>
+<td>f16</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"BROCKMANS"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>"CASEY'S #4539 / ROCK RAPIDS"</td>
+<td>null</td>
+<td>null</td>
+<td>42272.0</td>
+</tr>
+<tr class="odd">
+<td>"CASEY'S #4306 / FAIRFIELD"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>"HY-VEE WINE AND SPIRITS / WDM"</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>"FAREWAY STORES #625 / OSKALOOS…</td>
+<td>null</td>
+<td>null</td>
+<td>inf</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"STOLLER WAREHOUSE"</td>
+<td>7580.0</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"HILLROCK ESTATE DISTILLERY LLC"</td>
+<td>7468.0</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"MAVERICK SPIRIT LLC"</td>
+<td>684.0</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"CONSTELLATION WINE COMPANY, IN…</td>
+<td>inf</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"SANTA FE TEQUILA COMPANY"</td>
+<td>56128.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Here is another situation where intermediate variables are essential. In this example, we work with the <a href="https://data.brisbane.qld.gov.au/explore/?q=library+checkout+dataset&amp;sort=modified">Brisbane City Council library book checkouts</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, covering the years 2020 through 2025. For convenience, all yearly files have been merged into a single dataset, and several long column names have been shortened.</p>
+<p>Suppose we want to identify which authors were read by the two most active borrowers during 2024. One effective approach is to first determine the <em>ID</em> values of those top two readers and store them in an intermediate variable. That variable can then be used to filter the dataset down to only the relevant checkouts from 2024.</p>
+<p>Suppose we want to identify which authors featured in the two libraries with the most checkouts in 2024. One effective approach is to first determine the <em>Library</em> values of those top two libraries and store them in an intermediate variable. That variable can then be used to filter the dataset down to only the relevant libraries from 2024.</p>
+<p>We start by identifying the two libraries that recorded the highest total number of checkouts across the dataset.</p>
+<div id="94c1045d" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>new_cols <span class="op">=</span> [<span class="st">'Title'</span>, <span class="st">'Author'</span>, <span class="st">'Call_Num'</span>, <span class="st">'ID'</span>, <span class="st">'Item'</span>, <span class="st">'Status'</span>,</span>
+<span id="annotated-cell-9-4"><a href="#annotated-cell-9-4" aria-hidden="true" tabindex="-1"></a> <span class="st">'Lang'</span>, <span class="st">'Age'</span>, <span class="st">'Library'</span>, <span class="st">'Date'</span>]</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6" aria-hidden="true" tabindex="-1"></a>library_checkouts <span class="op">=</span> (pl.scan_parquet(<span class="st">'data/brisbane_library.parquet'</span>)</span>
+<span id="annotated-cell-9-7"><a href="#annotated-cell-9-7" aria-hidden="true" tabindex="-1"></a> .pipe(<span class="kw">lambda</span> lf: lf.rename(<span class="bu">dict</span>(<span class="bu">zip</span>(lf.collect_schema().names(), new_cols))))</span>
+<span id="annotated-cell-9-8"><a href="#annotated-cell-9-8" aria-hidden="true" tabindex="-1"></a> .collect()</span>
+<span id="annotated-cell-9-9"><a href="#annotated-cell-9-9" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="annotated-cell-9-10"><a href="#annotated-cell-9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-9-11"><a href="#annotated-cell-9-11" aria-hidden="true" tabindex="-1"></a>top_2_checkouts_library <span class="op">=</span> (library_checkouts</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-12" class="code-annotation-target"><a href="#annotated-cell-9-12" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'ID'</span>) <span class="op">!=</span> <span class="st">"REFRESH"</span>)</span>
+<span id="annotated-cell-9-13"><a href="#annotated-cell-9-13" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Library'</span>).<span class="bu">len</span>()</span>
+<span id="annotated-cell-9-14"><a href="#annotated-cell-9-14" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'len'</span>)</span>
+<span id="annotated-cell-9-15"><a href="#annotated-cell-9-15" aria-hidden="true" tabindex="-1"></a> .get_column(<span class="st">'Library'</span>)</span>
+<span id="annotated-cell-9-16"><a href="#annotated-cell-9-16" aria-hidden="true" tabindex="-1"></a> .tail(<span class="dv">2</span>)</span>
+<span id="annotated-cell-9-17"><a href="#annotated-cell-9-17" aria-hidden="true" tabindex="-1"></a> .to_list()</span>
+<span id="annotated-cell-9-18"><a href="#annotated-cell-9-18" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="annotated-cell-9-19"><a href="#annotated-cell-9-19" aria-hidden="true" tabindex="-1"></a>top_2_checkouts_library</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-9" data-code-lines="12" data-code-annotation="1">Exclude this value since it does not represent a valid ID.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>['SBK', 'CDE']</code></pre>
+</div>
+</div>
+<p>With the list of libraries in hand, we can now identify the authors featured in those two libraries during 2024.</p>
+<div id="ab549d24" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(library_checkouts</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).dt.year() <span class="op">==</span> <span class="dv">2024</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Library'</span>).is_in(top_2_checkouts_library))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> .select(pl.col(<span class="st">'Author'</span>).unique())</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (17_118, 1)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Author</th>
+</tr>
+<tr class="even">
+<td>str</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Pinborough, Sarah,"</td>
+</tr>
+<tr class="even">
+<td>"Livingstone, Natalie,"</td>
+</tr>
+<tr class="odd">
+<td>"Day, Felicia,"</td>
+</tr>
+<tr class="even">
+<td>"Beavis, Paul,"</td>
+</tr>
+<tr class="odd">
+<td>"Codling, Stuart,"</td>
+</tr>
+<tr class="even">
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"Grossman, David,"</td>
+</tr>
+<tr class="even">
+<td>"Flynn, David,"</td>
+</tr>
+<tr class="odd">
+<td>"Sager Weinstein, Jacob,"</td>
+</tr>
+<tr class="even">
+<td>"Hatano, Tomomi,"</td>
+</tr>
+<tr class="odd">
+<td>"Healey, Jane,"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>This example highlights the flexibility that intermediate variables provide. They allow you to control the sequence of operations explicitly and to reuse intermediate results where needed. When a single chained expression becomes too long or difficult to reason about, intermediate variables can make the underlying logic clearer and easier to maintain.</p>
+</section>
+</section>
+<section id="managing-dataset-size-and-privacy-concerns" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="managing-dataset-size-and-privacy-concerns"><span class="header-section-number">7.4</span> Managing Dataset Size and Privacy Concerns</h2>
+<p>After refining the logic in our Polars workflows, organizing the code effectively, and optimizing performance, another challenge often comes into focus: the size of the resulting data. Even though storage costs continue to decline, encouraging organizations to retain increasingly large datasets, and computing power steadily improves, practical constraints remain. These limits often appear in downstream tools such as BI platforms or in the bandwidth required to transfer large datasets between systems. In addition, sensitive information must be handled responsibly, making data privacy an essential consideration. In this section, we explore strategies for reducing dataset size and highlight several privacy-related factors to keep in mind.</p>
+<section id="sampling-with-sample" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="sampling-with-sample"><span class="header-section-number">7.4.1</span> Sampling with Sample</h3>
+<p>One of the simplest ways to reduce a dataset is to work with a sample rather than the full set of records. Sampling involves selecting a subset of observations and is most effective when the original dataset is large enough that a smaller portion still reflects the overall population. For example, sampling web traffic data often preserves the majority of insights while significantly reducing volume.</p>
+<p>When sampling, there are two key decisions to make. First, determine the appropriate sample size. The goal is to meaningfully reduce the data while retaining enough information to support analysis. Depending on the size of the original dataset, you might keep 10%, 1%, or even 0.1% of the rows. Second, decide what unit should be sampled. If the objective is to analyze user behavior on a website, sampling 1% of <em>visitors</em> is usually more appropriate than sampling 1% of <em>visits</em>, since the former preserves all activity associated with each selected user.</p>
+<p>In Polars, sampling is typically performed using the <code>sample</code> method on a dataframe or the <code>sample</code> expression on individual columns. The most important parameters are listed below:</p>
+<ul>
+<li><code>n</code> an integer specifying the exact number of rows to return. Default is None</li>
+<li><code>fraction</code> a float indicating the proportion of rows to include. Default is None</li>
+<li><code>with_replacement</code> a boolean that allows rows to be selected multiple times. Default is False</li>
+<li><code>shuffle</code> a boolean that determines whether the sampled rows should be randomly reordered. Default is False</li>
+<li><code>seed</code> an integer used to make the sampling reproducible. Default is None, meaning a new random seed is used each time.</li>
+</ul>
+<p>To demonstrate how <code>sample</code> works, we will return to the <em>clothing_store_sales</em> dataset, which contains one thousand rows. The following example randomly selects 500 rows, representing half of the dataset:</p>
+<div id="f304342e" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>clothing_store_sales <span class="op">=</span> (pl.read_csv(<span class="st">'data/sample_sales.csv'</span>, try_parse_dates<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>      .select(pl.exclude(<span class="st">'Account Name'</span>, <span class="st">'sku'</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>      .rename(<span class="kw">lambda</span> c: c.title().replace(<span class="st">' '</span>,<span class="st">'_'</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      .rename(<span class="bu">dict</span>(Account_Number<span class="op">=</span><span class="st">'Customer_ID'</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>(clothing_store_sales</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a> .sample(<span class="dv">500</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (500, 6)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Customer_ID</th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Quantity</th>
+<th data-quarto-table-cell-role="th">Unit_Price</th>
+<th data-quarto-table-cell-role="th">Ext_Price</th>
+<th data-quarto-table-cell-role="th">Date</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+<td>str</td>
+<td>i64</td>
+<td>f64</td>
+<td>f64</td>
+<td>datetime[μs]</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>705775</td>
+<td>"Sweater"</td>
+<td>12</td>
+<td>68.76</td>
+<td>825.12</td>
+<td>2014-09-26 00:40:26</td>
+</tr>
+<tr class="even">
+<td>578306</td>
+<td>"Sweater"</td>
+<td>20</td>
+<td>57.89</td>
+<td>1157.8</td>
+<td>2013-10-21 13:26:32</td>
+</tr>
+<tr class="odd">
+<td>317998</td>
+<td>"Socks"</td>
+<td>11</td>
+<td>48.94</td>
+<td>538.34</td>
+<td>2014-07-04 00:12:58</td>
+</tr>
+<tr class="even">
+<td>223656</td>
+<td>"Sweater"</td>
+<td>8</td>
+<td>52.53</td>
+<td>420.24</td>
+<td>2014-03-10 13:03:04</td>
+</tr>
+<tr class="odd">
+<td>185994</td>
+<td>"Hat"</td>
+<td>18</td>
+<td>60.99</td>
+<td>1097.82</td>
+<td>2013-12-26 05:50:27</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>748472</td>
+<td>"Socks"</td>
+<td>14</td>
+<td>26.62</td>
+<td>372.68</td>
+<td>2014-06-25 13:14:58</td>
+</tr>
+<tr class="even">
+<td>726447</td>
+<td>"Sweater"</td>
+<td>11</td>
+<td>63.33</td>
+<td>696.63</td>
+<td>2014-04-26 23:48:15</td>
+</tr>
+<tr class="odd">
+<td>166245</td>
+<td>"Sweater"</td>
+<td>20</td>
+<td>93.93</td>
+<td>1878.6</td>
+<td>2014-05-03 19:47:19</td>
+</tr>
+<tr class="even">
+<td>175408</td>
+<td>"Socks"</td>
+<td>2</td>
+<td>79.31</td>
+<td>158.62</td>
+<td>2014-02-22 13:54:53</td>
+</tr>
+<tr class="odd">
+<td>65514</td>
+<td>"Socks"</td>
+<td>3</td>
+<td>17.84</td>
+<td>53.52</td>
+<td>2014-05-06 00:09:19</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>When the total number of rows is not known in advance, specifying a fixed count may be inconvenient. In these situations, the <code>fraction</code> argument provides a more flexible alternative:</p>
+<div id="c636c9ef" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(clothing_store_sales</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .sample(fraction<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (500, 6)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Customer_ID</th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Quantity</th>
+<th data-quarto-table-cell-role="th">Unit_Price</th>
+<th data-quarto-table-cell-role="th">Ext_Price</th>
+<th data-quarto-table-cell-role="th">Date</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+<td>str</td>
+<td>i64</td>
+<td>f64</td>
+<td>f64</td>
+<td>datetime[μs]</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>238675</td>
+<td>"Sweater"</td>
+<td>17</td>
+<td>58.25</td>
+<td>990.25</td>
+<td>2014-02-16 17:26:48</td>
+</tr>
+<tr class="even">
+<td>803666</td>
+<td>"Sweater"</td>
+<td>13</td>
+<td>23.34</td>
+<td>303.42</td>
+<td>2014-02-27 16:28:34</td>
+</tr>
+<tr class="odd">
+<td>410779</td>
+<td>"Sweater"</td>
+<td>10</td>
+<td>18.56</td>
+<td>185.6</td>
+<td>2014-04-07 23:42:25</td>
+</tr>
+<tr class="even">
+<td>437171</td>
+<td>"Sweater"</td>
+<td>5</td>
+<td>58.04</td>
+<td>290.2</td>
+<td>2014-09-26 00:48:56</td>
+</tr>
+<tr class="odd">
+<td>760541</td>
+<td>"Hat"</td>
+<td>19</td>
+<td>30.1</td>
+<td>571.9</td>
+<td>2014-02-15 10:54:33</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>345623</td>
+<td>"Sweater"</td>
+<td>8</td>
+<td>13.57</td>
+<td>108.56</td>
+<td>2014-07-24 14:15:18</td>
+</tr>
+<tr class="even">
+<td>947492</td>
+<td>"Sweater"</td>
+<td>14</td>
+<td>38.41</td>
+<td>537.74</td>
+<td>2013-10-01 02:57:18</td>
+</tr>
+<tr class="odd">
+<td>455768</td>
+<td>"Socks"</td>
+<td>15</td>
+<td>10.54</td>
+<td>158.1</td>
+<td>2014-01-22 10:16:21</td>
+</tr>
+<tr class="even">
+<td>111739</td>
+<td>"Sweater"</td>
+<td>13</td>
+<td>19.28</td>
+<td>250.64</td>
+<td>2014-05-24 14:14:48</td>
+</tr>
+<tr class="odd">
+<td>685048</td>
+<td>"Sweater"</td>
+<td>13</td>
+<td>61.71</td>
+<td>802.23</td>
+<td>2014-07-26 20:06:21</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Writing the fraction as 0.5 produces the same result.</p>
+</div>
+</div>
+<p>Sampling can also be applied to individual columns rather than the entire dataframe:</p>
+<div id="5ee0877b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(clothing_store_sales</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .select(pl.col(<span class="st">'Customer_ID'</span>).sample(fraction<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (500, 1)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Customer_ID</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>455768</td>
+</tr>
+<tr class="even">
+<td>602985</td>
+</tr>
+<tr class="odd">
+<td>643569</td>
+</tr>
+<tr class="even">
+<td>532928</td>
+</tr>
+<tr class="odd">
+<td>969663</td>
+</tr>
+<tr class="even">
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>883455</td>
+</tr>
+<tr class="even">
+<td>789704</td>
+</tr>
+<tr class="odd">
+<td>296008</td>
+</tr>
+<tr class="even">
+<td>626759</td>
+</tr>
+<tr class="odd">
+<td>710898</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>For reproducibility, it is generally best practice to set a seed so that others running the same code obtain identical results:</p>
+<div id="c0e4260f" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(clothing_store_sales</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .sample(fraction<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (500, 6)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Customer_ID</th>
+<th data-quarto-table-cell-role="th">Category</th>
+<th data-quarto-table-cell-role="th">Quantity</th>
+<th data-quarto-table-cell-role="th">Unit_Price</th>
+<th data-quarto-table-cell-role="th">Ext_Price</th>
+<th data-quarto-table-cell-role="th">Date</th>
+</tr>
+<tr class="even">
+<td>i64</td>
+<td>str</td>
+<td>i64</td>
+<td>f64</td>
+<td>f64</td>
+<td>datetime[μs]</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>675333</td>
+<td>"Socks"</td>
+<td>10</td>
+<td>59.68</td>
+<td>596.8</td>
+<td>2014-02-09 07:00:00</td>
+</tr>
+<tr class="even">
+<td>894083</td>
+<td>"Sweater"</td>
+<td>12</td>
+<td>94.56</td>
+<td>1134.72</td>
+<td>2014-04-04 23:07:26</td>
+</tr>
+<tr class="odd">
+<td>989350</td>
+<td>"Socks"</td>
+<td>9</td>
+<td>56.88</td>
+<td>511.92</td>
+<td>2013-11-29 03:29:56</td>
+</tr>
+<tr class="even">
+<td>770435</td>
+<td>"Sweater"</td>
+<td>5</td>
+<td>86.72</td>
+<td>433.6</td>
+<td>2014-07-14 11:42:38</td>
+</tr>
+<tr class="odd">
+<td>314560</td>
+<td>"Sweater"</td>
+<td>14</td>
+<td>98.85</td>
+<td>1383.9</td>
+<td>2014-04-30 05:49:59</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>989253</td>
+<td>"Sweater"</td>
+<td>3</td>
+<td>85.92</td>
+<td>257.76</td>
+<td>2014-01-14 07:36:11</td>
+</tr>
+<tr class="even">
+<td>216227</td>
+<td>"Socks"</td>
+<td>14</td>
+<td>26.23</td>
+<td>367.22</td>
+<td>2014-03-18 12:07:04</td>
+</tr>
+<tr class="odd">
+<td>838999</td>
+<td>"Hat"</td>
+<td>2</td>
+<td>51.25</td>
+<td>102.5</td>
+<td>2014-05-07 01:03:32</td>
+</tr>
+<tr class="even">
+<td>666731</td>
+<td>"Socks"</td>
+<td>19</td>
+<td>38.97</td>
+<td>740.43</td>
+<td>2014-03-17 08:44:30</td>
+</tr>
+<tr class="odd">
+<td>920517</td>
+<td>"Sweater"</td>
+<td>11</td>
+<td>90.57</td>
+<td>996.27</td>
+<td>2014-08-03 03:37:02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Any integer can be used as the seed, but 42 is a common choice in many codebases. The number references Douglas Adams’ <em>The Hitchhiker’s Guide to the Galaxy</em>, where it is humorously described as the answer to life, the universe, and everything.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Because <code>sample</code> returns rows in random order, it is not appropriate for time series forecasting. Forecasting methods depend on chronological order, so a better approach is to filter the data up to a specific date rather than sampling it.</p>
+</div>
+</div>
+<p>Sampling can dramatically reduce dataset size, which speeds up computations in Polars and makes outputs easier to transfer between systems. However, sampling always involves a loss of detail. In cases where this trade-off is unacceptable, alternative approaches may be necessary.</p>
+</section>
+<section id="reducing-dimensionality" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="reducing-dimensionality"><span class="header-section-number">7.4.2</span> Reducing Dimensionality</h3>
+<p>The number of unique attribute combinations, often referred to as <em>dimensionality</em>, has a major influence on how many rows appear in a dataset. A simple mental exercise makes this clear. Suppose a table contains a column with 10 unique categories. If we count records and <code>group_by</code> that column, the result contains 10 rows. Introducing a second column, also with 10 unique values, expands the grouped output to 100 rows. Adding a third column with 10 unique values increases the potential result to 1,000 rows. Even when a dataset does not contain every possible combination, it quickly becomes apparent that each additional column can cause the output size to grow rapidly.</p>
+<p>During exploratory analysis, we usually have the flexibility to limit the number of columns or filter values so the resulting dataset remains manageable. When building datasets for downstream tools, however, the priority often shifts toward flexibility. This typically means including a wide range of attributes and calculated columns. To preserve detail without letting the dataset become unwieldy, it is important to apply deliberate grouping strategies.</p>
+<p>Date and time columns are often the first place to look when trying to reduce dataset size. It is worth asking stakeholders whether daily granularity is truly necessary or whether weekly or monthly summaries would meet their needs. Grouping by month and day of week can also strike a useful balance, reducing volume while still revealing weekday versus weekend patterns. Limiting the time span is another option, though this can restrict the ability to analyze long-term trends. In practice, I have seen teams publish a long-range monthly dataset alongside a second dataset that provides daily or hourly detail for a shorter, more recent period.</p>
+<p>Text fields are another common source of unnecessary dimensionality. Minor differences in spelling or capitalization can create many distinct values that add little analytical value. Applying text-cleaning functions from <a href="./Text Analysis.html" target="_blank">Chapter 4</a>, such as <code>to_lowercase</code>, <code>to_uppercase</code>, or <code>strip_chars</code>, helps standardize entries and often improves usability for stakeholders. More targeted changes, such as correcting misspellings or updating outdated names, can be handled with <code>replace</code> or <code>when-then-otherwise</code> expressions.</p>
+<p>In some cases, only a small subset of values is important for analysis, and grouping the remaining values together is both practical and effective. This approach is common with geographic data. Although nearly two hundred countries exist, only a handful may have enough observations to justify reporting them individually.</p>
+<p>The <em>liquor_sales</em> dataset used in <a href="./Anomaly Detection.html" target="_blank">Chapter 5</a> includes 99 valid county names. Suppose we want to retain detailed records for the five most populous counties, currently Polk, Linn, Scott, Johnson, and Black Hawk, and categorize all others as “Other.” We can do this using a <code>when-then-otherwise</code> expression:</p>
+<div id="aaba97ad" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(liquor_sales</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> .join(county_population, on<span class="op">=</span><span class="st">'County'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'County'</span>).is_in([<span class="st">'POLK'</span>,<span class="st">'LINN'</span>,<span class="st">'SCOTT'</span>,<span class="st">'JOHNSON'</span>,<span class="st">'BLACK HAWK'</span>]))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>               .then(pl.col(<span class="st">'County'</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>               .otherwise(pl.lit(<span class="st">'Other'</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'County_Group'</span>))</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'County_Group'</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a> .agg(Count<span class="op">=</span>pl.<span class="bu">len</span>())</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Count'</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">County_Group</th>
+<th data-quarto-table-cell-role="th">Count</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>u32</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Other"</td>
+<td>17267124</td>
+</tr>
+<tr class="even">
+<td>"POLK"</td>
+<td>5719277</td>
+</tr>
+<tr class="odd">
+<td>"LINN"</td>
+<td>2559418</td>
+</tr>
+<tr class="even">
+<td>"SCOTT"</td>
+<td>1838667</td>
+</tr>
+<tr class="odd">
+<td>"BLACK HAWK"</td>
+<td>1709832</td>
+</tr>
+<tr class="even">
+<td>"JOHNSON"</td>
+<td>1505461</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>This reduces the output to just 6 rows instead of 99, which is a substantial improvement. To make the grouping more adaptive, we can first compute a <code>rank</code> based on the number of distinct <em>Invoice</em> values, which represent transaction IDs, per county. We then keep the top five counties and label all others as “Other”:</p>
+<div id="2bd3a9cd" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>(liquor_sales</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'County'</span>).ne(<span class="st">'EL PASO'</span>))</span>
+<span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a> .join(liquor_sales</span>
+<span id="annotated-cell-16-4"><a href="#annotated-cell-16-4" aria-hidden="true" tabindex="-1"></a>       .<span class="bu">filter</span>(pl.col(<span class="st">'County'</span>).ne(<span class="st">'EL PASO'</span>))</span>
+<span id="annotated-cell-16-5"><a href="#annotated-cell-16-5" aria-hidden="true" tabindex="-1"></a>       .group_by(<span class="st">'County'</span>)</span>
+<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6" aria-hidden="true" tabindex="-1"></a>       .agg(pl.col(<span class="st">'Invoice'</span>).n_unique())</span>
+<span id="annotated-cell-16-7"><a href="#annotated-cell-16-7" aria-hidden="true" tabindex="-1"></a>       .with_columns(Rank<span class="op">=</span>pl.col(<span class="st">'Invoice'</span>).rank(method<span class="op">=</span><span class="st">'min'</span>, descending<span class="op">=</span><span class="va">True</span>))</span>
+<span id="annotated-cell-16-8"><a href="#annotated-cell-16-8" aria-hidden="true" tabindex="-1"></a>       ,on<span class="op">=</span><span class="st">'County'</span>)</span>
+<span id="annotated-cell-16-9"><a href="#annotated-cell-16-9" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'Rank'</span>) <span class="op">&lt;=</span> <span class="dv">5</span>)</span>
+<span id="annotated-cell-16-10"><a href="#annotated-cell-16-10" aria-hidden="true" tabindex="-1"></a>               .then(pl.col(<span class="st">'County'</span>))</span>
+<span id="annotated-cell-16-11"><a href="#annotated-cell-16-11" aria-hidden="true" tabindex="-1"></a>               .otherwise(pl.lit(<span class="st">'Other'</span>))</span>
+<span id="annotated-cell-16-12"><a href="#annotated-cell-16-12" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'County_Group'</span>))</span>
+<span id="annotated-cell-16-13"><a href="#annotated-cell-16-13" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'County_Group'</span>)</span>
+<span id="annotated-cell-16-14"><a href="#annotated-cell-16-14" aria-hidden="true" tabindex="-1"></a> .agg(Transactions<span class="op">=</span>pl.col(<span class="st">'Invoice'</span>).n_unique())</span>
+<span id="annotated-cell-16-15"><a href="#annotated-cell-16-15" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Transactions'</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
+<span id="annotated-cell-16-16"><a href="#annotated-cell-16-16" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-16" data-code-lines="2" data-code-annotation="1">El Paso is not a valid Iowa county.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">County_Group</th>
+<th data-quarto-table-cell-role="th">Transactions</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>u32</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"Other"</td>
+<td>17267124</td>
+</tr>
+<tr class="even">
+<td>"POLK"</td>
+<td>5719277</td>
+</tr>
+<tr class="odd">
+<td>"LINN"</td>
+<td>2559418</td>
+</tr>
+<tr class="even">
+<td>"SCOTT"</td>
+<td>1838667</td>
+</tr>
+<tr class="odd">
+<td>"BLACK HAWK"</td>
+<td>1709832</td>
+</tr>
+<tr class="even">
+<td>"JOHNSON"</td>
+<td>1505461</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>As new data is added, this dynamic approach ensures that the top counties are always determined using the most current information.</p>
+<p>Dimensionality can also be reduced by converting detailed values into simple flag indicators. These flags typically have two possible states. They may be represented as Boolean values, numeric pairs such as 1 and 0, or text labels like “Yes” and “No,” as well as any other meaningful two category scheme. Flags are especially useful when only a threshold matters and the finer grained information is unnecessary. For example, we may care whether a website visitor made a purchase at all, while the exact number of purchases is not essential.</p>
+<p>In the <em>library_checkouts</em> dataset, roughly 1.3 million unique <em>ID</em> values represent items checked out from Brisbane libraries. Rather than preserving the exact checkout count for each item, we may only need to record whether an item was checked out at least twice. This can be done by converting the numeric counts into a binary flag.</p>
+<div id="c69d3c56" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(library_checkouts</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'ID'</span>) <span class="op">!=</span> <span class="st">"REFRESH"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'ID'</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a> .agg(Checkouts<span class="op">=</span>pl.<span class="bu">len</span>())</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'Checkouts'</span>) <span class="op">&gt;=</span> <span class="dv">2</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>               .then(<span class="va">True</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>               .otherwise(<span class="va">False</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Two_Checkouts_Flag'</span>))</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Two_Checkouts_Flag'</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a> .agg(Items<span class="op">=</span>pl.<span class="bu">len</span>())</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (2, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Two_Checkouts_Flag</th>
+<th data-quarto-table-cell-role="th">Items</th>
+</tr>
+<tr class="even">
+<td>bool</td>
+<td>u32</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>false</td>
+<td>542858</td>
+</tr>
+<tr class="even">
+<td>true</td>
+<td>826199</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>The number of items checked out two or more times is more than one and a half times the number of items checked out only once. When combined with other columns, this kind of simplification can significantly reduce the size of the resulting dataset.</p>
+<p>In some situations, however, a binary flag does not provide enough nuance. When more detail is needed, numeric values can be grouped into multiple categories instead of just two. This is often implemented using a <code>when-then-otherwise</code> expression, with the resulting categories represented by numeric or textual labels.</p>
+<p>For example, we might want to distinguish not only items checked out at least twice, but also those checked out ten or more times.</p>
+<div id="dc8b926e" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(library_checkouts</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'ID'</span>) <span class="op">!=</span> <span class="st">"REFRESH"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'ID'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a> .agg(Checkouts<span class="op">=</span>pl.<span class="bu">len</span>())</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'Checkouts'</span>) <span class="op">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>               .then(pl.lit(<span class="st">'10+'</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>               .when(pl.col(<span class="st">'Checkouts'</span>) <span class="op">&gt;=</span> <span class="dv">2</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>               .then(pl.lit(<span class="st">'2 - 9'</span>))</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>               .otherwise(pl.lit(<span class="st">'1'</span>))</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Checkouts_Level'</span>))</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Checkouts_Level'</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a> .agg(Items<span class="op">=</span>pl.<span class="bu">len</span>())</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Checkouts_Level</th>
+<th data-quarto-table-cell-role="th">Items</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>u32</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"2 - 9"</td>
+<td>818933</td>
+</tr>
+<tr class="even">
+<td>"10+"</td>
+<td>7266</td>
+</tr>
+<tr class="odd">
+<td>"1"</td>
+<td>542858</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>This approach reduces approximately 1.3 million unique values to just three categories while preserving the distinction between items checked out once, items checked out a few times, and items checked out many times. Similar forms of categorization appear in many analytical contexts. As with other transformations, selecting meaningful breakpoints often requires experimentation. Striking the right balance between granularity and simplification can substantially reduce dataset size and often improves the performance and responsiveness of downstream systems.</p>
+</section>
+<section id="pii-and-data-privacy" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="pii-and-data-privacy"><span class="header-section-number">7.4.3</span> PII and Data Privacy</h3>
+<p>Protecting personal data has become a central concern for anyone working with information today. Rich datasets with many columns can enable deeper insights and more accurate recommendations. However, when those datasets describe real people, it is essential to account for both ethical responsibilities and legal requirements related to how the data is collected and used. Regulations governing the privacy of patients, students, and banking customers have existed for decades. More recently, laws focused on consumer data rights have emerged as well. The European Union’s General Data Protection Regulation (GDPR) is the most widely known example. Other important regulations include Canada’s Personal Information Protection and Electronic Documents Act (PIPEDA), India’s Digital Personal Data Protection (DPDP) Act, and Japan’s Act on the Protection of Personal Information (APPI).</p>
+<p>These and similar laws define how personally identifiable information (PII) must be handled, stored, and in some cases deleted. Some forms of PII are obvious, such as names, physical addresses, email accounts, birth dates, and Social Security numbers. PII also includes health related measures like pulse rate, blood pressure, and medical conditions. Location data, including GPS coordinates, is also classified as PII because only a small number of points can uniquely identify a person. For example, a GPS reading at my home could identify whoever is present there, and another reading at my workplace could identify me specifically. Anyone working with data should understand the scope of these regulations and consult their organization’s privacy experts, who can provide the most up to date guidance.</p>
+<p>A common best practice when working with datasets that contain PII is to ensure that sensitive columns do not appear in analytical outputs. This can be achieved through aggregation, value replacement, or the application of hashing techniques.</p>
+<p>Most analytical tasks aim to reveal patterns or summarize behavior. Counting users or calculating averages, rather than exposing individual level details, is usually sufficient. Aggregation often removes PII, but caution is still required. A combination of attributes that appears only once may still reveal an individual’s identity. Treating these cases as outliers and excluding them can help maintain stronger privacy protections.</p>
+<p>When individual level data is required, for example to compute distinct user counts in a downstream system, sensitive values can be replaced with randomly generated alternatives that preserve uniqueness. The <code>rank</code> function with <code>method='dense'</code> can be used to assign each person a new identifier. Using the dense method ensures that each new rank increments directly after the previous group of tied values.</p>
+<p>Suppose we want to anonymize the email addresses in the dataframe below.</p>
+<div id="afd10638" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>emails_df <span class="op">=</span> pl.DataFrame({</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Email'</span>: [<span class="st">'eleonora@memail.com'</span>, <span class="st">'mae@memail.com'</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'grace@memail.com'</span>, <span class="st">'mae@memail.com'</span>, <span class="st">'elsa@memail.com'</span>],</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>emails_df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 1)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Email</th>
+</tr>
+<tr class="even">
+<td>str</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"eleonora@memail.com"</td>
+</tr>
+<tr class="even">
+<td>"mae@memail.com"</td>
+</tr>
+<tr class="odd">
+<td>"grace@memail.com"</td>
+</tr>
+<tr class="even">
+<td>"mae@memail.com"</td>
+</tr>
+<tr class="odd">
+<td>"elsa@memail.com"</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>We can transform the emails to protect individual identities:</p>
+<div id="94ecf3c7" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>(emails_df</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Email'</span>)</span>
+<span id="annotated-cell-20-3"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Anonymized<span class="op">=</span>pl.col(<span class="st">'Email'</span>).rank(method<span class="op">=</span><span class="st">'dense'</span>))</span>
+<span id="annotated-cell-20-4"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-20" data-code-lines="2" data-code-annotation="1">Sorting the column is required for this approach. Without sorting, repeated values that are not adjacent, such as multiple occurrences of “mae@memail.com”, would receive different anonymized values.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Email</th>
+<th data-quarto-table-cell-role="th">Anonymized</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>u32</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"eleonora@memail.com"</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>"elsa@memail.com"</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>"grace@memail.com"</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td>"mae@memail.com"</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td>"mae@memail.com"</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Hashing is another useful technique. A hash function converts an input value into a new value using a deterministic algorithm. The same input always produces the same hash, which makes this approach useful for preserving uniqueness while hiding the original data. Hashed values can be generated using the <code>hash</code> expression:</p>
+<div id="3ecb27ba" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(emails_df</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Anonymized<span class="op">=</span>pl.col(<span class="st">'Email'</span>).<span class="bu">hash</span>())</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (5, 2)</small>
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Email</th>
+<th data-quarto-table-cell-role="th">Anonymized</th>
+</tr>
+<tr class="even">
+<td>str</td>
+<td>u64</td>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>"eleonora@memail.com"</td>
+<td>13560331844008400074</td>
+</tr>
+<tr class="even">
+<td>"mae@memail.com"</td>
+<td>17484378495117224810</td>
+</tr>
+<tr class="odd">
+<td>"grace@memail.com"</td>
+<td>18179291770701544741</td>
+</tr>
+<tr class="even">
+<td>"mae@memail.com"</td>
+<td>17484378495117224810</td>
+</tr>
+<tr class="odd">
+<td>"elsa@memail.com"</td>
+<td>12881059481224718104</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Implementing <code>hash</code> does not guarantee consistent results across different Polars versions. It’s only stable within a single version.</p>
+</div>
+</div>
+<p>Whenever possible, avoid including PII in the outputs of your Polars workflows so that sensitive information does not propagate into additional systems or files. When that is not feasible, masking or replacing values is the next best option. You may also consider secure data sharing designs, such as building a protected pipeline between a data source, for example via a web API, and an email delivery system. This approach eliminates the need to write email addresses to disk. With thoughtful system design and close collaboration with legal and technical teams, it is possible to produce high quality analyses while still respecting individual privacy.</p>
+</section>
+</section>
+<section id="conclusion" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7.5</span> Conclusion</h2>
+<p>Every analysis involves decisions about code structure, complexity management, performance optimization, and the protection of private information in the results. This chapter introduced several techniques, patterns, and Polars specific features that support these goals. There is no need to master every concept at once or to apply every method in every analysis. Many projects require only a subset of these tools, and there are often multiple valid ways to solve the same problem. As you continue working with Polars, you will naturally encounter situations where these strategies become relevant and valuable.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The datasets can be downloaded from the council website: <a href="https://data.brisbane.qld.gov.au/explore/?q=library+checkout+dataset&amp;sort=modified">https://data.brisbane.qld.gov.au/explore/?q=library+checkout+dataset&amp;sort=modified</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Experiment Analysis.html" class="pagination-link" aria-label="Experiment Analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiment Analysis</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Bringing It All Together.html" class="pagination-link" aria-label="Bringing It All Together">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bringing It All Together</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
