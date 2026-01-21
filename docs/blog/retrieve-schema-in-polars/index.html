@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>In addition to showing column data types in the dataframe, Polars allows you to get a dictionary of data types where the key is the column name and the value is the data type. This is especially helpful when you’re writing data to a database and want the schema to be maintained. Below is a dataframe with various data types.</p>
-<div id="2a7d6b6e" class="cell" data-execution_count="1">
+<div id="72dde42f" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -253,34 +253,34 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>2014-09-09 18:51:08</td>
-<td>"HX-24728"</td>
-<td>7</td>
-<td>30.65</td>
+<td>2014-04-24 16:51:22</td>
+<td>"LK-02338"</td>
+<td>9</td>
+<td>34.8</td>
 </tr>
 <tr class="even">
-<td>2014-06-05 11:14:13</td>
-<td>"IC-59308"</td>
-<td>7</td>
-<td>98.47</td>
+<td>2014-06-27 17:55:08</td>
+<td>"AE-95093"</td>
+<td>19</td>
+<td>67.25</td>
 </tr>
 <tr class="odd">
-<td>2014-04-23 15:52:31</td>
-<td>"LK-02338"</td>
-<td>12</td>
-<td>69.96</td>
+<td>2014-06-21 06:57:28</td>
+<td>"AE-95093"</td>
+<td>1</td>
+<td>71.4</td>
 </tr>
 <tr class="even">
-<td>2014-05-27 12:36:40</td>
-<td>"LK-02338"</td>
+<td>2014-04-26 23:48:15</td>
+<td>"QS-76400"</td>
 <td>11</td>
-<td>72.65</td>
+<td>63.33</td>
 </tr>
 <tr class="odd">
-<td>2014-02-20 02:27:25</td>
-<td>"ZC-07383"</td>
+<td>2013-11-20 08:41:19</td>
+<td>"HX-24728"</td>
 <td>2</td>
-<td>92.54</td>
+<td>53.66</td>
 </tr>
 </tbody>
 </table>
@@ -290,7 +290,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-data-types-as-dictionary" class="level2">
 <h2 class="anchored" data-anchor-id="get-data-types-as-dictionary">Get data types as dictionary</h2>
 <p>To get the data types as a dictionary, you can use the Polars method <code>collect_schema</code>. Here’s how to do it:</p>
-<div id="646e689a" class="cell" data-execution_count="2">
+<div id="4f624a5c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .collect_schema()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -302,7 +302,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-names-keys-from-schema" class="level2">
 <h2 class="anchored" data-anchor-id="get-names-keys-from-schema">Get names, keys from schema</h2>
 <p>The schema dictionary has properties that you can access. For instance, if you only want the table column names from the schema, you can get them like this:</p>
-<div id="e4a256d8" class="cell" data-execution_count="3">
+<div id="4384cee2" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .collect_schema()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .names()</span>
@@ -312,7 +312,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Or, if you want the data types, you can get them like this:</p>
-<div id="0ce1ce7d" class="cell" data-execution_count="4">
+<div id="eb5df444" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> .collect_schema()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> .keys()</span>

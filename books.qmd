@@ -25,7 +25,7 @@ body {
 
 ::: {.book-card}
 <a href="/polars-book/" target="_self">
-<img src="polars-book/images/cover_landing.png"
+<img src="images/books/cover_landing.png"
      class="book-image"
      alt="Polars for Data Analysis Book Cover">
 </a>

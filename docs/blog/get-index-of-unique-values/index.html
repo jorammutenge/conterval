@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>You have a table with repeating names, and you want to get the index where each unique name appears. Below is a dataframe showing students and their grades on various tests.</p>
-<div id="e82c2aea" class="cell" data-execution_count="1">
+<div id="d02499bf" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -299,7 +299,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="index-where-each-unique-value-first-appears" class="level2">
 <h2 class="anchored" data-anchor-id="index-where-each-unique-value-first-appears">Index where each unique value first appears</h2>
 <p>To get the index location where each unique name in the dataframe first appears, use the Polars expression <code>arg_unique</code> like this:</p>
-<div id="04972bf3" class="cell" data-execution_count="2">
+<div id="b5f395fe" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(pl.col(<span class="st">'Student'</span>).arg_unique())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

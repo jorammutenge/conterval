@@ -228,7 +228,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="day-moving-average" class="level2">
 <h2 class="anchored" data-anchor-id="day-moving-average">3-day moving average</h2>
 <p>You can calculate the 3-day moving average in Polars using the expression <code>rolling_mean</code> like this:</p>
-<div id="207348b9" class="cell" data-execution_count="2">
+<div id="7e21784c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_Mean<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).rolling_mean(window_size<span class="op">=</span><span class="dv">3</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -301,7 +301,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Notice that the first 2 rows in <em>Rol_Mean</em> are null. That’s because the window size of 3 is not met on the first and second roll. If you don’t want null values, you can use the parameter <code>min_samples</code>, which determines the number of values that should be <strong>non-null</strong> before calculating the average. Let’s set it to 1.</p>
-<div id="a629c519" class="cell" data-execution_count="3">
+<div id="83dd3d82" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Rol_Mean<span class="op">=</span>pl.col(<span class="st">'Sales'</span>).rolling_mean(window_size<span class="op">=</span><span class="dv">3</span>, min_samples<span class="op">=</span><span class="dv">1</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

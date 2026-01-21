@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>If you are analyzing data with Polars, it is almost impossible to complete an analysis without filtering. Data analysis usually involves selecting some rows from a dataframe while excluding others. Below is a dataframe of students and their grades.</p>
-<div id="29b8a25e" class="cell" data-execution_count="1">
+<div id="c739be47" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -279,7 +279,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="filter-for-some-row" class="level2">
 <h2 class="anchored" data-anchor-id="filter-for-some-row">Filter for some row</h2>
 <p>To get the row showing the student with the highest grade, you can use the <code>filter</code> method together with the <code>max</code> function, as shown below:</p>
-<div id="91326a9d" class="cell" data-execution_count="2">
+<div id="d19de30f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Grade'</span>) <span class="op">==</span> pl.<span class="bu">max</span>(<span class="st">'Grade'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -314,7 +314,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>You can also use <code>filter</code> to get the opposite of a specified value by using the “not equal to” operator (<code>!=</code>):</p>
-<div id="767ad620" class="cell" data-execution_count="3">
+<div id="85c7ccc6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Grade'</span>) <span class="op">!=</span> pl.<span class="bu">max</span>(<span class="st">'Grade'</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -365,7 +365,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>You can achieve the same result as in the previous example by using the negation symbol <code>~</code>:</p>
-<div id="875139a9" class="cell" data-execution_count="4">
+<div id="69e90dfe" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(<span class="op">~</span>(pl.col(<span class="st">'Grade'</span>) <span class="op">==</span> pl.<span class="bu">max</span>(<span class="st">'Grade'</span>)))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

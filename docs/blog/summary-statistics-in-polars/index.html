@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Data exploration is the first step in any data analysis task. You can’t start analyzing your data without understanding what it’s about. If you have numerical columns, one of the first things to do is get summary statistics for those columns like the mean (average), median, and standard deviation. Below is a dataframe of a clothing store showing customer purchase details.</p>
-<div id="641a1ac2" class="cell" data-execution_count="1">
+<div id="b63f5d7b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -325,7 +325,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-summary-stats" class="level2">
 <h2 class="anchored" data-anchor-id="get-summary-stats">Get summary stats</h2>
 <p>To get summary statistics for all the columns in the above dataframe, you can use the Polars method <code>describe</code>. Summary statistics are most meaningful for numerical columns, but Polars provides them for categorical columns as well. For categorical columns, the most important statistic is <code>null_count</code>, which tells you the number of missing (empty) values in that column.</p>
-<div id="12456f5d" class="cell" data-execution_count="2">
+<div id="cb3b159a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .describe()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

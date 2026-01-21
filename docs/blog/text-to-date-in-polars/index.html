@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Usually, when you want to convert string (text) data to a date type, you have to introduce some esoteric formatting like “%m%d%Y”. Unfortunately, this looks like gibberish to most people. The good news is that in Polars, you don’t always need to know that strange formatting, especially when your data starts with the year.</p>
 <p>Below is a dataframe showing date values stored as text.</p>
-<div id="dce6530c" class="cell" data-execution_count="1">
+<div id="94b2d3aa" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -272,7 +272,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="convert-text-to-date" class="level2">
 <h2 class="anchored" data-anchor-id="convert-text-to-date">Convert text to date</h2>
 <p>Since the values in <em>Date</em> start with the year, then month, and day, you can use the Polars expression <code>to_date</code> to convert the data type from text to date, like this:</p>
-<div id="9df52da9" class="cell" data-execution_count="2">
+<div id="33e53eb7" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Date'</span>).<span class="bu">str</span>.to_date())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
