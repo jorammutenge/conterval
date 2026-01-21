@@ -12,12 +12,12 @@
 /datasets/
 **/*.quarto_ipynb
 
-# Ignore Quarto authoring files inside polars-book
-/polars-book/*.qmd
-/polars-book/*.yml
+# Ignore Quarto source files ONLY if you truly don't want to version them
+# But keep SCSS, variables, and chapter QMDs!
+/polars-book/*.ipynb
+/polars-book/data/
+/polars-book/images/
+
 /polars-book/**/*.qmd
 /polars-book/**/*.quarto_ipynb
 
-# Ignore source assets ONLY inside polars-book
-/polars-book/images/
-/polars-book/data/
