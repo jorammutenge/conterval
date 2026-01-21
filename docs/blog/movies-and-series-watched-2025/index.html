@@ -277,7 +277,7 @@ window.Quarto = {
 <section id="about-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-dataset">About the dataset</h2>
 <p>Below is a snapshot of my movies and series dataset. I’ve filtered for the year 2025 to only show the movies I watched this year.</p>
-<div id="da346c7f" class="cell" data-execution_count="1">
+<div id="5ab9ec3b" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -353,7 +353,7 @@ window.Quarto = {
 <section id="how-much-tv-did-i-watch-in-2025" class="level3">
 <h3 class="anchored" data-anchor-id="how-much-tv-did-i-watch-in-2025">How much TV did I watch in 2025?</h3>
 <p>Let me answer the question you are dying to have answered. As I said earlier, I watch a lot of TV. It is my hobby. Let us find out how much with the help of some Polars code:</p>
-<div id="0599d103" class="cell" data-execution_count="2">
+<div id="cc367f3d" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(Titles<span class="op">=</span>pl.col(<span class="st">'Title'</span>).count())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -402,7 +402,7 @@ Note
 <section id="whats-the-breakdown-between-movies-and-series" class="level3">
 <h3 class="anchored" data-anchor-id="whats-the-breakdown-between-movies-and-series">What’s the breakdown between movies and series</h3>
 <p>Let us get more granular and see how many of these 32 titles were movies and how many were series:</p>
-<div id="525f0853" class="cell" data-execution_count="3">
+<div id="4c23578f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Type'</span>).<span class="bu">len</span>()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -428,12 +428,12 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Series"</td>
-<td>15</td>
-</tr>
-<tr class="even">
 <td>"Movie"</td>
 <td>17</td>
+</tr>
+<tr class="even">
+<td>"Series"</td>
+<td>15</td>
 </tr>
 </tbody>
 </table>
@@ -622,7 +622,7 @@ Table&nbsp;1: Parameters for Mutenge score formula.
 <section id="apply-the-mutenge-score" class="level2">
 <h2 class="anchored" data-anchor-id="apply-the-mutenge-score">Apply the Mutenge score</h2>
 <p>Now that I’ve explained how to calculate the <strong><em>Mutenge score</em></strong>, let’s use Polars to assign a score to each movie/series.</p>
-<div id="ed42c2b2" class="cell" data-execution_count="4">
+<div id="8b994bfc" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Season'</span>).fill_null(<span class="dv">0</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Person'</span>, <span class="st">'Quote'</span>).<span class="bu">str</span>.split(<span class="st">' | '</span>).<span class="bu">list</span>.n_unique())</span>

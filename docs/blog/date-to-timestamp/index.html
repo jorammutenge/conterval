@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Sometimes you may want the date value in your dataframe to display as a timestamp. This is useful when you need to hide the date of birth (DOB) of people in your dataset while presenting the data. Below is a dataframe showing the DOB of yours truly.</p>
-<div id="1d29f648" class="cell" data-execution_count="1">
+<div id="60624550" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -259,7 +259,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="convert-date-to-timestamp" class="level2">
 <h2 class="anchored" data-anchor-id="convert-date-to-timestamp">Convert date to timestamp</h2>
 <p>To convert a date to a timestamp, use the date component <code>timestamp</code> as shown below:</p>
-<div id="4d8d71bc" class="cell" data-execution_count="2">
+<div id="aac67b3e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(DOB_ms<span class="op">=</span>pl.col(<span class="st">'DOB'</span>).dt.timestamp(<span class="st">'ms'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

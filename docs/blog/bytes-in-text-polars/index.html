@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>The number of characters in text is not always the same as the number of bytes, especially when the text contains emojis. Below is a dataframe showing YouTube comments.</p>
-<div id="2cb18c5f" class="cell" data-execution_count="1">
+<div id="bf34b97e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -265,7 +265,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="count-characters-and-bytes" class="level2">
 <h2 class="anchored" data-anchor-id="count-characters-and-bytes">Count characters and bytes</h2>
 <p>To count the number of characters and bytes in each comment, use <code>len_chars</code> and <code>len_bytes</code> respectively. The code below shows how:</p>
-<div id="3e81a454" class="cell" data-execution_count="2">
+<div id="c9fb6a58" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Chars<span class="op">=</span>pl.col(<span class="st">'YouTube_Comment'</span>).<span class="bu">str</span>.len_chars(),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               Bytes<span class="op">=</span>pl.col(<span class="st">'YouTube_Comment'</span>).<span class="bu">str</span>.len_bytes())</span>

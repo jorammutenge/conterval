@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Sometimes, you may want to change the dates of your appointments, either moving them forward or backward. Below is a dataframe showing your appointments.</p>
-<div id="a9242120" class="cell" data-execution_count="1">
+<div id="7ee81a20" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -266,7 +266,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <section id="move-dates-back-or-forward" class="level2">
 <h2 class="anchored" data-anchor-id="move-dates-back-or-forward">Move dates back or forward</h2>
-<div id="a33b5965" class="cell" data-execution_count="2">
+<div id="446a5f35" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(One_Month_Past<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.offset_by(<span class="st">'-1mo'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Five_Days_Future<span class="op">=</span>pl.col(<span class="st">'Date'</span>).dt.offset_by(<span class="st">'5d'</span>))</span>

@@ -227,7 +227,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Most dataframe libraries are excellent at performing columnar operations, such as adding or multiplying values within a single column. However, there are times when you may want to perform such operations across multiple columns. Below is a dataframe of Apple stock values.</p>
-<div id="5473c9d4" class="cell" data-execution_count="1">
+<div id="19bad0a7" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -292,7 +292,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-manual-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-manual-way">The manual way</h2>
 <p>Here’s the manual approach to add the values across columns:</p>
-<div id="2fc58b13" class="cell" data-execution_count="2">
+<div id="7975d868" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns((pl.col(<span class="st">'Open'</span>) <span class="op">+</span> pl.col(<span class="st">'High'</span>) <span class="op">+</span> pl.col(<span class="st">'Low'</span>) <span class="op">+</span> pl.col(<span class="st">'Close'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Sum_OHLC'</span>))</span>
@@ -367,7 +367,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-efficient-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-efficient-way">The efficient way</h2>
 <p>And here’s the idiomatic and more efficient way to do it:</p>
-<div id="5733fecc" class="cell" data-execution_count="3">
+<div id="05430870" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.sum_horizontal(<span class="st">'Open'</span>, <span class="st">'High'</span>, <span class="st">'Low'</span>, <span class="st">'Close'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Sum_OHLC'</span>))</span>
@@ -442,7 +442,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="the-showing-off-way" class="level2">
 <h2 class="anchored" data-anchor-id="the-showing-off-way">The showing off way</h2>
 <p>Or if you want to impress the hiring manager in a coding interview, you can do it like this.</p>
-<div id="c19ab8a9" class="cell" data-execution_count="4">
+<div id="e86b7ef2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.sum_horizontal(pl.nth(<span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">5</span>))))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'Sum_OHLC'</span>))</span>
