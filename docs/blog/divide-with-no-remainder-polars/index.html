@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>In programming, division comes in two forms: with a remainder and without a remainder. In most programming languages, the symbol <code>/</code> represents division with a remainder, while <code>//</code> represents division without a remainder. Polars provides equivalent expressions for these operations, called <code>truediv</code> and <code>floordiv</code>, respectively.</p>
 <p>Below is a dataframe showing the years of some of the greatest inventions of the last century.</p>
-<div id="1f76cc98" class="cell" data-execution_count="1">
+<div id="9e62506c" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -272,7 +272,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-decade-from-year" class="level2">
 <h2 class="anchored" data-anchor-id="get-decade-from-year">Get decade from year</h2>
 <p>You can create a new column to show the decade in which each invention occurred by using the <code>floordiv</code> expression and multiplying the non-decimal value by 10, as shown below:</p>
-<div id="4423983b" class="cell" data-execution_count="2">
+<div id="5ea82886" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Decade<span class="op">=</span>pl.col(<span class="st">'Year'</span>).floordiv(<span class="dv">10</span>)<span class="op">*</span><span class="dv">10</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

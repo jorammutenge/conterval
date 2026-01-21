@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Anyone working with data knows that encountering null values in a dataset is inevitable. There are several ways to fill null values in Polars. One approach is to replace each null value with the next non-null value that appears after it. Below is a dataframe showing companies and their corresponding company numbers.</p>
-<div id="019fda0b" class="cell" data-execution_count="1">
+<div id="024e8a69" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -275,7 +275,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="fill-null-with-value" class="level2">
 <h2 class="anchored" data-anchor-id="fill-null-with-value">Fill null with value</h2>
 <p>To replace null values with the next value that follows them, use the Polars expression <code>backward_fill</code> as shown below:</p>
-<div id="f3e16af3" class="cell" data-execution_count="2">
+<div id="485ec931" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Number'</span>).backward_fill())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

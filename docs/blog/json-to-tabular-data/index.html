@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>JSON data obtained through an API call can be nested at multiple levels, making it difficult to analyze. Fortunately, Polars can read JSON data at multiple levels, ensuring that the data is fully un-nested. Below is some JSON data to load into a dataframe.</p>
-<div id="5d1bfe20" class="cell" data-execution_count="1">
+<div id="174c95b5" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    {</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"id"</span>: <span class="dv">1</span>,</span>
@@ -243,7 +243,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="read-data-at-level-zero" class="level2">
 <h2 class="anchored" data-anchor-id="read-data-at-level-zero">Read data at level zero</h2>
 <p>We can start by unnesting the first level. This will return a three-column dataframe:</p>
-<div id="98924c07" class="cell" data-execution_count="2">
+<div id="45fa5407" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pl.json_normalize(data, max_level<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -289,7 +289,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="read-data-at-level-one" class="level2">
 <h2 class="anchored" data-anchor-id="read-data-at-level-one">Read data at level one</h2>
 <p>Some nested data remains in the <em>fitness</em> column. We can unnest it by increasing the level by 1:</p>
-<div id="d80c1c74" class="cell" data-execution_count="3">
+<div id="b4fb7c0b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pl.json_normalize(data, max_level<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>

@@ -403,7 +403,7 @@ Note
 <p>Intermediate variables allow you to capture the output of any Polars expression, whether that output is a dataframe, a list, a tuple, or even a dictionary. Once stored, the value can be passed into another Polars expression to produce a final result. For more involved transformations, you may rely on several such variables along the way. When a computation becomes too complex to express as a single chained expression, intermediate variables provide a practical alternative. They can also make long transformation sequences easier to read and reason about.</p>
 <p>Although I generally prefer to avoid intermediate variables, they do serve an important role, and in some cases they are unavoidable. One way to think about them is through a simple analogy. Imagine you are sitting in the living room and ask your teenage daughter to bring you a spoon and a fork from the kitchen. If you ask for the spoon first and then send her back for the fork, that mirrors the use of intermediate variables, with each trip representing a separate step. Ideally, you would ask her to bring both items at once. However, when the number of things you need exceeds what she can carry, multiple trips become necessary. In the same way, intermediate variables become necessary when a transformation cannot reasonably be expressed as a single operation.</p>
 <p>Below is an example where intermediate variables help us reach the desired output. Using the <em>liquor_sales</em> dataset introduced in <a href="./Anomaly Detection.html" target="_blank">Chapter 5</a>, suppose we want to compute aggregated liquor sales by store, by category, and by vendor as independent aggregations, rather than only the combinations that appear in the raw data:</p>
-<div id="64432f1e" class="cell" data-execution_count="2">
+<div id="d3415384" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>store_df <span class="op">=</span> (liquor_sales</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Store'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> .agg(pl.<span class="bu">sum</span>(<span class="st">'Dollars'</span>))</span>
@@ -455,34 +455,34 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td>"HY-VEE / WAVERLY"</td>
+<td>"KUM &amp; GO #4098 / WINDSOR HEIGH…</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
 </tr>
 <tr class="even">
-<td>"CASEY'S GENERAL STORE #2306 / …</td>
+<td>"PRONTO MARKET / KINGSLEY"</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
-<td>"QUIK TRIP #501 / E EUCLID DM"</td>
+<td>"HY-VEE FAST AND FRESH #4 (7583…</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
 </tr>
 <tr class="even">
-<td>"LIBERTY VIEW WINE AND SPIRITS"</td>
+<td>"CASEY'S GENERAL STORE #3789"</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
-<td>"LALO'S LIQUOR / AMES"</td>
+<td>"TARGET STORE T-2041 / DES MOIN…</td>
 <td>null</td>
 <td>null</td>
-<td>794.0</td>
+<td>inf</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -493,32 +493,32 @@ Note
 <tr class="odd">
 <td>null</td>
 <td>null</td>
-<td>"LEVECKE CORPORATION"</td>
+<td>"SQUARE ONE ORGANIC SPIRITS"</td>
+<td>10184.0</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"SARGE'S SPIRITS LLC"</td>
+<td>52128.0</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"DISARONNO INTERNATIONAL"</td>
 <td>inf</td>
 </tr>
 <tr class="even">
 <td>null</td>
 <td>null</td>
-<td>"CHARLES JACQUIN ET. CIE., INC."</td>
-<td>inf</td>
+<td>"XAMAY GLOBAL SPIRITS LLC"</td>
+<td>1013.0</td>
 </tr>
 <tr class="odd">
 <td>null</td>
 <td>null</td>
-<td>"VBJ BEVERAGES LLC"</td>
-<td>inf</td>
-</tr>
-<tr class="even">
-<td>null</td>
-<td>null</td>
-<td>"TIERRA MADRE LLC / ADOLFO MURI…</td>
-<td>2308.0</td>
-</tr>
-<tr class="odd">
-<td>null</td>
-<td>null</td>
-<td>"ANCHOR DISTILLING (PREISS IMPO…</td>
-<td>inf</td>
+<td>"CHOYA UMESHU USA INC."</td>
+<td>13424.0</td>
 </tr>
 </tbody>
 </table>
@@ -526,7 +526,7 @@ Note
 </div>
 </div>
 <p>Here, each <code>group_by</code> result is stored in its own variable and then combined using <code>concat</code>. You could avoid naming these intermediate results by embedding each chain directly inside the <code>concat</code> operation, but doing so makes the code harder to follow:</p>
-<div id="3466653d" class="cell" data-execution_count="3">
+<div id="fa88c1c7" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(pl.concat([</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (liquor_sales</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     .group_by(<span class="st">'Store'</span>)</span>
@@ -576,34 +576,34 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td>"LALO'S LIQUOR STORE / AMES"</td>
-<td>null</td>
-<td>null</td>
-<td>12480.0</td>
-</tr>
-<tr class="even">
-<td>"HY-VEE FAST AND FRESH #2 (7591…</td>
-<td>null</td>
-<td>null</td>
-<td>inf</td>
-</tr>
-<tr class="odd">
-<td>"WEST MAIN LIQUOR"</td>
+<td>"CASEY'S GENERAL STORE #3029 / …</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
 </tr>
 <tr class="even">
-<td>"MALCOM GAS &amp; FOOD / MALCOM"</td>
-<td>null</td>
-<td>null</td>
-<td>46496.0</td>
-</tr>
-<tr class="odd">
-<td>"PETROMART STANWOOD"</td>
+<td>"Z'S QUICKBREAK"</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
+</tr>
+<tr class="odd">
+<td>"SS KHANNA GROUP INC / CRESTON"</td>
+<td>null</td>
+<td>null</td>
+<td>9936.0</td>
+</tr>
+<tr class="even">
+<td>"MIDTOWN"</td>
+<td>null</td>
+<td>null</td>
+<td>43264.0</td>
+</tr>
+<tr class="odd">
+<td>"QUIK TRIP #530"</td>
+<td>null</td>
+<td>null</td>
+<td>4280.0</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -614,32 +614,32 @@ Note
 <tr class="odd">
 <td>null</td>
 <td>null</td>
-<td>"DRIFTLESS GLEN DISTILLERY"</td>
-<td>inf</td>
+<td>"PURPLE VALLEY IMPORTS / GLASS …</td>
+<td>202.5</td>
 </tr>
 <tr class="even">
 <td>null</td>
 <td>null</td>
-<td>"WILSON DANIELS LTD."</td>
+<td>"45TH PARALLEL SPIRITS"</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
 <td>null</td>
 <td>null</td>
-<td>"BGPL-USA INC/ SURVILLE ENTERPR…</td>
-<td>144.125</td>
+<td>"FIFTH GENERATION INC"</td>
+<td>inf</td>
 </tr>
 <tr class="even">
 <td>null</td>
 <td>null</td>
-<td>"OLD ELK DISTILLERIES LLC"</td>
+<td>"TY KU LLC"</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
 <td>null</td>
 <td>null</td>
-<td>"CUTWATER SPIRITS LLC"</td>
-<td>198.0</td>
+<td>"IMPERIAL BRANDS INC"</td>
+<td>inf</td>
 </tr>
 </tbody>
 </table>
@@ -648,7 +648,7 @@ Note
 </div>
 <p>Notice that this version is not truly a single chained expression. Instead, it consists of three separate chains placed inside a <code>concat</code>. Functionally, it behaves the same as the version that uses intermediate variables, and Polars cannot execute the three chains in parallel because they are independent operations.</p>
 <p>You could also express this pattern more compactly using a Python dictionary comprehension. However, that approach is still not idiomatic Polars, since the comprehension forces execution to occur in Python rather than in Rust, which is where Polars achieves most of its performance benefits. As a result, it may look cleaner, but it is not fundamentally different from using intermediate variables.</p>
-<div id="d16bca8a" class="cell" data-execution_count="4">
+<div id="9f88ddb5" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(pl.concat([</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    liquor_sales</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    .group_by(col)</span>
@@ -685,31 +685,31 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td>"BROCKMANS"</td>
+<td>"CLINTON LIQUOR &amp; CONVENIENCE S…</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
 </tr>
 <tr class="even">
-<td>"CASEY'S #4539 / ROCK RAPIDS"</td>
-<td>null</td>
-<td>null</td>
-<td>42272.0</td>
-</tr>
-<tr class="odd">
-<td>"CASEY'S #4306 / FAIRFIELD"</td>
+<td>"PRESTON COUNTRY STORE"</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
+</tr>
+<tr class="odd">
+<td>"GOPUFF"</td>
+<td>null</td>
+<td>null</td>
+<td>9816.0</td>
 </tr>
 <tr class="even">
-<td>"HY-VEE WINE AND SPIRITS / WDM"</td>
+<td>"CASEY'S GENERAL STORE #2994 / …</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
-<td>"FAREWAY STORES #625 / OSKALOOS…</td>
+<td>"FIVE STAR SNACKS AND LIQUOR"</td>
 <td>null</td>
 <td>null</td>
 <td>inf</td>
@@ -723,32 +723,32 @@ Note
 <tr class="odd">
 <td>null</td>
 <td>null</td>
-<td>"STOLLER WAREHOUSE"</td>
-<td>7580.0</td>
+<td>"SC DISTILLATION LLC / VILLAGE …</td>
+<td>270.0</td>
 </tr>
 <tr class="even">
 <td>null</td>
 <td>null</td>
-<td>"HILLROCK ESTATE DISTILLERY LLC"</td>
-<td>7468.0</td>
-</tr>
-<tr class="odd">
-<td>null</td>
-<td>null</td>
-<td>"MAVERICK SPIRIT LLC"</td>
-<td>684.0</td>
-</tr>
-<tr class="even">
-<td>null</td>
-<td>null</td>
-<td>"CONSTELLATION WINE COMPANY, IN…</td>
+<td>"3 BADGE CORPORATION"</td>
 <td>inf</td>
 </tr>
 <tr class="odd">
 <td>null</td>
 <td>null</td>
-<td>"SANTA FE TEQUILA COMPANY"</td>
-<td>56128.0</td>
+<td>"WILSON DANIELS LTD"</td>
+<td>22896.0</td>
+</tr>
+<tr class="even">
+<td>null</td>
+<td>null</td>
+<td>"SUTTER HOME WINERY INC"</td>
+<td>7192.0</td>
+</tr>
+<tr class="odd">
+<td>null</td>
+<td>null</td>
+<td>"ELIXIR, INC."</td>
+<td>5256.0</td>
 </tr>
 </tbody>
 </table>
@@ -759,7 +759,7 @@ Note
 <p>Suppose we want to identify which authors were read by the two most active borrowers during 2024. One effective approach is to first determine the <em>ID</em> values of those top two readers and store them in an intermediate variable. That variable can then be used to filter the dataset down to only the relevant checkouts from 2024.</p>
 <p>Suppose we want to identify which authors featured in the two libraries with the most checkouts in 2024. One effective approach is to first determine the <em>Library</em> values of those top two libraries and store them in an intermediate variable. That variable can then be used to filter the dataset down to only the relevant libraries from 2024.</p>
 <p>We start by identifying the two libraries that recorded the highest total number of checkouts across the dataset.</p>
-<div id="94c1045d" class="cell" data-execution_count="5">
+<div id="93517109" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-9"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="annotated-cell-9-2"><a href="#annotated-cell-9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-9-3"><a href="#annotated-cell-9-3" aria-hidden="true" tabindex="-1"></a>new_cols <span class="op">=</span> [<span class="st">'Title'</span>, <span class="st">'Author'</span>, <span class="st">'Call_Num'</span>, <span class="st">'ID'</span>, <span class="st">'Item'</span>, <span class="st">'Status'</span>,</span>
@@ -792,7 +792,7 @@ Note
 </div>
 </div>
 <p>With the list of libraries in hand, we can now identify the authors featured in those two libraries during 2024.</p>
-<div id="ab549d24" class="cell" data-execution_count="6">
+<div id="d6439ee5" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(library_checkouts</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Date'</span>).dt.year() <span class="op">==</span> <span class="dv">2024</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Library'</span>).is_in(top_2_checkouts_library))</span>
@@ -818,37 +818,37 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Pinborough, Sarah,"</td>
+<td>"Wells, Christine,"</td>
 </tr>
 <tr class="even">
-<td>"Livingstone, Natalie,"</td>
+<td>"Climo, Liz,"</td>
 </tr>
 <tr class="odd">
-<td>"Day, Felicia,"</td>
+<td>"Hitchcock, F.R."</td>
 </tr>
 <tr class="even">
-<td>"Beavis, Paul,"</td>
+<td>"Stilton, Geronimo."</td>
 </tr>
 <tr class="odd">
-<td>"Codling, Stuart,"</td>
+<td>"Admont, Shelley,"</td>
 </tr>
 <tr class="even">
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"Grossman, David,"</td>
+<td>"Mollerup, Per."</td>
 </tr>
 <tr class="even">
-<td>"Flynn, David,"</td>
+<td>"Harris, Jason,"</td>
 </tr>
 <tr class="odd">
-<td>"Sager Weinstein, Jacob,"</td>
+<td>"Sonoyama, Yukino,"</td>
 </tr>
 <tr class="even">
-<td>"Hatano, Tomomi,"</td>
+<td>"Hokami, Natsuki,"</td>
 </tr>
 <tr class="odd">
-<td>"Healey, Jane,"</td>
+<td>"Corbishley, Nicky,"</td>
 </tr>
 </tbody>
 </table>
@@ -874,7 +874,7 @@ Note
 <li><code>seed</code> an integer used to make the sampling reproducible. Default is None, meaning a new random seed is used each time.</li>
 </ul>
 <p>To demonstrate how <code>sample</code> works, we will return to the <em>clothing_store_sales</em> dataset, which contains one thousand rows. The following example randomly selects 500 rows, representing half of the dataset:</p>
-<div id="f304342e" class="cell" data-execution_count="7">
+<div id="c65c56de" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>clothing_store_sales <span class="op">=</span> (pl.read_csv(<span class="st">'data/sample_sales.csv'</span>, try_parse_dates<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>      .select(pl.exclude(<span class="st">'Account Name'</span>, <span class="st">'sku'</span>))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>      .rename(<span class="kw">lambda</span> c: c.title().replace(<span class="st">' '</span>,<span class="st">'_'</span>))</span>
@@ -914,92 +914,92 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td>705775</td>
-<td>"Sweater"</td>
-<td>12</td>
-<td>68.76</td>
-<td>825.12</td>
-<td>2014-09-26 00:40:26</td>
-</tr>
-<tr class="even">
-<td>578306</td>
-<td>"Sweater"</td>
-<td>20</td>
-<td>57.89</td>
-<td>1157.8</td>
-<td>2013-10-21 13:26:32</td>
-</tr>
-<tr class="odd">
-<td>317998</td>
-<td>"Socks"</td>
-<td>11</td>
-<td>48.94</td>
-<td>538.34</td>
-<td>2014-07-04 00:12:58</td>
-</tr>
-<tr class="even">
-<td>223656</td>
-<td>"Sweater"</td>
-<td>8</td>
-<td>52.53</td>
-<td>420.24</td>
-<td>2014-03-10 13:03:04</td>
-</tr>
-<tr class="odd">
-<td>185994</td>
-<td>"Hat"</td>
-<td>18</td>
-<td>60.99</td>
-<td>1097.82</td>
-<td>2013-12-26 05:50:27</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>748472</td>
+<td>40033</td>
 <td>"Socks"</td>
 <td>14</td>
-<td>26.62</td>
-<td>372.68</td>
-<td>2014-06-25 13:14:58</td>
+<td>47.47</td>
+<td>664.58</td>
+<td>2014-07-15 11:18:50</td>
 </tr>
 <tr class="even">
-<td>726447</td>
+<td>811740</td>
 <td>"Sweater"</td>
-<td>11</td>
-<td>63.33</td>
-<td>696.63</td>
-<td>2014-04-26 23:48:15</td>
+<td>1</td>
+<td>60.14</td>
+<td>60.14</td>
+<td>2014-05-21 14:02:58</td>
 </tr>
 <tr class="odd">
-<td>166245</td>
+<td>480628</td>
 <td>"Sweater"</td>
-<td>20</td>
-<td>93.93</td>
-<td>1878.6</td>
-<td>2014-05-03 19:47:19</td>
+<td>1</td>
+<td>37.16</td>
+<td>37.16</td>
+<td>2014-02-10 19:53:38</td>
 </tr>
 <tr class="even">
-<td>175408</td>
-<td>"Socks"</td>
-<td>2</td>
-<td>79.31</td>
-<td>158.62</td>
-<td>2014-02-22 13:54:53</td>
+<td>897322</td>
+<td>"Sweater"</td>
+<td>13</td>
+<td>59.73</td>
+<td>776.49</td>
+<td>2014-05-15 14:38:35</td>
 </tr>
 <tr class="odd">
-<td>65514</td>
+<td>271303</td>
+<td>"Sweater"</td>
+<td>14</td>
+<td>18.3</td>
+<td>256.2</td>
+<td>2014-08-09 02:55:43</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>985991</td>
 <td>"Socks"</td>
-<td>3</td>
-<td>17.84</td>
-<td>53.52</td>
-<td>2014-05-06 00:09:19</td>
+<td>7</td>
+<td>11.97</td>
+<td>83.79</td>
+<td>2014-06-27 20:13:10</td>
+</tr>
+<tr class="even">
+<td>873132</td>
+<td>"Sweater"</td>
+<td>5</td>
+<td>74.7</td>
+<td>373.5</td>
+<td>2014-06-05 19:15:25</td>
+</tr>
+<tr class="odd">
+<td>428801</td>
+<td>"Hat"</td>
+<td>17</td>
+<td>75.66</td>
+<td>1286.22</td>
+<td>2014-09-22 07:56:56</td>
+</tr>
+<tr class="even">
+<td>737861</td>
+<td>"Sweater"</td>
+<td>5</td>
+<td>83.54</td>
+<td>417.7</td>
+<td>2014-07-04 11:00:05</td>
+</tr>
+<tr class="odd">
+<td>294664</td>
+<td>"Sweater"</td>
+<td>13</td>
+<td>32.31</td>
+<td>420.03</td>
+<td>2014-03-28 13:05:30</td>
 </tr>
 </tbody>
 </table>
@@ -1007,7 +1007,7 @@ Note
 </div>
 </div>
 <p>When the total number of rows is not known in advance, specifying a fixed count may be inconvenient. In these situations, the <code>fraction</code> argument provides a more flexible alternative:</p>
-<div id="c636c9ef" class="cell" data-execution_count="8">
+<div id="85433bdb" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(clothing_store_sales</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .sample(fraction<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1041,44 +1041,44 @@ Note
 </thead>
 <tbody>
 <tr class="odd">
-<td>238675</td>
-<td>"Sweater"</td>
-<td>17</td>
-<td>58.25</td>
-<td>990.25</td>
-<td>2014-02-16 17:26:48</td>
-</tr>
-<tr class="even">
-<td>803666</td>
-<td>"Sweater"</td>
-<td>13</td>
-<td>23.34</td>
-<td>303.42</td>
-<td>2014-02-27 16:28:34</td>
-</tr>
-<tr class="odd">
-<td>410779</td>
-<td>"Sweater"</td>
-<td>10</td>
-<td>18.56</td>
-<td>185.6</td>
-<td>2014-04-07 23:42:25</td>
-</tr>
-<tr class="even">
-<td>437171</td>
-<td>"Sweater"</td>
-<td>5</td>
-<td>58.04</td>
-<td>290.2</td>
-<td>2014-09-26 00:48:56</td>
-</tr>
-<tr class="odd">
-<td>760541</td>
+<td>206192</td>
 <td>"Hat"</td>
-<td>19</td>
-<td>30.1</td>
-<td>571.9</td>
-<td>2014-02-15 10:54:33</td>
+<td>1</td>
+<td>95.05</td>
+<td>95.05</td>
+<td>2014-04-29 08:52:26</td>
+</tr>
+<tr class="even">
+<td>346891</td>
+<td>"Sweater"</td>
+<td>18</td>
+<td>52.24</td>
+<td>940.32</td>
+<td>2014-02-07 03:15:43</td>
+</tr>
+<tr class="odd">
+<td>343481</td>
+<td>"Hat"</td>
+<td>18</td>
+<td>46.42</td>
+<td>835.56</td>
+<td>2014-07-01 16:39:19</td>
+</tr>
+<tr class="even">
+<td>647742</td>
+<td>"Hat"</td>
+<td>13</td>
+<td>31.42</td>
+<td>408.46</td>
+<td>2014-08-10 19:58:12</td>
+</tr>
+<tr class="odd">
+<td>722921</td>
+<td>"Hat"</td>
+<td>6</td>
+<td>90.73</td>
+<td>544.38</td>
+<td>2014-03-07 03:00:31</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -1089,44 +1089,44 @@ Note
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>345623</td>
+<td>68120</td>
 <td>"Sweater"</td>
 <td>8</td>
-<td>13.57</td>
-<td>108.56</td>
-<td>2014-07-24 14:15:18</td>
+<td>70.48</td>
+<td>563.84</td>
+<td>2014-05-14 10:53:31</td>
 </tr>
 <tr class="even">
-<td>947492</td>
-<td>"Sweater"</td>
-<td>14</td>
-<td>38.41</td>
-<td>537.74</td>
-<td>2013-10-01 02:57:18</td>
-</tr>
-<tr class="odd">
-<td>455768</td>
+<td>723940</td>
 <td>"Socks"</td>
-<td>15</td>
-<td>10.54</td>
-<td>158.1</td>
-<td>2014-01-22 10:16:21</td>
-</tr>
-<tr class="even">
-<td>111739</td>
-<td>"Sweater"</td>
-<td>13</td>
-<td>19.28</td>
-<td>250.64</td>
-<td>2014-05-24 14:14:48</td>
+<td>11</td>
+<td>82.37</td>
+<td>906.07</td>
+<td>2013-12-16 16:35:13</td>
 </tr>
 <tr class="odd">
-<td>685048</td>
+<td>404045</td>
 <td>"Sweater"</td>
-<td>13</td>
-<td>61.71</td>
-<td>802.23</td>
-<td>2014-07-26 20:06:21</td>
+<td>3</td>
+<td>43.91</td>
+<td>131.73</td>
+<td>2014-08-13 09:00:40</td>
+</tr>
+<tr class="even">
+<td>337183</td>
+<td>"Hat"</td>
+<td>17</td>
+<td>73.4</td>
+<td>1247.8</td>
+<td>2013-10-29 05:06:47</td>
+</tr>
+<tr class="odd">
+<td>310730</td>
+<td>"Hat"</td>
+<td>20</td>
+<td>33.32</td>
+<td>666.4</td>
+<td>2014-01-09 11:24:28</td>
 </tr>
 </tbody>
 </table>
@@ -1147,7 +1147,7 @@ Tip
 </div>
 </div>
 <p>Sampling can also be applied to individual columns rather than the entire dataframe:</p>
-<div id="5ee0877b" class="cell" data-execution_count="9">
+<div id="b6b5346e" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(clothing_store_sales</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .select(pl.col(<span class="st">'Customer_ID'</span>).sample(fraction<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1171,37 +1171,37 @@ Tip
 </thead>
 <tbody>
 <tr class="odd">
-<td>455768</td>
+<td>824657</td>
 </tr>
 <tr class="even">
-<td>602985</td>
+<td>440852</td>
 </tr>
 <tr class="odd">
-<td>643569</td>
+<td>884468</td>
 </tr>
 <tr class="even">
-<td>532928</td>
+<td>964344</td>
 </tr>
 <tr class="odd">
-<td>969663</td>
+<td>621565</td>
 </tr>
 <tr class="even">
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>883455</td>
+<td>280369</td>
 </tr>
 <tr class="even">
-<td>789704</td>
+<td>373609</td>
 </tr>
 <tr class="odd">
-<td>296008</td>
+<td>72225</td>
 </tr>
 <tr class="even">
-<td>626759</td>
+<td>897322</td>
 </tr>
 <tr class="odd">
-<td>710898</td>
+<td>602985</td>
 </tr>
 </tbody>
 </table>
@@ -1209,7 +1209,7 @@ Tip
 </div>
 </div>
 <p>For reproducibility, it is generally best practice to set a seed so that others running the same code obtain identical results:</p>
-<div id="c0e4260f" class="cell" data-execution_count="10">
+<div id="d28a9f8d" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(clothing_store_sales</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .sample(fraction<span class="op">=</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1359,7 +1359,7 @@ Warning
 <p>Text fields are another common source of unnecessary dimensionality. Minor differences in spelling or capitalization can create many distinct values that add little analytical value. Applying text-cleaning functions from <a href="./Text Analysis.html" target="_blank">Chapter 4</a>, such as <code>to_lowercase</code>, <code>to_uppercase</code>, or <code>strip_chars</code>, helps standardize entries and often improves usability for stakeholders. More targeted changes, such as correcting misspellings or updating outdated names, can be handled with <code>replace</code> or <code>when-then-otherwise</code> expressions.</p>
 <p>In some cases, only a small subset of values is important for analysis, and grouping the remaining values together is both practical and effective. This approach is common with geographic data. Although nearly two hundred countries exist, only a handful may have enough observations to justify reporting them individually.</p>
 <p>The <em>liquor_sales</em> dataset used in <a href="./Anomaly Detection.html" target="_blank">Chapter 5</a> includes 99 valid county names. Suppose we want to retain detailed records for the five most populous counties, currently Polk, Linn, Scott, Johnson, and Black Hawk, and categorize all others as “Other.” We can do this using a <code>when-then-otherwise</code> expression:</p>
-<div id="aaba97ad" class="cell" data-execution_count="12">
+<div id="94789439" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(liquor_sales</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> .join(county_population, on<span class="op">=</span><span class="st">'County'</span>, how<span class="op">=</span><span class="st">'inner'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'County'</span>).is_in([<span class="st">'POLK'</span>,<span class="st">'LINN'</span>,<span class="st">'SCOTT'</span>,<span class="st">'JOHNSON'</span>,<span class="st">'BLACK HAWK'</span>]))</span>
@@ -1421,7 +1421,7 @@ Warning
 </div>
 </div>
 <p>This reduces the output to just 6 rows instead of 99, which is a substantial improvement. To make the grouping more adaptive, we can first compute a <code>rank</code> based on the number of distinct <em>Invoice</em> values, which represent transaction IDs, per county. We then keep the top five counties and label all others as “Other”:</p>
-<div id="2bd3a9cd" class="cell" data-execution_count="13">
+<div id="eedf60c6" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-16"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1" aria-hidden="true" tabindex="-1"></a>(liquor_sales</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-2" class="code-annotation-target"><a href="#annotated-cell-16-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'County'</span>).ne(<span class="st">'EL PASO'</span>))</span>
 <span id="annotated-cell-16-3"><a href="#annotated-cell-16-3" aria-hidden="true" tabindex="-1"></a> .join(liquor_sales</span>
@@ -1499,7 +1499,7 @@ Warning
 <p>As new data is added, this dynamic approach ensures that the top counties are always determined using the most current information.</p>
 <p>Dimensionality can also be reduced by converting detailed values into simple flag indicators. These flags typically have two possible states. They may be represented as Boolean values, numeric pairs such as 1 and 0, or text labels like “Yes” and “No,” as well as any other meaningful two category scheme. Flags are especially useful when only a threshold matters and the finer grained information is unnecessary. For example, we may care whether a website visitor made a purchase at all, while the exact number of purchases is not essential.</p>
 <p>In the <em>library_checkouts</em> dataset, roughly 1.3 million unique <em>ID</em> values represent items checked out from Brisbane libraries. Rather than preserving the exact checkout count for each item, we may only need to record whether an item was checked out at least twice. This can be done by converting the numeric counts into a binary flag.</p>
-<div id="c69d3c56" class="cell" data-execution_count="14">
+<div id="6ffd1c2f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(library_checkouts</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'ID'</span>) <span class="op">!=</span> <span class="st">"REFRESH"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'ID'</span>)</span>
@@ -1548,7 +1548,7 @@ Warning
 <p>The number of items checked out two or more times is more than one and a half times the number of items checked out only once. When combined with other columns, this kind of simplification can significantly reduce the size of the resulting dataset.</p>
 <p>In some situations, however, a binary flag does not provide enough nuance. When more detail is needed, numeric values can be grouped into multiple categories instead of just two. This is often implemented using a <code>when-then-otherwise</code> expression, with the resulting categories represented by numeric or textual labels.</p>
 <p>For example, we might want to distinguish not only items checked out at least twice, but also those checked out ten or more times.</p>
-<div id="dc8b926e" class="cell" data-execution_count="15">
+<div id="208d80c3" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(library_checkouts</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'ID'</span>) <span class="op">!=</span> <span class="st">"REFRESH"</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'ID'</span>)</span>
@@ -1584,12 +1584,12 @@ Warning
 </thead>
 <tbody>
 <tr class="odd">
-<td>"2 - 9"</td>
-<td>818933</td>
-</tr>
-<tr class="even">
 <td>"10+"</td>
 <td>7266</td>
+</tr>
+<tr class="even">
+<td>"2 - 9"</td>
+<td>818933</td>
 </tr>
 <tr class="odd">
 <td>"1"</td>
@@ -1610,7 +1610,7 @@ Warning
 <p>Most analytical tasks aim to reveal patterns or summarize behavior. Counting users or calculating averages, rather than exposing individual level details, is usually sufficient. Aggregation often removes PII, but caution is still required. A combination of attributes that appears only once may still reveal an individual’s identity. Treating these cases as outliers and excluding them can help maintain stronger privacy protections.</p>
 <p>When individual level data is required, for example to compute distinct user counts in a downstream system, sensitive values can be replaced with randomly generated alternatives that preserve uniqueness. The <code>rank</code> function with <code>method='dense'</code> can be used to assign each person a new identifier. Using the dense method ensures that each new rank increments directly after the previous group of tied values.</p>
 <p>Suppose we want to anonymize the email addresses in the dataframe below.</p>
-<div id="afd10638" class="cell" data-execution_count="16">
+<div id="22d827c2" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>emails_df <span class="op">=</span> pl.DataFrame({</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Email'</span>: [<span class="st">'eleonora@memail.com'</span>, <span class="st">'mae@memail.com'</span>,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'grace@memail.com'</span>, <span class="st">'mae@memail.com'</span>, <span class="st">'elsa@memail.com'</span>],</span>
@@ -1656,7 +1656,7 @@ Warning
 </div>
 </div>
 <p>We can transform the emails to protect individual identities:</p>
-<div id="94ecf3c7" class="cell" data-execution_count="17">
+<div id="36556975" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-20-1"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>(emails_df</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-2" class="code-annotation-target"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a> .sort(<span class="st">'Email'</span>)</span>
 <span id="annotated-cell-20-3"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a> .with_columns(Anonymized<span class="op">=</span>pl.col(<span class="st">'Email'</span>).rank(method<span class="op">=</span><span class="st">'dense'</span>))</span>
@@ -1716,7 +1716,7 @@ Warning
 </div>
 </div>
 <p>Hashing is another useful technique. A hash function converts an input value into a new value using a deterministic algorithm. The same input always produces the same hash, which makes this approach useful for preserving uniqueness while hiding the original data. Hashed values can be generated using the <code>hash</code> expression:</p>
-<div id="3ecb27ba" class="cell" data-execution_count="18">
+<div id="db8187c5" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(emails_df</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Anonymized<span class="op">=</span>pl.col(<span class="st">'Email'</span>).<span class="bu">hash</span>())</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>If you are working remotely and your team spans multiple time zones, it is important to ensure that the data you are analyzing matches the time zone in which it originated. For example, if you are in Chicago and a client in New York sends you a dataset to analyze, loading the dataset may display timestamps in your local time zone.</p>
-<div id="29999a00" class="cell" data-execution_count="1">
+<div id="826e9e67" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -265,7 +265,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="replace-the-time-zone" class="level2">
 <h2 class="anchored" data-anchor-id="replace-the-time-zone">Replace the time zone</h2>
 <p>To replace your local time zone with the time zone of the location where the data originated, you can use the date component <code>replace_time_zone</code>, as shown below:</p>
-<div id="9200bed8" class="cell" data-execution_count="2">
+<div id="68c8df9f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Chicago_Time'</span>).dt.replace_time_zone(<span class="st">'America/New_York'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               .alias(<span class="st">'New_York_Time'</span>))</span>

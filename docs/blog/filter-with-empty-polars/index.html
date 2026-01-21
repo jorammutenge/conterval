@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>You’re conscious about your calorie intake, and you want to know whether there are any cereals in your dataset with more than 200 calories. How would you go about answering this question? Below is a dataframe containing cereal brands and the number of calories they contain.</p>
-<div id="3d2bd8cb" class="cell" data-execution_count="1">
+<div id="2fae3fb3" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -377,7 +377,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="filter-with-empty" class="level2">
 <h2 class="anchored" data-anchor-id="filter-with-empty">Filter with empty</h2>
 <p>Suppose you don’t want to see the actual cereal brands with more than 200 calories, you just want to return “true” if there’s any such brand, and “false” if there isn’t. You can do this using the <code>is_empty</code> expression in Polars.</p>
-<div id="d6cb7572" class="cell" data-execution_count="2">
+<div id="7ccb3af3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'calories'</span>) <span class="op">&gt;</span> <span class="dv">200</span>).is_empty()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

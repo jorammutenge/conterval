@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Duplicates are a common problem in most datasets. That’s why it’s important to check for duplicate rows before analyzing your data. Fortunately, Polars provides an easy way to identify duplicate rows. Below is a dataframe showing sales for each day of the week.</p>
-<div id="5da5664a" class="cell" data-execution_count="1">
+<div id="b1801d4e" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -288,7 +288,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="show-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="show-duplicates">Show duplicates</h2>
 <p>To display duplicated rows in Polars, use the <code>is_duplicated</code> method. This method highlights rows that have identical values across all columns.</p>
-<div id="64a97182" class="cell" data-execution_count="2">
+<div id="079b7723" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(df.is_duplicated())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -331,7 +331,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="remove-duplicates" class="level2">
 <h2 class="anchored" data-anchor-id="remove-duplicates">Remove duplicates</h2>
 <p>To remove duplicates in Polars, use the <code>unique</code> method. This ensures that only rows with distinct values across columns are retained. Here’s how to do it:</p>
-<div id="02fae87e" class="cell" data-execution_count="3">
+<div id="eba27759" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .unique()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -357,32 +357,32 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Fri"</td>
-<td>319</td>
-</tr>
-<tr class="even">
-<td>"Mon"</td>
-<td>182</td>
-</tr>
-<tr class="odd">
-<td>"Wed"</td>
-<td>547</td>
-</tr>
-<tr class="even">
-<td>"Tue"</td>
-<td>247</td>
-</tr>
-<tr class="odd">
 <td>"Thur"</td>
 <td>481</td>
+</tr>
+<tr class="even">
+<td>"Sat"</td>
+<td>208</td>
+</tr>
+<tr class="odd">
+<td>"Fri"</td>
+<td>319</td>
 </tr>
 <tr class="even">
 <td>"Sun"</td>
 <td>67</td>
 </tr>
 <tr class="odd">
-<td>"Sat"</td>
-<td>208</td>
+<td>"Mon"</td>
+<td>182</td>
+</tr>
+<tr class="even">
+<td>"Tue"</td>
+<td>247</td>
+</tr>
+<tr class="odd">
+<td>"Wed"</td>
+<td>547</td>
 </tr>
 </tbody>
 </table>
