@@ -227,7 +227,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>Most people read CSV files and then change the data type of columns. That is an amateur way of doing it. The professional approach is to do it all at once. Below is a dataframe showing a Polars function I covered each day in my <a href="https://www.conterval.com/blog/#category=100DaysOfPolars">100DaysOfPolars</a>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pl.read_csv(<span class="st">'days_data'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="81f8e273" class="cell" data-execution_count="1">
+<div id="6682b5c1" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -270,7 +270,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="assign-data-type-on-read">Assign data type on read</h2>
 <p>To assign a different data type to a column while reading a CSV file, use the option <code>schema_overrides</code> like this:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pl.read_csv(<span class="st">'days_data.csv'</span>, schema_overrides<span class="op">=</span>{<span class="st">'Day_Count'</span>: pl.String})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="d12113d5" class="cell" data-execution_count="2">
+<div id="5527242f" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,

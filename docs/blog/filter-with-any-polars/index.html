@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>You’re a teacher who has just finished grading student exams, and you want to identify the students who either got a C or a D so that you can talk to them about their poor performance. Below is a dataframe showing student grades.</p>
-<div id="dae03600" class="cell" data-execution_count="1">
+<div id="6d806e13" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -271,7 +271,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="filter-data" class="level2">
 <h2 class="anchored" data-anchor-id="filter-data">Filter data</h2>
 <p>To display the students who either got a C or a D, you use the Polars expression <code>contains_any</code> like this:</p>
-<div id="c93627a5" class="cell" data-execution_count="2">
+<div id="7aa92a9e" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Grade'</span>).<span class="bu">str</span>.contains_any([<span class="st">'C'</span>,<span class="st">'D'</span>]))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

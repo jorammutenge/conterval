@@ -259,7 +259,7 @@ window.Quarto = {
 \]</span></p>
 <p>Below are two dataframes to be joined.</p>
 <p><strong>df1</strong></p>
-<div id="09301cbc" class="cell" data-execution_count="1">
+<div id="b5cf2a3a" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -306,7 +306,7 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>df2</strong></p>
-<div id="c6bffa4d" class="cell" data-execution_count="2">
+<div id="a484914d" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -346,7 +346,7 @@ window.Quarto = {
 <section id="get-students-who-failed-the-exam" class="level2">
 <h2 class="anchored" data-anchor-id="get-students-who-failed-the-exam">Get students who failed the exam</h2>
 <p>To retrieve the names of students who failed the exam from the complete list of students, use the Polars <code>join</code> method as follows.</p>
-<div id="0da7d320" class="cell" data-execution_count="3">
+<div id="77d544c2" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df1</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .join(df2, left_on<span class="op">=</span><span class="st">'All_Students'</span>, right_on<span class="op">=</span><span class="st">'Passed_Exam'</span>, how<span class="op">=</span><span class="st">'anti'</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

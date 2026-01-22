@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 <p>Group by operations usually reduce the size of a dataframe, both in the number of columns and rows returned. However, sometimes you may want to maintain the original dataframe size.</p>
 <p>Below is a dataframe showing different types of groceries bought on each day of the week.</p>
-<div id="86a08caa" class="cell" data-execution_count="1">
+<div id="63f02c42" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -303,7 +303,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="group-with-over" class="level2">
 <h2 class="anchored" data-anchor-id="group-with-over">Group with over</h2>
 <p>To perform a group by operation while keeping the same dataframe length in Polars, you use the <code>over</code> expression like this:</p>
-<div id="cb4c90c0" class="cell" data-execution_count="2">
+<div id="550e5c9b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Avg_Spend<span class="op">=</span>pl.col(<span class="st">'Price'</span>).mean().over(<span class="st">'Day'</span>))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

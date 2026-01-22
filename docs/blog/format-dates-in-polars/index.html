@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>The representation of dates in data varies from region to region. In the USA, for instance, dates begin with the month rather than the day. Polars allows you to change how your dates are displayed depending on your audience. Below is a dataframe showing date values.</p>
-<div id="ddb92313" class="cell" data-execution_count="1">
+<div id="7ddb80bf" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -259,7 +259,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="format-the-date" class="level2">
 <h2 class="anchored" data-anchor-id="format-the-date">Format the date</h2>
 <p>You can format dates in either short or long form using the datetime component <code>dt.strftime</code> like this:</p>
-<div id="d8bc3487" class="cell" data-execution_count="2">
+<div id="15bc7f58" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(Short_Text_Date<span class="op">=</span>pl.col(<span class="st">'Num_Date'</span>).dt.strftime(<span class="st">'</span><span class="sc">%d</span><span class="st"> %b, %Y'</span>),</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               Long_Text_Date<span class="op">=</span>pl.col(<span class="st">'Num_Date'</span>).dt.strftime(<span class="st">'</span><span class="sc">%d</span><span class="st"> %B, %Y'</span>),)</span>

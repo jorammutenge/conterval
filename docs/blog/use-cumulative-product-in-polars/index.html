@@ -225,7 +225,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Probabilities are all around us, and if you work in the data field, you’re bound to encounter them. For example, what are the chances that you’ll get into Harvard, become a billionaire, or even better, get into Harvard <em>and</em> become a billionaire? Below is a dataframe showing the chances (probabilities) of each event happening to you.</p>
-<div id="a9adb501" class="cell" data-execution_count="1">
+<div id="665319e1" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -271,7 +271,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="get-chance-of-all-events-happening" class="level2">
 <h2 class="anchored" data-anchor-id="get-chance-of-all-events-happening">Get chance of all events happening</h2>
 <p>To determine the chance of all four events happening to you, use the Polars expression <code>cum_prod</code> like this:</p>
-<div id="ab901615" class="cell" data-execution_count="2">
+<div id="c1cc15ce" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .with_columns(All_Happening<span class="op">=</span>pl.col(<span class="st">'Chance'</span>).cum_prod())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

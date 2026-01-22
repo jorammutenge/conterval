@@ -226,7 +226,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Some functions you write in your code may be too specific to exist as built-in Polars methods or expressions. Fortunately, Polars provides a way to apply your custom function to a dataframe within a chained operation. Below is a dataframe of Apple stock data.</p>
-<div id="a6dc5bd6" class="cell" data-execution_count="1">
+<div id="57597ac1" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -296,7 +296,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="create-custom-function" class="level2">
 <h2 class="anchored" data-anchor-id="create-custom-function">Create custom function</h2>
 <p>Suppose you have the following custom function to calculate the change in value between the previous day’s <em>Open</em> and the current day’s <em>Open</em>.</p>
-<div id="813484b3" class="cell" data-execution_count="2">
+<div id="6d2197cf" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delta_change(df, column):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df.with_columns(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        (pl.col(column) <span class="op">-</span> pl.col(column).shift(<span class="op">-</span><span class="dv">1</span>)).alias(<span class="st">'Delta Change'</span>)</span>
@@ -307,7 +307,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <section id="use-custom-function" class="level2">
 <h2 class="anchored" data-anchor-id="use-custom-function">Use custom function</h2>
 <p>To use a custom function in a chained operation in Polars, you can use the <code>pipe</code> method like this:</p>
-<div id="68603d60" class="cell" data-execution_count="3">
+<div id="6f8b4a62" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.pipe(delta_change, column<span class="op">=</span><span class="st">'Open'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
