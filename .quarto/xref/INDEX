@@ -436,5 +436,8 @@
   },
   "blog/fizzbuzz-in-polars/index.qmd": {
     "index.html": "d3269cd9"
+  },
+  "blog/equality-with-null-polars/index.qmd": {
+    "index.html": "71f07960"
   }
 }

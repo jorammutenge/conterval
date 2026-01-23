@@ -1,0 +1,46 @@
+---
+title: "Equalities with nulls in polars"
+subtitle: "When null values interfere with filtering"
+author: '{{< var author >}}'
+date: '2026-01-21'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [data analysis]
+---
+
+Recently at work, I discovered something unexpected when filtering values with Polars. Below is a dataframe showing students’ weekly quiz results.
+
+```{python}
+#| echo: false
+import polars as pl
+
+df = pl.DataFrame({'Name': ['Lucy', 'Pippa', 'Evan', 'Bree', 'Diana'],
+ 'Week_2': [74, 89, 90, 52, None],
+ 'Week_3': [93, 89, 90, None, 75]})
+df
+```
+
+Two students, Bree and Diana, missed one quiz in week 2 and week 3, respectively. Suppose you want to remove the students who received the same grade so you can focus on those who either increased or decreased their score. You might expect the code below to work.
+
+```{python}
+(df
+ .filter(pl.col('Week_2').ne(pl.col('Week_3')))
+ )
+```
+
+The problem is that it also removes the students who missed one quiz. Why does this happen?
+
+In Polars, any comparison involving a null value produces null, not `True` or `False`. A filter keeps only the rows where the predicate evaluates to `True`. As a result, rows where the predicate evaluates to null are dropped.
+
+To keep the students who missed one quiz, you need to write the code like this:
+
+```{python}
+(df
+ .filter(pl.col('Week_2').ne(pl.col('Week_3')) | pl.col('Week_2').is_null() | pl.col('Week_3').is_null())
+ )
+```
+
+Check out my {{< var polars_course >}} to learn more.

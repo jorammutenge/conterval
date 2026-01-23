@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/equality-with-null-polars/index.html",
       "/blog/fizzbuzz-in-polars/index.html",
       "/blog/movies-and-series-watched-2025/index.html",
       "/blog/format-dates-in-polars/index.html",
