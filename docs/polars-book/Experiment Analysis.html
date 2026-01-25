@@ -355,7 +355,7 @@ It is much easier to show that two variables move together, whether they increas
 <section id="the-dataset" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="the-dataset"><span class="header-section-number">6.2</span> The Dataset</h2>
 <p>In this chapter, we work with four datasets created for a fictional online education platform called XtraLesson. The <em>students</em> dataset contains records for individuals who registered for courses, including their signup dates and countries of origin. A small preview is shown below.</p>
-<div id="1bc00b32" class="cell" data-execution_count="1">
+<div id="d58f8536" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> pl.read_csv(<span class="st">"data/students.csv"</span>, try_parse_dates<span class="op">=</span><span class="va">True</span>)</span>
@@ -384,18 +384,18 @@ It is much easier to show that two variables move together, whether they increas
 </thead>
 <tbody>
 <tr class="odd">
-<td>55904</td>
-<td>2024-01-28</td>
+<td>42480</td>
+<td>2024-01-22</td>
 <td>"United States"</td>
 </tr>
 <tr class="even">
-<td>55109</td>
-<td>2024-01-28</td>
+<td>72153</td>
+<td>2024-02-07</td>
 <td>"Canada"</td>
 </tr>
 <tr class="odd">
-<td>12126</td>
-<td>2024-01-09</td>
+<td>69173</td>
+<td>2024-02-04</td>
 <td>"United States"</td>
 </tr>
 </tbody>
@@ -404,7 +404,7 @@ It is much easier to show that two variables move together, whether they increas
 </div>
 </div>
 <p>The <em>actions</em> dataset captures the activities students perform on the XtraLesson platform. A brief sample appears here.</p>
-<div id="3486c2aa" class="cell" data-execution_count="2">
+<div id="13c9d5a0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>actions <span class="op">=</span> pl.read_csv(<span class="st">"data/actions.csv"</span>, try_parse_dates<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>actions.sample(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -431,19 +431,19 @@ It is much easier to show that two variables move together, whether they increas
 </thead>
 <tbody>
 <tr class="odd">
-<td>27628</td>
+<td>6655</td>
 <td>"Tutorial complete"</td>
-<td>2024-01-15</td>
+<td>2024-01-05</td>
 </tr>
 <tr class="even">
-<td>7679</td>
+<td>47706</td>
 <td>"Email opt-in"</td>
-<td>2024-01-07</td>
+<td>2024-01-25</td>
 </tr>
 <tr class="odd">
-<td>93168</td>
+<td>52501</td>
 <td>"Tutorial complete"</td>
-<td>2024-02-14</td>
+<td>2024-01-27</td>
 </tr>
 </tbody>
 </table>
@@ -451,7 +451,7 @@ It is much easier to show that two variables move together, whether they increas
 </div>
 </div>
 <p>The <em>payments</em> dataset records the amounts students pay for XtraLesson courses, expressed in US dollars. An example is shown below.</p>
-<div id="9a93cfe1" class="cell" data-execution_count="3">
+<div id="c125282b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>payments <span class="op">=</span> pl.read_csv(<span class="st">"data/payments.csv"</span>, try_parse_dates<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>payments.sample(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -478,18 +478,18 @@ It is much easier to show that two variables move together, whether they increas
 </thead>
 <tbody>
 <tr class="odd">
-<td>51758</td>
-<td>2024-02-02</td>
+<td>96954</td>
+<td>2024-02-20</td>
 <td>25.0</td>
 </tr>
 <tr class="even">
-<td>2551</td>
-<td>2024-01-06</td>
-<td>25.0</td>
+<td>1096</td>
+<td>2024-01-10</td>
+<td>100.0</td>
 </tr>
 <tr class="odd">
-<td>25544</td>
-<td>2024-01-12</td>
+<td>32850</td>
+<td>2024-01-20</td>
 <td>2.99</td>
 </tr>
 </tbody>
@@ -498,7 +498,7 @@ It is much easier to show that two variables move together, whether they increas
 </div>
 </div>
 <p>Finally, the <em>assignments</em> dataset indicates which experimental variant each student was assigned to. A snippet of this data is provided here.</p>
-<div id="1202ea30" class="cell" data-execution_count="4">
+<div id="9a37826c" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>experiments <span class="op">=</span> pl.read_csv(<span class="st">"data/experiments.csv"</span>, try_parse_dates<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>experiments.sample(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -528,21 +528,21 @@ It is much easier to show that two variables move together, whether they increas
 <tbody>
 <tr class="odd">
 <td>"Welcome tutorial"</td>
-<td>53919</td>
-<td>2024-01-28</td>
-<td>"Control"</td>
+<td>62746</td>
+<td>2024-01-31</td>
+<td>"Variant 1"</td>
 </tr>
 <tr class="even">
 <td>"Welcome tutorial"</td>
-<td>98484</td>
-<td>2024-02-15</td>
-<td>"Control"</td>
+<td>55899</td>
+<td>2024-01-28</td>
+<td>"Variant 1"</td>
 </tr>
 <tr class="odd">
 <td>"Welcome tutorial"</td>
-<td>80656</td>
-<td>2024-02-11</td>
-<td>"Control"</td>
+<td>84524</td>
+<td>2024-02-13</td>
+<td>"Variant 1"</td>
 </tr>
 </tbody>
 </table>
@@ -560,7 +560,7 @@ It is much easier to show that two variables move together, whether they increas
 <p>To determine whether these rates differ meaningfully across variants, we use the <em>chi-squared test</em>, a statistical method designed for categorical data.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Results from this test are typically organized into a <em>contingency table</em>, which displays counts at the intersection of two categorical variables. If you have worked with pivot tables before, this layout will likely feel familiar.</p>
 <p>Consider an example using the XtraLesson data. A product manager introduces a redesigned onboarding flow that guides new students through finding courses, identifying discounts, and enrolling. The objective is to encourage more students to complete onboarding and begin their first course. This redesign was evaluated in an experiment called “Welcome tutorial,” which randomly assigned students to either “Control” or “Variant 1” in the <em>experiments</em> dataset. In the <em>actions</em> dataset, the event labeled “Tutorial complete” indicates whether a student finished the onboarding flow.</p>
 <p>The contingency table summarizes how many students in each variant did or did not complete the tutorial. The Polars code below computes these counts by grouping on the <em>Variant</em> column and summing the presence or absence of the “Tutorial complete” action:</p>
-<div id="ae56eb1b" class="cell" data-execution_count="5">
+<div id="f86b1164" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>contingency_df <span class="op">=</span> (experiments</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Experiment'</span>) <span class="op">==</span> <span class="st">'Welcome tutorial'</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a> .join(actions.<span class="bu">filter</span>(pl.col(<span class="st">'Action'</span>) <span class="op">==</span> <span class="st">'Tutorial complete'</span>),</span>
@@ -595,14 +595,14 @@ It is much easier to show that two variables move together, whether they increas
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Variant 1"</td>
-<td>38280</td>
-<td>11995</td>
-</tr>
-<tr class="even">
 <td>"Control"</td>
 <td>36268</td>
 <td>13629</td>
+</tr>
+<tr class="even">
+<td>"Variant 1"</td>
+<td>38280</td>
+<td>11995</td>
 </tr>
 </tbody>
 </table>
@@ -610,7 +610,7 @@ It is much easier to show that two variables move together, whether they increas
 </div>
 </div>
 <p>Next, we add row and column totals to convert these results into a full contingency table:</p>
-<div id="9ca3857e" class="cell" data-execution_count="6">
+<div id="fc8edf4d" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>contigency_table <span class="op">=</span> (contingency_df</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a> .rename(<span class="bu">dict</span>(Completed<span class="op">=</span><span class="st">'Yes'</span>, Not_Completed<span class="op">=</span><span class="st">'No'</span>))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a> .vstack(pl.DataFrame({</span>
@@ -647,16 +647,16 @@ It is much easier to show that two variables move together, whether they increas
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Variant 1"</td>
-<td>38280</td>
-<td>11995</td>
-<td>50275</td>
-</tr>
-<tr class="even">
 <td>"Control"</td>
 <td>36268</td>
 <td>13629</td>
 <td>49897</td>
+</tr>
+<tr class="even">
+<td>"Variant 1"</td>
+<td>38280</td>
+<td>11995</td>
+<td>50275</td>
 </tr>
 <tr class="odd">
 <td>"Total"</td>
@@ -676,7 +676,7 @@ It is much easier to show that two variables move together, whether they increas
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">!pip</span> install great-tables</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Once the library is installed, we can apply formatting to the table:</p>
-<div id="4835a3aa" class="cell" data-execution_count="7">
+<div id="1d96d253" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> loc, style, html</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>(contigency_table</span>
@@ -692,52 +692,52 @@ It is much easier to show that two variables move together, whether they increas
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a> .fmt_number(columns<span class="op">=</span>[<span class="st">'Yes'</span>, <span class="st">'No'</span>, <span class="st">'Total'</span>], decimals<span class="op">=</span><span class="dv">0</span>, use_seps<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<div id="uybeptnlct" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="azamkrimnc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#uybeptnlct table {
+#azamkrimnc table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#uybeptnlct thead, tbody, tfoot, tr, td, th { border-style: none; }
+#azamkrimnc thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#uybeptnlct p { margin: 0; padding: 0; }
- #uybeptnlct .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #uybeptnlct .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #uybeptnlct .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #uybeptnlct .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #uybeptnlct .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #uybeptnlct .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #uybeptnlct .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #uybeptnlct .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #uybeptnlct .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #uybeptnlct .gt_column_spanner_outer:first-child { padding-left: 0; }
- #uybeptnlct .gt_column_spanner_outer:last-child { padding-right: 0; }
- #uybeptnlct .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
- #uybeptnlct .gt_spanner_row { border-bottom-style: hidden; }
- #uybeptnlct .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
- #uybeptnlct .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
- #uybeptnlct .gt_from_md> :first-child { margin-top: 0; }
- #uybeptnlct .gt_from_md> :last-child { margin-bottom: 0; }
- #uybeptnlct .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
- #uybeptnlct .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #uybeptnlct .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #uybeptnlct .gt_row_group_first td { border-top-width: 2px; }
- #uybeptnlct .gt_row_group_first th { border-top-width: 2px; }
- #uybeptnlct .gt_striped { background-color: rgba(128,128,128,0.05); }
- #uybeptnlct .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #uybeptnlct .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #uybeptnlct .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #uybeptnlct .gt_left { text-align: left; }
- #uybeptnlct .gt_center { text-align: center; }
- #uybeptnlct .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #uybeptnlct .gt_font_normal { font-weight: normal; }
- #uybeptnlct .gt_font_bold { font-weight: bold; }
- #uybeptnlct .gt_font_italic { font-style: italic; }
- #uybeptnlct .gt_super { font-size: 65%; }
- #uybeptnlct .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #uybeptnlct .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#azamkrimnc p { margin: 0; padding: 0; }
+ #azamkrimnc .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #azamkrimnc .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #azamkrimnc .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #azamkrimnc .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #azamkrimnc .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #azamkrimnc .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #azamkrimnc .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #azamkrimnc .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #azamkrimnc .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #azamkrimnc .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #azamkrimnc .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #azamkrimnc .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #azamkrimnc .gt_spanner_row { border-bottom-style: hidden; }
+ #azamkrimnc .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #azamkrimnc .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #azamkrimnc .gt_from_md> :first-child { margin-top: 0; }
+ #azamkrimnc .gt_from_md> :last-child { margin-bottom: 0; }
+ #azamkrimnc .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #azamkrimnc .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #azamkrimnc .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #azamkrimnc .gt_row_group_first td { border-top-width: 2px; }
+ #azamkrimnc .gt_row_group_first th { border-top-width: 2px; }
+ #azamkrimnc .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #azamkrimnc .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #azamkrimnc .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #azamkrimnc .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #azamkrimnc .gt_left { text-align: left; }
+ #azamkrimnc .gt_center { text-align: center; }
+ #azamkrimnc .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #azamkrimnc .gt_font_normal { font-weight: normal; }
+ #azamkrimnc .gt_font_bold { font-weight: bold; }
+ #azamkrimnc .gt_font_italic { font-style: italic; }
+ #azamkrimnc .gt_super { font-size: 65%; }
+ #azamkrimnc .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #azamkrimnc .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -763,16 +763,16 @@ Total</b></th>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left">Variant 1</td>
-<td class="gt_row gt_right">38,280</td>
-<td class="gt_row gt_right">11,995</td>
-<td class="gt_row gt_right" style="font-weight: bold">50,275</td>
-</tr>
-<tr class="even">
 <td class="gt_row gt_left">Control</td>
 <td class="gt_row gt_right">36,268</td>
 <td class="gt_row gt_right">13,629</td>
 <td class="gt_row gt_right" style="font-weight: bold">49,897</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left">Variant 1</td>
+<td class="gt_row gt_right">38,280</td>
+<td class="gt_row gt_right">11,995</td>
+<td class="gt_row gt_right" style="font-weight: bold">50,275</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" style="font-weight: bold">Total</td>
@@ -788,7 +788,7 @@ Total</b></th>
 </div>
 </div>
 <p>To use an online significance calculator, we need two values for each variant: the number of students who completed the action and the total number of students assigned to that variant. The Polars code to extract this information is straightforward. We first <code>filter</code> for “Welcome tutorial” in the <em>experiments</em> dataframes and <code>left join</code> with the <em>actions</em> dataframe after applying a <code>filter</code> for “Tutorial complete”. The <code>left join</code> ensures that students who did not complete the action are still included. Then we perform a <code>group_by</code> on <em>Variant</em> column and <code>count</code> how many students completed the tutorial. Finally, we compute the completion percentage by dividing the number of completers by the total number of students assigned to each variant:</p>
-<div id="bfe8d6c2" class="cell" data-execution_count="8">
+<div id="89f49782" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(experiments</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Experiment'</span>) <span class="op">==</span> <span class="st">'Welcome tutorial'</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a> .join(actions.<span class="bu">filter</span>(pl.col(<span class="st">'Action'</span>) <span class="op">==</span> <span class="st">'Tutorial complete'</span>),</span>
@@ -873,7 +873,7 @@ Tip
 <p>In these experiments, the goal is to determine whether the average value of a metric differs between variants in a statistically significant way. The standard tool for this analysis is the <em>two-sample t-test</em>, which evaluates whether we can reject the null hypothesis that the two means are equal at a chosen confidence level, typically 95%. The test requires three inputs: the mean, the standard deviation, and the sample size. All three are straightforward to compute using Polars.</p>
 <p>Let’s walk through an example using the XtraLesson data. Earlier, we examined whether the redesigned welcome tutorial increased the likelihood that students completed onboarding. Now we want to assess whether that same tutorial affected how much students spent on courses. Because the metric of interest is spending, we need to compute the mean and standard deviation of the amount spent for each variant.</p>
 <p>We begin by <code>filter</code>ing the <em>experiments</em> dataframe for the “Welcome tutorial” experiment and then <code>left join</code>ing the <em>payments</em> dataframe to bring in spending data. A <code>left join</code> is essential because many students never make a purchase, yet they must still be included in the analysis. For students without payments, we replace missing values with 0 using <code>fill_null</code>. Since <code>mean</code> and <code>std</code> ignore nulls, this step ensures that non-purchasers are counted correctly. Finally, we <code>group_by</code> the <em>Variant</em> column to compute the mean, standard deviation, and total number of students in each variant.</p>
-<div id="04a8dbe2" class="cell" data-execution_count="10">
+<div id="84f1306d" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(experiments</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Experiment'</span>) <span class="op">==</span> <span class="st">'Welcome tutorial'</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a> .join(payments, on<span class="op">=</span><span class="st">'User_ID'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
@@ -910,16 +910,16 @@ Tip
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Variant 1"</td>
-<td>50275</td>
-<td>3.687589</td>
-<td>19.220194</td>
-</tr>
-<tr class="even">
 <td>"Control"</td>
 <td>49897</td>
 <td>3.781218</td>
 <td>18.940378</td>
+</tr>
+<tr class="even">
+<td>"Variant 1"</td>
+<td>50275</td>
+<td>3.687589</td>
+<td>19.220194</td>
 </tr>
 </tbody>
 </table>
@@ -938,7 +938,7 @@ Figure&nbsp;6.2: p-value check for t-test at 95% confidence interval
 </figure>
 </div>
 <p>A related question is whether Variant 1 influenced spending among students who actually completed the tutorial. Students who never finish onboarding do not enroll in courses and therefore make no purchases. To focus only on students who completed the tutorial, we use a similar approach but add an <code>inner join</code> to the <em>actions</em> dataframe. This restricts the dataset to students with a “Tutorial complete” event:</p>
-<div id="04931488" class="cell" data-execution_count="11">
+<div id="2a120591" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(experiments</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Experiment'</span>) <span class="op">==</span> <span class="st">'Welcome tutorial'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a> .join(actions.<span class="bu">filter</span>(pl.col(<span class="st">'Action'</span>) <span class="op">==</span> <span class="st">'Tutorial complete'</span>),</span>
@@ -1026,7 +1026,7 @@ Tip
 <p>Statistical methods for continuous metrics rely heavily on averages, which makes them sensitive to extreme values. It is not uncommon for a single unusually high value customer to make a variant appear significantly better than it truly is. Without those outliers, the result might be neutral or even reversed. In most cases, the goal is to understand how a treatment affects typical users, so adjusting for outliers often leads to more reliable conclusions.</p>
 <p>Anomaly detection was covered in <a href="./Anomaly Detection.html" target="_blank">Chapter 5</a>, and the same ideas apply here. Outliers can be identified by examining the experiment data directly or by comparing results to pre experiment baselines. Techniques such as winsorizing, also discussed in <a href="./Anomaly Detection.html" target="_blank">Chapter 5</a>, can trim values beyond a chosen percentile, such as the 95th or 99th. This preprocessing step can be performed in Polars before continuing with the analysis.</p>
 <p>Another approach is to convert a continuous metric into a binary one. Instead of comparing average spend, which may be distorted by a few extreme purchasers, you can compare purchase rates between variants and then follow the procedures for binary outcomes. For example, consider the proportion of students who made a purchase after completing onboarding in the Control and Variant 1 groups of the “Welcome tutorial” experiment:</p>
-<div id="e091cd14" class="cell" data-execution_count="12">
+<div id="6604b80b" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(experiments</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Experiment'</span>) <span class="op">==</span> <span class="st">'Welcome tutorial'</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a> .join(actions.<span class="bu">filter</span>(pl.col(<span class="st">'Action'</span>) <span class="op">==</span> <span class="st">'Tutorial complete'</span>),</span>
@@ -1066,16 +1066,16 @@ Tip
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Variant 1"</td>
-<td>38280</td>
-<td>4981</td>
-<td>0.13012</td>
-</tr>
-<tr class="even">
 <td>"Control"</td>
 <td>36268</td>
 <td>4988</td>
 <td>0.137532</td>
+</tr>
+<tr class="even">
+<td>"Variant 1"</td>
+<td>38280</td>
+<td>4981</td>
+<td>0.13012</td>
 </tr>
 </tbody>
 </table>
@@ -1099,7 +1099,7 @@ Figure&nbsp;6.3: p-value check for chi-squared test at 95% confidence interval
 <p>Experiments often span multiple weeks. As a result, participants who enter earlier naturally have more time to complete behaviors tied to the primary metric. To reduce this imbalance, analysts can introduce <em>time boxing</em>, which defines a fixed observation window that begins at each participant’s entry point and counts only the activity that occurs within that window.</p>
 <p>The ideal length of a time box depends on the behavior being measured. If the outcome occurs almost immediately, such as clicking an advertisement, the window might be as short as an hour. For purchase-related metrics, a window between 1 and 7 days is common. Shorter windows also allow analysts to review results sooner, since every entity must be given the full allotted time to act before evaluation. The goal is to select a window that reflects both the organization’s operational constraints and the natural timing of user behavior. For example, if most customers convert within a few days, a 7-day window is reasonable. If conversions typically take several weeks, a 30-day window may be more appropriate.</p>
 <p>To illustrate, we can modify the earlier continuous-outcome example by restricting purchases to those made within 7 days of cohort assignment. It is critical that the time box begins at the moment the user is assigned to a variant:</p>
-<div id="3b7920c4" class="cell" data-execution_count="14">
+<div id="bee1506f" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(experiments</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Experiment'</span>) <span class="op">==</span> <span class="st">'Welcome tutorial'</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> .join(payments, on<span class="op">=</span><span class="st">'User_ID'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
@@ -1140,16 +1140,16 @@ Figure&nbsp;6.3: p-value check for chi-squared test at 95% confidence interval
 </thead>
 <tbody>
 <tr class="odd">
-<td>"Variant 1"</td>
-<td>50275</td>
-<td>1.351688</td>
-<td>5.612986</td>
-</tr>
-<tr class="even">
 <td>"Control"</td>
 <td>49897</td>
 <td>1.369382</td>
 <td>5.766338</td>
+</tr>
+<tr class="even">
+<td>"Variant 1"</td>
+<td>50275</td>
+<td>1.351688</td>
+<td>5.612986</td>
 </tr>
 </tbody>
 </table>
@@ -1180,7 +1180,7 @@ Figure&nbsp;6.3: p-value check for chi-squared test at 95% confidence interval
 <p>This approach works best when the change occurs at a clearly identifiable point in time, allowing the data to be cleanly divided into “before” and “after” segments. You must also decide how long each window should be, and the two windows should be roughly equal in duration. For example, if two weeks have passed since the change, you might compare those two weeks with the two weeks immediately preceding it. It can be helpful to examine multiple window lengths, such as one week, two weeks, three weeks, and four weeks, to assess whether conclusions are consistent across them.</p>
 <p>Consider the following example. Suppose the onboarding flow for XtraLesson includes a checkbox that allows students to opt in to course-related emails. Historically, this box was checked by default, but a new regulation requires it to be unchecked. The update went live on January 27, 2024, and we want to assess whether this change reduced the email opt-in rate. We compare the two weeks before the change with the two weeks after it. A two-week window is long enough to smooth out day-of-week effects while remaining short enough to limit the influence of unrelated factors.</p>
 <p>In the Polars code below, variants are assigned using a <code>when-then-otherwise</code> expression. Students enrolled before the cutoff date are labeled “pre,” and those enrolled afterward are labeled “post.” We then perform a <code>left join</code> with the <em>actions</em> dataframe, filtering to the “Email opt-in” action. Finally, we <code>group_by</code> <em>Variant</em> and compute metrics including the number of students in each group, the number of opt-ins, and the opt-in rate. I also include the number of distinct enrollment days in each group as a quality check:</p>
-<div id="9bbaf1b1" class="cell" data-execution_count="15">
+<div id="5205c9c1" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(students</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Enroll_Date'</span>).is_between(pl.date(<span class="dv">2024</span>,<span class="dv">1</span>,<span class="dv">13</span>), pl.date(<span class="dv">2024</span>,<span class="dv">2</span>,<span class="dv">9</span>)))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.when(pl.col(<span class="st">'Enroll_Date'</span>).is_between(pl.date(<span class="dv">2024</span>, <span class="dv">1</span>, <span class="dv">13</span>), pl.date(<span class="dv">2024</span>,<span class="dv">1</span>,<span class="dv">26</span>)))</span>
@@ -1252,7 +1252,7 @@ Figure&nbsp;6.3: p-value check for chi-squared test at 95% confidence interval
 <p>To illustrate this approach using the XtraLesson datasets, suppose that during the analysis window, Canadian students unintentionally saw an incorrect offer when they first opened the course catalog. Each bundle displayed an extra zero in the number of included courses. A bundle intended to show 1 course appeared as 10, while a bundle with 5 courses appeared as 50, and so on.</p>
 <p>Our objective is to determine whether this error caused Canadian students to enroll in paid courses at a higher rate than students elsewhere. Rather than comparing Canada to all other countries, we limit the comparison to the United States. The two countries are geographically close, share a common language for most learners, and, based on earlier analysis, exhibit similar learning and purchasing behavior. Students from other regions differ enough that including them would introduce unnecessary variability, so they are excluded from this comparison.</p>
 <p>To perform the analysis, we define the variants based on the distinguishing feature, which in this case is the <em>Country</em> column in the <em>students</em> dataframe. Depending on the dataset, more complex Polars code may be necessary. However, the overall strategy mirrors earlier examples: count the number of students in each cohort and the number who made a purchase.</p>
-<div id="c715788a" class="cell" data-execution_count="17">
+<div id="749f2906" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(students</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Country'</span>).is_in([<span class="st">'United States'</span>, <span class="st">'Canada'</span>]))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a> .join(payments, on<span class="op">=</span><span class="st">'User_ID'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>

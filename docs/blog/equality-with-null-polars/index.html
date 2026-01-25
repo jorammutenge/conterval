@@ -219,7 +219,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 <p>Recently at work, I discovered something unexpected when filtering values with Polars. Below is a dataframe showing students’ weekly quiz results.</p>
-<div id="a0e3090b" class="cell" data-execution_count="1">
+<div id="5de29eab" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -274,7 +274,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Two students, Bree and Diana, missed one quiz in week 2 and week 3, respectively. Suppose you want to remove the students who received the same grade so you can focus on those who either increased or decreased their score. You might expect the code below to work.</p>
-<div id="5fc8def5" class="cell" data-execution_count="2">
+<div id="f86ac7a4" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Week_2'</span>).ne(pl.col(<span class="st">'Week_3'</span>)))</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -314,7 +314,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>The problem is that it also removes the students who missed one quiz. Why does this happen?</p>
 <p>In Polars, any comparison involving a null value produces null, not <code>True</code> or <code>False</code>. A filter keeps only the rows where the predicate evaluates to <code>True</code>. As a result, rows where the predicate evaluates to null are dropped.</p>
 <p>To keep the students who missed one quiz, you need to write the code like this:</p>
-<div id="a974c26b" class="cell" data-execution_count="3">
+<div id="f0537336" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Week_2'</span>).ne(pl.col(<span class="st">'Week_3'</span>)) <span class="op">|</span> pl.col(<span class="st">'Week_2'</span>).is_null() <span class="op">|</span> pl.col(<span class="st">'Week_3'</span>).is_null())</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
