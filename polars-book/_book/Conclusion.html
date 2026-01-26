@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Joram Mutenge">
-<meta name="dcterms.date" content="2026-01-21">
+<meta name="author" content="">
 
-<title>Equalities with nulls in polars</title>
+<title>9&nbsp; Conclusion – Deep Analysis with Polars</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,71 +21,35 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../images/favicon.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1721cc41f7861135d016642a1eaf0d8c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./Bringing It All Together.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ca8ae8b56efe94859b05e43d31184f34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -108,262 +71,207 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5Y1ZXKXMBX"></script>
-
-<script type="text/javascript">
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
-</script>
-<style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../blog/index.html"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../books.html"> 
-<span class="menu-text">Books</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
-<span class="menu-text">Courses</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Conclusion.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conclusion</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Deep Analysis with Polars</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Analysis with Polars.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Analysis with Polars</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Preparing Data for Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Preparing Data for Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Time Series Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Time Series Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Text Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Text Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Anomaly Detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Anomaly Detection</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Experiment Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Experiment Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Creating Complex Datasets for Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Creating Complex Datasets for Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Bringing It All Together.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bringing It All Together</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Conclusion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources"><span class="header-section-number">9.1</span> Resources</a>
+  <ul class="collapse">
+  <li><a href="#blogs" id="toc-blogs" class="nav-link" data-scroll-target="#blogs"><span class="header-section-number">9.1.1</span> Blogs</a></li>
+  <li><a href="#podcasts" id="toc-podcasts" class="nav-link" data-scroll-target="#podcasts"><span class="header-section-number">9.1.2</span> Podcasts</a></li>
+  </ul></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts"><span class="header-section-number">9.2</span> Final Thoughts</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conclusion</span></h1></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Equalities with nulls in polars</h1>
-<p class="subtitle lead">When null values interfere with filtering</p>
-  <div class="quarto-categories">
-    <div class="quarto-category">data analysis</div>
-  </div>
-  </div>
+<header id="title-block-header">
 
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Joram Mutenge </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2026-01-21</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
+<p class="author"></p>
 
 </header>
 
 
-<p>Recently at work, I discovered something unexpected when filtering values with Polars. Below is a dataframe showing students’ weekly quiz results.</p>
-<div id="20e6f0b8" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display" data-execution_count="1">
-<div><style>
-.dataframe > thead > tr,
-.dataframe > tbody > tr {
-  text-align: right;
-  white-space: pre-wrap;
+<style>
+#TOC {
+  background: url("images/cover.png");
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-top: calc(100% * 0.5 * 3) !important; /* Adjust multiplier based on your cover's aspect ratio */
 }
 </style>
-<small>shape: (5, 3)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Week_2</th>
-<th data-quarto-table-cell-role="th">Week_3</th>
-</tr>
-<tr class="even">
-<td>str</td>
-<td>i64</td>
-<td>i64</td>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>"Lucy"</td>
-<td>74</td>
-<td>93</td>
-</tr>
-<tr class="even">
-<td>"Pippa"</td>
-<td>89</td>
-<td>89</td>
-</tr>
-<tr class="odd">
-<td>"Evan"</td>
-<td>90</td>
-<td>90</td>
-</tr>
-<tr class="even">
-<td>"Bree"</td>
-<td>52</td>
-<td>null</td>
-</tr>
-<tr class="odd">
-<td>"Diana"</td>
-<td>null</td>
-<td>75</td>
-</tr>
-</tbody>
-</table>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
 </div>
 </div>
-</div>
-<p>Two students, Bree and Diana, missed one quiz in week 2 and week 3, respectively. Suppose you want to remove the students who received the same grade so you can focus on those who either increased or decreased their score. You might expect the code below to work.</p>
-<div id="9d4c811a" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Week_2'</span>).ne(pl.col(<span class="st">'Week_3'</span>)))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<div><style>
-.dataframe > thead > tr,
-.dataframe > tbody > tr {
-  text-align: right;
-  white-space: pre-wrap;
-}
-</style>
-<small>shape: (1, 3)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Week_2</th>
-<th data-quarto-table-cell-role="th">Week_3</th>
-</tr>
-<tr class="even">
-<td>str</td>
-<td>i64</td>
-<td>i64</td>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>"Lucy"</td>
-<td>74</td>
-<td>93</td>
-</tr>
-</tbody>
-</table>
+<div class="callout-body-container callout-body">
+<p>This book is a first draft, and I am actively collecting feedback to shape the final version until <strong>March 1, 2026</strong>. Let me know if you spot typos, errors in the code, or unclear explanations, your input would be greatly appreciated. And your suggestions will help make this book more accurate, readable, and useful for others. You can reach me at:<br>
+<strong>Email:</strong> <a href="mailto:contervalconsult@gmail.com" class="email">contervalconsult@gmail.com</a><br>
+<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jorammutenge/">www.linkedin.com/in/jorammutenge</a><br>
+<strong>Datasets:</strong> <a href="https://drive.google.com/file/d/1pYoiqAd-Rr3mBJ8MUADyMoRxKneA1J-h/view?usp=sharing">Download all datasets</a></p>
 </div>
 </div>
-</div>
-<p>The problem is that it also removes the students who missed one quiz. Why does this happen?</p>
-<p>In Polars, any comparison involving a null value produces null, not <code>True</code> or <code>False</code>. A filter keeps only the rows where the predicate evaluates to <code>True</code>. As a result, rows where the predicate evaluates to null are dropped.</p>
-<p>To keep the students who missed one quiz, you need to write the code like this:</p>
-<div id="c90790e9" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Week_2'</span>).ne(pl.col(<span class="st">'Week_3'</span>)) <span class="op">|</span> pl.col(<span class="st">'Week_2'</span>).is_null() <span class="op">|</span> pl.col(<span class="st">'Week_3'</span>).is_null())</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<div><style>
-.dataframe > thead > tr,
-.dataframe > tbody > tr {
-  text-align: right;
-  white-space: pre-wrap;
-}
-</style>
-<small>shape: (3, 3)</small>
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Week_2</th>
-<th data-quarto-table-cell-role="th">Week_3</th>
-</tr>
-<tr class="even">
-<td>str</td>
-<td>i64</td>
-<td>i64</td>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>"Lucy"</td>
-<td>74</td>
-<td>93</td>
-</tr>
-<tr class="even">
-<td>"Bree"</td>
-<td>52</td>
-<td>null</td>
-</tr>
-<tr class="odd">
-<td>"Diana"</td>
-<td>null</td>
-<td>75</td>
-</tr>
-</tbody>
-</table>
+<div class="epigraph">
+<blockquote class="blockquote">
+<p>Knowing where to find the answer is just as good as knowing the answer.</p>
+</blockquote>
+<div style="text-align: right">
+<p>— <em>Anonymous</em></p>
 </div>
 </div>
-</div>
-<p>Check out my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a> to learn more.</p>
+<hr>
+<p>Throughout the book, we’ve seen how Polars is a flexible and powerful tool for a range of data analysis tasks. From data profiling to time series, text analysis, and anomaly detection, Polars can tackle a number of common requirements. Techniques and functions can also be combined in any given Polars expression to perform experiment analysis and build complex datasets. While Polars can’t accomplish all analysis goals, it fits well into the ecosystem of analysis tools.</p>
+<p>In this final chapter, I’ll wrap up with some resources that you can use to continue your journey of mastering data analysis by getting a well rounded view of the field.</p>
+<section id="resources" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="resources"><span class="header-section-number">9.1</span> Resources</h2>
+<p>Data analysis draws on a combination of technical skills, domain expertise, curiosity, and strong communication. To support your continued growth, I want to share some of my favorite resources that you can use to deepen your understanding and practice your skills as you continue your learning journey.</p>
+<section id="blogs" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="blogs"><span class="header-section-number">9.1.1</span> Blogs</h3>
+<p>I write a blog that covers a range of data analysis topics at <a href="https://www.conterval.com/">www.conterval.com</a>. You may be especially interested in a series of blog posts titled <a href="https://www.conterval.com/blog/#category=100DaysOfPolars">100DaysOfPolars</a>, which focuses on practical uses of 100 Polars functions.</p>
+<!-- [^chp9-days-of-polars]: https://www.conterval.com/blog/#category=100DaysOfPolars -->
+<p>The following two blogs do not focus on Polars, but they offer valuable perspectives on a wide range of topics related to data, including careers and team dynamics. Data analysis extends beyond learning syntax or tools, and these resources provide useful context for the broader practice.</p>
+<ul>
+<li><a href="https://wrongbutuseful.substack.com/">Wrong But Useful</a> – Katie Bauer offers thoughtful and opinionated insights on data work, careers, and teams.</li>
+<li><a href="https://benn.substack.com/">Benn Stancil</a> – provides an engaging and often humorous perspective on data and technology.</li>
+</ul>
+<!-- [^chp9-wrong-but-useful]: https://wrongbutuseful.substack.com/
+[^chp9-benn-stancil]: https://benn.substack.com/ -->
+</section>
+<section id="podcasts" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="podcasts"><span class="header-section-number">9.1.2</span> Podcasts</h3>
+<p>Podcasts are a convenient way to continue learning while on the move. Whether you are commuting, exercising, or doing household tasks, they make it easy to stay engaged with data-related topics.</p>
+<ul>
+<li><a href="https://analyticshour.io/">The Analytics Power Hour</a> – features expert guests discussing a wide range of data topics and is a strong resource for exploring subjects you want to understand more deeply.</li>
+<li><a href="https://posit.co/thetestset/">The Test Set</a> – a podcast from Posit, the makers of RStudio, that explores a variety of topics in data science.</li>
+</ul>
+<!-- [^chp9-power-hour]: https://analyticshour.io/
+[^chp9-test-set]: https://posit.co/thetestset/ -->
+</section>
+</section>
+<section id="final-thoughts" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="final-thoughts"><span class="header-section-number">9.2</span> Final Thoughts</h2>
+<p>I hope the methods and examples presented throughout this book have been useful in your work. Developing a strong command of your analytical tools makes a meaningful difference, and Polars provides a rich set of functions and expressions that can improve both the efficiency and accuracy of your analyses. At the same time, effective analytical practice extends beyond mastering libraries or adopting new techniques. Meaningful analysis begins with thoughtful questions, a careful understanding of the data and its context, the disciplined application of appropriate methods to produce reliable insights, and the ability to communicate those findings in ways that support informed decision-making.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -439,7 +347,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/www\.conterval\.com");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -771,23 +679,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     }
   });
   </script>
-</div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
-</div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Bringing It All Together.html" class="pagination-link" aria-label="Bringing It All Together">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bringing It All Together</span></span>
+      </a>          
   </div>
-</footer>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
 
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
