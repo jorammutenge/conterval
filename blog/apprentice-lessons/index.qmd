@@ -1,0 +1,34 @@
+---
+title: "An uncomfortable business lesson from The Apprentice"
+subtitle: "Why Georgina Newton got fired"
+author: '{{< var author >}}'
+date: '2026-01-30'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [business]
+---
+
+Yesterday, I watched the first episode of *The Apprentice* season 20. I'm an avid fan of the show because it not only entertains me, but also teaches me business lessons. In yesterday's episode, I learned an uncomfortable business lesson from the first contestant to be fired, Georgina Newton.
+
+## In business you will ruffle feathers
+
+Simply put, Georgina was fired because she was too nice. She forgot the idea that “business is war,” to borrow the words of American-Iranian businessman Patrick Bet-David. When asked to pick two people to bring into the boardroom, her jaw dropped. When she finally named them, she apologized for choosing them.
+
+Georgina wanted to be liked by the board members (Lord Sugar, Tim, and Baroness Brady) as well as her teammates. The truth is that in business, it is almost impossible to be liked by everyone. If business really is war, would you expect your enemies to like you? If they did, they would not be fighting you. Georgina failed to realize that she was at war with her fellow contestants.
+
+I was especially disappointed when she started articulating her reasons for bringing another contestant into the boardroom, only to interrupt herself with, “In your defense, you would say...” That interjection undermined her argument. No matter how convincing her reasons were, she invalidated them by defending the very person she was accusing.
+
+## Did Georgina deserve to leave early?
+
+Let me come out clean and say that I liked Georgina and would have loved to see her make it to the final five. I was disappointed when she was fired, especially in the first episode. I wanted to see more of her in the competition.
+
+That said, I can understand why Lord Sugar fired her. He is a veteran businessman who knows that standing your ground is a critical trait in business. Georgina was not brave enough to ruffle feathers and defend her position, and that ultimately cost her the chance to continue competing.
+
+## Reflections
+
+As much as I wanted Georgina to stay, I understand Lord Sugar’s decision. Business is a ruthless game, with many competitors eager to eat your lunch. Companies that survive often deploy aggressive tactics, sometimes even tactics that bend the rules, just to stay alive. Those that do not eventually go out of business.
+
+Georgina should have fought harder for her chance to keep playing the game. In business, the uncomfortable truth is that just because you play by the rules doesn't mean that everyone else will.

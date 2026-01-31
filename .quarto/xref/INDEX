@@ -439,5 +439,8 @@
   },
   "blog/equality-with-null-polars/index.qmd": {
     "index.html": "71f07960"
+  },
+  "blog/apprentice-lessons/index.qmd": {
+    "index.html": "4890db91"
   }
 }
