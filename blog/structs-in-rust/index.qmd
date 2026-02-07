@@ -1,0 +1,261 @@
+---
+title: "Understanding structs in rust"
+subtitle: "Custom data types"
+author: '{{< var author >}}'
+date: '2026-02-07'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [rust]
+---
+
+A struct in Rust is a custom data type that lets you group related data under a single name. By default, structs have no methods, but you can add them using `impl` blocks. There are three types of structs in Rust:
+
+1. Named-field structs - fields have names.
+2. Tuple structs - fields have positions only and no names.
+3. Unit-like structs - no fields at all.
+
+In this article, I will focus only on the first type.
+
+## Create struct of media library
+
+Let’s define a struct called `Media` that contains the attributes of titles in our media library. The movies and TV series added to this library will all share the attributes defined in the struct. *Girls* and *Dune* will serve as example titles in the media library.
+
+```rs
+struct Media {
+    title: String,
+    release_year: u16,
+    rating: f32,
+    is_series: bool,
+}
+```
+
+## Add titles to library
+
+After creating the struct, we can add two titles, *Girls* and *Dune*, and print out their attributes.
+
+```rs
+struct Media {
+    title: String,
+    release_year: u16,
+    rating: f32,
+    is_series: bool,
+}
+
+fn main() {
+    let girls = Media {
+        title: String::from("Girls"),
+        release_year: 2012,
+        rating: 9.5,
+        is_series: true,
+    };
+
+    println!(
+        "Type: {}\nTitle: {}\nReleased: {}\nRating: {}\n",
+        if girls.is_series { "TV series" } else { "Movie" },
+        girls.title, girls.release_year, girls.rating);
+
+    let dune = Media {
+        title: "Dune".to_string(),
+        release_year: 2021,
+        rating: 6.5,
+        is_series: false,
+    };
+
+    println!(
+        "Type: {}\nTitle: {}\nReleased: {}\nRating: {}\n",
+        if dune.is_series { "TV series" } else { "Movie" },
+        dune.title, dune.release_year, dune.rating);
+
+}
+```
+
+```{raw}
+Type: TV series
+Title: Girls
+Released: 2012
+Rating: 9.5
+
+Type: Movie
+Title: Dune
+Released: 2021
+Rating: 6.5
+```
+
+## Create function to print
+
+Looking at the code above, I can’t help but notice that I am repeating the same print logic. This repetition can become tedious and annoying if I have ten or even fifty titles in my media library. A better approach is to create a function called `describe` that I can call whenever I want to print the details of a title.
+
+While I’m at it, I will store the title instances in a vector so that I only need to call `describe` once. This works because I can simply loop through the vector and print the attributes of each title.
+
+```rs
+struct Media {
+    title: String,
+    release_year: u16,
+    rating: f32,
+    is_series: bool,
+}
+
+fn describe(media: &Media) {
+    println!(
+        "Type: {}\nTitle: {}\nReleased: {}\nRating: {}\n",
+        if media.is_series { "TV series" } else { "Movie" },
+        media.title, media.release_year, media.rating);
+}
+
+fn main() {
+    let girls = Media {
+        title: String::from("Girls"),
+        release_year: 2012,
+        rating: 9.5,
+        is_series: true,
+    };
+
+    let dune = Media {
+        title: "Dune".to_string(),
+        release_year: 2021,
+        rating: 6.5,
+        is_series: false,
+    };
+
+    let library = vec![girls, dune];
+
+    for media in &library {
+        describe(media);
+    }
+}
+```
+
+```{raw}
+Type: TV series
+Title: Girls
+Released: 2012
+Rating: 9.5
+
+Type: Movie
+Title: Dune
+Released: 2021
+Rating: 6.5
+```
+
+## Add function as method
+
+An even better approach is to refactor the code by adding `describe` directly to `Media` as a method. This is where the `impl` block comes in. Once `describe` becomes a method, calling it changes from `describe(media)` to `media.describe()`.
+
+```rs
+struct Media {
+    title: String,
+    release_year: u16,
+    rating: f32,
+    is_series: bool,
+}
+
+impl Media {
+    fn describe(&self) {
+        let media_type = if self.is_series { "TV series" } else { "Movie" };
+        println!(
+            "Type: {}\nTitle: {}\nReleased: {}\nRating: {}\n",
+            media_type,
+            self.title,
+            self.release_year,
+            self.rating,
+        );
+    }
+}
+
+fn main() {
+    let girls = Media {
+        title: String::from("Girls"),
+        release_year: 2012,
+        rating: 9.5,
+        is_series: true,
+    };
+
+    let dune = Media {
+        title: String::from("Dune"),
+        release_year: 2021,
+        rating: 6.5,
+        is_series: false,
+    };
+
+    let library = vec![girls, dune];
+
+    for media in &library {
+        media.describe();
+    }  
+}
+```
+
+```{raw}
+Type: TV series
+Title: Girls
+Released: 2012
+Rating: 9.5
+
+Type: Movie
+Title: Dune
+Released: 2021
+Rating: 6.5
+```
+
+## Using a constructor to create titles
+
+You may have noticed that every time I create a title to add to the media library, I have to type out each attribute name, such as `release_year: 2021`. Once again, this becomes tedious, especially when adding many titles.
+
+I can avoid this repetition by creating a constructor for the `Media` struct. With a constructor in place, I can simply write `Media::new("Girls", 2012, 9.5, true);` to add the title *Girls* to the library, saving myself from repeatedly typing out the attribute names.
+
+```rs
+struct Media {
+    title: String,
+    release_year: u16,
+    rating: f32,
+    is_series: bool,
+}
+
+impl Media {
+    fn new(title: &str, release_year: u16, rating: f32, is_series: bool) -> Self {
+        Self {
+            title: title.to_string(),
+            release_year,
+            rating,
+            is_series,
+        }
+    }
+
+    fn describe(&self) {
+        let media_type = if self.is_series { "TV series" } else { "Movie" };
+        println!(
+            "Type: {}\nTitle: {}\nReleased: {}\nRating: {}\n",
+            media_type,
+            self.title,
+            self.release_year,
+            self.rating,
+        );
+    }
+}
+
+fn main() {
+    let girls = Media::new("Girls", 2012, 9.5, true);
+    let dune = Media::new("Dune", 2021, 6.5, false);
+
+    let library = vec![girls, dune];
+
+    for media in &library {
+        media.describe();
+    }  
+}
+```
+
+```{raw}
+Type: TV series
+Title: Girls
+Released: 2012
+Rating: 9.5
+
+Type: Movie
+Title: Dune
+Released: 2021
+Rating: 6.5
+```

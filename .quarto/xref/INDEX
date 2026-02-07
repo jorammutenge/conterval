@@ -442,5 +442,8 @@
   },
   "blog/apprentice-lessons/index.qmd": {
     "index.html": "4890db91"
+  },
+  "blog/structs-in-rust/index.qmd": {
+    "index.html": "55a2c55c"
   }
 }
