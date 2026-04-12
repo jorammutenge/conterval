@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,6 +11,9 @@
 
 <title>All the movies and series I watched in 2025</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -70,15 +73,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../images/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b89014556cd67d477916fb41ccd32fe9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f397cc185d0ab75492c67f0644c295c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1721cc41f7861135d016642a1eaf0d8c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ea4d2fc885dc84b3edb167484f3766fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -123,7 +125,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -277,7 +279,7 @@ window.Quarto = {
 <section id="about-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="about-the-dataset">About the dataset</h2>
 <p>Below is a snapshot of my movies and series dataset. I’ve filtered for the year 2025 to only show the movies I watched this year.</p>
-<div id="118718b4" class="cell" data-execution_count="1">
+<div id="97950a5c" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div><style>
 .dataframe > thead > tr,
@@ -353,7 +355,7 @@ window.Quarto = {
 <section id="how-much-tv-did-i-watch-in-2025" class="level3">
 <h3 class="anchored" data-anchor-id="how-much-tv-did-i-watch-in-2025">How much TV did I watch in 2025?</h3>
 <p>Let me answer the question you are dying to have answered. As I said earlier, I watch a lot of TV. It is my hobby. Let us find out how much with the help of some Polars code:</p>
-<div id="310ca31a" class="cell" data-execution_count="2">
+<div id="bc39b755" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a> .select(Titles<span class="op">=</span>pl.col(<span class="st">'Title'</span>).count())</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -402,7 +404,7 @@ Note
 <section id="whats-the-breakdown-between-movies-and-series" class="level3">
 <h3 class="anchored" data-anchor-id="whats-the-breakdown-between-movies-and-series">What’s the breakdown between movies and series</h3>
 <p>Let us get more granular and see how many of these 32 titles were movies and how many were series:</p>
-<div id="abca6410" class="cell" data-execution_count="3">
+<div id="888d26ad" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'Type'</span>).<span class="bu">len</span>()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -622,7 +624,7 @@ Table&nbsp;1: Parameters for Mutenge score formula.
 <section id="apply-the-mutenge-score" class="level2">
 <h2 class="anchored" data-anchor-id="apply-the-mutenge-score">Apply the Mutenge score</h2>
 <p>Now that I’ve explained how to calculate the <strong><em>Mutenge score</em></strong>, let’s use Polars to assign a score to each movie/series.</p>
-<div id="2c676a0b" class="cell" data-execution_count="4">
+<div id="4fc1c0d4" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(df</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Season'</span>).fill_null(<span class="dv">0</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> .with_columns(pl.col(<span class="st">'Person'</span>, <span class="st">'Quote'</span>).<span class="bu">str</span>.split(<span class="st">' | '</span>).<span class="bu">list</span>.n_unique())</span>

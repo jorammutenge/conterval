@@ -1,11 +1,5 @@
 project:
   type: website
-  render:
-    - "*.qmd"
-    - "blog/**/*.qmd"
-    - "!polars-book/**"  # Exclude the book source files
-  pre-render:
-    - ./render-book.sh
   output-dir: docs
 
 website:
