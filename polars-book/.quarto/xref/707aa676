@@ -1,1 +1,0 @@
-{"entries":[{"caption":"Data dictionary for the online retail store dataset.","key":"tbl-data-dict-online-retail","order":{"number":1,"section":[1,2,0,0,0,0,0]}}],"headings":["cohorts-a-useful-analysis-framework","the-online-retail-store-dataset","retention","polars-for-a-basic-retention-curve","adjusting-time-series-to-increase-retention-accuracy"],"options":{"chapters":true}}

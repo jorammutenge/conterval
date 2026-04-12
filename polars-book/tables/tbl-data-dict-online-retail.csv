@@ -1,9 +1,0 @@
-Variable Name,Description
-Invoice_No,"A 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it indicates a cancellation"
-Stock_Code,A 5-digit integral number uniquely assigned to each distinct product
-Description,Product name
-Quantity,The quantities of each product (item) per transaction
-Invoice_Date,The day and time when each transaction was generated
-Unit_Price,Product price per unit
-Customer_ID,A 5-digit integral number uniquely assigned to each customer
-Country,The name of the country where each customer resides

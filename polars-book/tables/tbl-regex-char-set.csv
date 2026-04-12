@@ -1,6 +1,0 @@
-Symbol,Purpose
-`+`,Match one or more instances of the character set.
-`*`,Match zero or more instances of the character set.
-`?`,Match zero or one instance of the character set.
-`{ }`,"Match the character set the specified number of times; for example, `{3}` matches exactly three instances."
-"`{ , }`","Match the character set between a lower and upper bound of repetitions, such as `{3,5}`"

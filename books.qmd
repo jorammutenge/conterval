@@ -25,14 +25,14 @@ body {
 
 ::: {.book-card}
 <a href="/polars-book/" target="_self">
-<img src="images/books/cover_landing.png"
+<img src="images/books/front_cover.png"
      class="book-image"
      alt="Polars for Data Analysis Book Cover">
 </a>
 
 ::: {.book-info}
 ::: {.book-price}
-Free (Draft)
+$35
 :::
 
 ::: {.book-title}
@@ -40,10 +40,10 @@ Deep Analysis with Polars
 :::
 
 ::: {.book-description}
-This book is **not** an introduction to Polars. It is intended to demonstrate to readers who are already familiar with Polars that the library is mature enough to support **deep analysis**, including the kind typically handled with complex SQL queries. By exploring practical analytical questions, the book emphasizes Polars core features such as expressions, lazy execution, efficient transformations, and its opinionated approach to writing code through method chaining. This book is an active draft, and feedback is encouraged.
+This book is **not** an introduction to Polars. It is intended to demonstrate to readers who are already familiar with Polars that the library is mature enough to support **deep analysis**, including the kind typically handled with complex SQL queries. By exploring practical analytical questions, the book emphasizes Polars core features such as expressions, lazy execution, efficient transformations, and its opinionated approach to writing code through method chaining.
 :::
 
-[READ ONLINE](/polars-book/){.book-button}
+[BUY](https://leanpub.com/deep-analysis-with-polars){target="_blank" .book-button}
 :::
 :::
 
