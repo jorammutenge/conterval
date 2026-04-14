@@ -24,7 +24,7 @@ body {
 ::: {.books-container}
 
 ::: {.book-card}
-<a href="/polars-book/" target="_self">
+<a href="https://leanpub.com/deep-analysis-with-polars" target="_self">
 <img src="images/books/front_cover.png"
      class="book-image"
      alt="Polars for Data Analysis Book Cover">
