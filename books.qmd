@@ -27,7 +27,7 @@ body {
 <a href="https://www.amazon.com/dp/B0GXG1BHG6/" target="_self">
 <img src="images/books/front_cover.png"
      class="book-image"
-     alt="Polars for Data Analysis Book Cover">
+     alt="Polars for Data Analysis book cover">
 </a>
 
 ::: {.book-info}
@@ -50,7 +50,7 @@ This book is **not** an introduction to Polars. It is intended to demonstrate to
 
 ::: {.book-card}
 <a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank">
-<img src="images/books/big_data.png" class="book-image" alt="Effective Pandas 2 Book Cover">
+<img src="images/books/big_data.png" class="book-image" alt="Deep Analysis with Polars book cover">
 </a>
 
 ::: {.book-info}
