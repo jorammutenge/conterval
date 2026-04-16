@@ -43,36 +43,14 @@ Deep Analysis with Polars
 This book is **not** an introduction to Polars. It is intended to demonstrate to readers who are already familiar with Polars that the library is mature enough to support **deep analysis**, including the kind typically handled with complex SQL queries. By exploring practical analytical questions, the book emphasizes Polars core features such as expressions, lazy execution, efficient transformations, and its opinionated approach to writing code through method chaining.
 :::
 
-[BUY](https://leanpub.com/deep-analysis-with-polars){target="_blank" .book-button}
+[BUY](https://www.amazon.com/dp/B0GXG1BHG6/){target="_blank" .book-button}
 :::
 :::
 
 
 ::: {.book-card}
-<a href="https://www.amazon.com/dp/B0GXG1BHG6/" target="_blank">
-<img src="images/books/big_data.png" class="book-image" alt="Deep Analysis with Polars book cover">
-</a>
-
-::: {.book-info}
-::: {.book-price}
-$22
-:::
-
-::: {.book-title}
-Emails from a Big Data Entrepreneur to His Son
-:::
-
-::: {.book-description}
-This book is a modern-day reimagining of the timeless classic *Letters from a Self-Made Merchant to His Son* by George Horace Lorimer. With the same sharp wit, humor, and fatherly wisdom, this updated version brings the conversation into the digital age where data is the new oil and algorithms shape the future.
-:::
-
-[BUY](https://www.amazon.com/dp/B0FHFWZFT9/){target="_blank" .book-button}
-:::
-:::
-
-<!-- ::: {.book-card}
 <a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank">
-<img src="images/books/big_data.png" class="book-image" alt="Book Cover">
+<img src="images/books/big_data.png" class="book-image" alt="Effective Pandas 2 Book Cover">
 </a>
 
 ::: {.book-info}
@@ -90,6 +68,5 @@ This book is a modern-day reimagining of the timeless classic *Letters from a Se
 
 [BUY](https://www.amazon.com/dp/B0FHFWZFT9/){target="_blank" .book-button}
 :::
-::: -->
-
+:::
 :::
