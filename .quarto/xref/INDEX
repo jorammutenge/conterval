@@ -445,5 +445,8 @@
   },
   "blog/structs-in-rust/index.qmd": {
     "index.html": "55a2c55c"
+  },
+  "blog/writing-my-polars-book/index.qmd": {
+    "index.html": "3e6c451f"
   }
 }

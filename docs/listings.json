@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/writing-my-polars-book/index.html",
       "/blog/structs-in-rust/index.html",
       "/blog/apprentice-lessons/index.html",
       "/blog/equality-with-null-polars/index.html",
