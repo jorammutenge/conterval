@@ -60,7 +60,7 @@ Technical books, unlike novels, have a high standard for correctness. The code m
 
 Many people reached out with suggestions, which I incorporated to improve the book. I'm grateful to everyone who provided feedback. I even learned new ways to use Polars that I wouldn't have discovered otherwise.
 
-Additionally, I proofread the book from beginning to end, correcting typos and improving unclear sentences. While I can't guarantee that the book is completely free of errors, I’m confident that any remaining issues are minimal.
+Additionally, I proofread the book from beginning to end, correcting typos and improving unclear sentences. While I can't guarantee that the book is completely free of errors, I’m confident that any remaining issues are minimal. But should you find any, please create an issue on the [book's GitHub page](https://github.com/jorammutenge/deep-analysis-with-polars-book/issues).
 
 ## Where you can buy the book
 
