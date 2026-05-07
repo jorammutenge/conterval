@@ -634,7 +634,7 @@ Is the code **pandas-accented** or **idiomatic**?
 :::: {.columns}
 
 ::: {.column width="30%"}
-![](_profile_pic.jpg)
+![](me.jpg)
 :::
 
 ::: {.column width="40%"}
