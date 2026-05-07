@@ -448,5 +448,8 @@
   },
   "blog/writing-my-polars-book/index.qmd": {
     "index.html": "3e6c451f"
+  },
+  "blog/pycon-usa/index.qmd": {
+    "index.html": "df613cc8"
   }
 }

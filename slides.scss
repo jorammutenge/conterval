@@ -1,0 +1,67 @@
+/*-- scss:defaults --*/
+
+$dark-blue: #191971;
+// $green: #006400;
+$green: #00B2A9;
+
+/*-- scss:rules --*/
+
+.reveal {
+  font-family: "Harmonia Sans W01", sans-serif;
+  background-color: moccasin;
+}
+
+.reveal h1 {
+  font-family: "Harmonia Sans W01", sans-serif;
+  font-weight: bold;
+  font-size: 5.5rem;
+  color: $dark-blue;
+}
+
+.reveal h2 {
+  font-family: "Harmonia Sans W01", sans-serif;
+  font-weight: 700;
+  color: $dark-blue;
+}
+
+.reveal h3 {
+  font-family: "UniversLTStd-Bold", sans-serif;
+  color: $green;
+  font-size: 2rem;
+}
+
+.reveal pre.sourceCode code {
+  font-family: "Iosevka", monospace;
+}
+
+.reveal code {
+  font-family: "Iosevka", monospace;
+}
+
+.reveal .slides p,
+.reveal .slides li {
+  font-size: 2rem;
+}
+
+.reveal .cell-output-display table.dataframe {
+  font-size: 1.2rem;
+  margin-left: 0;
+}
+
+.reveal .cell-output-display small {
+  font-size: 1rem;
+}
+
+.reveal em {
+  font-family: "Legacy Sans", sans-serif;
+  font-style: italic;
+}
+
+.reveal .quote-box blockquote {
+  background-color: white;
+  border-radius: 12px;
+  padding: 0.5rem 0.5rem;
+  border-left: none;
+  box-shadow: none;
+  color: #5e5c64;
+}
