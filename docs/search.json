@@ -2720,7 +2720,7 @@
     "href": "blog/pycon-usa/index.html#pop-quiz-1",
     "title": "Don’t Write Polars Code with a Pandas Accent",
     "section": "Pop quiz!",
-    "text": "Pop quiz!\nIs the code pandas-accented or idiomatic?\n\n\n(df\n ['Category']\n .value_counts()\n )\n\n\nshape: (44, 2)\n\n\n\nCategory\ncount\n\n\nstr\nu32\n\n\n\n\n\"MEZCAL\"\n2016\n\n\n\"AMERICAN SCHNAPPS\"\n68257\n\n\n\"WHISKEY LIQUEUR\"\n128963\n\n\n\"STRAIGHT BOURBON WHISKIES\"\n144868\n\n\n\"IMPORTED DISTILLED SPIRITS SPE…\n8509\n\n\n…\n…\n\n\n\"AMERICAN FLAVORED VODKA\"\n83611\n\n\n\"IMPORTED FLAVORED VODKA\"\n19572\n\n\n\"SINGLE BARREL BOURBON WHISKIES\"\n7852\n\n\n\"IRISH WHISKIES\"\n21591\n\n\n\"GOLD RUM\"\n6791\n\n\n\n\n\n\n\n\npandas-accented"
+    "text": "Pop quiz!\nIs the code pandas-accented or idiomatic?\n\n\n(df\n ['Category']\n .value_counts()\n )\n\n\nshape: (44, 2)\n\n\n\nCategory\ncount\n\n\nstr\nu32\n\n\n\n\n\"AMERICAN SLOE GINS\"\n339\n\n\n\"100% AGAVE TEQUILA\"\n105951\n\n\n\"CANADIAN WHISKIES\"\n168136\n\n\n\"IMPORTED DRY GINS\"\n17288\n\n\n\"BOTTLED IN BOND BOURBON\"\n9313\n\n\n…\n…\n\n\n\"AMERICAN DISTILLED SPIRITS SPE…\n4481\n\n\n\"SINGLE BARREL BOURBON WHISKIES\"\n7852\n\n\n\"STRAIGHT BOURBON WHISKIES\"\n144868\n\n\n\"COFFEE LIQUEURS\"\n7803\n\n\n\"TEMPORARY & SPECIALTY PACKAGES\"\n43253\n\n\n\n\n\n\n\n\npandas-accented"
   },
   {
     "objectID": "blog/pycon-usa/index.html#pop-quiz-2",
