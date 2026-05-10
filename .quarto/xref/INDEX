@@ -451,5 +451,8 @@
   },
   "blog/pycon-usa/index.qmd": {
     "index.html": "df613cc8"
+  },
+  "blog/quarto-revealjs-slides-to-pdf/index.qmd": {
+    "index.html": "9d6d5af2"
   }
 }

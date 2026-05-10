@@ -3,6 +3,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/pycon-usa/index.html",
+      "/blog/quarto-revealjs-slides-to-pdf/index.html",
       "/blog/writing-my-polars-book/index.html",
       "/blog/structs-in-rust/index.html",
       "/blog/apprentice-lessons/index.html",
