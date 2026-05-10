@@ -1,85 +1,98 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1014pt" height="506pt" viewBox="0.00 0.00 1014.00 506.00">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 502.25)">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1014pt" height="585pt" viewBox="0.00 0.00 1014.00 585.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 580.75)">
 <title>polars_query</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-502.25 1010,-502.25 1010,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-580.75 1010,-580.75 1010,4 -4,4"/>
 <!-- p2 -->
 <g id="node1" class="node">
 <title>p2</title>
-<polygon fill="none" stroke="black" points="696.62,-426.25 309.38,-426.25 309.38,-390.25 696.62,-390.25 696.62,-426.25"/>
-<text xml:space="preserve" text-anchor="middle" x="503" y="-403.57" font-family="Monospace" font-size="14.00">FILTER BY [(col("Rank_Change").abs()) &gt; (10)]</text>
+<polygon fill="none" stroke="black" points="630.62,-498.25 375.38,-498.25 375.38,-462.25 630.62,-462.25 630.62,-498.25"/>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-475.57" font-family="Monospace" font-size="14.00">SORT BY [col("Revenue_Rank")]</text>
 </g>
 <!-- p1 -->
 <g id="node2" class="node">
 <title>p1</title>
-<polygon fill="none" stroke="black" points="630.62,-498.25 375.38,-498.25 375.38,-462.25 630.62,-462.25 630.62,-498.25"/>
-<text xml:space="preserve" text-anchor="middle" x="503" y="-475.57" font-family="Monospace" font-size="14.00">SORT BY [col("Revenue_Rank")]</text>
+<polygon fill="none" stroke="black" points="713.12,-576.75 292.88,-576.75 292.88,-534.25 713.12,-534.25 713.12,-576.75"/>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-559.45" font-family="Monospace" font-size="14.00">simple π 4/6</text>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-542.2" font-family="Monospace" font-size="14.00">["Category", "Revenue_Rank", ... 2 other columns]</text>
 </g>
 <!-- p2&#45;&gt;p1 -->
 <g id="edge1" class="edge">
 <title>p2-&gt;p1</title>
-<path fill="none" stroke="black" d="M503,-426.55C503,-433.84 503,-442.52 503,-450.71"/>
-<polygon fill="black" stroke="black" points="499.5,-450.63 503,-460.63 506.5,-450.63 499.5,-450.63"/>
+<path fill="none" stroke="black" d="M503,-498.61C503,-505.8 503,-514.37 503,-522.62"/>
+<polygon fill="black" stroke="black" points="499.5,-522.37 503,-532.37 506.5,-522.37 499.5,-522.37"/>
 </g>
 <!-- p3 -->
 <g id="node3" class="node">
 <title>p3</title>
-<polygon fill="none" stroke="black" points="1006,-354.25 0,-354.25 0,-318.25 1006,-318.25 1006,-354.25"/>
-<text xml:space="preserve" text-anchor="middle" x="503" y="-331.57" font-family="Monospace" font-size="14.00">WITH COLUMNS [[(col("Volume_Rank").strict_cast(Int32)) - (col("Revenue_Rank").strict_cast(Int32))].alias("Rank_Change")]</text>
+<polygon fill="none" stroke="black" points="696.62,-426.25 309.38,-426.25 309.38,-390.25 696.62,-390.25 696.62,-426.25"/>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-403.57" font-family="Monospace" font-size="14.00">FILTER BY [(col("Rank_Change").abs()) &gt; (10)]</text>
 </g>
 <!-- p3&#45;&gt;p2 -->
 <g id="edge2" class="edge">
 <title>p3-&gt;p2</title>
-<path fill="none" stroke="black" d="M503,-354.55C503,-361.84 503,-370.52 503,-378.71"/>
-<polygon fill="black" stroke="black" points="499.5,-378.63 503,-388.63 506.5,-378.63 499.5,-378.63"/>
+<path fill="none" stroke="black" d="M503,-426.55C503,-433.84 503,-442.52 503,-450.71"/>
+<polygon fill="black" stroke="black" points="499.5,-450.63 503,-460.63 506.5,-450.63 499.5,-450.63"/>
 </g>
 <!-- p4 -->
 <g id="node4" class="node">
 <title>p4</title>
-<polygon fill="none" stroke="black" points="952.38,-282.25 53.62,-282.25 53.62,-246.25 952.38,-246.25 952.38,-282.25"/>
-<text xml:space="preserve" text-anchor="middle" x="503" y="-259.57" font-family="Monospace" font-size="14.00">WITH COLUMNS [col("Revenue").rank().alias("Revenue_Rank"), col("Vol_Sold_gal").rank().alias("Volume_Rank")]</text>
+<polygon fill="none" stroke="black" points="1006,-354.25 0,-354.25 0,-318.25 1006,-318.25 1006,-354.25"/>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-331.57" font-family="Monospace" font-size="14.00">WITH COLUMNS [[(col("Volume_Rank").strict_cast(Int32)) - (col("Revenue_Rank").strict_cast(Int32))].alias("Rank_Change")]</text>
 </g>
 <!-- p4&#45;&gt;p3 -->
 <g id="edge3" class="edge">
 <title>p4-&gt;p3</title>
-<path fill="none" stroke="black" d="M503,-282.55C503,-289.84 503,-298.52 503,-306.71"/>
-<polygon fill="black" stroke="black" points="499.5,-306.63 503,-316.63 506.5,-306.63 499.5,-306.63"/>
+<path fill="none" stroke="black" d="M503,-354.55C503,-361.84 503,-370.52 503,-378.71"/>
+<polygon fill="black" stroke="black" points="499.5,-378.63 503,-388.63 506.5,-378.63 499.5,-378.63"/>
 </g>
 <!-- p5 -->
 <g id="node5" class="node">
 <title>p5</title>
+<polygon fill="none" stroke="black" points="952.38,-282.25 53.62,-282.25 53.62,-246.25 952.38,-246.25 952.38,-282.25"/>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-259.57" font-family="Monospace" font-size="14.00">WITH COLUMNS [col("Revenue").rank().alias("Revenue_Rank"), col("Vol_Sold_gal").rank().alias("Volume_Rank")]</text>
+</g>
+<!-- p5&#45;&gt;p4 -->
+<g id="edge4" class="edge">
+<title>p5-&gt;p4</title>
+<path fill="none" stroke="black" d="M503,-282.55C503,-289.84 503,-298.52 503,-306.71"/>
+<polygon fill="black" stroke="black" points="499.5,-306.63 503,-316.63 506.5,-306.63 499.5,-306.63"/>
+</g>
+<!-- p6 -->
+<g id="node6" class="node">
+<title>p6</title>
 <polygon fill="none" stroke="black" points="729.62,-210.25 276.38,-210.25 276.38,-150.5 729.62,-150.5 729.62,-210.25"/>
 <text xml:space="preserve" text-anchor="middle" x="503" y="-192.95" font-family="Monospace" font-size="14.00">AGG [col("Revenue").sum(), col("Vol_Sold_gal").sum()]</text>
 <text xml:space="preserve" text-anchor="middle" x="503" y="-175.7" font-family="Monospace" font-size="14.00">BY</text>
 <text xml:space="preserve" text-anchor="middle" x="503" y="-158.45" font-family="Monospace" font-size="14.00">[col("Category")]</text>
 </g>
-<!-- p5&#45;&gt;p4 -->
-<g id="edge4" class="edge">
-<title>p5-&gt;p4</title>
-<path fill="none" stroke="black" d="M503,-210.47C503,-218.41 503,-226.99 503,-234.89"/>
-<polygon fill="black" stroke="black" points="499.5,-234.65 503,-244.65 506.5,-234.65 499.5,-234.65"/>
-</g>
-<!-- p6 -->
-<g id="node6" class="node">
-<title>p6</title>
-<polygon fill="none" stroke="black" points="894.62,-114.5 111.38,-114.5 111.38,-78.5 894.62,-78.5 894.62,-114.5"/>
-<text xml:space="preserve" text-anchor="middle" x="503" y="-91.83" font-family="Monospace" font-size="14.00">WITH COLUMNS [[(col("Bottles_Sold").cast(Float64)) * (col("Retail_Price"))].alias("Revenue")]</text>
-</g>
 <!-- p6&#45;&gt;p5 -->
 <g id="edge5" class="edge">
 <title>p6-&gt;p5</title>
-<path fill="none" stroke="black" d="M503,-114.86C503,-121.9 503,-130.34 503,-138.77"/>
-<polygon fill="black" stroke="black" points="499.5,-138.6 503,-148.6 506.5,-138.6 499.5,-138.6"/>
+<path fill="none" stroke="black" d="M503,-210.47C503,-218.41 503,-226.99 503,-234.89"/>
+<polygon fill="black" stroke="black" points="499.5,-234.65 503,-244.65 506.5,-234.65 499.5,-234.65"/>
 </g>
 <!-- p7 -->
 <g id="node7" class="node">
 <title>p7</title>
-<polygon fill="none" stroke="black" points="535.75,-42.5 470.25,-42.5 470.25,0 535.75,0 535.75,-42.5"/>
-<text xml:space="preserve" text-anchor="middle" x="503" y="-25.2" font-family="Monospace" font-size="14.00">TABLE</text>
-<text xml:space="preserve" text-anchor="middle" x="503" y="-7.95" font-family="Monospace" font-size="14.00">π 4/11</text>
+<polygon fill="none" stroke="black" points="894.62,-114.5 111.38,-114.5 111.38,-78.5 894.62,-78.5 894.62,-114.5"/>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-91.83" font-family="Monospace" font-size="14.00">WITH COLUMNS [[(col("Bottles_Sold").cast(Float64)) * (col("Retail_Price"))].alias("Revenue")]</text>
 </g>
 <!-- p7&#45;&gt;p6 -->
 <g id="edge6" class="edge">
 <title>p7-&gt;p6</title>
+<path fill="none" stroke="black" d="M503,-114.86C503,-121.9 503,-130.34 503,-138.77"/>
+<polygon fill="black" stroke="black" points="499.5,-138.6 503,-148.6 506.5,-138.6 499.5,-138.6"/>
+</g>
+<!-- p8 -->
+<g id="node8" class="node">
+<title>p8</title>
+<polygon fill="none" stroke="black" points="535.75,-42.5 470.25,-42.5 470.25,0 535.75,0 535.75,-42.5"/>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-25.2" font-family="Monospace" font-size="14.00">TABLE</text>
+<text xml:space="preserve" text-anchor="middle" x="503" y="-7.95" font-family="Monospace" font-size="14.00">π 4/11</text>
+</g>
+<!-- p8&#45;&gt;p7 -->
+<g id="edge7" class="edge">
+<title>p8-&gt;p7</title>
 <path fill="none" stroke="black" d="M503,-42.65C503,-50.16 503,-58.81 503,-66.91"/>
 <polygon fill="black" stroke="black" points="499.5,-66.67 503,-76.67 506.5,-66.67 499.5,-66.67"/>
 </g>
