@@ -148,6 +148,7 @@ revenue_ranking = (df
  .group_by('Category')
  .agg(pl.col('Total_Revenue').sum())
  .sort('Total_Revenue', descending=True)
+ .with_row_index('Revenue_Rank', offset=1)
  )
 revenue_ranking
 ```
@@ -162,6 +163,7 @@ volume_ranking = (df
  .group_by('Category')
  .agg(pl.col('Vol_Sold_gal').sum().alias('Total_Vol_gal'))
  .sort('Total_Vol_gal', descending=True)
+ .with_row_index('Volume_Rank', offset=1)
 )
 volume_ranking
 ```
@@ -174,8 +176,7 @@ volume_ranking
 #| echo: true
 # Join both rankings together and compare
 combined = (revenue_ranking
- .with_row_index('Revenue_Rank', offset=1)
- .join(volume_ranking.with_row_index('Volume_Rank', offset=1), on='Category')
+ .join(volume_ranking, on='Category')
  .with_columns(Rank_Change=(pl.col('Revenue_Rank').cast(pl.Int32) - pl.col('Volume_Rank').cast(pl.Int32)))
  .sort('Revenue_Rank')
  .select('Category','Revenue_Rank','Volume_Rank','Rank_Change')
@@ -215,21 +216,24 @@ combined
 
 ```{python}
 %%timeit
-revenue_ranking = (df.with_columns((pl.col('Bottles_Sold') * pl.col('Retail_Price')).alias('Total_Revenue'))
+revenue_ranking = (df
+ .with_columns((pl.col('Bottles_Sold') * pl.col('Retail_Price')).alias('Total_Revenue'))
  .group_by('Category')
  .agg(pl.col('Total_Revenue').sum())
  .sort('Total_Revenue', descending=True)
+ .with_row_index('Revenue_Rank', offset=1)
  )
 
-volume_ranking = (df.group_by('Category')
+volume_ranking = (df
+ .group_by('Category')
  .agg(pl.col('Vol_Sold_gal').sum().alias('Total_Vol_gal'))
  .sort('Total_Vol_gal', descending=True)
+ .with_row_index('Volume_Rank', offset=1)
 )
 
 combined = (revenue_ranking
- .with_row_index('Revenue_Rank', offset=1)
- .join(volume_ranking.with_row_index('Volume_Rank', offset=1), on='Category')
- .with_columns(Rank_Change=(pl.col('Volume_Rank').cast(pl.Int32) - pl.col('Revenue_Rank').cast(pl.Int32)))
+ .join(volume_ranking, on='Category')
+ .with_columns(Rank_Change=(pl.col('Revenue_Rank').cast(pl.Int32) - pl.col('Volume_Rank').cast(pl.Int32)))
  .sort('Revenue_Rank')
  .select('Category','Revenue_Rank','Volume_Rank','Rank_Change')
  )
