@@ -144,7 +144,7 @@ df = pl.read_parquet('../../datasets/liquor_sales_iowa.parquet')
 ```{python}
 #| echo: true
 revenue_ranking = (df
- .with_columns((pl.col('Bottles_Sold') * pl.col('Retail_Price')).alias('Total_Revenue'))
+ .with_columns(Total_Revenue=pl.col('Bottles_Sold') * pl.col('Retail_Price'))
  .group_by('Category')
  .agg(pl.col('Total_Revenue').sum())
  .sort('Total_Revenue', descending=True)
@@ -177,7 +177,8 @@ volume_ranking
 # Join both rankings together and compare
 combined = (revenue_ranking
  .join(volume_ranking, on='Category')
- .with_columns(Rank_Change=(pl.col('Revenue_Rank').cast(pl.Int32) - pl.col('Volume_Rank').cast(pl.Int32)))
+ .with_columns(pl.col('Revenue_Rank','Volume_Rank').cast(pl.Int32))
+ .with_columns(Rank_Change=pl.col('Revenue_Rank') - pl.col('Volume_Rank'))
  .sort('Revenue_Rank')
  .select('Category','Revenue_Rank','Volume_Rank','Rank_Change')
  )
@@ -193,7 +194,7 @@ combined
 (df
  .with_columns(Revenue=pl.col('Bottles_Sold').mul('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Revenue').sum(), pl.col('Vol_Sold_gal').sum())
+ .agg(pl.col('Revenue','Vol_Sold_gal').sum())
  .with_columns(Revenue_Rank=pl.col('Revenue').rank(method='ordinal', descending=True),
                Volume_Rank=pl.col('Vol_Sold_gal').rank(method='ordinal', descending=True))
  .with_columns(Rank_Change=(pl.col('Revenue_Rank').cast(pl.Int32) - pl.col('Volume_Rank').cast(pl.Int32)))
@@ -217,7 +218,7 @@ combined
 ```{python}
 %%timeit
 revenue_ranking = (df
- .with_columns((pl.col('Bottles_Sold') * pl.col('Retail_Price')).alias('Total_Revenue'))
+ .with_columns(Total_Revenue=pl.col('Bottles_Sold') * pl.col('Retail_Price'))
  .group_by('Category')
  .agg(pl.col('Total_Revenue').sum())
  .sort('Total_Revenue', descending=True)
@@ -233,7 +234,8 @@ volume_ranking = (df
 
 combined = (revenue_ranking
  .join(volume_ranking, on='Category')
- .with_columns(Rank_Change=(pl.col('Revenue_Rank').cast(pl.Int32) - pl.col('Volume_Rank').cast(pl.Int32)))
+ .with_columns(pl.col('Revenue_Rank','Volume_Rank').cast(pl.Int32))
+ .with_columns(Rank_Change=pl.col('Revenue_Rank') - pl.col('Volume_Rank'))
  .sort('Revenue_Rank')
  .select('Category','Revenue_Rank','Volume_Rank','Rank_Change')
  )
@@ -249,7 +251,7 @@ combined
 (df
  .with_columns(Revenue=pl.col('Bottles_Sold').mul('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Revenue').sum(), pl.col('Vol_Sold_gal').sum())
+ .agg(pl.col('Revenue','Vol_Sold_gal').sum())
  .with_columns(Revenue_Rank=pl.col('Revenue').rank(method='ordinal', descending=True),
                Volume_Rank=pl.col('Vol_Sold_gal').rank(method='ordinal', descending=True))
  .with_columns(Rank_Change=(pl.col('Volume_Rank').cast(pl.Int32) - pl.col('Revenue_Rank').cast(pl.Int32)))
@@ -307,7 +309,7 @@ Q: Show categories with a change in ranking greater than 10
  .lazy()
  .with_columns(Revenue=pl.col('Bottles_Sold').mul('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Revenue').sum(), pl.col('Vol_Sold_gal').sum())
+ .agg(pl.col('Revenue','Vol_Sold_gal').sum())
  .with_columns(Revenue_Rank=pl.col('Revenue').rank(method='ordinal', descending=True),
                Volume_Rank=pl.col('Vol_Sold_gal').rank(method='ordinal', descending=True))
  .with_columns(Rank_Change=(pl.col('Volume_Rank').cast(pl.Int32) - pl.col('Revenue_Rank').cast(pl.Int32)))
@@ -328,7 +330,7 @@ Q: Show categories with a change in ranking greater than 10
 (df
  .with_columns(Revenue=pl.col('Bottles_Sold').mul('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Revenue').sum(), pl.col('Vol_Sold_gal').sum())
+ .agg(pl.col('Revenue','Vol_Sold_gal').sum())
  .with_columns(Revenue_Rank=pl.col('Revenue').rank(method='ordinal', descending=True),
                Volume_Rank=pl.col('Vol_Sold_gal').rank(method='ordinal', descending=True))
  .with_columns(Rank_Change=(pl.col('Volume_Rank').cast(pl.Int32) - pl.col('Revenue_Rank').cast(pl.Int32)))
@@ -348,7 +350,7 @@ Q: Show categories with a change in ranking greater than 10
  .lazy()
  .with_columns(Revenue=pl.col('Bottles_Sold').mul('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Revenue').sum(), pl.col('Vol_Sold_gal').sum())
+ .agg(pl.col('Revenue','Vol_Sold_gal').sum())
  .with_columns(Revenue_Rank=pl.col('Revenue').rank(method='ordinal', descending=True),
                Volume_Rank=pl.col('Vol_Sold_gal').rank(method='ordinal', descending=True))
  .with_columns(Rank_Change=(pl.col('Volume_Rank').cast(pl.Int32) - pl.col('Revenue_Rank').cast(pl.Int32)))
@@ -370,7 +372,7 @@ Q: Show categories with a change in ranking greater than 10
  .lazy()
  .with_columns(Revenue=pl.col('Bottles_Sold').mul('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Revenue').sum(), pl.col('Vol_Sold_gal').sum())
+ .agg(pl.col('Revenue','Vol_Sold_gal').sum())
  .with_columns(Revenue_Rank=pl.col('Revenue').rank(method='ordinal', descending=True),
                Volume_Rank=pl.col('Vol_Sold_gal').rank(method='ordinal', descending=True))
  .with_columns(Rank_Change=(pl.col('Volume_Rank').cast(pl.Int32) - pl.col('Revenue_Rank').cast(pl.Int32)))

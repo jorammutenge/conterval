@@ -278,7 +278,7 @@
 <h2>Pandas-accented mistakes</h2>
 <h3 id="choosing-columns-with-square-brackets">1. Choosing columns with square brackets</h3>
 <div class="fragment">
-<div id="a0d17fa1" class="cell" data-execution_count="1">
+<div id="ad9e3b99" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a>df <span class="op">=</span> pl.read_parquet(<span class="st">'../../datasets/liquor_sales_iowa.parquet'</span>)</span>
@@ -374,7 +374,7 @@
 <section class="slide level2">
 
 <p><strong>The idiomatic way</strong></p>
-<div id="d7052119" class="cell" data-execution_count="2">
+<div id="3f6a2b2a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-code-line-numbers="1,2,4|1,3,4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>(df</span>
 <span id="cb2-2"><a></a> .select(pl.col(<span class="st">'Date'</span>), pl.col(<span class="st">'Store'</span>), pl.col(<span class="st">'Pack'</span>))</span>
 <span id="cb2-3"><a></a> .select(<span class="st">'Date'</span>,<span class="st">'Store'</span>,<span class="st">'Pack'</span>)</span>
@@ -470,7 +470,7 @@
 <span id="cb3-2"><a></a> .select(pl.col(<span class="st">'Date'</span>).dt.strftime(<span class="st">'%b'</span>).alias(<span class="st">'Month'</span>),</span>
 <span id="cb3-3"><a></a>         <span class="st">'Store'</span>,<span class="st">'Category'</span>)</span>
 <span id="cb3-4"><a></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="e00481b5" class="cell" data-execution_count="3">
+<div id="c292b9ec" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
@@ -495,29 +495,29 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>"May"</td>
-<td>"CASEY'S GENERAL STORE #4 / DES…</td>
+<td>"Jan"</td>
+<td>"HY-VEE FOOD STORE / IOWA CITY"</td>
 <td>"AMERICAN VODKAS"</td>
 </tr>
 <tr class="even">
-<td>"Apr"</td>
-<td>"TOBACCO HUT #11 / SIOUX CITY"</td>
-<td>"AMERICAN CORDIALS &amp; LIQUEURS"</td>
+<td>"Mar"</td>
+<td>"STAR / DENISON"</td>
+<td>"WHISKEY LIQUEUR"</td>
 </tr>
 <tr class="odd">
-<td>"Jan"</td>
-<td>"SYCAMORE CONVENIENCE"</td>
-<td>"IMPORTED VODKAS"</td>
+<td>"Jul"</td>
+<td>"WILKIE LIQUORS"</td>
+<td>"FLAVORED RUM"</td>
 </tr>
 <tr class="even">
+<td>"Aug"</td>
+<td>"THE BOONEDOCKS"</td>
+<td>"SCOTCH WHISKIES"</td>
+</tr>
+<tr class="odd">
 <td>"Sep"</td>
-<td>"BENZ DISTRIBUTING"</td>
-<td>"CREAM LIQUEURS"</td>
-</tr>
-<tr class="odd">
-<td>"Jan"</td>
-<td>"SMOKIN' JOE'S #4 TOBACCO AND L…</td>
-<td>"TEMPORARY &amp; SPECIALTY PACKAGES"</td>
+<td>"HY-VEE WINE AND SPIRITS (1010)…</td>
+<td>"NEUTRAL GRAIN SPIRITS"</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -525,29 +525,29 @@
 <td>…</td>
 </tr>
 <tr class="odd">
-<td>"Jan"</td>
-<td>"FAREWAY STORES #589 / DECORAH"</td>
-<td>"TENNESSEE WHISKIES"</td>
-</tr>
-<tr class="even">
-<td>"May"</td>
-<td>"FAREWAY STORES #648 / OTTUMWA"</td>
+<td>"Sep"</td>
+<td>"HY-VEE FOOD STORE #5 (1151) / …</td>
 <td>"COCKTAILS/RTD"</td>
 </tr>
+<tr class="even">
+<td>"Jul"</td>
+<td>"WAL-MART 2827 / CORALVILLE"</td>
+<td>"AMERICAN FLAVORED VODKA"</td>
+</tr>
 <tr class="odd">
-<td>"Jun"</td>
-<td>"WAL-MART 2764 / ALTOONA"</td>
+<td>"Jan"</td>
+<td>"WAL-MART 0892 / ANKENY"</td>
 <td>"AMERICAN FLAVORED VODKA"</td>
 </tr>
 <tr class="even">
-<td>"Jan"</td>
-<td>"HAPPY'S WINE &amp; SPIRITS"</td>
-<td>"COCKTAILS/RTD"</td>
+<td>"Jul"</td>
+<td>"CASEY'S GENERAL STORE #1028 / …</td>
+<td>"AMERICAN VODKAS"</td>
 </tr>
 <tr class="odd">
 <td>"Apr"</td>
-<td>"HY-VEE FAST &amp; FRESH/ALTOONA"</td>
-<td>"NEUTRAL GRAIN SPIRITS FLAVORED"</td>
+<td>"FAREWAY STORES #989 / WAUKEE"</td>
+<td>"IMPORTED DRY GINS"</td>
 </tr>
 </tbody>
 </table>
@@ -568,9 +568,9 @@
 <h2>Pandas-accented mistakes</h2>
 <h3 id="multiple-intermediate-variables-1">2. Multiple intermediate variables</h3>
 <p><strong>Variable 1</strong></p>
-<div id="16ccf33a" class="cell" data-execution_count="4">
+<div id="214df9fb" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>revenue_ranking <span class="op">=</span> (df</span>
-<span id="cb4-2"><a></a> .with_columns((pl.col(<span class="st">'Bottles_Sold'</span>) <span class="op">*</span> pl.col(<span class="st">'Retail_Price'</span>)).alias(<span class="st">'Total_Revenue'</span>))</span>
+<span id="cb4-2"><a></a> .with_columns(Total_Revenue<span class="op">=</span>pl.col(<span class="st">'Bottles_Sold'</span>) <span class="op">*</span> pl.col(<span class="st">'Retail_Price'</span>))</span>
 <span id="cb4-3"><a></a> .group_by(<span class="st">'Category'</span>)</span>
 <span id="cb4-4"><a></a> .agg(pl.col(<span class="st">'Total_Revenue'</span>).<span class="bu">sum</span>())</span>
 <span id="cb4-5"><a></a> .sort(<span class="st">'Total_Revenue'</span>, descending<span class="op">=</span><span class="va">True</span>)</span>
@@ -664,7 +664,7 @@
 <section class="slide level2">
 
 <p><strong>Variable 2</strong></p>
-<div id="58417d56" class="cell" data-execution_count="5">
+<div id="d5c02f2e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>volume_ranking <span class="op">=</span> (df</span>
 <span id="cb5-2"><a></a> .group_by(<span class="st">'Category'</span>)</span>
 <span id="cb5-3"><a></a> .agg(pl.col(<span class="st">'Vol_Sold_gal'</span>).<span class="bu">sum</span>().alias(<span class="st">'Total_Vol_gal'</span>))</span>
@@ -759,15 +759,16 @@
 <section class="slide level2">
 
 <p><strong>Variable 3</strong></p>
-<div id="3f4c4ea5" class="cell" data-execution_count="6">
+<div id="17abee3e" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Join both rankings together and compare</span></span>
 <span id="cb6-2"><a></a>combined <span class="op">=</span> (revenue_ranking</span>
 <span id="cb6-3"><a></a> .join(volume_ranking, on<span class="op">=</span><span class="st">'Category'</span>)</span>
-<span id="cb6-4"><a></a> .with_columns(Rank_Change<span class="op">=</span>(pl.col(<span class="st">'Revenue_Rank'</span>).cast(pl.Int32) <span class="op">-</span> pl.col(<span class="st">'Volume_Rank'</span>).cast(pl.Int32)))</span>
-<span id="cb6-5"><a></a> .sort(<span class="st">'Revenue_Rank'</span>)</span>
-<span id="cb6-6"><a></a> .select(<span class="st">'Category'</span>,<span class="st">'Revenue_Rank'</span>,<span class="st">'Volume_Rank'</span>,<span class="st">'Rank_Change'</span>)</span>
-<span id="cb6-7"><a></a> )</span>
-<span id="cb6-8"><a></a>combined</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-4"><a></a> .with_columns(pl.col(<span class="st">'Revenue_Rank'</span>,<span class="st">'Volume_Rank'</span>).cast(pl.Int32))</span>
+<span id="cb6-5"><a></a> .with_columns(Rank_Change<span class="op">=</span>pl.col(<span class="st">'Revenue_Rank'</span>) <span class="op">-</span> pl.col(<span class="st">'Volume_Rank'</span>))</span>
+<span id="cb6-6"><a></a> .sort(<span class="st">'Revenue_Rank'</span>)</span>
+<span id="cb6-7"><a></a> .select(<span class="st">'Category'</span>,<span class="st">'Revenue_Rank'</span>,<span class="st">'Volume_Rank'</span>,<span class="st">'Rank_Change'</span>)</span>
+<span id="cb6-8"><a></a> )</span>
+<span id="cb6-9"><a></a>combined</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div><style>
 .dataframe > thead > tr,
@@ -787,8 +788,8 @@
 </tr>
 <tr class="even">
 <td>str</td>
-<td>u32</td>
-<td>u32</td>
+<td>i32</td>
+<td>i32</td>
 <td>i32</td>
 </tr>
 </thead>
@@ -868,11 +869,11 @@
 <section class="slide level2">
 
 <p><strong>Idiomatic - no intermediate variables</strong></p>
-<div id="ffc01dc4" class="cell" data-execution_count="7">
+<div id="3ed36560" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>(df</span>
 <span id="cb7-2"><a></a> .with_columns(Revenue<span class="op">=</span>pl.col(<span class="st">'Bottles_Sold'</span>).mul(<span class="st">'Retail_Price'</span>))</span>
 <span id="cb7-3"><a></a> .group_by(<span class="st">'Category'</span>)</span>
-<span id="cb7-4"><a></a> .agg(pl.col(<span class="st">'Revenue'</span>).<span class="bu">sum</span>(), pl.col(<span class="st">'Vol_Sold_gal'</span>).<span class="bu">sum</span>())</span>
+<span id="cb7-4"><a></a> .agg(pl.col(<span class="st">'Revenue'</span>,<span class="st">'Vol_Sold_gal'</span>).<span class="bu">sum</span>())</span>
 <span id="cb7-5"><a></a> .with_columns(Revenue_Rank<span class="op">=</span>pl.col(<span class="st">'Revenue'</span>).rank(method<span class="op">=</span><span class="st">'ordinal'</span>, descending<span class="op">=</span><span class="va">True</span>),</span>
 <span id="cb7-6"><a></a>               Volume_Rank<span class="op">=</span>pl.col(<span class="st">'Vol_Sold_gal'</span>).rank(method<span class="op">=</span><span class="st">'ordinal'</span>, descending<span class="op">=</span><span class="va">True</span>))</span>
 <span id="cb7-7"><a></a> .with_columns(Rank_Change<span class="op">=</span>(pl.col(<span class="st">'Revenue_Rank'</span>).cast(pl.Int32) <span class="op">-</span> pl.col(<span class="st">'Volume_Rank'</span>).cast(pl.Int32)))</span>
@@ -987,18 +988,18 @@
 <ul>
 <li>With intermediate variables</li>
 </ul>
-<div id="6e7e8e64" class="cell" data-execution_count="8">
+<div id="213910fa" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
-<pre><code>32.8 ms ± 1.87 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
+<pre><code>33.2 ms ± 2.25 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
 </div>
 </div>
 <p><br></p>
 <ul>
 <li>Idiomatic chained operation</li>
 </ul>
-<div id="ccd51aa2" class="cell" data-execution_count="9">
+<div id="d41113a2" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
-<pre><code>18.8 ms ± 877 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+<pre><code>18.1 ms ± 490 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
 </div>
 </div>
 </section>
@@ -1025,7 +1026,7 @@
 <h3 id="overuse-of-eager-execution-1">3. Overuse of eager execution</h3>
 <p>Q: Show categories with a change in ranking greater than 10</p>
 <div class="fragment">
-<div id="190b9d2d" class="cell" data-execution_count="10">
+<div id="79e10b64" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div><style>
 .dataframe > thead > tr,
@@ -1126,12 +1127,12 @@
 </section>
 <section class="slide level2">
 
-<div id="99f1a794" class="cell" data-execution_count="11">
+<div id="e3c4f148" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-code-line-numbers="2,12|11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>(df</span>
 <span id="cb10-2"><a></a> .lazy()</span>
 <span id="cb10-3"><a></a> .with_columns(Revenue<span class="op">=</span>pl.col(<span class="st">'Bottles_Sold'</span>).mul(<span class="st">'Retail_Price'</span>))</span>
 <span id="cb10-4"><a></a> .group_by(<span class="st">'Category'</span>)</span>
-<span id="cb10-5"><a></a> .agg(pl.col(<span class="st">'Revenue'</span>).<span class="bu">sum</span>(), pl.col(<span class="st">'Vol_Sold_gal'</span>).<span class="bu">sum</span>())</span>
+<span id="cb10-5"><a></a> .agg(pl.col(<span class="st">'Revenue'</span>,<span class="st">'Vol_Sold_gal'</span>).<span class="bu">sum</span>())</span>
 <span id="cb10-6"><a></a> .with_columns(Revenue_Rank<span class="op">=</span>pl.col(<span class="st">'Revenue'</span>).rank(method<span class="op">=</span><span class="st">'ordinal'</span>, descending<span class="op">=</span><span class="va">True</span>),</span>
 <span id="cb10-7"><a></a>               Volume_Rank<span class="op">=</span>pl.col(<span class="st">'Vol_Sold_gal'</span>).rank(method<span class="op">=</span><span class="st">'ordinal'</span>, descending<span class="op">=</span><span class="va">True</span>))</span>
 <span id="cb10-8"><a></a> .with_columns(Rank_Change<span class="op">=</span>(pl.col(<span class="st">'Volume_Rank'</span>).cast(pl.Int32) <span class="op">-</span> pl.col(<span class="st">'Revenue_Rank'</span>).cast(pl.Int32)))</span>
@@ -1195,18 +1196,18 @@
 <ul>
 <li>Eager mode</li>
 </ul>
-<div id="223ee02f" class="cell" data-execution_count="12">
+<div id="8f27dc3d" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-stdout">
-<pre><code>20.8 ms ± 1.74 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
+<pre><code>17.9 ms ± 318 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
 </div>
 </div>
 <p><br></p>
 <ul>
 <li>Lazy mode</li>
 </ul>
-<div id="363930a9" class="cell" data-execution_count="13">
+<div id="071868d5" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-stdout">
-<pre><code>18.8 ms ± 2.13 ms per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+<pre><code>16.5 ms ± 592 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
 </div>
 </div>
 </section>
@@ -1223,7 +1224,7 @@
 <h2>Pandas-accented mistakes</h2>
 <h3 id="adding-across-columns">4. Adding across columns</h3>
 <div class="fragment">
-<div id="559ad995" class="cell" data-execution_count="15">
+<div id="c918a64d" class="cell" data-execution_count="15">
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div><style>
 .dataframe > thead > tr,
@@ -1345,7 +1346,7 @@
 </section>
 <section class="slide level2">
 
-<div id="c8b83b11" class="cell" data-execution_count="16">
+<div id="4dd5bbd5" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-code-line-numbers="2|3|4|5|7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>(casey_revenue</span>
 <span id="cb13-2"><a></a> .with_columns(Total<span class="op">=</span>pl.col(<span class="st">'Mon'</span>) <span class="op">+</span> pl.col(<span class="st">'Tue'</span>) <span class="op">+</span> pl.col(<span class="st">'Wed'</span>) <span class="op">+</span> pl.col(<span class="st">'Thu'</span>) <span class="op">+</span> pl.col(<span class="st">'Fri'</span>),</span>
 <span id="cb13-3"><a></a>               _Total<span class="op">=</span>pl.sum_horizontal(pl.nth(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)),</span>
@@ -1464,7 +1465,7 @@
 <section class="slide level2">
 
 <p><strong>Even more idiomatic</strong></p>
-<div id="c299943a" class="cell" data-execution_count="17">
+<div id="09bc8b3e" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
 <span id="cb14-2"><a></a></span>
 <span id="cb14-3"><a></a>(casey_revenue</span>
@@ -1549,7 +1550,7 @@
 <h2>Pandas-accented mistakes</h2>
 <h3 id="dont-use-drop">5. Don’t use drop</h3>
 <div class="fragment">
-<div id="9cea5166" class="cell" data-execution_count="18">
+<div id="0d38a322" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div><style>
 .dataframe > thead > tr,
@@ -1674,7 +1675,7 @@
 </section>
 <section class="slide level2">
 
-<div id="5aaf2b05" class="cell" data-execution_count="19">
+<div id="4458cde7" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>(casey_revenue</span>
 <span id="cb15-2"><a></a> .drop(<span class="st">'Store'</span>)</span>
 <span id="cb15-3"><a></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1791,7 +1792,7 @@
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>(casey_revenue</span>
 <span id="cb16-2"><a></a> .drop(<span class="st">'Joram'</span>)</span>
 <span id="cb16-3"><a></a> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="143269bd" class="cell" data-execution_count="20">
+<div id="8b1a83cf" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-stdout">
 <pre><code>ColumnNotFoundError: "Joram" not found</code></pre>
 </div>
@@ -1800,7 +1801,7 @@
 <section class="slide level2">
 
 <p><strong>Use exclude</strong></p>
-<div id="63dd88cf" class="cell" data-execution_count="21">
+<div id="402adf77" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>(casey_revenue</span>
 <span id="cb18-2"><a></a> .select(pl.exclude(<span class="st">'Store'</span>))</span>
 <span id="cb18-3"><a></a> .select(pl.exclude(<span class="st">'Joram'</span>))</span>
@@ -1930,7 +1931,7 @@
 <h2>Pop quiz!</h2>
 <p>Is the code <strong>pandas-accented</strong> or <strong>idiomatic</strong>?</p>
 <div class="fragment">
-<div id="e2302194" class="cell" data-execution_count="22">
+<div id="73a9a91a" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>(df</span>
 <span id="cb19-2"><a></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Pack'</span>).mod(<span class="dv">3</span>) <span class="op">==</span> <span class="dv">0</span>)</span>
 <span id="cb19-3"><a></a> .shape[<span class="dv">0</span>]</span>
@@ -1946,7 +1947,7 @@
 <p><br></p>
 <div class="fragment">
 <p><strong>The idiomatic way</strong></p>
-<div id="dca01b44" class="cell" data-execution_count="23">
+<div id="0c06260b" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>(df</span>
 <span id="cb21-2"><a></a> .<span class="bu">filter</span>(pl.col(<span class="st">'Pack'</span>).mod(<span class="dv">3</span>) <span class="op">==</span> <span class="dv">0</span>)</span>
 <span id="cb21-3"><a></a> .height</span>
@@ -1961,7 +1962,7 @@
 <h2>Pop quiz!</h2>
 <p>Is the code <strong>pandas-accented</strong> or <strong>idiomatic</strong>?</p>
 <div class="fragment">
-<div id="bfcee9a2" class="cell" data-execution_count="24">
+<div id="6af01ab0" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>(df</span>
 <span id="cb23-2"><a></a> [<span class="st">'Category'</span>]</span>
 <span id="cb23-3"><a></a> .value_counts()</span>
@@ -1988,48 +1989,48 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>"GOLD RUM"</td>
-<td>6791</td>
+<td>"IMPORTED SCHNAPPS"</td>
+<td>22580</td>
+</tr>
+<tr class="even">
+<td>"MEZCAL"</td>
+<td>2016</td>
+</tr>
+<tr class="odd">
+<td>"IRISH WHISKIES"</td>
+<td>21591</td>
+</tr>
+<tr class="even">
+<td>"STRAIGHT RYE WHISKIES"</td>
+<td>13409</td>
+</tr>
+<tr class="odd">
+<td>"MIXTO TEQUILA"</td>
+<td>40405</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"NEUTRAL GRAIN SPIRITS FLAVORED"</td>
+<td>23451</td>
+</tr>
+<tr class="even">
+<td>"AMERICAN VODKAS"</td>
+<td>293030</td>
+</tr>
+<tr class="odd">
+<td>"AGED DARK RUM"</td>
+<td>5295</td>
 </tr>
 <tr class="even">
 <td>"WHITE RUM"</td>
 <td>28136</td>
 </tr>
 <tr class="odd">
-<td>"BOTTLED IN BOND BOURBON"</td>
-<td>9313</td>
-</tr>
-<tr class="even">
-<td>"SPICED RUM"</td>
-<td>64597</td>
-</tr>
-<tr class="odd">
-<td>"IMPORTED DISTILLED SPIRITS SPE…</td>
-<td>8509</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>"TRIPLE SEC"</td>
-<td>6070</td>
-</tr>
-<tr class="even">
-<td>"100% AGAVE TEQUILA"</td>
-<td>105951</td>
-</tr>
-<tr class="odd">
-<td>"BLENDED WHISKIES"</td>
-<td>60516</td>
-</tr>
-<tr class="even">
-<td>"COFFEE LIQUEURS"</td>
-<td>7803</td>
-</tr>
-<tr class="odd">
-<td>"TENNESSEE WHISKIES"</td>
-<td>53341</td>
+<td>"IMPORTED FLAVORED VODKA"</td>
+<td>19572</td>
 </tr>
 </tbody>
 </table>
@@ -2044,7 +2045,7 @@
 <section class="slide level2">
 
 <p><strong>The idiomatic way</strong></p>
-<div id="f27bec55" class="cell" data-execution_count="25">
+<div id="b1272c71" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a>(df</span>
 <span id="cb24-2"><a></a> .get_column(<span class="st">'Category'</span>)</span>
 <span id="cb24-3"><a></a> .value_counts()</span>
@@ -2071,48 +2072,48 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>"CORN WHISKIES"</td>
-<td>484</td>
+<td>"IRISH WHISKIES"</td>
+<td>21591</td>
 </tr>
 <tr class="even">
-<td>"COCKTAILS/RTD"</td>
-<td>64715</td>
+<td>"AMERICAN VODKAS"</td>
+<td>293030</td>
+</tr>
+<tr class="odd">
+<td>"BLENDED WHISKIES"</td>
+<td>60516</td>
+</tr>
+<tr class="even">
+<td>"MEZCAL"</td>
+<td>2016</td>
+</tr>
+<tr class="odd">
+<td>"AMERICAN BRANDIES"</td>
+<td>36799</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>"TENNESSEE WHISKIES"</td>
+<td>53341</td>
+</tr>
+<tr class="even">
+<td>"BOTTLED IN BOND BOURBON"</td>
+<td>9313</td>
+</tr>
+<tr class="odd">
+<td>"NEUTRAL GRAIN SPIRITS FLAVORED"</td>
+<td>23451</td>
+</tr>
+<tr class="even">
+<td>"IMPORTED VODKAS"</td>
+<td>40479</td>
 </tr>
 <tr class="odd">
 <td>"IMPORTED SCHNAPPS"</td>
 <td>22580</td>
-</tr>
-<tr class="even">
-<td>"NEUTRAL GRAIN SPIRITS FLAVORED"</td>
-<td>23451</td>
-</tr>
-<tr class="odd">
-<td>"SINGLE MALT SCOTCH"</td>
-<td>9560</td>
-</tr>
-<tr class="even">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="odd">
-<td>"SCOTCH WHISKIES"</td>
-<td>20247</td>
-</tr>
-<tr class="even">
-<td>"AMERICAN BRANDIES"</td>
-<td>36799</td>
-</tr>
-<tr class="odd">
-<td>"IMPORTED DISTILLED SPIRITS SPE…</td>
-<td>8509</td>
-</tr>
-<tr class="even">
-<td>"WHITE RUM"</td>
-<td>28136</td>
-</tr>
-<tr class="odd">
-<td>"IMPORTED DRY GINS"</td>
-<td>17288</td>
 </tr>
 </tbody>
 </table>
@@ -2124,7 +2125,7 @@
 <h2>Pop quiz!</h2>
 <p>Is the code <strong>pandas-accented</strong> or <strong>idiomatic</strong>?</p>
 <div class="fragment">
-<div id="ac8cfcde" class="cell" data-execution_count="26">
+<div id="fc8ef6dd" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-code-line-numbers="|8-11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>(df</span>
 <span id="cb25-2"><a></a> .lazy()</span>
 <span id="cb25-3"><a></a> .group_by(<span class="st">'Category'</span>)</span>
@@ -2191,7 +2192,7 @@
 <section class="slide level2">
 
 <p><strong>The idiomatic way</strong></p>
-<div id="21e24099" class="cell" data-execution_count="27">
+<div id="3c8c564e" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-code-line-numbers="10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a>(df</span>
 <span id="cb26-2"><a></a> .lazy()</span>
 <span id="cb26-3"><a></a> .group_by(<span class="st">'Category'</span>)</span>

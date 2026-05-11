@@ -2671,7 +2671,7 @@
     "href": "blog/pycon-usa/index.html#pandas-accented-mistakes-2",
     "title": "Don’t Write Polars Code with a Pandas Accent",
     "section": "Pandas-accented mistakes",
-    "text": "Pandas-accented mistakes\n2. Multiple intermediate variables\nVariable 1\n\nrevenue_ranking = (df\n .with_columns((pl.col('Bottles_Sold') * pl.col('Retail_Price')).alias('Total_Revenue'))\n .group_by('Category')\n .agg(pl.col('Total_Revenue').sum())\n .sort('Total_Revenue', descending=True)\n .with_row_index('Revenue_Rank', offset=1)\n )\nrevenue_ranking\n\n\nshape: (44, 3)\n\n\n\nRevenue_Rank\nCategory\nTotal_Revenue\n\n\nu32\nstr\nf64\n\n\n\n\n1\n\"AMERICAN VODKAS\"\n4.7688e7\n\n\n2\n\"CANADIAN WHISKIES\"\n3.2473e7\n\n\n3\n\"STRAIGHT BOURBON WHISKIES\"\n2.8392e7\n\n\n4\n\"100% AGAVE TEQUILA\"\n2.5294e7\n\n\n5\n\"WHISKEY LIQUEUR\"\n2.0025e7\n\n\n…\n…\n…\n\n\n40\n\"TRIPLE SEC\"\n610540.07\n\n\n41\n\"MEZCAL\"\n347583.57\n\n\n42\n\"NEUTRAL GRAIN SPIRITS\"\n327735.29\n\n\n43\n\"CORN WHISKIES\"\n82421.91\n\n\n44\n\"AMERICAN SLOE GINS\"\n15090.18"
+    "text": "Pandas-accented mistakes\n2. Multiple intermediate variables\nVariable 1\n\nrevenue_ranking = (df\n .with_columns(Total_Revenue=pl.col('Bottles_Sold') * pl.col('Retail_Price'))\n .group_by('Category')\n .agg(pl.col('Total_Revenue').sum())\n .sort('Total_Revenue', descending=True)\n .with_row_index('Revenue_Rank', offset=1)\n )\nrevenue_ranking\n\n\nshape: (44, 3)\n\n\n\nRevenue_Rank\nCategory\nTotal_Revenue\n\n\nu32\nstr\nf64\n\n\n\n\n1\n\"AMERICAN VODKAS\"\n4.7688e7\n\n\n2\n\"CANADIAN WHISKIES\"\n3.2473e7\n\n\n3\n\"STRAIGHT BOURBON WHISKIES\"\n2.8392e7\n\n\n4\n\"100% AGAVE TEQUILA\"\n2.5294e7\n\n\n5\n\"WHISKEY LIQUEUR\"\n2.0025e7\n\n\n…\n…\n…\n\n\n40\n\"TRIPLE SEC\"\n610540.07\n\n\n41\n\"MEZCAL\"\n347583.57\n\n\n42\n\"NEUTRAL GRAIN SPIRITS\"\n327735.29\n\n\n43\n\"CORN WHISKIES\"\n82421.91\n\n\n44\n\"AMERICAN SLOE GINS\"\n15090.18"
   },
   {
     "objectID": "blog/pycon-usa/index.html#pandas-accented-mistakes-3",
@@ -2720,7 +2720,7 @@
     "href": "blog/pycon-usa/index.html#pop-quiz-1",
     "title": "Don’t Write Polars Code with a Pandas Accent",
     "section": "Pop quiz!",
-    "text": "Pop quiz!\nIs the code pandas-accented or idiomatic?\n\n\n(df\n ['Category']\n .value_counts()\n )\n\n\nshape: (44, 2)\n\n\n\nCategory\ncount\n\n\nstr\nu32\n\n\n\n\n\"GOLD RUM\"\n6791\n\n\n\"WHITE RUM\"\n28136\n\n\n\"BOTTLED IN BOND BOURBON\"\n9313\n\n\n\"SPICED RUM\"\n64597\n\n\n\"IMPORTED DISTILLED SPIRITS SPE…\n8509\n\n\n…\n…\n\n\n\"TRIPLE SEC\"\n6070\n\n\n\"100% AGAVE TEQUILA\"\n105951\n\n\n\"BLENDED WHISKIES\"\n60516\n\n\n\"COFFEE LIQUEURS\"\n7803\n\n\n\"TENNESSEE WHISKIES\"\n53341\n\n\n\n\n\n\n\n\npandas-accented"
+    "text": "Pop quiz!\nIs the code pandas-accented or idiomatic?\n\n\n(df\n ['Category']\n .value_counts()\n )\n\n\nshape: (44, 2)\n\n\n\nCategory\ncount\n\n\nstr\nu32\n\n\n\n\n\"IMPORTED SCHNAPPS\"\n22580\n\n\n\"MEZCAL\"\n2016\n\n\n\"IRISH WHISKIES\"\n21591\n\n\n\"STRAIGHT RYE WHISKIES\"\n13409\n\n\n\"MIXTO TEQUILA\"\n40405\n\n\n…\n…\n\n\n\"NEUTRAL GRAIN SPIRITS FLAVORED\"\n23451\n\n\n\"AMERICAN VODKAS\"\n293030\n\n\n\"AGED DARK RUM\"\n5295\n\n\n\"WHITE RUM\"\n28136\n\n\n\"IMPORTED FLAVORED VODKA\"\n19572\n\n\n\n\n\n\n\n\npandas-accented"
   },
   {
     "objectID": "blog/pycon-usa/index.html#pop-quiz-2",
