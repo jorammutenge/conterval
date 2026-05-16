@@ -1,7 +1,7 @@
 ---
 title: "Don't Write Polars Code with a Pandas Accent"
 subtitle: "JORAM MUTENGE"
-date: '2026-05-15'
+date: '2026-05-16'
 
 project:
   title: "idiomatic-polars-talk"
@@ -144,10 +144,10 @@ df = pl.read_parquet('../../datasets/liquor_sales_iowa.parquet')
 ```{python}
 #| echo: true
 revenue_ranking = (df
- .with_columns(Total_Revenue=pl.col('Bottles_Sold') * pl.col('Retail_Price'))
+ .with_columns(Revenue=pl.col('Bottles_Sold') * pl.col('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Total_Revenue').sum())
- .sort('Total_Revenue', descending=True)
+ .agg(pl.col('Revenue').sum())
+ .sort('Revenue', descending=True)
  .with_row_index('Revenue_Rank', offset=1)
  )
 revenue_ranking
@@ -218,10 +218,10 @@ combined
 ```{python}
 %%timeit
 revenue_ranking = (df
- .with_columns(Total_Revenue=pl.col('Bottles_Sold') * pl.col('Retail_Price'))
+ .with_columns(Revenue=pl.col('Bottles_Sold') * pl.col('Retail_Price'))
  .group_by('Category')
- .agg(pl.col('Total_Revenue').sum())
- .sort('Total_Revenue', descending=True)
+ .agg(pl.col('Revenue').sum())
+ .sort('Revenue', descending=True)
  .with_row_index('Revenue_Rank', offset=1)
  )
 
@@ -653,20 +653,13 @@ Is the code **pandas-accented** or **idiomatic**?
 
 ::: {.column width="40%"}
 
-<br>
-<br>
+::: {style="text-align: center"}
+![{{< fa brands linkedin >}} let's connect](../../images/qr_linkedin.svg){width=160px}
+:::
 
-{{< fa brands github >}} <span style="font-size: 0.9em;">
-[github.com/jorammutenge](https://github.com/jorammutenge)
-</span>
-
-{{< fa brands linkedin >}} <span style="font-size: 0.9em;">
-[linkedin.com/in/jorammutenge](https://linkedin.com/in/jorammutenge)
-</span>
-
-{{< fa solid globe >}} <span style="font-size: 0.9em;">
-[www.conterval.com/blog/](https://www.conterval.com/blog/)
-</span>
+::: {style="text-align: center"}
+![{{< fa display >}} talk slides](../../images/qr_pycon26.svg){width=160px}
+:::
 
 :::
 
