@@ -12,19 +12,18 @@ format:
 
 <div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 50pt; margin-bottom: 15px; margin-top: -4rem;">
   <img src="images/logo.png" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
-  <p style="color: white;">a data consulting company</p>
+  <p style="color: white;">a data & AI consulting company</p>
 </div>
 
 
 <!-- Services card -->
 <div class="card2" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
   <h2 style="text-align: center;">Our Services</h2>
-  <p>Data Analysis</p>
-  <p>Data Cleaning</p>
-  <p>Data Engineering</p>
-  <p>Data Visualization</p>
-  <p>Analytics Engineering</p>
+  <p>**Data** Cleaning, Analysis, Visualization, Engineering</p>
+  <p>Dashboard Building, Report Automation</p>
   <p>Extract Transform Load (ETL)</p>
+  <p>Analytics Engineering</p>
+  <p>AI implementation</p>
 </div>
 
 
