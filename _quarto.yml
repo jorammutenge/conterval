@@ -3,6 +3,7 @@ project:
   output-dir: docs
 
 website:
+  llms-txt: true
   favicon: images/favicon.png
   site-url: https://www.conterval.com
   page-navigation: true
