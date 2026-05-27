@@ -48,4 +48,4 @@ extra-files:
   - CNAME
 
 execute:
-  freeze: auto
+  freeze: true
