@@ -454,5 +454,8 @@
   },
   "blog/quarto-revealjs-slides-to-pdf/index.qmd": {
     "index.html": "9d6d5af2"
+  },
+  "blog/select-subsets-of-rows-and-columns-pandas-polars/index.qmd": {
+    "index.html": "e18d99f7"
   }
 }

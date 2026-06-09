@@ -1,0 +1,442 @@
+---
+title: "Slicing and dicing pandas & polars dataframes"
+subtitle: "How to select subsets of rows and columns"
+author: '{{< var author >}}'
+date: '2026-06-08'
+date-format: iso
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+categories: [data analysis]
+---
+
+A few years ago, I read an article on pandas’ `loc` method by Matt Harrison, published on the now-defunct Ponder website. I loved reading it because it showed, in depth, the many ways to use `loc`. I want to revisit the article and perform in Polars the operations that Matt performed in pandas. Matt also created a chart at the end of the article using pandas’ built-in charting library, which relies on Matplotlib. I’ll recreate two versions of the same chart: one using HvPlot and the other using Glyphx, a new charting library I’m slowly falling in love with.
+
+## The dataset
+
+The dataset we’ll be analyzing contains crime data from neighborhoods in Los Angeles. I’ll read the dataset with pandas and store it in a variable called *df*. The Polars dataframe will be stored in a variable called *data*.
+
+```{python}
+import pandas as pd
+
+url = "https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD"
+df = pd.read_csv(url)
+df.head()
+```
+
+I'll read the dataset again with Polars.
+
+```{python}
+import polars as pl
+
+data = pl.read_csv(url)
+data.head()
+```
+
+## Selecting a row
+
+The `loc` method in pandas can be used to select specific rows and columns. I’ll select the fifth row in the dataframe.
+
+```{python}
+df.loc[5]
+```
+
+Let’s do the same with Polars. I’ll show two ways to select a specific row.
+
+**Version 1**
+
+```{python}
+(data
+ .slice(5, 1)
+ )
+```
+
+**Version 2**
+
+```{python}
+(data
+ .gather(5)
+ )
+```
+
+Personally, I prefer version 2, but you can use whichever one you like.
+
+::: {.callout-note}
+You’ve probably noticed that the selected row is displayed differently by the two libraries. Polars displays it horizontally, while pandas displays it vertically.
+:::
+
+If we wanted Polars to produce output closer to the pandas output, we could use `to_dict` to produce a list and then retrieve the first item in that list, which happens to be the dictionary we want.
+
+```{python}
+(data
+ .gather(5)
+ .to_dicts()[0]
+ )
+```
+
+Although this is a dictionary, it is displayed vertically and therefore looks closer to the pandas output.
+
+## Selecting columns
+
+Now let’s use `loc` to select a single column in *df*. The `:` means “return all the rows in the dataframe.”
+
+```{python}
+df.loc[:, 'Crm Cd 1']
+```
+
+In Polars, we can display a single column by using the `select` method.
+
+```{python}
+data.select('Crm Cd 1')
+```
+
+The first thing to note between these two outputs is that when a single column is selected in pandas, the output is a series, unlike in Polars, where the output is always a dataframe regardless of how many columns you select. Another difference is that the pandas output shows an index. Polars dataframes, on the other hand, do not have an index unless you create one.
+
+If we really want the Polars output to be a series as well, we can do it with `to_series`.
+
+```{python}
+(data
+ .select('Crm Cd 1')
+ .to_series()
+ )
+```
+
+The two Polars outputs look the same, but they are different types. The way I distinguish between them is by looking at their shape at the top. The dataframe shows both the number of rows and columns: `{python} data.select('Crm Cd 1').shape`, while the series only shows the number of rows: `{python} data.select('Crm Cd 1').to_series().shape`.
+
+Here’s how we can select two columns and all the rows in the pandas dataframe.
+
+```{python}
+df.loc[:, ['AREA', 'TIME OCC']]
+```
+
+And here’s how to do it the Polars way.
+
+```{python}
+(data
+ .select('AREA','TIME OCC')
+ )
+```
+
+## Combine with list of rows and column labels
+
+We can use a list to select the rows we want to return in both pandas and Polars dataframes.
+
+```{python}
+df.loc[[0,1,2], ['AREA', 'TIME OCC']]
+```
+
+In a Polars dataframe, it is not necessary to use a list to select columns.
+
+```{python}
+(data
+ .gather([0,1,2])
+ .select('AREA', 'TIME OCC')
+ )
+```
+
+## Selecting rows and columns over a range
+
+Instead of listing the rows or columns we want to select, we can select them over a range. Let’s get the rows from 0 to 2 and the columns from *TIME OCC* to *Part 1-2* in both dataframes.
+
+```{python}
+df.loc[0:2, 'TIME OCC':'Part 1-2']
+```
+
+::: {.callout-note}
+In pandas, range selection using `loc` is inclusive. Thus, selecting rows from 0 to 2 includes the row at index position 2.
+:::
+
+It turns out that in Polars, there is no direct way to select columns over a range by their names. However, we can achieve the same result as in the pandas example using two workarounds. Both require selecting columns by their index positions.
+
+I’ll begin with the one that uses a list comprehension.
+
+```{python}
+cols = data.columns
+data.slice(0, 3).select(cols[cols.index("TIME OCC") : cols.index("Part 1-2") + 1])
+```
+
+::: {.callout-note}
+We added 1 because, in Polars, index selection is not inclusive. Without it, we would miss the *Part 1-2* column in the resulting dataframe.
+:::
+
+I would argue that the above method is not idiomatic. List comprehensions are not native to Polars; remember that the library is written in Rust. Here’s the idiomatic approach.
+
+```{python}
+(data
+ .select(pl.nth(range(data.get_column_index('TIME OCC'), data.get_column_index('Part 1-2') + 1)))
+ )
+```
+
+Because `loc` accepts list comprehensions, we can add logic to customize our row or column selection. The example below pulls out every third row and selects only the columns that contain *'Crm'* in their names.
+
+```{python}
+df.loc[[True if i%3 == 2 else False for i in range(len(df))],
+       [True if 'Crm' in col else False for col in df.columns]] 
+```
+
+We can achieve similar results in Polars by creating an index or by using `gather_every`. The example below creates an index on the dataframe and performs a modulo calculation on the generated index numbers to get the desired rows. Then we use a regex pattern to select the columns that contain the string *'Crm'*.
+
+```{python}
+(data
+ .with_row_index()
+ .filter(pl.col('index') % 3 == 2)
+ .select(pl.col('^.*Crm.*$'))
+)
+```
+
+An even more idiomatic way to write the above code is by using `gather_every`.
+
+```{python}
+(data
+ .gather_every(3, offset=2) # <1>
+ .select(pl.col('^.*Crm.*$'))
+)
+```
+
+1. Remember that the condition `% 3 == 2` keeps rows where the index has a remainder of 2 when divided by 3, i.e., indices 2, 5, 8, 11, and so on. Therefore, the first row selected is index 2, which maps directly to `offset=2`.
+
+Just to show off how versatile Polars is, I’ll demonstrate other interesting ways to write the code above. I’ll begin with the one that uses the `arange` function. This also eliminates the need for an index.
+
+```{python}
+(data
+ .filter((pl.arange(0, pl.len()) % 3) == 2)
+ .select(pl.col('^.*Crm.*$'))
+ )
+```
+
+We can also use the `int_range` function to get the same result.
+
+```{python}
+(data
+ .filter((pl.int_range(pl.len()) % 3) == 2)
+ .select(pl.col('^.*Crm.*$'))
+)
+```
+
+Regex patterns are notorious for being difficult to remember. We can avoid them altogether by using special selectors in Polars.
+
+```{python}
+import polars.selectors as cs
+
+(data
+ .filter(pl.int_range(pl.len()).mod(3) == 2)
+ .select(cs.contains('Crm'))
+ )
+```
+
+## Boolean arrays
+
+Most row filtering in pandas uses boolean masks. Let’s begin with a simple example: filter for rows where *AREA NAME* is 'Central'. The code below produces a boolean mask.
+
+```{python}
+df['AREA NAME'] == 'Central'
+```
+
+We can use this boolean mask in `loc` to get the desired rows in the dataframe.
+
+```{python}
+df.loc[df['AREA NAME'] == 'Central']
+```
+
+By contrast, Polars does not require a boolean mask to perform this filtering operation.
+
+```{python}
+(data
+ .filter(pl.col('AREA NAME') == 'Central')
+ )
+```
+
+Now let’s move to a more interesting example. The goal is to select all the columns that have more than the median number of unique values. We’ll calculate the number of unique entries in each column and then find the median value for those counts.
+
+Let’s show the number of unique values in each column of the pandas dataframe.
+
+```{python}
+df.nunique()
+```
+
+Because the output is displayed vertically, calculating the median is as simple as calling `median`.
+
+```{python}
+df.nunique().median()
+```
+
+The calculation is somewhat more involved in Polars. To begin with, the result showing the number of unique values in each column is displayed horizontally as a dataframe.
+
+```{python}
+data.select(pl.all().n_unique())
+```
+
+We can calculate the median value `{python} data.select(pl.all().n_unique()).transpose().median().item()` by using the `transpose` method or by using the `concat_list` function.
+
+```{python}
+(data
+ .select(pl.all().n_unique())
+ .transpose()
+ .median()
+ .item()
+ )
+```
+
+Transposing flips the dataframe from horizontal to vertical, making it possible to perform the median calculation.
+
+The second approach collects the unique counts for each column into a list and then performs the median calculation.
+
+```{python}
+(data
+ .select(pl.all().n_unique())                   
+ .select(pl.concat_list(pl.all()).list.median())
+ .item()                                        
+)
+```
+
+Now that we know the median value is `{python} data.select(pl.all().n_unique()).transpose().median().item()`, we can use it to get the desired columns. Here’s how to do it in pandas.
+
+```{python}
+df.loc[:, df.nunique() > 140]
+```
+
+And here’s how to do it in Polars.
+
+```{python}
+(data
+ .select(col for col in data.columns if data.select(pl.col(col).n_unique()).item() > 140)
+ )
+```
+
+## Closing with a practical example
+
+Let’s end with a visualization of the previous analysis. I’ll focus on the *Burglary from Vehicle* column and plot it over time for the different *AREA NAME* values. Before we begin creating the charts, I’ll show the dataframe that will be used to create the plot so we know what it looks like.
+
+Here’s the pandas version.
+
+```{python}
+(df
+ .astype({'Date Rptd': 'datetime64[ns]',
+          'DATE OCC': 'datetime64[ns]',
+          })
+ .groupby([pd.Grouper(key='DATE OCC', freq='ME'), 'AREA NAME', 'Crm Cd Desc'])
+ .size()
+ .unstack()
+ .loc[:, 'BURGLARY FROM VEHICLE']
+ .unstack()
+ .loc[:, lambda adf: sorted(adf.columns, key=lambda col: 1 if col == 'Hollywood' else -1)] # <1>
+)
+```
+
+1. Move the *Hollywood* column to the end so that it appears on top of the other columns.
+
+And here’s the Polars version, which I’ll store in a variable called *to_plot* to use later.
+
+```{python}
+to_plot = (data
+ .with_columns(pl.col('Date Rptd', 'DATE OCC').str.strptime(pl.Datetime, '%m/%d/%Y %I:%M:%S %p'))
+ .sort('DATE OCC')
+ .group_by_dynamic('DATE OCC', every='1mo', group_by=['AREA NAME', 'Crm Cd Desc'])
+ .agg(pl.len())
+ .filter(pl.col('Crm Cd Desc') =='BURGLARY FROM VEHICLE')
+ .select(pl.exclude('Crm Cd Desc'))
+ .pivot(on='AREA NAME', index='DATE OCC', values='len')
+ .select(pl.all().exclude('Hollywood'), 'Hollywood') # <1>
+)
+to_plot
+```
+
+1. Move the *Hollywood* column to the end of the dataframe.
+
+## Creating the charts
+
+**With pandas’ built-in plot**
+
+It turns out that pandas has built-in plotting capabilities, so we do not have to import a charting library.
+
+```{python}
+def set_colors(df):
+    global colors
+    colors = ['#991111' if col == 'Hollywood' else '#999999' for col in df.columns]
+    return df
+
+ax = (df
+ .astype({'Date Rptd': 'datetime64[ns]',
+          'DATE OCC': 'datetime64[ns]',
+          })
+ .groupby([pd.Grouper(key='DATE OCC', freq='ME'), 'AREA NAME', 'Crm Cd Desc'])
+ .size()
+ .unstack()
+ .loc[:, 'BURGLARY FROM VEHICLE']
+ .unstack()
+ .loc[:, lambda adf: sorted(adf.columns, key=lambda col: 1 if col == 'Hollywood' else -1)]
+ .pipe(set_colors)
+ .plot(color=colors, title='BURGLARY FROM VEHICLE in LA', figsize=(10,6))
+)
+ax.legend(bbox_to_anchor=(1,1), ncol=2);
+```
+
+**With hvplot**
+
+HvPlot is one of the few charting libraries that does not require converting the data into a pandas dataframe or a Python list to create charts.
+
+```{python}
+import hvplot.polars
+
+(to_plot
+ .pipe(lambda df_: df_.hvplot.line(
+       x='DATE OCC',
+       y=(cols := [c for c in df_.columns[1:] if c != 'Hollywood'] + ['Hollywood']),
+       color=['#999999'] * (len(cols) - 1) + ['#991111'],
+       title='BURGLARY FROM VEHICLE in LA',
+       legend_opts={'title':'Neighborhood'},
+       legend='top_left', legend_cols=3, height=575, width=900))
+)
+```
+
+**With glyphx**
+
+I’ve been experimenting with the Glyphx charting library after hearing about it from Christopher Bailey on *The Real Python Podcast*. It captured my interest because the charts created with this library are in SVG format. This is handy because you can export the chart and enhance it in a tool like Inkscape.
+
+However, Glyphx currently does not support Polars dataframes. We have to pass a list to the x-axis or y-axis to create the chart.
+
+```{python}
+from glyphx import Figure
+from glyphx.series import LineSeries
+
+non_hollywood = [col for col in to_plot.columns[1:] if col != 'Hollywood']
+
+dates = to_plot['DATE OCC'].to_list()
+
+fig = Figure(width=800, height=450).set_title('BURGLARY FROM VEHICLE in LA')
+
+for col in non_hollywood:
+    fig.add(LineSeries(dates, to_plot[col].to_list(), color='#bbbbbb', label=col))
+
+fig.add(LineSeries(dates, to_plot['Hollywood'].to_list(), color='red', label='Hollywood'))
+
+fig.set_legend('right').tight_layout()
+fig.show();
+```
+
+Other limitations I encountered are:
+
+1. The circle markers on the lines cannot be removed. Because the data points are very close to each other in the lower part of the chart, the markers make the chart look more like a scatterplot than a line chart.
+2. It's not possible to display the legend in a three-column layout like in the HvPlot chart. I do not like the long list of neighborhoods, so I ended up listing only the neighborhood of interest in the legend.
+
+```{python}
+from glyphx import Figure
+from glyphx.series import LineSeries
+
+non_hollywood = [col for col in to_plot.columns[1:] if col != 'Hollywood']
+
+dates = to_plot['DATE OCC'].to_list()
+
+fig = Figure(width=800, height=450).set_title('BURGLARY FROM VEHICLE in LA')
+
+for col in non_hollywood:
+    fig.add(LineSeries(dates, to_plot[col].to_list(), color='#bbbbbb'))
+
+fig.add(LineSeries(dates, to_plot['Hollywood'].to_list(), color='red', label='Hollywood'))
+
+fig.set_legend('right').tight_layout()
+fig.show();
+```
+
+Thanks for reading. To improve your data analysis skill using the Polars library, check out my book {{< var deep_analysis_book >}}.
