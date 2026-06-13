@@ -1,3 +1,9 @@
+### [How the 52-week high/low can guide your investment choice](../blog/52-week-high-and-low/index.llms.md)
+
+2026-06-09
+
+Joram Mutenge
+
 ### [Slicing and dicing pandas & polars dataframes](../blog/select-subsets-of-rows-and-columns-pandas-polars/index.llms.md)
 
 [How to select subsets of rows and columns](../blog/select-subsets-of-rows-and-columns-pandas-polars/index.llms.md)

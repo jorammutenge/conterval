@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/52-week-high-and-low/index.html",
       "/blog/select-subsets-of-rows-and-columns-pandas-polars/index.html",
       "/blog/pycon-usa/index.html",
       "/blog/quarto-revealjs-slides-to-pdf/index.html",

@@ -457,5 +457,8 @@
   },
   "blog/select-subsets-of-rows-and-columns-pandas-polars/index.qmd": {
     "index.html": "e18d99f7"
+  },
+  "blog/52-week-high-and-low/index.qmd": {
+    "index.html": "179103b5"
   }
 }
