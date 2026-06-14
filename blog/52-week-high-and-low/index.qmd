@@ -261,6 +261,8 @@ plot_gamestop = (pl.from_pandas(data.reset_index())
                  legend_cols=1, legend='top_left', legend_opts={'title':''})
 ).opts(hooks=[format_y_axis])
 
+font = 'Harmonia Sans Pro Cyr'
+
 bokeh_plot = hv.render(plot_gamestop, backend='bokeh')
 bokeh_plot.title.text_font = font
 bokeh_plot.title.text_font_size = '18pt'
