@@ -460,5 +460,8 @@
   },
   "blog/52-week-high-and-low/index.qmd": {
     "index.html": "179103b5"
+  },
+  "blog/advanced-pivot-tables-in-polars/index.qmd": {
+    "index.html": "57a25527"
   }
 }

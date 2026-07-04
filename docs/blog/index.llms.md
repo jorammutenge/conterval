@@ -1,3 +1,11 @@
+### [Advanced pivot tables with polars](../blog/advanced-pivot-tables-in-polars/index.llms.md)
+
+[Sometimes group by does the trick](../blog/advanced-pivot-tables-in-polars/index.llms.md)
+
+2026-07-03
+
+Joram Mutenge
+
 ### [How the 52-week high/low can guide your investment choice](../blog/52-week-high-and-low/index.llms.md)
 
 2026-06-09

@@ -8,3 +8,5 @@ finance_course: "[Polars for Finance course](https://www.udemy.com/course/gettin
 # Books
 big_data: "[Emails from a Big Data Entrepreneur to His Son](https://www.amazon.com/dp/B0FHFWZFT9/)"
 deep_analysis_book: "[Deep Analysis with Polars](https://www.amazon.com/dp/B0GXG1BHG6/)"
+polars_book_amazon: "[Deep Analysis with Polars, on Amazon](https://www.amazon.com/dp/B0GXG1BHG6/)"
+polars_book_leanpub: "[Deep Analysis with Polars, on Leanpub](https://leanpub.com/deep-analysis-with-polars)"

@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/advanced-pivot-tables-in-polars/index.html",
       "/blog/52-week-high-and-low/index.html",
       "/blog/select-subsets-of-rows-and-columns-pandas-polars/index.html",
       "/blog/pycon-usa/index.html",
