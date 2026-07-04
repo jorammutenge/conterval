@@ -14,7 +14,7 @@ Published
 
 As a data professional, it’s inevitable that you’ll end up creating a pivot table. Stakeholders love pivot tables, and they won’t pass up a chance to request one from you. It’s not surprising that most people think of Microsoft Excel when they hear *PivotTable*. It turns out that Microsoft held a trademark on the term in the United States from 1994 to 2020. Today, however, the name *PivotTable* has become so generic that it no longer qualifies for trademark protection.
 
-![](image.jpeg)
+![](image.png)
 
 Hex swag I got at PyConUS 2026
 
@@ -89,18 +89,18 @@ shape: (12, 4)
 | Name                           | Account  | Price    | Quantity |
 |--------------------------------|----------|----------|----------|
 | str                            | f64      | f64      | f64      |
-| "Stokes LLC"                   | 239344.0 | 7500.0   | 1.0      |
-| "Keeling LLC"                  | 688981.0 | 100000.0 | 5.0      |
-| "Kassulke, Ondricka and Metz"  | 307599.0 | 7000.0   | 3.0      |
-| "Kulas Inc"                    | 218895.0 | 25000.0  | 1.5      |
-| "Kiehn-Spinka"                 | 146832.0 | 65000.0  | 2.0      |
-| "Purdy-Kunde"                  | 163416.0 | 30000.0  | 1.0      |
-| "Koepp Ltd"                    | 729833.0 | 35000.0  | 2.0      |
-| "Herman LLC"                   | 141962.0 | 65000.0  | 2.0      |
 | "Barton LLC"                   | 740150.0 | 35000.0  | 1.0      |
-| "Trantow-Barrows"              | 714466.0 | 15000.0  | 1.333333 |
 | "Fritsch, Russel and Anderson" | 737550.0 | 35000.0  | 1.0      |
+| "Kassulke, Ondricka and Metz"  | 307599.0 | 7000.0   | 3.0      |
+| "Trantow-Barrows"              | 714466.0 | 15000.0  | 1.333333 |
+| "Kulas Inc"                    | 218895.0 | 25000.0  | 1.5      |
+| "Koepp Ltd"                    | 729833.0 | 35000.0  | 2.0      |
+| "Keeling LLC"                  | 688981.0 | 100000.0 | 5.0      |
+| "Herman LLC"                   | 141962.0 | 65000.0  | 2.0      |
+| "Kiehn-Spinka"                 | 146832.0 | 65000.0  | 2.0      |
 | "Jerde-Hilpert"                | 412290.0 | 5000.0   | 2.0      |
+| "Stokes LLC"                   | 239344.0 | 7500.0   | 1.0      |
+| "Purdy-Kunde"                  | 163416.0 | 30000.0  | 1.0      |
 
 In this case, the values in *Name* are unique keys that appear only once. If the original dataframe contained one name appearing two or more times, Polars would calculate the average of its values and display the company name only once in the final output. This is exactly what `group_by` does.
 
@@ -119,17 +119,17 @@ shape: (12, 6)
 |----|----|----|----|----|----|
 | str | str | str | f64 | f64 | f64 |
 | "Kulas Inc" | "Daniel Hilton" | "Debra Henley" | 218895.0 | 25000.0 | 1.5 |
-| "Stokes LLC" | "Cedric Moss" | "Fred Anderson" | 239344.0 | 7500.0 | 1.0 |
-| "Kassulke, Ondricka and Metz" | "Wendy Yule" | "Fred Anderson" | 307599.0 | 7000.0 | 3.0 |
-| "Koepp Ltd" | "Wendy Yule" | "Fred Anderson" | 729833.0 | 35000.0 | 2.0 |
-| "Trantow-Barrows" | "Craig Booker" | "Debra Henley" | 714466.0 | 15000.0 | 1.333333 |
-| "Herman LLC" | "Cedric Moss" | "Fred Anderson" | 141962.0 | 65000.0 | 2.0 |
 | "Keeling LLC" | "Wendy Yule" | "Fred Anderson" | 688981.0 | 100000.0 | 5.0 |
-| "Barton LLC" | "John Smith" | "Debra Henley" | 740150.0 | 35000.0 | 1.0 |
-| "Kiehn-Spinka" | "Daniel Hilton" | "Debra Henley" | 146832.0 | 65000.0 | 2.0 |
 | "Jerde-Hilpert" | "John Smith" | "Debra Henley" | 412290.0 | 5000.0 | 2.0 |
-| "Fritsch, Russel and Anderson" | "Craig Booker" | "Debra Henley" | 737550.0 | 35000.0 | 1.0 |
+| "Herman LLC" | "Cedric Moss" | "Fred Anderson" | 141962.0 | 65000.0 | 2.0 |
+| "Kiehn-Spinka" | "Daniel Hilton" | "Debra Henley" | 146832.0 | 65000.0 | 2.0 |
+| "Stokes LLC" | "Cedric Moss" | "Fred Anderson" | 239344.0 | 7500.0 | 1.0 |
+| "Koepp Ltd" | "Wendy Yule" | "Fred Anderson" | 729833.0 | 35000.0 | 2.0 |
+| "Barton LLC" | "John Smith" | "Debra Henley" | 740150.0 | 35000.0 | 1.0 |
+| "Trantow-Barrows" | "Craig Booker" | "Debra Henley" | 714466.0 | 15000.0 | 1.333333 |
+| "Kassulke, Ondricka and Metz" | "Wendy Yule" | "Fred Anderson" | 307599.0 | 7000.0 | 3.0 |
 | "Purdy-Kunde" | "Cedric Moss" | "Fred Anderson" | 163416.0 | 30000.0 | 1.0 |
+| "Fritsch, Russel and Anderson" | "Craig Booker" | "Debra Henley" | 737550.0 | 35000.0 | 1.0 |
 
 Of course, this is not a particularly useful output. A better result is one that shows a combination of manager and representative as the key values.
 
@@ -148,8 +148,8 @@ shape: (5, 5)
 | "Debra Henley"  | "Craig Booker"  | 720237.0 | 20000.0      | 1.25     |
 | "Fred Anderson" | "Wendy Yule"    | 614061.5 | 44250.0      | 3.0      |
 | "Fred Anderson" | "Cedric Moss"   | 196016.5 | 27500.0      | 1.25     |
-| "Debra Henley"  | "Daniel Hilton" | 194874.0 | 38333.333333 | 1.666667 |
 | "Debra Henley"  | "John Smith"    | 576220.0 | 20000.0      | 1.5      |
+| "Debra Henley"  | "Daniel Hilton" | 194874.0 | 38333.333333 | 1.666667 |
 
 The output above shows that Fred Anderson has two representatives, while Debra Henley has three.
 
@@ -167,11 +167,11 @@ shape: (5, 3)
 | Manager         | Rep             | Price        |
 |-----------------|-----------------|--------------|
 | str             | str             | f64          |
+| "Debra Henley"  | "Craig Booker"  | 20000.0      |
 | "Debra Henley"  | "Daniel Hilton" | 38333.333333 |
 | "Fred Anderson" | "Wendy Yule"    | 44250.0      |
-| "Fred Anderson" | "Cedric Moss"   | 27500.0      |
 | "Debra Henley"  | "John Smith"    | 20000.0      |
-| "Debra Henley"  | "Craig Booker"  | 20000.0      |
+| "Fred Anderson" | "Cedric Moss"   | 27500.0      |
 
 We can also use an aggregation other than `mean`.
 
@@ -187,11 +187,11 @@ shape: (5, 3)
 | Manager         | Rep             | Price  |
 |-----------------|-----------------|--------|
 | str             | str             | i64    |
-| "Fred Anderson" | "Wendy Yule"    | 177000 |
-| "Debra Henley"  | "Craig Booker"  | 80000  |
-| "Debra Henley"  | "Daniel Hilton" | 115000 |
 | "Fred Anderson" | "Cedric Moss"   | 110000 |
 | "Debra Henley"  | "John Smith"    | 40000  |
+| "Fred Anderson" | "Wendy Yule"    | 177000 |
+| "Debra Henley"  | "Daniel Hilton" | 115000 |
+| "Debra Henley"  | "Craig Booker"  | 80000  |
 
 Or even use multiple aggregation functions.
 

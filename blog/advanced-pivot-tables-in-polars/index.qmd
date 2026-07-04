@@ -14,7 +14,7 @@ categories: [data analysis]
 As a data professional, it's inevitable that you'll end up creating a pivot table. Stakeholders love pivot tables, and they won't pass up a chance to request one from you. It's not surprising that most people think of Microsoft Excel when they hear *PivotTable*. It turns out that Microsoft held a trademark on the term in the United States from 1994 to 2020. Today, however, the name *PivotTable* has become so generic that it no longer qualifies for trademark protection.
 
 ::: {.gray-text .center-text}
-![Hex swag I got at PyConUS 2026](image.jpeg){fig-align="center"}
+![Hex swag I got at PyConUS 2026](image.png){fig-align="center"}
 :::
 
 Fortunately, pivot tables can also be created with Polars. This means you won't have to export your data to Excel and fiddle with it just to create a pivot table.
