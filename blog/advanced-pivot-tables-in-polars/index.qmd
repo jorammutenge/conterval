@@ -32,10 +32,10 @@ Larger companies typically have CRM tools or other software that the sales team 
 
 The benefits of creating a pivot table with Polars are:
 
-* It's quicker once it's set up.
-* It's self-documenting. You can look at the code and understand what it does.
-* It's easier to generate multiple reports.
-* It offers the flexibility to define custom aggregation functions.
+- It's quicker once it's set up.
+- It's self-documenting. You can look at the code and understand what it does.
+- It's easier to generate multiple reports.
+- It offers the flexibility to define custom aggregation functions.
 
 Let's read in the data.
 
