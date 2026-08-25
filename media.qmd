@@ -15,7 +15,32 @@ body {
 # Media {.interview-page-title}
 
 ::: {.interviews-container}
+::: {.interview-card}
+::: {.interview-title}
+[Don’t Write Polars Code with a Pandas Accent](https://www.youtube.com/watch?v=5-4xTrN-M98){target="_blank"}
+:::
 
+::: {.podcast-name}
+{{< fa podcast >}} [PyCon US](https://www.youtube.com/watch?v=5-4xTrN-M98){target="_blank"}
+:::
+
+::: {.interview-content}
+<a href="https://www.youtube.com/watch?v=5-4xTrN-M98" target="_blank">
+<img src="images/interviews/pycon_us_26.png" class="interview-image" alt="PyCon talk">
+</a>
+
+Many Python developers adopt Polars expecting immediate speedups, only to be disappointed when their code shows little improvement or even runs slower than pandas. The issue is not Polars, but how it is used. Writing Polars code as if it were pandas, that is, with a pandas accent, leads to confusing code and poor performance. This talk focuses on writing idiomatic Polars code instead of translating pandas patterns line by line, empowering Python developers to work efficiently with large datasets without leaving the Python ecosystem.
+:::
+
+::: {.interview-footer}
+{{< fa calendar >}} Jul 2, 2026
+
+{{< fa clock >}} 22 min
+:::
+:::
+:::
+
+::: {.interviews-container}
 ::: {.interview-card}
 ::: {.interview-title}
 [v0.0.10 - Joram Mutenge](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"}
@@ -41,6 +66,4 @@ To become as valuable as possible, Joram has spent time learning SQL, Python, an
 {{< fa clock >}} 34 min
 :::
 :::
-
 :::
-
