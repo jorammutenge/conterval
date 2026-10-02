@@ -24,10 +24,35 @@ body {
 ::: {.books-container}
 
 ::: {.book-card}
+<a href="https://www.amazon.com/dp/B0HLS1QZVB/" target="_self">
+<img src="images/books/pd_front_cover.png"
+     class="book-image"
+     alt="Deep Analysis with Polars book cover">
+</a>
+
+::: {.book-info}
+::: {.book-price}
+$50
+:::
+
+::: {.book-title}
+Deep Analysis with Pandas
+:::
+
+::: {.book-description}
+This book is not a beginner’s guide to pandas. Instead, it shows how to use pandas 3 to perform complex data analysis, such as the kinds of analyses typically handled by SQL. The book uses practical business examples with real-world datasets, ensuring that the lessons are immediately applicable to your job. More importantly, it offers an opinionated approach to writing code through method chaining.
+:::
+
+[BUY](https://www.amazon.com/dp/B0HLS1QZVB/){target="_blank" .book-button}
+:::
+:::
+
+
+::: {.book-card}
 <a href="https://www.amazon.com/dp/B0GXG1BHG6/" target="_self">
 <img src="images/books/front_cover.png"
      class="book-image"
-     alt="Polars for Data Analysis book cover">
+     alt="Deep Analysis with Polars book cover">
 </a>
 
 ::: {.book-info}
