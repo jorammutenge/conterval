@@ -463,5 +463,59 @@
   },
   "blog/advanced-pivot-tables-in-polars/index.qmd": {
     "index.html": "57a25527"
+  },
+  "blog/the-scramble-for-ai-domain-names/index.qmd": {
+    "index.html": "7501eeb7"
+  },
+  "blog/my-submission-to-the-posit-table-contest/index.qmd": {
+    "index.html": "3900a0eb"
+  },
+  "blog/advanced-styling-in-pandas/index.qmd": {
+    "index.html": "bbc9a47c"
+  },
+  "blog/creating-a-pareto-chart-with-plotly/index.qmd": {
+    "index.html": "cdf945c2"
+  },
+  "blog/secret-to-longevity-for-men/index.qmd": {
+    "index.html": "4759d505"
+  },
+  "blog/create-dataframe-from-clipboard-content/index.qmd": {
+    "index.html": "878d68ec"
+  },
+  "blog/getting-month-and-day-names-from-datetime-with-polars/index.qmd": {
+    "index.html": "2efed417"
+  },
+  "blog/a-simple-viz-is-all-you-need/index.qmd": {
+    "index.html": "7b87a825"
+  },
+  "blog/native-plotting-with-polars/index.qmd": {
+    "index.html": "3a5d9600"
+  },
+  "blog/making-beautiful-bar-charts-with-matplotlib/index.qmd": {
+    "index.html": "b74256a4"
+  },
+  "blog/read-directly-from-html-with-polars/index.qmd": {
+    "index.html": "31a6f0e2"
+  },
+  "blog/my-reading-journey-with-the-libby-app/index.qmd": {
+    "index.html": "3a5544c4"
+  },
+  "blog/using-variance-in-product-development/index.qmd": {
+    "index.html": "38a412c7"
+  },
+  "blog/the-many-ways-to-rename-columns-in-polars/index.qmd": {
+    "index.html": "4dd20e1e"
+  },
+  "blog/effective-table-presentation-with-code/index.qmd": {
+    "index.html": "f56f017e"
+  },
+  "blog/why-loops-are-frowned-upon-in-data-science/index.qmd": {
+    "index.html": "f7287c9a"
+  },
+  "blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.qmd": {
+    "index.html": "4819f6e0"
+  },
+  "blog/unicorn-dropout-founders-are-rare/index.qmd": {
+    "index.html": "87201db1"
   }
 }

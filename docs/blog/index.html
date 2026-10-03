@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,10 +13,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -43,10 +46,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0e446fe79436d52b30ff33f979aefd16.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-8cc40d9f9ffd6573c0dae5c27f1973e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5086e6dfc6d55f4432ec818b998340df.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3f1e056db2262bed5a957a7b8f09b337.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -118,7 +121,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -204,7 +207,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(139)</span></div><div class="category" data-category="MTAwRGF5c09mUG9sYXJz">100DaysOfPolars <span class="quarto-category-count">(101)</span></div><div class="category" data-category="YnVzaW5lc3M=">business <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGFuYWx5c2lz">data analysis <span class="quarto-category-count">(7)</span></div><div class="category" data-category="RmluYW5jZQ==">Finance <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cnVzdA==">rust <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(4)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(157)</span></div><div class="category" data-category="MTAwRGF5c09mUG9sYXJz">100DaysOfPolars <span class="quarto-category-count">(101)</span></div><div class="category" data-category="YnVzaW5lc3M=">business <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMGFuYWx5c2lz">data analysis <span class="quarto-category-count">(15)</span></div><div class="category" data-category="RmluYW5jZQ==">Finance <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cnVzdA==">rust <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(14)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
@@ -2790,7 +2793,7 @@ I’ve said it before, and I’ll say it again: it’s important to know the dat
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="92" data-categories="MTAwRGF5c09mUG9sYXJz" data-listing-date-sort="1754110800000" data-listing-file-modified-sort="1768522914643" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="164">
+<div class="quarto-post image-right" data-index="92" data-categories="MTAwRGF5c09mUG9sYXJz" data-listing-date-sort="1754110800000" data-listing-file-modified-sort="1768522914643" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="163">
 <div class="thumbnail"><a href="../blog/check-number-of-columns-polars/index.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -2986,7 +2989,7 @@ Just like in SQL, it’s possible to join two dataframes in Polars. In this arti
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="99" data-categories="MTAwRGF5c09mUG9sYXJz" data-listing-date-sort="1753074000000" data-listing-file-modified-sort="1768522914617" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="187">
+<div class="quarto-post image-right" data-index="99" data-categories="MTAwRGF5c09mUG9sYXJz" data-listing-date-sort="1753074000000" data-listing-file-modified-sort="1768522914617" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="185">
 <div class="thumbnail"><a href="../blog/filter-between-values-polars/index.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -3378,7 +3381,7 @@ Polars is highly versatile. It can accept a Pandas dataframe and convert it into
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="113" data-categories="MTAwRGF5c09mUG9sYXJz" data-listing-date-sort="1751432400000" data-listing-file-modified-sort="1768522914609" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="313">
+<div class="quarto-post image-right" data-index="113" data-categories="MTAwRGF5c09mUG9sYXJz" data-listing-date-sort="1751432400000" data-listing-file-modified-sort="1768522914609" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="310">
 <div class="thumbnail"><a href="../blog/maintaining-column-name-polars/index.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -4102,6 +4105,510 @@ A few weeks ago, Conterval did a consulting gig for a medium-sized bakery. This 
 </div>
 <div class="listing-author">
 <p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="139" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1729573200000" data-listing-file-modified-sort="1791064830914" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="983">
+<div class="thumbnail"><a href="../blog/secret-to-longevity-for-men/index.html" class="no-external">
+
+<img loading="lazy" data-src="../blog/secret-to-longevity-for-men/image.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/secret-to-longevity-for-men/index.html" class="no-external">For men, the secret to longevity is marrying a wife much younger than you</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/secret-to-longevity-for-men/index.html" class="no-external"></a>
+</div>
+<div class="delink listing-description"><a href="../blog/secret-to-longevity-for-men/index.html" class="no-external">
+Pop culture and the business world are full of older men marrying women who are way younger than them.
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/secret-to-longevity-for-men/index.html" class="no-external">
+<div class="listing-date">
+2024-10-22
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="140" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1728968400000" data-listing-file-modified-sort="1791064830916" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1758">
+<div class="thumbnail"><a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">Unicorn dropout founders are rare</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">Why you should start using action titles in your charts</a>
+</div>
+<div class="delink listing-description"><a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">
+Steve Jobs, Mark Zuckerberg, and Bill Gates all dropped out of college and founded companies that are now among the most valuable companies in the world. There is nothing…<em></em>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">
+<div class="listing-date">
+2024-10-15
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="141" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1727758800000" data-listing-file-modified-sort="1791068444776" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1375">
+<div class="thumbnail"><a href="../blog/using-variance-in-product-development/index.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' data-src="using-variance-in-product-development/iphone.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/using-variance-in-product-development/index.html" class="no-external">Using variance in product development</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/using-variance-in-product-development/index.html" class="no-external">Why you must understand variance to improve your business</a>
+</div>
+<div class="delink listing-description"><a href="../blog/using-variance-in-product-development/index.html" class="no-external">
+Imagine you’re part of the team that launched the first iPhone with Steve Jobs in 2007. You want to measure the customer satisfaction of consumers who have used the demo…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/using-variance-in-product-development/index.html" class="no-external">
+<div class="listing-date">
+2024-10-01
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="142" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1727154000000" data-listing-file-modified-sort="1791065764434" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="906">
+<div class="thumbnail"><a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external">The scramble for .ai domain names</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external"></a>
+</div>
+<div class="delink listing-description"><a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external">
+Before ChatGPT came out, AI was a joke. No one paid attention to it. In fact, the majority of people thought virtual reality (VR) was going to happen sooner. Remember the…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external">
+<div class="listing-date">
+2024-09-24
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="143" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1726549200000" data-listing-file-modified-sort="1791068444760" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1448">
+<div class="thumbnail"><a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' data-src="a-simple-viz-is-all-you-need/phones.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">A simple viz is all you need</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">Tips for effective data communication</a>
+</div>
+<div class="delink listing-description"><a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">
+When I was a kid, I was a phone fanatic. I couldn’t get enough of phones because they were the most advanced technology I could afford.
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">
+<div class="listing-date">
+2024-09-17
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="144" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1724734800000" data-listing-file-modified-sort="1791068444777" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="974">
+<div class="thumbnail"><a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external">Why loops are frowned upon in data science</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external"></a>
+</div>
+<div class="delink listing-description"><a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external">
+In computer science, looping is one of the most fundamental operations. It saves you from manually doing the same thing over and over.
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external">
+<div class="listing-date">
+2024-08-27
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="145" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1724130000000" data-listing-file-modified-sort="1791066367034" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="765">
+<div class="thumbnail"><a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' data-src="effective-table-presentation-with-code/bad_table.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">Effective table presentation with code</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">How to design tables that are easy to understand</a>
+</div>
+<div class="delink listing-description"><a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">
+Most people don’t think about tables when they think about data visualization. But tables deserve as much attention as you put in your charts. To effectively communicate the…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">
+<div class="listing-date">
+2024-08-20
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="146" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1723525200000" data-listing-file-modified-sort="1791068444765" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="907">
+<div class="thumbnail"><a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">
+
+<img loading="lazy" data-src="../blog/creating-a-pareto-chart-with-plotly/image.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">Creating a pareto chart with plotly</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">How to use data to grow your business</a>
+</div>
+<div class="delink listing-description"><a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">
+Picture yourself in the 1980s. You own a software store where you sell software in disks by the unit.
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">
+<div class="listing-date">
+2024-08-13
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="147" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1722920400000" data-listing-file-modified-sort="1791068444767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="775">
+<div class="thumbnail"><a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">
+
+<img loading="lazy" data-src="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/image.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">Formatting the information displayed in the tooltip of your plotly chats</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">Enter hovertemplate and customdata</a>
+</div>
+<div class="delink listing-description"><a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">
+My data visualization journey started with <em>ggplot</em>, followed by a brief stint with <em>seaborn</em>. After that, I fell in love with <em>matplotlib</em> and used it for a long time. But now my…<em></em>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">
+<div class="listing-date">
+2024-08-06
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="148" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1722315600000" data-listing-file-modified-sort="1791068444761" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1332">
+<div class="thumbnail"><a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' data-src="advanced-styling-in-pandas/image.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">Advanced styling in pandas</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">How to make your dataframes look pretty!</a>
+</div>
+<div class="delink listing-description"><a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">
+I am a sucker for visually appealing things, and I try as much as I can to embody that in my data analysis work. In this article, I’ll show you how you can style your pandas…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">
+<div class="listing-date">
+2024-07-30
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="149" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1721710800000" data-listing-file-modified-sort="1791066777851" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="309">
+<div class="thumbnail"><a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external">The many ways to rename columns in polars</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external"></a>
+</div>
+<div class="delink listing-description"><a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external">
+Dataframes that have column names with spaces in them can be annoying to work with. I like to remove any spaces or unusual characters from column names. This makes it easier…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external">
+<div class="listing-date">
+2024-07-23
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="150" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1721106000000" data-listing-file-modified-sort="1791066835898" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="634">
+<div class="thumbnail"><a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external">
+
+<img loading="lazy" data-src="../blog/getting-month-and-day-names-from-datetime-with-polars/image.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external">Getting month and day names from datetime with polars</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external"></a>
+</div>
+<div class="delink listing-description"><a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external">
+When you have timeseries data, you may want to extract the day and month names from the date. Polars makes it easy to do that but the default way doesn’t get you the actual…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external">
+<div class="listing-date">
+2024-07-16
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="151" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1719723600000" data-listing-file-modified-sort="1791067045985" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="916">
+<div class="thumbnail"><a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' data-src="making-beautiful-bar-charts-with-matplotlib/index_files/figure-html/cell-5-output-2.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external">Making beautiful bar charts with matplotlib</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external"></a>
+</div>
+<div class="delink listing-description"><a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external">
+Bar charts are one of the most common and informative ways to represent it. They’re also easy to create. But to make them more informative and beautiful, you must spend some…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external">
+<div class="listing-date">
+2024-06-30
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="152" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1718946000000" data-listing-file-modified-sort="1791067099404" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="833">
+<div class="thumbnail"><a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' data-src="my-reading-journey-with-the-libby-app/index_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">My reading journey with the Libby app</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">A data analysis walkthrough</a>
+</div>
+<div class="delink listing-description"><a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">
+I’m a huge fan of the Libby App by the company <em>OverDrive, Inc</em>. I have used it exclusively for my digital book consumption since 2022.
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">
+<div class="listing-date">
+2024-06-21
+</div>
+<div class="listing-author">
+<p>Joram Mutenge</p>
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="153" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1718859600000" data-listing-file-modified-sort="1791067188978" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="346">
+<div class="thumbnail"><a href="../blog/native-plotting-with-polars/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/native-plotting-with-polars/index.html" class="no-external">Native plotting with polars</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/native-plotting-with-polars/index.html" class="no-external">Using YouTube comments data</a>
+</div>
+<div class="delink listing-description"><a href="../blog/native-plotting-with-polars/index.html" class="no-external">
+Visualizations simplify data comprehension. A glance at a graph or chart conveys the data’s message, saving you time compared to analyzing a table without visuals.
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/native-plotting-with-polars/index.html" class="no-external">
+<div class="listing-date">
+2024-06-20
+</div>
+<div class="listing-author">
+Joram Mutenge
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="154" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1718686800000" data-listing-file-modified-sort="1791067261816" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="968">
+<div class="thumbnail"><a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">
+
+<img loading="lazy" data-src="../blog/read-directly-from-html-with-polars/image.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">Read directly from HTML with polars</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">A workaround</a>
+</div>
+<div class="delink listing-description"><a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">
+<em>Suits</em> was the most-watched TV show in 2023, even though the last episode aired in December 2019. For this reason, I thought I’d use it as an example to show how you can use…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">
+<div class="listing-date">
+2024-06-18
+</div>
+<div class="listing-author">
+Joram Mutenge
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="155" data-categories="dmlzdWFsaXphdGlvbg==" data-listing-date-sort="1718254800000" data-listing-file-modified-sort="1791067548976" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1830">
+<div class="thumbnail"><a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">
+
+<img loading="lazy" data-src="../blog/my-submission-to-the-posit-table-contest/image.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">My submission to the posit table contest</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">Creating a stunning table with TSA airport checking data</a>
+</div>
+<div class="delink listing-description"><a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">
+This year, I decided to participate in the Posit Table Contest. Because I’m a fan of the great tables Python library I thought it would be great to enhance my mastery of…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">
+<div class="listing-date">
+2024-06-13
+</div>
+<div class="listing-author">
+Joram Mutenge
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="156" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1716786000000" data-listing-file-modified-sort="1791067638289" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="340">
+<div class="thumbnail"><a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' data-src="create-dataframe-from-clipboard-content/image1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">Create dataframe from clipboard content</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">Using polars alone</a>
+</div>
+<div class="delink listing-description"><a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">
+It’s amazing how much the Polars library has improved! I remember sandwiching my polars code with pandas code to perform some operations. Even though the library was…
+</a></div>
+</div>
+<div class="metadata">
+<a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">
+<div class="listing-date">
+2024-05-27
+</div>
+<div class="listing-author">
+Joram Mutenge
 </div>
 </a>
 </div>

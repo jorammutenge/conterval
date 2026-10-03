@@ -1,0 +1,62 @@
+---
+title: 'The many ways to rename columns in polars'
+author: '{{< var author >}}'
+date: '2024-07-23'
+categories: [data analysis]
+---
+
+Dataframes that have column names with spaces in them can be annoying to work with. I like to remove any spaces or unusual characters from column names. This makes it easier to perform operations on the dataframe. The main advantage you get with columns that don’t have spaces is that you can access them using the dot method. Let me show you what I mean.
+
+```{python}
+import polars as pl
+pl.Config(tbl_rows=6) #this displays only 6 rows of dataframe
+from pathlib import Path
+
+df = pl.read_parquet(f"{Path('../../')}/datasets/regional_sales.parquet")
+df
+```
+The only column without a space in the dataframe above is `Segment`. I can access this column using the dot method as shown below.
+
+```{python}
+df.select(pl.col.Segment)
+```
+However, I cannot use the dot method to access any of the columns with spaces, for instance, `Customer ID`. To access it I need to enclose the column name in square quotation marks as shown below.
+
+```{python}
+df.select(pl.col('Customer ID'))
+```
+Removing spaces in column names is the first data-cleaning step I take when I'm doing that analysis.  I'll show you three ways to clean up the column names in our dataframe.
+
+#### Method 1
+
+This is the manual way because it involves copying every column name with a space and giving it a name without a space. I don't advise you to use this method if you have a dataset with many columns.
+
+```{python}
+(df
+ .rename({'Customer ID':'Customer_ID',
+          'Customer Name':'Customer_Name',
+          'Region Name':'Region_Name',
+          'Sales In Dollars':'Sales_In_Dollars'})
+)
+```
+
+#### Method 2
+
+This may be considered the idiomatic polars way, although it uses many aspects of the library. As such, it may be difficult to remember.
+
+```{python}
+(df
+ .select(pl.all().name.map(lambda col: col.replace(' ', '_')))
+ )
+```
+
+#### Method 3
+
+This is my personal favorite. It's short and easy to remember.
+
+```{python}
+(df
+ .rename(lambda col: col.replace(' ', '_'))
+ )
+```
+Check out {{< var polars_course >}} to learn more about this new and fast data processing library.

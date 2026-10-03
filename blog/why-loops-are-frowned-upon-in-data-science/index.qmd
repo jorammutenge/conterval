@@ -1,0 +1,172 @@
+---
+title: 'Why loops are frowned upon in data science'
+author: '{{< var author >}}'
+date: '2024-08-27'
+categories: [data analysis]
+toc: true
+toc-title: 'Sections'
+toc-location: right
+toc-depth: 3
+---
+
+In computer science, looping is one of the most fundamental operations. It saves you from manually doing the same thing over and over.
+
+You can tell your computer to do something ten, a hundred, or even a million times, and it will happily do it. It's no wonder many people feel so proud when they successfully write a `for loop` in their first programming language.
+
+Here's an example of implementing a for loop in the Python programming language. Say we had a list of three-letter government agencies in lowercase, but we wanted them to be in uppercase. After all, that’s the only way they will be recognizable.
+
+```{mermaid}
+flowchart TD
+    Start([Start])
+    A[Initialize List of Lowercase Characters]
+    B{More Characters in List?}
+    C[Get Next Character]
+    D[Convert Character to Uppercase]
+    E[Add Uppercase Character to New List]
+    F([End Loop])
+
+    Start --> A --> B
+    B -->|Yes| C --> D --> E --> B
+    B -->|No| F
+
+```
+
+We can do the task show in the flowchart above manually, which won’t be much work because our list only has 8 agencies. But you can imagine how tedious this may be if we had a hundred or a thousand agencies. Fortunately, we can use a `for loop` to do this tedious work.
+
+```{python}
+agencies = ['cia', 'fbi', 'nsa', 'epa', 'irs', 'dhs', 'faa', 'doe']
+
+# Loop through the list and convert each agency to uppercase
+for i in range(len(agencies)):
+    agencies[i] = agencies[i].upper()
+
+agencies
+```
+
+While looping may save you a lot of time in computer science, it can cost you a lot of time in data science. In fact, using for loops in data science operations is frowned upon. Why is this so?
+
+When performing data science operations on a dataset, it is important to understand the difference between normal operations and vectorized operations. Normal operations happen in series (one by one), while vectorized operations happen in parallel (all at once). You can conclude that vectorized operations are faster than normal operations.
+
+Let's perform these operations on a real dataset. I’ll show 3 examples of pandas code that output the same dataframe.
+
+### Dataset
+
+The dataset below shows the quantity of units of some sales. Our task is to create a new column `Qty_plus_20_pct` that increases quantity values by 20%.
+
+```{python}
+import pandas as pd
+from pathlib import Path
+
+(pd.read_parquet(f"{Path('../../')}/datasets/sales_total_2018.parquet")
+         [['name','quantity']]
+         )
+```
+
+### Looping
+
+The following piece of code loops through the dataframe. Writing code like this to do a mathematical operation would be considered normal in computer science, however, in data science, it would be a BIG no-no. Software engineers are used to writing loops in their code, which is why they find writing data science code less intuitive.
+
+```{python}
+sales = (pd.read_parquet(f"{Path('../../')}/datasets/sales_total_2018.parquet")
+         [['name','quantity']]
+         )
+
+for i in range(len(sales)):
+    sales.at[i, 'Qty_plus_20_pct'] = sales.at[i, 'quantity'] * 1.20
+
+sales
+```
+
+### Apply
+
+Apply also loops through the dataframe under the hood. However, it's faster than the normal looping demonstrated above because the looping happens in the C programming language layer. Remember, Python is a slow programming language, but when you use it in conjunction with pandas, which is written in the C programming language, it becomes fast. That's why Python is capable of manipulating even large quantities of data. Unsurprisingly, performing the mathematical operation with `apply` is faster than the previous method.
+
+```{python}
+sales = (pd.read_parquet(f"{Path('../../')}/datasets/sales_total_2018.parquet")
+         [['name','quantity']]
+         )
+
+# Function to increase quantity by 20%
+def add_20_percent(x):
+    return x * 1.20
+
+sales['Qty_plus_20_pct'] = sales['quantity'].apply(add_20_percent)
+
+sales
+```
+
+### Vectorized
+
+Dataframes are like matrices in that they have rows and columns. The only difference is that a matrix can only store values of the same data type, while a dataframe can store values of different data types. For this reason, you can perform vectorized operations on dataframes just like you can on matrices.
+
+In the code below, we multiply 1.20 directly on the dataframe, targeting the `quantity` column. With this operation, multiplication happens at once for all the rows of the dataframe.
+
+```{python}
+sales = (pd.read_parquet(f"{Path('../../')}/datasets/sales_total_2018.parquet")
+         [['name','quantity']]
+         )
+
+# Incease qty by 20 percent (vectorized)
+(sales
+ .assign(Qty_plus_20_pct=sales['quantity']*1.20)
+ )
+```
+
+### Timing
+
+Now that I've proved that all three versions of the code above produce the same dataframe, let me test the speed at which each piece of code runs the mathematical operation.
+
+1. With normal looping
+
+```{python}
+%%timeit
+sales = (pd.read_parquet(f"{Path('../../')}/datasets/sales_total_2018.parquet")
+         [['name','quantity']]
+         )
+
+for i in range(len(sales)):
+    sales.at[i, 'Qty_plus_20_pct'] = sales.at[i, 'quantity'] * 1.20
+
+sales
+```
+
+2. With apply
+
+```{python}
+%%timeit
+sales = (pd.read_parquet(f"{Path('../../')}/datasets/sales_total_2018.parquet")
+         [['name','quantity']]
+         )
+
+# Function to increase quantity by 20%
+def add_20_percent(x):
+    return x * 1.20
+
+sales['Qty_plus_20_pct'] = sales['quantity'].apply(add_20_percent)
+
+sales
+```
+
+3. With vectorizaiton
+
+```{python}
+%%timeit
+sales = (pd.read_parquet(f"{Path('../../')}/datasets/sales_total_2018.parquet")
+         [['name','quantity']]
+         )
+
+# Incease qty by 20 percent (vectorized)
+(sales
+ .assign(Qty_plus_20_pct=sales['quantity']*1.20)
+ )
+```
+
+I've proved that the vectorized operation runs faster. You may think the difference in speed is negligible, but that's only because this is a small dataset. On a massive dataset the difference becomes noticeable.
+
+### Conclusion
+
+When working with dataframes or tabular data, it's crucial to use vectorized operations for mathematical computations. This approach yields faster results and lowers computational costs.
+
+For string (text) data, however, vectorized operations may not always be feasible. In such cases, opt for the `apply` function instead of looping through the dataframe, as looping can be inefficient and slow.
+
+To learn how to efficiently manipulate data, check out my {{< var polars_course >}}. Polars is a new dataframe library that's faster than pandas.

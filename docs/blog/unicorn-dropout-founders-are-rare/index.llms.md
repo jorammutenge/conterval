@@ -1,0 +1,184 @@
+# Unicorn dropout founders are rare
+
+Why you should start using action titles in your charts
+
+visualization
+
+Author
+
+Joram Mutenge
+
+Published
+
+October 15, 2024
+
+Steve Jobs, Mark Zuckerberg, and Bill Gates all dropped out of college and founded companies that are now among the most valuable companies in the world. There is nothing wrong with being inspired by their stories, but to think that *anyone* can drop out of college and start a unicorn company is to be delusional.
+
+In statistics, there is a concept of outliers. These are rare events that occur outside the general population. So, if we consider the population of company founders, college dropouts who founded successful companies would be outliers because they’re rare.
+
+This may surprise many people because the media constantly talks about college dropouts who are successful entrepreneurs, making everyone think these people are commonplace. This media hype misleads many young people who increasingly believe a college education is unnecessary to become a successful entrepreneur.
+
+The data, however, says otherwise. Here’s a chart about company founders and their level of education from research done by the Stanford Graduate School of Business in 2021. The table below shows the data collected.
+
+shape: (5, 2)
+
+| Category                    | Count |
+|-----------------------------|-------|
+| str                         | i64   |
+| "Dropouts"                  | 56    |
+| "Bachelor's"                | 485   |
+| "Master's (other than MBA)" | 259   |
+| "MBA"                       | 236   |
+| "Doctoral"                  | 286   |
+
+And now here’s code that generates the chart with an action title. Just by reading the title, you get the message conveyed in the chart.
+
+``` python
+import plotly.graph_objects as go
+from pathlib import Path
+import base64
+
+df = (data
+ .with_columns(pl.concat_str([pl.lit('<b>'), pl.col('Category')]).alias('Category').str.replace(r'\ \(', r'<br>('))
+ .sort('Count')
+ )
+df
+
+# Load and encode the image
+with open(f"{Path('../../')}/images/logo.png", "rb") as image_file:
+    encoded_image = base64.b64encode(image_file.read()).decode()
+
+COLOR = '#FFE4B5'
+WHITE = '#FFFFFF'
+
+# Create the bar plot using Plotly graph_objects
+fig = go.Figure(data=[
+    go.Bar(x=df['Category'], y=df['Count'], marker_color='red', text=df['Count'], textposition='outside')
+])
+
+# Add the image to the plot using the base64 encoded version
+fig.add_layout_image(
+    dict(
+        source=f"data:image/png;base64,{encoded_image}",  # Base64 encoded image
+        xref="paper",  # Reference the x position relative to the plotting area
+        yref="paper",  # Reference the y position relative to the plotting area
+        x=.98,  # x-coordinate (1 means far right)
+        y=-0.25,  # y-coordinate (0 means bottom)
+        xanchor="right",  # Anchor the image from the right
+        yanchor="bottom",  # Anchor the image from the bottom
+        sizex=0.22,  # Set the width of the image (adjust as necessary)
+        sizey=0.22,  # Set the height of the image (adjust as necessary)
+        layer="above"  # Make sure the image is displayed above the plot
+    )
+)
+
+# Update layout for better visualization
+fig.update_layout(
+    title="<b>Majority of Unicorn founders have bachelor's degrees<br>Dropouts remain rare despite media hype</b>",
+    title_x=0.075,
+    height=570,
+    margin=dict(t=150, l=60, b=100),
+    plot_bgcolor=COLOR,
+    paper_bgcolor=COLOR,
+    font=dict(
+        size=14,  
+        color="black"  
+    ),
+    yaxis=dict(
+        showticklabels=False, 
+        showgrid=False  
+    ),
+    shapes=[
+        dict(
+            type="rect",
+            xref="paper",
+            yref="paper",
+            x0=0, y0=0.78,  
+            x1=0.275, y1=0.93,  
+            line=dict(
+                color=WHITE,  
+                width=2,  
+            ),
+            fillcolor=WHITE  
+        ),
+        dict(
+            type="line",
+            xref="paper",
+            yref="paper",
+            x0=0.001, y0=0.76,  
+            x1=0.001, y1=0.945,  
+            line=dict(
+                color=WHITE,  
+                width=10  
+            )
+        ),
+        dict(
+            type="line",
+            xref="paper",
+            yref="paper",
+            x0=0, y0=1.345,  
+            x1=.98, y1=1.345,  
+            line=dict(
+                color='red',  
+                width=2  
+            )
+        ),
+        dict(
+            type="line",
+            xref="paper",
+            yref="paper",
+            x0=0, y0=1.333,  
+            x1=0.08, y1=1.333,  
+            line=dict(
+                color='red',  
+                width=10  
+            )
+        )
+    ],
+    annotations=[
+        dict(
+            text="<b>No. of Founders = 1,263<br>No. of Unicorns = 521</b>",
+            x=0,  
+            y=0.8,  
+            xref="paper",
+            yref="paper",
+            xanchor='left',
+            yanchor='bottom',
+            showarrow=False,  
+            font=dict(
+                size=14,  
+                color="#0000CD"  
+            ),
+            align="left"  
+        ),
+        dict(
+            text="<i><b>Source</b>: Ilya Strebulaev, Venture Capital Initiative<br>Stanford Graduate School of Business (12/2021)</i>",
+            x=0,  
+            y=-0.25,  
+            xref="paper",
+            yref="paper",
+            showarrow=False,  
+            font=dict(
+                size=12,  
+                color="black"  
+            ),
+            align="left"
+        )
+    ]
+)
+
+# Show the plot
+fig.show(renderer="iframe")
+```
+
+We see that successful founders who are also college dropouts are rare. Most founders who run successful companies have a bachelor’s degree.
+
+While we’re at it, let’s talk about this chart. This is not just an aesthetically pleasing chart, it’s also informative. The most important part of this chart is the title. Let me explain why. Recently I listened to an episode on the *Analytics Power Hour* podcast where they talked about action titles. I had never heard of action titles and one of the hosts said that once you learn about them, you can’t unsee them. So what are action titles?
+
+An action title is the most important point of the chart, and if done right, it should be the main takeaway or the “so what” of the chart. The audience should only read the title to understand the message in the chart. The reason it’s called an *action* title is that it actively tells the audience what the main message is. Hence a boring and uninformative title would be:
+
+> Academic degrees of Unicorn founders
+
+This title is plain; it doesn’t tell you anything about what the chart is about.
+
+From now on, I’ll make sure that the key message I’m conveying is clearly reflected in the titles of my charts. I hope you will do the same so that we can both become effective data professionals.

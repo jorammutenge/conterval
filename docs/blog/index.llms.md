@@ -1065,3 +1065,135 @@ Joram Mutenge
 2024-11-18
 
 Joram Mutenge
+
+### [For men, the secret to longevity is marrying a wife much younger than you](../blog/secret-to-longevity-for-men/index.llms.md)
+
+2024-10-22
+
+Joram Mutenge
+
+### [Unicorn dropout founders are rare](../blog/unicorn-dropout-founders-are-rare/index.llms.md)
+
+[Why you should start using action titles in your charts](../blog/unicorn-dropout-founders-are-rare/index.llms.md)
+
+2024-10-15
+
+Joram Mutenge
+
+### [Using variance in product development](../blog/using-variance-in-product-development/index.llms.md)
+
+[Why you must understand variance to improve your business](../blog/using-variance-in-product-development/index.llms.md)
+
+2024-10-01
+
+Joram Mutenge
+
+### [The scramble for .ai domain names](../blog/the-scramble-for-ai-domain-names/index.llms.md)
+
+2024-09-24
+
+Joram Mutenge
+
+### [A simple viz is all you need](../blog/a-simple-viz-is-all-you-need/index.llms.md)
+
+[Tips for effective data communication](../blog/a-simple-viz-is-all-you-need/index.llms.md)
+
+2024-09-17
+
+Joram Mutenge
+
+### [Why loops are frowned upon in data science](../blog/why-loops-are-frowned-upon-in-data-science/index.llms.md)
+
+2024-08-27
+
+Joram Mutenge
+
+### [Effective table presentation with code](../blog/effective-table-presentation-with-code/index.llms.md)
+
+[How to design tables that are easy to understand](../blog/effective-table-presentation-with-code/index.llms.md)
+
+2024-08-20
+
+Joram Mutenge
+
+### [Creating a pareto chart with plotly](../blog/creating-a-pareto-chart-with-plotly/index.llms.md)
+
+[How to use data to grow your business](../blog/creating-a-pareto-chart-with-plotly/index.llms.md)
+
+2024-08-13
+
+Joram Mutenge
+
+### [Formatting the information displayed in the tooltip of your plotly chats](../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.llms.md)
+
+[Enter hovertemplate and customdata](../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.llms.md)
+
+2024-08-06
+
+Joram Mutenge
+
+### [Advanced styling in pandas](../blog/advanced-styling-in-pandas/index.llms.md)
+
+[How to make your dataframes look pretty!](../blog/advanced-styling-in-pandas/index.llms.md)
+
+2024-07-30
+
+Joram Mutenge
+
+### [The many ways to rename columns in polars](../blog/the-many-ways-to-rename-columns-in-polars/index.llms.md)
+
+2024-07-23
+
+Joram Mutenge
+
+### [Getting month and day names from datetime with polars](../blog/getting-month-and-day-names-from-datetime-with-polars/index.llms.md)
+
+2024-07-16
+
+Joram Mutenge
+
+### [Making beautiful bar charts with matplotlib](../blog/making-beautiful-bar-charts-with-matplotlib/index.llms.md)
+
+2024-06-30
+
+Joram Mutenge
+
+### [My reading journey with the Libby app](../blog/my-reading-journey-with-the-libby-app/index.llms.md)
+
+[A data analysis walkthrough](../blog/my-reading-journey-with-the-libby-app/index.llms.md)
+
+2024-06-21
+
+Joram Mutenge
+
+### [Native plotting with polars](../blog/native-plotting-with-polars/index.llms.md)
+
+[Using YouTube comments data](../blog/native-plotting-with-polars/index.llms.md)
+
+2024-06-20
+
+Joram Mutenge
+
+### [Read directly from HTML with polars](../blog/read-directly-from-html-with-polars/index.llms.md)
+
+[A workaround](../blog/read-directly-from-html-with-polars/index.llms.md)
+
+2024-06-18
+
+Joram Mutenge
+
+### [My submission to the posit table contest](../blog/my-submission-to-the-posit-table-contest/index.llms.md)
+
+[Creating a stunning table with TSA airport checking data](../blog/my-submission-to-the-posit-table-contest/index.llms.md)
+
+2024-06-13
+
+Joram Mutenge
+
+### [Create dataframe from clipboard content](../blog/create-dataframe-from-clipboard-content/index.llms.md)
+
+[Using polars alone](../blog/create-dataframe-from-clipboard-content/index.llms.md)
+
+2024-05-27
+
+Joram Mutenge

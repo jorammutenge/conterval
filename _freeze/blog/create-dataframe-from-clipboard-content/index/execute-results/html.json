@@ -1,0 +1,16 @@
+{
+  "hash": "80356337658bc364368d078556c4519f",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Create dataframe from clipboard content\"\nsubtitle: Using polars alone\nauthor: \"Joram Mutenge\"\ndate: \"2024-05-27\"\ncategories: [data analysis]\n---\n\nIt’s amazing how much the Polars library has improved! I remember sandwiching my polars code with pandas code to perform some operations. Even though the library was deficient for other operations, I didn’t want to let it go because I love it to bits.\n\nThere’s one operation I perform a lot in my work, and I wanted polars to have it so I could ditch pandas entirely in my code base.\n\nSo I wrote to the Polars team using our modern communication tool, X (or Twitter, for those who refuse to use the new name).\n\n![](image1.png){fig-align=\"center\" width=\"380\" height=\"360\"}\n\nTo my surprise, they listened to my request! Now you can create a dataframe from a table copied to your clipboard, without resorting to pandas.\n\nHere’s how to do it.\n\n![](image2.png){fig-alt=\"A dataframe copied from Excel\" fig-align=\"center\"}\n\nI’ve copied the table from Excel containing the names and positions of characters in the popular TV show *The Office*.\n\n\n\nThen I run the following polars code to print the table as a dataframe.\n\n::: {#8e8c5515 .cell execution_count=2}\n``` {.python .cell-code}\nimport polars as pl\n\ndf = pl.read_clipboard()\ndf\n```\n\n::: {.cell-output .cell-output-display execution_count=2}\n```{=html}\n<div><style>\n.dataframe > thead > tr,\n.dataframe > tbody > tr {\n  text-align: right;\n  white-space: pre-wrap;\n}\n</style>\n<small>shape: (6, 2)</small><table border=\"1\" class=\"dataframe\"><thead><tr><th>Character</th><th>Position</th></tr><tr><td>str</td><td>str</td></tr></thead><tbody><tr><td>&quot;Michael Scott&quot;</td><td>&quot;Regional Manager&quot;</td></tr><tr><td>&quot;Dwight Schrute&quot;</td><td>&quot;Assistant to the Regional Mana…</td></tr><tr><td>&quot;Jim Halpert&quot;</td><td>&quot;Salesman / Co-Regional Manager…</td></tr><tr><td>&quot;Pam Beesly&quot;</td><td>&quot;Receptionist / Office Administ…</td></tr><tr><td>&quot;Ryan Howard&quot;</td><td>&quot;Temp / Vice President of North…</td></tr><tr><td>&quot;Andy Bernard&quot;</td><td>&quot;Salesman / Regional Manager (l…</td></tr></tbody></table></div>\n```\n:::\n:::\n\n\nAnd there you have it! To learn more about this fast-growing library, check out my [Udemy course](https://www.udemy.com/course/analyzing-data-with-polars-in-python/)!\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js\" integrity=\"sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx\" crossorigin=\"anonymous\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js\" integrity=\"sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2\" crossorigin=\"anonymous\" data-relocate-top=\"true\"></script>\n<script type=\"application/javascript\">define('jquery', [],function() {return window.jQuery;})</script>\n"
+      ]
+    }
+  }
+}
