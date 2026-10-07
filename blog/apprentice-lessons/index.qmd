@@ -8,7 +8,6 @@ toc: true
 toc-title: 'Sections'
 toc-location: right
 toc-depth: 3
-categories: [business]
 ---
 
 Yesterday, I watched the first episode of *The Apprentice* season 20. I'm an avid fan of the show because it not only entertains me, but also teaches me business lessons. In yesterday's episode, I learned an uncomfortable business lesson from the first contestant to be fired, Georgina Newton.

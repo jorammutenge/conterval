@@ -2,7 +2,7 @@
 title: 'On golf and machine learning'
 author: 'Joram Mutenge'
 date: '2024-10-08'
-categories: [machine learning]
+categories: [data analysis]
 ---
 
 A few weeks ago, I played golf for the first time. It's an interesting sport, but it's definitely not a sport for the impatient.

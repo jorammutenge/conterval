@@ -1,6 +1,6 @@
 # Why you should learn polars for data analysis
 
-polars
+data analysis
 
 Author
 
@@ -18,5 +18,4 @@ In the video below I explain why you should learn the Polars library now!
 
 Unable to execute JavaScript.
 
-\
 Check out my [Polars course](https://www.udemy.com/course/analyzing-data-with-polars-in-python/) on Udemy to get a comprehensive understanding of this powerful library.

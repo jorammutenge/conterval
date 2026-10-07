@@ -1,6 +1,6 @@
 # On golf and machine learning
 
-machine learning
+data analysis
 
 Author
 

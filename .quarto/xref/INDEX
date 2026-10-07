@@ -517,5 +517,11 @@
   },
   "blog/unicorn-dropout-founders-are-rare/index.qmd": {
     "index.html": "87201db1"
+  },
+  "blog/why-you-should-learn-polars-for-data-analysis/index.qmd": {
+    "index.html": "24d24587"
+  },
+  "blog/on-golf-and-machine-learning/index.qmd": {
+    "index.html": "adb74b67"
   }
 }
