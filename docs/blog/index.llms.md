@@ -1080,6 +1080,12 @@ Joram Mutenge
 
 Joram Mutenge
 
+### [On golf and machine learning](../blog/on-golf-and-machine-learning/index.llms.md)
+
+2024-10-08
+
+Joram Mutenge
+
 ### [Using variance in product development](../blog/using-variance-in-product-development/index.llms.md)
 
 [Why you must understand variance to improve your business](../blog/using-variance-in-product-development/index.llms.md)
@@ -1113,6 +1119,12 @@ Joram Mutenge
 [How to design tables that are easy to understand](../blog/effective-table-presentation-with-code/index.llms.md)
 
 2024-08-20
+
+Joram Mutenge
+
+### [Why you should learn polars for data analysis](../blog/why-you-should-learn-polars-for-data-analysis/index.llms.md)
+
+2024-08-14
 
 Joram Mutenge
 
