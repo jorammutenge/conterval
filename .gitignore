@@ -21,3 +21,6 @@
 /polars-book/**/*.qmd
 /polars-book/**/*.quarto_ipynb
 
+
+# Debug dump Quarto writes when the theme fails to compile
+_quarto_internal_scss_error.scss
