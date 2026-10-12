@@ -1,4 +1,5 @@
 ---
+pagetitle: "Conterval - Interviews and Talks"
 about:
   template: jolla
 format:

@@ -1,5 +1,5 @@
 ---
-pagetitle: Conterval - Data and AI Articles
+pagetitle: "Conterval - Data and AI Articles"
 author: ""
 comments: false
 listing:

@@ -1,4 +1,5 @@
 ---
+pagetitle: "Conterval - Books"
 about:
   template: jolla
 format:
