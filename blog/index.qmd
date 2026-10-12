@@ -1,4 +1,5 @@
 ---
+pagetitle: Conterval - Data and AI Articles
 author: ""
 comments: false
 listing:
