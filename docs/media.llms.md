@@ -1,10 +1,24 @@
 # Media
 
+[Leanpub Book LAUNCH 🚀 Deep Analysis with Pandas](https://www.youtube.com/watch?v=-BTWh_WKFUk)
+
+[Leanpub](https://www.youtube.com/watch?v=-BTWh_WKFUk)
+
+[![PyCon talk](images/interviews/leanpub_launch.jpg)](https://www.youtube.com/watch?v=-BTWh_WKFUk)
+
+Welcome to the Leanpub Launch video for Deep Analysis with Pandas: Transforming and Visualizing Data for Insights by Joram Mutenge!
+
+[Buy the book](https://leanpub.com/deep-analysis-with-pandas)
+
+Oct 29, 2026
+
+6 min
+
 [Don’t Write Polars Code with a Pandas Accent](https://www.youtube.com/watch?v=5-4xTrN-M98)
 
 [PyCon US](https://www.youtube.com/watch?v=5-4xTrN-M98)
 
-[![PyCon talk](images/interviews/pycon_us_26.png)](https://www.youtube.com/watch?v=5-4xTrN-M98)
+[![PyCon talk](images/interviews/pycon_us_26.jpg)](https://www.youtube.com/watch?v=5-4xTrN-M98)
 
 Many Python developers adopt Polars expecting immediate speedups, only to be disappointed when their code shows little improvement or even runs slower than pandas. The issue is not Polars, but how it is used. Writing Polars code as if it were pandas, that is, with a pandas accent, leads to confusing code and poor performance. This talk focuses on writing idiomatic Polars code instead of translating pandas patterns line by line, empowering Python developers to work efficiently with large datasets without leaving the Python ecosystem.
 
@@ -16,7 +30,7 @@ Jul 2, 2026
 
 [\[WIP\] Podcast](https://www.youtube.com/watch?v=hGBZSAHoAxE)
 
-[![Podcast Episode](images/interviews/wip.png)](https://www.youtube.com/watch?v=hGBZSAHoAxE)
+[![Podcast Episode](images/interviews/wip.jpg)](https://www.youtube.com/watch?v=hGBZSAHoAxE)
 
 I dubbed Joram Mutenge as a “trifecta” when it comes to the data profession. He is a data engineer, data analyst, and data scientist! As with many people, the route wasn’t a straight one, but suits him well once he learned to love the parts few enjoy and how to be safely creative within data.
 
