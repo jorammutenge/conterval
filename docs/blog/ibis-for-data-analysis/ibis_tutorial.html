@@ -2,20 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>🔍 Sales Performance</title>
+<title>🔍 Sales Performance – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -68,19 +71,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../images/favicon.png" rel="icon" type="image/png">
+<link href="../../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f397cc185d0ab75492c67f0644c295c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ea4d2fc885dc84b3edb167484f3766fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-830064c72b735b51971de534140e6ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -117,13 +121,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -132,15 +134,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="../../services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -151,20 +163,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -276,7 +289,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </ol>
 <hr>
 <section id="time-based-trends" class="level3">
-<h3 class="anchored" data-anchor-id="time-based-trends">📈 <strong>Time-Based Trends</strong></h3>
+<h3 data-anchor-id="time-based-trends">📈 <strong>Time-Based Trends</strong></h3>
 <ol start="4" type="1">
 <li><p><strong>How do sales change over time (monthly/quarterly/yearly)?</strong></p>
 <ul>
@@ -294,7 +307,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <hr>
 </section>
 <section id="customer-behavior" class="level3">
-<h3 class="anchored" data-anchor-id="customer-behavior">👤 <strong>Customer Behavior</strong></h3>
+<h3 data-anchor-id="customer-behavior">👤 <strong>Customer Behavior</strong></h3>
 <ol start="7" type="1">
 <li><p><strong>Which customers purchase the highest quantity of items?</strong></p>
 <ul>
@@ -312,7 +325,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <hr>
 </section>
 <section id="product-pricing" class="level3">
-<h3 class="anchored" data-anchor-id="product-pricing">💰 <strong>Product Pricing</strong></h3>
+<h3 data-anchor-id="product-pricing">💰 <strong>Product Pricing</strong></h3>
 <ol start="10" type="1">
 <li><p><strong>What is the price distribution of items in each category?</strong></p>
 <ul>
@@ -330,7 +343,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <hr>
 </section>
 <section id="order-metrics" class="level3">
-<h3 class="anchored" data-anchor-id="order-metrics">🧾 <strong>Order Metrics</strong></h3>
+<h3 data-anchor-id="order-metrics">🧾 <strong>Order Metrics</strong></h3>
 <ol start="13" type="1">
 <li><p><strong>What is the average size of an order (in quantity and price)?</strong></p>
 <ul>
@@ -1010,7 +1023,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="connecting-to-the-database" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-to-the-database">Connecting to the database</h2>
+<h2 data-anchor-id="connecting-to-the-database">Connecting to the database</h2>
 <div id="cell-38" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mysql.connector</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
@@ -1045,7 +1058,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="reading-data-from-database" class="level2">
-<h2 class="anchored" data-anchor-id="reading-data-from-database">Reading data from database</h2>
+<h2 data-anchor-id="reading-data-from-database">Reading data from database</h2>
 <div id="cell-44" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1085,7 +1098,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="query-warm-up" class="level2">
-<h2 class="anchored" data-anchor-id="query-warm-up">Query warm up</h2>
+<h2 data-anchor-id="query-warm-up">Query warm up</h2>
 <p>Select first and last name from customer where last name is Ziegler.</p>
 <pre><code>SELECT first_name, last_name
 FROM customer
@@ -1191,13 +1204,6 @@ WHERE date(rental.rental_date) = '2005-06-14';</code></pre>
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1598,13 +1604,44 @@ WHERE date(rental.rental_date) = '2005-06-14';</code></pre>
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -1612,5 +1649,4 @@ WHERE date(rental.rental_date) = '2005-06-14';</code></pre>
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

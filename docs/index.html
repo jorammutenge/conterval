@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -36,18 +36,22 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./images/favicon.png" rel="icon" type="image/png">
+<link href="./assets/images/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8cc40d9f9ffd6573c0dae5c27f1973e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3f1e056db2262bed5a957a7b8f09b337.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ad05dc75913624cded0f2b9ad80b1456.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b767a74002bb47fcfc9ac06a014f36ce.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ad05dc75913624cded0f2b9ad80b1456.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,6 +79,64 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-latest-posts .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-website','listing-format','listing-editor','listing-extra-files','listing-execute','listing-engines','listing-_quarto-vars','listing-language','listing-title','listing-author','listing-date','listing-date-format','listing-toc','listing-toc-title','listing-toc-location','listing-toc-depth','listing-categories','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count','listing-subtitle','listing-image','listing-jupyter',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
+      page: 25,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-project","listing-website","listing-format","listing-editor","listing-extra-files","listing-execute","listing-engines","listing-_quarto-vars","listing-language","listing-title","listing-author","listing-date","listing-date-format","listing-toc","listing-toc-title","listing-toc-location","listing-toc-depth","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count","listing-subtitle","listing-image","listing-jupyter"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-latest-posts'] = new List('listing-latest-posts', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-selected-work .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-selected-work'] = new List('listing-selected-work', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5Y1ZXKXMBX"></script>
 
 <script type="text/javascript">
@@ -84,27 +146,64 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="./assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="./services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog/index.html"> 
@@ -115,20 +214,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="./media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -138,54 +238,181 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
 <!-- main -->
-<div class="quarto-about-jolla column-page">
- <header id="title-block-header" class="quarto-title-block"></header><main class="content column-page" id="quarto-document-content">
-<div class="card" style="text-align: center; background-color: #FFE4B5; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 50pt; margin-bottom: 15px; margin-top: -4rem;">
-<img src="images/logo.png" alt="Logo" class="slide-in" style="width: 90%; display: block; margin: 0 auto; margin-bottom: 10px;">
-<p style="color: white;">
-a data &amp; AI consulting company
-</p>
+
+<header id="title-block-header">
+<h1 class="title display-7">Conterval</h1>
+
+</header>
+
+
+<div class="hero">
+<div class="wrap">
+<p><span class="eyebrow">Data and AI consulting</span></p>
+<section id="know-what-your-data-says-and-how-sure-you-can-be." class="level1">
+<h1>Know what your data says, and how sure you can be.</h1>
+<p><span class="lede" style="display:block">Conterval builds machine learning models, data pipelines and dashboards that hold up in production, with the uncertainty stated up front.</span></p>
+<div class="actions">
+<p><a href="./services.html" class="btn-brand">See the services</a> <a href="./portfolio/index.html" class="btn-quiet">View the portfolio</a></p>
 </div>
-<!-- Services card -->
-<div class="card2" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
-<h2 style="text-align: center;">
-Our Services
-</h2>
-<p>
-<strong>Data</strong> Cleaning, Analysis, Visualization, Engineering
-</p>
-<p>
-<strong>Dashboard</strong> Building, Report Automation
-</p>
-<p>
-<strong>Extract</strong> Transform Load (ETL)
-</p>
-<p>
-<strong>Analytics</strong> Engineering
-</p>
-<p>
-<strong>AI</strong> implementation
-</p>
+</section>
 </div>
-<!-- Contact card -->
-<div class="card3" style="text-align: center; border-radius: 10px; border: 1px solid #FFE4B5; padding: 15px; font-size: 22px; background-color: #FFE4B5; margin-bottom: 15px;">
-<h2 style="text-align: center;">
-Contact Us
-</h2>
-<p style="display: inline;">
-<a href="mailto:contervalconsult@gmail.com" style="text-decoration: none; color: inherit;"><i class="fa-solid fa-envelope"></i></a>
+</div>
+<div class="band">
+<div class="wrap">
+<section id="what-conterval-does" class="level2 section-head">
+<h2 data-anchor-id="what-conterval-does">What Conterval does</h2>
+<p><a href="./services.html">All services →</a></p>
+</section>
+<div class="ledger">
+<section id="machine-learning" class="level3">
+<h3 data-anchor-id="machine-learning"><a href="./services.html#machine-learning">Machine learning</a></h3>
+<p>Forecasting, classification and ranking models, evaluated honestly and deployed where your team can run them.</p>
+</section>
+<section id="etl-and-data-engineering" class="level3">
+<h3 data-anchor-id="etl-and-data-engineering"><a href="./services.html#etl">ETL and data engineering</a></h3>
+<p>Data cleaning, reliable pipelines and analytics engineering that turn raw data into tested tables your analysts can trust.</p>
+</section>
+<section id="data-visualization" class="level3">
+<h3 data-anchor-id="data-visualization"><a href="./services.html#visualization">Data visualization</a></h3>
+<p>Dashboards and charts that answer a specific question and get opened more than once.</p>
+</section>
+<section id="applied-ai" class="level3">
+<h3 data-anchor-id="applied-ai"><a href="./services.html#applied-ai">Applied AI</a></h3>
+<p>LLM features and document search built on your own data, with evaluation in place before launch.</p>
+</section>
+<section id="statistics-and-experimentation" class="level3">
+<h3 data-anchor-id="statistics-and-experimentation"><a href="./services.html#statistics">Statistics and experimentation</a></h3>
+<p>A/B tests, causal analysis and estimates that come with a range, so a decision can weigh the risk.</p>
+</section>
+<section id="training" class="level3">
+<h3 data-anchor-id="training"><a href="./services.html#training">Training</a></h3>
+<p>Hands-on workshops that leave your team able to maintain the work, built on <a href="./books.html">books</a> and <a href="https://www.udemy.com/user/joram-mutenge/">courses</a> about Polars and pandas.</p>
+</section>
+</div>
+</div>
+</div>
+<div class="band band-navy">
+<div class="wrap">
+<p><span class="eyebrow">How an engagement runs</span></p>
+<section id="small-scope-first-then-build." class="level2">
+<h2 data-anchor-id="small-scope-first-then-build.">Small scope first, then build.</h2>
+<div class="steps">
+<section id="scope" class="level3">
+<h3 data-anchor-id="scope">Scope</h3>
+<p>Start from the decision the work should improve, check the data can support it, and agree what success looks like.</p>
+</section>
+<section id="build" class="level3">
+<h3 data-anchor-id="build">Build</h3>
+<p>Deliver in short cycles against real data, so you see working output early and can change direction cheaply.</p>
+</section>
+<section id="hand-over" class="level3">
+<h3 data-anchor-id="hand-over">Hand over</h3>
+<p>Finish with documented code, tests and a walkthrough, so your team owns the result.</p>
+</section>
+</div>
+</section>
+</div>
+</div>
+<div class="band">
+<div class="wrap">
+<section id="portfolio" class="level2 section-head">
+<h2 data-anchor-id="portfolio">Portfolio</h2>
+<p><a href="./portfolio/index.html">All projects →</a></p>
+</section>
+<div id="listing-selected-work" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="Rm9yZWNhc3RpbmclMkNEYXRhJTIwYW5hbHlzaXM=" data-listing-date-sort="1731909600000" data-listing-file-modified-sort="1793859371357" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="286">
+<a href="./portfolio/bakery-forecast/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./portfolio/bakery-forecast/cover.svg" class="thumbnail-image card-img" style="height: 190px;">
 </p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Forecasting by bread type for a commercial bakery
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Rm9yZWNhc3Rpbmc='); return false;">Forecasting</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMGFuYWx5c2lz'); return false;">Data analysis</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Turning a retailer’s single monthly forecast into a clear production plan for white and brown bread.</p>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+</div>
+<div class="band" style="padding-top:0">
+<div class="wrap">
+<section id="from-the-blog" class="level2 section-head">
+<h2 data-anchor-id="from-the-blog">From the blog</h2>
+<p><a href="./blog/index.html">All posts →</a></p>
+</section>
+<div id="listing-latest-posts" class="quarto-listing quarto-listing-container-custom">
+<ul class="post-rows">
+
+  <li>
+    <a href="./blog/advanced-pivot-tables-in-polars/index.html">
+      <span class="date">2026-07-03</span>
+      <span class="name">Advanced pivot tables with polars</span>
+      <span class="sub">Sometimes group by does the trick</span>
+    </a>
+  </li>
+
+  <li>
+    <a href="./blog/52-week-high-and-low/index.html">
+      <span class="date">2026-06-09</span>
+      <span class="name">How the 52-week high/low can guide your investment choice</span>
+      <span class="sub"></span>
+    </a>
+  </li>
+
+  <li>
+    <a href="./blog/select-subsets-of-rows-and-columns-pandas-polars/index.html">
+      <span class="date">2026-06-08</span>
+      <span class="name">Slicing and dicing pandas &amp; polars dataframes</span>
+      <span class="sub">How to select subsets of rows and columns</span>
+    </a>
+  </li>
+
+  <li>
+    <a href="./blog/pycon-usa/index.html">
+      <span class="date">2026-05-16</span>
+      <span class="name">Don't Write Polars Code with a Pandas Accent</span>
+      <span class="sub">JORAM MUTENGE</span>
+    </a>
+  </li>
+
+</ul>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+</div>
+<div class="band cta">
+<section id="have-a-data-problem-worth-solving" class="level2 wrap">
+<h2 data-anchor-id="have-a-data-problem-worth-solving">Have a data problem worth solving?</h2>
+<p>Send a short description of what you are working on, and you will get an honest view of whether it is a good fit.</p>
+<div class="actions">
+<p><a href="./contact.html" class="btn-brand">Start a conversation</a></p>
+</div>
+</section>
 </div>
 
 
-</main>  
-</div>
- <!-- /main -->
+
+
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
@@ -588,13 +815,44 @@ Contact Us
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -602,5 +860,4 @@ Contact Us
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

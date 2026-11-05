@@ -2,22 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2025-07-26">
 
-<title>Thinking in tables</title>
+<title>Thinking in tables – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -35,19 +38,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../images/favicon.png" rel="icon" type="image/png">
+<link href="../../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f397cc185d0ab75492c67f0644c295c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ea4d2fc885dc84b3edb167484f3766fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-830064c72b735b51971de534140e6ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,13 +88,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -99,15 +101,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="../../services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -118,20 +130,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -201,7 +214,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </blockquote>
 <p>He went on to say, think about what makes a good writer. Having a large vocabulary does not do you any good if you can’t tell a good story. To be a Stephen King, you need to know how to create a narrative on the page that can move people. That’s the skill that makes you a 10x writer. Therefore, to be the proverbial 10x data analyst, you must master the skill of thinking in tables.</p>
 <section id="why-think-in-tables" class="level2">
-<h2 class="anchored" data-anchor-id="why-think-in-tables">Why think in tables?</h2>
+<h2 data-anchor-id="why-think-in-tables">Why think in tables?</h2>
 <p>If you’re a web developer, your bread and butter is text boxes over data. But if you’re a data analyst, your bread and butter is tabular data. This is data stored in spreadsheets and databases. Matt Harrison said it best:</p>
 <blockquote class="blockquote">
 <p>The world runs on spreadsheets and CSV files. These are where the crown jewels of companies are stored.</p>
@@ -209,7 +222,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>Thus, if you want to be a 10x data analyst, you need to master tabular data. After all, if companies are keeping their secret sauce to money generation in tabular data, you might as well learn how to handle that data to stand out. Morevover, having a deeper understanding of tabular data will make you an attractive candidate to many employers. That’s why your thinkig as a data analyst must be shaped by tables.</p>
 </section>
 <section id="know-your-joins" class="level2">
-<h2 class="anchored" data-anchor-id="know-your-joins">Know your joins</h2>
+<h2 data-anchor-id="know-your-joins">Know your joins</h2>
 <p>Thinking in tables means understanding what you can and can’t do with tables. As a data analyst you should know the major types of joins inside and out, just like you know the palm of your hand. Why? Because they’re the building blocks of relational thinking. Joins are your foundational tools for combining and reshaping datasets.</p>
 <p>If you’re rusty on joins, here’s a refresher, but I wouldn’t encourage you to memorize this. You must understand it so that you can explain each type of join in your own words. Remember:</p>
 <blockquote class="blockquote">
@@ -238,7 +251,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>If you can’t describe the shape of the resulting table after a join, you haven’t mastered the join yet.</p>
 </section>
 <section id="kinds-of-table-presentation" class="level2">
-<h2 class="anchored" data-anchor-id="kinds-of-table-presentation">Kinds of table presentation</h2>
+<h2 data-anchor-id="kinds-of-table-presentation">Kinds of table presentation</h2>
 <p>When sharing data with stakeholders after running your queries, you can present it in either long or wide format.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="**When to use what format**">
 <div class="callout-header d-flex align-content-center">
@@ -424,7 +437,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>Notice that these formats live up to their names. Long format has more rows (20), hence the name. And wide format has more columns (6), making it wider than the long format which has only 3 columns.</p>
 </section>
 <section id="reshaping-and-sorting-tables" class="level2">
-<h2 class="anchored" data-anchor-id="reshaping-and-sorting-tables">Reshaping and sorting tables</h2>
+<h2 data-anchor-id="reshaping-and-sorting-tables">Reshaping and sorting tables</h2>
 <p>Thinking in tables means having an internal map of the transformations available to you. These transformations include:</p>
 <ul>
 <li>Filtering data base on particular values (categorical or numerical)</li>
@@ -439,7 +452,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>To be a 10x data analyst, you must make it your goal to internalize these operations so well that when someone makes a request, you can immediately picture the table structure before and after.</p>
 </section>
 <section id="impossible-table-operations" class="level2">
-<h2 class="anchored" data-anchor-id="impossible-table-operations">Impossible table operations</h2>
+<h2 data-anchor-id="impossible-table-operations">Impossible table operations</h2>
 <p>One underrated part of thinking in tables is understanding what <em>can’t</em> be done, or at least what <em>shouldn’t</em> be done, and being able to explain why.</p>
 <p>Not all data can be merged. Not every transformation is feasible without assumptions. Not every dashboard request makes sense without restructuring the data model.</p>
 <p>Knowing your data shapes and limitations helps you:</p>
@@ -452,7 +465,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>Trust me, your colleagues will come to you with impossible data requests, not because they want to give you a tough time, but because they don’t know better. You should be able to clearly communicate to them why their data request is not feasible, or even better offer an alternative request.</p>
 </section>
 <section id="tables-tell-stories" class="level2">
-<h2 class="anchored" data-anchor-id="tables-tell-stories">Tables tell stories</h2>
+<h2 data-anchor-id="tables-tell-stories">Tables tell stories</h2>
 <p>The shape of a table tells a story. Rows are events or entities. Columns are attributes or measurements. When you scan a table, you should be asking:</p>
 <ul>
 <li>What does each row represent?</li>
@@ -464,7 +477,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>This mental model helps you design better queries, understand data pipelines, and debug problems when tables go wrong.</p>
 </section>
 <section id="a-confession-and-final-thoughts" class="level2">
-<h2 class="anchored" data-anchor-id="a-confession-and-final-thoughts">A confession and final thoughts</h2>
+<h2 data-anchor-id="a-confession-and-final-thoughts">A confession and final thoughts</h2>
 <p>Before my professor introduced me to the concept of thinking in tables, I was fixated on making beautiful data visualizations. I obsessed over fonts (I still love you Harmonia Sans) and perfect kerning. But while these visuals looked great, they didn’t deliver much value. Stakeholders don’t care how stylish your charts are or how perfectly spaced the letters in your viz titles look. They care whether your visualizations answer their business questions. If they don’t, no amount of aesthetic polish can save them.</p>
 <p>To paraphrase a famous quote by William Morris:</p>
 <blockquote class="blockquote">
@@ -484,13 +497,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -891,13 +897,44 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -905,5 +942,4 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -523,5 +523,29 @@
   },
   "blog/on-golf-and-machine-learning/index.qmd": {
     "index.html": "adb74b67"
+  },
+  "services.qmd": {
+    "services.html": "dfebbff0"
+  },
+  "contact.qmd": {
+    "contact.html": "7fd8925f"
+  },
+  "portfolio/demand-forecasting/index.qmd": {
+    "index.html": "ddfb119e"
+  },
+  "portfolio/executive-dashboard/index.qmd": {
+    "index.html": "b1334c7a"
+  },
+  "portfolio/document-search/index.qmd": {
+    "index.html": "db805fed"
+  },
+  "portfolio/pipeline-migration/index.qmd": {
+    "index.html": "50891cd2"
+  },
+  "portfolio/index.qmd": {
+    "index.html": "dd742134"
+  },
+  "portfolio/bakery-forecast/index.qmd": {
+    "index.html": "e9fa0419"
   }
 }

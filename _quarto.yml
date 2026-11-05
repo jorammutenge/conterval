@@ -1,45 +1,71 @@
 project:
   type: website
   output-dir: docs
+  post-render: assets/scripts/fix-feed.py
 
 website:
+  title: "Conterval"
+  description: "Data and AI consulting: machine learning, ETL, data visualization and applied AI."
   llms-txt: true
-  favicon: images/favicon.png
+  favicon: assets/images/favicon.png
   site-url: https://www.conterval.com
   page-navigation: true
-  google-analytics: 
+  back-to-top-navigation: false
+  google-analytics:
     tracking-id: "G-5Y1ZXKXMBX"
     anonymize-ip: true
   navbar:
-    left:
-      - text: '{{< fa home >}}'
-        href: https://www.conterval.com
-      - href: blog/index.qmd
-        text: Blog
-      - href: books.qmd
-        text: Books
-      - href: media.qmd
-        text: Media
-      - href: https://www.udemy.com/user/joram-mutenge/
-        text: Courses
+    logo: assets/images/logo.png
+    logo-alt: "Conterval home"
+    title: false
+    background: "#ffffff"
+    foreground: "#191970"
+    collapse-below: lg
+    right:
+      - text: Services
+        href: services.qmd
+      - text: Portfolio
+        href: portfolio/index.qmd
+      - text: Blog
+        href: blog/index.qmd
+      - text: Books
+        href: books.qmd
+      - text: Courses
+        href: https://www.udemy.com/user/joram-mutenge/
         target: _blank
-      - text: '{{< fa brands linkedin >}}'
+      - text: Media
+        href: media.qmd
+      - text: Contact
+        href: contact.qmd
+      - icon: linkedin
+        aria-label: LinkedIn
         href: https://www.linkedin.com/in/jorammutenge/
         target: _blank
-      - text: '{{< fa brands bluesky >}}'
-        href: https://bsky.app/profile/jorammutenge.com
-        target: _blank
-  page-footer: 
-    background: light
-    center: © 2026 Conterval · [Contact](mailto:contervalconsult@gmail.com)
+  page-footer:
+    left: "© 2026 Conterval"
+    center: "Data and AI consulting"
+    right:
+      - text: Services
+        href: services.qmd
+      - text: Blog
+        href: blog/index.qmd
+      - text: Books
+        href: books.qmd
+      - text: Media
+        href: media.qmd
+      - text: Contact
+        href: contact.qmd
+      - text: RSS
+        href: blog/index.xml
 
 format:
   html:
-    theme: [cosmo, custom.scss]
-    css: styles.css
-    code-block-border-left: true
+    theme: [brand, assets/styles/custom.scss]
+    syntax-highlighting: assets/styles/conterval.theme
+    code-copy: true
     toc: true
-    smooth-scroll: true
+    anchor-sections: false
+    smooth-scroll: false
     link-external-newwindow: true
 
 editor: source

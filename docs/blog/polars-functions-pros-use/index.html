@@ -2,22 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2025-01-13">
 
-<title>Ten polars functions that pros use and amateurs don’t</title>
+<title>Ten polars functions that pros use and amateurs don’t – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -70,19 +73,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../images/favicon.png" rel="icon" type="image/png">
+<link href="../../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f397cc185d0ab75492c67f0644c295c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ea4d2fc885dc84b3edb167484f3766fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-830064c72b735b51971de534140e6ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -119,13 +123,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -134,15 +136,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="../../services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -153,20 +165,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -242,7 +255,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 <p>However, because Polars is new, most of the code out there looks amateurish. Here are 10 functions you should use that will instantly make you look like a pro at Polars.</p>
 <section id="scan-csv" class="level2">
-<h2 class="anchored" data-anchor-id="scan-csv">1. Scan CSV</h2>
+<h2 data-anchor-id="scan-csv">1. Scan CSV</h2>
 <p>When working with large datasets, loading them can take a long time. This is where <code>scan_csv</code> becomes useful. Instead of fully reading the dataset, <code>scan_csv</code> scans its contents, allowing you to quickly preview the file and select only the columns you need. By loading just a subset of the data, you can significantly reduce the loading time. For example, consider a dataset containing information about counties in the USA. import polars as pl</p>
 <div id="918812fa" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pl.read_csv(counties_in_the_usa)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -476,7 +489,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>I’m sure you believe me now.</p>
 </section>
 <section id="sum-horizontal" class="level2">
-<h2 class="anchored" data-anchor-id="sum-horizontal">2. Sum horizontal</h2>
+<h2 data-anchor-id="sum-horizontal">2. Sum horizontal</h2>
 <p>Adding values in a single column is easy. All you need is <code>sum</code>. This is called column-wise and dataframes shine at performing column-wise mathematical operations. However, there comes a time when you need to perform row-wise calculations. This is where <code>sum_horizontal</code> comes in. Unfortunately, most Polars users are not aware of this function. Let’s say you had this dataframe for Apple stock data.</p>
 <div id="d7a820ca" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -776,7 +789,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>You not only write shorter code with <code>sum_horizontal</code> but you can also use other variations of it like <code>mean_horizontal</code> to get the average values of the four numbers and <code>min_horizontal</code> to get the smallest number.</p>
 </section>
 <section id="group-by-dynamic" class="level2">
-<h2 class="anchored" data-anchor-id="group-by-dynamic">3. Group by dynamic</h2>
+<h2 data-anchor-id="group-by-dynamic">3. Group by dynamic</h2>
 <p>When working with timeseries data, you may need to resample it based on specific time intervals and perform aggregations. Polars provides a convenient function, <code>group_by_dynamic</code>, to handle such tasks efficiently. For example, if you want to calculate the average <em>Close</em> values for Apple stock for each quarter, you can do it as follows:</p>
 <div id="c8ca2f2f" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
@@ -871,7 +884,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <p>The beauty of <code>group_by_dynamic</code> is that it can handle highly granular time intervals. Using the <code>every</code> parameter, you can specify intervals such as <code>"17d"</code> to resample every 17 days, <code>"2w"</code> for 2 weeks, or even <code>"3s"</code> for 3-second intervals if your date values include seconds.</p>
 </section>
 <section id="exclude" class="level2">
-<h2 class="anchored" data-anchor-id="exclude">4. Exclude</h2>
+<h2 data-anchor-id="exclude">4. Exclude</h2>
 <p>In most cases, you won’t want to display all the columns in your final dataframe—just the ones you’re interested in. To achieve this, you need to remove the unnecessary columns. Many beginners might choose to drop the columns they don’t need, but I strongly recommend using <code>exclude</code> instead.</p>
 <p>What’s the difference between excluding columns and dropping them? Dropping a column requires loading it into memory first, which can be time-consuming, especially with large datasets. On the other hand, excluding a column tells Polars’ query engine to skip loading it entirely. This approach is much faster, as Polars only loads the columns you actually need.</p>
 <p>Here’s how you can use <code>exclude</code>. Suppose you don’t want to load the <em>Volume</em> and <em>Adj Close</em> columns from the Apple stock dataset. One option is to explicitly select the columns you want to keep, but that would require typing out the names of all five desired columns. Instead, you can use <code>exclude</code> to specify just the two columns you don’t want displayed, saving both time and effort.</p>
@@ -988,7 +1001,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <p>Now I’ve loaded into memory only the columns I’m interested in.</p>
 </section>
 <section id="explode" class="level2">
-<h2 class="anchored" data-anchor-id="explode">5. Explode</h2>
+<h2 data-anchor-id="explode">5. Explode</h2>
 <p>Imagine you have a dataframe that tracks your weekly grocery purchases, with items listed as comma-separated strings in a single row. If you want to identify the items you buy most frequently, this format poses a challenge. Since Polars is a columnar-based framework, working with such data in its current form can make achieving this goal a bit tricky.</p>
 <div id="027d9332" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>groceries</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1160,7 +1173,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 </div>
 </section>
 <section id="top-bottom-k" class="level2">
-<h2 class="anchored" data-anchor-id="top-bottom-k">6. Top / Bottom K</h2>
+<h2 data-anchor-id="top-bottom-k">6. Top / Bottom K</h2>
 <p>Knowing the top 10 or 5 highest values or lowest values in your dataset is a very common operation. Polars has two handy functions that you can use to easily display that with <code>top_k</code> and <code>bottom_k</code>. If you wanted to see the top 5 counties in the USA with the highest population, you can use <code>top_k</code> see those counties.</p>
 <div id="f5f42bc3" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
@@ -1216,7 +1229,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <p>The <code>top_k</code> function accepts two parameters: a numerical value specifying the number of rows to display and the column to base the sorting on. For instance, in the example above, we used it to find the top 5 largest counties by population. To find the smallest counties by population, you can simply use the <code>bottom_k</code> function instead.</p>
 </section>
 <section id="sample" class="level2">
-<h2 class="anchored" data-anchor-id="sample">7. Sample</h2>
+<h2 data-anchor-id="sample">7. Sample</h2>
 <p>We live in a world of big data and analyzing large datasets can be time-consuming. A smarter approach is to work with a subset of the data, develop and refine your analysis code through experimentation, and then apply the finalized code to the full dataset. But how can you ensure that the subset you choose represents the entire dataset well? This is where the <code>sample</code> function comes in. It allows you to randomly select a specified number of rows. Additionally, these selected rows change with each execution, ensuring a different selection every time you run the code.</p>
 <p>The US counties dataset contains over three thousand rows, but we’re going to use <code>sample</code> to only select a thousand rows.</p>
 <div id="5ce4a929" class="cell" data-execution_count="16">
@@ -1361,7 +1374,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <p>The <code>sample</code> function lets you specify the number of rows you want to display as a numerical value. In our case, we are displaying 1000 rows.</p>
 </section>
 <section id="concat-str" class="level2">
-<h2 class="anchored" data-anchor-id="concat-str">8. Concat str</h2>
+<h2 data-anchor-id="concat-str">8. Concat str</h2>
 <p>This is short for “concatenate string” and it allows you to create a single value which is a mixture of values from 2 or more columns that contain string values. Suppose we wanted to have a column <em>NameAbbr</em> that contains the state name and the abbreviation for that state, we can do it by using <code>concat_str</code>.</p>
 <div id="bdc3cc3c" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(pl.read_csv(counties_in_the_usa)</span>
@@ -1456,7 +1469,7 @@ Even though my data was already sorted, I still used <code>sort</code> to make t
 <p>In the <code>concat_str</code> function above, we used two parameters. The first parameter is a list of the columns whose values we want to concatenate, and the second specifies the separator to use when joining those values. In this case, we used <code>", "</code> (a comma followed by a space) to produce values like “wyoming, WY”.</p>
 </section>
 <section id="format" class="level2">
-<h2 class="anchored" data-anchor-id="format">9. Format</h2>
+<h2 data-anchor-id="format">9. Format</h2>
 <p>When presenting data to someone, especially in printed form, you may want to add extra details to make the numbers more understandable. For instance, if you’re sending the quarterly average Close values you calculated earlier to your boss in the UK and want to add a currency symbol to avoid confusion, you could use <code>format</code> to include the dollar symbol. This way, your boss will always know that your analysis was done in dollars.</p>
 <div id="231ee310" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(apple_stock</span>
@@ -1550,7 +1563,7 @@ Note
 </div>
 </section>
 <section id="config" class="level2">
-<h2 class="anchored" data-anchor-id="config">10. Config</h2>
+<h2 data-anchor-id="config">10. Config</h2>
 <p>The default way of displaying polars dataframes is good, but sometimes you may want to change it up a bit like increase the number of rows displayed or increasing the size of a row to see all the values in that row. The function <code>Config</code> allows you to do just that. Below is the dataframe of groceries. Currently we cannot see all the values contained in each row as indicated by the ellipsis (…).</p>
 <div id="e60eb432" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>groceries</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1854,13 +1867,6 @@ Note
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -2261,13 +2267,44 @@ Note
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -2275,5 +2312,4 @@ Note
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

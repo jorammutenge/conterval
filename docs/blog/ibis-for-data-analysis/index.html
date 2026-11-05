@@ -2,22 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2025-06-25">
 
-<title>Why aren’t more data people talking about ibis?</title>
+<title>Why aren’t more data people talking about ibis? – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -70,19 +73,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../images/favicon.png" rel="icon" type="image/png">
+<link href="../../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-287435f9c36278cd45007a2c4fe3d733.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-cb9a56ef14bd6f2680536f9c54e047e4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-12e49fdf4940daf3e1ff7ead190fda85.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-df554b8381ce54bf7fbf6bc9cf090fb1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-12e49fdf4940daf3e1ff7ead190fda85.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -119,13 +123,11 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -134,15 +136,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="../../services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -153,20 +165,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -252,23 +265,23 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>But if you’re working in data analyst or scientist today, you’re likely more familiar with dataframe APIs like Pandas, Polars, or PySpark. Dataframe libraries have become the standard in data science and analytics. In fact, more data professionals today know how to use a dataframe library like Pandas than SQL. Currently, Pandas is the most widely adopted, but recently Polars has become so good it can’t be ignored.</p>
 <p>Like many people, I find dataframe libraries easier and more intuitive to work with than traditional SQL. Their syntax often feels more flexible and expressive, especially when working in Python-centric environments.</p>
 <section id="downsides-of-dataframe-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="downsides-of-dataframe-libraries">Downsides of dataframe libraries</h2>
+<h2 data-anchor-id="downsides-of-dataframe-libraries">Downsides of dataframe libraries</h2>
 <p>While dataframe libraries like Pandas are convenient and user-friendly, they often lack the kind of optimized query engines that databases provide. SQL continues to shine when it comes to performance, particularly for operations like <code>GROUP BY</code> aggregations. Even Wes McKinney, the creator of Pandas, has acknowledged that complex aggregation operations in Pandas can be “awkward and slow.”</p>
 <p>Another downside is that writing new rows of data to a dataframe can be tedious and computationally expensive. This is largely because most dataframe libraries are columnar in design, whereas traditional database tables are row-oriented and optimized for such operations.</p>
 </section>
 <section id="combining-database-and-dataframe-apis" class="level2">
-<h2 class="anchored" data-anchor-id="combining-database-and-dataframe-apis">Combining database and dataframe APIs</h2>
+<h2 data-anchor-id="combining-database-and-dataframe-apis">Combining database and dataframe APIs</h2>
 <p>What if we could combine the elegance of dataframe syntax with the efficiency of database engines? That would allow us to write powerful queries in a syntax that’s accessible to both SQL pros and their colleagues who may not be familiar with SQL, while still leveraging the power of a backend database engine to perform query optimizations.</p>
 <p>If only there were a project that brought together the best of both worlds. Well, there is–and it’s called <strong>Ibis</strong>. It’s like a match made in heaven!</p>
 </section>
 <section id="what-is-ibis" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-ibis">What is Ibis?</h2>
+<h2 data-anchor-id="what-is-ibis">What is Ibis?</h2>
 <p>Ibis is a Python library that provides a high-level, dataframe-like interface for working with structured data across different backends, such as SQL databases, big data engines like Apache Spark, and in-memory dataframes like Pandas or Polars. It allows users to write expressive and chainable code for data manipulation and analysis without worrying about the backend engine processing the data. This means you can efficiently run your queries with the same syntax on different systems.</p>
 <p>If you’ve worked with different SQL databases, you’ve likely noticed that each one can have its own SQL dialect. This can make it hard to scale your workflow from local development to large production environments. Ibis solves this problem by letting you use the same code across multiple databases.</p>
 <p>Wes McKinney created Ibis, which makes me trust that it’s a great project. Why? Because he learned from the mistakes of Pandas which he outlined in his <a href="https://wesmckinney.com/blog/apache-arrow-pandas-internals/">10 Things I Hate About pandas</a> blog post, and he’s correcting those mistakes with Ibis.</p>
 </section>
 <section id="business-reasons-to-use-ibis" class="level2">
-<h2 class="anchored" data-anchor-id="business-reasons-to-use-ibis">Business reasons to use Ibis</h2>
+<h2 data-anchor-id="business-reasons-to-use-ibis">Business reasons to use Ibis</h2>
 <p>You may be asking, “Why should my business switch to Ibis?” Beyond being a cool piece of technology, there are solid business reasons to adopt Ibis in your company. Here are two good reasons.</p>
 <ol type="1">
 <li><strong>It acts as an insurance policy</strong> - If your core vendor changes their policy or switches to a different database, you won’t need to rewrite your code. Just update the backend, and your existing code will continue to run smoothly. This can save you tens–or even hundreds–of developer hours.</li>
@@ -276,10 +289,10 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </ol>
 </section>
 <section id="setting-up-ibis" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-ibis">Setting up Ibis</h2>
+<h2 data-anchor-id="setting-up-ibis">Setting up Ibis</h2>
 <p>We’ve talked about how great Ibis is, but how do you actually use it to answer questions about your data? I’ll walk you through setting up the database, loading the data, and finally analyzing it. You’ll see just how easy it is to answer business questions using Ibis queries.</p>
 <section id="installing-the-database" class="level3">
-<h3 class="anchored" data-anchor-id="installing-the-database">Installing the database</h3>
+<h3 data-anchor-id="installing-the-database">Installing the database</h3>
 <p>For this walkthrough, we’re going to <a href="https://www.postgresql.org/download/">download PostgreSQL</a> and install it on our machine. I recommend using the same database to make it easier to follow along.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Remember!">
 <div class="callout-header d-flex align-content-center">
@@ -315,12 +328,12 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>Congratulations! You’ve successfully installed PostgreSQL.</p>
 </section>
 <section id="creating-a-database" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-database">Creating a database</h3>
+<h3 data-anchor-id="creating-a-database">Creating a database</h3>
 <p>Now that PostgreSQL is up and running, let’s create a database called <code>ibis_db</code>. This is where we’ll store the data we’ll be analyzing. On the top left, click the database with left arrow icon or simply press <code>OPTION + SHIFT + Q</code> in <code>pgAdmin</code> to open the Query tab. Then paste the code below, then execute it by pressing <code>F5</code> to create the database.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> ibis_db;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="creating-a-table" class="level3">
-<h3 class="anchored" data-anchor-id="creating-a-table">Creating a table</h3>
+<h3 data-anchor-id="creating-a-table">Creating a table</h3>
 <p>We now have the database set up. Next, we need to create a table in <code>ibis_db</code> to store the data we’ll be analyzing.</p>
 <p>Shut down <code>pgAdmin</code>, then open it again. Click the drop-down arrow next to <strong>Databases</strong> and select <code>ibis_db</code> by clicking on it. Open a new query tab and paste the code below. This is the schema that will create a table called <em>sales_orders</em>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Sales_Orders (</span>
@@ -338,11 +351,11 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>This will display the table with all the 8 columns, but with no data. Remember we haven’t loaded the data yet.</p>
 </section>
 <section id="getting-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="getting-the-data">Getting the data</h3>
+<h3 data-anchor-id="getting-the-data">Getting the data</h3>
 <p>We’ll use a dataset from a clothing store, which you can <a href="https://github.com/jorammutenge/learn-rust/blob/main/sample_sales.csv">download here</a>. The dataset contains clothing sales data over two years. It has 8 columns and 1,000 rows. You’ll notice that it’s a CSV file once you download it. I like this dataset because it’s rich enough to help us explore the capabilities of Ibis.</p>
 </section>
 <section id="loading-data-to-database" class="level3">
-<h3 class="anchored" data-anchor-id="loading-data-to-database">Loading data to database</h3>
+<h3 data-anchor-id="loading-data-to-database">Loading data to database</h3>
 <p>We’ve downloaded the CSV file. Next, we need to load the data into the <em>sales_orders</em> table.</p>
 <p>In <code>pgAdmin</code>, make sure you’ve selected <code>ibis_db</code> as the database. Then click the <code>PSQL Tool</code> icon (the rightmost icon on the first panel). This will open a query tab that looks like the terminal or command line. Now paste the code below into that terminal and press Enter. This should load all the data into the <em>sales_orders</em> table.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>\<span class="kw">copy</span> Sales_Orders <span class="kw">FROM</span> <span class="st">'full/path/sample_sales.csv'</span> <span class="kw">WITH</span> (FORMAT csv, <span class="kw">HEADER</span> <span class="kw">true</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -372,7 +385,7 @@ Note
 </div>
 </section>
 <section id="connecting-ibis-to-the-database" class="level3">
-<h3 class="anchored" data-anchor-id="connecting-ibis-to-the-database">Connecting Ibis to the database</h3>
+<h3 data-anchor-id="connecting-ibis-to-the-database">Connecting Ibis to the database</h3>
 <p>To connect Ibis to our PostgreSQL database, we need to install some Python libraries. Run the following commands in your command line or terminal.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ibis</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="st">'ibis-framework[postgres]'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -442,10 +455,10 @@ Note
 </section>
 </section>
 <section id="analyzing-data-with-ibis" class="level2">
-<h2 class="anchored" data-anchor-id="analyzing-data-with-ibis">Analyzing data with Ibis</h2>
+<h2 data-anchor-id="analyzing-data-with-ibis">Analyzing data with Ibis</h2>
 <p>We can now begin answering business questions using our dataset. It’s important to note that while we write our queries using Ibis in a dataframe-like syntax, the actual data processing is handled by PostgreSQL. We’re leveraging the power of PostgreSQL’s query engine to perform the computations.</p>
 <section id="table-transformation" class="level3">
-<h3 class="anchored" data-anchor-id="table-transformation">Table transformation</h3>
+<h3 data-anchor-id="table-transformation">Table transformation</h3>
 <p>The table displayed above shows the <em>date</em> as the last column. I prefer to have the date as the first column in my datasets. Let’s make that change.</p>
 <div id="69b883eb" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> t.relocate(<span class="st">'date'</span>)</span>
@@ -473,7 +486,7 @@ Note
 </div>
 </section>
 <section id="aggregations-and-sorting" class="level3">
-<h3 class="anchored" data-anchor-id="aggregations-and-sorting">Aggregations and sorting</h3>
+<h3 data-anchor-id="aggregations-and-sorting">Aggregations and sorting</h3>
 <p>Let’s determine which clothing category generates the most revenue, and then rank all the clothing categories in descending order based on their total revenue.</p>
 <div id="b8fa08d3" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(t</span>
@@ -571,7 +584,7 @@ Note
 </div>
 </section>
 <section id="filtering-and-creating-columns" class="level3">
-<h3 class="anchored" data-anchor-id="filtering-and-creating-columns">Filtering and creating columns</h3>
+<h3 data-anchor-id="filtering-and-creating-columns">Filtering and creating columns</h3>
 <p>We want to know which year had the highest revenue and what was the dollar value of that revenue. Here’s the query to do just that.</p>
 <div id="62bc0201" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(t</span>
@@ -673,7 +686,7 @@ Note
 </div>
 </section>
 <section id="graph-plotting" class="level3">
-<h3 class="anchored" data-anchor-id="graph-plotting">Graph plotting</h3>
+<h3 data-anchor-id="graph-plotting">Graph plotting</h3>
 <p>Yes, Ibis supports native plotting using the Altair visualization library. You can install it by running <code>pip install altair</code> in your command line or terminal.</p>
 <p>Other popular visualization libraries like Plotly, Matplotlib, or Seaborn can also be used. However, you’ll need to convert your Ibis tables to Pandas using the <code>.to_pandas()</code> function before using them with these libraries.</p>
 <p>Let’s create a bar chart that displays the total quantity sold for each product SKU to identify which SKU has the highest sales by quantity. More importantly, we’ll arrange the bars from tallest to shortest. We’ll use Altair to build the chart.</p>
@@ -767,7 +780,7 @@ Note
 </div>
 </section>
 <section id="pivot-tables" class="level3">
-<h3 class="anchored" data-anchor-id="pivot-tables">Pivot tables</h3>
+<h3 data-anchor-id="pivot-tables">Pivot tables</h3>
 <p>If you typically do your data analysis in Excel, then pivot tables are likely your go-to tool. Fortunately, Ibis also supports pivot table transformations, so you won’t need to switch back to Excel.</p>
 <p>Let’s create a pivot table that shows the total quantity for each month in 2014. The months will be the columns, with the total quantity values displayed in the corresponding column for each month.</p>
 <div id="02f10312" class="cell" data-execution_count="13">
@@ -845,7 +858,7 @@ Note
 </div>
 </section>
 <section id="customer-segmentation" class="level3">
-<h3 class="anchored" data-anchor-id="customer-segmentation">Customer segmentation</h3>
+<h3 data-anchor-id="customer-segmentation">Customer segmentation</h3>
 <p>We want to offer a discount to our loyal customers, which we define as any customer who has purchased clothing from every product category available in our store.</p>
 <p>First, let’s take a look at all the product categories we have in stock.</p>
 <div id="f71a4977" class="cell" data-execution_count="16">
@@ -969,7 +982,7 @@ Note
 <p>The low revenue percentages from these top five customers suggest that our business is well-diversified. Losing any single customer would not have a major impact on our overall performance.</p>
 </section>
 <section id="saving-data" class="level3">
-<h3 class="anchored" data-anchor-id="saving-data">Saving data</h3>
+<h3 data-anchor-id="saving-data">Saving data</h3>
 <p>Let’s save the data for the top 5 customers in a CSV file, which we can share with the clothing store’s shareholders. Ibis makes it easy to export data in multiple formats, including CSV, JSON, Excel, Parquet, and more.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(t</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a> .group_by(<span class="st">'account_name'</span>)</span>
@@ -991,7 +1004,7 @@ Note
 </section>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<h2 data-anchor-id="conclusion">Conclusion</h2>
 <p>We’ve only scratched the surface of what Ibis can do. Hopefully, I’ve whetted your appetite to give this powerful library a try because after using it, I think I’ve found the answer to the question I posed in the title. Maybe data people are not talking about Ibis because they’re keeping it a secret. They want to be the only ones benefiting from it.</p>
 <p>Well, the ibis is out of the nest now, and it’s taking flight. Let’s spread the word and let it soar across the data landscape. And to all the data podcasts out there, I’d be thrilled to be a guest on your show to talk about this unsung hero of a Python library in the data field. Do reach out!</p>
 
@@ -1001,13 +1014,6 @@ Note
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1408,13 +1414,44 @@ Note
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -1422,5 +1459,4 @@ Note
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

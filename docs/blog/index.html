@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
+<meta name="description" content="Thoughts and practical notes on data and AI.">
 
-<title>Conterval - Data and AI Articles</title>
+<title>Conterval - Data and AI Articles – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -37,21 +37,22 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../images/favicon.png" rel="icon" type="image/png">
+<link href="../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-61c53d565f71072fd5cb9e1ff0cd2699.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3f1e056db2262bed5a957a7b8f09b337.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-830064c72b735b51971de534140e6ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -89,8 +90,8 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-author','listing-summary','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 6,
+      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      page: 20,
     pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
       searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
@@ -118,7 +119,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -150,9 +150,7 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="blog.css">
-</head>
+<link rel="alternate" type="application/rss+xml" title="Conterval" href="index.xml" data-external="1"></head>
 
 <body class="nav-fixed quarto-light">
 
@@ -160,15 +158,25 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="../assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="../services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
@@ -179,20 +187,21 @@ window.Quarto = {
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -206,12 +215,32 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
     <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(159)</span></div><div class="category" data-category="MTAwRGF5c09mUG9sYXJz">100DaysOfPolars <span class="quarto-category-count">(101)</span></div><div class="category" data-category="ZGF0YSUyMGFuYWx5c2lz">data analysis <span class="quarto-category-count">(17)</span></div><div class="category" data-category="RmluYW5jZQ==">Finance <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cnVzdA==">rust <span class="quarto-category-count">(3)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(14)</span></div></div></div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Blog</h1>
+</div>
+
+<div>
+  <div class="description">
+    Thoughts and practical notes on data and AI.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 
@@ -219,6 +248,12 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <div class="list quarto-listing-default">
 <div class="quarto-post image-right" data-index="0" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1783054800000" data-listing-file-modified-sort="1783131421647" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1254">
 <div class="thumbnail"><a href="../blog/advanced-pivot-tables-in-polars/index.html" class="no-external">
@@ -233,6 +268,11 @@ window.Quarto = {
 <div class="listing-subtitle">
 <a href="../blog/advanced-pivot-tables-in-polars/index.html" class="no-external">Sometimes group by does the trick</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/advanced-pivot-tables-in-polars/index.html" class="no-external">
 As a data professional, it’s inevitable that you’ll end up creating a pivot table. Stakeholders love pivot tables, and they won’t pass up a chance to request one from you.…<em></em><em></em>
 </a></div>
@@ -241,9 +281,6 @@ As a data professional, it’s inevitable that you’ll end up creating a pivot 
 <a href="../blog/advanced-pivot-tables-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2026-07-03
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -261,6 +298,11 @@ As a data professional, it’s inevitable that you’ll end up creating a pivot 
 <div class="listing-subtitle">
 <a href="../blog/52-week-high-and-low/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmluYW5jZQ=='); return false;">Finance</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/52-week-high-and-low/index.html" class="no-external">
 Investing is not an easy activity. If it were, we would all be Warren Buffett rich! I’ve been reading investment literature to better understand what this rich-people…
 </a></div>
@@ -269,9 +311,6 @@ Investing is not an easy activity. If it were, we would all be Warren Buffett ri
 <a href="../blog/52-week-high-and-low/index.html" class="no-external">
 <div class="listing-date">
 2026-06-09
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -289,6 +328,11 @@ Investing is not an easy activity. If it were, we would all be Warren Buffett ri
 <div class="listing-subtitle">
 <a href="../blog/select-subsets-of-rows-and-columns-pandas-polars/index.html" class="no-external">How to select subsets of rows and columns</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/select-subsets-of-rows-and-columns-pandas-polars/index.html" class="no-external">
 A few years ago, I read an article on pandas’ <code>loc</code> method by Matt Harrison, published on the now-defunct Ponder website. I loved reading it because it showed, in depth, the…<code></code>
 </a></div>
@@ -298,13 +342,10 @@ A few years ago, I read an article on pandas’ <code>loc</code> method by Matt 
 <div class="listing-date">
 2026-06-08
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1778907600000" data-listing-file-modified-sort="1778915570639" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1087">
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1778907600000" data-listing-file-modified-sort="1793858323737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1087">
 <div class="thumbnail"><a href="../blog/pycon-usa/index.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -351,9 +392,6 @@ A few days ago, I needed to create slides for a PyCon talk I’ll be giving on M
 <div class="listing-date">
 2026-05-10
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -379,9 +417,6 @@ I’ve written a few books under my name, but <em>Deep Analysis with Polars</em>
 <div class="listing-date">
 2026-04-18
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -398,6 +433,11 @@ I’ve written a few books under my name, but <em>Deep Analysis with Polars</em>
 <div class="listing-subtitle">
 <a href="../blog/structs-in-rust/index.html" class="no-external">Custom data types</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cnVzdA=='); return false;">rust</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/structs-in-rust/index.html" class="no-external">
 A struct in Rust is a custom data type that lets you group related data under a single name. By default, structs have no methods, but you can add them using <code>impl</code> blocks.…
 </a></div>
@@ -406,9 +446,6 @@ A struct in Rust is a custom data type that lets you group related data under a 
 <a href="../blog/structs-in-rust/index.html" class="no-external">
 <div class="listing-date">
 2026-02-07
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -435,9 +472,6 @@ Yesterday, I watched the first episode of <em>The Apprentice</em> season 20. I�
 <div class="listing-date">
 2026-01-30
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -454,6 +488,11 @@ Yesterday, I watched the first episode of <em>The Apprentice</em> season 20. I�
 <div class="listing-subtitle">
 <a href="../blog/equality-with-null-polars/index.html" class="no-external">When null values interfere with filtering</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/equality-with-null-polars/index.html" class="no-external">
 Recently at work, I discovered something unexpected when filtering values with Polars. Below is a dataframe showing students’ weekly quiz results.
 </a></div>
@@ -462,9 +501,6 @@ Recently at work, I discovered something unexpected when filtering values with P
 <a href="../blog/equality-with-null-polars/index.html" class="no-external">
 <div class="listing-date">
 2026-01-21
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -482,6 +518,11 @@ Recently at work, I discovered something unexpected when filtering values with P
 <div class="listing-subtitle">
 <a href="../blog/fizzbuzz-in-polars/index.html" class="no-external">I didn’t know too, until I tried</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/fizzbuzz-in-polars/index.html" class="no-external">
 As a huge fan of the Polars data analysis library, I often find myself testing its capabilities to their limits. For example, I wanted to see whether I could implement the…
 </a></div>
@@ -491,16 +532,13 @@ As a huge fan of the Polars data analysis library, I often find myself testing i
 <div class="listing-date">
 2026-01-15
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
 <div class="quarto-post image-right" data-index="10" data-categories="ZGF0YSUyMGFuYWx5c2lz" data-listing-date-sort="1767160800000" data-listing-file-modified-sort="1768522914626" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1570">
 <div class="thumbnail"><a href="../blog/movies-and-series-watched-2025/index.html" class="no-external">
 
-<p class="card-img-top"><img loading='lazy' data-src="movies-and-series-watched-2025/image.jpg"  class="thumbnail-image card-img"/></p>
+<p class="card-img-top"><img loading='lazy' src="movies-and-series-watched-2025/image.jpg"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
@@ -510,6 +548,11 @@ As a huge fan of the Polars data analysis library, I often find myself testing i
 <div class="listing-subtitle">
 <a href="../blog/movies-and-series-watched-2025/index.html" class="no-external">And how to calculate the Mutenge score</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/movies-and-series-watched-2025/index.html" class="no-external">
 If someone asks about your hobbies, do you tell them something that makes you seem smart or cool, or do you tell the truth? If a hobby is what you spend most of your free…
 </a></div>
@@ -518,9 +561,6 @@ If someone asks about your hobbies, do you tell them something that makes you se
 <a href="../blog/movies-and-series-watched-2025/index.html" class="no-external">
 <div class="listing-date">
 2025-12-31
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -538,6 +578,11 @@ If someone asks about your hobbies, do you tell them something that makes you se
 <div class="listing-subtitle">
 <a href="../blog/format-dates-in-polars/index.html" class="no-external">dt.strftime</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/format-dates-in-polars/index.html" class="no-external">
 The representation of dates in data varies from region to region. In the USA, for instance, dates begin with the month rather than the day. Polars allows you to change how…
 </a></div>
@@ -546,9 +591,6 @@ The representation of dates in data varies from region to region. In the USA, fo
 <a href="../blog/format-dates-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-12-23
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -566,6 +608,11 @@ The representation of dates in data varies from region to region. In the USA, fo
 <div class="listing-subtitle">
 <a href="../blog/json-to-tabular-data/index.html" class="no-external">pl.json_normalize</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/json-to-tabular-data/index.html" class="no-external">
 JSON data obtained through an API call can be nested at multiple levels, making it difficult to analyze. Fortunately, Polars can read JSON data at multiple levels, ensuring…
 </a></div>
@@ -574,9 +621,6 @@ JSON data obtained through an API call can be nested at multiple levels, making 
 <a href="../blog/json-to-tabular-data/index.html" class="no-external">
 <div class="listing-date">
 2025-12-22
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -594,6 +638,11 @@ JSON data obtained through an API call can be nested at multiple levels, making 
 <div class="listing-subtitle">
 <a href="../blog/count-occurrence-of-text-in-polars/index.html" class="no-external">count_matches</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/count-occurrence-of-text-in-polars/index.html" class="no-external">
 You have a table of passwords and, for some reason, you want to count the number of digits in each password. This is possible using Polars. Below is a dataframe of passwords.
 </a></div>
@@ -602,9 +651,6 @@ You have a table of passwords and, for some reason, you want to count the number
 <a href="../blog/count-occurrence-of-text-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-12-21
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -622,6 +668,11 @@ You have a table of passwords and, for some reason, you want to count the number
 <div class="listing-subtitle">
 <a href="../blog/from-many-rows-to-one/index.html" class="no-external">str.join</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/from-many-rows-to-one/index.html" class="no-external">
 Polars allows you to collapse multiple rows into a single row, combining the values from all the rows into one. Below is a dataframe showing parts of a phone number.
 </a></div>
@@ -630,9 +681,6 @@ Polars allows you to collapse multiple rows into a single row, combining the val
 <a href="../blog/from-many-rows-to-one/index.html" class="no-external">
 <div class="listing-date">
 2025-12-20
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -650,6 +698,11 @@ Polars allows you to collapse multiple rows into a single row, combining the val
 <div class="listing-subtitle">
 <a href="../blog/rounding-down-time-values-polars/index.html" class="no-external">dt.truncate</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/rounding-down-time-values-polars/index.html" class="no-external">
 Polars allows you to round down datetime values, similar to how you would round decimal values–well, almost. Below is a dataframe showing time series data.
 </a></div>
@@ -658,9 +711,6 @@ Polars allows you to round down datetime values, similar to how you would round 
 <a href="../blog/rounding-down-time-values-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-12-19
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -678,6 +728,11 @@ Polars allows you to round down datetime values, similar to how you would round 
 <div class="listing-subtitle">
 <a href="../blog/use-title-case-on-text-polars/index.html" class="no-external">to_titlecase</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/use-title-case-on-text-polars/index.html" class="no-external">
 You have a table with authors in one column and the books they wrote in another. However, the book titles are all in lowercase, which is not the standard formatting for book…
 </a></div>
@@ -686,9 +741,6 @@ You have a table with authors in one column and the books they wrote in another.
 <a href="../blog/use-title-case-on-text-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-12-18
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -706,6 +758,11 @@ You have a table with authors in one column and the books they wrote in another.
 <div class="listing-subtitle">
 <a href="../blog/group-by-dynamic-in-polars/index.html" class="no-external">group_by_dynamic</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/group-by-dynamic-in-polars/index.html" class="no-external">
 Group by operations are powerful in Polars, but when working with time series data, you can make them even more effective by using <code>group_by_dynamic</code> instead of the standard <code>gr…</code>
 </a></div>
@@ -714,9 +771,6 @@ Group by operations are powerful in Polars, but when working with time series da
 <a href="../blog/group-by-dynamic-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-12-17
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -734,6 +788,11 @@ Group by operations are powerful in Polars, but when working with time series da
 <div class="listing-subtitle">
 <a href="../blog/replace-time-zone-polars/index.html" class="no-external">dt.replace_time_zone</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/replace-time-zone-polars/index.html" class="no-external">
 If you are working remotely and your team spans multiple time zones, it is important to ensure that the data you are analyzing matches the time zone in which it originated.…
 </a></div>
@@ -742,9 +801,6 @@ If you are working remotely and your team spans multiple time zones, it is impor
 <a href="../blog/replace-time-zone-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-12-16
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -762,6 +818,11 @@ If you are working remotely and your team spans multiple time zones, it is impor
 <div class="listing-subtitle">
 <a href="../blog/filter-dataframe-rows/index.html" class="no-external">filter</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/filter-dataframe-rows/index.html" class="no-external">
 If you are analyzing data with Polars, it is almost impossible to complete an analysis without filtering. Data analysis usually involves selecting some rows from a dataframe…
 </a></div>
@@ -770,9 +831,6 @@ If you are analyzing data with Polars, it is almost impossible to complete an an
 <a href="../blog/filter-dataframe-rows/index.html" class="no-external">
 <div class="listing-date">
 2025-12-15
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -790,6 +848,11 @@ If you are analyzing data with Polars, it is almost impossible to complete an an
 <div class="listing-subtitle">
 <a href="../blog/extract-part-of-text/index.html" class="no-external">str.head</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/extract-part-of-text/index.html" class="no-external">
 Sometimes you may need to extract the first five or seven characters from a text value. This is useful when working with long strings. The following example uses a dataframe…
 </a></div>
@@ -798,9 +861,6 @@ Sometimes you may need to extract the first five or seven characters from a text
 <a href="../blog/extract-part-of-text/index.html" class="no-external">
 <div class="listing-date">
 2025-11-24
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -818,6 +878,11 @@ Sometimes you may need to extract the first five or seven characters from a text
 <div class="listing-subtitle">
 <a href="../blog/from-date-to-century/index.html" class="no-external">dt.century</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/from-date-to-century/index.html" class="no-external">
 You are querying a historical database that contains dates, and you want to create another column that indicates the century for each date. The dataframe below shows a set…
 </a></div>
@@ -826,9 +891,6 @@ You are querying a historical database that contains dates, and you want to crea
 <a href="../blog/from-date-to-century/index.html" class="no-external">
 <div class="listing-date">
 2025-11-23
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -846,6 +908,11 @@ You are querying a historical database that contains dates, and you want to crea
 <div class="listing-subtitle">
 <a href="../blog/schema-on-read/index.html" class="no-external">read_parquet_schema</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/schema-on-read/index.html" class="no-external">
 You have a large Parquet dataset and want to determine its columns and their data types. However, you do not want to read the entire dataset just to retrieve this…
 </a></div>
@@ -854,9 +921,6 @@ You have a large Parquet dataset and want to determine its columns and their dat
 <a href="../blog/schema-on-read/index.html" class="no-external">
 <div class="listing-date">
 2025-11-22
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -874,6 +938,11 @@ You have a large Parquet dataset and want to determine its columns and their dat
 <div class="listing-subtitle">
 <a href="../blog/set-difference-in-polars/index.html" class="no-external">anti join</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/set-difference-in-polars/index.html" class="no-external">
 Polars provides a special type of join that lets you retrieve items in dataframe 1 that do not have a match in dataframe 2. This works like set difference in mathematics.
 </a></div>
@@ -882,9 +951,6 @@ Polars provides a special type of join that lets you retrieve items in dataframe
 <a href="../blog/set-difference-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-11-20
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -902,6 +968,11 @@ Polars provides a special type of join that lets you retrieve items in dataframe
 <div class="listing-subtitle">
 <a href="../blog/get-index-of-unique-values/index.html" class="no-external">arg_unique</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-index-of-unique-values/index.html" class="no-external">
 You have a table with repeating names, and you want to get the index where each unique name appears. Below is a dataframe showing students and their grades on various tests.
 </a></div>
@@ -910,9 +981,6 @@ You have a table with repeating names, and you want to get the index where each 
 <a href="../blog/get-index-of-unique-values/index.html" class="no-external">
 <div class="listing-date">
 2025-11-19
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -930,6 +998,11 @@ You have a table with repeating names, and you want to get the index where each 
 <div class="listing-subtitle">
 <a href="../blog/assign-column-names-on-read/index.html" class="no-external">new_columns</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/assign-column-names-on-read/index.html" class="no-external">
 Most people read a CSV file with poorly named columns and then rename them afterward. If you’re one of those people, stop doing that. Below is a dataframe showing a CSV file…
 </a></div>
@@ -938,9 +1011,6 @@ Most people read a CSV file with poorly named columns and then rename them after
 <a href="../blog/assign-column-names-on-read/index.html" class="no-external">
 <div class="listing-date">
 2025-11-18
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -958,6 +1028,11 @@ Most people read a CSV file with poorly named columns and then rename them after
 <div class="listing-subtitle">
 <a href="../blog/date-to-timestamp/index.html" class="no-external">dt.timestamp</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/date-to-timestamp/index.html" class="no-external">
 Sometimes you may want the date value in your dataframe to display as a timestamp. This is useful when you need to hide the date of birth (DOB) of people in your dataset…
 </a></div>
@@ -966,9 +1041,6 @@ Sometimes you may want the date value in your dataframe to display as a timestam
 <a href="../blog/date-to-timestamp/index.html" class="no-external">
 <div class="listing-date">
 2025-11-17
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -986,6 +1058,11 @@ Sometimes you may want the date value in your dataframe to display as a timestam
 <div class="listing-subtitle">
 <a href="../blog/override-data-types-in-polars/index.html" class="no-external">schema_overrides</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/override-data-types-in-polars/index.html" class="no-external">
 Most people read CSV files and then change the data type of columns. That is an amateur way of doing it. The professional approach is to do it all at once. Below is a…
 </a></div>
@@ -994,9 +1071,6 @@ Most people read CSV files and then change the data type of columns. That is an 
 <a href="../blog/override-data-types-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-11-13
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1014,6 +1088,11 @@ Most people read CSV files and then change the data type of columns. That is an 
 <div class="listing-subtitle">
 <a href="../blog/count-number-of-days-polars/index.html" class="no-external">total_days</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/count-number-of-days-polars/index.html" class="no-external">
 Counting the number of days between dates is a common calculation in data analysis. Below is a dataframe showing start and end dates.
 </a></div>
@@ -1022,9 +1101,6 @@ Counting the number of days between dates is a common calculation in data analys
 <a href="../blog/count-number-of-days-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-11-12
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1042,6 +1118,11 @@ Counting the number of days between dates is a common calculation in data analys
 <div class="listing-subtitle">
 <a href="../blog/bytes-in-text-polars/index.html" class="no-external">len_bytes</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/bytes-in-text-polars/index.html" class="no-external">
 The number of characters in text is not always the same as the number of bytes, especially when the text contains emojis. Below is a dataframe showing YouTube comments.
 </a></div>
@@ -1050,9 +1131,6 @@ The number of characters in text is not always the same as the number of bytes, 
 <a href="../blog/bytes-in-text-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-11-11
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1070,6 +1148,11 @@ The number of characters in text is not always the same as the number of bytes, 
 <div class="listing-subtitle">
 <a href="../blog/string-padding-in-polars/index.html" class="no-external">pad_end</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/string-padding-in-polars/index.html" class="no-external">
 You have part numbers for your products, and you want to ensure they all have the same length, meaning they contain the same number of characters. Below is a dataframe that…
 </a></div>
@@ -1078,9 +1161,6 @@ You have part numbers for your products, and you want to ensure they all have th
 <a href="../blog/string-padding-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-11-10
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1098,6 +1178,11 @@ You have part numbers for your products, and you want to ensure they all have th
 <div class="listing-subtitle">
 <a href="../blog/create-hierarchy-for-text-data-polars/index.html" class="no-external">Enum</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/create-hierarchy-for-text-data-polars/index.html" class="no-external">
 Polars has a special data type that allows you to filter text values based on hierarchy. Let’s create a dataframe where the <em>Degree</em> column is of the data type <code>Enum</code>.
 </a></div>
@@ -1106,9 +1191,6 @@ Polars has a special data type that allows you to filter text values based on hi
 <a href="../blog/create-hierarchy-for-text-data-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-29
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1126,6 +1208,11 @@ Polars has a special data type that allows you to filter text values based on hi
 <div class="listing-subtitle">
 <a href="../blog/move-dates-back-and-forward-polars/index.html" class="no-external">offset_by</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/move-dates-back-and-forward-polars/index.html" class="no-external">
 Sometimes, you may want to change the dates of your appointments, either moving them forward or backward. Below is a dataframe showing your appointments.
 </a></div>
@@ -1134,9 +1221,6 @@ Sometimes, you may want to change the dates of your appointments, either moving 
 <a href="../blog/move-dates-back-and-forward-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-28
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1154,6 +1238,11 @@ Sometimes, you may want to change the dates of your appointments, either moving 
 <div class="listing-subtitle">
 <a href="../blog/use-cumulative-product-in-polars/index.html" class="no-external">cum_prod</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/use-cumulative-product-in-polars/index.html" class="no-external">
 Probabilities are all around us, and if you work in the data field, you’re bound to encounter them. For example, what are the chances that you’ll get into Harvard, become a…<em></em>
 </a></div>
@@ -1162,9 +1251,6 @@ Probabilities are all around us, and if you work in the data field, you’re bou
 <a href="../blog/use-cumulative-product-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-27
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1182,6 +1268,11 @@ Probabilities are all around us, and if you work in the data field, you’re bou
 <div class="listing-subtitle">
 <a href="../blog/get-indices-of-value-polars/index.html" class="no-external">arg_true</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-indices-of-value-polars/index.html" class="no-external">
 Sometimes you may want to get the index positions of a repeating value in a Polars dataframe. Below is a dataframe showing students and their grades.
 </a></div>
@@ -1190,9 +1281,6 @@ Sometimes you may want to get the index positions of a repeating value in a Pola
 <a href="../blog/get-indices-of-value-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-26
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1210,6 +1298,11 @@ Sometimes you may want to get the index positions of a repeating value in a Pola
 <div class="listing-subtitle">
 <a href="../blog/count-null-in-polars/index.html" class="no-external">null_count</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/count-null-in-polars/index.html" class="no-external">
 Everyone working in the data field knows that data is never perfectly clean, and missing values are almost inevitable. That’s why it’s important to check whether your…
 </a></div>
@@ -1218,9 +1311,6 @@ Everyone working in the data field knows that data is never perfectly clean, and
 <a href="../blog/count-null-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-25
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1238,6 +1328,11 @@ Everyone working in the data field knows that data is never perfectly clean, and
 <div class="listing-subtitle">
 <a href="../blog/unnest-values-in-polars-struct/index.html" class="no-external">unnest</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/unnest-values-in-polars-struct/index.html" class="no-external">
 Polars has a special data type called <strong>struct</strong>, which is useful for storing data efficiently without using too much memory. However, performing tabular operations on structs…
 </a></div>
@@ -1246,9 +1341,6 @@ Polars has a special data type called <strong>struct</strong>, which is useful f
 <a href="../blog/unnest-values-in-polars-struct/index.html" class="no-external">
 <div class="listing-date">
 2025-10-24
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1266,6 +1358,11 @@ Polars has a special data type called <strong>struct</strong>, which is useful f
 <div class="listing-subtitle">
 <a href="../blog/reverse-valiues-in-polars-dataframe/index.html" class="no-external">reverse</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/reverse-valiues-in-polars-dataframe/index.html" class="no-external">
 Polars allows you to reverse the values in your dataframe so that the last row becomes the first. Below is a dataframe showing the itinerary of a businessperson like yourself.
 </a></div>
@@ -1274,9 +1371,6 @@ Polars allows you to reverse the values in your dataframe so that the last row b
 <a href="../blog/reverse-valiues-in-polars-dataframe/index.html" class="no-external">
 <div class="listing-date">
 2025-10-23
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1294,6 +1388,11 @@ Polars allows you to reverse the values in your dataframe so that the last row b
 <div class="listing-subtitle">
 <a href="../blog/get-value-in-specific-cell/index.html" class="no-external">item</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-value-in-specific-cell/index.html" class="no-external">
 Polars allows you to target a dataframe down to a specific value, such as selecting a value from a particular cell in the table. Below is a dataframe showing streaming…
 </a></div>
@@ -1302,9 +1401,6 @@ Polars allows you to target a dataframe down to a specific value, such as select
 <a href="../blog/get-value-in-specific-cell/index.html" class="no-external">
 <div class="listing-date">
 2025-10-22
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1322,6 +1418,11 @@ Polars allows you to target a dataframe down to a specific value, such as select
 <div class="listing-subtitle">
 <a href="../blog/get-row-as-dictionary-polars/index.html" class="no-external">row</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-row-as-dictionary-polars/index.html" class="no-external">
 The Polars dataframe is highly accessible. In fact, you can get a row as a dictionary and use it directly in your Python code. Below is a dataframe showing clothing brands.
 </a></div>
@@ -1330,9 +1431,6 @@ The Polars dataframe is highly accessible. In fact, you can get a row as a dicti
 <a href="../blog/get-row-as-dictionary-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-21
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1350,6 +1448,11 @@ The Polars dataframe is highly accessible. In fact, you can get a row as a dicti
 <div class="listing-subtitle">
 <a href="../blog/from-numerical-to-categorical-in-polars/index.html" class="no-external">qcut</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/from-numerical-to-categorical-in-polars/index.html" class="no-external">
 If you’re a movie buff like me, you probably subscribe to multiple streaming services. Suppose you wanted to categorize the cost of your subscription fees for these services…
 </a></div>
@@ -1358,9 +1461,6 @@ If you’re a movie buff like me, you probably subscribe to multiple streaming s
 <a href="../blog/from-numerical-to-categorical-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-20
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1378,6 +1478,11 @@ If you’re a movie buff like me, you probably subscribe to multiple streaming s
 <div class="listing-subtitle">
 <a href="../blog/group-with-over-in-polars/index.html" class="no-external">over</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/group-with-over-in-polars/index.html" class="no-external">
 Group by operations usually reduce the size of a dataframe, both in the number of columns and rows returned. However, sometimes you may want to maintain the original…
 </a></div>
@@ -1386,9 +1491,6 @@ Group by operations usually reduce the size of a dataframe, both in the number o
 <a href="../blog/group-with-over-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-19
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1406,6 +1508,11 @@ Group by operations usually reduce the size of a dataframe, both in the number o
 <div class="listing-subtitle">
 <a href="../blog/insert-column-in-polars-dataframe/index.html" class="no-external">insert_column</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/insert-column-in-polars-dataframe/index.html" class="no-external">
 Polars allows you to insert a column into a dataframe at any position you want. Below is a dataframe showing the ratings of some unknown movies.
 </a></div>
@@ -1414,9 +1521,6 @@ Polars allows you to insert a column into a dataframe at any position you want. 
 <a href="../blog/insert-column-in-polars-dataframe/index.html" class="no-external">
 <div class="listing-date">
 2025-10-13
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1434,6 +1538,11 @@ Polars allows you to insert a column into a dataframe at any position you want. 
 <div class="listing-subtitle">
 <a href="../blog/get-column-index-position-polars/index.html" class="no-external">get_column_index</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-column-index-position-polars/index.html" class="no-external">
 Your table has many columns, and you want to know the position of a specific column in the table. How can you do that? Below is a dataframe showing cereal brands.
 </a></div>
@@ -1442,9 +1551,6 @@ Your table has many columns, and you want to know the position of a specific col
 <a href="../blog/get-column-index-position-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-12
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1462,6 +1568,11 @@ Your table has many columns, and you want to know the position of a specific col
 <div class="listing-subtitle">
 <a href="../blog/stack-dataframes-side-by-side-polars/index.html" class="no-external">hstack</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/stack-dataframes-side-by-side-polars/index.html" class="no-external">
 If you have two tables with the same number of rows, you can combine them side by side to create a single table. Below are two dataframes to be combined.
 </a></div>
@@ -1470,9 +1581,6 @@ If you have two tables with the same number of rows, you can combine them side b
 <a href="../blog/stack-dataframes-side-by-side-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-11
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1490,6 +1598,11 @@ If you have two tables with the same number of rows, you can combine them side b
 <div class="listing-subtitle">
 <a href="../blog/pivot-without-aggregation-in-polars/index.html" class="no-external">unstack</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/pivot-without-aggregation-in-polars/index.html" class="no-external">
 You have a table with four rows and want to turn it into a table with two rows. In other words, you want to transform a long-format table into a wide-format table, which…
 </a></div>
@@ -1498,9 +1611,6 @@ You have a table with four rows and want to turn it into a table with two rows. 
 <a href="../blog/pivot-without-aggregation-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-10
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1518,6 +1628,11 @@ You have a table with four rows and want to turn it into a table with two rows. 
 <div class="listing-subtitle">
 <a href="../blog/transpose-dataframe-in-polars/index.html" class="no-external">transpose</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/transpose-dataframe-in-polars/index.html" class="no-external">
 For presentation purposes, you may want to have the values from a row stored in a single column. Below is a dataframe showing electronic gadgets.
 </a></div>
@@ -1526,9 +1641,6 @@ For presentation purposes, you may want to have the values from a row stored in 
 <a href="../blog/transpose-dataframe-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-09
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1546,6 +1658,11 @@ For presentation purposes, you may want to have the values from a row stored in 
 <div class="listing-subtitle">
 <a href="../blog/swap-signs-on-numbers-polars/index.html" class="no-external">neg</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/swap-signs-on-numbers-polars/index.html" class="no-external">
 You want to understand what makes your life better, so you start assigning a Collins score to each day to gain insights from your high-scoring days. However, after five…
 </a></div>
@@ -1554,9 +1671,6 @@ You want to understand what makes your life better, so you start assigning a Col
 <a href="../blog/swap-signs-on-numbers-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-08
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1574,6 +1688,11 @@ You want to understand what makes your life better, so you start assigning a Col
 <div class="listing-subtitle">
 <a href="../blog/divide-with-no-remainder-polars/index.html" class="no-external">floordiv</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/divide-with-no-remainder-polars/index.html" class="no-external">
 In programming, division comes in two forms: with a remainder and without a remainder. In most programming languages, the symbol <code>/</code> represents division with a remainder, while <code>…</code><code></code><code></code>
 </a></div>
@@ -1582,9 +1701,6 @@ In programming, division comes in two forms: with a remainder and without a rema
 <a href="../blog/divide-with-no-remainder-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-07
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1602,6 +1718,11 @@ In programming, division comes in two forms: with a remainder and without a rema
 <div class="listing-subtitle">
 <a href="../blog/set-upper-and-lower-bound-values-polars/index.html" class="no-external">clip</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/set-upper-and-lower-bound-values-polars/index.html" class="no-external">
 Imagine you’re a teacher who isn’t satisfied with the range of grades your students received on what you thought was a fairly easy math test. You want to set the lowest…
 </a></div>
@@ -1610,9 +1731,6 @@ Imagine you’re a teacher who isn’t satisfied with the range of grades your s
 <a href="../blog/set-upper-and-lower-bound-values-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-06
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1630,6 +1748,11 @@ Imagine you’re a teacher who isn’t satisfied with the range of grades your s
 <div class="listing-subtitle">
 <a href="../blog/from-polars-dataframe-to-pandas/index.html" class="no-external">to_pandas</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/from-polars-dataframe-to-pandas/index.html" class="no-external">
 Almost anything you can do in Pandas can also be done in Polars. However, there are certain outputs that are unique to Pandas, such as creating a hierarchical column table.…
 </a></div>
@@ -1638,9 +1761,6 @@ Almost anything you can do in Pandas can also be done in Polars. However, there 
 <a href="../blog/from-polars-dataframe-to-pandas/index.html" class="no-external">
 <div class="listing-date">
 2025-10-05
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1658,6 +1778,11 @@ Almost anything you can do in Pandas can also be done in Polars. However, there 
 <div class="listing-subtitle">
 <a href="../blog/fill-with-next-value-polars/index.html" class="no-external">backward_fill</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/fill-with-next-value-polars/index.html" class="no-external">
 Anyone working with data knows that encountering null values in a dataset is inevitable. There are several ways to fill null values in Polars. One approach is to replace…
 </a></div>
@@ -1666,9 +1791,6 @@ Anyone working with data knows that encountering null values in a dataset is ine
 <a href="../blog/fill-with-next-value-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-04
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1686,6 +1808,11 @@ Anyone working with data knows that encountering null values in a dataset is ine
 <div class="listing-subtitle">
 <a href="../blog/list-of-dataframe-polars/index.html" class="no-external">pl.align_frames</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/list-of-dataframe-polars/index.html" class="no-external">
 You have two dataframes and want to store them in a list based on shared values in one column. Below are two dataframes; one with movie ratings and the other with duration.
 </a></div>
@@ -1694,9 +1821,6 @@ You have two dataframes and want to store them in a list based on shared values 
 <a href="../blog/list-of-dataframe-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-03
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1714,6 +1838,11 @@ You have two dataframes and want to store them in a list based on shared values 
 <div class="listing-subtitle">
 <a href="../blog/convert-dataframe-to-dictionary-polars/index.html" class="no-external">to_dict</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/convert-dataframe-to-dictionary-polars/index.html" class="no-external">
 Dictionaries are an important data structure in Python. They’re used everywhere from storing data retrieved from web requests to keeping values in a lookup table by key.…
 </a></div>
@@ -1722,9 +1851,6 @@ Dictionaries are an important data structure in Python. They’re used everywher
 <a href="../blog/convert-dataframe-to-dictionary-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-02
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1742,6 +1868,11 @@ Dictionaries are an important data structure in Python. They’re used everywher
 <div class="listing-subtitle">
 <a href="../blog/count-unique-values-polars/index.html" class="no-external">n_unique</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/count-unique-values-polars/index.html" class="no-external">
 Knowing the cardinality of columns in your table is important. What’s cardinality? It’s the number of unique values contained in a column. If a column has many unique…<em></em>
 </a></div>
@@ -1750,9 +1881,6 @@ Knowing the cardinality of columns in your table is important. What’s cardinal
 <a href="../blog/count-unique-values-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-10-01
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1770,6 +1898,11 @@ Knowing the cardinality of columns in your table is important. What’s cardinal
 <div class="listing-subtitle">
 <a href="../blog/rolling-mean-in-polars/index.html" class="no-external">rolling_mean</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/rolling-mean-in-polars/index.html" class="no-external">
 You’re running a store and want to know the average of your sales every 3 days to track whether your sales are dipping. Below is a dataframe showing sales on specific…
 </a></div>
@@ -1778,9 +1911,6 @@ You’re running a store and want to know the average of your sales every 3 days
 <a href="../blog/rolling-mean-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-30
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1798,6 +1928,11 @@ You’re running a store and want to know the average of your sales every 3 days
 <div class="listing-subtitle">
 <a href="../blog/filter-with-any-polars/index.html" class="no-external">contains_any</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/filter-with-any-polars/index.html" class="no-external">
 You’re a teacher who has just finished grading student exams, and you want to identify the students who either got a C or a D so that you can talk to them about their poor…
 </a></div>
@@ -1806,9 +1941,6 @@ You’re a teacher who has just finished grading student exams, and you want to 
 <a href="../blog/filter-with-any-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-29
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1835,9 +1967,6 @@ The data field is becoming increasingly competitive because many people are swit
 <div class="listing-date">
 2025-09-28
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -1854,6 +1983,11 @@ The data field is becoming increasingly competitive because many people are swit
 <div class="listing-subtitle">
 <a href="../blog/remove-suffix-in-column-names/index.html" class="no-external">name.map</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/remove-suffix-in-column-names/index.html" class="no-external">
 You may have a table with long column names that contain suffixes like “Undergraduate_Student”, where the suffix is “_Student”. These long column names can be difficult to…
 </a></div>
@@ -1862,9 +1996,6 @@ You may have a table with long column names that contain suffixes like “Underg
 <a href="../blog/remove-suffix-in-column-names/index.html" class="no-external">
 <div class="listing-date">
 2025-09-27
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1882,6 +2013,11 @@ You may have a table with long column names that contain suffixes like “Underg
 <div class="listing-subtitle">
 <a href="../blog/replace-text-in-polars/index.html" class="no-external">replace_all</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/replace-text-in-polars/index.html" class="no-external">
 When working with text data, replacing characters with other characters is common. However, most replacements are applied only once. For example, if you have “barb” and…
 </a></div>
@@ -1890,9 +2026,6 @@ When working with text data, replacing characters with other characters is commo
 <a href="../blog/replace-text-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-26
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1910,6 +2043,11 @@ When working with text data, replacing characters with other characters is commo
 <div class="listing-subtitle">
 <a href="../blog/pivot-tables-in-polars/index.html" class="no-external">pivot</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/pivot-tables-in-polars/index.html" class="no-external">
 Excel is known for pivot tables, but did you know that you can create pivot tables in polars too? That’s how versatile polars is. Below is a dataframe of students and their…
 </a></div>
@@ -1918,9 +2056,6 @@ Excel is known for pivot tables, but did you know that you can create pivot tabl
 <a href="../blog/pivot-tables-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-25
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1938,6 +2073,11 @@ Excel is known for pivot tables, but did you know that you can create pivot tabl
 <div class="listing-subtitle">
 <a href="../blog/chain-functions-in-polars/index.html" class="no-external">pipe</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/chain-functions-in-polars/index.html" class="no-external">
 Chaining operations in polars is encouraged to take advantage of the query engine in the backend. However, you may want to apply a function that is too specific to your…
 </a></div>
@@ -1946,9 +2086,6 @@ Chaining operations in polars is encouraged to take advantage of the query engin
 <a href="../blog/chain-functions-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-24
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1966,6 +2103,11 @@ Chaining operations in polars is encouraged to take advantage of the query engin
 <div class="listing-subtitle">
 <a href="../blog/fizzbuzz-in-rust/index.html" class="no-external">3 methods and a gotcha to avoid</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cnVzdA=='); return false;">rust</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/fizzbuzz-in-rust/index.html" class="no-external">
 You can’t claim to know a programming language if you can’t answer the FizzBuzz problem with that language.
 </a></div>
@@ -1974,9 +2116,6 @@ You can’t claim to know a programming language if you can’t answer the FizzB
 <a href="../blog/fizzbuzz-in-rust/index.html" class="no-external">
 <div class="listing-date">
 2025-09-23
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -1994,6 +2133,11 @@ You can’t claim to know a programming language if you can’t answer the FizzB
 <div class="listing-subtitle">
 <a href="../blog/scan-data-in-polars/index.html" class="no-external">scan_csv</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/scan-data-in-polars/index.html" class="no-external">
 Datasets are getting bigger, which means loading the entire dataset into memory can put a strain on your computer. Fortunately, Polars allows you to scan data and store it…
 </a></div>
@@ -2002,9 +2146,6 @@ Datasets are getting bigger, which means loading the entire dataset into memory 
 <a href="../blog/scan-data-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-22
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2022,6 +2163,11 @@ Datasets are getting bigger, which means loading the entire dataset into memory 
 <div class="listing-subtitle">
 <a href="../blog/padding-with-zero-polars/index.html" class="no-external">zfill</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/padding-with-zero-polars/index.html" class="no-external">
 You have a shop and want your receipt numbers to have four digits instead of just one. So rather than receipt “No.&nbsp;1”, you want receipt “No.&nbsp;0001”. Below is a dataframe…
 </a></div>
@@ -2030,9 +2176,6 @@ You have a shop and want your receipt numbers to have four digits instead of jus
 <a href="../blog/padding-with-zero-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-21
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2050,6 +2193,11 @@ You have a shop and want your receipt numbers to have four digits instead of jus
 <div class="listing-subtitle">
 <a href="../blog/remove-leading-whitespace-polars/index.html" class="no-external">strip_chars_start</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/remove-leading-whitespace-polars/index.html" class="no-external">
 Your data may contain leading characters like spaces or tabs due to bad user input. Below is a dataframe showing values with leading whitespace.
 </a></div>
@@ -2058,9 +2206,6 @@ Your data may contain leading characters like spaces or tabs due to bad user inp
 <a href="../blog/remove-leading-whitespace-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-20
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2078,6 +2223,11 @@ Your data may contain leading characters like spaces or tabs due to bad user inp
 <div class="listing-subtitle">
 <a href="../blog/unpivot-data-in-polars/index.html" class="no-external">unpivot</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/unpivot-data-in-polars/index.html" class="no-external">
 Wide-format data (data with many columns) is good for presentation, but for computation, long format is best. That’s what computers love! Below is a dataframe showing…
 </a></div>
@@ -2086,9 +2236,6 @@ Wide-format data (data with many columns) is good for presentation, but for comp
 <a href="../blog/unpivot-data-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-19
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2106,6 +2253,11 @@ Wide-format data (data with many columns) is good for presentation, but for comp
 <div class="listing-subtitle">
 <a href="../blog/text-to-date-in-polars/index.html" class="no-external">to_date</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/text-to-date-in-polars/index.html" class="no-external">
 Usually, when you want to convert string (text) data to a date type, you have to introduce some esoteric formatting like “%m%d%Y”. Unfortunately, this looks like gibberish…
 </a></div>
@@ -2114,9 +2266,6 @@ Usually, when you want to convert string (text) data to a date type, you have to
 <a href="../blog/text-to-date-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-18
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2134,6 +2283,11 @@ Usually, when you want to convert string (text) data to a date type, you have to
 <div class="listing-subtitle">
 <a href="../blog/rust-analyzer-failure/index.html" class="no-external">VSCode extension</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cnVzdA=='); return false;">rust</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/rust-analyzer-failure/index.html" class="no-external">
 Rust is hot right now. Everyone wants to learn it, or at least that’s what they say. I’m in love with the language too, and recently I convinced myself that it would be a…
 </a></div>
@@ -2142,9 +2296,6 @@ Rust is hot right now. Everyone wants to learn it, or at least that’s what the
 <a href="../blog/rust-analyzer-failure/index.html" class="no-external">
 <div class="listing-date">
 2025-09-17
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2171,9 +2322,6 @@ I’m not one of those people who started programming when they were nine. At th
 <div class="listing-date">
 2025-09-14
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -2190,6 +2338,11 @@ I’m not one of those people who started programming when they were nine. At th
 <div class="listing-subtitle">
 <a href="../blog/delete-record-in-polars/index.html" class="no-external">remove</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/delete-record-in-polars/index.html" class="no-external">
 Deleting records from a table is a common operation when analyzing data. Suppose you have a dataframe of lawyers and the scores they received on their bar exam.
 </a></div>
@@ -2198,9 +2351,6 @@ Deleting records from a table is a common operation when analyzing data. Suppose
 <a href="../blog/delete-record-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-13
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2218,6 +2368,11 @@ Deleting records from a table is a common operation when analyzing data. Suppose
 <div class="listing-subtitle">
 <a href="../blog/create-dummy-variable-in-polars/index.html" class="no-external">to_dummies</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/create-dummy-variable-in-polars/index.html" class="no-external">
 Computers process numerical data faster than text data. That’s why it’s a good idea to convert text data into numerical data when training machine learning models. You want…<em></em>
 </a></div>
@@ -2226,9 +2381,6 @@ Computers process numerical data faster than text data. That’s why it’s a go
 <a href="../blog/create-dummy-variable-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-12
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2246,6 +2398,11 @@ Computers process numerical data faster than text data. That’s why it’s a go
 <div class="listing-subtitle">
 <a href="../blog/add-index-to-polars-dataframe/index.html" class="no-external">with_row_index</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/add-index-to-polars-dataframe/index.html" class="no-external">
 Ritchie Vink, the creator of Polars, once wrote something like this in a post (probably on Reddit):
 </a></div>
@@ -2254,9 +2411,6 @@ Ritchie Vink, the creator of Polars, once wrote something like this in a post (p
 <a href="../blog/add-index-to-polars-dataframe/index.html" class="no-external">
 <div class="listing-date">
 2025-09-11
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2274,6 +2428,11 @@ Ritchie Vink, the creator of Polars, once wrote something like this in a post (p
 <div class="listing-subtitle">
 <a href="../blog/shift-rows-in-polars/index.html" class="no-external">shift</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/shift-rows-in-polars/index.html" class="no-external">
 When working with timeseries data, you may want to move values in a column a few rows up or down. This is particularly important when calculating moving averages, where the…
 </a></div>
@@ -2282,9 +2441,6 @@ When working with timeseries data, you may want to move values in a column a few
 <a href="../blog/shift-rows-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-10
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2302,6 +2458,11 @@ When working with timeseries data, you may want to move values in a column a few
 <div class="listing-subtitle">
 <a href="../blog/use-custom-functions-in-polars/index.html" class="no-external">pipe</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/use-custom-functions-in-polars/index.html" class="no-external">
 Some functions you write in your code may be too specific to exist as built-in Polars methods or expressions. Fortunately, Polars provides a way to apply your custom…
 </a></div>
@@ -2310,9 +2471,6 @@ Some functions you write in your code may be too specific to exist as built-in P
 <a href="../blog/use-custom-functions-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-09-09
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2339,9 +2497,6 @@ In October 2023, I published a comprehensive course on Udemy about using the Pol
 <div class="listing-date">
 2025-09-04
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -2358,6 +2513,11 @@ In October 2023, I published a comprehensive course on Udemy about using the Pol
 <div class="listing-subtitle">
 <a href="../blog/sort-bars-powerbi/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/sort-bars-powerbi/index.html" class="no-external">
 When you create a bar chart in Power BI with each bar representing a month name (for example, January for the first bar, February for the second, and so on), the bars are…
 </a></div>
@@ -2366,9 +2526,6 @@ When you create a bar chart in Power BI with each bar representing a month name 
 <a href="../blog/sort-bars-powerbi/index.html" class="no-external">
 <div class="listing-date">
 2025-09-03
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2386,6 +2543,11 @@ When you create a bar chart in Power BI with each bar representing a month name 
 <div class="listing-subtitle">
 <a href="../blog/add-dynamic-title-powerbi/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/add-dynamic-title-powerbi/index.html" class="no-external">
 When you apply filters to your chart, such as filtering by month, having a static title like “January Sales” can be misleading if you later select February in your filter.…
 </a></div>
@@ -2394,9 +2556,6 @@ When you apply filters to your chart, such as filtering by month, having a stati
 <a href="../blog/add-dynamic-title-powerbi/index.html" class="no-external">
 <div class="listing-date">
 2025-09-02
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2423,9 +2582,6 @@ Most tech jobs require a technical interview. For a long time, the FizzBuzz ques
 <div class="listing-date">
 2025-08-17
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -2442,6 +2598,11 @@ Most tech jobs require a technical interview. For a long time, the FizzBuzz ques
 <div class="listing-subtitle">
 <a href="../blog/from-row-to-list-polars/index.html" class="no-external">to_list</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/from-row-to-list-polars/index.html" class="no-external">
 Python is big on lists because they are one of the fundamental data structures of the language. It’s no surprise that data analysis tasks in Python almost always involve…
 </a></div>
@@ -2450,9 +2611,6 @@ Python is big on lists because they are one of the fundamental data structures o
 <a href="../blog/from-row-to-list-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-16
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2470,6 +2628,11 @@ Python is big on lists because they are one of the fundamental data structures o
 <div class="listing-subtitle">
 <a href="../blog/get-top-values-polars/index.html" class="no-external">top_k</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-top-values-polars/index.html" class="no-external">
 Sorting values is an expensive operation, especially when you have a large dataset. However, sometimes you have no choice but to sort the data, particularly when you need to…
 </a></div>
@@ -2478,9 +2641,6 @@ Sorting values is an expensive operation, especially when you have a large datas
 <a href="../blog/get-top-values-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-15
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2498,6 +2658,11 @@ Sorting values is an expensive operation, especially when you have a large datas
 <div class="listing-subtitle">
 <a href="../blog/using-implode-in-polars/index.html" class="no-external">implode</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/using-implode-in-polars/index.html" class="no-external">
 Long format data (data with many rows) is good for performing analyses but bad for presentation. If you want people to easily understand your data, you should strive to…
 </a></div>
@@ -2506,9 +2671,6 @@ Long format data (data with many rows) is good for performing analyses but bad f
 <a href="../blog/using-implode-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-14
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2526,6 +2688,11 @@ Long format data (data with many rows) is good for performing analyses but bad f
 <div class="listing-subtitle">
 <a href="../blog/use-quantile-to-filter-polars/index.html" class="no-external">quantile</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/use-quantile-to-filter-polars/index.html" class="no-external">
 If you’ve ever taken the SAT, ACT, or GMAT, you might have wondered what percentile you scored in. A percentile is a way of describing a score’s position in a dataset…
 </a></div>
@@ -2534,9 +2701,6 @@ If you’ve ever taken the SAT, ACT, or GMAT, you might have wondered what perce
 <a href="../blog/use-quantile-to-filter-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-13
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2554,6 +2718,11 @@ If you’ve ever taken the SAT, ACT, or GMAT, you might have wondered what perce
 <div class="listing-subtitle">
 <a href="../blog/get-unique-values-polars/index.html" class="no-external">unique</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-unique-values-polars/index.html" class="no-external">
 If one value in a column is overrepresented, you might think it’s the only value present since Polars displays only the first five and last five rows of the dataframe. To…
 </a></div>
@@ -2562,9 +2731,6 @@ If one value in a column is overrepresented, you might think it’s the only val
 <a href="../blog/get-unique-values-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-12
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2582,6 +2748,11 @@ If one value in a column is overrepresented, you might think it’s the only val
 <div class="listing-subtitle">
 <a href="../blog/contain-as-filter-polars/index.html" class="no-external">contains</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/contain-as-filter-polars/index.html" class="no-external">
 The dirty secret is that data work is mainly about working with text data rather than numerical data. That’s why knowing how to filter text data is a valuable skill to have.…
 </a></div>
@@ -2590,9 +2761,6 @@ The dirty secret is that data work is mainly about working with text data rather
 <a href="../blog/contain-as-filter-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-11
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2610,6 +2778,11 @@ The dirty secret is that data work is mainly about working with text data rather
 <div class="listing-subtitle">
 <a href="../blog/series-to-dataframe-polars/index.html" class="no-external">to_frame</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/series-to-dataframe-polars/index.html" class="no-external">
 In Polars, a series is a one-column table, while a dataframe is a multi-column table. However, it’s possible to convert a series into a dataframe. Below is a series of cities.
 </a></div>
@@ -2618,9 +2791,6 @@ In Polars, a series is a one-column table, while a dataframe is a multi-column t
 <a href="../blog/series-to-dataframe-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-09
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2638,6 +2808,11 @@ In Polars, a series is a one-column table, while a dataframe is a multi-column t
 <div class="listing-subtitle">
 <a href="../blog/count-without-null-polars/index.html" class="no-external">pl.count</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/count-without-null-polars/index.html" class="no-external">
 Most of the time, when you’re counting the number of values in a column, you’re not interested in including empty (null) values. Therefore, simply counting the number of…
 </a></div>
@@ -2646,9 +2821,6 @@ Most of the time, when you’re counting the number of values in a column, you�
 <a href="../blog/count-without-null-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-08
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2666,6 +2838,11 @@ Most of the time, when you’re counting the number of values in a column, you�
 <div class="listing-subtitle">
 <a href="../blog/filter-with-selection-polars/index.html" class="no-external">polars.selectors</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/filter-with-selection-polars/index.html" class="no-external">
 Selecting specific columns to filter out unnecessary columns is common in data analysis. Polars makes this type of filtering straightforward through the use of selectors.…
 </a></div>
@@ -2674,9 +2851,6 @@ Selecting specific columns to filter out unnecessary columns is common in data a
 <a href="../blog/filter-with-selection-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-07
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2694,6 +2868,11 @@ Selecting specific columns to filter out unnecessary columns is common in data a
 <div class="listing-subtitle">
 <a href="../blog/from-matrix-to-dataframe-polars/index.html" class="no-external">from_records</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/from-matrix-to-dataframe-polars/index.html" class="no-external">
 In data science and analysis, storing data in an array or nested arrays (a matrix) is a common practice. Unfortunately, performing operations directly on arrays can be…
 </a></div>
@@ -2702,9 +2881,6 @@ In data science and analysis, storing data in an array or nested arrays (a matri
 <a href="../blog/from-matrix-to-dataframe-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-06
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2722,6 +2898,11 @@ In data science and analysis, storing data in an array or nested arrays (a matri
 <div class="listing-subtitle">
 <a href="../blog/slice-dataframe-polars/index.html" class="no-external">slice</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/slice-dataframe-polars/index.html" class="no-external">
 We all know how to get the first or last five rows of a dataset. But did you know you can also retrieve the middle rows? Below is a dataframe showing cereal brands:
 </a></div>
@@ -2730,9 +2911,6 @@ We all know how to get the first or last five rows of a dataset. But did you kno
 <a href="../blog/slice-dataframe-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-05
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2750,6 +2928,11 @@ We all know how to get the first or last five rows of a dataset. But did you kno
 <div class="listing-subtitle">
 <a href="../blog/configure-dataframe-polars/index.html" class="no-external">pl.Config.set_thousands_separator</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/configure-dataframe-polars/index.html" class="no-external">
 It’s easier to read large numerical values when they’re separated by a comma every three digits. For instance, your brain can more easily comprehend <strong>5,000,000</strong> at a glance…<strong></strong>
 </a></div>
@@ -2758,9 +2941,6 @@ It’s easier to read large numerical values when they’re separated by a comma
 <a href="../blog/configure-dataframe-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-04
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2778,6 +2958,11 @@ It’s easier to read large numerical values when they’re separated by a comma
 <div class="listing-subtitle">
 <a href="../blog/glipmse-into-your-data-polars/index.html" class="no-external">glimpse</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/glipmse-into-your-data-polars/index.html" class="no-external">
 I’ve said it before, and I’ll say it again: it’s important to know the data you’re working with before you start analyzing it. Below is a dataframe showing cereal brands.
 </a></div>
@@ -2786,9 +2971,6 @@ I’ve said it before, and I’ll say it again: it’s important to know the dat
 <a href="../blog/glipmse-into-your-data-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-03
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2806,6 +2988,11 @@ I’ve said it before, and I’ll say it again: it’s important to know the dat
 <div class="listing-subtitle">
 <a href="../blog/check-number-of-columns-polars/index.html" class="no-external">width</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/check-number-of-columns-polars/index.html" class="no-external">
 Sometimes your dataset may have too many columns to display on the screen at once. However, you might still want to know how many columns it contains. The Polars dataframe…<code></code>
 </a></div>
@@ -2814,9 +3001,6 @@ Sometimes your dataset may have too many columns to display on the screen at onc
 <a href="../blog/check-number-of-columns-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-02
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2834,6 +3018,11 @@ Sometimes your dataset may have too many columns to display on the screen at onc
 <div class="listing-subtitle">
 <a href="../blog/filter-with-empty-polars/index.html" class="no-external">is_empty</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/filter-with-empty-polars/index.html" class="no-external">
 You’re conscious about your calorie intake, and you want to know whether there are any cereals in your dataset with more than 200 calories. How would you go about answering…
 </a></div>
@@ -2842,9 +3031,6 @@ You’re conscious about your calorie intake, and you want to know whether there
 <a href="../blog/filter-with-empty-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-08-01
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2862,6 +3048,11 @@ You’re conscious about your calorie intake, and you want to know whether there
 <div class="listing-subtitle">
 <a href="../blog/handling-duplicates-polars/index.html" class="no-external">is_duplicated</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/handling-duplicates-polars/index.html" class="no-external">
 Duplicates are a common problem in most datasets. That’s why it’s important to check for duplicate rows before analyzing your data. Fortunately, Polars provides an easy way…
 </a></div>
@@ -2870,9 +3061,6 @@ Duplicates are a common problem in most datasets. That’s why it’s important 
 <a href="../blog/handling-duplicates-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-30
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2890,6 +3078,11 @@ Duplicates are a common problem in most datasets. That’s why it’s important 
 <div class="listing-subtitle">
 <a href="../blog/dataset-memory-usage-polars/index.html" class="no-external">estimated_size</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/dataset-memory-usage-polars/index.html" class="no-external">
 It’s important to know how much memory the dataset you’re processing is consuming on your machine. Why? Because lower memory consumption leads to faster processing.…<code></code>
 </a></div>
@@ -2898,9 +3091,6 @@ It’s important to know how much memory the dataset you’re processing is cons
 <a href="../blog/dataset-memory-usage-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-29
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2918,6 +3108,11 @@ It’s important to know how much memory the dataset you’re processing is cons
 <div class="listing-subtitle">
 <a href="../blog/summary-statistics-in-polars/index.html" class="no-external">describe</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/summary-statistics-in-polars/index.html" class="no-external">
 Data exploration is the first step in any data analysis task. You can’t start analyzing your data without understanding what it’s about. If you have numerical columns, one…
 </a></div>
@@ -2926,9 +3121,6 @@ Data exploration is the first step in any data analysis task. You can’t start 
 <a href="../blog/summary-statistics-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-28
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -2955,9 +3147,6 @@ In my last year of graduate school, I asked my professor what the most import sk
 <div class="listing-date">
 2025-07-26
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -2974,6 +3163,11 @@ In my last year of graduate school, I asked my professor what the most import sk
 <div class="listing-subtitle">
 <a href="../blog/inner-join-in-polars/index.html" class="no-external">inner join</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/inner-join-in-polars/index.html" class="no-external">
 Just like in SQL, it’s possible to join two dataframes in Polars. In this article, I’ll show you how to use the <code>inner</code> join in Polars to create a dataframe with more columns.…<strong></strong>
 </a></div>
@@ -2982,9 +3176,6 @@ Just like in SQL, it’s possible to join two dataframes in Polars. In this arti
 <a href="../blog/inner-join-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-22
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3002,6 +3193,11 @@ Just like in SQL, it’s possible to join two dataframes in Polars. In this arti
 <div class="listing-subtitle">
 <a href="../blog/filter-between-values-polars/index.html" class="no-external">is_between</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/filter-between-values-polars/index.html" class="no-external">
 It’s not always the case that you want to filter your data based on a single specific value. Sometimes, you may want to filter your data based on a range of values. Below is…
 </a></div>
@@ -3010,9 +3206,6 @@ It’s not always the case that you want to filter your data based on a single s
 <a href="../blog/filter-between-values-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-21
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3030,6 +3223,11 @@ It’s not always the case that you want to filter your data based on a single s
 <div class="listing-subtitle">
 <a href="../blog/retrieve-schema-in-polars/index.html" class="no-external">collect_schema</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/retrieve-schema-in-polars/index.html" class="no-external">
 In addition to showing column data types in the dataframe, Polars allows you to get a dictionary of data types where the key is the column name and the value is the data…
 </a></div>
@@ -3038,9 +3236,6 @@ In addition to showing column data types in the dataframe, Polars allows you to 
 <a href="../blog/retrieve-schema-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-18
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3058,6 +3253,11 @@ In addition to showing column data types in the dataframe, Polars allows you to 
 <div class="listing-subtitle">
 <a href="../blog/counting-values-in-polars/index.html" class="no-external">value_counts</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/counting-values-in-polars/index.html" class="no-external">
 When dealing with categorical data, you may want to know how many times each category appears in a column. Below is a dataframe containing three different categories of…
 </a></div>
@@ -3066,9 +3266,6 @@ When dealing with categorical data, you may want to know how many times each cat
 <a href="../blog/counting-values-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-17
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3086,6 +3283,11 @@ When dealing with categorical data, you may want to know how many times each cat
 <div class="listing-subtitle">
 <a href="../blog/copy-paste-dataframe-polars/index.html" class="no-external">read_clipboard</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/copy-paste-dataframe-polars/index.html" class="no-external">
 As a data professional, you’ll work with many Excel files, and most of them will be poorly formatted. This makes it difficult to read the file into a dataframe. Fortunately…
 </a></div>
@@ -3094,9 +3296,6 @@ As a data professional, you’ll work with many Excel files, and most of them wi
 <a href="../blog/copy-paste-dataframe-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-16
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3114,6 +3313,11 @@ As a data professional, you’ll work with many Excel files, and most of them wi
 <div class="listing-subtitle">
 <a href="../blog/cumulative-sum-polars/index.html" class="no-external">pl.cum_sum</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/cumulative-sum-polars/index.html" class="no-external">
 Say you have a target you want to hit for your weekly sales total, and you also want to know how close you are to hitting that target with each passing day. It turns out…
 </a></div>
@@ -3122,9 +3326,6 @@ Say you have a target you want to hit for your weekly sales total, and you also 
 <a href="../blog/cumulative-sum-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-15
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3142,6 +3343,11 @@ Say you have a target you want to hit for your weekly sales total, and you also 
 <div class="listing-subtitle">
 <a href="../blog/filter-for-many-items-polars/index.html" class="no-external">is_in</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/filter-for-many-items-polars/index.html" class="no-external">
 Sometimes, you may want to filter data for more than one item. Polars makes this type of filtering straightforward. Below is a dataframe showing streaming services and their…
 </a></div>
@@ -3150,9 +3356,6 @@ Sometimes, you may want to filter data for more than one item. Polars makes this
 <a href="../blog/filter-for-many-items-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-14
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3170,6 +3373,11 @@ Sometimes, you may want to filter data for more than one item. Polars makes this
 <div class="listing-subtitle">
 <a href="../blog/aggregations-in-polars/index.html" class="no-external">group_by</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/aggregations-in-polars/index.html" class="no-external">
 Aggregations to data professionals are what a saw is to a carpenter. Almost every data analysis you perform will involve an aggregate calculation, or <code>group_by</code> calculations…
 </a></div>
@@ -3178,9 +3386,6 @@ Aggregations to data professionals are what a saw is to a carpenter. Almost ever
 <a href="../blog/aggregations-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-12
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3198,6 +3403,11 @@ Aggregations to data professionals are what a saw is to a carpenter. Almost ever
 <div class="listing-subtitle">
 <a href="../blog/adding-across-columns-polars/index.html" class="no-external">sum_horizontal</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/adding-across-columns-polars/index.html" class="no-external">
 Most dataframe libraries are excellent at performing columnar operations, such as adding or multiplying values within a single column. However, there are times when you may…
 </a></div>
@@ -3206,9 +3416,6 @@ Most dataframe libraries are excellent at performing columnar operations, such a
 <a href="../blog/adding-across-columns-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-11
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3226,6 +3433,11 @@ Most dataframe libraries are excellent at performing columnar operations, such a
 <div class="listing-subtitle">
 <a href="../blog/sampling-data-with-polars/index.html" class="no-external">sample</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/sampling-data-with-polars/index.html" class="no-external">
 Analyzing a very large dataset can be strenuous on your computer, especially if you don’t have a fast machine. Instead of overworking your computer and waiting a long time…
 </a></div>
@@ -3234,9 +3446,6 @@ Analyzing a very large dataset can be strenuous on your computer, especially if 
 <a href="../blog/sampling-data-with-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-10
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3254,6 +3463,11 @@ Analyzing a very large dataset can be strenuous on your computer, especially if 
 <div class="listing-subtitle">
 <a href="../blog/stacking-dataframes-vertically-polars/index.html" class="no-external">vstack</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/stacking-dataframes-vertically-polars/index.html" class="no-external">
 Combining two dataframes into a single dataframe is a common operation in data analysis. Dataframes can be combined vertically (one on top of the other) or horizontally…
 </a></div>
@@ -3262,9 +3476,6 @@ Combining two dataframes into a single dataframe is a common operation in data a
 <a href="../blog/stacking-dataframes-vertically-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-09
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3282,6 +3493,11 @@ Combining two dataframes into a single dataframe is a common operation in data a
 <div class="listing-subtitle">
 <a href="../blog/adding-conditional-formatting-to-excel-polars/index.html" class="no-external">write_excel</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/adding-conditional-formatting-to-excel-polars/index.html" class="no-external">
 Polars allows you to save data in multiple file formats like CSV, Parquet, Avro—even Excel. What most people don’t know is that you can add special formatting to the Excel…
 </a></div>
@@ -3290,9 +3506,6 @@ Polars allows you to save data in multiple file formats like CSV, Parquet, Avro�
 <a href="../blog/adding-conditional-formatting-to-excel-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-07
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3310,6 +3523,11 @@ Polars allows you to save data in multiple file formats like CSV, Parquet, Avro�
 <div class="listing-subtitle">
 <a href="../blog/create-date-column-in-polars/index.html" class="no-external">pl.date</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/create-date-column-in-polars/index.html" class="no-external">
 When you have a column with date values, having its data type as <code>datetime</code> is beneficial because it allows you to perform time series analysis on your data. You can slice the…
 </a></div>
@@ -3318,9 +3536,6 @@ When you have a column with date values, having its data type as <code>datetime<
 <a href="../blog/create-date-column-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-06
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3347,9 +3562,6 @@ Most people say they want to learn how to code, but if you take a look at how th
 <div class="listing-date">
 2025-07-04
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -3366,6 +3578,11 @@ Most people say they want to learn how to code, but if you take a look at how th
 <div class="listing-subtitle">
 <a href="../blog/convert-from-pandas-to-polars-dataframe/index.html" class="no-external">pl.from_pandas</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/convert-from-pandas-to-polars-dataframe/index.html" class="no-external">
 Polars is highly versatile. It can accept a Pandas dataframe and convert it into a Polars dataframe. This conversion is especially useful when working with HTML data, as…
 </a></div>
@@ -3374,9 +3591,6 @@ Polars is highly versatile. It can accept a Pandas dataframe and convert it into
 <a href="../blog/convert-from-pandas-to-polars-dataframe/index.html" class="no-external">
 <div class="listing-date">
 2025-07-03
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3394,6 +3608,11 @@ Polars is highly versatile. It can accept a Pandas dataframe and convert it into
 <div class="listing-subtitle">
 <a href="../blog/maintaining-column-name-polars/index.html" class="no-external">name.keep</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/maintaining-column-name-polars/index.html" class="no-external">
 DataFrames make it easy to create new columns and rename existing ones. That’s why I prefer doing data analysis with DataFrames rather than SQL tables. Say we have a…
 </a></div>
@@ -3402,9 +3621,6 @@ DataFrames make it easy to create new columns and rename existing ones. That’s
 <a href="../blog/maintaining-column-name-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-02
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3422,6 +3638,11 @@ DataFrames make it easy to create new columns and rename existing ones. That’s
 <div class="listing-subtitle">
 <a href="../blog/joining-text-with-polars/index.html" class="no-external">pl.concat_str</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/joining-text-with-polars/index.html" class="no-external">
 Most people have a love-hate relationship with text data, but if you work in the data field, you’re bound to encounter it.
 </a></div>
@@ -3430,9 +3651,6 @@ Most people have a love-hate relationship with text data, but if you work in the
 <a href="../blog/joining-text-with-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-07-01
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3450,6 +3668,11 @@ Most people have a love-hate relationship with text data, but if you work in the
 <div class="listing-subtitle">
 <a href="../blog/get-every-other-row-polars/index.html" class="no-external">gather_every</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/get-every-other-row-polars/index.html" class="no-external">
 There comes a time when you want to extract every other row from your DataFrame. What I mean is: get the first row, skip the second, get the third, skip the fourth, and so on.
 </a></div>
@@ -3458,9 +3681,6 @@ There comes a time when you want to extract every other row from your DataFrame.
 <a href="../blog/get-every-other-row-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-06-30
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3478,6 +3698,11 @@ There comes a time when you want to extract every other row from your DataFrame.
 <div class="listing-subtitle">
 <a href="../blog/knowing-number-of-days-in-month-with-polars/index.html" class="no-external">dt.month_end</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/knowing-number-of-days-in-month-with-polars/index.html" class="no-external">
 If I asked you, “How many days are in each month of the calendar?” most people would be able to answer for a few months, but not all.
 </a></div>
@@ -3486,9 +3711,6 @@ If I asked you, “How many days are in each month of the calendar?” most peop
 <a href="../blog/knowing-number-of-days-in-month-with-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-06-29
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3506,6 +3728,11 @@ If I asked you, “How many days are in each month of the calendar?” most peop
 <div class="listing-subtitle">
 <a href="../blog/ibis-for-data-analysis/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/ibis-for-data-analysis/index.html" class="no-external">
 If you started working in the data field 20 years ago, you probably used a lot of SQL. It’s a robust, 50-year-old technology that excels at querying data, thanks to decades…
 </a></div>
@@ -3514,9 +3741,6 @@ If you started working in the data field 20 years ago, you probably used a lot o
 <a href="../blog/ibis-for-data-analysis/index.html" class="no-external">
 <div class="listing-date">
 2025-06-25
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3534,6 +3758,11 @@ If you started working in the data field 20 years ago, you probably used a lot o
 <div class="listing-subtitle">
 <a href="../blog/convert-unix-time-to-polars-datetime/index.html" class="no-external">pl.from_epoch</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/convert-unix-time-to-polars-datetime/index.html" class="no-external">
 Computers are good at recording timestamps, but they do it in Unix time. Sadly, humans aren’t great at interpreting Unix time.
 </a></div>
@@ -3542,9 +3771,6 @@ Computers are good at recording timestamps, but they do it in Unix time. Sadly, 
 <a href="../blog/convert-unix-time-to-polars-datetime/index.html" class="no-external">
 <div class="listing-date">
 2025-06-24
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3562,6 +3788,11 @@ Computers are good at recording timestamps, but they do it in Unix time. Sadly, 
 <div class="listing-subtitle">
 <a href="../blog/add-currency-symbol-polars/index.html" class="no-external">pl.format</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/add-currency-symbol-polars/index.html" class="no-external">
 When your dataframe contains monetary values such as budgets it’s helpful to include a currency symbol. This ensures your audience clearly understands whether the figures…
 </a></div>
@@ -3570,9 +3801,6 @@ When your dataframe contains monetary values such as budgets it’s helpful to i
 <a href="../blog/add-currency-symbol-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-06-23
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3590,6 +3818,11 @@ When your dataframe contains monetary values such as budgets it’s helpful to i
 <div class="listing-subtitle">
 <a href="../blog/polars-explode/index.html" class="no-external">explode</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/polars-explode/index.html" class="no-external">
 Tabular data is easier to process when columns contain singular values of the same data type for each row. However, sometimes data can be stored as a list in a single row.
 </a></div>
@@ -3598,9 +3831,6 @@ Tabular data is easier to process when columns contain singular values of the sa
 <a href="../blog/polars-explode/index.html" class="no-external">
 <div class="listing-date">
 2025-06-20
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3618,6 +3848,11 @@ Tabular data is easier to process when columns contain singular values of the sa
 <div class="listing-subtitle">
 <a href="../blog/arrange-columns-by-index/index.html" class="no-external">pl.nth</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/arrange-columns-by-index/index.html" class="no-external">
 Stacking dataframes vertically only works when the column names are the same and arranged in the same order. For example, if you have <code>df1</code> with columns <em>Name</em> and <em>Age</em>, and <code>df2</code> w…<em></em><em></em>
 </a></div>
@@ -3626,9 +3861,6 @@ Stacking dataframes vertically only works when the column names are the same and
 <a href="../blog/arrange-columns-by-index/index.html" class="no-external">
 <div class="listing-date">
 2025-06-19
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3646,6 +3878,11 @@ Stacking dataframes vertically only works when the column names are the same and
 <div class="listing-subtitle">
 <a href="../blog/removing-whitespace-in-values-polars/index.html" class="no-external">strip_chars</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('MTAwRGF5c09mUG9sYXJz'); return false;">100DaysOfPolars</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/removing-whitespace-in-values-polars/index.html" class="no-external">
 In data science or data analysis, counting unique values is very common. However, having whitespace (empty space at the beginning or at the end) in your values can lead to…
 </a></div>
@@ -3654,9 +3891,6 @@ In data science or data analysis, counting unique values is very common. However
 <a href="../blog/removing-whitespace-in-values-polars/index.html" class="no-external">
 <div class="listing-date">
 2025-06-18
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3683,9 +3917,6 @@ Your code doesn’t run in a vacuum. Your tools, your projects, your career all 
 <div class="listing-date">
 2025-06-12
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -3710,9 +3941,6 @@ Data analysts aren’t exactly known for their technical wizardry – at least n
 <a href="../blog/familiarity-trap/index.html" class="no-external">
 <div class="listing-date">
 2025-06-01
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3739,9 +3967,6 @@ If you’re working in an organization, you can’t escape meetings. They are pa
 <div class="listing-date">
 2025-05-25
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -3766,9 +3991,6 @@ The day my boss retired, a small part of me died.
 <a href="../blog/lesson-from-retired-boss/index.html" class="no-external">
 <div class="listing-date">
 2025-05-18
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3795,9 +4017,6 @@ I messaged Daliana Liu, host of <strong>The Data Scientist Show</strong>, on Lin
 <div class="listing-date">
 2025-04-26
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -3823,9 +4042,6 @@ If you work extensively with data in Python, you’ll agree that Jupyter noteboo
 <div class="listing-date">
 2025-03-03
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -3842,6 +4058,11 @@ If you work extensively with data in Python, you’ll agree that Jupyter noteboo
 <div class="listing-subtitle">
 <a href="../blog/improve-chart/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/improve-chart/index.html" class="no-external">
 All data visualizations should, first and foremost, inform. Any visualization that falls short of this is simply data art. Data visualizations that are uninformative may be…
 </a></div>
@@ -3850,9 +4071,6 @@ All data visualizations should, first and foremost, inform. Any visualization th
 <a href="../blog/improve-chart/index.html" class="no-external">
 <div class="listing-date">
 2025-02-25
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3879,9 +4097,6 @@ I love watching movies and TV shows, but there are just too many out there that 
 <div class="listing-date">
 2025-02-22
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -3906,9 +4121,6 @@ Most data analysis tasks involve joining tables to get more data or filter out s
 <a href="../blog/set-theory-for-data-analysis/index.html" class="no-external">
 <div class="listing-date">
 2025-02-09
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3935,9 +4147,6 @@ A month ago, I interviewed a candidate for a junior data analyst position. Given
 <div class="listing-date">
 2025-02-01
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -3962,9 +4171,6 @@ Polars is increasingly becoming a popular data analysis library, and my predicti
 <a href="../blog/polars-functions-pros-use/index.html" class="no-external">
 <div class="listing-date">
 2025-01-13
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -3991,9 +4197,6 @@ Polars has become my go-to library for data analysis. Each client project brings
 <div class="listing-date">
 2025-01-06
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -4019,9 +4222,6 @@ In the last client project I worked on, I learned something about the <code>grou
 <div class="listing-date">
 2024-12-30
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -4038,6 +4238,11 @@ In the last client project I worked on, I learned something about the <code>grou
 <div class="listing-subtitle">
 <a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external">
 We at Conterval have always been fans of the charts from <em>The Economist</em> magazine. No publication does a better job of creating static visualizations you can use in print. We…
 </a></div>
@@ -4046,9 +4251,6 @@ We at Conterval have always been fans of the charts from <em>The Economist</em> 
 <a href="../blog/how-to-create-charts-from-the-economist-magazine-using-plotly/index.html" class="no-external">
 <div class="listing-date">
 2024-12-15
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4066,6 +4268,11 @@ We at Conterval have always been fans of the charts from <em>The Economist</em> 
 <div class="listing-subtitle">
 <a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external">
 Data analysis is a hot field nowadays. Companies are opening up new data analyst positions, and many people want to become data analysts.
 </a></div>
@@ -4074,9 +4281,6 @@ Data analysis is a hot field nowadays. Companies are opening up new data analyst
 <a href="../blog/what-tool-should-you-use-as-a-data-analyst/index.html" class="no-external">
 <div class="listing-date">
 2024-12-01
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4103,9 +4307,6 @@ A few weeks ago, Conterval did a consulting gig for a medium-sized bakery. This 
 <div class="listing-date">
 2024-11-18
 </div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
-</div>
 </a>
 </div>
 </div>
@@ -4122,6 +4323,11 @@ A few weeks ago, Conterval did a consulting gig for a medium-sized bakery. This 
 <div class="listing-subtitle">
 <a href="../blog/secret-to-longevity-for-men/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/secret-to-longevity-for-men/index.html" class="no-external">
 Pop culture and the business world are full of older men marrying women who are way younger than them.
 </a></div>
@@ -4130,9 +4336,6 @@ Pop culture and the business world are full of older men marrying women who are 
 <a href="../blog/secret-to-longevity-for-men/index.html" class="no-external">
 <div class="listing-date">
 2024-10-22
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4150,6 +4353,11 @@ Pop culture and the business world are full of older men marrying women who are 
 <div class="listing-subtitle">
 <a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">Why you should start using action titles in your charts</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">
 Steve Jobs, Mark Zuckerberg, and Bill Gates all dropped out of college and founded companies that are now among the most valuable companies in the world. There is nothing…<em></em>
 </a></div>
@@ -4158,9 +4366,6 @@ Steve Jobs, Mark Zuckerberg, and Bill Gates all dropped out of college and found
 <a href="../blog/unicorn-dropout-founders-are-rare/index.html" class="no-external">
 <div class="listing-date">
 2024-10-15
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4178,6 +4383,11 @@ Steve Jobs, Mark Zuckerberg, and Bill Gates all dropped out of college and found
 <div class="listing-subtitle">
 <a href="../blog/on-golf-and-machine-learning/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/on-golf-and-machine-learning/index.html" class="no-external">
 A few weeks ago, I played golf for the first time. It’s an interesting sport, but it’s definitely not a sport for the impatient.
 </a></div>
@@ -4186,9 +4396,6 @@ A few weeks ago, I played golf for the first time. It’s an interesting sport, 
 <a href="../blog/on-golf-and-machine-learning/index.html" class="no-external">
 <div class="listing-date">
 2024-10-08
-</div>
-<div class="listing-author">
-Joram Mutenge
 </div>
 </a>
 </div>
@@ -4206,6 +4413,11 @@ Joram Mutenge
 <div class="listing-subtitle">
 <a href="../blog/using-variance-in-product-development/index.html" class="no-external">Why you must understand variance to improve your business</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/using-variance-in-product-development/index.html" class="no-external">
 Imagine you’re part of the team that launched the first iPhone with Steve Jobs in 2007. You want to measure the customer satisfaction of consumers who have used the demo…
 </a></div>
@@ -4214,9 +4426,6 @@ Imagine you’re part of the team that launched the first iPhone with Steve Jobs
 <a href="../blog/using-variance-in-product-development/index.html" class="no-external">
 <div class="listing-date">
 2024-10-01
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4234,6 +4443,11 @@ Imagine you’re part of the team that launched the first iPhone with Steve Jobs
 <div class="listing-subtitle">
 <a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external">
 Before ChatGPT came out, AI was a joke. No one paid attention to it. In fact, the majority of people thought virtual reality (VR) was going to happen sooner. Remember the…
 </a></div>
@@ -4242,9 +4456,6 @@ Before ChatGPT came out, AI was a joke. No one paid attention to it. In fact, th
 <a href="../blog/the-scramble-for-ai-domain-names/index.html" class="no-external">
 <div class="listing-date">
 2024-09-24
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4262,6 +4473,11 @@ Before ChatGPT came out, AI was a joke. No one paid attention to it. In fact, th
 <div class="listing-subtitle">
 <a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">Tips for effective data communication</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">
 When I was a kid, I was a phone fanatic. I couldn’t get enough of phones because they were the most advanced technology I could afford.
 </a></div>
@@ -4270,9 +4486,6 @@ When I was a kid, I was a phone fanatic. I couldn’t get enough of phones becau
 <a href="../blog/a-simple-viz-is-all-you-need/index.html" class="no-external">
 <div class="listing-date">
 2024-09-17
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4290,6 +4503,11 @@ When I was a kid, I was a phone fanatic. I couldn’t get enough of phones becau
 <div class="listing-subtitle">
 <a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external">
 In computer science, looping is one of the most fundamental operations. It saves you from manually doing the same thing over and over.
 </a></div>
@@ -4298,9 +4516,6 @@ In computer science, looping is one of the most fundamental operations. It saves
 <a href="../blog/why-loops-are-frowned-upon-in-data-science/index.html" class="no-external">
 <div class="listing-date">
 2024-08-27
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4318,6 +4533,11 @@ In computer science, looping is one of the most fundamental operations. It saves
 <div class="listing-subtitle">
 <a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">How to design tables that are easy to understand</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">
 Most people don’t think about tables when they think about data visualization. But tables deserve as much attention as you put in your charts. To effectively communicate the…
 </a></div>
@@ -4326,9 +4546,6 @@ Most people don’t think about tables when they think about data visualization.
 <a href="../blog/effective-table-presentation-with-code/index.html" class="no-external">
 <div class="listing-date">
 2024-08-20
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4346,6 +4563,11 @@ Most people don’t think about tables when they think about data visualization.
 <div class="listing-subtitle">
 <a href="../blog/why-you-should-learn-polars-for-data-analysis/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/why-you-should-learn-polars-for-data-analysis/index.html" class="no-external">
 Datasets used to be small and Pandas was a good tool for your analysis. Now datasets are big and Pandas struggles to handle them. This is where Polars shines. Not only can…
 </a></div>
@@ -4354,9 +4576,6 @@ Datasets used to be small and Pandas was a good tool for your analysis. Now data
 <a href="../blog/why-you-should-learn-polars-for-data-analysis/index.html" class="no-external">
 <div class="listing-date">
 2024-08-14
-</div>
-<div class="listing-author">
-Joram Mutenge
 </div>
 </a>
 </div>
@@ -4374,6 +4593,11 @@ Joram Mutenge
 <div class="listing-subtitle">
 <a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">How to use data to grow your business</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">
 Picture yourself in the 1980s. You own a software store where you sell software in disks by the unit.
 </a></div>
@@ -4382,9 +4606,6 @@ Picture yourself in the 1980s. You own a software store where you sell software 
 <a href="../blog/creating-a-pareto-chart-with-plotly/index.html" class="no-external">
 <div class="listing-date">
 2024-08-13
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4402,6 +4623,11 @@ Picture yourself in the 1980s. You own a software store where you sell software 
 <div class="listing-subtitle">
 <a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">Enter hovertemplate and customdata</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">
 My data visualization journey started with <em>ggplot</em>, followed by a brief stint with <em>seaborn</em>. After that, I fell in love with <em>matplotlib</em> and used it for a long time. But now my…<em></em>
 </a></div>
@@ -4410,9 +4636,6 @@ My data visualization journey started with <em>ggplot</em>, followed by a brief 
 <a href="../blog/formatting-the-information-displayed-in-the-tooltip-of-your-plotly-chats/index.html" class="no-external">
 <div class="listing-date">
 2024-08-06
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4430,6 +4653,11 @@ My data visualization journey started with <em>ggplot</em>, followed by a brief 
 <div class="listing-subtitle">
 <a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">How to make your dataframes look pretty!</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">
 I am a sucker for visually appealing things, and I try as much as I can to embody that in my data analysis work. In this article, I’ll show you how you can style your pandas…
 </a></div>
@@ -4438,9 +4666,6 @@ I am a sucker for visually appealing things, and I try as much as I can to embod
 <a href="../blog/advanced-styling-in-pandas/index.html" class="no-external">
 <div class="listing-date">
 2024-07-30
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4458,6 +4683,11 @@ I am a sucker for visually appealing things, and I try as much as I can to embod
 <div class="listing-subtitle">
 <a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external">
 Dataframes that have column names with spaces in them can be annoying to work with. I like to remove any spaces or unusual characters from column names. This makes it easier…
 </a></div>
@@ -4466,9 +4696,6 @@ Dataframes that have column names with spaces in them can be annoying to work wi
 <a href="../blog/the-many-ways-to-rename-columns-in-polars/index.html" class="no-external">
 <div class="listing-date">
 2024-07-23
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4486,6 +4713,11 @@ Dataframes that have column names with spaces in them can be annoying to work wi
 <div class="listing-subtitle">
 <a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external">
 When you have timeseries data, you may want to extract the day and month names from the date. Polars makes it easy to do that but the default way doesn’t get you the actual…
 </a></div>
@@ -4494,9 +4726,6 @@ When you have timeseries data, you may want to extract the day and month names f
 <a href="../blog/getting-month-and-day-names-from-datetime-with-polars/index.html" class="no-external">
 <div class="listing-date">
 2024-07-16
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4514,6 +4743,11 @@ When you have timeseries data, you may want to extract the day and month names f
 <div class="listing-subtitle">
 <a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external">
 Bar charts are one of the most common and informative ways to represent it. They’re also easy to create. But to make them more informative and beautiful, you must spend some…
 </a></div>
@@ -4522,9 +4756,6 @@ Bar charts are one of the most common and informative ways to represent it. They
 <a href="../blog/making-beautiful-bar-charts-with-matplotlib/index.html" class="no-external">
 <div class="listing-date">
 2024-06-30
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4542,6 +4773,11 @@ Bar charts are one of the most common and informative ways to represent it. They
 <div class="listing-subtitle">
 <a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">A data analysis walkthrough</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">
 I’m a huge fan of the Libby App by the company <em>OverDrive, Inc</em>. I have used it exclusively for my digital book consumption since 2022.
 </a></div>
@@ -4550,9 +4786,6 @@ I’m a huge fan of the Libby App by the company <em>OverDrive, Inc</em>. I have
 <a href="../blog/my-reading-journey-with-the-libby-app/index.html" class="no-external">
 <div class="listing-date">
 2024-06-21
-</div>
-<div class="listing-author">
-<p>Joram Mutenge</p>
 </div>
 </a>
 </div>
@@ -4570,6 +4803,11 @@ I’m a huge fan of the Libby App by the company <em>OverDrive, Inc</em>. I have
 <div class="listing-subtitle">
 <a href="../blog/native-plotting-with-polars/index.html" class="no-external">Using YouTube comments data</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/native-plotting-with-polars/index.html" class="no-external">
 Visualizations simplify data comprehension. A glance at a graph or chart conveys the data’s message, saving you time compared to analyzing a table without visuals.
 </a></div>
@@ -4578,9 +4816,6 @@ Visualizations simplify data comprehension. A glance at a graph or chart conveys
 <a href="../blog/native-plotting-with-polars/index.html" class="no-external">
 <div class="listing-date">
 2024-06-20
-</div>
-<div class="listing-author">
-Joram Mutenge
 </div>
 </a>
 </div>
@@ -4598,6 +4833,11 @@ Joram Mutenge
 <div class="listing-subtitle">
 <a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">A workaround</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">
 <em>Suits</em> was the most-watched TV show in 2023, even though the last episode aired in December 2019. For this reason, I thought I’d use it as an example to show how you can use…
 </a></div>
@@ -4606,9 +4846,6 @@ Joram Mutenge
 <a href="../blog/read-directly-from-html-with-polars/index.html" class="no-external">
 <div class="listing-date">
 2024-06-18
-</div>
-<div class="listing-author">
-Joram Mutenge
 </div>
 </a>
 </div>
@@ -4626,6 +4863,11 @@ Joram Mutenge
 <div class="listing-subtitle">
 <a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">Creating a stunning table with TSA airport checking data</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">
 This year, I decided to participate in the Posit Table Contest. Because I’m a fan of the great tables Python library I thought it would be great to enhance my mastery of…
 </a></div>
@@ -4634,9 +4876,6 @@ This year, I decided to participate in the Posit Table Contest. Because I’m a 
 <a href="../blog/my-submission-to-the-posit-table-contest/index.html" class="no-external">
 <div class="listing-date">
 2024-06-13
-</div>
-<div class="listing-author">
-Joram Mutenge
 </div>
 </a>
 </div>
@@ -4654,6 +4893,11 @@ Joram Mutenge
 <div class="listing-subtitle">
 <a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">Using polars alone</a>
 </div>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMGFuYWx5c2lz'); return false;">data analysis</div>
+
+</div>
 <div class="delink listing-description"><a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">
 It’s amazing how much the Polars library has improved! I remember sandwiching my polars code with pandas code to perform some operations. Even though the library was…
 </a></div>
@@ -4662,9 +4906,6 @@ It’s amazing how much the Polars library has improved! I remember sandwiching 
 <a href="../blog/create-dataframe-from-clipboard-content/index.html" class="no-external">
 <div class="listing-date">
 2024-05-27
-</div>
-<div class="listing-author">
-Joram Mutenge
 </div>
 </a>
 </div>
@@ -4677,13 +4918,6 @@ Joram Mutenge
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -5084,13 +5318,44 @@ Joram Mutenge
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -5098,5 +5363,4 @@ Joram Mutenge
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

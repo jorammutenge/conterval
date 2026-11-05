@@ -1,0 +1,76 @@
+meta:
+  name: Conterval
+  link: https://www.conterval.com
+
+logo:
+  images:
+    wordmark:
+      path: assets/images/logo.png
+      alt: Conterval logo
+    mark:
+      path: assets/images/favicon.png
+      alt: Conterval bell curve mark
+  small: mark
+  medium: wordmark
+  large: wordmark
+
+# The palette is the logo's letter-by-letter gradient, dark to light.
+color:
+  palette:
+    navy: "#191970"
+    indigo: "#1d1da5"
+    royal: "#1d1dc9"
+    cobalt: "#1919e6"
+    blue: "#2b2bee"
+    electric: "#3d3df5"
+    periwinkle: "#5151fb"
+    lavender: "#6262fd"
+    mist: "#8181fe"
+    ink: "#15153f"
+    slate: "#55557a"
+    tint: "#f5f5ff"
+    white: "#ffffff"
+  foreground: ink
+  background: white
+  primary: cobalt
+  secondary: navy
+  tertiary: periwinkle
+  light: tint
+  dark: navy
+
+typography:
+  fonts:
+    - family: Geist
+      source: google
+      weight: [400, 500, 600, 700]
+      style: normal
+    - family: Iosevka
+      source: file
+      files:
+        - path: assets/fonts/IosevkaNew-Regular.woff2
+          weight: 400
+          style: normal
+  base:
+    family: Geist
+    weight: 400
+    size: 17px
+    line-height: 1.65
+  headings:
+    family: Geist
+    weight: 600
+    color: navy
+    line-height: 1.15
+  monospace:
+    family: Iosevka
+    weight: 400
+  monospace-inline:
+    color: navy
+    background-color: tint
+    size: 0.95em
+  monospace-block:
+    size: 0.92em
+    line-height: 1.5
+  link:
+    color: cobalt
+    weight: 500
+    decoration: none

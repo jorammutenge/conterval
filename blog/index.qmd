@@ -1,19 +1,19 @@
 ---
+title: "Blog"
 pagetitle: "Conterval - Data and AI Articles"
-author: ""
+description: "Thoughts and practical notes on data and AI."
 comments: false
+toc: false
 listing:
-  contents: "index.qmd"
+  contents: "*/index.qmd"
   sort: "date desc"
-  type: "default"
-  date-format: "iso"
-  fields: [image, date, title, subtitle, author, summary, description]  
-  page-size: 6
+  type: default
+  date-format: iso
+  page-size: 20
   categories: true
-#   template: blog-listing.ejs
+  sort-ui: false
+  filter-ui: true
+  fields: [image, date, title, subtitle, description, categories]
+  feed: true
 page-layout: full
-# title-block-banner: true
-format:
-  html:
-    css: blog.css
 ---

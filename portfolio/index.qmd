@@ -1,0 +1,16 @@
+---
+title: "Portfolio"
+pagetitle: "Conterval - Portfolio"
+description: "Data projects, from the problem to what was delivered."
+listing:
+  contents: "*/index.qmd"
+  sort: "date desc"
+  type: grid
+  grid-columns: 2
+  image-height: 260px
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [image, title, description, categories]
+page-layout: full
+---

@@ -2,22 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2024-11-18">
 
-<title>How we helped a bakery generate forecast by bread type using polars</title>
+<title>How we helped a bakery generate forecast by bread type using polars – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -70,19 +73,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../images/favicon.png" rel="icon" type="image/png">
+<link href="../../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-f397cc185d0ab75492c67f0644c295c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ea4d2fc885dc84b3edb167484f3766fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-830064c72b735b51971de534140e6ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -119,7 +123,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -128,7 +131,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -157,7 +160,6 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -166,15 +168,25 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="../../services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -185,20 +197,21 @@ window.Quarto = {
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -274,12 +287,12 @@ window.Quarto = {
 </div>
 </div>
 <section id="problem" class="level2">
-<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<h2 data-anchor-id="problem">Problem</h2>
 <p>The bakery receives an Excel file with forecast data from a major US retail store every week. This file contains 2 columns: Date (the 1st of every month from January to December) and Forecast (the number of loaves of bread they want in that month).</p>
 <p>The challenge was that the retail store did not provide a separate forecast value for white and brown bread. The retail store just provided a single forecast value. It was up to the bakery to divide that number into how many loaves of white or brown bread to make. It turns out this was a challenging task.</p>
 </section>
 <section id="solution" class="level2">
-<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<h2 data-anchor-id="solution">Solution</h2>
 <p>Create a systematic process that determines how many loaves of bread should be made for each bread type based on the provided forecast value for that month. This information should be presented in an easy to understand table.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -296,7 +309,7 @@ Note
 </div>
 </section>
 <section id="dataset" class="level2">
-<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<h2 data-anchor-id="dataset">Dataset</h2>
 <p>We’ll not use the actual data from the bakery, rather we’ll use fictional data to demonstrate the solution. Here’s the baker’s sales data from last year.</p>
 <div id="bed71048" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
@@ -456,13 +469,13 @@ Note
 </div>
 </section>
 <section id="the-math" class="level2">
-<h2 class="anchored" data-anchor-id="the-math">The math</h2>
+<h2 data-anchor-id="the-math">The math</h2>
 <p>Determining how many brown or white loaves of bread to make was not as easy as dividing the forecast value by 2. Why? Because in some months, the retail store buys more white bread than brown bread. In other months, it’s the reverse.</p>
 <p>We decided to leverage some timeseries calculations by doing a rolling sum with a 3-months window of last year’s sales by bread type. The idea was to get the weight or percentage for each bread type and use that to determine the number of loaves to make from the forecast value.</p>
 <p>This math is quite involving, but it’s easy to follow along with the data.</p>
 </section>
 <section id="implementing-the-math" class="level2">
-<h2 class="anchored" data-anchor-id="implementing-the-math">Implementing the math</h2>
+<h2 data-anchor-id="implementing-the-math">Implementing the math</h2>
 <p>Here are the formulas for calculating the rolling sum for the rows of each bread type.</p>
 <p><span class="math display">\[\text{Row 1} = \text{Jan} + \text{Feb} + \text{Mar}\]</span></p>
 <p><span class="math display">\[\text{Row 2} = \text{Feb} + \text{Mar} + \text{Apr}\]</span></p>
@@ -720,7 +733,7 @@ Note
 <p>However, from the formulas above, we see that if there are no 3 values to add, the rolling sum calculation proceeds by calculating the available values. So for the second to last row, it’s only 2 values (Nov + Dec), and for the last row, it’s only 1 value (Dec).</p>
 </section>
 <section id="successful-implementation-of-solution" class="level2">
-<h2 class="anchored" data-anchor-id="successful-implementation-of-solution">Successful implementation of solution</h2>
+<h2 data-anchor-id="successful-implementation-of-solution">Successful implementation of solution</h2>
 <p>The solution that worked involved the use of <code>implode</code>. Here’s how we implemented it. Let’s focus on brown bread only so we can see that the rolling sum values in the dataframe are the same as those in the visualization.</p>
 <p>We’ll begin by creating a list of all the dates in the sales data.</p>
 <div id="2aea1e02" class="cell" data-execution_count="5">
@@ -850,7 +863,7 @@ Note
 </div>
 </section>
 <section id="calculating-percentages" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-percentages">Calculating percentages</h2>
+<h2 data-anchor-id="calculating-percentages">Calculating percentages</h2>
 <p>Here’s the formula we used to calculate the percentage or weight for each bread type. Let’s focus on brown bread for the month of January.</p>
 <p><span class="math display">\[\% \text{ of Brown Bread} = \frac{\text{January Rol\_3month}}{\text{January Rol\_3month} + \text{White Bread January Rol\_3month}}\]</span></p>
 <p>We are dividing each Rol_3month value for every bread type by the sum of the Rol_3month values for both bread types. Let’s put this into code. Also, we don’t need <em>Sales_List</em>, so we’ll drop it.</p>
@@ -1057,7 +1070,7 @@ Note
 </div>
 </section>
 <section id="joining-forecast-data" class="level2">
-<h2 class="anchored" data-anchor-id="joining-forecast-data">Joining forecast data</h2>
+<h2 data-anchor-id="joining-forecast-data">Joining forecast data</h2>
 <p>To get the forecast values for each bread type based on percentage values, we must join our dataframe with the forecast data provided by the retail store. We’ll join the dataframes on <em>Date</em> column.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1318,7 +1331,7 @@ Note
 </div>
 </section>
 <section id="calculating-new-forecast" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-new-forecast">Calculating new forecast</h2>
+<h2 data-anchor-id="calculating-new-forecast">Calculating new forecast</h2>
 <p>Now we have all the data needed to calculate the forecast for each bread type. All the forecast values are rounded to the nearest whole number. After all, you cannot make 1.67 loaves of bread!</p>
 <div id="77108cb8" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>new_fcst_df <span class="op">=</span> (combined_df</span>
@@ -1463,7 +1476,7 @@ Note
 </div>
 </section>
 <section id="final-output" class="level2">
-<h2 class="anchored" data-anchor-id="final-output">Final output</h2>
+<h2 data-anchor-id="final-output">Final output</h2>
 <p>We now have the forecast values for each bread type, but we must present the data in a format that is not only human-readable but also easy to understand. We’ll select the relevant columns and transform the data into the desired format.</p>
 <div id="03ba7206" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>table_df <span class="op">=</span> (new_fcst_df</span>
@@ -1645,7 +1658,7 @@ Note
 <thead>
 
   <tr class="gt_heading">
-    <td colspan="13" class="gt_heading gt_title gt_font_normal"><h2 class="anchored">Bread Types Forecast 2024</h2></td>
+    <td colspan="13" class="gt_heading gt_title gt_font_normal"><h2>Bread Types Forecast 2024</h2></td>
   </tr>
 <tr class="gt_col_headings">
   <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<b>Bread"><b>Bread</b></th>
@@ -1710,13 +1723,6 @@ Note
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -2117,13 +2123,44 @@ Note
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -2131,5 +2168,4 @@ Note
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

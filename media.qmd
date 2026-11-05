@@ -1,98 +1,60 @@
 ---
+title: "Media"
 pagetitle: "Conterval - Interviews and Talks"
-about:
-  template: jolla
-format:
-  html:
-    toc: false
+description: "Interviews, podcasts and conference talks."
+page-layout: custom
+title-block-style: none
+toc: false
 ---
 
-<style>
-body {
-  background-color: #FFE4B5 !important;
-}
-</style>
+<!-- To add an entry, copy one .media-item block to the top of the list and edit it. -->
 
-# Media {.interview-page-title}
+::: {.wrap}
+::: {.page-intro}
+[Media]{.eyebrow}
 
-::: {.interviews-container}
-::: {.interview-card}
-::: {.interview-title}
-[Leanpub Book LAUNCH 🚀 Deep Analysis with Pandas](https://www.youtube.com/watch?v=-BTWh_WKFUk){target="_blank"}
+# Interviews and talks.
 :::
 
-::: {.podcast-name}
-{{< fa podcast >}} [Leanpub](https://www.youtube.com/watch?v=-BTWh_WKFUk){target="_blank"}
-:::
+::: {.media-list}
+::: {.media-item}
+[![](images/interviews/leanpub_launch.jpg){.media-thumb fig-alt="Leanpub launch video thumbnail"}](https://www.youtube.com/watch?v=-BTWh_WKFUk){target="_blank"}
 
-::: {.interview-content}
-<a href="https://www.youtube.com/watch?v=-BTWh_WKFUk" target="_blank">
-<img src="images/interviews/leanpub_launch.jpg" class="interview-image" alt="PyCon talk">
-</a>
+::: {.media-body}
+[[Leanpub](https://www.youtube.com/watch?v=-BTWh_WKFUk){target="_blank"} · Oct 29, 2026 · 6 min]{.media-meta}
 
-Welcome to the Leanpub Launch video for Deep Analysis with Pandas: Transforming and Visualizing Data for Insights  by Joram Mutenge!
+## [Leanpub Book LAUNCH 🚀 Deep Analysis with Pandas](https://www.youtube.com/watch?v=-BTWh_WKFUk){target="_blank"}
+
+Welcome to the Leanpub Launch video for Deep Analysis with Pandas: Transforming and Visualizing Data for Insights by Joram Mutenge!
 
 [Buy the book](https://leanpub.com/deep-analysis-with-pandas)
 :::
-
-::: {.interview-footer}
-{{< fa calendar >}} Oct 29, 2026
-
-{{< fa clock >}} 6 min
-:::
-:::
 :::
 
-::: {.interviews-container}
-::: {.interview-card}
-::: {.interview-title}
-[Don’t Write Polars Code with a Pandas Accent](https://www.youtube.com/watch?v=5-4xTrN-M98){target="_blank"}
-:::
+::: {.media-item}
+[![](images/interviews/pycon_us_26.jpg){.media-thumb fig-alt="PyCon US talk thumbnail"}](https://www.youtube.com/watch?v=5-4xTrN-M98){target="_blank"}
 
-::: {.podcast-name}
-{{< fa podcast >}} [PyCon US](https://www.youtube.com/watch?v=5-4xTrN-M98){target="_blank"}
-:::
+::: {.media-body}
+[[PyCon US](https://www.youtube.com/watch?v=5-4xTrN-M98){target="_blank"} · Jul 2, 2026 · 22 min]{.media-meta}
 
-::: {.interview-content}
-<a href="https://www.youtube.com/watch?v=5-4xTrN-M98" target="_blank">
-<img src="images/interviews/pycon_us_26.jpg" class="interview-image" alt="PyCon talk">
-</a>
+## [Don’t Write Polars Code with a Pandas Accent](https://www.youtube.com/watch?v=5-4xTrN-M98){target="_blank"}
 
 Many Python developers adopt Polars expecting immediate speedups, only to be disappointed when their code shows little improvement or even runs slower than pandas. The issue is not Polars, but how it is used. Writing Polars code as if it were pandas, that is, with a pandas accent, leads to confusing code and poor performance. This talk focuses on writing idiomatic Polars code instead of translating pandas patterns line by line, empowering Python developers to work efficiently with large datasets without leaving the Python ecosystem.
 :::
-
-::: {.interview-footer}
-{{< fa calendar >}} Jul 2, 2026
-
-{{< fa clock >}} 22 min
-:::
-:::
 :::
 
-::: {.interviews-container}
-::: {.interview-card}
-::: {.interview-title}
-[v0.0.10 - Joram Mutenge](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"}
-:::
+::: {.media-item}
+[![](images/interviews/wip.jpg){.media-thumb fig-alt="[WIP] Podcast episode thumbnail"}](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"}
 
-::: {.podcast-name}
-{{< fa podcast >}} [[WIP] Podcast](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"}
-:::
+::: {.media-body}
+[[[WIP] Podcast](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"} · Oct 2, 2025 · 34 min]{.media-meta}
 
-::: {.interview-content}
-<a href="https://www.youtube.com/watch?v=hGBZSAHoAxE" target="_blank">
-<img src="images/interviews/wip.jpg" class="interview-image" alt="Podcast Episode">
-</a>
+## [v0.0.10 - Joram Mutenge](https://www.youtube.com/watch?v=hGBZSAHoAxE){target="_blank"}
 
 I dubbed Joram Mutenge as a "trifecta" when it comes to the data profession. He is a data engineer, data analyst, and data scientist! As with many people, the route wasn't a straight one, but suits him well once he learned to love the parts few enjoy and how to be safely creative within data.
 
 To become as valuable as possible, Joram has spent time learning SQL, Python, and JavaScript. We discussed multiple tools and libraries along with how to approach a web-based visualization as opposed to a print visualization. He's now also learning Rust!
 :::
-
-::: {.interview-footer}
-{{< fa calendar >}} Oct 2, 2025
-
-{{< fa clock >}} 34 min
 :::
 :::
 :::

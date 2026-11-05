@@ -1,98 +1,60 @@
 ---
+title: "Books"
 pagetitle: "Conterval - Books"
-about:
-  template: jolla
-format:
-  html:
-    toc: false
+description: "Books on data analysis with Polars and pandas, and on building a data business."
+page-layout: custom
+title-block-style: none
+toc: false
 ---
 
-<style>
-body {
-  background-color: #FFE4B5 !important;
-}
+::: {.wrap}
+::: {.page-intro}
+[Books]{.eyebrow}
 
-.book-image {
-  width: 300px !important;  /* Adjust to match your second book's width */
-  height: 450px !important; /* Adjust to match your second book's height */
-  object-fit: cover;        /* Ensures images fill the space without distortion */
-  display: block;
-}
-</style>
+# Go deeper with your data.
+:::
 
-# Books {.interview-page-title}
-
-::: {.books-container}
-
-::: {.book-card}
-<a href="https://www.amazon.com/dp/B0HLS1QZVB/" target="_self">
-<img src="images/books/pd_front_cover.png"
-     class="book-image"
-     alt="Deep Analysis with Polars book cover">
-</a>
+::: {.book-list}
+::: {.book}
+[![](images/books/pd_front_cover.png){.book-cover fig-alt="Deep Analysis with Pandas book cover"}](https://www.amazon.com/dp/B0HLS1QZVB/){target="_blank"}
 
 ::: {.book-info}
-::: {.book-price}
-$50
-:::
+[$50]{.book-price}
 
-::: {.book-title}
-Deep Analysis with Pandas
-:::
+## Deep Analysis with Pandas
 
-::: {.book-description}
 This book is not a beginner’s guide to pandas. Instead, it shows how to use pandas 3 to perform complex data analysis, such as the kinds of analyses typically handled by SQL. The book uses practical business examples with real-world datasets, ensuring that the lessons are immediately applicable to your job. More importantly, it offers an opinionated approach to writing code through method chaining.
+
+[Buy the book](https://www.amazon.com/dp/B0HLS1QZVB/){.btn-brand target="_blank"}
+:::
 :::
 
-[BUY](https://www.amazon.com/dp/B0HLS1QZVB/){target="_blank" .book-button}
-:::
-:::
-
-
-::: {.book-card}
-<a href="https://www.amazon.com/dp/B0GXG1BHG6/" target="_self">
-<img src="images/books/front_cover.png"
-     class="book-image"
-     alt="Deep Analysis with Polars book cover">
-</a>
+::: {.book}
+[![](images/books/front_cover.png){.book-cover fig-alt="Deep Analysis with Polars book cover"}](https://www.amazon.com/dp/B0GXG1BHG6/){target="_blank"}
 
 ::: {.book-info}
-::: {.book-price}
-$50
-:::
+[$50]{.book-price}
 
-::: {.book-title}
-Deep Analysis with Polars
-:::
+## Deep Analysis with Polars
 
-::: {.book-description}
 This book is **not** an introduction to Polars. It is intended to demonstrate to readers who are already familiar with Polars that the library is mature enough to support **deep analysis**, including the kind typically handled with complex SQL queries. By exploring practical analytical questions, the book emphasizes Polars core features such as expressions, lazy execution, efficient transformations, and its opinionated approach to writing code through method chaining.
+
+[Buy the book](https://www.amazon.com/dp/B0GXG1BHG6/){.btn-brand target="_blank"}
+:::
 :::
 
-[BUY](https://www.amazon.com/dp/B0GXG1BHG6/){target="_blank" .book-button}
-:::
-:::
-
-
-::: {.book-card}
-<a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank">
-<img src="images/books/big_data.png" class="book-image" alt="Deep Analysis with Polars book cover">
-</a>
+::: {.book}
+[![](images/books/big_data.png){.book-cover fig-alt="Emails from a Big Data Entrepreneur to His Son book cover"}](https://www.amazon.com/dp/B0FHFWZFT9/){target="_blank"}
 
 ::: {.book-info}
-::: {.book-price}
-$22
-:::
+[$22]{.book-price}
 
-::: {.book-title}
-Emails from a Big Data Entrepreneur to His Son
-:::
+## Emails from a Big Data Entrepreneur to His Son
 
-::: {.book-description}
 This book is a modern-day reimagining of the timeless classic *Letters from a Self-Made Merchant to His Son* by George Horace Lorimer. With the same sharp wit, humor, and fatherly wisdom, this updated version brings the conversation into the digital age where data is the new oil and algorithms shape the future.
-:::
 
-[BUY](https://www.amazon.com/dp/B0FHFWZFT9/){target="_blank" .book-button}
+[Buy the book](https://www.amazon.com/dp/B0FHFWZFT9/){.btn-brand target="_blank"}
+:::
 :::
 :::
 :::

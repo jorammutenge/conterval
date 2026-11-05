@@ -1,7 +1,14 @@
 {
   "listingMap": {
+    "index.qmd": [
+      "blog/*/index.qmd",
+      "portfolio/*/index.qmd"
+    ],
     "blog/index.qmd": [
-      "index.qmd"
+      "*/index.qmd"
+    ],
+    "portfolio/index.qmd": [
+      "*/index.qmd"
     ]
   }
 }

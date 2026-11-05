@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Books on data analysis with Polars and pandas, and on building a data business.">
 
-<title>Conterval - Books</title>
+<title>Conterval - Books – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,18 +37,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./images/favicon.png" rel="icon" type="image/png">
+<link href="./assets/images/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8cc40d9f9ffd6573c0dae5c27f1973e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-3f1e056db2262bed5a957a7b8f09b337.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ad05dc75913624cded0f2b9ad80b1456.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b767a74002bb47fcfc9ac06a014f36ce.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ad05dc75913624cded0f2b9ad80b1456.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,10 +87,8 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -96,15 +97,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="./assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="./services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog/index.html"> 
@@ -115,20 +126,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="./media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="./contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -138,79 +150,64 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
 <!-- main -->
-<div class="quarto-about-jolla">
- <header id="title-block-header" class="quarto-title-block"></header><main class="content" id="quarto-document-content">
-<style>
-body {
-  background-color: #FFE4B5 !important;
-}
-.book-image {
-  width: 300px !important;  /* Adjust to match your second book's width */
-  height: 450px !important; /* Adjust to match your second book's height */
-  object-fit: cover;        /* Ensures images fill the space without distortion */
-  display: block;
-}
-</style>
-<section id="books" class="level1 interview-page-title">
-<h1 class="interview-page-title">Books</h1>
-<div class="books-container">
-<div class="book-card">
-<p><a href="https://www.amazon.com/dp/B0HLS1QZVB/" target="_self"> <img src="images/books/pd_front_cover.png" class="book-image" alt="Deep Analysis with Polars book cover"> </a></p>
-<div class="book-info">
-<div class="book-price">
-<p>$50</p>
-</div>
-<div class="book-title">
-<p>Deep Analysis with Pandas</p>
-</div>
-<div class="book-description">
-<p>This book is not a beginner’s guide to pandas. Instead, it shows how to use pandas 3 to perform complex data analysis, such as the kinds of analyses typically handled by SQL. The book uses practical business examples with real-world datasets, ensuring that the lessons are immediately applicable to your job. More importantly, it offers an opinionated approach to writing code through method chaining.</p>
-</div>
-<p><a href="https://www.amazon.com/dp/B0HLS1QZVB/" class="book-button" target="_blank">BUY</a></p>
-</div>
-</div>
-<div class="book-card">
-<p><a href="https://www.amazon.com/dp/B0GXG1BHG6/" target="_self"> <img src="images/books/front_cover.png" class="book-image" alt="Deep Analysis with Polars book cover"> </a></p>
-<div class="book-info">
-<div class="book-price">
-<p>$50</p>
-</div>
-<div class="book-title">
-<p>Deep Analysis with Polars</p>
-</div>
-<div class="book-description">
-<p>This book is <strong>not</strong> an introduction to Polars. It is intended to demonstrate to readers who are already familiar with Polars that the library is mature enough to support <strong>deep analysis</strong>, including the kind typically handled with complex SQL queries. By exploring practical analytical questions, the book emphasizes Polars core features such as expressions, lazy execution, efficient transformations, and its opinionated approach to writing code through method chaining.</p>
-</div>
-<p><a href="https://www.amazon.com/dp/B0GXG1BHG6/" class="book-button" target="_blank">BUY</a></p>
-</div>
-</div>
-<div class="book-card">
-<p><a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank"> <img src="images/books/big_data.png" class="book-image" alt="Deep Analysis with Polars book cover"> </a></p>
-<div class="book-info">
-<div class="book-price">
-<p>$22</p>
-</div>
-<div class="book-title">
-<p>Emails from a Big Data Entrepreneur to His Son</p>
-</div>
-<div class="book-description">
-<p>This book is a modern-day reimagining of the timeless classic <em>Letters from a Self-Made Merchant to His Son</em> by George Horace Lorimer. With the same sharp wit, humor, and fatherly wisdom, this updated version brings the conversation into the digital age where data is the new oil and algorithms shape the future.</p>
-</div>
-<p><a href="https://www.amazon.com/dp/B0FHFWZFT9/" class="book-button" target="_blank">BUY</a></p>
-</div>
-</div>
-</div>
+
+<header id="title-block-header">
+<h1 class="title display-7">Books</h1>
+
+</header>
 
 
+<div class="wrap">
+<div class="page-intro">
+<p><span class="eyebrow">Books</span></p>
+<section id="go-deeper-with-your-data." class="level1">
+<h1>Go deeper with your data.</h1>
 </section>
-</main>  
 </div>
- <!-- /main -->
+<div class="book-list">
+<div class="book">
+<p><a href="https://www.amazon.com/dp/B0HLS1QZVB/" target="_blank"><img src="images/books/pd_front_cover.png" class="book-cover img-fluid" alt="Deep Analysis with Pandas book cover"></a></p>
+<div class="book-info">
+<p><span class="book-price">$50</span></p>
+<section id="deep-analysis-with-pandas" class="level2">
+<h2 data-anchor-id="deep-analysis-with-pandas">Deep Analysis with Pandas</h2>
+<p>This book is not a beginner’s guide to pandas. Instead, it shows how to use pandas 3 to perform complex data analysis, such as the kinds of analyses typically handled by SQL. The book uses practical business examples with real-world datasets, ensuring that the lessons are immediately applicable to your job. More importantly, it offers an opinionated approach to writing code through method chaining.</p>
+<p><a href="https://www.amazon.com/dp/B0HLS1QZVB/" class="btn-brand" target="_blank">Buy the book</a></p>
+</section>
+</div>
+</div>
+<div class="book">
+<p><a href="https://www.amazon.com/dp/B0GXG1BHG6/" target="_blank"><img src="images/books/front_cover.png" class="book-cover img-fluid" alt="Deep Analysis with Polars book cover"></a></p>
+<div class="book-info">
+<p><span class="book-price">$50</span></p>
+<section id="deep-analysis-with-polars" class="level2">
+<h2 data-anchor-id="deep-analysis-with-polars">Deep Analysis with Polars</h2>
+<p>This book is <strong>not</strong> an introduction to Polars. It is intended to demonstrate to readers who are already familiar with Polars that the library is mature enough to support <strong>deep analysis</strong>, including the kind typically handled with complex SQL queries. By exploring practical analytical questions, the book emphasizes Polars core features such as expressions, lazy execution, efficient transformations, and its opinionated approach to writing code through method chaining.</p>
+<p><a href="https://www.amazon.com/dp/B0GXG1BHG6/" class="btn-brand" target="_blank">Buy the book</a></p>
+</section>
+</div>
+</div>
+<div class="book">
+<p><a href="https://www.amazon.com/dp/B0FHFWZFT9/" target="_blank"><img src="images/books/big_data.png" class="book-cover img-fluid" alt="Emails from a Big Data Entrepreneur to His Son book cover"></a></p>
+<div class="book-info">
+<p><span class="book-price">$22</span></p>
+<section id="emails-from-a-big-data-entrepreneur-to-his-son" class="level2">
+<h2 data-anchor-id="emails-from-a-big-data-entrepreneur-to-his-son">Emails from a Big Data Entrepreneur to His Son</h2>
+<p>This book is a modern-day reimagining of the timeless classic <em>Letters from a Self-Made Merchant to His Son</em> by George Horace Lorimer. With the same sharp wit, humor, and fatherly wisdom, this updated version brings the conversation into the digital age where data is the new oil and algorithms shape the future.</p>
+<p><a href="https://www.amazon.com/dp/B0FHFWZFT9/" class="btn-brand" target="_blank">Buy the book</a></p>
+</section>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const isCodeAnnotation = (el) => {
@@ -613,13 +610,44 @@ body {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="./services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="./blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -627,5 +655,4 @@ body {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

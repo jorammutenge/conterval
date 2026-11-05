@@ -1,0 +1,46 @@
+---
+title: "Contact"
+pagetitle: "Conterval - Contact"
+description: "Start a conversation about a data or AI project."
+page-layout: custom
+title-block-style: none
+toc: false
+---
+
+```{=html}
+<style>
+  .contact-details h2 { margin-top: 0; }
+</style>
+```
+
+::: {.wrap}
+::: {.page-intro style="padding-bottom:0"}
+[Contact]{.eyebrow}
+
+# Tell me about your project.
+
+[A short email is enough to get started.]{.lede style="display:block"}
+:::
+
+::: {.contact-details style="max-width:40rem; padding-top:12px; padding-bottom:88px"}
+## Useful things to include
+
+- The decision or process you want to improve
+- Where your data lives today, and roughly how much there is
+- Any deadline or constraint that shapes the work
+
+```{=html}
+<div class="actions" style="margin-top:20px">
+  <a id="email-link" class="btn-brand" href="#">Email</a>
+</div>
+<noscript><p>Email needs JavaScript. You can also reach out on <a href="https://www.linkedin.com/in/jorammutenge/">LinkedIn</a>.</p></noscript>
+<script>
+  // The address is only put together on click, so it never sits in the page for spam bots to collect.
+  document.getElementById("email-link").addEventListener("click", function () {
+    var flip = function (text) { return text.split("").reverse().join(""); };
+    this.href = "mailto:" + flip("tlusnoclavretnoc") + String.fromCharCode(64) + flip("moc.liamg");
+  });
+</script>
+```
+:::
+:::

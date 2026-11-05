@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joram Mutenge">
 <meta name="dcterms.date" content="2024-08-27">
 
-<title>Why loops are frowned upon in data science</title>
+<title>Why loops are frowned upon in data science – Conterval</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -73,19 +73,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../images/favicon.png" rel="icon" type="image/png">
+<link href="../../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8cc40d9f9ffd6573c0dae5c27f1973e6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15a76853d30b4ef447aac76692ea7609.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-3f1e056db2262bed5a957a7b8f09b337.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-830064c72b735b51971de534140e6ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bc81a557aa89951f2dd41d8912bae064.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -122,7 +123,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -131,7 +131,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -140,15 +139,25 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo light-content">
+    <img src="../../assets/images/logo.png" alt="Conterval home" class="navbar-logo dark-content">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://www.conterval.com"> 
-<span class="menu-text"><i class="fa-solid fa-home" aria-label="home"></i></span></a>
+    <a class="nav-link" href="../../services.html"> 
+<span class="menu-text">Services</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../blog/index.html"> 
@@ -159,20 +168,21 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <span class="menu-text">Books</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../media.html"> 
-<span class="menu-text">Media</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="https://www.udemy.com/user/joram-mutenge/" target="_blank"> 
 <span class="menu-text">Courses</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span></a>
+    <a class="nav-link" href="../../media.html"> 
+<span class="menu-text">Media</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://bsky.app/profile/jorammutenge.com" target="_blank"> 
-<span class="menu-text"><i class="fa-brands fa-bluesky" aria-label="bluesky"></i></span></a>
+    <a class="nav-link" href="../../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jorammutenge/" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -280,7 +290,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>When performing data science operations on a dataset, it is important to understand the difference between normal operations and vectorized operations. Normal operations happen in series (one by one), while vectorized operations happen in parallel (all at once). You can conclude that vectorized operations are faster than normal operations.</p>
 <p>Let’s perform these operations on a real dataset. I’ll show 3 examples of pandas code that output the same dataframe.</p>
 <section id="dataset" class="level3">
-<h3 class="anchored" data-anchor-id="dataset">Dataset</h3>
+<h3 data-anchor-id="dataset">Dataset</h3>
 <p>The dataset below shows the quantity of units of some sales. Our task is to create a new column <code>Qty_plus_20_pct</code> that increases quantity values by 20%.</p>
 <div id="4c5ea3a9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -366,7 +376,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="looping" class="level3">
-<h3 class="anchored" data-anchor-id="looping">Looping</h3>
+<h3 data-anchor-id="looping">Looping</h3>
 <p>The following piece of code loops through the dataframe. Writing code like this to do a mathematical operation would be considered normal in computer science, however, in data science, it would be a BIG no-no. Software engineers are used to writing loops in their code, which is why they find writing data science code less intuitive.</p>
 <div id="d37c17ad" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> (pd.read_parquet(<span class="ss">f"</span><span class="sc">{</span>Path(<span class="st">'../../'</span>)<span class="sc">}</span><span class="ss">/datasets/sales_total_2018.parquet"</span>)</span>
@@ -466,7 +476,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="apply" class="level3">
-<h3 class="anchored" data-anchor-id="apply">Apply</h3>
+<h3 data-anchor-id="apply">Apply</h3>
 <p>Apply also loops through the dataframe under the hood. However, it’s faster than the normal looping demonstrated above because the looping happens in the C programming language layer. Remember, Python is a slow programming language, but when you use it in conjunction with pandas, which is written in the C programming language, it becomes fast. That’s why Python is capable of manipulating even large quantities of data. Unsurprisingly, performing the mathematical operation with <code>apply</code> is faster than the previous method.</p>
 <div id="019d473b" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> (pd.read_parquet(<span class="ss">f"</span><span class="sc">{</span>Path(<span class="st">'../../'</span>)<span class="sc">}</span><span class="ss">/datasets/sales_total_2018.parquet"</span>)</span>
@@ -569,7 +579,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="vectorized" class="level3">
-<h3 class="anchored" data-anchor-id="vectorized">Vectorized</h3>
+<h3 data-anchor-id="vectorized">Vectorized</h3>
 <p>Dataframes are like matrices in that they have rows and columns. The only difference is that a matrix can only store values of the same data type, while a dataframe can store values of different data types. For this reason, you can perform vectorized operations on dataframes just like you can on matrices.</p>
 <p>In the code below, we multiply 1.20 directly on the dataframe, targeting the <code>quantity</code> column. With this operation, multiplication happens at once for all the rows of the dataframe.</p>
 <div id="d995d033" class="cell" data-execution_count="5">
@@ -670,7 +680,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="timing" class="level3">
-<h3 class="anchored" data-anchor-id="timing">Timing</h3>
+<h3 data-anchor-id="timing">Timing</h3>
 <p>Now that I’ve proved that all three versions of the code above produce the same dataframe, let me test the speed at which each piece of code runs the mathematical operation.</p>
 <ol type="1">
 <li>With normal looping</li>
@@ -729,7 +739,7 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <p>I’ve proved that the vectorized operation runs faster. You may think the difference in speed is negligible, but that’s only because this is a small dataset. On a massive dataset the difference becomes noticeable.</p>
 </section>
 <section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<h3 data-anchor-id="conclusion">Conclusion</h3>
 <p>When working with dataframes or tabular data, it’s crucial to use vectorized operations for mathematical computations. This approach yields faster results and lowers computational costs.</p>
 <p>For string (text) data, however, vectorized operations may not always be feasible. In such cases, opt for the <code>apply</code> function instead of looping through the dataframe, as looping can be inefficient and slow.</p>
 <p>To learn how to efficiently manipulate data, check out my <a href="https://www.udemy.com/course/analyzing-data-with-polars-in-python/">Polars course</a>. Polars is a new dataframe library that’s faster than pandas.</p>
@@ -740,13 +750,6 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -1147,13 +1150,44 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-      &nbsp;
-    </div>   
+<p>© 2026 Conterval</p>
+</div>   
     <div class="nav-footer-center">
-<p>© 2026 Conterval · <a href="mailto:contervalconsult@gmail.com">Contact</a></p>
+<p>Data and AI consulting</p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../services.html">
+<p>Services</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html">
+<p>Blog</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../books.html">
+<p>Books</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../media.html">
+<p>Media</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../contact.html">
+<p>Contact</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.xml">
+<p>RSS</p>
+</a>
+  </li>  
+</ul>
     </div>
   </div>
 </footer>
@@ -1161,5 +1195,4 @@ gtag('config', 'G-5Y1ZXKXMBX', { 'anonymize_ip': true});
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

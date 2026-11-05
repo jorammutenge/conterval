@@ -24,3 +24,7 @@
 
 # Debug dump Quarto writes when the theme fails to compile
 _quarto_internal_scss_error.scss
+
+# Design files that the *.yml rule above would otherwise hide
+!_brand.yml
+!portfolio/_metadata.yml

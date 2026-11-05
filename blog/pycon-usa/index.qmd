@@ -9,7 +9,7 @@ project:
 format:
   revealjs:
     theme: [../../slides.scss]
-    logo: logo_text.png
+    logo: /blog/pycon-usa/logo_text.png
     slide-number: true
     transition: slide
     highlight-style: kate

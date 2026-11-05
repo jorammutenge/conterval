@@ -1,0 +1,21 @@
+---
+# Copy to portfolio/<project-name>/index.qmd and add a cover.svg or cover.png beside it.
+title: "Project title"
+description: "One sentence shown on the portfolio card."
+date: "2026-01-01"
+image: cover.svg
+categories: [Machine learning]
+---
+
+::: {.project-facts}
+[Service: Machine learning]{}
+[Tools: Python, Polars]{}
+:::
+
+## The challenge
+
+## The approach
+
+## What was delivered
+
+## The result

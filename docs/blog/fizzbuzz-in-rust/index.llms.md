@@ -1,0 +1,113 @@
+# Can you do FizzBuzz in rust?
+
+3 methods and a gotcha to avoid
+
+rust
+
+Author
+
+Joram Mutenge
+
+Published
+
+2025-09-23
+
+You can’t claim to know a programming language if you can’t answer the FizzBuzz problem with that language.
+
+## What is FizzBuzz?
+
+FizzBuzz is a coding interview question where you’re given the numbers 1 through 100 and asked to write a program that prints “Fizz” if the number is divisible by 3, “Buzz” if it’s divisible by 5, “FizzBuzz” if it’s divisible by both 3 and 5, and the number itself if it’s not divisible by either. Here’s what the output of the first 15 numbers looks like:
+
+``` rust
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+```
+
+This is a perfect interview question because it’s simple enough to complete, but intricate enough that it touches on various aspects of a programming language. If you can’t answer the question, it’s immediately clear that you don’t know the language you’re using.
+
+## Answering FizzBuzz in Rust
+
+I’ll show you three ways to answer the FizzBuzz coding question in Rust, and I’ll highlight a gotcha found in two of those way. This is the gotcha you need to watch out for. Finally, I’ll share my favorite way to solve the problem. It’s the one without the gotcha.
+
+### With for loop
+
+This is the most common method people use to answer the question. It’s straightforward, but it has a gotcha. That’s why it’s not my favorite.
+
+``` rust
+fn main() {
+    for num in 1..=100 {
+        if num % 3 == 0 && num % 5 == 0 {
+            println!("FizzBuzz");
+        } else if num % 3 == 0 {
+            println!("Fizz");
+        } else if num % 5 == 0 {
+            println!("Buzz");
+        } else {
+            println!("{num}");
+        }
+    }
+}
+```
+
+> **CAUTION:**
+>
+> The gotcha here is that the condition that prints “FizzBuzz” must always be at the top of your code. Otherwise, that condition will never be met.
+
+### With while loop
+
+Candidates with some experience in Rust may be tempted to use this method. It can impress the hiring manager, but only if you’re aware of the gotcha it comes with and know how to avoid it. I’m not a fan of this approach because I dislike gotchas in my code.
+
+``` rust
+fn main() {
+    let mut num = 0;
+    while num < 100 {
+        num += 1;
+
+        if num % 3 == 0 && num % 5 == 0 {
+            println!("FizzBuzz");
+        } else if num % 3 == 0 {
+            println!("Fizz");
+        } else if num % 5 == 0 {
+            println!("Buzz");
+        } else {
+            println!("{num}");
+        }
+    }
+}
+```
+
+> **CAUTION:**
+>
+> This method has the same gotcha. The condition for “FizzBuzz” must always come before the other conditions.
+
+### With match
+
+This is my favorite method for answering the question. It’s a bit more advanced, and you’ll certainly impress the hiring manager if you use it. I like it because it has no gotchas. The order in which your conditions appear doesn’t matter. It just works!
+
+``` rust
+fn main() {
+    for num in 1..=100 {
+        match (num % 3 == 0, num % 5 == 0) {
+            (true, false) => println!("Fizz"),
+            (false, true) => println!("Buzz"),
+            (true, true) => println!("FizzBuzz"),
+            _ => println!("{num}"),
+        };
+    }
+}
+```
+
+I placed the condition that prints “FizzBuzz” after the other two conditions to show that with the `match` method, the order in which the conditions appear doesn’t matter.
