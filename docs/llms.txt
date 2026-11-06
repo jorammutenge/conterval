@@ -4,7 +4,6 @@
 
 ## Pages
 
-- [Forecasting by bread type for a commercial bakery](https://www.conterval.com/portfolio/bakery-forecast/index.llms.md)
 - [About](https://www.conterval.com/about.llms.md)
 - [On golf and machine learning](https://www.conterval.com/blog/on-golf-and-machine-learning/index.llms.md)
 - [Checking the number of columns in your dataframe in polars](https://www.conterval.com/blog/check-number-of-columns-polars/index.llms.md)

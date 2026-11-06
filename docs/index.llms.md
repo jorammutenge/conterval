@@ -62,12 +62,6 @@ Finish with documented code, tests and a walkthrough, so your team owns the resu
 
 Eight years of daily TSA screenings turned into five planning questions, including the finding that 2026 demand has slipped below 2025.
 
-![](./portfolio/bakery-forecast/cover.svg)
-
-##### Forecasting by bread type for a commercial bakery
-
-Turning a retailer’s single monthly forecast into a clear production plan for white and brown bread.
-
 ## From the blog
 
 [All posts →](blog/index.llms.md)

@@ -325,15 +325,13 @@
       "/blog/read-directly-from-html-with-polars/index.html",
       "/blog/my-submission-to-the-posit-table-contest/index.html",
       "/blog/create-dataframe-from-clipboard-content/index.html",
-      "/portfolio/tsa-passenger-demand/index.html",
-      "/portfolio/bakery-forecast/index.html"
+      "/portfolio/tsa-passenger-demand/index.html"
     ]
   },
   {
     "listing": "/portfolio/index.html",
     "items": [
-      "/portfolio/tsa-passenger-demand/index.html",
-      "/portfolio/bakery-forecast/index.html"
+      "/portfolio/tsa-passenger-demand/index.html"
     ]
   }
 ]

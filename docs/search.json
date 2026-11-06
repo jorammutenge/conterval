@@ -1,40 +1,5 @@
 [
   {
-    "objectID": "portfolio/bakery-forecast/index.html",
-    "href": "portfolio/bakery-forecast/index.html",
-    "title": "Forecasting by bread type for a commercial bakery",
-    "section": "",
-    "text": "Client: Medium-sized US bakery Tools: Python, Polars, Great Tables"
-  },
-  {
-    "objectID": "portfolio/bakery-forecast/index.html#the-challenge",
-    "href": "portfolio/bakery-forecast/index.html#the-challenge",
-    "title": "Forecasting by bread type for a commercial bakery",
-    "section": "The challenge",
-    "text": "The challenge\nA medium-sized bakery supplies white and brown bread to a major US retail store. Every week, the store sends an Excel file with one forecast number for each month from January to December.\nThat number doesn’t say how many loaves of each type to make. Splitting it evenly doesn’t work, because in some months the store buys more white bread than brown, and in other months the reverse. The bakery was left to divide the number itself, and it asked Conterval to clean up the forecast data and produce a forecast for each bread type."
-  },
-  {
-    "objectID": "portfolio/bakery-forecast/index.html#the-approach",
-    "href": "portfolio/bakery-forecast/index.html#the-approach",
-    "title": "Forecasting by bread type for a commercial bakery",
-    "section": "The approach",
-    "text": "The approach\nWe built a repeatable calculation based on the previous year’s sales:\n\nWeight each bread type. A three-month rolling sum of each type’s sales gives its share of demand for every month.\nHandle the end of the year. A standard rolling sum leaves empty values at the edges of the data. We calculated the windows from a list of the year’s sales instead, so November uses two months and December uses one.\nApply the weights. Each month’s retailer forecast is multiplied by those shares and rounded to whole loaves."
-  },
-  {
-    "objectID": "portfolio/bakery-forecast/index.html#what-was-delivered",
-    "href": "portfolio/bakery-forecast/index.html#what-was-delivered",
-    "title": "Forecasting by bread type for a commercial bakery",
-    "section": "What was delivered",
-    "text": "What was delivered\n\nA systematic process for splitting each monthly forecast by bread type\nA cleaned-up forecast joined to the prior year’s sales\nAn easy-to-read table showing loaves of each type by month, designed to be updated when new forecast data arrives\n\n\n\n\nThe final table, recreated here with fictional data"
-  },
-  {
-    "objectID": "portfolio/bakery-forecast/index.html#read-the-full-walkthrough",
-    "href": "portfolio/bakery-forecast/index.html#read-the-full-walkthrough",
-    "title": "Forecasting by bread type for a commercial bakery",
-    "section": "Read the full walkthrough",
-    "text": "Read the full walkthrough\nThe blog post walks through the code step by step using fictional data, not the bakery’s own figures: How we helped a bakery generate forecast by bread type using polars."
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
