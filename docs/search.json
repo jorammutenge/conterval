@@ -3168,6 +3168,41 @@
     "href": "portfolio/index.html",
     "title": "Portfolio",
     "section": "",
-    "text": "Forecasting by bread type for a commercial bakery\n\n\n\nForecasting\n\nData analysis\n\n\n\nTurning a retailer’s single monthly forecast into a clear production plan for white and brown bread.\n\n\n\n\n\nNo matching items"
+    "text": "Is US air travel still growing? A TSA checkpoint demand dashboard\n\n\n\nDashboards\n\nData analysis\n\n\n\nEight years of daily TSA screenings turned into five planning questions, including the finding that 2026 demand has slipped below 2025.\n\n\n\n\n\n\n\n\n\n\n\n\nForecasting by bread type for a commercial bakery\n\n\n\nForecasting\n\nData analysis\n\n\n\nTurning a retailer’s single monthly forecast into a clear production plan for white and brown bread.\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "portfolio/tsa-passenger-demand/index.html",
+    "href": "portfolio/tsa-passenger-demand/index.html",
+    "title": "Is US air travel still growing? A TSA checkpoint demand dashboard",
+    "section": "",
+    "text": "Data: TSA daily checkpoint counts, Jan 2019 to Nov 2026 Tools: Python, Polars, hvPlot, Quarto"
+  },
+  {
+    "objectID": "portfolio/tsa-passenger-demand/index.html#the-challenge",
+    "href": "portfolio/tsa-passenger-demand/index.html#the-challenge",
+    "title": "Is US air travel still growing? A TSA checkpoint demand dashboard",
+    "section": "The challenge",
+    "text": "The challenge\nThe TSA publishes one number per day: how many people passed through airport security checkpoints. That’s 2,864 days of data. Charting it is easy. The harder job is deciding what an airport operator, airline or staffing planner should do differently after seeing it.\nI didn’t want to build a dashboard that just restates the data, so I started with five business questions:\n\nIs demand still growing? Should next year be planned on a growth curve?\nHow did the pandemic play out, and when did demand really come back?\nWhen do passengers travel? Which matters more for staffing: the week or the season?\nWhich unusual days could have been predicted?\nHow does this year compare with last year?"
+  },
+  {
+    "objectID": "portfolio/tsa-passenger-demand/index.html#the-approach",
+    "href": "portfolio/tsa-passenger-demand/index.html#the-approach",
+    "title": "Is US air travel still growing? A TSA checkpoint demand dashboard",
+    "section": "The approach",
+    "text": "The approach\n\nCompare like with like. Every year-over-year number compares each day with the same weekday 364 days earlier. A plain calendar comparison would set a Saturday against a Friday and hide the real trend.\nMeasure recovery against 2019. Each month is shown as a share of the same month in 2019. That way seasonality doesn’t get mistaken for recovery.\nSeparate surprises from the calendar. A day’s expected level is the same weekday a year earlier, scaled by the trend over the previous 28 days. Days more than 15% off are flagged. A flag counts as calendar-driven when the day, or the day it’s compared with, falls near a holiday such as Thanksgiving, whose date moves each year.\nKeep the analysis in Polars. The charts are interactive hvPlot charts with hover detail, published as a five-page Quarto dashboard."
+  },
+  {
+    "objectID": "portfolio/tsa-passenger-demand/index.html#what-the-data-says",
+    "href": "portfolio/tsa-passenger-demand/index.html#what-the-data-says",
+    "title": "Is US air travel still growing? A TSA checkpoint demand dashboard",
+    "section": "What the data says",
+    "text": "What the data says\n\nGrowth has stalled and turned negative. Volume grew 5.3% in 2024 and 0.3% in 2025. In 2026, every month from April on has come in below the year before, and the year is now about 6.7M passengers behind 2025.\nThe pressure is in the peaks. Days above 2.8M passengers went from 4 in 2023 to 70 in 2025. Checkpoints have to be sized for those days, not for the average.\nThe week matters almost as much as the season. Sundays run 23% above Tuesdays. June runs 29% above January.\nMost extreme days can be planned for. 93% of the large swings since 2024 come from the holiday calendar. The worst true surprise was the late-January 2026 winter storm, when traffic was 45% below the expected level."
+  },
+  {
+    "objectID": "portfolio/tsa-passenger-demand/index.html#what-was-delivered",
+    "href": "portfolio/tsa-passenger-demand/index.html#what-was-delivered",
+    "title": "Is US air travel still growing? A TSA checkpoint demand dashboard",
+    "section": "What was delivered",
+    "text": "What was delivered\n\nA five-page dashboard: Executive Overview, Pandemic & Recovery, Travel Seasonality, Demand & Anomalies and Year over Year\nA reusable baseline method for spotting anomalies that accounts for weekday, seasonality and moving holidays\nA recommendation on every page, ending with this one: build the 2027 plan from a flat baseline, not from the post-pandemic growth trend\n\nOpen the dashboard →"
   }
 ]

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.conterval.com/portfolio/bakery-forecast/index.html</loc>
-    <lastmod>2026-11-05T06:16:11.357Z</lastmod>
+    <lastmod>2026-11-05T07:15:33.866Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/about.html</loc>
@@ -334,19 +334,19 @@
   </url>
   <url>
     <loc>https://www.conterval.com/contact.html</loc>
-    <lastmod>2026-11-05T06:33:23.786Z</lastmod>
+    <lastmod>2026-11-05T07:15:33.818Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/books.html</loc>
-    <lastmod>2026-11-05T05:56:11.947Z</lastmod>
+    <lastmod>2026-11-05T07:15:33.818Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/services.html</loc>
-    <lastmod>2026-11-05T05:56:11.946Z</lastmod>
+    <lastmod>2026-11-05T07:15:33.866Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/index.html</loc>
-    <lastmod>2026-11-05T06:13:51.758Z</lastmod>
+    <lastmod>2026-11-05T07:15:33.866Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/blog/maintaining-column-name-polars/index.html</loc>
@@ -670,10 +670,18 @@
   </url>
   <url>
     <loc>https://www.conterval.com/media.html</loc>
-    <lastmod>2026-11-05T05:56:11.947Z</lastmod>
+    <lastmod>2026-11-05T07:15:33.866Z</lastmod>
   </url>
   <url>
     <loc>https://www.conterval.com/portfolio/index.html</loc>
-    <lastmod>2026-11-05T05:52:00.150Z</lastmod>
+    <lastmod>2026-11-05T07:15:33.866Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/portfolio/tsa-passenger-demand/dashboard.html</loc>
+    <lastmod>2026-11-06T01:20:51.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.conterval.com/portfolio/tsa-passenger-demand/index.html</loc>
+    <lastmod>2026-11-06T00:54:53.570Z</lastmod>
   </url>
 </urlset>

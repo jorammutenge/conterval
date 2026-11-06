@@ -1,0 +1,597 @@
+---
+title: "TSA Checkpoint Demand"
+pagetitle: "Conterval - TSA Checkpoint Demand Dashboard"
+author: "Joram Mutenge"
+format:
+  dashboard:
+    theme: [brand, dashboard.scss]
+    logo: portfolio/tsa-passenger-demand/tsa_logo.svg
+    logo-alt: TSA insignia
+    scrolling: true
+    nav-buttons:
+      - icon: arrow-left
+        href: index.html
+        aria-label: Back to the case study
+jupyter: python3
+resources:
+  - tsa_logo.svg
+---
+
+```{python}
+#| label: setup
+import pandas as pd
+import polars as pl
+import holoviews as hv
+import hvplot.pandas  # noqa: F401
+from datetime import date, timedelta
+from bokeh.models import NumeralTickFormatter
+from IPython.display import HTML
+
+# Loads BokehJS for the charts. Its empty output card is hidden in dashboard.scss.
+hv.extension("bokeh")
+
+
+def pdf(df: pl.DataFrame) -> pd.DataFrame:
+    """polars -> pandas without pyarrow, keeping dates as datetimes for the axis."""
+    out = pd.DataFrame(df.to_dict(as_series=False))
+    for col, dtype in df.schema.items():
+        if dtype in (pl.Date, pl.Datetime):
+            out[col] = pd.to_datetime(out[col])
+    return out
+
+
+class _Plotter:
+    """frame.hvplot.<kind>(...) on a polars frame: converts it, and makes every chart
+    stretch to fill its dashboard card (sizing has to be set when the plot is created)."""
+
+    def __init__(self, df):
+        self._hv = pdf(df).hvplot
+
+    def __getattr__(self, kind):
+        return lambda **kw: getattr(self._hv, kind)(**({"responsive": True, "min_height": 220} | kw))
+
+
+# Analysis stays in polars; charts get a pandas copy at the last step.
+pl.DataFrame.hvplot = property(_Plotter)
+
+# Brand colors. Cobalt carries the story, gray is context, orange marks a decline.
+COBALT, NAVY, MIST = "#1919e6", "#191970", "#8181fe"
+GRAY, ORANGE, INK = "#a3a3bd", "#eb6834", "#15153f"
+TALL = 440  # charts that own a full-height card
+RAMP = ["#ffffff", "#cfcffe", MIST, COBALT, NAVY]
+MILLIONS = NumeralTickFormatter(format="0.0a")
+PCT = NumeralTickFormatter(format="0%")
+
+
+def style(plot, **kw):
+    """Shared chart chrome: recessive grid, no toolbar, consistent type sizes."""
+    opts = dict(
+        toolbar=None, show_grid=True,
+        fontsize={"labels": "10pt", "ticks": "9pt", "legend": "9pt"},
+        gridstyle={"grid_line_color": "#e6e6f5", "xgrid_line_alpha": 0},
+    )
+    return plot.opts(**(opts | kw))
+
+
+def cell_labels(df, x, y, value, color_col):
+    """Numbers printed on heatmap cells, dark text on light cells and white on dark."""
+    return hv.Labels(pdf(df), kdims=[x, y], vdims=[value, color_col]).opts(
+        text_font_size="8pt", text_color=color_col,
+    )
+
+
+def table(df, fmt=None):
+    """Render a small polars frame as a styled HTML table."""
+    fmt = fmt or {}
+    head = "".join(f"<th>{c}</th>" for c in df.columns)
+    rows = "".join(
+        "<tr>" + "".join(f"<td>{fmt.get(c, str)(v)}</td>" for c, v in zip(df.columns, r)) + "</tr>"
+        for r in df.iter_rows()
+    )
+    return HTML(f'<table class="dash-table"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table>')
+
+
+# ---- Data -------------------------------------------------------------------
+tsa = (
+    pl.read_csv("../../datasets/tsa.csv", try_parse_dates=True)
+    .sort("Date")
+    .with_columns(
+        Year=pl.col("Date").dt.year(),
+        Month=pl.col("Date").dt.month(),
+        Weekday=pl.col("Date").dt.strftime("%a"),
+        DayOfYear=pl.col("Date").dt.ordinal_day(),
+        MA28=pl.col("Passengers").rolling_mean(28),
+        MA7=pl.col("Passengers").rolling_mean(7),
+        # 364 days back lands on the same weekday, so Fridays compare with Fridays.
+        LastYear=pl.col("Passengers").shift(364),
+    )
+)
+LAST = tsa["Date"].max()
+CUR = LAST.year
+fmt_m = lambda v: f"{v / 1e6:,.2f}M"
+fmt_pct = lambda v: f"{v:+.1f}%"
+
+annual = tsa.group_by("Year").agg(Passengers=pl.sum("Passengers"), Days=pl.len()).sort("Year")
+growth = annual.with_columns(Growth=(pl.col("Passengers") / pl.col("Passengers").shift(1) - 1) * 100)
+g24 = growth.filter(pl.col("Year") == 2024)["Growth"][0]
+g25 = growth.filter(pl.col("Year") == 2025)["Growth"][0]
+
+# Year to date on matching weekdays: each 2026 day against the same weekday in 2025.
+ytd = tsa.filter(pl.col("Year") == CUR)
+ytd_change = (ytd["Passengers"].sum() / ytd["LastYear"].sum() - 1) * 100
+```
+
+# Executive Overview
+
+```{python}
+#| label: overview-kpis
+record = tsa.sort("Passengers").row(-1, named=True)
+busy = lambda y: tsa.filter((pl.col("Year") == y) & (pl.col("Passengers") >= 2_800_000)).height
+```
+
+## Row {height=150px}
+
+```{python}
+#| content: valuebox
+#| title: "Passengers screened in 2025, a record year"
+dict(icon="people", color="primary",
+     value=f"{annual.filter(pl.col('Year') == 2025)['Passengers'][0] / 1e6:,.0f}M")
+```
+
+```{python}
+#| content: valuebox
+#| title: "2026 to date vs the same weekdays of 2025"
+dict(icon="graph-down-arrow", color="warning", value=fmt_pct(ytd_change))
+```
+
+```{python}
+#| content: valuebox
+#| title: "Busiest day on record (Sun 30 Nov 2025)"
+dict(icon="trophy", color="light", value=fmt_m(record["Passengers"]))
+```
+
+```{python}
+#| content: valuebox
+#| title: "Days above 2.8M passengers in 2025"
+dict(icon="calendar-event", color="light", value=str(busy(2025)))
+```
+
+## Row {height=560px}
+
+### Column {width=62%}
+
+```{python}
+#| title: Daily passengers screened, with the 28-day average
+daily = tsa.hvplot.line(x="Date", y="Passengers", color=GRAY, line_width=0.6, alpha=0.55, label="Daily")
+trend = tsa.hvplot.line(x="Date", y="MA28", color=COBALT, line_width=2, label="28-day average")
+style(
+    daily * trend,
+    yformatter=MILLIONS, ylabel="Passengers", xlabel="", legend_position="bottom_right",
+    padding=(0.02, 0.05), min_height=TALL,
+    hover_tooltips=[("Date", "@Date{%a %d %b %Y}"), ("Passengers", "@Passengers{0,0}")],
+    hover_formatters={"@Date": "datetime"},
+)
+```
+
+### Column {width=38%}
+
+```{python}
+#| title: What the business needs to know
+HTML(f"""
+<div class="takeaways">
+<p class="q">Is demand still growing?</p>
+<p><strong>No.</strong> Volume set a record in 2025, but {CUR} is
+<strong>{abs(ytd_change):.1f}% behind</strong> 2025 on matching weekdays. Annual growth
+slowed from {g24:+.1f}% in 2024 to {g25:+.1f}% in 2025 and has now turned negative.</p>
+<p class="q">Where is the pressure?</p>
+<p>In the peaks, not the average day. Days above 2.8M passengers went from {busy(2023)} in 2023
+to {busy(2024)} in 2024 and {busy(2025)} in 2025. Checkpoints have to be sized for those
+days, not for the yearly average.</p>
+<p class="q">What should we do?</p>
+<p>Plan 2027 from a flat baseline, not the post-pandemic growth curve. Cover the predictable
+peak days with flexible capacity instead of adding permanent headcount.</p>
+</div>
+""")
+```
+
+# Pandemic & Recovery
+
+```{python}
+#| label: recovery-data
+base = tsa.filter(pl.col("Year") == 2019).group_by("Month").agg(Base=pl.mean("Passengers"))
+recovery = (
+    tsa.filter(pl.col("Year") >= 2020)
+    .group_by("Year", "Month").agg(Avg=pl.mean("Passengers"))
+    .join(base, on="Month")
+    .with_columns(
+        Recovery=pl.col("Avg") / pl.col("Base"),
+        MonthStart=pl.date(pl.col("Year"), pl.col("Month"), 1),
+        MonthName=pl.date(2000, pl.col("Month"), 1).dt.strftime("%b"),
+    )
+    .sort("MonthStart")
+)
+trough = tsa.sort("Passengers").row(0, named=True)
+
+# First month after which demand never again fell more than 2% short of 2019.
+first_full = (
+    recovery.with_columns(ok=(pl.col("Recovery") >= 0.98).reverse().cum_min().reverse())
+    .filter(pl.col("ok")).row(0, named=True)
+)
+y2019 = annual.filter(pl.col("Year") == 2019)["Passengers"][0]
+lost = 3 * y2019 - annual.filter(pl.col("Year").is_between(2020, 2022))["Passengers"].sum()
+```
+
+## Row {height=150px}
+
+```{python}
+#| content: valuebox
+#| title: "Fewest passengers in one day (14 Apr 2020)"
+dict(icon="arrow-down-circle", color="warning", value=f"{trough['Passengers']:,}")
+```
+
+```{python}
+#| content: valuebox
+#| title: "Trips not taken in 2020-2022 vs 2019 levels"
+dict(icon="hourglass-split", color="light", value=f"{lost / 1e6:,.0f}M")
+```
+
+```{python}
+#| content: valuebox
+#| title: "Month demand came back to stay (within 2% of 2019)"
+dict(icon="check2-circle", color="primary", value=f"{first_full['MonthStart']:%b %Y}")
+```
+
+## Row {height=560px}
+
+### Column {width=55%}
+
+```{python}
+#| title: Each month's demand as a share of the same month in 2019
+line = recovery.hvplot.line(x="MonthStart", y="Recovery", color=COBALT, line_width=2, hover_cols=["Avg"])
+pts = recovery.hvplot.scatter(x="MonthStart", y="Recovery", color=COBALT, size=14, hover_cols=["Avg"])
+style(
+    line * pts * hv.HLine(1.0).opts(color=INK, line_dash="dashed", line_width=1),
+    yformatter=PCT, ylabel="Share of 2019", xlabel="", min_height=TALL,
+    hover_tooltips=[("Month", "@MonthStart{%b %Y}"), ("vs 2019", "@Recovery{0%}"),
+                    ("Avg per day", "@Avg{0,0}")],
+    hover_formatters={"@MonthStart": "datetime"},
+)
+```
+
+### Column {width=45%}
+
+```{python}
+#| title: Recovery by month (% of 2019)
+heat = recovery.with_columns(
+    pl.col("Year").cast(pl.Utf8),
+    Pct=(pl.col("Recovery") * 100).round(0).cast(pl.Int32),
+    Ink=pl.when(pl.col("Recovery") < 0.55).then(pl.lit(INK)).otherwise(pl.lit("#ffffff")),
+)
+style(
+    heat.hvplot.heatmap(
+        x="MonthName", y="Year", C="Recovery", cmap=RAMP, clim=(0, 1.1),
+        colorbar=False, hover_cols=["Pct"],
+    ).opts(hover_tooltips=[("Month", "@MonthName @Year"), ("vs 2019", "@Pct%")])
+    * cell_labels(heat, "MonthName", "Year", "Pct", "Ink"),
+    xlabel="", ylabel="", xaxis="top", invert_yaxis=True, show_grid=False, min_height=TALL,
+)
+```
+
+# Travel Seasonality
+
+```{python}
+#| label: season-data
+post = tsa.filter(pl.col("Year") >= 2023)  # fully recovered years only
+order = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+overall = post["Passengers"].mean()
+wd = (
+    post.group_by("Weekday").agg(Avg=pl.mean("Passengers"))
+    .with_columns(Index=pl.col("Avg") / overall - 1)
+    .with_columns(pl.col("Weekday").cast(pl.Enum(order))).sort("Weekday")
+    .with_columns(pl.col("Weekday").cast(pl.Utf8))
+)
+hm = (
+    post.with_columns(MonthName=pl.col("Date").dt.strftime("%b"))
+    .group_by("MonthName", "Weekday").agg(Avg=pl.mean("Passengers"))
+    .with_columns(
+        AvgM=(pl.col("Avg") / 1e6).round(2),
+        Ink=pl.when(pl.col("Avg") < 2.3e6).then(pl.lit(INK)).otherwise(pl.lit("#ffffff")),
+    )
+)
+mon = post.group_by("Month").agg(Avg=pl.mean("Passengers")).sort("Avg")
+slow, peak = wd.sort("Avg").row(0, named=True), wd.sort("Avg").row(-1, named=True)
+swing = (peak["Avg"] / slow["Avg"] - 1) * 100
+low_m, high_m = months[mon["Month"][0] - 1], months[mon["Month"][-1] - 1]
+month_swing = (mon["Avg"][-1] / mon["Avg"][0] - 1) * 100
+```
+
+## Row {height=150px}
+
+```{python}
+#| content: valuebox
+#| title: "Busiest weekday (Sun) vs quietest (Tue)"
+dict(icon="arrow-left-right", color="primary", value=f"+{swing:.0f}%")
+```
+
+```{python}
+#| content: valuebox
+#| title: "Busiest month (Jun) vs quietest (Jan)"
+dict(icon="sun", color="light", value=f"+{month_swing:.0f}%")
+```
+
+```{python}
+#| content: valuebox
+#| title: "Weekly swing as a share of the seasonal swing"
+dict(icon="lightbulb", color="light", value=f"{swing / month_swing * 100:.0f}%")
+```
+
+## Row {height=560px}
+
+### Column {width=60%}
+
+```{python}
+#| title: Average daily passengers by month and weekday, 2023 to date (millions)
+style(
+    hm.hvplot.heatmap(
+        x="Weekday", y="MonthName", C="Avg", cmap=RAMP, colorbar=False, hover_cols=["AvgM"],
+    ).opts(hover_tooltips=[("", "@Weekday in @MonthName"), ("Avg passengers", "@Avg{0,0}")])
+    * cell_labels(hm, "Weekday", "MonthName", "AvgM", "Ink"),
+    xlabel="", ylabel="", xaxis="top", show_grid=False, min_height=TALL,
+).redim.values(Weekday=order, MonthName=months[::-1])
+```
+
+### Column {width=40%}
+
+```{python}
+#| title: Each weekday vs the average day
+style(
+    wd.hvplot.bar(x="Weekday", y="Index", color=COBALT, hover_cols=["Avg"])
+    .opts(hover_tooltips=[("Day", "@Weekday"), ("vs average", "@Index{+0.0%}"),
+                          ("Avg passengers", "@Avg{0,0}")])
+    * hv.HLine(0).opts(color=INK, line_width=1),
+    yformatter=PCT, xlabel="", ylabel="vs the average day",
+)
+```
+
+```{python}
+#| title: So what?
+HTML(f"""
+<div class="takeaways">
+<p>Sun, Mon, Thu and Fri run above average; Tue, Wed and Sat run below. The {swing:.0f}% gap
+between a {peak['Weekday']} and a {slow['Weekday']} is almost as big as the {month_swing:.0f}%
+gap between {high_m} and {low_m}.</p>
+<p><strong>A single week swings nearly as much as the whole year.</strong> Rosters planned
+only by season leave Tuesdays overstaffed and Sundays short, so shifts need to flex within
+the week as well as across the year.</p>
+</div>
+""")
+```
+
+# Demand & Anomalies
+
+```{python}
+#| label: anomaly-data
+def nth_weekday(y, m, wd, n):
+    d = date(y, m, 1)
+    return d + timedelta(days=(wd - d.weekday()) % 7, weeks=n - 1)
+
+
+def last_weekday(y, m, wd):
+    d = date(y, m + 1, 1) - timedelta(days=1)
+    return d - timedelta(days=(d.weekday() - wd) % 7)
+
+
+def holiday_near(d):
+    """Name the travel holiday a date falls near, or None for an ordinary day."""
+    y = d.year
+    windows = {
+        "Thanksgiving": (nth_weekday(y, 11, 3, 4), 6),
+        "Memorial Day": (last_weekday(y, 5, 0), 4),
+        "Labor Day": (nth_weekday(y, 9, 0, 1), 4),
+        "Presidents' Day": (nth_weekday(y, 2, 0, 3), 4),
+        "MLK Day": (nth_weekday(y, 1, 0, 3), 3),
+        "Columbus Day": (nth_weekday(y, 10, 0, 2), 4),
+        "Independence Day": (date(y, 7, 4), 3),
+        "Halloween": (date(y, 10, 31), 1),
+    }
+    for name, (anchor, span) in windows.items():
+        if abs((d - anchor).days) <= span:
+            return name
+    if (d.month == 12 and d.day >= 18) or (d.month == 1 and d.day <= 5):
+        return "Christmas / New Year"
+    return None
+
+
+def holiday_label(d):
+    """A holiday on the day itself, or on the day it is compared with a year earlier."""
+    return holiday_near(d) or holiday_near(d - timedelta(days=364))
+
+
+# Expected = same weekday last year, scaled by how the last 28 days compared with a year
+# earlier. This keeps seasonality (January lulls are normal) and the current trend.
+THRESHOLD = 0.15
+anom = (
+    tsa.with_columns(
+        Trend=pl.col("Passengers").shift(1).rolling_sum(28)
+        / pl.col("LastYear").shift(1).rolling_sum(28)
+    )
+    .with_columns(Expected=pl.col("LastYear") * pl.col("Trend"))
+    .with_columns(Deviation=pl.col("Passengers") / pl.col("Expected") - 1)
+    .filter(pl.col("Year") >= 2024)  # 2023 compares with a still-recovering 2022
+    .with_columns(Holiday=pl.col("Date").map_elements(holiday_label, return_dtype=pl.Utf8))
+    .with_columns(
+        Flag=pl.when(pl.col("Deviation").abs() < THRESHOLD).then(None)
+        .when(pl.col("Holiday").is_not_null()).then(pl.lit("Holiday shift"))
+        .otherwise(pl.lit("Unplanned"))
+    )
+)
+flagged = anom.filter(pl.col("Flag").is_not_null())
+unplanned = flagged.filter(pl.col("Flag") == "Unplanned")
+share_plannable = (1 - unplanned.height / flagged.height) * 100
+worst = unplanned.sort("Deviation").row(0, named=True)
+```
+
+## Row {height=150px}
+
+```{python}
+#| content: valuebox
+#| title: "Days since 2024 more than 15% off the expected level"
+dict(icon="activity", color="light", value=str(flagged.height))
+```
+
+```{python}
+#| content: valuebox
+#| title: "of those were caused by the holiday calendar"
+dict(icon="calendar-check", color="primary", value=f"{share_plannable:.0f}%")
+```
+
+```{python}
+#| content: valuebox
+#| title: "Worst unplanned day (Sun 25 Jan 2026) vs expected"
+dict(icon="cloud-snow", color="warning", value=f"{worst['Deviation'] * 100:.0f}%")
+```
+
+## Row {height=560px}
+
+### Column {width=62%}
+
+```{python}
+#| title: Daily passengers since 2024, with the days that broke the pattern
+tips = [("Date", "@Date{%a %d %b %Y}"), ("Passengers", "@Passengers{0,0}"),
+        ("Expected", "@Expected{0,0}"), ("vs expected", "@Deviation{+0%}"), ("Holiday", "@Holiday")]
+cols = ["Expected", "Deviation", "Holiday"]
+daily = anom.hvplot.line(x="Date", y="Passengers", color=GRAY, line_width=0.7, alpha=0.7,
+                         label="Daily", hover_cols=cols)
+hol = flagged.filter(pl.col("Flag") == "Holiday shift").hvplot.scatter(
+    x="Date", y="Passengers", color=NAVY, size=40, hover_cols=cols, label="Holiday shift (plannable)",
+).opts(line_color="#ffffff", line_width=1.5)
+dis = unplanned.hvplot.scatter(
+    x="Date", y="Passengers", color=ORANGE, size=160, marker="triangle",
+    hover_cols=cols, label="Unplanned",
+).opts(line_color="#ffffff", line_width=1.5)
+style(
+    daily * hol * dis,
+    yformatter=MILLIONS, ylabel="Passengers", xlabel="", legend_position="bottom_right",
+    min_height=TALL, hover_tooltips=tips, hover_formatters={"@Date": "datetime"},
+)
+```
+
+### Column {width=38%}
+
+```{python}
+#| title: Unplanned days, largest gap first
+table(
+    unplanned.sort(pl.col("Deviation").abs(), descending=True).select(
+        pl.col("Date").dt.strftime("%a %d %b %Y").alias("Date"),
+        "Passengers",
+        pl.col("Expected").round(0).cast(pl.Int64),
+        pl.col("Deviation").alias("Gap"),
+    ),
+    fmt={"Passengers": lambda v: f"{v:,}", "Expected": lambda v: f"{v:,}",
+         "Gap": lambda v: f"{v * 100:+.0f}%"},
+)
+```
+
+```{python}
+#| title: How the flags work
+HTML(f"""
+<div class="takeaways small">
+<p>A day's <em>expected</em> level is the same weekday a year earlier, scaled by the last 28
+days' trend. Days more than 15% off are flagged, and counted as calendar-driven when the day,
+or the day it is compared with, falls near a holiday.</p>
+<p><strong>{share_plannable:.0f}% of the big swings are plannable from the calendar.</strong>
+Only the orange days, led by the late January 2026 winter storm, need a contingency plan.</p>
+</div>
+""")
+```
+
+# Year over Year
+
+```{python}
+#| label: yoy-data
+yoy = (
+    tsa.filter(pl.col("Year") >= 2024)
+    .with_columns(MonthStart=pl.col("Date").dt.truncate("1mo"))
+    .group_by("MonthStart").agg(pl.sum("Passengers"), pl.sum("LastYear"))
+    .sort("MonthStart")
+    .with_columns(
+        YoY=pl.col("Passengers") / pl.col("LastYear") - 1,
+        Label=pl.col("MonthStart").dt.strftime("%b %y"),
+    )
+    .with_columns(Color=pl.when(pl.col("YoY") >= 0).then(pl.lit(COBALT)).otherwise(pl.lit(ORANGE)))
+)
+neg_streak = yoy.reverse().select((pl.col("YoY") < 0).cast(pl.Int8).cum_min().sum()).item()
+worst_month = yoy.sort("YoY").row(0, named=True)
+
+gap = (
+    tsa.filter(pl.col("Year") == CUR)
+    .with_columns(Gap=(pl.col("Passengers") - pl.col("LastYear")).cum_sum())
+)
+gap_now = gap["Gap"][-1]
+gap_peak = gap.sort("Gap").row(-1, named=True)
+```
+
+## Row {height=150px}
+
+```{python}
+#| content: valuebox
+#| title: "Growth in 2024"
+dict(icon="graph-up-arrow", color="light", value=fmt_pct(g24))
+```
+
+```{python}
+#| content: valuebox
+#| title: "Growth in 2025"
+dict(icon="dash-circle", color="light", value=fmt_pct(g25))
+```
+
+```{python}
+#| content: valuebox
+#| title: "Months in a row below the year before"
+dict(icon="exclamation-triangle", color="warning", value=str(neg_streak))
+```
+
+## Row {height=560px}
+
+### Column {width=55%}
+
+```{python}
+#| title: Monthly change vs a year earlier (blue up, orange down)
+style(
+    yoy.hvplot.bar(x="Label", y="YoY", color="Color", hover_cols=["Passengers", "LastYear"])
+    .opts(hover_tooltips=[("Month", "@Label"), ("Change", "@YoY{+0.0%}"),
+                          ("Passengers", "@Passengers{0,0}"), ("Year before", "@LastYear{0,0}")])
+    * hv.HLine(0).opts(color=INK, line_width=1),
+    yformatter=NumeralTickFormatter(format="+0%"), xlabel="", ylabel="Change vs a year earlier",
+    xrotation=90, min_height=TALL,
+)
+```
+
+### Column {width=45%}
+
+```{python}
+#| title: Running total of 2026 passengers vs the same weekdays of 2025
+area = gap.hvplot.area(x="Date", y="Gap", color=ORANGE, alpha=0.25, line_width=0)
+gline = gap.hvplot.line(x="Date", y="Gap", color=ORANGE, line_width=2, hover_cols=["Passengers", "LastYear"])
+style(
+    area * gline * hv.HLine(0).opts(color=INK, line_width=1),
+    yformatter=MILLIONS, xlabel="", ylabel="Gap vs 2025",
+    hover_tooltips=[("Through", "@Date{%d %b %Y}"), ("Running gap", "@Gap{+0.00a}")],
+    hover_formatters={"@Date": "datetime"},
+)
+```
+
+```{python}
+#| title: Reading the trend
+HTML(f"""
+<div class="takeaways small">
+<p>{CUR} was running <strong>{gap_peak['Gap'] / 1e6:.1f}M passengers ahead</strong> of 2025 in
+{gap_peak['Date']:%B}. From April on, every month came in lower than a year earlier, the worst being
+{worst_month['MonthStart']:%B} ({worst_month['YoY'] * 100:+.1f}%). The year is now
+<strong>{abs(gap_now) / 1e6:.1f}M behind</strong>.</p>
+<p>The open question for planning is whether this is a cyclical dip or a new normal. Either
+way, next year's forecast should be built from {CUR} data, not extended from the 2024 trend.</p>
+</div>
+""")
+```

@@ -1,0 +1,45 @@
+/*-- scss:defaults --*/
+$navy: #191970;
+$cobalt: #1919e6;
+$ink: #15153f;
+$slate: #55557a;
+$tint: #f5f5ff;
+$rule: #dfdff3;
+$warning: #eb6834;
+
+/*-- scss:rules --*/
+/* hv.extension() emits the BokehJS loader as an empty card ahead of the pages. */
+.tab-content > .card.cell:first-child { display: none; }
+.navbar { border-bottom: 1px solid $rule; }
+.bslib-value-box .value-box-value { font-size: clamp(1.5rem, 2.2vw, 2.1rem); white-space: nowrap; }
+body { background: #fafaff; -webkit-font-smoothing: antialiased; }
+.card { border: 1px solid $rule; box-shadow: none; }
+.card-header { font-weight: 600; color: $ink; background: #fff; border-bottom: 1px solid $rule; }
+.bslib-value-box .value-box-title { font-size: 0.85rem; color: inherit; opacity: 0.9; }
+.bslib-value-box .value-box-value { font-weight: 600; letter-spacing: -0.02em; }
+.bslib-value-box.bg-light { background: #fff !important; color: $ink !important; border: 1px solid $rule; }
+.bslib-value-box.bg-light .value-box-showcase { color: $cobalt; }
+.bslib-value-box.bg-warning { color: #fff !important; }
+.takeaways { padding: 14px 18px; font-size: 0.92rem; line-height: 1.5; color: $ink; overflow-y: auto; }
+.takeaways.small { font-size: 0.86rem; }
+.takeaways p { margin: 0 0 0.7rem; }
+.takeaways .q { font-weight: 600; color: $cobalt; margin-bottom: 0.2rem; }
+.dash-table { width: 100%; font-size: 0.84rem; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.dash-table th { text-align: left; color: $slate; font-weight: 500; border-bottom: 1px solid $navy; padding: 6px 8px; }
+.dash-table td { padding: 5px 8px; border-bottom: 1px solid $rule; }
+.dash-table td:not(:first-child), .dash-table th:not(:first-child) { text-align: right; }
+
+/* Phones: let grid items shrink and long values wrap instead of pushing the page wide. */
+.bslib-grid > *, .card { min-width: 0; }
+@media (max-width: 767.98px) {
+  #quarto-content { overflow-x: hidden; }
+  .bslib-value-box .value-box-value { white-space: normal; }
+}
+
+/* Dashboard header: author sits under the title, smaller. */
+.quarto-dashboard #quarto-dashboard-header .navbar .navbar-title {
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1.15;
+}
+.quarto-dashboard #quarto-dashboard-header .navbar .navbar-author {
+  font-size: 0.78rem; font-weight: 400; color: $slate; margin: 2px 0 0; padding: 0;
+}
